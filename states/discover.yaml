@@ -1,0 +1,38 @@
+id: discover
+name: 发现阶段
+description: >
+  信息收集与扫描阶段
+  目标：最大化信息覆盖，最小化遗漏
+  不判断质量，只收集来源和原始内容
+
+entry_condition: "输入数据已就绪"
+exit_condition: "信息收集完成，来源列表已建立"
+
+activities:
+  - name: 来源扫描
+    description: "扫描所有可用来源，建立来源清单"
+    output: sources_index
+  - name: 内容提取
+    description: "从来源中提取原始内容"
+    output: raw_extractions
+  - name: 元数据标注
+    description: "为每个提取项标注来源、时间、类型"
+    output: annotated_corpus
+
+role_bindings:
+  primary: explorer
+  secondary: analyst
+  
+transitions:
+  - to: analyze
+    condition: "corpus_size >= 1 且所有来源已标注"
+  - to: discover
+    condition: "发现重大遗漏，需补充来源"
+    
+quality_gates:
+  - id: coverage
+    name: "覆盖度检查"
+    rule: "来源数 >= 1"
+  - id: metadata_completeness
+    name: "元数据完整度"
+    rule: "100% 提取项有来源标注"

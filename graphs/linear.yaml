@@ -1,0 +1,28 @@
+id: linear
+name: 线性流水线
+description: "最简单的依赖图：5 个状态串行执行"
+
+type: directed-acyclic-graph
+nodes:
+  - id: discover
+    stage: discover
+    dependencies: []
+  - id: analyze
+    stage: analyze
+    dependencies: [discover]
+  - id: verify
+    stage: verify
+    dependencies: [analyze]
+  - id: synthesize
+    stage: synthesize
+    dependencies: [verify]
+  - id: archive
+    stage: archive
+    dependencies: [synthesize]
+
+execution:
+  strategy: sequential
+  max_parallelism: 1
+  rollback_on_failure: true
+
+use_case: "小规模任务，资源有限，需要简单可预测的执行"

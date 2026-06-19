@@ -1,0 +1,100 @@
+title: "Confidence Network Schema"
+description: "置信度传播网络的 Schema 定义 | Confidence propagation network schema"
+
+type: object
+required:
+  - nodes
+  - edges
+  - convergence
+
+properties:
+  nodes:
+    type: array
+    items:
+      type: object
+      required:
+        - claim_id
+        - initial_confidence
+        - final_confidence
+      properties:
+        claim_id:
+          type: string
+        initial_confidence:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+        final_confidence:
+          type: number
+          minimum: 0.0
+          maximum: 1.0
+        stability:
+          type: boolean
+          description: "是否已收敛"
+        iterations:
+          type: integer
+          description: "收敛所需迭代次数"
+          
+  edges:
+    type: array
+    items:
+      type: object
+      required:
+        - source
+        - target
+        - weight
+      properties:
+        source:
+          type: string
+          description: "源主张 ID"
+        target:
+          type: string
+          description: "目标主张 ID"
+        weight:
+          type: number
+          minimum: -1.0
+          maximum: 1.0
+          description: "关系权重（正=支持，负=反对）"
+        type:
+          type: string
+          enum: [supports, contradicts, related, derives]
+          description: "关系类型"
+          
+  convergence:
+    type: object
+    required:
+      - threshold
+      - max_iterations
+      - achieved
+    properties:
+      threshold:
+        type: number
+        default: 0.01
+        description: "收敛阈值（置信度变化 < 此值）"
+      max_iterations:
+        type: integer
+        default: 100
+        description: "最大迭代次数"
+      achieved:
+        type: boolean
+        description: "是否已收敛"
+      final_delta:
+        type: number
+        description: "最终迭代的最大变化量"
+        
+example:
+  nodes:
+    - claim_id: "claim_001"
+      initial_confidence: 0.7
+      final_confidence: 0.92
+      stability: true
+      iterations: 5
+  edges:
+    - source: "claim_001"
+      target: "claim_002"
+      weight: 0.8
+      type: "supports"
+  convergence:
+    threshold: 0.01
+    max_iterations: 100
+    achieved: true
+    final_delta: 0.003

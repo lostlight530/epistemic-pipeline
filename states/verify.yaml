@@ -1,0 +1,46 @@
+id: verify
+name: 验证阶段
+description: >
+  交叉检查与一致性阶段
+  目标：识别冲突、验证主张、评估证据质量
+  输出：置信度评分、冲突清单、验证报告
+
+entry_condition: "分析阶段已输出 entity_map + claims_registry + evidence_chains"
+exit_condition: "所有主张已验证，冲突已标记或消解"
+
+activities:
+  - name: 内部一致性检查
+    description: "检查同一来源内的主张是否自洽"
+    output: internal_consistency_report
+  - name: 跨来源交叉验证
+    description: "检查不同来源对同一主题的描述"
+    output: cross_source_matrix
+  - name: 冲突识别
+    description: "标记统计不一致或逻辑矛盾"
+    output: conflict_registry
+  - name: 置信度评估
+    description: "为每个主张分配初始置信度"
+    output: confidence_seed
+
+role_bindings:
+  primary: verifier
+  secondary: auditor
+
+transitions:
+  - to: synthesize
+    condition: "所有主张已验证，冲突已标记"
+  - to: analyze
+    condition: "发现严重不一致，需重新分析"
+  - to: discover
+    condition: "需要新来源来消解冲突"
+    
+quality_gates:
+  - id: verification_coverage
+    name: "验证覆盖"
+    rule: "≥95% 的主张已验证"
+  - id: conflict_documented
+    name: "冲突记录"
+    rule: "所有冲突已记录并标注严重程度"
+  - id: confidence_assigned
+    name: "置信度分配"
+    rule: "所有主张有置信度值"

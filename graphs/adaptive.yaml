@@ -1,0 +1,29 @@
+id: adaptive
+name: 自适应流水线
+description: "根据输入规模自动选择执行策略"
+
+type: adaptive-graph
+rules:
+  - condition: "input_count <= 3"
+    graph: linear
+    description: "小规模：线性串行"
+  - condition: "3 < input_count <= 10"
+    graph: parallel
+    parallelism: 2
+    description: "中规模：2组并行"
+  - condition: "10 < input_count <= 30"
+    graph: parallel
+    parallelism: 4
+    description: "大规模：4组并行"
+  - condition: "input_count > 30"
+    graph: diamond
+    parallelism: 6
+    description: "超大规模：菱形分散"
+
+execution:
+  strategy: adaptive
+  auto_detect: true
+  max_parallelism: 6
+  rollback_on_failure: true
+
+use_case: "不确定规模的任务，自动选择最优策略"

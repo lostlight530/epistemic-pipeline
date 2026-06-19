@@ -1,0 +1,36 @@
+# epistemic-pipeline
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+
+# 输出/运行产物
+output/
+*.log
+*.json
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 测试
+.pytest_cache/
+.coverage
+
+# 历史记录（可选保留）
+# incremental/history/

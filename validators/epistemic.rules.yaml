@@ -1,0 +1,57 @@
+title: "Epistemic Rules"
+description: "认知流水线的基础规则 | Foundation rules for epistemic pipeline"
+
+rules:
+  - id: no_circular_dependency
+    name: "禁止循环依赖"
+    severity: blocker
+    description: "依赖图中不允许出现环路"
+    check: "DAG 验证"
+    
+  - id: all_states_reachable
+    name: "所有状态可达"
+    severity: blocker
+    description: "图中每个状态必须从起始状态可达"
+    check: "连通性验证"
+    
+  - id: confidence_range
+    name: "置信度范围"
+    severity: blocker
+    description: "所有置信度值必须在 [0, 1] 范围内"
+    check: "数值验证"
+    
+  - id: transition_validity
+    name: "状态转移有效"
+    severity: warning
+    description: "状态转移条件必须引用已定义的产出"
+    check: "引用验证"
+    
+  - id: role_binding_consistency
+    name: "角色绑定一致"
+    severity: warning
+    description: "每个状态的主角色和副角色必须在 roles/ 中定义"
+    check: "存在性验证"
+    
+  - id: quality_gate_coverage
+    name: "质量门覆盖"
+    severity: suggestion
+    description: "建议每个状态至少定义 2 个质量门"
+    check: "计数验证"
+    
+  - id: conflict_resolution
+    name: "冲突处理"
+    severity: warning
+    description: "严重冲突（critical）必须在综合阶段前处理或标注"
+    check: "流程验证"
+    
+  - id: provenance_completeness
+    name: "溯源完整"
+    severity: blocker
+    description: "归档阶段必须包含完整的溯源链"
+    check: "存在性验证"
+    
+  - id: metadata_schema_compliance
+    name: "元数据 Schema 合规"
+    severity: blocker
+    description: "所有元数据必须符合 confidence.schema.yaml"
+    check: "Schema 验证"

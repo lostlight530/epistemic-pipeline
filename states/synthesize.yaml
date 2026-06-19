@@ -1,0 +1,44 @@
+id: synthesize
+name: 综合阶段
+description: >
+  聚合与洞察阶段
+  目标：从验证后的知识中生成综合报告
+  包括：交叉对比、趋势分析、洞察提取、推荐
+
+entry_condition: "验证阶段已输出 confidence_seed + conflict_registry"
+exit_condition: "综合报告已生成，洞察已提取"
+
+activities:
+  - name: 置信度传播
+    description: "在网络中传播置信度，收敛到稳定值"
+    output: confidence_network
+  - name: 交叉对比
+    description: "多维度对比不同来源的主张"
+    output: comparison_matrix
+  - name: 洞察提取
+    description: "识别非显而易见的模式和关联"
+    output: insight_list
+  - name: 报告生成
+    description: "生成结构化综合报告"
+    output: synthesis_report
+
+role_bindings:
+  primary: synthesizer
+  secondary: analyst
+
+transitions:
+  - to: archive
+    condition: "报告已生成且通过质量检查"
+  - to: verify
+    condition: "综合过程发现新冲突"
+    
+quality_gates:
+  - id: confidence_converged
+    name: "置信度收敛"
+    rule: "网络迭代后置信度变化 < 0.01"
+  - id: insight_novel
+    name: "洞察新颖性"
+    rule: "洞察不是原始主张的简单复述"
+  - id: report_complete
+    name: "报告完整性"
+    rule: "报告包含：摘要、对比、洞察、推荐、置信度"

@@ -1,0 +1,42 @@
+id: archive
+name: 归档阶段
+description: >
+  沉淀与溯源阶段
+  目标：保存完整认知过程，支持可审计和复现
+  输出：元数据包、溯源链、过程日志
+
+entry_condition: "综合阶段已输出 synthesis_report"
+exit_condition: "所有产物已归档，元数据已生成"
+
+activities:
+  - name: 产物收集
+    description: "收集所有中间产物和最终报告"
+    output: artifact_bundle
+  - name: 溯源链构建
+    description: "建立从输入到输出的完整溯源链"
+    output: provenance_chain
+  - name: 元数据封装
+    description: "生成机器可读的元数据包"
+    output: metadata_package
+  - name: 质量审计
+    description: "对整个流水线执行最终审计"
+    output: audit_report
+
+role_bindings:
+  primary: auditor
+  secondary: synthesizer
+
+transitions:
+  - to: null
+    condition: "归档完成，流水线结束"
+    
+quality_gates:
+  - id: artifact_complete
+    name: "产物完整"
+    rule: "所有 5 阶段的产物已归档"
+  - id: provenance_valid
+    name: "溯源有效"
+    rule: "溯源链从输入到输出无断链"
+  - id: metadata_valid
+    name: "元数据合规"
+    rule: "元数据符合 confidence.schema.yaml"

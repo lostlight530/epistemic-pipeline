@@ -1,0 +1,44 @@
+id: analyze
+name: 分析阶段
+description: >
+  拆解与结构化阶段
+  目标：将原始信息转化为结构化知识单元
+  提取：实体、关系、主张、证据、方法
+
+entry_condition: "发现阶段已输出 annotated_corpus"
+exit_condition: "所有知识单元已结构化，关系已建立"
+
+activities:
+  - name: 实体识别
+    description: "识别关键概念、术语、实体"
+    output: entity_map
+  - name: 主张提取
+    description: "提取每个来源的核心主张"
+    output: claims_registry
+  - name: 证据链构建
+    description: "将主张与支持证据关联"
+    output: evidence_chains
+  - name: 方法标注
+    description: "标注每个主张的方法论基础"
+    output: methodology_index
+
+role_bindings:
+  primary: analyst
+  secondary: verifier
+
+transitions:
+  - to: verify
+    condition: "entity_map 和 claims_registry 非空"
+  - to: discover
+    condition: "发现关键信息缺失，需补充来源"
+    
+quality_gates:
+  - id: entity_coverage
+    name: "实体覆盖"
+    rule: "每个来源至少提取 1 个实体"
+  - id: claim_extraction
+    name: "主张提取"
+    rule: "claims_registry 非空"
+  - id: evidence_linked
+    name: "证据关联"
+    rule: "≥80% 的主张有证据链"

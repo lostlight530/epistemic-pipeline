@@ -1,0 +1,39 @@
+id: parallel
+name: 并行分组流水线
+description: "发现后并行分析多个独立组，然后串行验证和综合"
+
+type: directed-acyclic-graph
+nodes:
+  - id: discover
+    stage: discover
+    dependencies: []
+  - id: analyze_group_1
+    stage: analyze
+    dependencies: [discover]
+    group: 1
+  - id: analyze_group_2
+    stage: analyze
+    dependencies: [discover]
+    group: 2
+  - id: analyze_group_3
+    stage: analyze
+    dependencies: [discover]
+    group: 3
+  - id: verify
+    stage: verify
+    dependencies: [analyze_group_1, analyze_group_2, analyze_group_3]
+  - id: synthesize
+    stage: synthesize
+    dependencies: [verify]
+  - id: archive
+    stage: archive
+    dependencies: [synthesize]
+
+execution:
+  strategy: mixed
+  parallel_groups:
+    - [analyze_group_1, analyze_group_2, analyze_group_3]
+  max_parallelism: 3
+  rollback_on_failure: true
+
+use_case: "中等规模任务，可分组并行分析"

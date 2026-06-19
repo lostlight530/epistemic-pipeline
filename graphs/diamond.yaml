@@ -1,0 +1,39 @@
+id: diamond
+name: 菱形流水线
+description: "先分散分析，再并行验证，最后聚合综合"
+
+type: directed-acyclic-graph
+nodes:
+  - id: discover
+    stage: discover
+    dependencies: []
+  - id: analyze
+    stage: analyze
+    dependencies: [discover]
+  - id: verify_group_1
+    stage: verify
+    dependencies: [analyze]
+    group: 1
+  - id: verify_group_2
+    stage: verify
+    dependencies: [analyze]
+    group: 2
+  - id: verify_group_3
+    stage: verify
+    dependencies: [analyze]
+    group: 3
+  - id: synthesize
+    stage: synthesize
+    dependencies: [verify_group_1, verify_group_2, verify_group_3]
+  - id: archive
+    stage: archive
+    dependencies: [synthesize]
+
+execution:
+  strategy: mixed
+  parallel_groups:
+    - [verify_group_1, verify_group_2, verify_group_3]
+  max_parallelism: 3
+  rollback_on_failure: true
+
+use_case: "大规模任务，验证阶段可并行"

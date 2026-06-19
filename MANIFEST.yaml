@@ -1,0 +1,37 @@
+name: epistemic-pipeline
+purpose: 状态机驱动的动态科研认知流水线 | State-machine driven dynamic research cognition pipeline
+principles:
+  - 状态机优先: 认知过程是状态流转不是固定角色流水线
+  - 角色动态化: 同状态可由不同角色模板执行
+  - 置信度传播: 连续值在网络中传播和收敛
+  - 图依赖: 运行时计算DAG不是硬编码
+  - 框架可插拔: 认知框架由用户定义不硬编码
+
+states:
+  - discover
+  - analyze
+  - verify
+  - synthesize
+  - archive
+  
+roles:
+  - explorer
+  - analyst
+  - verifier
+  - synthesizer
+  - auditor
+  
+graphs:
+  - linear
+  - parallel
+  - diamond
+  - adaptive
+  
+confidence:
+  range: [0.0, 1.0]
+  propagation: bayesian-network
+  convergence: iterative
+  
+validators:
+  - confidence.schema.yaml
+  - epistemic.rules.yaml
