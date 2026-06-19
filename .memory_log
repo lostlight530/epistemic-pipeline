@@ -1,0 +1,4 @@
+Learnings:
+- Ensure that when checking out branches, files that were untracked or only in previous branches are properly tracked and moved over.
+- Don't delete JSON/YAML schemas from LLM agent documentation, as they are crucial instructions for structured output.
+- Always run tests after refactoring.
