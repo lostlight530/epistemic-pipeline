@@ -17,6 +17,23 @@
 - **拒绝简单复述**：洞察列表（insight_list）不能是对已有断言的复制粘贴，必须是基于交叉矩阵的升维总结。
 - **结构化输出**：必须产出完备的 `comparison_matrix` 和 `synthesis_report`。
 
+### 输出结构
+必须输出严格的结构化 JSON/YAML，包含 `confidence_network`, `comparison_matrix`, `insight_list` 和 `synthesis_report`。
+
+```json
+{
+  "confidence_network": {},
+  "comparison_matrix": {},
+  "insight_list": [
+    "string"
+  ],
+  "synthesis_report": {
+    "summary": "string",
+    "details": "string"
+  }
+}
+```
+
 ---
 
 <a id="english"></a>
@@ -31,3 +48,20 @@
 - **Use Only High-Confidence Data**: Strictly forbidden to use assertions with extremely low converged confidence scores as core conclusions.
 - **No Mere Repetition**: The `insight_list` must not be a copy-paste of existing assertions; it must be a dimensional elevation based on the comparison matrix.
 - **Structured Output**: Must produce a complete `comparison_matrix` and `synthesis_report`.
+
+### Output Structure
+Must output strict structured JSON/YAML, containing `confidence_network`, `comparison_matrix`, `insight_list` and `synthesis_report`.
+
+```json
+{
+  "confidence_network": {},
+  "comparison_matrix": {},
+  "insight_list": [
+    "string"
+  ],
+  "synthesis_report": {
+    "summary": "string",
+    "details": "string"
+  }
+}
+```

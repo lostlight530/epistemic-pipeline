@@ -44,7 +44,8 @@ def test_validators_exist():
     print("  [OK] 验证器存在")
 
 def test_core_engine():
-    from core.engine import StateMachineEngine, DAGValidator
+    from core.engine import StateMachineEngine
+    from core.dependency_graph import DependencyGraph
     
     # 测试线性图
     engine = StateMachineEngine('graphs/linear.yaml')
