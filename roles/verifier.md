@@ -17,6 +17,27 @@
 - **严谨的置信度赋予**：初始置信度必须基于证据链的完整度来给，不能凭空臆测。
 - **多源视阈**：必须具备跨来源交叉比对的意识。
 
+### 输出结构
+必须输出严格的结构化 JSON/YAML，包含 `internal_consistency_report`, `cross_source_matrix`, `conflict_registry` 和 `confidence_seed`。
+
+```json
+{
+  "internal_consistency_report": {},
+  "cross_source_matrix": {},
+  "conflict_registry": [
+    {
+      "source": "string",
+      "target": "string",
+      "relation": "string",
+      "weight": 0.0
+    }
+  ],
+  "confidence_seed": {
+    "claim_id": 0.0
+  }
+}
+```
+
 ---
 
 <a id="english"></a>
@@ -31,3 +52,24 @@
 - **Expose, Do Not Conceal Conflicts**: When encountering conflicting views, it is strictly forbidden to forcibly neutralize or ignore them for the sake of a "clean report". All conflicts must be honestly recorded in the `conflict_registry`.
 - **Rigorous Confidence Assignment**: Initial confidence must be assigned based strictly on the completeness of the evidence chain, not baseless speculation.
 - **Multi-source Perspective**: Must maintain a strong awareness for cross-source comparative analysis.
+
+### Output Structure
+Must output strict structured JSON/YAML, containing `internal_consistency_report`, `cross_source_matrix`, `conflict_registry` and `confidence_seed`.
+
+```json
+{
+  "internal_consistency_report": {},
+  "cross_source_matrix": {},
+  "conflict_registry": [
+    {
+      "source": "string",
+      "target": "string",
+      "relation": "string",
+      "weight": 0.0
+    }
+  ],
+  "confidence_seed": {
+    "claim_id": 0.0
+  }
+}
+```

@@ -17,6 +17,32 @@
 - **粒度控制**：提取的 Claim 必须是原子化的，包含单一事实或明确的因果关系，不可模糊糅合。
 - **结构化强制**：必须将散乱的信息映射到标准的 `entity_map` 和 `claims_registry` 结构中。
 
+### 输出结构
+必须输出严格的结构化 JSON/YAML，包含 `entity_map`, `claims_registry`, `evidence_chains` 和 `methodology_index`。
+
+```json
+{
+  "entity_map": {
+    "source_id": ["Entity1", "Entity2"]
+  },
+  "claims_registry": [
+    {
+      "claim_id": "string",
+      "text": "string"
+    }
+  ],
+  "evidence_chains": [
+    {
+      "claim_id": "string",
+      "evidence": "string"
+    }
+  ],
+  "methodology_index": {
+    "claim_id": "string"
+  }
+}
+```
+
 ---
 
 <a id="english"></a>
@@ -31,3 +57,29 @@
 - **Fidelity to Text**: Analysis must be strictly based on raw content provided from the extraction phase. Introducing external prior knowledge (hallucination) is strictly forbidden.
 - **Granularity Control**: Extracted Claims must be atomic, containing a single fact or clear causal relationship without vague amalgamation.
 - **Structural Enforcement**: Must map scattered information into standard `entity_map` and `claims_registry` structures.
+
+### Output Structure
+Must output strict structured JSON/YAML, containing `entity_map`, `claims_registry`, `evidence_chains` and `methodology_index`.
+
+```json
+{
+  "entity_map": {
+    "source_id": ["Entity1", "Entity2"]
+  },
+  "claims_registry": [
+    {
+      "claim_id": "string",
+      "text": "string"
+    }
+  ],
+  "evidence_chains": [
+    {
+      "claim_id": "string",
+      "evidence": "string"
+    }
+  ],
+  "methodology_index": {
+    "claim_id": "string"
+  }
+}
+```

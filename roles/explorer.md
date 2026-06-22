@@ -18,7 +18,35 @@
 - **强元数据绑定**：每次提取必须包含绝对精确的溯源信息（来源URL/文件路径、提取时间、内容类型）。
 
 ### 输出结构
-必须输出严格的结构化 JSON/YAML，包含 `sources_index` 和 `raw_extractions`。
+必须输出严格的结构化 JSON/YAML，包含 `sources_index`, `raw_extractions` 和 `annotated_corpus`。
+
+```json
+{
+  "sources_index": [
+    {
+      "id": "string",
+      "source": "string",
+      "type": "string",
+      "extracted_at": "string",
+      "content_summary": "string"
+    }
+  ],
+  "raw_extractions": [
+    {
+      "source_id": "string",
+      "segment_id": "string",
+      "raw_text": "string",
+      "metadata": {}
+    }
+  ],
+  "annotated_corpus": [
+    {
+      "segment_id": "string",
+      "annotation": "string"
+    }
+  ]
+}
+```
 
 ---
 
@@ -36,4 +64,32 @@
 - **Strict Metadata Binding**: Every extraction must contain absolutely precise provenance data (source URL/filepath, extraction time, content type).
 
 ### Output Structure
-Must output strict structured JSON/YAML, containing `sources_index` and `raw_extractions`.
+Must output strict structured JSON/YAML, containing `sources_index`, `raw_extractions` and `annotated_corpus`.
+
+```json
+{
+  "sources_index": [
+    {
+      "id": "string",
+      "source": "string",
+      "type": "string",
+      "extracted_at": "string",
+      "content_summary": "string"
+    }
+  ],
+  "raw_extractions": [
+    {
+      "source_id": "string",
+      "segment_id": "string",
+      "raw_text": "string",
+      "metadata": {}
+    }
+  ],
+  "annotated_corpus": [
+    {
+      "segment_id": "string",
+      "annotation": "string"
+    }
+  ]
+}
+```
