@@ -35,6 +35,8 @@ class ConfidenceNetwork:
         self.adjacency: Dict[str, List[Tuple[str, float, str]]] = {}
         
     def add_node(self, claim_id: str, initial_confidence: float):
+        if not 0.0 <= initial_confidence <= 1.0:
+            raise ValueError(f"Confidence value must be within [0, 1], got {initial_confidence}")
         self.nodes[claim_id] = ConfidenceNode(
             claim_id=claim_id,
             initial=initial_confidence,
@@ -101,6 +103,9 @@ class ConfidenceNetwork:
     
     def converge(self) -> Tuple[Dict[str, float], int, bool]:
         """运行传播直到收敛，返回 (最终置信度, 迭代次数, 是否收敛)"""
+        for nid, n in self.nodes.items():
+            if not 0.0 <= n.initial <= 1.0:
+                raise ValueError(f"Initial confidence value out of bounds: {n.initial}")
         for i in range(self.max_iterations):
             delta = self._propagate_once()
             
@@ -109,6 +114,7 @@ class ConfidenceNetwork:
                 return final, i + 1, True
         
         # 未收敛
+        print('CONFIDENCE_NOT_CONVERGED')
         final = {nid: n.current for nid, n in self.nodes.items()}
         return final, self.max_iterations, False
     

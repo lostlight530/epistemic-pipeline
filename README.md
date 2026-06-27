@@ -21,6 +21,12 @@ Epistemic Pipeline 彻底颠覆了传统的固定角色 Agent 框架。它将科
 | **可信度评估**| 粗暴的标签判定 (如 🟢🟡🔴) | **连续置信度网络** (基于数学的交叉印证与收敛) |
 | **质量控制** | 依赖大模型自身的 Prompt | **硬性质量门 (Gatekeeper)** (严格的 Schema 拦截与校验) |
 
+
+### 严格的规则约束 (Strict Rule Constraints)
+- **DAG 严格校验**：拒绝任何包含循环依赖（Cycle）或不可达节点（Unreachable Node）的图。
+- **质量门 (Gatekeeper)**：缺少输入字段的验证会直接抛出 `MISSING_GATE_INPUT`，严格阻断伪造输出。
+- **置信度收敛**：所有信念传播（Belief Propagation）置信度被强制要求在 `[0, 1]` 之间，未收敛的状态将显式抛出 `CONFIDENCE_NOT_CONVERGED`。
+
 ### 快速开始
 ```bash
 # 执行支持并发的 DAG 并行组
@@ -45,6 +51,12 @@ Epistemic Pipeline completely revolutionizes traditional fixed-role Agent framew
 | **Structured Output** | Weak constraints, prone to drift | **Strict Constraints** (JSON/YAML Schemas strictly embedded in all Agent docs) |
 | **Confidence** | Rough tagging (e.g., 🟢🟡🔴) | **Continuous Confidence Network** (Math-based cross-validation) |
 | **Quality Control**| Relies on LLM's own Prompt | **Strict Quality Gates (Gatekeeper)** (Hard Schema blocking) |
+
+
+### Strict Rule Constraints
+- **Strict DAG Validation**: Rejects any graph containing cyclic dependencies or unreachable nodes.
+- **Gatekeeper**: Verification lacking input fields will directly throw `MISSING_GATE_INPUT`, strictly blocking forged outputs.
+- **Confidence Convergence**: All Belief Propagation confidences are forced to be within `[0, 1]`. Unconverged states will explicitly throw `CONFIDENCE_NOT_CONVERGED`.
 
 ### Quick Start
 ```bash
