@@ -131,6 +131,71 @@ def test_adaptive_graph():
         assert 'graph' in rule
     print("  [OK] 自适应图定义正确")
 
+
+def test_engine_rejects_cyclic_graph():
+    from core.dependency_graph import DependencyGraph
+    nodes = [
+        {'id': 'A', 'dependencies': ['C']},
+        {'id': 'B', 'dependencies': ['A']},
+        {'id': 'C', 'dependencies': ['B']}
+    ]
+    graph = DependencyGraph(nodes)
+    valid, errors = graph.validate()
+    assert not valid, "循环图验证应失败"
+    assert any("循环依赖" in e for e in errors), "应报告循环依赖错误"
+    print("  [OK] 成功检测到并拒绝了循环图")
+
+def test_engine_rejects_unreachable_node():
+    from core.dependency_graph import DependencyGraph
+    nodes = [
+        {'id': 'A', 'dependencies': []},
+        {'id': 'B', 'dependencies': ['A']},
+        {'id': 'C', 'dependencies': ['B']},
+        {'id': 'D', 'dependencies': ['E']}, # E is unreachable from any source
+        {'id': 'E', 'dependencies': ['D']}  # E and D form an unreachable cycle
+    ]
+    graph = DependencyGraph(nodes)
+    valid, errors = graph.validate()
+    assert not valid, "包含不可达节点的图验证应失败"
+    assert any("不可达节点" in e for e in errors), "应报告不可达节点错误"
+    print("  [OK] 成功检测到并拒绝了不可达节点")
+
+def test_gatekeeper_missing_input():
+    from core.gatekeeper import Gatekeeper
+    gk = Gatekeeper()
+    state_def = {
+        'id': 'discover_1',
+        'quality_gates': [{'id': 'coverage', 'rule': '来源数 >= 1'}]
+    }
+    outputs = {} # intentionally missing inputs
+    passed, errors = gk.check_quality_gates(state_def, outputs)
+    assert not passed, "缺少输入的 gate 验证应失败"
+    assert "MISSING_GATE_INPUT" in errors, "应包含 MISSING_GATE_INPUT 错误"
+    print("  [OK] Gatekeeper 正确处理了丢失的输入 (MISSING_GATE_INPUT)")
+
+def test_confidence_bounds_enforced():
+    from core.confidence_net import ConfidenceNetwork
+    net = ConfidenceNetwork()
+    try:
+        net.add_node("claim_out", 1.5)
+        assert False, "应该拒绝越界的置信度"
+    except ValueError:
+        pass
+    print("  [OK] 成功拦截越界的置信度值")
+
+def test_confidence_not_converged():
+    from core.confidence_net import ConfidenceNetwork
+    net = ConfidenceNetwork(threshold=0.0001, max_iterations=2)
+    net.add_node("claim_A", 0.5)
+    net.add_node("claim_B", 0.6)
+    # create oscillation or slow convergence
+    net.add_edge("claim_A", "claim_B", 1.0, "contradicts")
+    net.add_edge("claim_B", "claim_A", 1.0, "contradicts")
+
+    final, iterations, stable = net.converge()
+    assert not stable, "短迭代和高振荡情况下不应收敛"
+    print("  [OK] 正确检测到 CONFIDENCE_NOT_CONVERGED 状态")
+
 if __name__ == '__main__':
     tests = [v for k, v in globals().items() if k.startswith('test_')]
     passed = 0

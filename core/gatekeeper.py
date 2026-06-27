@@ -97,4 +97,7 @@ class Gatekeeper:
                     if not outputs.get('metadata_package'):
                         errors.append(f"Gate [{gate_id}] 失败: {rule_str}")
 
+        if errors and not outputs:
+            if 'MISSING_GATE_INPUT' not in errors:
+                errors.append('MISSING_GATE_INPUT')
         return len(errors) == 0, errors
