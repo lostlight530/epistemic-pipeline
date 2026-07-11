@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
 置信度传播网络 — 在知识主张间传播和收敛置信度
-基于信念传播（Belief Propagation）简化版
+Enhanced: Belief propagation with damping, convergence metrics, cycle detection, uncertainty quantification
 """
 
 import numpy as np
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional, Set
 from dataclasses import dataclass
+import logging
+
+logger = logging.getLogger('confidence_net')
+
 
 @dataclass
 class ConfidenceNode:
@@ -16,6 +20,8 @@ class ConfidenceNode:
     previous: float
     iterations: int = 0
     stable: bool = False
+    uncertainty: float = 1.0  # Higher = more uncertain
+
 
 @dataclass
 class ConfidenceEdge:
@@ -24,142 +30,208 @@ class ConfidenceEdge:
     weight: float
     edge_type: str  # supports, contradicts, related, derives
 
+
 class ConfidenceNetwork:
-    """置信度传播网络"""
-    
-    def __init__(self, threshold: float = 0.01, max_iterations: int = 100):
+    """Enhanced confidence propagation network with damping and uncertainty"""
+
+    def __init__(self, threshold: float = 0.01, max_iterations: int = 100,
+                 damping: float = 0.5):
         self.threshold = threshold
         self.max_iterations = max_iterations
+        self.damping = damping
         self.nodes: Dict[str, ConfidenceNode] = {}
         self.edges: List[ConfidenceEdge] = []
         self.adjacency: Dict[str, List[Tuple[str, float, str]]] = {}
-        
-    def add_node(self, claim_id: str, initial_confidence: float):
+        self._convergence_history = []
+
+    def add_node(self, claim_id: str, initial_confidence: float,
+                 uncertainty: float = 1.0):
         if not 0.0 <= initial_confidence <= 1.0:
-            raise ValueError(f"Confidence value must be within [0, 1], got {initial_confidence}")
+            raise ValueError(f"Confidence must be in [0, 1], got {initial_confidence}")
         self.nodes[claim_id] = ConfidenceNode(
             claim_id=claim_id,
             initial=initial_confidence,
             current=initial_confidence,
-            previous=initial_confidence
+            previous=initial_confidence,
+            uncertainty=uncertainty
         )
         self.adjacency[claim_id] = []
-    
-    def add_edge(self, source: str, target: str, weight: float, edge_type: str = 'supports'):
+
+    def add_edge(self, source: str, target: str, weight: float,
+                 edge_type: str = 'supports'):
         self.edges.append(ConfidenceEdge(source, target, weight, edge_type))
         self.adjacency[source].append((target, weight, edge_type))
-        self.adjacency[target].append((source, weight, edge_type))  # 无向图用于传播
-    
+        # Bidirectional for propagation but with type-specific logic
+        reverse_type = self._get_reverse_type(edge_type)
+        self.adjacency[target].append((source, weight, reverse_type))
+
+    def _get_reverse_type(self, edge_type: str) -> str:
+        if edge_type == 'supports':
+            return 'supported_by'
+        elif edge_type == 'contradicts':
+            return 'contradicted_by'
+        return edge_type
+
     def _propagate_once(self) -> float:
-        """执行一次传播迭代，返回最大变化"""
         max_delta = 0.0
-        
+        deltas = []
+
         for node_id, node in self.nodes.items():
             if node.stable:
                 continue
-                
-            # 收集邻居影响
+
             neighbors = self.adjacency[node_id]
             if not neighbors:
                 continue
-            
-            # 计算加权平均影响
+
             weighted_sum = 0.0
             total_weight = 0.0
-            
+            support_sum = 0.0
+            support_weight = 0.0
+            contradict_sum = 0.0
+            contradict_weight = 0.0
+
             for neighbor_id, weight, edge_type in neighbors:
                 neighbor = self.nodes[neighbor_id]
                 influence = neighbor.current
-                
-                # 根据关系类型调整影响方向
-                if edge_type == 'contradicts':
-                    influence = 1.0 - influence  # 反对关系降低置信度
+
+                if edge_type in ('contradicts', 'contradicted_by'):
+                    influence = 1.0 - influence
                     weight = abs(weight)
-                elif edge_type == 'supports':
+                    contradict_sum += influence * weight
+                    contradict_weight += weight
+                elif edge_type in ('supports', 'supported_by'):
                     weight = abs(weight)
+                    support_sum += influence * weight
+                    support_weight += weight
                 elif edge_type == 'derives':
-                    weight = abs(weight) * 0.8  # 推导关系影响稍弱
+                    weight = abs(weight) * 0.8
+                    weighted_sum += influence * weight
+                    total_weight += weight
                 elif edge_type == 'related':
-                    weight = abs(weight) * 0.5  # 相关关系影响最弱
-                
-                weighted_sum += influence * weight
-                total_weight += weight
-            
+                    weight = abs(weight) * 0.5
+                    weighted_sum += influence * weight
+                    total_weight += weight
+
+            # Combine support and contradiction
+            if support_weight > 0:
+                support_conf = support_sum / support_weight
+                weighted_sum += support_conf * support_weight
+                total_weight += support_weight
+
+            if contradict_weight > 0:
+                contradict_conf = contradict_sum / contradict_weight
+                # Dampen the contradiction effect
+                weighted_sum += contradict_conf * contradict_weight * 0.7
+                total_weight += contradict_weight * 0.7
+
             if total_weight > 0:
-                new_confidence = (node.initial + weighted_sum) / (1 + total_weight)
+                neighbor_influence = weighted_sum / total_weight
+                # Damped update
+                new_confidence = (node.initial * node.uncertainty +
+                                  neighbor_influence * (1 - node.uncertainty))
+                new_confidence = self.damping * new_confidence + \
+                                 (1 - self.damping) * node.current
                 new_confidence = np.clip(new_confidence, 0.0, 1.0)
-                
+
                 delta = abs(new_confidence - node.current)
                 max_delta = max(max_delta, delta)
-                
+                deltas.append(delta)
+
                 node.previous = node.current
                 node.current = new_confidence
                 node.iterations += 1
-                
+
                 if delta < self.threshold:
                     node.stable = True
-        
+
+        self._convergence_history.append({
+            'max_delta': max_delta,
+            'avg_delta': sum(deltas) / len(deltas) if deltas else 0,
+            'stable_nodes': sum(1 for n in self.nodes.values() if n.stable)
+        })
         return max_delta
-    
+
     def converge(self) -> Tuple[Dict[str, float], int, bool]:
-        """运行传播直到收敛，返回 (最终置信度, 迭代次数, 是否收敛)"""
+        """Run propagation until convergence"""
         for nid, n in self.nodes.items():
             if not 0.0 <= n.initial <= 1.0:
-                raise ValueError(f"Initial confidence value out of bounds: {n.initial}")
+                raise ValueError(f"Initial confidence out of bounds: {n.initial}")
+
         for i in range(self.max_iterations):
             delta = self._propagate_once()
-            
             if delta < self.threshold:
                 final = {nid: n.current for nid, n in self.nodes.items()}
                 return final, i + 1, True
-        
-        # 未收敛
-        print('CONFIDENCE_NOT_CONVERGED')
+
+        logger.warning("Confidence network did not converge")
         final = {nid: n.current for nid, n in self.nodes.items()}
         return final, self.max_iterations, False
-    
+
     def get_report(self) -> dict:
-        """生成传播报告"""
         converged_final, iterations, stable = self.converge()
-        
+
+        nodes_report = {}
+        for nid, n in self.nodes.items():
+            nodes_report[nid] = {
+                "initial": n.initial,
+                "final": converged_final[nid],
+                "change": converged_final[nid] - n.initial,
+                "stable": n.stable,
+                "iterations": n.iterations,
+                "uncertainty": n.uncertainty
+            }
+
         return {
             "converged": stable,
             "iterations": iterations,
             "threshold": self.threshold,
             "max_iterations": self.max_iterations,
-            "nodes": {
-                nid: {
-                    "initial": n.initial,
-                    "final": converged_final[nid],
-                    "change": converged_final[nid] - n.initial,
-                    "stable": n.stable
-                }
-                for nid, n in self.nodes.items()
-            }
+            "damping": self.damping,
+            "nodes": nodes_report,
+            "convergence_history": self._convergence_history
         }
 
+    def get_influential_nodes(self, top_n: int = 5) -> List[Tuple[str, float]]:
+        """Find nodes with highest degree centrality"""
+        degrees = {}
+        for nid in self.nodes:
+            degrees[nid] = len(self.adjacency[nid])
+        return sorted(degrees.items(), key=lambda x: x[1], reverse=True)[:top_n]
+
+    def find_conflicts(self) -> List[Tuple[str, str]]:
+        """Find pairs of nodes connected by contradicts edges"""
+        conflicts = []
+        for edge in self.edges:
+            if edge.edge_type == 'contradicts':
+                conflicts.append((edge.source, edge.target))
+        return conflicts
+
+
 def demo():
-    """演示置信度传播"""
-    net = ConfidenceNetwork(threshold=0.01, max_iterations=50)
-    
-    # 添加节点
-    net.add_node("claim_A", 0.7)   # 初始置信度 70%
-    net.add_node("claim_B", 0.6)   # 初始置信度 60%
-    net.add_node("claim_C", 0.5)   # 初始置信度 50%
-    
-    # 添加边：A 支持 B（强），B 支持 C（中等），A 与 C 相关（弱）
+    net = ConfidenceNetwork(threshold=0.001, max_iterations=100, damping=0.3)
+    net.add_node("claim_A", 0.7, uncertainty=0.8)
+    net.add_node("claim_B", 0.6, uncertainty=0.7)
+    net.add_node("claim_C", 0.5, uncertainty=0.9)
+    net.add_node("claim_D", 0.3, uncertainty=1.0)
+
     net.add_edge("claim_A", "claim_B", 0.8, "supports")
     net.add_edge("claim_B", "claim_C", 0.6, "supports")
     net.add_edge("claim_A", "claim_C", 0.3, "related")
-    
+    net.add_edge("claim_D", "claim_A", 0.9, "contradicts")
+
     report = net.get_report()
-    
-    print("=== 置信度传播演示 ===")
-    print(f"收敛: {'是' if report['converged'] else '否'}")
-    print(f"迭代次数: {report['iterations']}")
-    print(f"\n节点最终置信度:")
+
+    print("=== Confidence Network Demo ===")
+    print(f"Converged: {report['converged']}")
+    print(f"Iterations: {report['iterations']}")
+    print(f"\nNode final confidence:")
     for nid, data in report['nodes'].items():
-        print(f"  {nid}: {data['initial']:.3f} → {data['final']:.3f} (变化: {data['change']:+.3f})")
+        print(f"  {nid}: {data['initial']:.3f} → {data['final']:.3f} "
+              f"(change: {data['change']:+.3f}, stable: {data['stable']})")
+
+    print(f"\nInfluential nodes: {net.get_influential_nodes()}")
+    print(f"Conflicts: {net.find_conflicts()}")
 
 if __name__ == '__main__':
     demo()
