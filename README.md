@@ -30,8 +30,8 @@ Epistemic Pipeline 将科学研究过程抽象为一台严密的"认知机器"�
 
 - 动态角色绑定 (`roles/`)
 - Gatekeeper 质量门 (`validators/`)
-- 置信度网络 (`belief_propagation/`)
-- 自适应工作流 (`adaptive/`)
+- 置信度网络 (`core/confidence_net.py`)
+- 自适应工作流 (`graphs/adaptive.yaml`)
 
 ### 快速开始
 
@@ -68,8 +68,8 @@ The following modules exist in the repo but are **not yet wired into the main en
 
 - Dynamic role binding (`roles/`)
 - Gatekeeper quality gate (`validators/`)
-- Belief propagation network (`belief_propagation/`)
-- Adaptive workflow (`adaptive/`)
+- Confidence network (`core/confidence_net.py`)
+- Adaptive workflow (`graphs/adaptive.yaml`)
 
 ### Quick Start
 
@@ -83,7 +83,7 @@ python3 core/engine.py run graphs/parallel.yaml
 ## Documentation
 
 - [Architecture](ARCHITECTURE.md)
-- [Customization](CUSTOMIZATION.md)
+- [Customization Guide](CUSTOMIZATION_GUIDE.md)
 - [Examples](examples/)
 
 ## License
