@@ -9,9 +9,10 @@ As learned in our `.memory_log` and peer analyses (like LangGraph/MetaGPT), enfo
 ---
 
 ## 1. How to Connect a Real LLM and Enforce JSON Schemas
-Currently, `core/llm_harness.py` uses simulated outputs (`mock=True`). To plug in a real LLM:
+Currently, `core/llm_harness.py` uses simulated outputs (`mock=True` via `MockProvider`). To plug in a real LLM:
 
 *   **File to edit:** `core/llm_harness.py`
+*   **Recommended path:** Implement the `LLMProvider` protocol — `complete(system, user, schema) -> dict` — wrapping your real API, then inject it via `LLMHarness(provider=YourProvider())`. No engine changes are needed. Reuse the contract test pattern (`test_mock_provider_contract`) so your provider satisfies the same stage output keys as `MockProvider.STAGE_CONTRACTS`.
 *   **Crucial Step:** The framework's `Gatekeeper` will aggressively reject unstructured text. Because of this, **NEVER** delete the `### Output Structure` (JSON/YAML Schemas) from the agent documentation in `roles/*.md`.
 *   **Action:** When calling an LLM (e.g. OpenAI), pass `response_format: { "type": "json_object" }` and map the output precisely to the schemas defined in the role files.
 

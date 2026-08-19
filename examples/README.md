@@ -8,7 +8,7 @@
 pip install pyyaml numpy
 ```
 
-CLI 当前仅接受 `action` 与 `graph` 两个参数（`run` / `validate`），不支持 `--inputs`、`--workers`、`--threshold` 等选项；外部数据接入需要先将 `core/llm_harness.py` 从 mock 模式切换为真实 LLM 调用（见 `CUSTOMIZATION_GUIDE.md`）。
+CLI 接受 `action`（`run` / `validate`）、`graph`，以及可选的 `--resume-from <run_id>`（断点续跑）、`--checkpoint-dir`、`--trace-dir`；不支持 `--inputs`、`--workers`、`--threshold` 等选项；外部数据接入需要为 `core/llm_harness.py` 注入真实 `LLMProvider`（见 `CUSTOMIZATION_GUIDE.md`）。每次运行会产出 `traces/<run_id>.jsonl` 结构化轨迹与 `checkpoints/<run_id>/checkpoint.json` 检查点（均为 gitignored 运行产物）。
 
 ## 示例：文献综述流水线 / Literature Review Pipeline
 

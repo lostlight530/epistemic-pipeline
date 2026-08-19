@@ -14,12 +14,15 @@ The pipeline is orchestrated by `core/engine.py` (StateMachineEngine).
 
 1. Load a graph definition from `graphs/*.yaml`.
 2. `DependencyGraph` validates the DAG (cycle detection, unreachable node detection) and computes parallel execution groups.
-3. `StateMachineEngine` executes nodes layer by layer via `ThreadPoolExecutor`; each node runs through `LLMHarness.execute()` with the state's `role_bindings` (mock by default).
-4. `Gatekeeper.check_quality_gates()` validates outputs against state-specific rules after each node; failures abort the pipeline.
-5. At `synthesize` nodes, `KnowledgeExtractor` bridges upstream claims/conflicts into `ConfidenceNetwork`, which propagates belief scores via supports/contradicts/derives/related edges until convergence; the resulting `delta` feeds the `confidence_converged` quality gate.
+3. `StateMachineEngine` executes nodes layer by layer via `ThreadPoolExecutor`; each node runs through `LLMHarness.execute()` with the state's `role_bindings` (mock by default). Node-level `retry{max_attempts, base_delay, factor}` and `timeout_seconds` are honored: transient errors retry with exponential backoff + jitter, permanent errors fail fast (`core/resilience.py`).
+4. `Gatekeeper.check_quality_gates()` validates outputs against state-specific rules after each node; failures abort the pipeline. If a node in a parallel group fails, completed sibling results are preserved in the failure payload (`result['results']`).
+5. At `synthesize` nodes, `KnowledgeExtractor` bridges upstream claims/conflicts into `ConfidenceNetwork`, which propagates belief scores via supports/contradicts/derives/related edges until convergence; the resulting `delta` feeds the `confidence_converged` quality gate. An optional `calibration_temperature` applies temperature scaling to the converged values, with disclosure of `calibration` metadata and `uncalibrated` originals (`core/calibration.py`).
+6. Every run emits a structured trace to `traces/<run_id>.jsonl` (OTel GenAI-aligned field names, SHA-256 hash chain, `core/run_tracer.py`) and per-layer checkpoints to `checkpoints/<run_id>/checkpoint.json`; `run(resume_from=run_id)` reuses successful nodes and re-runs only failures and downstream.
 
 **Key Boundaries:**
-- `core/llm_harness.py` currently runs in `mock=True` mode. Real LLM calls raise `NotImplementedError`.
+- `core/llm_harness.py` runs in `mock=True` mode by default via `MockProvider`. Real LLM calls raise `NotImplementedError` unless a custom `LLMProvider` is injected (`complete(system, user, schema) -> dict`); `MockProvider.STAGE_CONTRACTS` defines the 5-stage output contract that any real provider must satisfy (contract tests in `tests/test_all.py`).
+- Mock-stage confidence values are heuristics, not calibrated probabilities; `core/calibration.py` only provides a monotonic order-preserving transform hook.
+- Thread-based timeouts cannot kill the underlying thread: the caller fails fast on `timeout_seconds`, the background thread finishes naturally.
 - `core/knowledge_extractor.py` is a 33-line static bridge, not a live extraction engine.
 - Experimental modules (`anti_entropy`, `convergence`, `infinite_regression`, `neuro_symbolic`, `perception`, `thread_collapse`) are not wired into the main engine.
 
@@ -34,15 +37,16 @@ The pipeline is orchestrated by `core/engine.py` (StateMachineEngine).
 
 ### B. Wire a Real LLM
 
-1. Edit `core/llm_harness.py` in the `execute()` method.
-2. Replace the `mock=True` branch with a real API call (e.g., Kimi, 百炼).
-3. Preserve the JSON Schema contract from `roles/*.md` so downstream states receive structured input.
-4. See `CUSTOMIZATION_GUIDE.md` for detailed integration steps.
+1. Implement the `LLMProvider` protocol from `core/llm_harness.py`: `complete(system, user, schema) -> dict` wrapping your real API (e.g., Kimi, 百炼).
+2. Inject it: `StateMachineEngine(graph, harness=LLMHarness(provider=YourProvider()))` — no engine changes needed.
+3. Reuse the provider contract tests (`test_mock_provider_contract` pattern): your provider must return the keys declared in `MockProvider.STAGE_CONTRACTS` so the Gatekeeper and downstream states keep working.
+4. Preserve the JSON Schema contract from `roles/*.md` so downstream states receive structured input.
+5. See `CUSTOMIZATION_GUIDE.md` for detailed integration steps.
 
 ### C. Add a New Graph Topology
 
 1. Create `graphs/your_graph.yaml` following the structure in `graphs/linear.yaml`.
-2. Define nodes with `id`, `stage`, and `dependencies` fields (`stage` must match a file in `states/*.yaml`; `dependencies` lists upstream node ids).
+2. Define nodes with `id`, `stage`, and `dependencies` fields (`stage` must match a file in `states/*.yaml`; `dependencies` lists upstream node ids). Optional per-node resilience fields: `retry: {max_attempts, base_delay, factor}` and `timeout_seconds`.
 3. Test with: `python3 core/engine.py run graphs/your_graph.yaml`
 
 ## 4. Constraints & Conventions
