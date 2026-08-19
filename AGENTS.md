@@ -14,9 +14,9 @@ The pipeline is orchestrated by `core/engine.py` (StateMachineEngine).
 
 1. Load a graph definition from `graphs/*.yaml`.
 2. `DependencyGraph` validates the DAG (cycle detection, unreachable node detection) and computes parallel execution groups.
-3. `StateMachineEngine` executes nodes layer by layer via `ThreadPoolExecutor`.
-4. `Gatekeeper.check_quality_gates()` validates outputs against state-specific rules after each node.
-5. `ConfidenceNetwork` (experimental) propagates belief scores across nodes via supports/contradicts/derives/related edges.
+3. `StateMachineEngine` executes nodes layer by layer via `ThreadPoolExecutor`; each node runs through `LLMHarness.execute()` with the state's `role_bindings` (mock by default).
+4. `Gatekeeper.check_quality_gates()` validates outputs against state-specific rules after each node; failures abort the pipeline.
+5. At `synthesize` nodes, `KnowledgeExtractor` bridges upstream claims/conflicts into `ConfidenceNetwork`, which propagates belief scores via supports/contradicts/derives/related edges until convergence; the resulting `delta` feeds the `confidence_converged` quality gate.
 
 **Key Boundaries:**
 - `core/llm_harness.py` currently runs in `mock=True` mode. Real LLM calls raise `NotImplementedError`.

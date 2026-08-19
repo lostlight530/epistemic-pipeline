@@ -30,6 +30,7 @@ class ConfidenceNetwork:
     def __init__(self, threshold: float = 0.01, max_iterations: int = 100):
         self.threshold = threshold
         self.max_iterations = max_iterations
+        self.last_delta: float = 0.0  # 最后一次迭代的最大置信度变化
         self.nodes: Dict[str, ConfidenceNode] = {}
         self.edges: List[ConfidenceEdge] = []
         self.adjacency: Dict[str, List[Tuple[str, float, str]]] = {}
@@ -108,6 +109,7 @@ class ConfidenceNetwork:
                 raise ValueError(f"Initial confidence value out of bounds: {n.initial}")
         for i in range(self.max_iterations):
             delta = self._propagate_once()
+            self.last_delta = delta
             
             if delta < self.threshold:
                 final = {nid: n.current for nid, n in self.nodes.items()}

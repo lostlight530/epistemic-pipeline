@@ -15,17 +15,28 @@ from collections import deque
 # 修复模块导入路径
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.dependency_graph import DependencyGraph
+from core.gatekeeper import Gatekeeper
+from core.llm_harness import LLMHarness
+from core.confidence_net import ConfidenceNetwork
+from core.knowledge_extractor import KnowledgeExtractor
 
 class StateMachineEngine:
     """状态机执行引擎"""
     
-    def __init__(self, graph_path: str):
+    def __init__(self, graph_path: str, mock_llm: bool = True,
+                 use_gatekeeper: bool = True, use_confidence_net: bool = True,
+                 harness: LLMHarness = None):
         self.graph_data = self._load_graph(graph_path)
         self.nodes = {n['id']: n for n in self.graph_data['nodes']}
         self.dep_graph = DependencyGraph(self.graph_data['nodes'])
         self.execution_order = []
         self.current_state = None
         self.outputs = {}
+        self.mock_llm = mock_llm
+        self.use_gatekeeper = use_gatekeeper
+        self.use_confidence_net = use_confidence_net
+        self.harness = harness or LLMHarness()
+        self.gatekeeper = Gatekeeper() if use_gatekeeper else None
         
     def _load_graph(self, path: str) -> dict:
         with open(path, 'r', encoding='utf-8') as f:
@@ -56,17 +67,82 @@ class StateMachineEngine:
                 print(f"  ⚠️ 依赖 {dep} 尚未成功完成")
                 return {"status": "failed", "errors": [f"依赖 {dep} 未完成"]}
 
-        # 模拟执行（实际执行需要调用角色模板）
+        # 通过 LLM Harness 按角色绑定执行，获得结构化输出（默认 mock 模式）
+        inputs = {dep: results_dict[dep].get('outputs') for dep in deps}
+        role_bindings = state_def.get('role_bindings', {'primary': stage})
+        outputs = self.harness.execute(state_id, role_bindings, inputs, mock=self.mock_llm)
+
+        # synthesize 阶段：将上游主张/冲突接入置信度传播网络，计算真实收敛结果
+        if self.use_confidence_net and stage == 'synthesize':
+            outputs.update(self._run_confidence_network(results_dict))
+
+        # Gatekeeper 质量门拦截：输出不符合质量门则节点失败
+        if self.gatekeeper is not None:
+            passed, gate_errors = self.gatekeeper.check_quality_gates(state_def, outputs)
+            if not passed:
+                for e in gate_errors:
+                    print(f"  🚫 质量门拦截: {e}")
+                return {"status": "failed", "errors": gate_errors}
+
         result = {
             "status": "success",
             "state_id": state_id,
             "stage": stage,
             "completed": True,
-            "outputs": state_def.get('activities', []),
-            "quality_gates_passed": True
+            "outputs": outputs,
+            "quality_gates_passed": self.gatekeeper is not None
         }
         print(f"  ✅ {state_id} 完成")
         return result
+
+    def _run_confidence_network(self, results_dict: dict) -> dict:
+        """
+        汇总上游 analyze/verify 产出的主张与冲突，
+        通过 KnowledgeExtractor 桥接进 ConfidenceNetwork 并迭代至收敛。
+        """
+        claims_by_id = {}
+        conflicts = []
+        confidence_seed = {}
+
+        for res in results_dict.values():
+            outs = res.get('outputs') or {}
+            for claim in outs.get('claims_registry') or []:
+                cid = claim.get('claim_id')
+                if cid:
+                    claims_by_id[cid] = claim
+            conflicts.extend(outs.get('conflict_registry') or [])
+            seed = outs.get('confidence_seed') or {}
+            confidence_seed.update(seed)
+
+        # 验证阶段的置信度种子优先作为初始置信度
+        for cid, value in confidence_seed.items():
+            if cid in claims_by_id:
+                claims_by_id[cid]['initial_confidence'] = value
+
+        network_input = KnowledgeExtractor.extract_to_network_format(
+            list(claims_by_id.values()), conflicts)
+
+        net = ConfidenceNetwork()
+        for n in network_input['nodes']:
+            net.add_node(n['claim_id'], n['initial_confidence'])
+        for e in network_input['edges']:
+            # 冲突可能引用未登记的主张，补默认置信度 0.5 的节点以保证传播完整
+            for endpoint in (e['source'], e['target']):
+                if endpoint not in net.nodes:
+                    net.add_node(endpoint, 0.5)
+            net.add_edge(e['source'], e['target'], e['weight'], e['edge_type'])
+
+        if not net.nodes:
+            return {"confidence_network": {"converged": True, "iterations": 0, "final": {}}, "delta": 0.0}
+
+        final, iterations, converged = net.converge()
+        report = {
+            "converged": converged,
+            "iterations": iterations,
+            "final": final
+        }
+        print(f"  🧠 置信度网络收敛: {converged} (迭代 {iterations} 次, delta={net.last_delta:.4f})")
+        return {"confidence_network": report, "delta": net.last_delta}
 
     def run(self) -> dict:
         """执行完整流水线"""

@@ -196,6 +196,53 @@ def test_confidence_not_converged():
     assert not stable, "短迭代和高振荡情况下不应收敛"
     print("  [OK] 正确检测到 CONFIDENCE_NOT_CONVERGED 状态")
 
+def test_engine_full_run_mock():
+    from core.engine import StateMachineEngine
+    engine = StateMachineEngine('graphs/linear.yaml')
+    result = engine.run()
+    assert result['status'] == 'success', f"线性图应端到端执行成功: {result.get('errors')}"
+    assert len(result['results']) == 5, "应执行全部 5 个节点"
+    for nid, res in result['results'].items():
+        assert res['quality_gates_passed'], f"节点 {nid} 应通过质量门"
+        assert isinstance(res['outputs'], dict), f"节点 {nid} 应产出结构化输出"
+    print("  [OK] 引擎端到端执行成功（mock 模式 + 质量门拦截）")
+
+def test_engine_parallel_run_mock():
+    from core.engine import StateMachineEngine
+    engine = StateMachineEngine('graphs/parallel.yaml')
+    result = engine.run()
+    assert result['status'] == 'success', f"并行图应端到端执行成功: {result.get('errors')}"
+    assert len(result['results']) == 7, "并行图应执行全部 7 个节点"
+    print("  [OK] 并行 DAG 端到端执行成功")
+
+def test_engine_gatekeeper_blocks_bad_output():
+    from core.engine import StateMachineEngine
+
+    class EmptyHarness:
+        """模拟返回空输出的 Harness，应被质量门拦截"""
+        def execute(self, state_id, role_bindings, inputs, mock=True):
+            return {}
+
+    engine = StateMachineEngine('graphs/linear.yaml', harness=EmptyHarness())
+    result = engine.run()
+    assert result['status'] == 'failed', "空输出应被 Gatekeeper 拦截导致流水线失败"
+    assert any('MISSING_GATE_INPUT' in e for e in result['errors']), "应包含 MISSING_GATE_INPUT"
+    print("  [OK] 引擎通过 Gatekeeper 拦截了不合规输出")
+
+def test_engine_confidence_network_wired():
+    from core.engine import StateMachineEngine
+    engine = StateMachineEngine('graphs/linear.yaml')
+    result = engine.run()
+    assert result['status'] == 'success', f"流水线应执行成功: {result.get('errors')}"
+    syn_outputs = result['results']['synthesize']['outputs']
+    cn = syn_outputs.get('confidence_network')
+    assert cn is not None, "synthesize 应产出置信度网络报告"
+    assert cn['converged'], "置信度网络应收敛"
+    assert 'c1' in cn['final'], "传播结果应包含上游主张 c1"
+    assert all(0.0 <= v <= 1.0 for v in cn['final'].values()), "最终置信度应在 [0,1] 内"
+    assert syn_outputs['delta'] < 0.01, "收敛后 delta 应小于阈值 0.01"
+    print("  [OK] 置信度网络已接入主引擎并在 synthesize 阶段收敛")
+
 if __name__ == '__main__':
     tests = [v for k, v in globals().items() if k.startswith('test_')]
     passed = 0
