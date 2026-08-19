@@ -40,7 +40,14 @@ class StateMachineEngine:
         
     def _load_graph(self, path: str) -> dict:
         with open(path, 'r', encoding='utf-8') as f:
-            return yaml.safe_load(f)
+            data = yaml.safe_load(f)
+        if not isinstance(data, dict) or 'nodes' not in data:
+            graph_type = data.get('type', 'unknown') if isinstance(data, dict) else 'unknown'
+            raise ValueError(
+                f"图文件 {path} 不包含可执行的 nodes 定义 (type: {graph_type})。"
+                "主引擎仅支持含 nodes 的 DAG 图 (linear/parallel/diamond)；"
+                "adaptive 等实验性拓扑尚未接入执行链。")
+        return data
     
     def validate(self) -> Tuple[bool, List[str]]:
         return self.dep_graph.validate()

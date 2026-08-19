@@ -7,6 +7,11 @@ try:
 except ImportError:
     print("⚠️ 需要安装 PyYAML: pip install pyyaml")
     sys.exit(1)
+try:
+    import numpy
+except ImportError:
+    print("⚠️ 需要安装 NumPy: pip install numpy")
+    sys.exit(1)
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 def test_manifest_exists():
@@ -242,6 +247,71 @@ def test_engine_confidence_network_wired():
     assert all(0.0 <= v <= 1.0 for v in cn['final'].values()), "最终置信度应在 [0,1] 内"
     assert syn_outputs['delta'] < 0.01, "收敛后 delta 应小于阈值 0.01"
     print("  [OK] 置信度网络已接入主引擎并在 synthesize 阶段收敛")
+
+def test_engine_mock_disabled_raises():
+    """mock_llm=False 时引擎必须如实抛出 NotImplementedError，不得伪造 LLM 能力"""
+    from core.engine import StateMachineEngine
+    engine = StateMachineEngine('graphs/linear.yaml', mock_llm=False)
+    try:
+        engine.run()
+        assert False, "mock 关闭且未接入真实 LLM 时应抛出 NotImplementedError"
+    except NotImplementedError:
+        pass
+    print("  [OK] mock 关闭时引擎如实抛出 NotImplementedError（无伪造 LLM 能力）")
+
+def test_engine_adaptive_graph_fails_clearly():
+    """adaptive 为实验性拓扑（无 nodes），引擎应给出明确错误而非栈追踪"""
+    from core.engine import StateMachineEngine
+    try:
+        StateMachineEngine('graphs/adaptive.yaml')
+        assert False, "无 nodes 的图应被拒绝"
+    except ValueError as e:
+        assert 'nodes' in str(e), "错误信息应指明缺少 nodes 定义"
+    print("  [OK] 实验性 adaptive 图被明确拒绝（fail-closed，无 KeyError 泄漏）")
+
+def test_engine_confidence_not_converged_fails_gate():
+    """置信度网络不收敛时，synthesize 的 confidence_converged 质量门按设计失败"""
+    import core.engine as engine_mod
+    from core.confidence_net import ConfidenceNetwork
+
+    class NonConvergingNetwork(ConfidenceNetwork):
+        """强制不收敛的网络桩：末次 delta 远高于阈值"""
+        def converge(self):
+            self.last_delta = 0.5
+            return {nid: n.current for nid, n in self.nodes.items()}, self.max_iterations, False
+
+    original = engine_mod.ConfidenceNetwork
+    engine_mod.ConfidenceNetwork = NonConvergingNetwork
+    try:
+        engine = engine_mod.StateMachineEngine('graphs/linear.yaml')
+        result = engine.run()
+    finally:
+        engine_mod.ConfidenceNetwork = original
+
+    assert result['status'] == 'failed', "置信度不收敛应导致流水线失败"
+    assert any('confidence_converged' in e for e in result['errors']), \
+        "失败原因应来自 confidence_converged 质量门"
+    print("  [OK] 置信度不收敛时 synthesize 质量门按设计拦截流水线")
+
+def test_engine_gatekeeper_disabled_empty_network():
+    """use_gatekeeper=False 且上游无主张时，synthesize 走空网络路径 (delta=0.0)"""
+    from core.engine import StateMachineEngine
+
+    class MinimalHarness:
+        """返回空输出的 Harness（仅在质量门关闭时可通行）"""
+        def execute(self, state_id, role_bindings, inputs, mock=True):
+            return {}
+
+    engine = StateMachineEngine('graphs/linear.yaml', use_gatekeeper=False,
+                                harness=MinimalHarness())
+    result = engine.run()
+    assert result['status'] == 'success', f"质量门关闭时空输出流水线应成功: {result.get('errors')}"
+    syn = result['results']['synthesize']['outputs']
+    assert syn['confidence_network']['converged'] is True, "空网络应视为已收敛"
+    assert syn['delta'] == 0.0, "空网络 delta 应为 0.0"
+    assert result['results']['synthesize']['quality_gates_passed'] is False, \
+        "use_gatekeeper=False 时质量门标记应为 False"
+    print("  [OK] 质量门可关闭，空置信度网络按设计收敛于 delta=0.0")
 
 if __name__ == '__main__':
     tests = [v for k, v in globals().items() if k.startswith('test_')]
