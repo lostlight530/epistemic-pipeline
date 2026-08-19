@@ -37,6 +37,7 @@ The system uses "Roles" as capability constraint packs.
 
 ## 🛠️ Quick Checklist for Your First Custom Run
 1. [ ] Define custom roles with **strict JSON Schemas** in `roles/*.md`.
-2. [ ] Connect DAG dependencies to leverage thread concurrency in `graphs/my_custom_graph.yaml`.
-3. [ ] Implement real LLM API calls returning JSON in `core/llm_harness.py`.
-4. [ ] Run: `python3 core/engine.py run graphs/my_custom_graph.yaml`.
+2. [ ] Connect DAG dependencies to leverage thread concurrency in `graphs/my_custom_graph.yaml` (optional per node: `retry{max_attempts, base_delay, factor, max_delay}`, `timeout_seconds`).
+3. [ ] Implement the `LLMProvider` protocol (`complete(system, user, schema) -> dict`) and inject it via `LLMHarness(provider=...)` — do not hardcode API calls into the engine.
+4. [ ] Run: `python3 core/engine.py run graphs/my_custom_graph.yaml` (flags: `--resume-from <run_id>`, `--checkpoint-dir`, `--trace-dir`).
+5. [ ] Verify: `python3 tests/test_all.py` stays green (36/36).
