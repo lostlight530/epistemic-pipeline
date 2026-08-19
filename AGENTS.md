@@ -42,7 +42,7 @@ The pipeline is orchestrated by `core/engine.py` (StateMachineEngine).
 ### C. Add a New Graph Topology
 
 1. Create `graphs/your_graph.yaml` following the structure in `graphs/linear.yaml`.
-2. Define nodes with `state`, `inputs`, and `depends_on` fields.
+2. Define nodes with `id`, `stage`, and `dependencies` fields (`stage` must match a file in `states/*.yaml`; `dependencies` lists upstream node ids).
 3. Test with: `python3 core/engine.py run graphs/your_graph.yaml`
 
 ## 4. Constraints & Conventions

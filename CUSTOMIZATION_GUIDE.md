@@ -25,7 +25,7 @@ The execution order is NOT hardcoded. It uses `concurrent.futures.ThreadPoolExec
 The system uses "Roles" as capability constraint packs.
 
 *   **Files to edit:** `roles/*.md`
-*   **Structure Requirement:** Every role file MUST clearly define four things:
+*   **Structure Requirement:** Every role file MUST clearly define three things:
     1.  `Capability Domains`
     2.  `Core Constraints`
     3.  **`Output Structure`** (The JSON schema is mandatory here to prevent hallucinations).

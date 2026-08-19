@@ -43,8 +43,14 @@ Epistemic Pipeline 将科学研究过程抽象为一台严密的"认知机器"�
 ### 快速开始
 
 ```bash
+# 安装依赖（仅 pyyaml 与 numpy，无其他第三方依赖）
+pip install pyyaml numpy
+
 # 执行支持并发的 DAG 并行组
 python3 core/engine.py run graphs/parallel.yaml
+
+# 运行测试套件
+python3 tests/test_all.py
 ```
 
 ---
@@ -88,8 +94,14 @@ The following modules exist in the repo but are **not yet wired into the main en
 ### Quick Start
 
 ```bash
+# Install dependencies (pyyaml and numpy only, nothing else)
+pip install pyyaml numpy
+
 # Run concurrent DAG parallel group
 python3 core/engine.py run graphs/parallel.yaml
+
+# Run the test suite
+python3 tests/test_all.py
 ```
 
 ---

@@ -7,7 +7,7 @@
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-   pip install pyyaml
+   pip install pyyaml numpy
    ```
 3. Run tests to verify baseline:
    ```bash
