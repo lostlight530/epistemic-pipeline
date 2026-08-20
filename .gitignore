@@ -12,6 +12,8 @@ dist/
 output/
 *.log
 *.json
+traces/
+checkpoints/
 
 # 虚拟环境
 venv/
