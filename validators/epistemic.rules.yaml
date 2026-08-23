@@ -33,7 +33,7 @@ rules:
 
   - id: state_runtime_policy_explicit
     severity: error
-    description: "state quality_gates 中每条 active rule 必须使用 RuntimePolicyEvaluator 支持的 machine-readable check"
+    description: "state runtime_policies 中每条 active policy 必须使用 RuntimePolicyEvaluator 支持的 machine-readable check"
     enforced_by: core/gatekeeper.py
     semantics: runtime_output_predicate
 
@@ -54,6 +54,12 @@ rules:
     description: "converged 只描述数值更新 delta 达到 threshold，不等于真值或科学确定性"
     enforced_by: documentation_and_output_profile
     semantics: scientific_integrity_boundary
+
+  - id: checkpoint_graph_identity
+    severity: error
+    description: "resume 必须同时匹配 graph_id 与 canonical graph_sha256"
+    enforced_by: core/engine.py
+    semantics: recovery_identity_boundary
 
   - id: trace_correlation_scope
     severity: error
