@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """
 运行轨迹记录器 (RunTracer)
-每个节点的开始/结束写入 JSONL 结构化轨迹，字段命名对齐
-OpenTelemetry GenAI 语义约定（Development 级约定，仅对齐命名，不依赖 SDK），
-并通过 prev_hash 哈希链提供防篡改审计能力。
+每个节点的开始/结束写入项目自有 JSONL 结构化审计记录，字段命名参考
+OpenTelemetry GenAI semantic conventions（Development 级；GenAI 约定现已迁移到
+独立 semantic-conventions-genai 仓库），仅对齐适用字段名，不依赖 OTel SDK。
+
+这些 JSONL 记录不是 OpenTelemetry Span Event API 事件，也不声明完整 OTel span
+兼容性；2026 年 OTel 已建议新事件转向与 span 关联的 Logs API。这里保留项目内部
+start/end 事件模型，并通过 prev_hash 哈希链提供防篡改审计能力。
 
 纯标准库实现（json + hashlib + time + threading），线程安全。
 """
@@ -15,8 +19,10 @@ import time
 from pathlib import Path
 from typing import Optional
 
-# OTel GenAI 语义约定字段名（https://opentelemetry.io/docs/specs/semconv/gen-ai/）
-# 注意：该约定截至 2026 年仍为 Development 级别，此处仅对齐命名，不引入 OTel SDK。
+# OTel GenAI 字段来源：
+# https://github.com/open-telemetry/semantic-conventions-genai/tree/main/docs/gen-ai
+# 主 OpenTelemetry semantic-conventions 的旧 GenAI registry 已标记 moved/deprecated。
+# 当前约定仍为 Development 级；这里只复用适用字段命名，不引入 OTel SDK。
 OP_INVOKE_AGENT = "invoke_agent"
 
 
