@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Runtime policy evaluation for state outputs.
 
-The historical ``Gatekeeper`` class name and ``check_quality_gates`` method are
-retained for compatibility. The active semantics are runtime policy/constraint
-evaluation, not GitHub merge gating.
+``RuntimePolicyEvaluator`` is the active API. The historical ``Gatekeeper``
+class name and ``check_quality_gates`` method are retained only as compatibility
+aliases for older callers.
 
-State YAML keeps the historical ``quality_gates`` key but each active rule now
-carries a machine-readable ``check`` plus parameters. Human ``rule`` text is
-descriptive only and is never parsed to decide behavior.
+State YAML should use ``runtime_policies``. The legacy ``quality_gates`` key is
+accepted only when ``runtime_policies`` is absent. Human-readable ``rule`` text
+is descriptive; behavior is driven exclusively by machine-readable ``check``
+and parameters.
 """
 
 from __future__ import annotations
@@ -30,7 +31,6 @@ class RuntimePolicyEvaluator:
         self.rules = self._load_global_rules()
 
     def _load_global_rules(self) -> Dict[str, Any]:
-        """Load repository-level reference rules; state checks are dispatched separately."""
         path = self.validators_dir / "epistemic.rules.yaml"
         if not path.exists():
             logger.warning("Global reference rules not found at %s", path)
@@ -56,7 +56,9 @@ class RuntimePolicyEvaluator:
             return len(value) > 0
         return True
 
-    def _evaluate_rule(self, rule: Dict[str, Any], outputs: Dict[str, Any]) -> Tuple[bool, str]:
+    def _evaluate_rule(
+        self, rule: Dict[str, Any], outputs: Dict[str, Any]
+    ) -> Tuple[bool, str]:
         rule_id = str(rule.get("id") or "unnamed")
         check = str(rule.get("check") or "").strip()
         field = str(rule.get("field") or "")
@@ -75,7 +77,8 @@ class RuntimePolicyEvaluator:
             passed = isinstance(value, list) and (bool(value) or not require_non_empty)
             if passed:
                 passed = all(
-                    isinstance(item, dict) and all(name in item and item[name] is not None for name in required)
+                    isinstance(item, dict)
+                    and all(name in item and item[name] is not None for name in required)
                     for item in value
                 )
         elif check == "claim_evidence_ratio":
@@ -86,7 +89,11 @@ class RuntimePolicyEvaluator:
             if not isinstance(claims, list) or not claims:
                 passed = False
             else:
-                claim_ids = {item.get(id_field) for item in claims if isinstance(item, dict) and item.get(id_field)}
+                claim_ids = {
+                    item.get(id_field)
+                    for item in claims
+                    if isinstance(item, dict) and item.get(id_field)
+                }
                 evidence_ids = {
                     item.get(id_field)
                     for item in (evidence or [])
@@ -109,29 +116,50 @@ class RuntimePolicyEvaluator:
             value = self._value(outputs, field)
             required = list(rule.get("required_fields") or [])
             passed = isinstance(value, list) and all(
-                isinstance(item, dict) and all(name in item and item[name] is not None for name in required)
+                isinstance(item, dict)
+                and all(name in item and item[name] is not None for name in required)
                 for item in value
             )
         elif check == "mapping_required_keys":
             value = self._value(outputs, field)
             required = list(rule.get("required_keys") or [])
-            passed = isinstance(value, dict) and all(key in value and value[key] is not None for key in required)
+            passed = isinstance(value, dict) and all(
+                key in value and value[key] is not None for key in required
+            )
         else:
-            return False, f"Policy [{rule_id}] unsupported check={check!r}; rule was not silently accepted"
+            return (
+                False,
+                f"Policy [{rule_id}] unsupported check={check!r}; rule was not silently accepted",
+            )
 
         return passed, f"Policy [{rule_id}] failed: {human}"
 
-    def evaluate(self, state_def: Dict[str, Any], outputs: Dict[str, Any]) -> Tuple[bool, List[str]]:
-        """Evaluate all machine-readable runtime rules for one state output."""
+    @staticmethod
+    def _policy_definitions(state_def: Dict[str, Any]) -> Tuple[List[dict], str]:
+        if "runtime_policies" in state_def:
+            rules = state_def.get("runtime_policies") or []
+            source = "runtime_policies"
+        else:
+            rules = state_def.get("quality_gates") or []
+            source = "quality_gates_legacy"
+        if not isinstance(rules, list):
+            raise TypeError(f"{source} must be a list")
+        return rules, source
+
+    def evaluate(
+        self, state_def: Dict[str, Any], outputs: Dict[str, Any]
+    ) -> Tuple[bool, List[str]]:
         if not isinstance(outputs, dict):
             return False, ["MISSING_POLICY_INPUT: outputs must be a mapping"]
-        rules = state_def.get("quality_gates", []) or []  # legacy key retained for compatibility
-        if not isinstance(rules, list):
-            return False, ["INVALID_POLICY_DEFINITION: quality_gates must be a list"]
+        try:
+            rules, _source = self._policy_definitions(state_def)
+        except TypeError as exc:
+            return False, [f"INVALID_POLICY_DEFINITION: {exc}"]
+
         errors: List[str] = []
         for rule in rules:
             if not isinstance(rule, dict):
-                errors.append("INVALID_POLICY_DEFINITION: rule must be a mapping")
+                errors.append("INVALID_POLICY_DEFINITION: policy must be a mapping")
                 continue
             passed, message = self._evaluate_rule(rule, outputs)
             if not passed:
@@ -140,14 +168,22 @@ class RuntimePolicyEvaluator:
             errors.append("MISSING_POLICY_INPUT")
         return not errors, errors
 
+    def describe(self, state_def: Dict[str, Any]) -> dict:
+        rules, source = self._policy_definitions(state_def)
+        return {
+            "profile": PROFILE,
+            "source_key": source,
+            "policy_ids": [str(rule.get("id") or "unnamed") for rule in rules if isinstance(rule, dict)],
+        }
+
     def check_quality_gates(
         self, state_def: Dict[str, Any], outputs: Dict[str, Any]
     ) -> Tuple[bool, List[str]]:
-        """Backward-compatible wrapper for callers using the historical method name."""
+        """Deprecated compatibility wrapper; use ``evaluate``."""
         return self.evaluate(state_def, outputs)
 
 
 class Gatekeeper(RuntimePolicyEvaluator):
-    """Backward-compatible class name for ``RuntimePolicyEvaluator``."""
+    """Deprecated compatibility class name for ``RuntimePolicyEvaluator``."""
 
     pass
