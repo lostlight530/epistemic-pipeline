@@ -8,15 +8,16 @@ build/
 dist/
 *.egg-info/
 
-# 输出/运行产物
+# Generated research/runtime artifacts
 output/
 *.log
 *.json
 traces/
 checkpoints/
 provenance/
+evidence/
 
-# 虚拟环境
+# Virtual environments
 venv/
 env/
 .venv/
@@ -31,6 +32,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# 测试
+# Local maintenance caches
 .pytest_cache/
 .coverage
