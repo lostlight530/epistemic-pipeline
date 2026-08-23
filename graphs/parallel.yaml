@@ -1,8 +1,9 @@
 id: parallel
 name: 并行分组流水线
-description: "发现后并行分析多个独立组，然后串行验证和综合"
+description: "discover 后三个 analyze 节点按依赖层并发执行，再进入 verify / synthesize / archive"
 
 type: directed-acyclic-graph
+status: executable
 nodes:
   - id: discover
     stage: discover
@@ -30,10 +31,15 @@ nodes:
     dependencies: [synthesize]
 
 execution:
-  strategy: mixed
-  parallel_groups:
-    - [analyze_group_1, analyze_group_2, analyze_group_3]
-  max_parallelism: 3
-  rollback_on_failure: true
+  scheduler: dependency_levels
+  expected_parallel_layer: [analyze_group_1, analyze_group_2, analyze_group_3]
+  expected_max_parallelism: 3
+  failure_behavior: "collect completed sibling results, stop downstream execution on group failure, persist checkpoint evidence"
+  rollback_completed_nodes: false
+  external_side_effect_rollback: false
 
-use_case: "中等规模任务，可分组并行分析"
+identity:
+  human: id
+  executable: canonical_graph_sha256_at_runtime
+
+use_case: "研究材料可以分成多个独立分析分支时的并行结构"
