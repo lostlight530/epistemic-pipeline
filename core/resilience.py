@@ -1,95 +1,110 @@
 #!/usr/bin/env python3
-"""
-弹性执行策略 (Resilience)
-- 错误分类：transient（可重试，如超时/连接错误） vs permanent（不可重试，如未实现/参数错误）
-- 指数退避 + jitter 的重试策略（对齐 2025+ Agent 框架主流做法）
-- 每节点超时：基于 future.result(timeout=) 实现
+"""Bounded retry/timeout helpers for node execution.
 
-纯标准库（concurrent.futures + random + time），无第三方依赖。
+The module distinguishes explicitly known permanent failures from failures that
+may be retried. Unknown exceptions are treated as permanent by default: blindly
+retrying an unknown programming/domain error can multiply side effects and hide
+bugs. Callers that need richer retry taxonomies should classify provider errors
+before passing them here.
+
+Thread timeouts are caller-side time bounds only. Python cannot forcibly kill
+the running worker thread; timed-out work may continue in the background.
 """
+
+from __future__ import annotations
 
 import concurrent.futures
 import random
 import time
 from dataclasses import dataclass
-from typing import Callable, Any
+from typing import Any, Callable, Optional
 
-# transient：临时性故障，重试可能恢复
-TRANSIENT_TYPES = (TimeoutError, ConnectionError, OSError)
-# permanent：确定性故障，重试无意义（fail-fast）
-PERMANENT_TYPES = (NotImplementedError, ValueError, KeyError, TypeError)
+TRANSIENT_TYPES = (TimeoutError, ConnectionError)
+PERMANENT_TYPES = (NotImplementedError, ValueError, KeyError, TypeError, AssertionError)
 
 
 def classify_error(exc: BaseException) -> str:
-    """将异常分类为 'transient' 或 'permanent'。未知异常按 transient 处理（保守重试）。"""
+    """Classify known exceptions as ``transient`` or ``permanent``."""
     if isinstance(exc, PERMANENT_TYPES):
-        return 'permanent'
+        return "permanent"
     if isinstance(exc, TRANSIENT_TYPES):
-        return 'transient'
-    return 'transient'
+        return "transient"
+    # OSError is broad; only retry subclasses callers intentionally surface as
+    # connection/time-oriented errors rather than all filesystem/program errors.
+    return "permanent"
 
 
-@dataclass
+@dataclass(frozen=True)
 class RetryPolicy:
-    """指数退避 + jitter 重试策略"""
-    max_attempts: int = 1      # 总尝试次数（含首次），1 = 不重试
-    base_delay: float = 0.1    # 首次重试前的基础等待秒数
-    factor: float = 2.0        # 退避倍率
-    max_delay: float = 30.0    # 单次等待上限
+    """Exponential backoff with full jitter and explicit validation."""
+
+    max_attempts: int = 1
+    base_delay: float = 0.1
+    factor: float = 2.0
+    max_delay: float = 30.0
+
+    def __post_init__(self) -> None:
+        if self.max_attempts < 1:
+            raise ValueError("max_attempts must be >= 1")
+        if self.base_delay < 0 or self.max_delay < 0:
+            raise ValueError("retry delays must be >= 0")
+        if self.factor < 1:
+            raise ValueError("factor must be >= 1")
 
     @classmethod
-    def from_node_spec(cls, spec: dict) -> 'RetryPolicy':
-        """从 YAML 节点的 retry 字段构建；缺省/缺字段 = 不重试"""
+    def from_node_spec(cls, spec: Optional[dict]) -> "RetryPolicy":
         spec = spec or {}
         return cls(
-            max_attempts=max(1, int(spec.get('max_attempts', 1))),
-            base_delay=float(spec.get('base_delay', 0.1)),
-            factor=float(spec.get('factor', 2.0)),
-            max_delay=float(spec.get('max_delay', 30.0)),
+            max_attempts=int(spec.get("max_attempts", 1)),
+            base_delay=float(spec.get("base_delay", 0.1)),
+            factor=float(spec.get("factor", 2.0)),
+            max_delay=float(spec.get("max_delay", 30.0)),
         )
 
     def delay_for(self, attempt: int) -> float:
-        """第 attempt 次失败后的等待时长（attempt 从 1 开始），全量 jitter"""
-        base = min(self.base_delay * (self.factor ** (attempt - 1)), self.max_delay)
-        return random.uniform(0, base)
+        """Return full-jitter delay after a 1-indexed failed attempt."""
+        if attempt < 1:
+            raise ValueError("attempt must be >= 1")
+        ceiling = min(self.base_delay * (self.factor ** (attempt - 1)), self.max_delay)
+        return random.uniform(0.0, ceiling)
 
 
 class NodeTimeoutError(TimeoutError):
-    """节点执行超过 timeout_seconds 时抛出（归类为 transient）"""
+    """Caller-side node timeout; underlying worker thread may continue."""
 
 
-def run_with_timeout(fn: Callable[[], Any], timeout_seconds: float) -> Any:
-    """
-    在独立线程中执行 fn 并以 future.result(timeout=) 限时。
-    已知边界：Python 线程无法被强制杀死，超时后后台线程仍会运行至结束，
-    但调用方会立即收到 NodeTimeoutError，不会阻塞流水线。
-    """
+def run_with_timeout(fn: Callable[[], Any], timeout_seconds: Optional[float]) -> Any:
+    """Execute ``fn`` in one worker thread and bound caller wait time."""
     if timeout_seconds is None:
         return fn()
+    timeout = float(timeout_seconds)
+    if timeout <= 0:
+        raise ValueError("timeout_seconds must be > 0")
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
     future = executor.submit(fn)
     try:
-        return future.result(timeout=timeout_seconds)
-    except concurrent.futures.TimeoutError:
+        return future.result(timeout=timeout)
+    except concurrent.futures.TimeoutError as exc:
         future.cancel()
-        raise NodeTimeoutError(f"节点执行超过 {timeout_seconds}s 时限")
+        raise NodeTimeoutError(f"node execution exceeded {timeout}s caller timeout") from exc
     finally:
-        executor.shutdown(wait=False)
+        executor.shutdown(wait=False, cancel_futures=True)
 
 
-def run_with_retry(fn: Callable[[], Any], policy: RetryPolicy,
-                   on_retry: Callable[[int, BaseException, float], None] = None) -> Any:
-    """
-    按策略执行 fn：transient 错误指数退避重试，permanent 错误立即抛出。
-    on_retry(attempt, exc, delay) 用于日志/轨迹记录。
-    """
+def run_with_retry(
+    fn: Callable[[], Any],
+    policy: RetryPolicy,
+    on_retry: Optional[Callable[[int, BaseException, float], None]] = None,
+) -> Any:
+    """Run with bounded retry of explicitly transient exceptions only."""
     for attempt in range(1, policy.max_attempts + 1):
         try:
             return fn()
         except Exception as exc:
-            if classify_error(exc) == 'permanent' or attempt >= policy.max_attempts:
+            if classify_error(exc) != "transient" or attempt >= policy.max_attempts:
                 raise
             delay = policy.delay_for(attempt)
             if on_retry:
                 on_retry(attempt, exc, delay)
             time.sleep(delay)
+    raise RuntimeError("unreachable retry state")
