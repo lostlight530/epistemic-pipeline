@@ -31,7 +31,7 @@ transitions:
   - to: verify
     condition: "综合阶段发现需要回查的冲突"
 
-quality_gates:
+runtime_policies:
   - id: confidence_converged
     name: "数值更新收敛"
     rule: "delta < 0.01"
