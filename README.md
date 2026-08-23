@@ -36,7 +36,7 @@ Audited Run Bundle -> PROV-aligned provenance
 - **DAG 调度**：`linear` / `parallel` / `diamond` 可执行；`adaptive` 仍是实验性路由规格，主引擎 fail-closed 拒绝
 - **动态角色绑定**：按状态加载角色模板
 - **LLM Provider 协议**：`LLMProvider.complete(system, user, schema) -> dict`；仓库默认仍使用确定性 `MockProvider`，不虚报内置真实 LLM
-- **Gatekeeper**：节点输出必须通过对应质量门
+- **Gatekeeper**：节点输出必须通过对应运行时质量规则
 - **置信度网络**：`synthesize` 汇总上游 claims/conflicts 并迭代收敛；mock 置信度是启发值，不是校准概率
 - **弹性执行**：transient 错误指数退避+jitter，permanent 错误 fail-fast，节点支持 caller-side timeout
 - **检查点**：每层原子写入 `checkpoints/<run_id>/checkpoint.json`；同图续跑只复用成功节点
@@ -78,14 +78,16 @@ python3 core/run_bundle.py graphs/parallel.yaml --provenance-dir provenance
 
 `core/run_tracer.py` 的项目 JSONL 轨迹继续保留。适用字段名参考独立 `semantic-conventions-genai` 仓库中的 Development 级 GenAI agent conventions；项目的 `start` / `end` 记录不是 OTel Span Event API 事件，也不依赖 OTel SDK。
 
-### 验证
+### 本地检查
+
+需要时可手动运行：
 
 ```bash
 python -m pip install pyyaml numpy
 make test
 ```
 
-`make test` 运行原有执行链测试和新的 provenance / run-bundle 契约。`.github/workflows/ci.yml` 在 PR 与 `main` push 上用 Python 3.12 运行同一套测试。
+这些检查覆盖原有执行链以及 provenance / run-bundle 行为，只是本地维护工具，**不是 GitHub 合并门禁**。
 
 ### 诚实边界
 
@@ -125,7 +127,7 @@ Role Binding -> LLM Harness -> Gatekeeper -> Confidence Network -> Trace/Checkpo
 - executable `linear`, `parallel`, and `diamond` DAGs; `adaptive` remains experimental and is rejected fail-closed
 - dynamic role templates per state
 - dependency-injected `LLMProvider` protocol with deterministic mock as the repository default
-- per-state quality gates
+- per-state runtime quality rules through Gatekeeper
 - synthesize-stage confidence propagation and convergence
 - transient/permanent retry classification, exponential backoff+jitter, and caller-side node timeout
 - atomic checkpoints and same-graph resume
@@ -146,14 +148,14 @@ The provenance file records canonical hashes and structural metadata by default,
 
 The repository JSONL trace is a project audit format. Applicable field names follow Development-grade OpenTelemetry GenAI agent semantic conventions where useful, but the project does not claim OTel SDK/span/event conformance.
 
-### Verification
+### Local checks
 
 ```bash
 python -m pip install pyyaml numpy
 make test
 ```
 
-GitHub Actions runs the same contract on pull requests and `main` pushes with Python 3.12.
+These checks are optional local maintenance tools, not an automated merge gate.
 
 ### Boundaries
 
