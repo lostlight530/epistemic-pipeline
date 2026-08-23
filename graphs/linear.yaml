@@ -1,8 +1,9 @@
 id: linear
 name: 线性流水线
-description: "最简单的依赖图：5 个状态串行执行"
+description: "5 个规范状态按依赖顺序串行执行"
 
 type: directed-acyclic-graph
+status: executable
 nodes:
   - id: discover
     stage: discover
@@ -21,8 +22,14 @@ nodes:
     dependencies: [synthesize]
 
 execution:
-  strategy: sequential
-  max_parallelism: 1
-  rollback_on_failure: true
+  scheduler: dependency_levels
+  expected_max_parallelism: 1
+  failure_behavior: "stop after failed node/group and persist available checkpoint evidence"
+  rollback_completed_nodes: false
+  external_side_effect_rollback: false
 
-use_case: "小规模任务，资源有限，需要简单可预测的执行"
+identity:
+  human: id
+  executable: canonical_graph_sha256_at_runtime
+
+use_case: "需要简单、可解释依赖顺序的研究运行"
