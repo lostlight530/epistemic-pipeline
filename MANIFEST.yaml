@@ -1,44 +1,20 @@
 name: epistemic-pipeline
-purpose: 状态机驱动、可门控、可恢复、可追踪、可溯源的科研认知执行系统 | State-machine-driven research execution with gates, recovery, traces, and provenance
+purpose: Evidence-aware state-machine execution for research workflows | 面向科研工程的状态机执行、证据关系、运行时约束、恢复与溯源层
+
+architecture_version: "2026-08-24"
 
 principles:
-  - 状态机优先: discover -> analyze -> verify -> synthesize -> archive 是规范认知状态
+  - 状态机优先: discover -> analyze -> verify -> synthesize -> archive 是规范研究状态
   - DAG执行: 线性与并行由依赖图计算，不靠固定 Agent 顺序
-  - 契约先行: Provider 输出结构与 Gatekeeper 消费字段必须一致
-  - 失败显式: 运行时质量规则失败、永久错误、跨图续跑与未接入能力必须 fail-closed
-  - 可恢复: 成功节点写入检查点，续跑只复用已成功状态
-  - 可观测: 项目 JSONL 轨迹复用适用的 OTel GenAI Development 字段名，但不冒充完整 OTel SDK/span 实现
-  - 可溯源: audited run bundle 使用 W3C PROV 核心语义记录图、节点输出、trace/checkpoint 的哈希谱系
-  - 内容最小暴露: provenance 默认记录哈希和结构元数据，不复制研究 payload
-  - 科学边界: 结构化输出、数值收敛、通过运行时规则、hash chain 均不等于科学真值或概率校准
-
-research_contract:
-  file: RESEARCH_CONTRACT.md
-  status: active
-  evidence_unit_fields:
-    - claim_id
-    - source_refs
-    - evidence_refs
-    - state_id
-    - run_id
-    - confidence_value
-    - confidence_semantics
-    - validation_status
-    - trace_ref
-  local_reproducibility_levels: [R0, R1, R2, R3]
-  note: local project terminology; R3 requires an independent rerun and declared comparison criterion
-
-interoperability_targets:
-  prov:
-    status: implemented_profile
-    profile: epistemic-pipeline/prov@1
-    model: W3C-PROV-aligned-JSON
-    rdf_serializer: false
-  ro_crate:
-    status: proposed
-    version: "1.3"
-    published: "2026-06-22"
-    note: no trace/checkpoint/provenance file is called an RO-Crate without exporter + validation support
+  - 图身份: checkpoint 同时绑定 graph_id 与 canonical graph SHA-256
+  - Provider解耦: LLMProvider 协议与 StateMachineEngine 分离
+  - 运行时约束: state 使用 machine-readable runtime_policies，文本 rule 不参与执行
+  - 失败显式: 未知 policy check、永久错误、跨图续跑与未接入能力 fail-closed
+  - score边界: [0,1] 是 bounded heuristic score，不自动解释为概率
+  - 可观测: 项目 JSONL 可复用适用 OTel GenAI Development 命名，但不冒充 OTel exporter/span
+  - 可溯源: PROV-aligned lineage 与 Evidence Envelope 分离
+  - 内容最小暴露: provenance/evidence 默认记录 hash + 结构元数据，不复制研究 payload
+  - 科学边界: structured output / policy pass / numerical convergence / provenance 均不等于科学真值
 
 states: [discover, analyze, verify, synthesize, archive]
 
@@ -49,53 +25,109 @@ roles:
 graphs:
   executable: [linear, parallel, diamond]
   experimental: [adaptive]
+  validation:
+    - duplicate_node_id
+    - unknown_dependency
+    - cycle
+    - reachability
+  identity:
+    human: graph_id
+    canonical: sha256_of_parsed_graph_structure
 
-execution_chain:
-  - role_binding
-  - llm_harness
-  - gatekeeper
-  - confidence_network_at_synthesize
-  - checkpoint
-  - trace
-
-llm:
+engine:
+  profile: epistemic-pipeline/engine@2
+  entrypoint: python3 core/engine.py run <graph>
   provider_protocol: LLMProvider.complete(system, user, schema) -> dict
-  default_mode: deterministic_mock
+  default_provider: deterministic_mock
   real_provider_builtin: false
 
+runtime_policy:
+  profile: epistemic-pipeline/runtime-policy@1
+  active_state_key: runtime_policies
+  evaluator: RuntimePolicyEvaluator
+  executable_definition: check + parameters
+  prose_rule_is_executable: false
+  compatibility:
+    class_name: Gatekeeper
+    method: check_quality_gates
+    state_key: quality_gates
+    status: deprecated_compatibility_only
+
 confidence:
+  profile: epistemic-pipeline/confidence-heuristic@1
   range: [0.0, 1.0]
-  semantics: heuristic propagation values in mock mode, not calibrated probabilities
-  convergence: iterative numerical threshold, not scientific certainty
-  optional_calibration: temperature_scaling_hook
+  semantics: bounded weighted heuristic score; not calibrated probability
+  update: synchronous_iteration
+  convergence: numerical_delta_threshold_only
+  numpy_required: false
+  temperature_transform:
+    available: true
+    probability_calibration_claim_without_labelled_fit: false
 
 reliability:
   retry: transient_errors_with_exponential_backoff_and_jitter
   permanent_error: fail_fast
   timeout: caller_timeout_does_not_kill_underlying_thread
-  checkpoint_dir: checkpoints/
-  resume: successful_nodes_only_same_graph
+  checkpoint:
+    profile: epistemic-pipeline/checkpoint@2
+    output_dir: checkpoints/
+    atomic_write: true
+    identity_fields: [graph_id, graph_sha256]
+    legacy_checkpoint_without_digest: rejected_as_ambiguous
+    resume: successful_nodes_only_same_graph_digest
 
 observability:
-  trace_dir: traces/
-  format: project-jsonl
-  integrity: sha256-prev-hash-chain
+  trace:
+    profile: epistemic-pipeline/trace@2
+    output_dir: traces/
+    format: project-jsonl
+    integrity: sha256_prev_hash_internal_sequence_consistency
+    externally_anchored: false
   otel_genai:
-    status: naming-alignment-only
+    observed: "2026-08-24"
     convention_status: Development
+    alignment: selected_naming_only
     sdk_dependency: false
-    run_id_semantics: project-local-correlation-id
+    local_identity_fields: [epistemic.run.id, epistemic.node.id, epistemic.stage]
+    local_run_id_is_provider_conversation_id: false
 
 provenance:
-  profile: epistemic-pipeline/prov@1
-  entrypoint: python core/run_bundle.py <graph>
+  profile: epistemic-pipeline/prov@2
   output_dir: provenance/
-  model: W3C-PROV-aligned-JSON
+  model: W3C-PROV-aligned-project-JSON
   prov_namespace: http://www.w3.org/ns/prov#
-  core_terms: [Entity, Activity, Agent, used, wasGeneratedBy, wasDerivedFrom, wasAssociatedWith]
+  core_terms: [Entity, Activity, SoftwareAgent, used, wasGeneratedBy, wasDerivedFrom, wasAssociatedWith]
   rdf_serializer: false
   payloads_embedded_by_default: false
-  hashing: canonical-sha256
+  graph_identity: [canonical_sha256, file_sha256]
+  node_output_identity: canonical_sha256
+
+evidence_envelope:
+  profile: epistemic-pipeline/evidence-envelope@1
+  output_dir: evidence/
+  entrypoint: python3 core/run_bundle.py <graph>
+  artifact_kinds: [graph, trace, checkpoint, provenance]
+  payloads_embedded: false
+  reproducibility_default: R1
+  scientific_validity_claim: false
+
+research_contract:
+  file: RESEARCH_CONTRACT.md
+  status: active
+  local_reproducibility_levels: [R0, R1, R2, R3]
+  note: R3 requires an actual separate rerun and declared comparison criterion
+
+interoperability_targets:
+  prov:
+    status: implemented_profile
+    profile: epistemic-pipeline/prov@2
+  evidence_handoff:
+    status: implemented_profile
+    profile: epistemic-pipeline/evidence-envelope@1
+  ro_crate:
+    status: proposed_interoperability
+    version: "1.3"
+    note: this repository does not currently emit an RO-Crate
 
 validators:
   - confidence.schema.yaml
@@ -105,16 +137,19 @@ research_software:
   citation: CITATION.cff
   cff_version: "1.2.0"
 
+runtime_dependencies:
+  required: [pyyaml]
+  numpy: not_required_by_current_core
+
 local_checks:
   command: make test
   mode: manual_optional
-  dependencies: [pyyaml, numpy]
-  note: local checks are maintenance aids and are not an automated merge gate
+  note: local maintenance aid; not repository architecture or scientific validation
 
 experimental_modules:
-  - anti_entropy
-  - convergence
-  - infinite_regression
-  - neuro_symbolic
-  - perception
-  - thread_collapse
+  anti_entropy: normalized_shannon_entropy_metric_window
+  convergence: momentum_style_bounded_heuristic_updater
+  infinite_regression: bounded_recursive_termination_controller
+  neuro_symbolic: caller_predicate_rule_dispatch
+  perception: signal_intake_prototypes_no_http_websocket_network_io
+  thread_collapse: bounded_hypothesis_score_aggregation
