@@ -1,33 +1,36 @@
-"""
-Neuro-Symbolic Bridge - Connecting Neural and Symbolic Reasoning
-[EXPERIMENTAL] Not yet integrated into the main execution engine.
+"""Rule Dispatch Bridge
+[EXPERIMENTAL] Not integrated into the main execution engine.
 
-Bridges neural network outputs with symbolic logic rules, enabling
-the pipeline to combine pattern recognition (neural) with formal
-logical reasoning (symbolic) for more robust decision-making.
+Historical compatibility name: ``NeuroSymbolicBridge``.
 
-Real-world: Hybrid AI architecture connecting learned patterns with rules.
+The implementation does not run a neural network and it is not a theorem
+prover. It accepts a caller-supplied pattern record, evaluates caller-supplied
+Python predicates in priority order, and returns the first matching action.
+The numeric ``confidence`` field is therefore an opaque upstream score unless
+the caller separately provides calibrated semantics.
 """
+
+from __future__ import annotations
 
 import time
-import json
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Any, Callable
+from typing import Any, Callable, Dict, List, Optional
 
 
 @dataclass
 class NeuralOutput:
-    """Output from a neural component."""
+    """Compatibility record for an externally produced pattern/score."""
 
     pattern_id: str
     confidence: float
     features: Dict[str, float] = field(default_factory=dict)
     raw_output: Any = None
+    score_semantics: str = "opaque_upstream_score_not_calibrated_probability"
 
 
 @dataclass
 class SymbolicRule:
-    """A symbolic logic rule."""
+    """Caller-supplied predicate/action pair."""
 
     rule_id: str
     condition: Callable[[Dict[str, Any]], bool]
@@ -38,18 +41,20 @@ class SymbolicRule:
 
 @dataclass
 class BridgedResult:
-    """Result from bridging neural and symbolic processing."""
+    """Result of local predicate dispatch."""
 
     neural_pattern: str
     symbolic_action: str
     confidence: float
     rule_id: Optional[str] = None
     reasoning: str = ""
+    score_semantics: str = "opaque_upstream_score_not_calibrated_probability"
+    rule_errors: List[str] = field(default_factory=list)
     timestamp: float = field(default_factory=time.time)
 
 
 class NeuroSymbolicBridge:
-    """Bridges neural pattern recognition with symbolic logic."""
+    """Compatibility facade for priority-ordered local rule dispatch."""
 
     def __init__(self):
         self._rules: List[SymbolicRule] = []
@@ -58,78 +63,92 @@ class NeuroSymbolicBridge:
         self._pattern_to_rules: Dict[str, List[str]] = {}
 
     def register_rule(self, rule: SymbolicRule) -> None:
-        """Register a symbolic rule."""
+        if not rule.rule_id:
+            raise ValueError("rule_id must be non-empty")
+        self._rules = [existing for existing in self._rules if existing.rule_id != rule.rule_id]
         self._rules.append(rule)
-        self._rules.sort(key=lambda r: -r.priority)
+        self._rules.sort(key=lambda item: (-item.priority, item.rule_id))
 
     def map_pattern_to_rule(self, pattern_id: str, rule_id: str) -> None:
-        """Map a neural pattern to a symbolic rule."""
-        if pattern_id not in self._pattern_to_rules:
-            self._pattern_to_rules[pattern_id] = []
-        self._pattern_to_rules[pattern_id].append(rule_id)
+        if not pattern_id or not rule_id:
+            raise ValueError("pattern_id and rule_id must be non-empty")
+        mapped = self._pattern_to_rules.setdefault(pattern_id, [])
+        if rule_id not in mapped:
+            mapped.append(rule_id)
 
     def bridge(
-        self, neural_output: NeuralOutput, context: Dict[str, Any] = None
+        self, neural_output: NeuralOutput, context: Optional[Dict[str, Any]] = None
     ) -> BridgedResult:
-        """Bridge a neural output through symbolic rules."""
-        self._neural_history.append(neural_output)
-        context = context or {}
-        context.update(neural_output.features)
-        context["_confidence"] = neural_output.confidence
-        context["_pattern"] = neural_output.pattern_id
+        """Evaluate eligible rules without mutating the caller's context mapping."""
+        if not neural_output.pattern_id:
+            raise ValueError("pattern_id must be non-empty")
+        score = float(neural_output.confidence)
+        if not 0.0 <= score <= 1.0:
+            raise ValueError("confidence compatibility score must be within [0, 1]")
 
-        mapped_rule_ids = self._pattern_to_rules.get(neural_output.pattern_id, [])
+        self._neural_history.append(neural_output)
+        local_context = dict(context or {})
+        local_context.update(neural_output.features)
+        local_context["_confidence"] = score
+        local_context["_pattern"] = neural_output.pattern_id
+
+        mapped_rule_ids = set(self._pattern_to_rules.get(neural_output.pattern_id, []))
+        errors: List[str] = []
 
         for rule in self._rules:
             if mapped_rule_ids and rule.rule_id not in mapped_rule_ids:
                 continue
-
             try:
-                if rule.condition(context):
-                    result = BridgedResult(
-                        neural_pattern=neural_output.pattern_id,
-                        symbolic_action=rule.action,
-                        confidence=neural_output.confidence,
-                        rule_id=rule.rule_id,
-                        reasoning=f"Rule '{rule.description or rule.rule_id}' matched pattern '{neural_output.pattern_id}'",
-                    )
-                    self._bridged_results.append(result)
-                    return result
-            except Exception:
+                matched = bool(rule.condition(local_context))
+            except Exception as exc:  # caller predicate failure is evidence, not silent success
+                errors.append(f"{rule.rule_id}: {type(exc).__name__}: {exc}")
                 continue
+            if matched:
+                result = BridgedResult(
+                    neural_pattern=neural_output.pattern_id,
+                    symbolic_action=rule.action,
+                    confidence=score,
+                    rule_id=rule.rule_id,
+                    reasoning=(
+                        f"Local rule '{rule.description or rule.rule_id}' matched "
+                        f"pattern '{neural_output.pattern_id}'"
+                    ),
+                    score_semantics=neural_output.score_semantics,
+                    rule_errors=errors,
+                )
+                self._bridged_results.append(result)
+                return result
 
         result = BridgedResult(
             neural_pattern=neural_output.pattern_id,
             symbolic_action="default",
-            confidence=neural_output.confidence * 0.5,
+            confidence=score,
             rule_id=None,
-            reasoning="No matching rule found, using default action with reduced confidence",
+            reasoning="No eligible local rule matched; default action selected.",
+            score_semantics=neural_output.score_semantics,
+            rule_errors=errors,
         )
         self._bridged_results.append(result)
         return result
 
     def batch_bridge(
-        self, outputs: List[NeuralOutput], context: Dict[str, Any] = None
+        self, outputs: List[NeuralOutput], context: Optional[Dict[str, Any]] = None
     ) -> List[BridgedResult]:
-        """Bridge multiple neural outputs."""
-        return [self.bridge(out, context) for out in outputs]
+        return [self.bridge(output, context) for output in outputs]
 
-    def get_results(self, pattern: str = None) -> List[BridgedResult]:
-        """Retrieve bridged results, optionally filtered by pattern."""
+    def get_results(self, pattern: Optional[str] = None) -> List[BridgedResult]:
         if pattern:
-            return [r for r in self._bridged_results if r.neural_pattern == pattern]
+            return [result for result in self._bridged_results if result.neural_pattern == pattern]
         return list(self._bridged_results)
 
     def rule_coverage(self) -> Dict[str, Any]:
-        """Analyze which patterns have rules mapped to them."""
-        all_patterns = set(o.pattern_id for o in self._neural_history)
-        mapped_patterns = set(self._pattern_to_rules.keys())
-        unmapped = all_patterns - mapped_patterns
-
+        observed = {output.pattern_id for output in self._neural_history}
+        mapped = observed.intersection(self._pattern_to_rules)
         return {
-            "total_patterns": len(all_patterns),
-            "mapped_patterns": len(mapped_patterns),
-            "unmapped_patterns": len(unmapped),
-            "coverage": len(mapped_patterns) / max(len(all_patterns), 1),
-            "total_rules": len(self._rules),
+            "observed_patterns": len(observed),
+            "mapped_observed_patterns": len(mapped),
+            "unmapped_observed_patterns": len(observed - mapped),
+            "coverage": len(mapped) / len(observed) if observed else 0.0,
+            "registered_rules": len(self._rules),
+            "semantics": "local_predicate_dispatch_not_formal_reasoning",
         }
