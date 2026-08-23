@@ -163,6 +163,7 @@ Real LLM providers are external integrations; adaptive routing remains experimen
 
 ## Documentation
 
+- [Research Contract](RESEARCH_CONTRACT.md)
 - [Architecture](ARCHITECTURE.md)
 - [Customization Guide](CUSTOMIZATION_GUIDE.md)
 - [Examples](examples/README.md)
