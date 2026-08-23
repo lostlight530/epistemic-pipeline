@@ -1,11 +1,13 @@
 name: epistemic-pipeline
-purpose: 状态机驱动的动态科研认知流水线 | State-machine driven dynamic research cognition pipeline
+purpose: 状态机驱动的有界科研分析与证据编排流水线 | State-machine driven bounded research-analysis and evidence orchestration pipeline
+
 principles:
-  - 状态机优先: 认知过程是状态流转不是固定角色流水线
-  - 角色动态化: 同状态可由不同角色模板执行
-  - 置信度传播: 连续值在网络中传播和收敛
-  - 图依赖: 运行时计算DAG不是硬编码
-  - 框架可插拔: 认知框架由用户定义不硬编码
+  - 状态机优先: 科研过程以显式状态与依赖流转，而不是仅靠固定角色串行传递
+  - 角色动态化: 同状态可由不同角色模板执行，但角色模板本身不构成证据
+  - 证据有界: 结构化输出、质量门与置信度值必须保留其来源、适用范围和未验证边界
+  - 图依赖: 规范执行图由 YAML DAG 定义；实验图不得与已接入图混同
+  - 失败可见: 缺失输入、未收敛、永久错误和跨图续跑冲突必须显式失败
+  - 可恢复可观测: trace/checkpoint 提供运行证据与恢复能力，但不等于不可变审计或科学有效性证明
 
 states:
   - discover
@@ -13,25 +15,73 @@ states:
   - verify
   - synthesize
   - archive
-  
+
 roles:
   - explorer
   - analyst
   - verifier
   - synthesizer
   - auditor
-  
+
 graphs:
   - linear
   - parallel
   - diamond
   - adaptive
-  
+
+graph_status:
+  linear: integrated
+  parallel: integrated
+  diamond: integrated
+  adaptive: experimental_not_integrated
+
 confidence:
   range: [0.0, 1.0]
-  propagation: bayesian-network
-  convergence: iterative
-  
+  propagation: weighted-iterative-heuristic
+  inspiration: simplified-belief-propagation
+  convergence: configured-delta-threshold
+  probabilistic_interpretation: not_calibrated_by_default
+  bayesian_posterior_claim: false
+
 validators:
   - confidence.schema.yaml
   - epistemic.rules.yaml
+
+quality_gate_semantics:
+  rules_file_loaded: validators/epistemic.rules.yaml
+  executable_dispatch: state_id_prefix_branches_and_recognized_gate_ids
+  generic_yaml_rule_interpreter: false
+  new_state_requires_code_branch: true
+
+observability:
+  tracer: core/run_tracer.py
+  trace_format: jsonl
+  hash_chain: sha256_tamper_evident
+  immutable_storage_claim: false
+  opentelemetry_genai:
+    status: naming_alignment_only
+    sdk_instrumentation_claim: false
+    semantic_conventions_location: semantic-conventions-genai
+    run_id_semantics: local_run_or_correlation_identifier
+
+recovery:
+  checkpoint: checkpoints/<run_id>/checkpoint.json
+  resume_scope: successful_nodes_reused_failed_and_downstream_rerun
+  cross_graph_resume: fail_closed
+  external_side_effect_idempotency_guarantee: false
+
+research_contract:
+  document: RESEARCH_CONTRACT.md
+  status: active
+  updated: 2026-08-23
+  interoperability:
+    ro_crate:
+      target_version: "1.3"
+      status: proposed_mapping
+      implemented: false
+    cross_repo_handoff:
+      status: contract_only
+      direct_runtime_coupling: false
+  reproducibility_terms:
+    namespace: local_project_doctrine
+    levels: [R0_traceable, R1_replay_addressable, R2_environment_bounded, R3_reproduced]
