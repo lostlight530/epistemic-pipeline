@@ -28,9 +28,7 @@ transitions:
   - to: discover
     condition: "发现来源缺口，需要补充采集"
 
-# Historical key retained for engine/API compatibility. `check` and parameters
-# are the executable runtime-policy definition; `rule` is human-readable text.
-quality_gates:
+runtime_policies:
   - id: coverage
     name: "来源存在"
     rule: "sources_index 至少包含 1 个来源"
