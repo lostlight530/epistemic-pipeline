@@ -1,138 +1,171 @@
 # Epistemic Pipeline
 
-[简体中文](#简体中文) | [English](#english)
+> 状态机驱动、可门控、可恢复、可追踪、可溯源的科研认知执行系统  
+> State-machine-driven research execution with gates, recovery, traces, and provenance
 
----
-
-<a id="简体中文"></a>
 ## 简体中文
 
-> 认知流水线 — 状态机驱动的动态科研分析系统
+### 当前定位
 
-Epistemic Pipeline 将科学研究过程抽象为一台严密的"认知机器"，通过**状态机 (State Machine)** 控制流转，利用 **DAG (有向无环图)** 实现**多线程动态并行调度**。
+Epistemic Pipeline 把科研分析过程建模为 **状态机 + DAG + 契约 + 证据链**，而不是固定 N 个 Agent 顺序传文件。
 
-### 核心引擎 (Implemented)
+规范状态为：
 
-| 维度 | 传统 Agent 流水线 | Epistemic Pipeline |
-|------|------------------|-------------------|
-| **执行单元** | 固定 N 个 Agent 顺序传递 | **动态状态机** (5大状态) |
-| **依赖调度** | 固定的线性流程 | **并发 DAG 图计算** (线程池加速) |
-| **结构化输出** | 弱约束，易发散 | **强约束** (JSON/YAML Schema 校验) |
+```text
+discover -> analyze -> verify -> synthesize -> archive
+```
 
-### 严格约束
+主执行链：
 
-- **DAG 严格校验**：拒绝任何包含循环依赖或不可达节点的图
-- **Schema 拦截**：缺少输入字段会直接抛出 `MISSING_GATE_INPUT`
+```text
+Role Binding
+    ↓
+LLM Harness (默认 deterministic mock)
+    ↓
+Gatekeeper
+    ↓
+Confidence Network (synthesize)
+    ↓
+Trace + Checkpoint
+    ↓
+Audited Run Bundle -> PROV-aligned provenance
+```
 
-### 已接入主引擎的执行链 (Integrated Execution Chain)
+### 已接入能力
 
-主引擎每个节点的真实执行路径为：**角色绑定加载 (`roles/*.md`) → LLM Harness 结构化输出 → Gatekeeper 质量门拦截 (`validators/`) → synthesize 阶段置信度网络传播收敛 (`core/confidence_net.py`)**。
+- **DAG 调度**：`linear` / `parallel` / `diamond` 可执行；`adaptive` 仍是实验性路由规格，主引擎 fail-closed 拒绝
+- **动态角色绑定**：按状态加载角色模板
+- **LLM Provider 协议**：`LLMProvider.complete(system, user, schema) -> dict`；仓库默认仍使用确定性 `MockProvider`，不虚报内置真实 LLM
+- **Gatekeeper**：节点输出必须通过对应质量门
+- **置信度网络**：`synthesize` 汇总上游 claims/conflicts 并迭代收敛；mock 置信度是启发值，不是校准概率
+- **弹性执行**：transient 错误指数退避+jitter，permanent 错误 fail-fast，节点支持 caller-side timeout
+- **检查点**：每层原子写入 `checkpoints/<run_id>/checkpoint.json`；同图续跑只复用成功节点
+- **项目轨迹**：`traces/<run_id>.jsonl` 使用 SHA-256 `prev_hash` 链；字段名参考适用的 OpenTelemetry GenAI Development 语义，但不是完整 OTel SDK/span 实现
+- **科研 provenance**：`core/run_bundle.py` 在一次执行后输出 `provenance/<run_id>.prov.json`，采用 W3C PROV 核心 Entity / Activity / Agent 与关系语义形成哈希谱系
 
-- Gatekeeper 质量门 (`validators/`)：每个节点输出必须通过其状态的 `quality_gates`，否则节点失败并终止流水线（含 `MISSING_GATE_INPUT` 拦截）
-- 置信度网络 (`core/confidence_net.py`)：`synthesize` 阶段汇总上游 `claims_registry` / `conflict_registry` / `confidence_seed`，经 `KnowledgeExtractor` 桥接后真实迭代收敛，未收敛将触发质量门失败
-- 动态角色绑定 (`roles/`)：每个节点按状态定义加载主/副角色模板组装 Prompt
+### 新的审计运行入口
 
-### 可靠性与可观测性 (Reliability & Observability)
-
-- **结构化运行轨迹** (`core/run_tracer.py`)：每节点 start/end 写入 `traces/<run_id>.jsonl`，字段命名对齐 OTel GenAI 语义约定（`gen_ai.operation.name=invoke_agent`、`gen_ai.conversation.id=run_id`、`error.type`、耗时），并以 SHA-256 `prev_hash` 哈希链防篡改（该约定仍为 Development 级，仅对齐命名，不依赖 SDK）
-- **LLM Provider 协议** (`core/llm_harness.py`)：`LLMProvider.complete(system, user, schema) -> dict` 依赖注入；`MockProvider` 承载确定性桩数据并附带 5 阶段输出契约（`STAGE_CONTRACTS`），未来真实 provider 复用同一契约测试
-- **弹性执行** (`core/resilience.py`)：节点可声明 `retry{max_attempts, base_delay, factor}` 与 `timeout_seconds`；transient 错误（超时/连接）指数退避 + jitter 重试，permanent 错误（未实现/参数错）fail-fast 不重试；并行组失败不再丢弃兄弟节点结果
-- **节点级检查点** (`checkpoints/<run_id>/checkpoint.json`)：每层完成原子落盘；`run(resume_from=run_id)` 复用已成功节点、仅重跑失败及下游（LangGraph 检查点模式）；跨图续跑 fail-closed 拒绝
-- **置信度校准钩子** (`core/calibration.py`)：可选 temperature scaling 单参数校准（`calibration_temperature`），`synthesize` 报告披露 `calibration` 元数据与 `uncalibrated` 原值；mock 阶段置信度是启发值而非概率
-
-### 实验性功能 (Experimental — Not Integrated)
-
-以下模块存在于仓库但**尚未接入主引擎**：
-
-- 自适应工作流 (`graphs/adaptive.yaml`)
-
-> 注意：`core/llm_harness.py` 默认以 `mock=True` 运行；真实 LLM 调用仍为 `NotImplementedError`。
-
-### 快速开始
+低层执行仍可直接使用：
 
 ```bash
-# 安装依赖（仅 pyyaml 与 numpy，无其他第三方依赖）
-pip install pyyaml numpy
-
-# 执行支持并发的 DAG 并行组
-python3 core/engine.py run graphs/parallel.yaml
-
-# 从失败 run 的检查点断点续跑（仅重跑失败及下游节点）
-python3 core/engine.py run graphs/parallel.yaml --resume-from <run_id>
-
-# 运行测试套件
-python3 tests/test_all.py
+python3 core/engine.py run graphs/linear.yaml
 ```
+
+需要完整科研审计包时使用：
+
+```bash
+python3 core/run_bundle.py graphs/linear.yaml
+python3 core/run_bundle.py graphs/parallel.yaml --provenance-dir provenance
+```
+
+`run_bundle` 组合现有 engine、trace、checkpoint 与新的 provenance profile。它不会把节点完整研究内容复制到 provenance 文件；默认只记录规范化 SHA-256、状态、stage、依赖关系以及 trace/checkpoint 文件哈希。
+
+### Provenance 语义边界
+
+`epistemic-pipeline/prov@1` 是一个 **W3C PROV-aligned JSON profile**，使用：
+
+- `prov:Entity`：依赖图、节点输出、trace、checkpoint
+- `prov:Activity`：整次 run 与节点执行
+- `prov:SoftwareAgent`：epistemic-pipeline
+- `used`
+- `wasGeneratedBy`
+- `wasDerivedFrom`
+- `wasAssociatedWith`
+
+它不是 PROV-O RDF 序列化器，也不声称实现所有 W3C PROV 表达形式。这里借用的是稳定的 provenance 数据模型语义，而不是伪造格式兼容。
+
+### OpenTelemetry 语义边界
+
+`core/run_tracer.py` 的项目 JSONL 轨迹继续保留。适用字段名参考独立 `semantic-conventions-genai` 仓库中的 Development 级 GenAI agent conventions；项目的 `start` / `end` 记录不是 OTel Span Event API 事件，也不依赖 OTel SDK。
+
+### 验证
+
+```bash
+python -m pip install pyyaml numpy
+make test
+```
+
+`make test` 运行原有执行链测试和新的 provenance / run-bundle 契约。`.github/workflows/ci.yml` 在 PR 与 `main` push 上用 Python 3.12 运行同一套测试。
+
+### 诚实边界
+
+- 真实 LLM provider 仍需外部实现并注入，仓库不内置假“联网模型”
+- `graphs/adaptive.yaml` 仍未接入主引擎
+- 线程 timeout 让调用方快速失败，但不能强杀已经运行的 Python 线程
+- temperature scaling hook 不等于真实概率校准；真实校准需要真实预测和标注数据拟合参数
+- provenance 默认是哈希谱系，不是内容存档；不能从哈希恢复原研究内容
+- OTel 与 PROV 都是**语义对齐边界**，不是 SDK/RDF 全规格兼容声明
+
+### 科研软件引用
+
+仓库新增 `CITATION.cff`，使用 Citation File Format 1.2.0。
 
 ---
 
-<a id="english"></a>
 ## English
 
-> Epistemic Pipeline — State-machine driven dynamic research analysis system
+### Positioning
 
-Epistemic Pipeline abstracts the scientific research process into a rigorous "cognitive machine", utilizing a **State Machine** for flow control and **DAG (Directed Acyclic Graph)** for **multi-threaded dynamic parallel scheduling**.
+Epistemic Pipeline models research analysis as **state machine + DAG + contracts + evidence lineage**, rather than a fixed chain of N agents passing files.
 
-### Core Engine (Implemented)
+Canonical states:
 
-| Dimension | Traditional Agent Pipeline | Epistemic Pipeline |
-|-----------|----------------------------|--------------------|
-| **Execution Unit** | Fixed N Agents passing files sequentially | **Dynamic State Machine** (5 states) |
-| **Dependency** | Fixed linear flow | **Concurrent DAG Computation** (ThreadPool) |
-| **Structured Output** | Weak constraints, easy to diverge | **Strong Constraints** (JSON/YAML Schema validation) |
-
-### Strict Constraints
-
-- **DAG Strict Validation**: Rejects any graph containing cycles or unreachable nodes
-- **Schema Interception**: Missing input fields directly throw `MISSING_GATE_INPUT`
-
-### Integrated Execution Chain
-
-Each node's real execution path in the main engine is: **role binding (`roles/*.md`) → LLM Harness structured output → Gatekeeper interception (`validators/`) → confidence network propagation at `synthesize` (`core/confidence_net.py`)**.
-
-- Gatekeeper (`validators/`): every node output must pass its state's `quality_gates`, otherwise the node fails and aborts the pipeline (including `MISSING_GATE_INPUT` interception)
-- Confidence network (`core/confidence_net.py`): at `synthesize`, upstream `claims_registry` / `conflict_registry` / `confidence_seed` are bridged via `KnowledgeExtractor` and iterated to real convergence; non-convergence triggers a quality-gate failure
-- Dynamic role binding (`roles/`): each node assembles its prompt from the primary/secondary role templates defined by the state
-
-### Reliability & Observability
-
-- **Structured run traces** (`core/run_tracer.py`): per-node start/end records in `traces/<run_id>.jsonl`, field names aligned with OTel GenAI semantic conventions (`gen_ai.operation.name=invoke_agent`, `gen_ai.conversation.id=run_id`, `error.type`, duration), tamper-evident via a SHA-256 `prev_hash` chain (the convention is still Development-grade — we align naming only, no SDK dependency)
-- **LLM Provider protocol** (`core/llm_harness.py`): dependency-injected `LLMProvider.complete(system, user, schema) -> dict`; `MockProvider` carries the deterministic stub data plus a 5-stage output contract (`STAGE_CONTRACTS`) that future real providers reuse in contract tests
-- **Resilient execution** (`core/resilience.py`): nodes may declare `retry{max_attempts, base_delay, factor}` and `timeout_seconds`; transient errors (timeout/connection) retry with exponential backoff + jitter, permanent errors (not-implemented/bad-args) fail fast; parallel-group failures no longer discard sibling results
-- **Node-level checkpoints** (`checkpoints/<run_id>/checkpoint.json`): atomic writes after each layer; `run(resume_from=run_id)` reuses successful nodes and re-runs only failures and downstream (LangGraph checkpoint pattern); cross-graph resume is rejected fail-closed
-- **Confidence calibration hook** (`core/calibration.py`): optional single-parameter temperature scaling (`calibration_temperature`); the `synthesize` report discloses `calibration` metadata and `uncalibrated` originals; mock-stage confidences are heuristics, not probabilities
-
-### Experimental Features (Not Integrated)
-
-The following modules exist in the repo but are **not yet wired into the main engine**:
-
-- Adaptive workflow (`graphs/adaptive.yaml`)
-
-> Note: `core/llm_harness.py` runs with `mock=True` by default; real LLM calls still raise `NotImplementedError`.
-
-### Quick Start
-
-```bash
-# Install dependencies (pyyaml and numpy only, nothing else)
-pip install pyyaml numpy
-
-# Run concurrent DAG parallel group
-python3 core/engine.py run graphs/parallel.yaml
-
-# Resume a failed run from its checkpoint (re-runs only failed + downstream nodes)
-python3 core/engine.py run graphs/parallel.yaml --resume-from <run_id>
-
-# Run the test suite
-python3 tests/test_all.py
+```text
+discover -> analyze -> verify -> synthesize -> archive
 ```
 
----
+Integrated chain:
+
+```text
+Role Binding -> LLM Harness -> Gatekeeper -> Confidence Network -> Trace/Checkpoint -> Audited Run Bundle
+```
+
+### Integrated capabilities
+
+- executable `linear`, `parallel`, and `diamond` DAGs; `adaptive` remains experimental and is rejected fail-closed
+- dynamic role templates per state
+- dependency-injected `LLMProvider` protocol with deterministic mock as the repository default
+- per-state quality gates
+- synthesize-stage confidence propagation and convergence
+- transient/permanent retry classification, exponential backoff+jitter, and caller-side node timeout
+- atomic checkpoints and same-graph resume
+- SHA-256 chained project JSONL traces with carefully scoped OpenTelemetry GenAI naming alignment
+- `epistemic-pipeline/prov@1`, a W3C PROV-aligned provenance profile for graph, node-output, trace, and checkpoint lineage
+
+### Audited research-run entry point
+
+```bash
+python3 core/run_bundle.py graphs/linear.yaml
+```
+
+The low-level engine remains available independently. `run_bundle.py` composes the existing engine artifacts into an auditable research run and writes `provenance/<run_id>.prov.json`.
+
+The provenance file records canonical hashes and structural metadata by default, not full research payloads. Its model uses PROV Entity / Activity / Agent semantics and `used`, `wasGeneratedBy`, `wasDerivedFrom`, and `wasAssociatedWith` relations. It is not a PROV-O RDF serializer.
+
+### Observability boundary
+
+The repository JSONL trace is a project audit format. Applicable field names follow Development-grade OpenTelemetry GenAI agent semantic conventions where useful, but the project does not claim OTel SDK/span/event conformance.
+
+### Verification
+
+```bash
+python -m pip install pyyaml numpy
+make test
+```
+
+GitHub Actions runs the same contract on pull requests and `main` pushes with Python 3.12.
+
+### Boundaries
+
+Real LLM providers are external integrations; adaptive routing remains experimental; mock confidence is heuristic; caller timeouts cannot kill underlying threads; provenance hashes are evidence identifiers rather than content archives.
 
 ## Documentation
 
 - [Architecture](ARCHITECTURE.md)
 - [Customization Guide](CUSTOMIZATION_GUIDE.md)
-- [Examples](examples/)
+- [Examples](examples/README.md)
+- [Agent Guide](AGENTS.md)
+- [Manifest](MANIFEST.yaml)
 
 ## License
 

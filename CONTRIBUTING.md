@@ -1,37 +1,32 @@
-# Contributing to epistemic-pipeline
+# Contributing
 
-## Getting Started
+Changes to Epistemic Pipeline are accepted when they strengthen an explicit execution contract rather than only increasing module count.
 
-1. Clone the repository.
-2. Create an isolated environment:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-   pip install pyyaml numpy
-   ```
-3. Run tests to verify baseline:
-   ```bash
-   make test
-   ```
+## Setup
 
-## Development Principles
+```bash
+python -m pip install pyyaml numpy
+make test
+```
 
-- **State machine first**: All workflow logic flows through the 5 canonical states. Do not bypass the state machine with ad-hoc execution paths.
-- **DAG validation is sacred**: Never suppress cycle detection or unreachable node detection.
-- **Mock mode is the default**: All new features must be testable with `mock=True` in `LLMHarness`. Do not assume real LLM availability.
-- **Schema as contract**: New states must have corresponding Gatekeeper rules. Gate enforcement in `core/gatekeeper.py` branches on the `state_id` prefix — a state with a new prefix needs a matching branch there, otherwise its gates silently pass.
-- **Dependencies are fixed**: `pyyaml` + `numpy` only. Everything else must be standard library. Do not add packages.
-- **Fail-closed**: Invalid graphs, missing gate inputs, and unimplemented LLM paths must fail loudly, never fall back to silent passage.
-- **Thread safety**: Nodes in the same parallel group execute concurrently. Shared state must be thread-safe.
+GitHub Actions runs the same contract on pull requests and `main` pushes.
 
-## Pull Request Checklist
+## Contribution rules
 
-- [ ] All tests pass (`make test`)
-- [ ] New states have corresponding `states/*.yaml` and Gatekeeper rules
-- [ ] New graphs pass DAG validation (no cycles, no unreachable nodes)
-- [ ] New modules are marked as `[EXPERIMENTAL]` if not wired into the main engine
-- [ ] Documentation updated if behavior changes
+- Keep executable graph semantics acyclic and fail-closed.
+- New state outputs must match both the provider contract and Gatekeeper inputs.
+- Do not put vendor-specific LLM calls inside `StateMachineEngine`; implement the `LLMProvider` protocol.
+- Preserve the transient/permanent retry distinction.
+- Do not describe caller-side thread timeout as thread cancellation.
+- Checkpoint resume stays same-graph unless a new identity/migration design is implemented and tested.
+- OTel GenAI names in `RunTracer` are naming alignment only; no SDK compatibility claim without an exporter.
+- `epistemic-pipeline/prov@1` is a W3C PROV-aligned JSON profile, not PROV-O RDF.
+- Provenance defaults to hashes and structural metadata. Full payload capture requires an explicit design review.
+- Experimental modules and `adaptive.yaml` remain Experimental until wired into the canonical execution path with tests.
+- Update README, ARCHITECTURE, AGENTS, MANIFEST, and examples when a public capability boundary changes.
 
-## License
+## Testing expectations
 
-By contributing, you agree that your contributions are licensed under the MIT License.
+New behavior needs the nearest deterministic contract. Execution/gating/retry/checkpoint behavior belongs in `tests/test_all.py`; provenance and audited-run behavior belongs in `tests/test_provenance.py`.
+
+A green test suite is evidence for the tested repository boundary, not proof of a real external model or network service.

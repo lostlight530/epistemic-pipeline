@@ -1,87 +1,120 @@
 name: epistemic-pipeline
-purpose: 状态机驱动的有界科研分析与证据编排流水线 | State-machine driven bounded research-analysis and evidence orchestration pipeline
+purpose: 状态机驱动、可门控、可恢复、可追踪、可溯源的科研认知执行系统 | State-machine-driven research execution with gates, recovery, traces, and provenance
 
 principles:
-  - 状态机优先: 科研过程以显式状态与依赖流转，而不是仅靠固定角色串行传递
-  - 角色动态化: 同状态可由不同角色模板执行，但角色模板本身不构成证据
-  - 证据有界: 结构化输出、质量门与置信度值必须保留其来源、适用范围和未验证边界
-  - 图依赖: 规范执行图由 YAML DAG 定义；实验图不得与已接入图混同
-  - 失败可见: 缺失输入、未收敛、永久错误和跨图续跑冲突必须显式失败
-  - 可恢复可观测: trace/checkpoint 提供运行证据与恢复能力，但不等于不可变审计或科学有效性证明
+  - 状态机优先: discover -> analyze -> verify -> synthesize -> archive 是规范认知状态
+  - DAG执行: 线性与并行由依赖图计算，不靠固定 Agent 顺序
+  - 契约先行: Provider 输出结构与 Gatekeeper 消费字段必须一致
+  - 失败显式: 质量门失败、永久错误、跨图续跑与未接入能力必须 fail-closed
+  - 可恢复: 成功节点写入检查点，续跑只复用已成功状态
+  - 可观测: 项目 JSONL 轨迹复用适用的 OTel GenAI Development 字段名，但不冒充完整 OTel SDK/span 实现
+  - 可溯源: audited run bundle 使用 W3C PROV 核心语义记录图、节点输出、trace/checkpoint 的哈希谱系
+  - 内容最小暴露: provenance 默认记录哈希和结构元数据，不复制研究 payload
+  - 科学边界: 结构化输出、数值收敛、通过 gate、hash chain 均不等于科学真值或概率校准
 
-states:
-  - discover
-  - analyze
-  - verify
-  - synthesize
-  - archive
+research_contract:
+  file: RESEARCH_CONTRACT.md
+  status: active
+  evidence_unit_fields:
+    - claim_id
+    - source_refs
+    - evidence_refs
+    - state_id
+    - run_id
+    - confidence_value
+    - confidence_semantics
+    - validation_status
+    - trace_ref
+  local_reproducibility_levels: [R0, R1, R2, R3]
+  note: local project terminology; R3 requires an independent rerun and declared comparison criterion
+
+interoperability_targets:
+  prov:
+    status: implemented_profile
+    profile: epistemic-pipeline/prov@1
+    model: W3C-PROV-aligned-JSON
+    rdf_serializer: false
+  ro_crate:
+    status: proposed
+    version: "1.3"
+    published: "2026-06-22"
+    note: no trace/checkpoint/provenance file is called an RO-Crate without exporter + validation tests
+
+states: [discover, analyze, verify, synthesize, archive]
 
 roles:
-  - explorer
-  - analyst
-  - verifier
-  - synthesizer
-  - auditor
+  implemented: [explorer, analyst, verifier, synthesizer, auditor]
+  binding: dynamic-per-state
 
 graphs:
-  - linear
-  - parallel
-  - diamond
-  - adaptive
+  executable: [linear, parallel, diamond]
+  experimental: [adaptive]
 
-graph_status:
-  linear: integrated
-  parallel: integrated
-  diamond: integrated
-  adaptive: experimental_not_integrated
+execution_chain:
+  - role_binding
+  - llm_harness
+  - gatekeeper
+  - confidence_network_at_synthesize
+  - checkpoint
+  - trace
+
+llm:
+  provider_protocol: LLMProvider.complete(system, user, schema) -> dict
+  default_mode: deterministic_mock
+  real_provider_builtin: false
 
 confidence:
   range: [0.0, 1.0]
-  propagation: weighted-iterative-heuristic
-  inspiration: simplified-belief-propagation
-  convergence: configured-delta-threshold
-  probabilistic_interpretation: not_calibrated_by_default
-  bayesian_posterior_claim: false
+  semantics: heuristic propagation values in mock mode, not calibrated probabilities
+  convergence: iterative numerical threshold, not scientific certainty
+  optional_calibration: temperature_scaling_hook
+
+reliability:
+  retry: transient_errors_with_exponential_backoff_and_jitter
+  permanent_error: fail_fast
+  timeout: caller_timeout_does_not_kill_underlying_thread
+  checkpoint_dir: checkpoints/
+  resume: successful_nodes_only_same_graph
+
+observability:
+  trace_dir: traces/
+  format: project-jsonl
+  integrity: sha256-prev-hash-chain
+  otel_genai:
+    status: naming-alignment-only
+    convention_status: Development
+    sdk_dependency: false
+    run_id_semantics: project-local-correlation-id
+
+provenance:
+  profile: epistemic-pipeline/prov@1
+  entrypoint: python core/run_bundle.py <graph>
+  output_dir: provenance/
+  model: W3C-PROV-aligned-JSON
+  prov_namespace: http://www.w3.org/ns/prov#
+  core_terms: [Entity, Activity, Agent, used, wasGeneratedBy, wasDerivedFrom, wasAssociatedWith]
+  rdf_serializer: false
+  payloads_embedded_by_default: false
+  hashing: canonical-sha256
 
 validators:
   - confidence.schema.yaml
   - epistemic.rules.yaml
 
-quality_gate_semantics:
-  rules_file_loaded: validators/epistemic.rules.yaml
-  executable_dispatch: state_id_prefix_branches_and_recognized_gate_ids
-  generic_yaml_rule_interpreter: false
-  new_state_requires_code_branch: true
+research_software:
+  citation: CITATION.cff
+  cff_version: "1.2.0"
 
-observability:
-  tracer: core/run_tracer.py
-  trace_format: jsonl
-  hash_chain: sha256_tamper_evident
-  immutable_storage_claim: false
-  opentelemetry_genai:
-    status: naming_alignment_only
-    sdk_instrumentation_claim: false
-    semantic_conventions_location: semantic-conventions-genai
-    run_id_semantics: local_run_or_correlation_identifier
+verification:
+  local_contract: make test
+  github_actions: .github/workflows/ci.yml
+  python: "3.12"
+  dependencies: [pyyaml, numpy]
 
-recovery:
-  checkpoint: checkpoints/<run_id>/checkpoint.json
-  resume_scope: successful_nodes_reused_failed_and_downstream_rerun
-  cross_graph_resume: fail_closed
-  external_side_effect_idempotency_guarantee: false
-
-research_contract:
-  document: RESEARCH_CONTRACT.md
-  status: active
-  updated: 2026-08-23
-  interoperability:
-    ro_crate:
-      target_version: "1.3"
-      status: proposed_mapping
-      implemented: false
-    cross_repo_handoff:
-      status: contract_only
-      direct_runtime_coupling: false
-  reproducibility_terms:
-    namespace: local_project_doctrine
-    levels: [R0_traceable, R1_replay_addressable, R2_environment_bounded, R3_reproduced]
+experimental_modules:
+  - anti_entropy
+  - convergence
+  - infinite_regression
+  - neuro_symbolic
+  - perception
+  - thread_collapse
