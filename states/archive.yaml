@@ -29,7 +29,7 @@ transitions:
   - to: null
     condition: "归档结构完成，运行结束"
 
-quality_gates:
+runtime_policies:
   - id: artifact_complete
     name: "产物引用存在"
     rule: "artifact_bundle 非空"
