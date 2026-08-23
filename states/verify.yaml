@@ -33,7 +33,7 @@ transitions:
   - to: discover
     condition: "需要补充来源"
 
-quality_gates:
+runtime_policies:
   - id: verification_coverage
     name: "处理覆盖"
     rule: "coverage >= 0.95"
