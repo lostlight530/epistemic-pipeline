@@ -101,7 +101,7 @@ class TestProvenanceProfile(unittest.TestCase):
 
 
 class TestEvidenceEnvelope(unittest.TestCase):
-    def test_envelope_is_separate_handoff_contract(self):
+    def test_envelope_distinguishes_graph_structure_and_file_bytes(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             graph = root / "graph.yaml"
@@ -114,7 +114,8 @@ class TestEvidenceEnvelope(unittest.TestCase):
                 graph_id="g",
                 status="success",
                 graph_path=str(graph),
-                graph_sha256="sha256:canonical-graph-placeholder",
+                graph_canonical_sha256="sha256:canonical-graph-placeholder",
+                graph_file_sha256="sha256:file-graph-placeholder",
                 trace_path=None,
                 checkpoint_path=None,
                 provenance_path=str(provenance),
@@ -123,6 +124,14 @@ class TestEvidenceEnvelope(unittest.TestCase):
 
             self.assertEqual(envelope["profile"], EVIDENCE_PROFILE)
             self.assertEqual(EVIDENCE_PROFILE, "epistemic-pipeline/evidence-envelope@1")
+            self.assertEqual(
+                envelope["graph"]["canonical_sha256"],
+                "sha256:canonical-graph-placeholder",
+            )
+            self.assertEqual(
+                envelope["graph"]["file_sha256"],
+                "sha256:file-graph-placeholder",
+            )
             self.assertEqual(envelope["reproducibility"]["level"], "R1")
             self.assertFalse(envelope["scientific_validity_claim"])
             self.assertFalse(envelope["payloads_embedded"])
@@ -130,6 +139,9 @@ class TestEvidenceEnvelope(unittest.TestCase):
             kinds = {artifact["kind"] for artifact in envelope["artifacts"]}
             self.assertIn("graph", kinds)
             self.assertIn("provenance", kinds)
+            self.assertTrue(
+                all("file_sha256" in artifact for artifact in envelope["artifacts"])
+            )
 
             path = write_evidence_envelope(envelope, str(root / "evidence"))
             parsed = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -150,6 +162,7 @@ class TestRunBundle(unittest.TestCase):
 
             self.assertEqual(result["status"], "success")
             self.assertTrue(result["graph_sha256"].startswith("sha256:"))
+            self.assertTrue(result["graph_file_sha256"].startswith("sha256:"))
 
             provenance_path = Path(result["provenance_path"])
             evidence_path = Path(result["evidence_envelope_path"])
@@ -172,6 +185,12 @@ class TestRunBundle(unittest.TestCase):
 
             self.assertEqual(evidence["profile"], EVIDENCE_PROFILE)
             self.assertEqual(evidence["run_id"], result["run_id"])
+            self.assertEqual(
+                evidence["graph"]["canonical_sha256"], result["graph_sha256"]
+            )
+            self.assertEqual(
+                evidence["graph"]["file_sha256"], result["graph_file_sha256"]
+            )
             self.assertEqual(evidence["reproducibility"]["level"], "R1")
             self.assertFalse(evidence["scientific_validity_claim"])
             kinds = {artifact["kind"] for artifact in evidence["artifacts"]}
