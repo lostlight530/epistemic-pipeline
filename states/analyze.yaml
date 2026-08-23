@@ -31,7 +31,7 @@ transitions:
   - to: discover
     condition: "发现关键来源缺口"
 
-quality_gates:
+runtime_policies:
   - id: entity_coverage
     name: "实体结构存在"
     rule: "entity_map 非空"
