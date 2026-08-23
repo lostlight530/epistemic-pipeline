@@ -1,6 +1,6 @@
 # Agent Guide — epistemic-pipeline
 
-This is the operational contract for agents changing the repository. `README.md`, `ARCHITECTURE.md`, and `MANIFEST.yaml` define the public capability boundary.
+This is the operational guide for agents changing the repository. `README.md`, `ARCHITECTURE.md`, and `MANIFEST.yaml` define the public capability boundary.
 
 ## 1. System map
 
@@ -23,14 +23,16 @@ core/run_bundle.py
 
 Executable graphs: `linear`, `parallel`, `diamond`. `adaptive` remains Experimental.
 
-## 2. Setup and full contract
+## 2. Local checks
+
+When useful:
 
 ```bash
 python -m pip install pyyaml numpy
 make test
 ```
 
-`make test` runs `tests/test_all.py` plus `tests/test_provenance.py`. GitHub Actions runs the same contract under Python 3.12.
+`make test` covers `tests/test_all.py` plus `tests/test_provenance.py`. These are manual maintenance checks, not an automated merge gate.
 
 ## 3. Entry points
 
@@ -53,9 +55,9 @@ Use the audited entry point when a research run must leave trace/checkpoint/prov
 ## 4. Hard rules
 
 1. **State machine first.** New execution behavior must map to the canonical state model or explicitly introduce a versioned state extension.
-2. **Gatekeeper is not optional documentation.** New state outputs must provide the keys consumed by their quality gates; unknown prefixes must not silently fail open.
+2. **Gatekeeper is runtime semantics.** New state outputs must provide the keys consumed by their quality rules; unknown prefixes must not silently fail open.
 3. **Provider contract stays vendor-neutral.** Real model integrations implement `LLMProvider`; do not hard-code vendor SDK calls into `StateMachineEngine`.
-4. **Mock honesty.** Deterministic mock outputs are test fixtures, not evidence of real model performance.
+4. **Mock honesty.** Deterministic mock outputs are fixtures, not evidence of real model performance.
 5. **Confidence honesty.** Mock confidence is heuristic. Do not call it calibrated probability without labelled calibration evidence.
 6. **Retry taxonomy.** Permanent errors fail fast; only transient classes are retried.
 7. **Timeout honesty.** Thread timeout fails the caller but cannot kill the underlying worker thread.
@@ -68,16 +70,16 @@ Use the audited entry point when a research run must leave trace/checkpoint/prov
 
 ## 5. Where to change what
 
-| Goal | Files | Required checks |
+| Goal | Files | Required follow-up |
 |---|---|---|
-| new executable graph | `graphs/`, `core/engine.py` if semantics change | DAG validation + run test + docs |
-| new state/gate | `states/`, `validators/`, `core/gatekeeper.py` | provider output contract + failure test |
-| provider integration | `core/llm_harness.py` or external adapter | contract tests, no engine vendor coupling |
-| retry/timeout | `core/resilience.py`, node YAML | transient/permanent tests |
-| checkpoint semantics | `core/engine.py` | resume and cross-graph fail-closed tests |
-| trace field | `core/run_tracer.py` | hash-chain test + OTel scope review |
-| provenance entity/relation | `core/provenance.py` | privacy + lineage tests + profile-version review |
-| audited CLI | `core/run_bundle.py` | success/failure bundle tests |
+| new executable graph | `graphs/`, `core/engine.py` if semantics change | DAG semantics + docs; nearest local check when useful |
+| new state/gate | `states/`, `validators/`, `core/gatekeeper.py` | provider output contract + failure semantics |
+| provider integration | `core/llm_harness.py` or external adapter | no engine vendor coupling |
+| retry/timeout | `core/resilience.py`, node YAML | preserve transient/permanent distinction |
+| checkpoint semantics | `core/engine.py` | same-graph identity and resume semantics |
+| trace field | `core/run_tracer.py` | hash-chain + OTel scope review |
+| provenance entity/relation | `core/provenance.py` | privacy + lineage + profile-version review |
+| audited CLI | `core/run_bundle.py` | bundle semantics and failure behavior |
 | public capability | README/ARCHITECTURE/MANIFEST | update together |
 
 ## 6. Provenance invariants
@@ -92,11 +94,6 @@ For every completed node represented in a run bundle:
 
 The full node payload must not appear in the provenance JSON under the default profile.
 
-## 7. Before completion
+## 7. Consistency
 
-- `make test` is the intended repository gate,
-- docs and MANIFEST reflect actual wiring,
-- no real-LLM claim was inferred from mock execution,
-- no PROV/OTel compatibility claim exceeds the implemented profile,
-- new runtime artifacts are gitignored,
-- any new dependency is justified and documented.
+Keep docs and MANIFEST aligned with actual wiring. Do not infer real-LLM behavior from mock execution, overstate PROV/OTel compatibility, or promote Experimental modules without actual integration.
