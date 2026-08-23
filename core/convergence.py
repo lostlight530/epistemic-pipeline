@@ -1,23 +1,22 @@
+"""Experimental momentum-based bounded score tracker.
+
+[EXPERIMENTAL] Not integrated into the main execution engine.
+
+The historical ``ConvergenceAccelerator`` / ``BeliefState`` names are retained
+for compatibility. The implementation applies a simple momentum update to a
+caller-provided scalar stream and stops when consecutive score changes fall
+below a threshold. It is not evidence aggregation, Bayesian updating, belief
+revision logic, or proof that a hypothesis has become true.
 """
-Cognitive Convergence Accelerator - Iterative Belief Refinement
-[EXPERIMENTAL] Not yet integrated into the main execution engine.
 
-Accelerates convergence of multi-source evidence evaluation through
-momentum-based belief updating and early stopping when confidence
-stabilizes.
+from __future__ import annotations
 
-Real-world: Iterative algorithm convergence with momentum.
-"""
-
-import math
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
 
 @dataclass
 class BeliefState:
-    """A belief state with confidence and momentum."""
-
     hypothesis: str
     confidence: float
     momentum: float = 0.0
@@ -26,7 +25,7 @@ class BeliefState:
 
 
 class ConvergenceAccelerator:
-    """Momentum-based belief convergence accelerator."""
+    """Momentum update helper over bounded caller-supplied scores."""
 
     def __init__(
         self,
@@ -35,79 +34,78 @@ class ConvergenceAccelerator:
         convergence_threshold: float = 0.001,
         max_iterations: int = 1000,
     ):
-        self.momentum_factor = momentum_factor
-        self.learning_rate = learning_rate
-        self.convergence_threshold = convergence_threshold
-        self.max_iterations = max_iterations
+        if not 0 <= momentum_factor < 1:
+            raise ValueError("momentum_factor must be in [0,1)")
+        if learning_rate <= 0:
+            raise ValueError("learning_rate must be > 0")
+        if convergence_threshold <= 0:
+            raise ValueError("convergence_threshold must be > 0")
+        if max_iterations < 1:
+            raise ValueError("max_iterations must be >= 1")
+        self.momentum_factor = float(momentum_factor)
+        self.learning_rate = float(learning_rate)
+        self.convergence_threshold = float(convergence_threshold)
+        self.max_iterations = int(max_iterations)
         self._beliefs: Dict[str, BeliefState] = {}
 
-    def register_hypothesis(
-        self, hypothesis: str, initial_confidence: float = 0.5
-    ) -> None:
-        """Register a new hypothesis for convergence tracking."""
+    def register_hypothesis(self, hypothesis: str, initial_confidence: float = 0.5) -> None:
+        if not hypothesis:
+            raise ValueError("hypothesis must be non-empty")
+        value = float(initial_confidence)
+        if not 0 <= value <= 1:
+            raise ValueError("initial score must be within [0,1]")
         self._beliefs[hypothesis] = BeliefState(
             hypothesis=hypothesis,
-            confidence=initial_confidence,
-            momentum=0.0,
-            evidence_count=0,
-            history=[initial_confidence],
+            confidence=value,
+            history=[value],
         )
 
     def update_belief(self, hypothesis: str, evidence_weight: float) -> None:
-        """Update belief with new evidence using momentum."""
+        """Apply one scalar momentum update; ``evidence_weight`` is caller semantics."""
         if hypothesis not in self._beliefs:
             self.register_hypothesis(hypothesis)
-
         belief = self._beliefs[hypothesis]
-
-        gradient = evidence_weight * self.learning_rate
+        gradient = float(evidence_weight) * self.learning_rate
         belief.momentum = self.momentum_factor * belief.momentum + gradient
-        belief.confidence = max(0.0, min(1.0, belief.confidence + belief.momentum))
+        belief.confidence = min(max(belief.confidence + belief.momentum, 0.0), 1.0)
         belief.evidence_count += 1
         belief.history.append(belief.confidence)
 
     def check_convergence(self, hypothesis: str) -> bool:
-        """Check if a hypothesis has converged."""
-        if hypothesis not in self._beliefs:
+        """Return whether the last scalar update was smaller than the threshold."""
+        belief = self._beliefs.get(hypothesis)
+        if belief is None or len(belief.history) < 2:
             return False
-
-        belief = self._beliefs[hypothesis]
-        if len(belief.history) < 2:
-            return False
-
-        recent_delta = abs(belief.history[-1] - belief.history[-2])
-        return recent_delta < self.convergence_threshold
+        return abs(belief.history[-1] - belief.history[-2]) < self.convergence_threshold
 
     def run_until_convergence(
         self, hypothesis: str, evidence_stream: List[float]
     ) -> Tuple[bool, int]:
-        """Run updates until convergence or max iterations."""
         if hypothesis not in self._beliefs:
             self.register_hypothesis(hypothesis)
-
-        for i, weight in enumerate(evidence_stream):
+        for index, weight in enumerate(evidence_stream[: self.max_iterations], 1):
             self.update_belief(hypothesis, weight)
-
-            if i >= 2 and self.check_convergence(hypothesis):
-                return True, i + 1
-
-            if i + 1 >= self.max_iterations:
-                return False, i + 1
-
-        return self.check_convergence(hypothesis), len(evidence_stream)
+            if index >= 3 and self.check_convergence(hypothesis):
+                return True, index
+        iterations = min(len(evidence_stream), self.max_iterations)
+        return self.check_convergence(hypothesis), iterations
 
     def get_belief(self, hypothesis: str) -> Optional[BeliefState]:
-        """Get current belief state for a hypothesis."""
         return self._beliefs.get(hypothesis)
 
     def all_beliefs(self) -> Dict[str, BeliefState]:
-        """Get all belief states."""
         return dict(self._beliefs)
 
     def confidence_ranking(self) -> List[Tuple[str, float]]:
-        """Rank hypotheses by confidence."""
+        """Sort current project scores; ranking is not a truth ranking."""
         return sorted(
-            [(h, b.confidence) for h, b in self._beliefs.items()],
-            key=lambda x: x[1],
-            reverse=True,
+            ((key, state.confidence) for key, state in self._beliefs.items()),
+            key=lambda item: (-item[1], item[0]),
         )
+
+    def semantics(self) -> dict:
+        return {
+            "experimental": True,
+            "score_semantics": "caller-defined bounded scalar, not calibrated probability",
+            "convergence_semantics": "small consecutive numerical update only",
+        }
