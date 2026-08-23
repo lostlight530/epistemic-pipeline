@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this research software, please cite it using the metadata below."
+title: "Epistemic Pipeline"
+type: software
+authors:
+  - alias: lostlight530
+repository-code: "https://github.com/lostlight530/epistemic-pipeline"
+license: MIT
+keywords:
+  - agentic systems
+  - research pipeline
+  - provenance
+  - epistemic reasoning

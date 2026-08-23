@@ -14,6 +14,7 @@ output/
 *.json
 traces/
 checkpoints/
+provenance/
 
 # 虚拟环境
 venv/
@@ -33,6 +34,3 @@ Thumbs.db
 # 测试
 .pytest_cache/
 .coverage
-
-# 历史记录（可选保留）
-# incremental/history/
