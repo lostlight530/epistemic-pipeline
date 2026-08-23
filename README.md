@@ -1,106 +1,202 @@
 # Epistemic Pipeline
 
-> 状态机驱动、可门控、可恢复、可追踪、可溯源的科研认知执行系统  
-> State-machine-driven research execution with gates, recovery, traces, and provenance
+> 面向科研工程的状态机执行、证据关系、运行时约束、恢复与溯源层  
+> Evidence-aware state-machine execution for research workflows
 
 ## 简体中文
 
 ### 当前定位
 
-Epistemic Pipeline 把科研分析过程建模为 **状态机 + DAG + 契约 + 证据链**，而不是固定 N 个 Agent 顺序传文件。
-
-规范状态为：
+Epistemic Pipeline 不是“多个 Agent 排队聊天”的框架。它把科研分析过程拆成可检查的结构：
 
 ```text
 discover -> analyze -> verify -> synthesize -> archive
 ```
 
-主执行链：
+核心问题不是“用了几个 Agent”，而是：
+
+- 输入和依赖是否明确；
+- provider 输出是否满足当前 state 的机器可读运行时约束；
+- claim / evidence / conflict 是否保持分离；
+- `[0,1]` 数值到底是什么语义；
+- run 是否能被追踪、恢复和定位；
+- provenance 与最终科研结论之间的边界是否清楚。
+
+当前主链：
 
 ```text
-Role Binding
-    ↓
-LLM Harness (默认 deterministic mock)
-    ↓
-Gatekeeper
-    ↓
-Confidence Network (synthesize)
-    ↓
-Trace + Checkpoint
-    ↓
-Audited Run Bundle -> PROV-aligned provenance
+Graph + State Definition
+        ↓
+Role Binding + LLMProvider contract
+        ↓
+RuntimePolicyEvaluator
+        ↓
+Bounded heuristic score network @ synthesize
+        ↓
+Trace + digest-bound checkpoint
+        ↓
+PROV-aligned lineage
+        ↓
+Evidence Envelope
 ```
 
 ### 已接入能力
 
-- **DAG 调度**：`linear` / `parallel` / `diamond` 可执行；`adaptive` 仍是实验性路由规格，主引擎 fail-closed 拒绝
-- **动态角色绑定**：按状态加载角色模板
-- **LLM Provider 协议**：`LLMProvider.complete(system, user, schema) -> dict`；仓库默认仍使用确定性 `MockProvider`，不虚报内置真实 LLM
-- **Gatekeeper**：节点输出必须通过对应运行时质量规则
-- **置信度网络**：`synthesize` 汇总上游 claims/conflicts 并迭代收敛；mock 置信度是启发值，不是校准概率
-- **弹性执行**：transient 错误指数退避+jitter，permanent 错误 fail-fast，节点支持 caller-side timeout
-- **检查点**：每层原子写入 `checkpoints/<run_id>/checkpoint.json`；同图续跑只复用成功节点
-- **项目轨迹**：`traces/<run_id>.jsonl` 使用 SHA-256 `prev_hash` 链；字段名参考适用的 OpenTelemetry GenAI Development 语义，但不是完整 OTel SDK/span 实现
-- **科研 provenance**：`core/run_bundle.py` 在一次执行后输出 `provenance/<run_id>.prov.json`，采用 W3C PROV 核心 Entity / Activity / Agent 与关系语义形成哈希谱系
+- **DAG 执行**：`linear` / `parallel` / `diamond` 可执行；`adaptive` 仍是实验性规格
+- **图身份**：执行图同时记录 `graph_id` 与 canonical SHA-256；checkpoint resume 不再只相信同名 ID
+- **角色与 Provider 分离**：`LLMProvider.complete(system, user, schema) -> dict`；默认仍是 deterministic `MockProvider`
+- **运行时策略**：state YAML 使用 `runtime_policies` + machine-readable `check`；人类 `rule` 文本不参与执行
+- **启发式 score 网络**：同步迭代 bounded weighted score propagation；不是 Bayesian posterior
+- **无 NumPy 核心依赖**：score propagation 与 temperature transform 使用 Python 标准库数学运算
+- **弹性执行**：transient/permanent 分类、指数退避+jitter、caller-side timeout
+- **checkpoint**：`epistemic-pipeline/checkpoint@2` 原子写入并绑定 graph SHA-256
+- **trace**：`epistemic-pipeline/trace@2` 项目 JSONL；复用适用的 OpenTelemetry GenAI Development 命名，但不是 OTel exporter/span 实现
+- **provenance**：`epistemic-pipeline/prov@2`，使用 W3C PROV Entity / Activity / Agent 与核心关系语义
+- **evidence envelope**：`epistemic-pipeline/evidence-envelope@1`，把 graph / trace / checkpoint / provenance 引用与 SHA-256 汇总成跨工具 handoff 对象
 
-### 新的审计运行入口
+### 推荐运行入口
 
-低层执行仍可直接使用：
+低层执行：
 
 ```bash
+python3 core/engine.py validate graphs/linear.yaml
 python3 core/engine.py run graphs/linear.yaml
 ```
 
-需要完整科研审计包时使用：
+需要研究运行证据包时：
 
 ```bash
 python3 core/run_bundle.py graphs/linear.yaml
-python3 core/run_bundle.py graphs/parallel.yaml --provenance-dir provenance
 ```
 
-`run_bundle` 组合现有 engine、trace、checkpoint 与新的 provenance profile。它不会把节点完整研究内容复制到 provenance 文件；默认只记录规范化 SHA-256、状态、stage、依赖关系以及 trace/checkpoint 文件哈希。
+它会按实际存在的产物形成：
 
-### Provenance 语义边界
+```text
+traces/<run_id>.jsonl
+checkpoints/<run_id>/checkpoint.json
+provenance/<run_id>.prov.json
+evidence/<run_id>.evidence.json
+```
 
-`epistemic-pipeline/prov@1` 是一个 **W3C PROV-aligned JSON profile**，使用：
+这些文件的职责不同：
 
-- `prov:Entity`：依赖图、节点输出、trace、checkpoint
-- `prov:Activity`：整次 run 与节点执行
-- `prov:SoftwareAgent`：epistemic-pipeline
-- `used`
-- `wasGeneratedBy`
-- `wasDerivedFrom`
-- `wasAssociatedWith`
+| 产物 | 回答的问题 |
+|---|---|
+| trace | 运行过程中发生了什么 |
+| checkpoint | 哪些成功状态可以在同一图定义下复用 |
+| provenance | 哪些 Entity / Activity / Agent 产生了哪些 lineage |
+| evidence envelope | 这次 run 的跨仓交接引用、hash、profile 与科学边界是什么 |
 
-它不是 PROV-O RDF 序列化器，也不声称实现所有 W3C PROV 表达形式。这里借用的是稳定的 provenance 数据模型语义，而不是伪造格式兼容。
+### Runtime policy，不是“真理门禁”
 
-### OpenTelemetry 语义边界
+当前 state 使用：
 
-`core/run_tracer.py` 的项目 JSONL 轨迹继续保留。适用字段名参考独立 `semantic-conventions-genai` 仓库中的 Development 级 GenAI agent conventions；项目的 `start` / `end` 记录不是 OTel Span Event API 事件，也不依赖 OTel SDK。
+```yaml
+runtime_policies:
+  - id: evidence_linked
+    check: claim_evidence_ratio
+    claims_field: claims_registry
+    evidence_field: evidence_chains
+    min_ratio: 0.8
+```
 
-### 本地检查
+Python 只执行 `check` 与参数，不解析中文规则句子。
 
-需要时可手动运行：
+一个 policy 通过只表示：
+
+> 声明的机器 predicate 在当前结构化输出上成立
+
+它**不表示**：
+
+- 结论是真的；
+- 来源可靠；
+- peer review 已完成；
+- scientific validity 已建立。
+
+历史 `Gatekeeper` 类名、`check_quality_gates()` 与 `use_gatekeeper` 参数只为兼容旧调用保留；当前架构术语是 **runtime policy / constraint evaluation**。
+
+### Score 与 convergence 的边界
+
+`synthesize` 阶段的 `[0,1]` 数值是：
+
+> **bounded weighted heuristic score**
+
+不是：
+
+- posterior probability；
+- calibrated probability；
+- truth score；
+- 人类共识。
+
+`converged=True` 只表示数值更新达到设定 delta 阈值。
+
+`core/calibration.py` 提供 temperature-scaling **transform**。如果没有标注数据拟合 temperature 并做独立评估，就不能声称“完成概率校准”。
+
+### OpenTelemetry 边界
+
+2026-08-24 重新核对：OpenTelemetry GenAI agent/framework spans 仍为 **Development**，并定义 `create_agent`、`invoke_agent`、`invoke_workflow`、`plan`、`execute tool` 等操作。
+
+本仓 `RunTracer`：
+
+- 可复用适合的 `gen_ai.operation.name`；
+- 使用项目自己的 `epistemic.run.id` / `epistemic.node.id` / `epistemic.stage`；
+- **不再把本地 run_id 写成 provider conversation id**；
+- JSONL start/end 是项目事件，不是 OTel Span Event API 对象。
+
+### PROV 与 Evidence Envelope
+
+`epistemic-pipeline/prov@2` 是 **W3C PROV-aligned project JSON**，不是 PROV-O RDF serializer。
+
+它默认只存：
+
+- graph canonical/file SHA-256；
+- node output canonical SHA-256 + keys/stage；
+- trace/checkpoint 文件 SHA-256；
+- `used` / `wasGeneratedBy` / `wasDerivedFrom` / `wasAssociatedWith` 等关系。
+
+`evidence-envelope@1` 则是项目自己的 handoff contract，用于把这些 evidence artifact 交给更上层工具，例如 `sci-render-kit`。
+
+### Experimental 区
+
+这些文件仍然没有接入 canonical engine：
+
+- `anti_entropy.py`：归一化 Shannon-entropy 指标窗口
+- `convergence.py`：动量式 heuristic score updater
+- `infinite_regression.py`：bounded recursive termination controller
+- `neuro_symbolic.py`：caller-supplied local predicate dispatcher
+- `perception.py`：signal intake prototypes；HTTP/WebSocket 当前不执行网络 I/O
+- `thread_collapse.py`：hypothesis heuristic-score aggregator
+
+**修正 Experimental 实现不等于把它升级为主链能力。**
+
+### 本地维护工具
+
+核心运行依赖只需要 PyYAML：
 
 ```bash
-python -m pip install pyyaml numpy
+python -m pip install pyyaml
+```
+
+需要时可以手动：
+
+```bash
 make test
 ```
 
-这些检查覆盖原有执行链以及 provenance / run-bundle 行为，只是本地维护工具，**不是 GitHub 合并门禁**。
+它只是本地检查工具，不属于 GitHub 平台门禁，也不构成科学正确性证明。
 
-### 诚实边界
+### 科研完整性
 
-- 真实 LLM provider 仍需外部实现并注入，仓库不内置假“联网模型”
-- `graphs/adaptive.yaml` 仍未接入主引擎
-- 线程 timeout 让调用方快速失败，但不能强杀已经运行的 Python 线程
-- temperature scaling hook 不等于真实概率校准；真实校准需要真实预测和标注数据拟合参数
-- provenance 默认是哈希谱系，不是内容存档；不能从哈希恢复原研究内容
-- OTel 与 PROV 都是**语义对齐边界**，不是 SDK/RDF 全规格兼容声明
+请把下面几句话当作仓库的硬边界：
 
-### 科研软件引用
-
-仓库新增 `CITATION.cff`，使用 Citation File Format 1.2.0。
+```text
+Structured output ≠ truthful output
+Runtime policy pass ≠ scientific validity
+Heuristic score ≠ probability
+Numerical convergence ≠ certainty
+Provenance ≠ truth
+Checkpoint resume ≠ independent reproduction
+```
 
 ---
 
@@ -108,62 +204,47 @@ make test
 
 ### Positioning
 
-Epistemic Pipeline models research analysis as **state machine + DAG + contracts + evidence lineage**, rather than a fixed chain of N agents passing files.
-
-Canonical states:
+Epistemic Pipeline is an **evidence-aware research execution layer**, not a generic “N agents chatting in sequence” framework.
 
 ```text
-discover -> analyze -> verify -> synthesize -> archive
+Graph + State Definition
+  -> Role Binding + LLMProvider
+  -> Runtime Policy Evaluation
+  -> Bounded Heuristic Score Propagation
+  -> Trace + Digest-bound Checkpoint
+  -> PROV-aligned Lineage
+  -> Evidence Envelope
 ```
 
-Integrated chain:
+Implemented boundaries include executable linear/parallel/diamond DAGs, provider injection with a deterministic mock default, machine-readable runtime policies, graph-digest-bound resume, project JSONL traces, `prov@2` lineage, and `evidence-envelope@1` cross-tool handoff.
 
-```text
-Role Binding -> LLM Harness -> Gatekeeper -> Confidence Network -> Trace/Checkpoint -> Audited Run Bundle
-```
+The score network is a synchronous bounded weighted heuristic. Its values are not calibrated probabilities; numerical convergence is not epistemic certainty.
 
-### Integrated capabilities
+The trace reuses selected Development-grade OpenTelemetry GenAI terminology where appropriate while keeping local run identity separate from provider conversation/session identity. The repository does not claim OTel SDK/exporter conformance.
 
-- executable `linear`, `parallel`, and `diamond` DAGs; `adaptive` remains experimental and is rejected fail-closed
-- dynamic role templates per state
-- dependency-injected `LLMProvider` protocol with deterministic mock as the repository default
-- per-state runtime quality rules through Gatekeeper
-- synthesize-stage confidence propagation and convergence
-- transient/permanent retry classification, exponential backoff+jitter, and caller-side node timeout
-- atomic checkpoints and same-graph resume
-- SHA-256 chained project JSONL traces with carefully scoped OpenTelemetry GenAI naming alignment
-- `epistemic-pipeline/prov@1`, a W3C PROV-aligned provenance profile for graph, node-output, trace, and checkpoint lineage
+The PROV profile is project JSON aligned with W3C PROV concepts and relations; it is not PROV-O RDF. The evidence envelope is a separate project-owned interoperability object.
 
-### Audited research-run entry point
+### Entry points
 
 ```bash
+python3 core/engine.py validate graphs/linear.yaml
+python3 core/engine.py run graphs/linear.yaml
 python3 core/run_bundle.py graphs/linear.yaml
 ```
 
-The low-level engine remains available independently. `run_bundle.py` composes the existing engine artifacts into an auditable research run and writes `provenance/<run_id>.prov.json`.
-
-The provenance file records canonical hashes and structural metadata by default, not full research payloads. Its model uses PROV Entity / Activity / Agent semantics and `used`, `wasGeneratedBy`, `wasDerivedFrom`, and `wasAssociatedWith` relations. It is not a PROV-O RDF serializer.
-
-### Observability boundary
-
-The repository JSONL trace is a project audit format. Applicable field names follow Development-grade OpenTelemetry GenAI agent semantic conventions where useful, but the project does not claim OTel SDK/span/event conformance.
-
-### Local checks
+### Local maintenance
 
 ```bash
-python -m pip install pyyaml numpy
+python -m pip install pyyaml
 make test
 ```
 
-These checks are optional local maintenance tools, not an automated merge gate.
-
-### Boundaries
-
-Real LLM providers are external integrations; adaptive routing remains experimental; mock confidence is heuristic; caller timeouts cannot kill underlying threads; provenance hashes are evidence identifiers rather than content archives.
+Local checks are optional maintenance tools. They are neither GitHub merge policy nor scientific validation.
 
 ## Documentation
 
 - [Architecture](ARCHITECTURE.md)
+- [Research Contract](RESEARCH_CONTRACT.md)
 - [Customization Guide](CUSTOMIZATION_GUIDE.md)
 - [Examples](examples/README.md)
 - [Agent Guide](AGENTS.md)
