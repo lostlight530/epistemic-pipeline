@@ -31,7 +31,7 @@ def _artifact_ref(kind: str, path: Optional[str]) -> Optional[dict]:
     digest = file_sha256(path)
     if not digest:
         return None
-    return {"kind": kind, "path": str(path), "sha256": digest}
+    return {"kind": kind, "path": str(path), "file_sha256": digest}
 
 
 def build_evidence_envelope(
@@ -40,7 +40,8 @@ def build_evidence_envelope(
     graph_id: Optional[str],
     status: str,
     graph_path: str,
-    graph_sha256: Optional[str],
+    graph_canonical_sha256: Optional[str],
+    graph_file_sha256: Optional[str],
     trace_path: Optional[str],
     checkpoint_path: Optional[str],
     provenance_path: Optional[str],
@@ -62,13 +63,23 @@ def build_evidence_envelope(
         "profile": PROFILE,
         "generated_at": _now(),
         "run_id": run_id,
-        "graph_id": graph_id,
+        "graph": {
+            "id": graph_id,
+            "path": graph_path,
+            "canonical_sha256": graph_canonical_sha256,
+            "file_sha256": graph_file_sha256,
+            "identity_semantics": (
+                "canonical_sha256 identifies parsed graph structure; "
+                "file_sha256 identifies source file bytes"
+            ),
+        },
         "status": status,
-        "graph_sha256": graph_sha256,
         "artifacts": artifacts,
         "profiles": {
+            "engine": "epistemic-pipeline/engine@2",
             "runtime_policy": "epistemic-pipeline/runtime-policy@1",
             "trace": "epistemic-pipeline/trace@2",
+            "checkpoint": "epistemic-pipeline/checkpoint@2",
             "provenance": "epistemic-pipeline/prov@2",
             "confidence": "epistemic-pipeline/confidence-heuristic@1",
         },
@@ -79,10 +90,15 @@ def build_evidence_envelope(
                 "not externally anchored tamper-proof logging"
             ),
         },
-        "confidence_semantics": "bounded weighted heuristic score in [0,1], not calibrated probability",
+        "confidence_semantics": (
+            "bounded weighted heuristic score in [0,1], not calibrated probability"
+        ),
         "reproducibility": {
             "level": "R1",
-            "semantics": "replay-addressable project evidence; R3 requires a separate rerun and declared comparison",
+            "semantics": (
+                "replay-addressable project evidence; R3 requires a separate rerun "
+                "and declared comparison"
+            ),
         },
         "scientific_validity_claim": False,
         "payloads_embedded": False,
@@ -96,6 +112,9 @@ def write_evidence_envelope(record: dict, output_dir: str = "evidence") -> str:
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / f"{run_id}.evidence.json"
     temp = path.with_suffix(".evidence.json.tmp")
-    temp.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temp.write_text(
+        json.dumps(record, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     os.replace(temp, path)
     return str(path)
