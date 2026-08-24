@@ -1,53 +1,121 @@
-# Epistemic Pipeline Scientific Closure Design
+# Epistemic Pipeline Scientific Closure Design — Historical Record
 
-Date: 2026-08-05
-Status: approved design baseline
-Base: `main@516f496fe29907034e83326b11ec84fa87231c4f`
+Date: 2026-08-05  
+Status: **SUPERSEDED on 2026-08-24**  
+Original base: `main@516f496fe29907034e83326b11ec84fa87231c4f`
 
-## Objective
+> This document is preserved as design history. It is **not** the current implementation plan or repository-governance instruction. Current authority is `README.md`, `ARCHITECTURE.md`, `RESEARCH_CONTRACT.md`, `MANIFEST.yaml`, and `AGENTS.md`.
 
-Make the state-machine and confidence pipeline deterministic, fail-closed, inspectable, and reproducible while preserving current module paths and graph, role, state, and validator assets. The root README is outside scope.
+## Why it was superseded
 
-## Verified starting point
+The 2026-08-05 design mixed useful research-runtime concerns with a GitHub-platform governance direction that is no longer part of this repository's maintenance architecture. In particular, its planned GitHub verification, CodeQL, dependency-maintenance workflows, cloud-check acceptance and merge-check language must not be treated as open work items.
 
-The repository contains the core pipeline, V2 state machine, confidence DAG, neuro-symbolic bridge, YAML graphs, roles, states, validators, and tests. It has no GitHub workflow or cloud test evidence. A tracked root `.memory_log` contains one-time agent notes rather than scientific runtime evidence. V2 conditional routing evaluates serialized expressions dynamically, retry accounting can repeat without consuming its budget, and checkpoint storage lacks a versioned integrity boundary.
+The current repository direction is **research-runtime-first**:
 
-## Architecture decision
+```text
+graph identity
+  -> state/provider contract
+  -> runtime policy
+  -> bounded heuristic scores
+  -> trace + checkpoint
+  -> PROV-aligned lineage
+  -> Evidence Envelope
+```
 
-Callable predicates remain the preferred in-process routing interface. Serialized conditions use a deliberately small, parsed expression language with an allowlist of names, literals, Boolean operators, and comparisons; arbitrary Python execution is impossible. Execution state, checkpoints, and events have versioned schemas and explicit provenance. Confidence values are finite numbers in `[0, 1]`; invalid, cyclic, or incomplete evidence graphs fail before propagation.
+GitHub Actions, CI, CodeQL and merge-gate assumptions are outside normal research maintenance unless repository governance is explicitly redesigned in a separate task.
 
-The data flow is:
+## Historical objective
 
-`validated graph + initial evidence -> deterministic routing -> state executor -> confidence update -> checkpoint/event stream -> terminal result`
+The original objective was to make state-machine and confidence execution more deterministic, fail-closed, inspectable and reproducible while preserving module paths and graph/role/state/validator assets.
 
-State transitions and evidence transformations are recorded as structured events. Human approval pauses produce resumable checkpoints and never masquerade as completion.
+That objective remains useful in narrower form, but several historical assumptions have since changed.
 
-## Planned change set
+## What survived into the current architecture
 
-- Remove the tracked `.memory_log`; define an ignored `runtime/` boundary for checkpoints, logs, and local state.
-- Replace dynamic expression execution with a safe condition parser and explicit typed failures.
-- Consume retry budgets correctly and distinguish retryable failures from terminal failures.
-- Version checkpoints, validate identifiers and payloads, use atomic writes, and reject corrupt or path-escaping checkpoint references.
-- Enforce graph, confidence, convergence, and evidence-chain invariants before execution.
-- Add deterministic clock and identifier injection points for reproducible tests without changing default callers.
-- Add repository-contract tests for every graph, role, state, validator, and manifest declaration.
-- Add negative and property-oriented tests for cycles, NaN/infinite confidence, contradictory evidence, invalid conditions, corrupt checkpoints, retry exhaustion, and resume equivalence.
-- Add a compatibility document for the existing customization-guide filename without modifying the root README.
-- Add reproducibility, evidence, AI-use, security, contribution, and repo-specific GitHub governance files.
-- Add least-privilege GitHub verification, CodeQL, and dependency-maintenance workflows pinned to immutable action commits.
+Useful ideas retained or refined:
 
-## Security and failure model
+- explicit DAG validation and fail-closed behavior;
+- bounded retry and timeout semantics;
+- atomic checkpoint writes;
+- structured trace evidence;
+- explicit confidence/score bounds;
+- provider isolation;
+- no `eval`, `exec`, shell-based runtime or implicit network provider behavior;
+- clear distinction between integrated and Experimental modules.
 
-No `eval`, `exec`, shell execution, implicit network access, or unbounded retry is permitted. User-provided paths are resolved within an explicit runtime root. LLM adapters remain opt-in and must return source/model metadata; the symbolic path remains usable without a model or credential. Logs must exclude secrets and unneeded prompt content.
+## What changed materially
 
-## Verification and acceptance
+### Runtime policy
 
-Cloud checks run on Python 3.12 and 3.14. All existing tests plus new routing, checkpoint, confidence, failure, and repository-contract tests must pass. `compileall` and YAML/schema validation must pass. The same graph, inputs, clock, and identifier source must yield the same terminal state, trace order, confidence values, and checkpoint digest. Pause/resume must be observationally equivalent to uninterrupted execution.
+Historical “quality gate” architecture has been replaced by machine-readable `runtime_policies` evaluated through `RuntimePolicyEvaluator`. Prose is not parsed to invent execution behavior.
 
-## Non-goals
+Historical `Gatekeeper` names remain compatibility aliases only.
 
-No root README edit, frontend, autonomous agent framework, built-in model provider, hidden memory service, Jules workflow, or breaking rename of current graph and module paths.
+### Confidence
 
-## Rollout and rollback
+The active model is a bounded weighted heuristic score network, not a Bayesian/probability model. Numerical convergence is an algorithmic stopping property only.
 
-Implementation is isolated on `codex/scientific-closure-20260805` and delivered through one repository-specific pull request. Merge occurs only after cloud checks pass. Rollback is a single merge-commit revert; the removed one-time log remains recoverable from Git history, and checkpoint readers retain the documented prior-format compatibility path.
+### Graph/checkpoint identity
+
+Current `checkpoint@2` binds resume to both human graph ID and canonical graph SHA-256. Same-name changed graphs are not considered equivalent.
+
+### Observability
+
+`trace@2` keeps project-local run/node/stage identity distinct from provider conversation/session identity and only reuses selected OpenTelemetry GenAI Development naming where appropriate.
+
+### Provenance and handoff
+
+The current evidence architecture separates:
+
+```text
+epistemic-pipeline/prov@2
+  W3C PROV-aligned lineage
+
+epistemic-pipeline/evidence-envelope@1
+  cross-tool artifact handoff
+```
+
+Neither layer claims scientific truth or independent reproduction.
+
+### Experimental modules
+
+Experimental filenames are treated as historical/metaphorical compatibility surfaces. Current docs describe the actual local algorithm instead of inferring advanced capabilities from names such as `neuro_symbolic`, `anti_entropy` or `infinite_regression`.
+
+## Current acceptance philosophy
+
+The repository no longer defines acceptance through cloud checks.
+
+Engineering evidence should instead answer concrete questions such as:
+
+```text
+Is the graph structurally valid?
+Does checkpoint identity match the graph definition?
+Did the declared runtime predicate evaluate successfully?
+What score semantics were used?
+What artifacts and hashes identify this run?
+What PROV relationships were recorded?
+What can and cannot be reproduced from the retained evidence?
+```
+
+Optional local checks may help inspect those properties, but successful checks do not establish source truth, probability calibration, external service behavior, peer review or independent reproduction.
+
+## Historical non-goals retained
+
+The repository still does not claim:
+
+- a built-in live LLM provider;
+- an autonomous general-purpose agent framework;
+- an integrated adaptive routing runtime;
+- a hidden memory service;
+- scientific truth from pipeline completion.
+
+## Current references
+
+See:
+
+- `README.md`
+- `ARCHITECTURE.md`
+- `RESEARCH_CONTRACT.md`
+- `MANIFEST.yaml`
+- `AGENTS.md`
+- `CUSTOMIZATION_GUIDE.md`

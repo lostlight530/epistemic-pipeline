@@ -1,25 +1,24 @@
 id: synthesize
 name: 综合阶段
 description: >
-  聚合与洞察阶段
-  目标：从验证后的知识中生成综合报告
-  包括：交叉对比、趋势分析、洞察提取、推荐
+  聚合与报告阶段。把已记录主张、冲突和启发式分值组织成比较、洞察候选与综合报告。
+  数值收敛只描述启发式更新规则的稳定，不等于真值、确定性或概率校准。
 
-entry_condition: "验证阶段已输出 confidence_seed + conflict_registry"
-exit_condition: "综合报告已生成，洞察已提取"
+entry_condition: "verify 已输出 confidence_seed + conflict_registry"
+exit_condition: "启发式 score 网络达到声明阈值且综合报告结构完整"
 
 activities:
-  - name: 置信度传播
-    description: "在网络中传播置信度，收敛到稳定值"
+  - name: 启发式分值传播
+    description: "执行 bounded weighted score propagation"
     output: confidence_network
   - name: 交叉对比
-    description: "多维度对比不同来源的主张"
+    description: "组织不同主张/来源的比较记录"
     output: comparison_matrix
-  - name: 洞察提取
-    description: "识别非显而易见的模式和关联"
+  - name: 洞察候选
+    description: "记录综合阶段生成的解释或模式候选；新颖性需要外部判断"
     output: insight_list
   - name: 报告生成
-    description: "生成结构化综合报告"
+    description: "生成结构化综合报告并声明 confidence semantics"
     output: synthesis_report
 
 role_bindings:
@@ -28,17 +27,26 @@ role_bindings:
 
 transitions:
   - to: archive
-    condition: "报告已生成且通过质量检查"
+    condition: "运行时结构规则通过"
   - to: verify
-    condition: "综合过程发现新冲突"
-    
-quality_gates:
+    condition: "综合阶段发现需要回查的冲突"
+
+runtime_policies:
   - id: confidence_converged
-    name: "置信度收敛"
-    rule: "网络迭代后置信度变化 < 0.01"
-  - id: insight_novel
-    name: "洞察新颖性"
-    rule: "洞察不是原始主张的简单复述"
+    name: "数值更新收敛"
+    rule: "delta < 0.01"
+    check: numeric_max_exclusive
+    field: delta
+    max: 0.01
+  - id: insight_present
+    name: "洞察候选存在"
+    rule: "insight_list 至少包含 1 条；本规则不机器判断新颖性"
+    check: min_items
+    field: insight_list
+    min: 1
   - id: report_complete
-    name: "报告完整性"
-    rule: "报告包含：摘要、对比、洞察、推荐、置信度"
+    name: "综合报告结构完整"
+    rule: "synthesis_report 包含 summary/comparison/insights/recommendation/confidence_semantics"
+    check: mapping_required_keys
+    field: synthesis_report
+    required_keys: [summary, comparison, insights, recommendation, confidence_semantics]

@@ -1,30 +1,40 @@
 #!/usr/bin/env python3
-"""
-置信度校准钩子 (Calibration)
-Temperature scaling：单参数 logit 域缩放。
-    calibrated = sigmoid(logit(c) / T)
-  T = 1  恒等；T > 1 向 0.5 收缩（降温，更保守）；T < 1 向 0/1 锐化（升温）。
+"""Optional monotone transform for bounded confidence-like scores.
 
-诚实边界：mock 阶段的置信度是启发值而非概率，本校准钩子仅提供
-单调、保序、保 [0,1] 边界的数值变换接口；真实校准（用标注数据拟合 T）
-需要真实模型输出与标签，当前阶段不做、也不宣称做了。
+The historical API calls this temperature scaling because it applies the usual
+logit-domain temperature transform. In this repository, mock confidence values
+are heuristic scores rather than calibrated probabilities. Applying this
+function does not make them calibrated probabilities; fitting a temperature to
+labelled prediction outcomes would be a separate empirical process.
 """
 
-import numpy as np
+from __future__ import annotations
+
+import math
+from typing import Dict
 
 _EPS = 1e-7
 
 
+def _clamp01(value: float) -> float:
+    return min(max(float(value), 0.0), 1.0)
+
+
 def temperature_scale(confidence: float, temperature: float) -> float:
-    """对单个置信度值做 temperature scaling，结果保持在 [0,1]"""
+    """Apply a stable monotone logit-temperature transform to one score."""
     if temperature <= 0:
-        raise ValueError(f"temperature 必须为正数，got {temperature}")
-    c = float(np.clip(confidence, _EPS, 1.0 - _EPS))
-    logit = np.log(c / (1.0 - c))
-    scaled = 1.0 / (1.0 + np.exp(-logit / temperature))
-    return float(np.clip(scaled, 0.0, 1.0))
+        raise ValueError(f"temperature must be > 0, got {temperature}")
+    bounded = min(max(float(confidence), _EPS), 1.0 - _EPS)
+    logit = math.log(bounded / (1.0 - bounded))
+    z = logit / float(temperature)
+    if z >= 0:
+        scaled = 1.0 / (1.0 + math.exp(-z))
+    else:
+        exp_z = math.exp(z)
+        scaled = exp_z / (1.0 + exp_z)
+    return _clamp01(scaled)
 
 
-def calibrate_confidence_map(confidences: dict, temperature: float) -> dict:
-    """对 {claim_id: confidence} 映射整体做 temperature scaling（保序单调变换）"""
-    return {cid: temperature_scale(v, temperature) for cid, v in confidences.items()}
+def calibrate_confidence_map(confidences: Dict[str, float], temperature: float) -> Dict[str, float]:
+    """Transform a claim-score mapping while preserving order for fixed ``T``."""
+    return {claim_id: temperature_scale(value, temperature) for claim_id, value in confidences.items()}

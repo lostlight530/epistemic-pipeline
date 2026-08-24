@@ -1,57 +1,92 @@
-title: "Epistemic Rules"
-description: "认知流水线的基础规则 | Foundation rules for epistemic pipeline"
+title: "Epistemic Runtime Reference Rules"
+profile: epistemic-pipeline/reference-rules@2
+description: >
+  仓库级参考规则地图。这个文件不是通用 policy interpreter；
+  只有明确写入对应模块/state check 的规则才真正执行。
+
+enforcement_model: explicit_module_or_state_check_only
 
 rules:
-  - id: no_circular_dependency
-    name: "禁止循环依赖"
-    severity: blocker
-    description: "依赖图中不允许出现环路"
-    check: "DAG 验证"
-    
-  - id: all_states_reachable
-    name: "所有状态可达"
-    severity: blocker
-    description: "图中每个状态必须从起始状态可达"
-    check: "连通性验证"
-    
-  - id: confidence_range
-    name: "置信度范围"
-    severity: blocker
-    description: "所有置信度值必须在 [0, 1] 范围内"
-    check: "数值验证"
-    
-  - id: transition_validity
-    name: "状态转移有效"
-    severity: warning
-    description: "状态转移条件必须引用已定义的产出"
-    check: "引用验证"
-    
-  - id: role_binding_consistency
-    name: "角色绑定一致"
-    severity: warning
-    description: "每个状态的主角色和副角色必须在 roles/ 中定义"
-    check: "存在性验证"
-    
-  - id: quality_gate_coverage
-    name: "质量门覆盖"
-    severity: suggestion
-    description: "建议每个状态至少定义 2 个质量门"
-    check: "计数验证"
-    
-  - id: conflict_resolution
-    name: "冲突处理"
-    severity: warning
-    description: "严重冲突（critical）必须在综合阶段前处理或标注"
-    check: "流程验证"
-    
-  - id: provenance_completeness
-    name: "溯源完整"
-    severity: blocker
-    description: "归档阶段必须包含完整的溯源链"
-    check: "存在性验证"
-    
-  - id: metadata_schema_compliance
-    name: "元数据 Schema 合规"
-    severity: blocker
-    description: "所有元数据必须符合 confidence.schema.yaml"
-    check: "Schema 验证"
+  - id: dependency_graph_acyclic
+    severity: error
+    description: "可执行 graph 不允许循环依赖"
+    enforced_by: core/dependency_graph.py
+    semantics: structural_graph_validity
+
+  - id: dependency_exists
+    severity: error
+    description: "节点声明的 dependency 必须指向 graph 内已定义节点"
+    enforced_by: core/dependency_graph.py
+    semantics: structural_graph_validity
+
+  - id: node_id_unique
+    severity: error
+    description: "graph node id 必须唯一"
+    enforced_by: core/dependency_graph.py
+    semantics: structural_graph_identity
+
+  - id: all_nodes_reachable
+    severity: error
+    description: "可执行节点应从至少一个 root 节点可达"
+    enforced_by: core/dependency_graph.py
+    semantics: structural_graph_reachability
+
+  - id: state_runtime_policy_explicit
+    severity: error
+    description: "state runtime_policies 中每条 active policy 必须使用 RuntimePolicyEvaluator 支持的 machine-readable check"
+    enforced_by: core/gatekeeper.py
+    semantics: runtime_output_predicate
+
+  - id: provider_returns_mapping
+    severity: error
+    description: "LLMProvider.complete 必须返回结构化 dict"
+    enforced_by: core/llm_harness.py
+    semantics: provider_contract
+
+  - id: score_range
+    severity: error
+    description: "启发式 claim score 必须在 [0,1] 范围内"
+    enforced_by: core/confidence_net.py
+    semantics: bounded_numeric_score_not_probability
+
+  - id: score_convergence_scope
+    severity: info
+    description: "converged 只描述数值更新 delta 达到 threshold，不等于真值或科学确定性"
+    enforced_by: documentation_and_output_profile
+    semantics: scientific_integrity_boundary
+
+  - id: checkpoint_graph_identity
+    severity: error
+    description: "resume 必须同时匹配 graph_id 与 canonical graph_sha256"
+    enforced_by: core/engine.py
+    semantics: recovery_identity_boundary
+
+  - id: trace_correlation_scope
+    severity: error
+    description: "项目 run_id 使用 epistemic.run.id，不冒充 provider gen_ai.conversation.id"
+    enforced_by: core/run_tracer.py
+    semantics: observability_identity_boundary
+
+  - id: trace_integrity_scope
+    severity: info
+    description: "prev_hash chain 只证明当前存在记录的内部顺序/hash 一致性，没有外部锚点时不称 tamper-proof"
+    enforced_by: core/run_tracer.py
+    semantics: integrity_boundary
+
+  - id: provenance_profile_scope
+    severity: info
+    description: "PROV-aligned JSON 不是 PROV-O RDF serializer，也不声明完整 W3C PROV serialization conformance"
+    enforced_by: core/provenance.py
+    semantics: interoperability_boundary
+
+  - id: evidence_envelope_scope
+    severity: info
+    description: "evidence envelope 是项目 handoff profile，不是外部标准"
+    enforced_by: core/evidence_envelope.py
+    semantics: cross_repository_handoff
+
+  - id: scientific_validity_not_inferred
+    severity: error
+    description: "结构通过、数值收敛、hash/provenance 存在均不得自动升级成科学真值或独立复现"
+    enforced_by: research_contract_and_output_profiles
+    semantics: scientific_integrity_boundary

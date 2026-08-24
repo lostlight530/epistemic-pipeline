@@ -1,13 +1,21 @@
 cff-version: 1.2.0
 message: "If you use this research software, please cite it using the metadata below."
 title: "Epistemic Pipeline"
+abstract: >-
+  An evidence-aware state-machine research execution toolkit with explicit
+  runtime policies, bounded heuristic score propagation, digest-bound
+  checkpoints, project traces, W3C PROV-aligned lineage, and a versioned
+  cross-tool evidence envelope.
 type: software
 authors:
   - alias: lostlight530
+    url: https://github.com/lostlight530
 repository-code: "https://github.com/lostlight530/epistemic-pipeline"
 license: MIT
 keywords:
-  - agentic systems
-  - research pipeline
+  - research software
+  - evidence lineage
+  - state machine
   - provenance
-  - epistemic reasoning
+  - runtime policy
+  - agentic systems

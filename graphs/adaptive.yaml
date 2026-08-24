@@ -1,29 +1,42 @@
 id: adaptive
-name: 自适应流水线
-description: "根据输入规模自动选择执行策略"
+name: 自适应路由规格（实验性）
+description: >
+  根据输入规模描述候选 graph 选择规则的实验性配置。
+  当前 StateMachineEngine 不解析本文件，也不会自动检测输入规模、自动切换 graph 或执行回滚。
 
-type: adaptive-graph
+type: adaptive-routing-proposal
+status: experimental_non_executable
+
 rules:
   - condition: "input_count <= 3"
-    graph: linear
-    description: "小规模：线性串行"
+    candidate_graph: linear
+    description: "小规模输入的候选线性图"
   - condition: "3 < input_count <= 10"
-    graph: parallel
-    parallelism: 2
-    description: "中规模：2组并行"
+    candidate_graph: parallel
+    suggested_parallelism: 2
+    description: "中等输入的候选并行图"
   - condition: "10 < input_count <= 30"
-    graph: parallel
-    parallelism: 4
-    description: "大规模：4组并行"
+    candidate_graph: parallel
+    suggested_parallelism: 4
+    description: "较大输入的候选并行图"
   - condition: "input_count > 30"
-    graph: diamond
-    parallelism: 6
-    description: "超大规模：菱形分散"
+    candidate_graph: diamond
+    suggested_parallelism: 6
+    description: "更大输入的候选菱形图"
 
-execution:
-  strategy: adaptive
-  auto_detect: true
-  max_parallelism: 6
-  rollback_on_failure: true
+implementation_boundary:
+  parsed_by_main_engine: false
+  automatic_strategy_selection: false
+  automatic_input_detection: false
+  rollback_implementation: false
+  condition_language_executable: false
+  note: "condition strings are proposal metadata only"
 
-use_case: "不确定规模的任务，自动选择最优策略"
+future_contract_if_integrated:
+  - define a safe machine-readable condition language
+  - define graph-selection input schema
+  - record selected graph id and canonical digest
+  - specify failure and side-effect semantics
+  - preserve explicit evidence for the routing decision
+
+use_case: "研究未来自适应 graph selection 的配置草案，不代表当前运行能力"

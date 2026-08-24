@@ -1,27 +1,23 @@
-"""
-Action-at-a-Distance Perception Anchors — Distributed Signal Intake
-[EXPERIMENTAL] Not yet integrated into the main execution engine.
+"""Signal Intake Prototypes
+[EXPERIMENTAL] Not integrated into the main execution engine.
 
-Multi-source signal intake system enabling the pipeline to receive
-inputs from remote sources in addition to local files.
-
-Real-world: Distributed signal collection with health monitoring.
+Historical compatibility names are retained, but the current HTTP/WebSocket
+anchors are *descriptors/simulations*: they do not perform network I/O. The
+file anchor enumerates local files. Real transport implementations belong in
+separate adapters with explicit dependencies, authentication and retry policy.
 """
+
+from __future__ import annotations
 
 import time
-import json
-import asyncio
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any, Callable
 from pathlib import Path
-from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 
 @dataclass
 class Signal:
-    """Normalized signal format regardless of source."""
-
     source: str
     timestamp: float
     payload: Any
@@ -29,113 +25,131 @@ class Signal:
 
 
 class PerceptionAnchor(ABC):
-    """Abstract base for all signal sources."""
+    """Abstract signal-source interface."""
 
-    def __init__(self, name: str, config: Dict[str, Any] = None):
+    def __init__(self, name: str, config: Optional[Dict[str, Any]] = None):
+        if not name:
+            raise ValueError("anchor name must be non-empty")
         self.name = name
-        self.config = config or {}
-        self._healthy = True
+        self.config = dict(config or {})
+        self._healthy = False
         self._last_check = 0.0
 
     @abstractmethod
     async def perceive(self) -> List[Signal]:
-        """Collect signals from this source."""
-        pass
+        raise NotImplementedError
 
     @abstractmethod
     async def health_check(self) -> bool:
-        """Check if this anchor is healthy."""
-        pass
+        raise NotImplementedError
 
     def is_healthy(self) -> bool:
-        """Return cached health status."""
         return self._healthy
 
 
 class HTTPAnchor(PerceptionAnchor):
-    """REST API polling with exponential backoff."""
+    """Compatibility prototype that emits an HTTP endpoint descriptor only."""
 
     async def perceive(self) -> List[Signal]:
-        # Simulated HTTP polling
+        url = self.config.get("url")
+        if not url:
+            return []
         return [
             Signal(
                 source=self.name,
                 timestamp=time.time(),
-                payload={"type": "http_poll", "endpoint": self.config.get("url")},
+                payload={"type": "http_descriptor", "endpoint": url},
+                metadata={"simulated": True, "network_io_performed": False},
             )
         ]
 
     async def health_check(self) -> bool:
-        self._healthy = True
-        return True
+        self._last_check = time.time()
+        self._healthy = bool(self.config.get("url"))
+        return self._healthy
 
 
 class WebSocketAnchor(PerceptionAnchor):
-    """Real-time stream intake."""
+    """Compatibility prototype that emits a stream descriptor only."""
 
     async def perceive(self) -> List[Signal]:
-        # Simulated WebSocket intake
+        channel = self.config.get("channel")
+        if not channel:
+            return []
         return [
             Signal(
                 source=self.name,
                 timestamp=time.time(),
-                payload={"type": "websocket", "stream": self.config.get("channel")},
+                payload={"type": "websocket_descriptor", "stream": channel},
+                metadata={"simulated": True, "network_io_performed": False},
             )
         ]
 
     async def health_check(self) -> bool:
-        self._healthy = True
-        return True
+        self._last_check = time.time()
+        self._healthy = bool(self.config.get("channel"))
+        return self._healthy
 
 
 class FileWatchAnchor(PerceptionAnchor):
-    """Enhanced file system monitoring."""
+    """Local recursive file snapshot adapter; it does not subscribe to OS events."""
 
     async def perceive(self) -> List[Signal]:
         watch_dir = Path(self.config.get("path", "."))
-        signals = []
-        for f in watch_dir.glob("**/*"):
-            if f.is_file():
-                signals.append(
-                    Signal(
-                        source=self.name,
-                        timestamp=f.stat().st_mtime,
-                        payload={"path": str(f), "size": f.stat().st_size},
-                    )
+        if not watch_dir.is_dir():
+            return []
+        signals: List[Signal] = []
+        for path in sorted(watch_dir.rglob("*")):
+            if not path.is_file():
+                continue
+            stat = path.stat()
+            signals.append(
+                Signal(
+                    source=self.name,
+                    timestamp=stat.st_mtime,
+                    payload={"path": str(path), "size": stat.st_size},
+                    metadata={"mode": "snapshot_scan", "network_io_performed": False},
                 )
+            )
         return signals
 
     async def health_check(self) -> bool:
+        self._last_check = time.time()
         watch_dir = Path(self.config.get("path", "."))
-        self._healthy = watch_dir.exists()
+        self._healthy = watch_dir.is_dir()
         return self._healthy
 
 
 class PerceptionArray:
-    """Collection of all perception anchors."""
+    """Sequential collection facade for registered experimental anchors."""
 
     def __init__(self):
         self._anchors: Dict[str, PerceptionAnchor] = {}
 
     def register(self, anchor: PerceptionAnchor) -> None:
-        """Register a new perception anchor."""
+        if anchor.name in self._anchors:
+            raise ValueError(f"duplicate anchor name: {anchor.name}")
         self._anchors[anchor.name] = anchor
 
-    async def collect_all(self) -> List[Signal]:
-        """Collect signals from all healthy anchors."""
-        all_signals = []
-        for name, anchor in self._anchors.items():
-            if anchor.is_healthy():
-                try:
-                    signals = await anchor.perceive()
-                    all_signals.extend(signals)
-                except Exception as e:
-                    print(f"Anchor {name} failed: {e}")
+    async def collect_all(self, refresh_health: bool = True) -> List[Signal]:
+        all_signals: List[Signal] = []
+        for anchor in self._anchors.values():
+            healthy = await anchor.health_check() if refresh_health else anchor.is_healthy()
+            if not healthy:
+                continue
+            try:
+                all_signals.extend(await anchor.perceive())
+            except Exception:
+                anchor._healthy = False
         return all_signals
 
     async def health_report(self) -> Dict[str, bool]:
-        """Get health status of all anchors."""
-        report = {}
-        for name, anchor in self._anchors.items():
-            report[name] = await anchor.health_check()
-        return report
+        return {name: await anchor.health_check() for name, anchor in self._anchors.items()}
+
+    def semantics(self) -> dict:
+        return {
+            "status": "experimental",
+            "http_anchor": "descriptor_only_no_network_io",
+            "websocket_anchor": "descriptor_only_no_network_io",
+            "file_anchor": "recursive_snapshot_scan_not_event_watch",
+        }

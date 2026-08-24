@@ -1,29 +1,47 @@
 # Contributing
 
-Changes to Epistemic Pipeline should strengthen an explicit execution model rather than only increase module count.
+Changes should strengthen explicit research-execution semantics rather than only increase module count.
 
 ## Setup
 
 ```bash
-python -m pip install pyyaml numpy
+python -m pip install pyyaml
 ```
 
-`make test` is available as an optional local maintenance check. It is not a GitHub merge gate.
+`make test` remains an optional local maintenance command. It is not repository architecture, GitHub merge policy, or scientific validation.
 
 ## Contribution rules
 
-- Keep executable graph semantics acyclic and fail-closed.
-- New state outputs must match both the provider contract and Gatekeeper inputs.
-- Do not put vendor-specific LLM calls inside `StateMachineEngine`; implement the `LLMProvider` protocol.
-- Preserve the transient/permanent retry distinction.
-- Do not describe caller-side thread timeout as thread cancellation.
-- Checkpoint resume stays same-graph unless a new identity/migration design is implemented.
-- OTel GenAI names in `RunTracer` are naming alignment only; no SDK compatibility claim without an exporter.
-- `epistemic-pipeline/prov@1` is a W3C PROV-aligned JSON profile, not PROV-O RDF.
-- Provenance defaults to hashes and structural metadata. Full payload capture requires an explicit design review.
-- Experimental modules and `adaptive.yaml` remain Experimental until wired into the canonical execution path.
-- Update README, ARCHITECTURE, AGENTS, MANIFEST, and examples when a public capability boundary changes.
+- Keep executable graph semantics explicit: duplicate IDs, missing dependencies, cycles and unreachable nodes must remain observable.
+- Checkpoint identity is content-sensitive: preserve `graph_id + graph_sha256` binding.
+- Current state definitions use `runtime_policies`; machine-readable `check` fields define executable behavior.
+- Do not parse human rule prose to invent execution semantics.
+- Historical `Gatekeeper` names are compatibility surfaces only; new code should use `RuntimePolicyEvaluator` language.
+- Provider integrations implement `LLMProvider`; do not put vendor SDK calls into `StateMachineEngine`.
+- Deterministic mock outputs are fixtures, not evidence of real-model quality.
+- Preserve bounded heuristic score semantics; do not relabel `[0,1]` as probability without calibration evidence.
+- Numerical convergence does not establish truth, consensus or robustness.
+- Preserve transient/permanent retry distinction and caller-side thread-timeout limitations.
+- Keep local run IDs separate from provider conversation/session identifiers.
+- `epistemic-pipeline/prov@2` is W3C PROV-aligned project JSON, not PROV-O RDF.
+- `evidence-envelope@1` is a project handoff contract, not an external certification format.
+- Provenance/evidence defaults to hashes and structural metadata; full payload capture needs an explicit privacy design.
+- Experimental modules and `adaptive.yaml` remain Experimental until deliberately integrated into the canonical engine.
+- Update README, ARCHITECTURE, RESEARCH_CONTRACT, AGENTS, MANIFEST and examples when a public capability boundary changes.
 
-## Local checks
+## Research integrity
 
-Execution/gating/retry/checkpoint behavior can be inspected with `tests/test_all.py`; provenance and audited-run behavior can be inspected with `tests/test_provenance.py` when useful. A successful local check is evidence for that checked boundary, not proof of a real external model or network service.
+A successful local run or policy evaluation may establish a narrow engineering property. It does not prove:
+
+```text
+source truth
+scientific validity
+probability calibration
+external service availability
+peer review
+independent reproduction
+```
+
+## Repository governance
+
+Ordinary research-maintenance contributions must not introduce GitHub Actions, CodeQL, dependency-update bots or merge-gate assumptions unless repository governance is explicitly being redesigned as a separate task.

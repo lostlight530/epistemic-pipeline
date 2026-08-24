@@ -1,25 +1,24 @@
 id: analyze
 name: 分析阶段
 description: >
-  拆解与结构化阶段
-  目标：将原始信息转化为结构化知识单元
-  提取：实体、关系、主张、证据、方法
+  结构化分析阶段。将已登记内容组织为实体、主张、证据关联与方法标注。
+  这里只建立研究记录结构，不把结构化结果自动提升为事实真值。
 
-entry_condition: "发现阶段已输出 annotated_corpus"
-exit_condition: "所有知识单元已结构化，关系已建立"
+entry_condition: "discover 已输出 annotated_corpus"
+exit_condition: "claims_registry 非空且声明的证据关联达到最低结构覆盖"
 
 activities:
   - name: 实体识别
-    description: "识别关键概念、术语、实体"
+    description: "记录关键概念、术语与实体"
     output: entity_map
   - name: 主张提取
-    description: "提取每个来源的核心主张"
+    description: "形成带 claim_id 的主张记录"
     output: claims_registry
-  - name: 证据链构建
-    description: "将主张与支持证据关联"
+  - name: 证据关联
+    description: "以 claim_id 将主张与声明证据关联"
     output: evidence_chains
   - name: 方法标注
-    description: "标注每个主张的方法论基础"
+    description: "记录主张的方法或观察基础"
     output: methodology_index
 
 role_bindings:
@@ -30,15 +29,24 @@ transitions:
   - to: verify
     condition: "entity_map 和 claims_registry 非空"
   - to: discover
-    condition: "发现关键信息缺失，需补充来源"
-    
-quality_gates:
+    condition: "发现关键来源缺口"
+
+runtime_policies:
   - id: entity_coverage
-    name: "实体覆盖"
-    rule: "每个来源至少提取 1 个实体"
+    name: "实体结构存在"
+    rule: "entity_map 非空"
+    check: non_empty
+    field: entity_map
   - id: claim_extraction
-    name: "主张提取"
+    name: "主张结构存在"
     rule: "claims_registry 非空"
+    check: non_empty
+    field: claims_registry
   - id: evidence_linked
-    name: "证据关联"
-    rule: "≥80% 的主张有证据链"
+    name: "主张证据关联覆盖"
+    rule: "至少 80% 的已登记 claim_id 在 evidence_chains 中有对应记录"
+    check: claim_evidence_ratio
+    claims_field: claims_registry
+    evidence_field: evidence_chains
+    id_field: claim_id
+    min_ratio: 0.8

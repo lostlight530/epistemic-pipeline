@@ -1,100 +1,93 @@
-title: "Confidence Network Schema"
-description: "置信度传播网络的 Schema 定义 | Confidence propagation network schema"
+title: "Bounded Claim Score Network Schema"
+description: >
+  epistemic-pipeline 启发式 claim-score propagation 的结构定义。
+  数值在 [0,1] 内，但默认不是校准概率；数值收敛也不等于真值或科学确定性。
+profile: epistemic-pipeline/confidence-heuristic@1
 
 type: object
 required:
+  - semantics
   - nodes
   - edges
   - convergence
 
 properties:
+  semantics:
+    type: string
+    const: "bounded weighted heuristic score in [0,1], not calibrated probability"
   nodes:
     type: array
     items:
       type: object
-      required:
-        - claim_id
-        - initial_confidence
-        - final_confidence
+      required: [claim_id, initial_score, final_score]
       properties:
         claim_id:
           type: string
-        initial_confidence:
+          minLength: 1
+        initial_score:
           type: number
           minimum: 0.0
           maximum: 1.0
-        final_confidence:
+        final_score:
           type: number
           minimum: 0.0
           maximum: 1.0
-        stability:
+        stable:
           type: boolean
-          description: "是否已收敛"
+          description: "仅表示当前数值更新规则达到 threshold"
         iterations:
           type: integer
-          description: "收敛所需迭代次数"
-          
+          minimum: 0
   edges:
     type: array
     items:
       type: object
-      required:
-        - source
-        - target
-        - weight
+      required: [source, target, weight, type]
       properties:
         source:
           type: string
-          description: "源主张 ID"
+          minLength: 1
         target:
           type: string
-          description: "目标主张 ID"
+          minLength: 1
         weight:
           type: number
-          minimum: -1.0
-          maximum: 1.0
-          description: "关系权重（正=支持，负=反对）"
+          description: "局部影响权重；运行时按绝对值和 edge type 计算有效强度"
         type:
           type: string
           enum: [supports, contradicts, related, derives]
-          description: "关系类型"
-          
   convergence:
     type: object
-    required:
-      - threshold
-      - max_iterations
-      - achieved
+    required: [threshold, max_iterations, achieved, final_delta]
     properties:
       threshold:
         type: number
-        default: 0.01
-        description: "收敛阈值（置信度变化 < 此值）"
+        exclusiveMinimum: 0.0
       max_iterations:
         type: integer
-        default: 100
-        description: "最大迭代次数"
+        minimum: 1
       achieved:
         type: boolean
-        description: "是否已收敛"
+        description: "是否达到数值更新阈值，不表示科学确定性"
       final_delta:
         type: number
-        description: "最终迭代的最大变化量"
-        
+        minimum: 0.0
+
 example:
+  semantics: "bounded weighted heuristic score in [0,1], not calibrated probability"
   nodes:
-    - claim_id: "claim_001"
-      initial_confidence: 0.7
-      final_confidence: 0.92
-      stability: true
-      iterations: 5
+    - claim_id: claim_001
+      initial_score: 0.7
+      final_score: 0.74
+      stable: true
+      iterations: 7
   edges:
-    - source: "claim_001"
-      target: "claim_002"
+    - source: claim_001
+      target: claim_002
       weight: 0.8
-      type: "supports"
+      type: supports
   convergence:
     threshold: 0.01
     max_iterations: 100
     achieved: true
-    final_delta: 0.003
+    final_delta: 0.004
