@@ -1,6 +1,6 @@
-# Research Contract — 2026-08-24
+# Research Contract — 2026-08-26
 
-Status: active contract for repository claims, evidence flow, runtime semantics, recovery identity and cross-repository handoff.
+Status: active contract for repository claims, evidence flow, runtime semantics, recovery identity, claim-aware audit, process disclosure and cross-repository handoff.
 
 `epistemic-pipeline` is the **research orchestration and evidence-synthesis plane** of the three-repository research toolchain.
 
@@ -15,6 +15,7 @@ validated graph
   -> bounded score synthesis
   -> trace + digest-bound checkpoint
   -> PROV-aligned lineage
+  -> claim index + process disclosure
   -> evidence envelope
 ```
 
@@ -129,9 +130,67 @@ By default it stores canonical/file hashes and structural metadata rather than f
 
 Provenance records **how recorded artifacts relate**. Provenance does not make the underlying claim true.
 
-## 8. Evidence Envelope contract
+## 8. Claim-aware audit contract
 
-`epistemic-pipeline/evidence-envelope@1` is the preferred cross-tool handoff object.
+`epistemic-pipeline/claim-index@1` is a payload-minimizing audit surface built from structured `claims_registry` and `evidence_chains` outputs.
+
+For each discoverable claim it can preserve:
+
+```text
+claim_id
+state_id
+claim_record_sha256
+source_refs[]
+evidence_refs[]
+relations[]
+```
+
+The claim record hash identifies the canonical structured record observed in the run. The Evidence Envelope does not embed claim text.
+
+Hard boundary:
+
+```text
+claim index != truth graph
+claim hash != semantic truth
+source reference != source credibility
+evidence reference != evidence sufficiency
+relation label != verified entailment
+```
+
+The index exists so downstream tools can discover claim/evidence relationships without copying every provider payload.
+
+## 9. Provider and human-review disclosure
+
+`LLMProvider.describe()` is an optional process-disclosure hook.
+
+The base implementation knows only the Python provider class and leaves vendor/model/version unknown. External integrations may explicitly declare those values. Unknown fields MUST NOT be guessed.
+
+The built-in `MockProvider` declares itself as a deterministic synthetic fixture and records `external_model_call: false`.
+
+`core/run_bundle.py` also accepts a declared human-review state:
+
+```text
+reviewed
+partial
+not_reviewed
+not_declared
+```
+
+Default: `not_declared`.
+
+These values are process metadata only:
+
+```text
+provider identity != output authenticity proof
+model name != model capability proof
+human review != peer review
+human review != truth
+process disclosure != scientific validity
+```
+
+## 10. Evidence Envelope contract
+
+`epistemic-pipeline/evidence-envelope@2` is the preferred cross-tool handoff object.
 
 It can reference:
 
@@ -144,7 +203,14 @@ provenance
 
 with SHA-256 identity and active profile declarations.
 
-The envelope explicitly records:
+Version 2 additionally carries:
+
+```text
+claim_observability
+process_disclosure
+```
+
+and explicitly records:
 
 ```text
 confidence_semantics
@@ -153,9 +219,16 @@ scientific_validity_claim
 payloads_embedded
 ```
 
+The envelope remains payload-minimizing:
+
+```text
+payloads_embedded: false
+claim_observability.payload_text_embedded: false
+```
+
 The default reproducibility label is **R1 — replay-addressable**, not R3.
 
-## 9. Reproducibility levels
+## 11. Reproducibility levels
 
 Local project terminology:
 
@@ -164,9 +237,9 @@ Local project terminology:
 - **R2 — Environment-bounded**: runtime/provider/dependency versions and stochastic settings are also recorded.
 - **R3 — Reproduced**: an actual separate rerun was performed and compared under a declared criterion.
 
-Checkpoint availability, deterministic mock output or provenance metadata alone does not justify R3.
+Checkpoint availability, deterministic mock output, provider metadata, or provenance metadata alone does not justify R3.
 
-## 10. Cross-repository contract
+## 12. Cross-repository contract
 
 Preferred input from `auto-doc-engine` or another source layer:
 
@@ -176,6 +249,10 @@ content_sha256
 source_refs[]
 provenance_ref
 validation_status
+ai_assistance
+ai_tools[]
+human_review
+disclosure_ref
 ```
 
 Preferred output toward `sci-render-kit` or another communication layer:
@@ -186,21 +263,24 @@ graph_id
 graph_sha256
 evidence_envelope_ref
 provenance_ref
-claims_registry_ref
-evidence_registry_ref
+claim_index_profile
+claim_refs[]
+evidence_refs[]
 confidence_semantics
+provider_disclosure
+human_review
 terminal_status
 ```
 
 These fields define interoperability. They do not imply the repositories import or invoke one another directly.
 
-## 11. RO-Crate target
+## 13. RO-Crate target
 
 RO-Crate 1.3 remains the current interoperability target for packaged research objects. `epistemic-pipeline` does **not** currently emit an RO-Crate.
 
 A downstream packager may map the Evidence Envelope, PROV sidecar and run artifacts into an RO-Crate. Such a package must not be called an RO-Crate merely because this repository produced JSON metadata.
 
-## 12. Experimental contract
+## 14. Experimental contract
 
 Experimental modules remain outside the canonical engine. Their names are historical compatibility surfaces; documentation must describe concrete implementation semantics.
 
@@ -212,22 +292,39 @@ In particular:
 - hypothesis score aggregation = heuristic ranking, not truth selection;
 - entropy/convergence prototypes expose descriptive numeric mechanisms only.
 
-## 13. Scientific-integrity invariants
+## 15. 2026-08-26 research alignment
+
+Three recent signals reinforce the engineering direction without serving as external certification:
+
+- **Artifact-centered Claim-aware Observability for Autonomous Scientific Agents** (arXiv:2608.18312) argues that model-call logs are insufficient and that scientific agents need portable artifact/claim lineage as an audit layer.
+- **EarthVerse** (arXiv:2608.23525) evaluates scientific agents through package-scoped investigations and reports a large gap between completing individual answer units and maintaining an end-to-end consistent chain across evidence, units, calculations and interpretation.
+- Nature Computational Science's **Responsible and transparent use of AI in scientific publishing** (20 Aug 2026) emphasizes transparency, accountability and human oversight as AI becomes integrated through the research lifecycle.
+
+This repository responds narrowly: make claim/evidence relations and provider/review context inspectable without treating those records as truth.
+
+## 16. Scientific-integrity invariants
 
 1. Structured output is not truthful output by definition.
 2. Runtime-policy success is not scientific validity.
 3. Numerical convergence is not epistemic certainty.
 4. Bounded heuristic score is not probability unless independently calibrated and validated.
-5. Recovery success is not independent reproduction.
-6. Trace hash consistency is not an externally anchored immutable log.
-7. Provenance is not truth.
-8. Experimental code is not an integrated capability merely because it exists or runs.
+5. Claim indexing is not truth adjudication.
+6. Provider/model identity is not output validity.
+7. Human review is not peer review or scientific correctness.
+8. Recovery success is not independent reproduction.
+9. Trace hash consistency is not an externally anchored immutable log.
+10. Provenance is not truth.
+11. Experimental code is not an integrated capability merely because it exists or runs.
 
-## 14. Primary references
+## 17. Primary references
 
-Rechecked 2026-08-24:
+Rechecked through 2026-08-26:
 
 - RO-Crate 1.3: https://www.researchobject.org/ro-crate/1.3/
 - FAIR Principle R1.2: https://www.go-fair.org/fair-principles/r1-2-metadata-associated-detailed-provenance/
 - OpenTelemetry GenAI semantic conventions: https://github.com/open-telemetry/semantic-conventions-genai
 - W3C PROV overview: https://www.w3.org/TR/prov-overview/
+- Nature Computational Science, *Provenance grounds trust in autonomous science*: https://www.nature.com/articles/s43588-026-01035-4
+- Nature Computational Science, *Responsible and transparent use of AI in scientific publishing*: https://www.nature.com/articles/s43588-026-01043-4
+- *Artifact-centered Claim-aware Observability for Autonomous Scientific Agents*: https://arxiv.org/abs/2608.18312
+- *EarthVerse: Benchmarking Scientific Agents Across Dynamic Earth Systems and Natural Hazards*: https://arxiv.org/abs/2608.23525
