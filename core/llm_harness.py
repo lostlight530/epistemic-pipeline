@@ -6,6 +6,10 @@ injected ``LLMProvider``. The repository ships only ``MockProvider`` as a
 deterministic offline fixture. Mock outputs are test/development structures and
 must never be presented as evidence of real model reasoning or scientific
 validation.
+
+Providers may expose bounded process-disclosure metadata through ``describe``.
+The disclosure is audit context only: a provider/model label does not prove
+that an output is correct, authentic, reproducible, or scientifically valid.
 """
 
 from __future__ import annotations
@@ -28,6 +32,27 @@ class LLMProvider(ABC):
         self, system: str, user: str, schema: Optional[dict] = None
     ) -> Dict[str, Any]:
         raise NotImplementedError
+
+    def describe(self) -> Dict[str, Any]:
+        """Return optional human-auditable provider/model metadata.
+
+        External integrations can override this method. The default deliberately
+        records only the Python provider class because the base protocol cannot
+        infer a vendor, model, deployment, or version without risking false
+        provenance.
+        """
+        return {
+            "provider_class": type(self).__name__,
+            "provider": None,
+            "model": None,
+            "version": None,
+            "mode": "injected_provider",
+            "external_model_call": None,
+            "metadata_semantics": (
+                "provider-supplied process disclosure; unset fields are unknown, "
+                "not evidence of absence"
+            ),
+        }
 
 
 class MockProvider(LLMProvider):
@@ -63,6 +88,19 @@ class MockProvider(LLMProvider):
             "audit_report",
         ],
     }
+
+    def describe(self) -> Dict[str, Any]:
+        return {
+            "provider_class": type(self).__name__,
+            "provider": "epistemic-pipeline",
+            "model": None,
+            "version": "mock-fixture@1",
+            "mode": "synthetic_fixture",
+            "external_model_call": False,
+            "metadata_semantics": (
+                "deterministic local fixture; not an external model and not scientific evidence"
+            ),
+        }
 
     def complete(
         self, system: str, user: str, schema: Optional[dict] = None
@@ -173,6 +211,26 @@ class LLMHarness:
     def __init__(self, roles_dir: str = "roles", provider: Optional[LLMProvider] = None):
         self.roles_dir = Path(roles_dir)
         self.provider = provider
+
+    def describe_provider(self, mock: bool = True) -> Dict[str, Any]:
+        """Return bounded process-disclosure metadata for the active provider path."""
+        provider: Optional[LLMProvider] = self.provider
+        if provider is None and mock:
+            provider = MockProvider()
+        if provider is None:
+            return {
+                "provider_class": None,
+                "provider": None,
+                "model": None,
+                "version": None,
+                "mode": "not_configured",
+                "external_model_call": None,
+                "metadata_semantics": "no provider was configured for this harness",
+            }
+        record = provider.describe()
+        if not isinstance(record, dict):
+            raise TypeError("LLMProvider.describe must return a dict")
+        return dict(record)
 
     def load_role_prompt(self, role_name: str) -> str:
         path = self.roles_dir / f"{role_name}.md"
