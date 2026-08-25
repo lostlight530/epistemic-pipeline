@@ -60,6 +60,23 @@ A policy pass means the declared predicate passed. It does not mean the report i
 python3 core/run_bundle.py graphs/linear.yaml
 ```
 
+Optionally declare the run/handoff's human-review state:
+
+```bash
+python3 core/run_bundle.py graphs/linear.yaml --human-review reviewed
+```
+
+Allowed values:
+
+```text
+reviewed
+partial
+not_reviewed
+not_declared
+```
+
+The default is `not_declared`; missing review metadata is never inferred as reviewed.
+
 The wrapper composes available artifacts:
 
 ```text
@@ -74,11 +91,67 @@ engine result
 
 `epistemic-pipeline/prov@2` records W3C PROV-aligned Entity / Activity / SoftwareAgent relationships in project JSON. It stores canonical hashes and structural metadata rather than duplicating full node payloads by default.
 
+### Claim-aware index
+
+The run bundle scans structured `claims_registry` and `evidence_chains` outputs and builds:
+
+```text
+epistemic-pipeline/claim-index@1
+```
+
+Example logical shape:
+
+```json
+{
+  "claim_id": "c1",
+  "state_id": "analyze",
+  "claim_record_sha256": "sha256:...",
+  "source_refs": ["src_001"],
+  "evidence_refs": ["src_001#seg_001"],
+  "relations": ["declared_by_fixture"]
+}
+```
+
+The Evidence Envelope does **not** embed claim prose. The index is for discoverability/audit/handoff, not truth adjudication.
+
+```text
+claim hash ≠ claim truth
+source ref ≠ source credibility
+evidence ref ≠ evidence sufficiency
+```
+
+### Provider disclosure
+
+`LLMProvider.describe()` can expose bounded process metadata for an injected provider. The base class leaves provider/model/version unknown rather than guessing.
+
+`MockProvider` explicitly declares itself as a local synthetic fixture with:
+
+```text
+external_model_call: false
+```
+
+Provider/model metadata is not evidence of scientific validity or output authenticity.
+
 ### Evidence Envelope
 
-`epistemic-pipeline/evidence-envelope@1` references graph / trace / checkpoint / provenance files with SHA-256 identity and declares score/reproducibility/scientific-validity boundaries for downstream tools.
+`epistemic-pipeline/evidence-envelope@2` references graph / trace / checkpoint / provenance files with SHA-256 identity and adds:
+
+```text
+claim_observability
+process_disclosure
+```
+
+The envelope declares score/reproducibility/scientific-validity boundaries for downstream tools and keeps:
+
+```text
+payloads_embedded: false
+claim_observability.payload_text_embedded: false
+scientific_validity_claim: false
+```
 
 It is a project interchange object, not an external certification format.
+
+A downstream figure recipe can reference this envelope and use its claim IDs, for example through `sci-render-kit/figure-claim-binding@1`, without requiring direct runtime coupling.
 
 ## Score semantics
 
@@ -98,4 +171,4 @@ python -m pip install pyyaml
 make test
 ```
 
-The command is a local maintenance aid. No GitHub workflow is required by the repository architecture.
+The command is a local maintenance aid. No GitHub workflow is required by the repository architecture, and this 2026-08-26 maintenance pass does not use test execution as its completion criterion.
