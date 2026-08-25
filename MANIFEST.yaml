@@ -1,20 +1,22 @@
 name: epistemic-pipeline
 purpose: Evidence-aware state-machine execution for research workflows | 面向科研工程的状态机执行、证据关系、运行时约束、恢复与溯源层
 
-architecture_version: "2026-08-24"
+architecture_version: "2026-08-26"
 
 principles:
   - 状态机优先: discover -> analyze -> verify -> synthesize -> archive 是规范研究状态
   - DAG执行: 线性与并行由依赖图计算，不靠固定 Agent 顺序
   - 图身份: checkpoint 同时绑定 graph_id 与 canonical graph SHA-256
   - Provider解耦: LLMProvider 协议与 StateMachineEngine 分离
+  - Provider披露: LLMProvider.describe 可提供声明式 provider/model/version 元数据；未知字段不猜测
   - 运行时约束: state 使用 machine-readable runtime_policies，文本 rule 不参与执行
   - 失败显式: 未知 policy check、永久错误、跨图续跑与未接入能力 fail-closed
   - score边界: [0,1] 是 bounded heuristic score，不自动解释为概率
   - 可观测: 项目 JSONL 可复用适用 OTel GenAI Development 命名，但不冒充 OTel exporter/span
+  - claim审计: claim-index 只保留 claim identity + source/evidence refs，不复制 claim 正文或冒充 truth graph
   - 可溯源: PROV-aligned lineage 与 Evidence Envelope 分离
   - 内容最小暴露: provenance/evidence 默认记录 hash + 结构元数据，不复制研究 payload
-  - 科学边界: structured output / policy pass / numerical convergence / provenance 均不等于科学真值
+  - 科学边界: structured output / policy pass / numerical convergence / provenance / human review 均不等于科学真值
 
 states: [discover, analyze, verify, synthesize, archive]
 
@@ -38,6 +40,7 @@ engine:
   profile: epistemic-pipeline/engine@2
   entrypoint: python3 core/engine.py run <graph>
   provider_protocol: LLMProvider.complete(system, user, schema) -> dict
+  provider_disclosure_hook: LLMProvider.describe() -> dict
   default_provider: deterministic_mock
   real_provider_builtin: false
 
@@ -90,6 +93,12 @@ observability:
     sdk_dependency: false
     local_identity_fields: [epistemic.run.id, epistemic.node.id, epistemic.stage]
     local_run_id_is_provider_conversation_id: false
+  claim_index:
+    profile: epistemic-pipeline/claim-index@1
+    source_fields: [claims_registry, evidence_chains]
+    emitted_fields: [claim_id, state_id, claim_record_sha256, source_refs, evidence_refs, relations]
+    claim_text_embedded: false
+    truth_graph_claim: false
 
 provenance:
   profile: epistemic-pipeline/prov@2
@@ -102,18 +111,31 @@ provenance:
   graph_identity: [canonical_sha256, file_sha256]
   node_output_identity: canonical_sha256
 
+process_disclosure:
+  profile: epistemic-pipeline/process-disclosure@1
+  provider_source: LLMProvider.describe
+  human_review_values: [reviewed, partial, not_reviewed, not_declared]
+  human_review_default: not_declared
+  peer_review_claim: false
+  authorship_claim: false
+  scientific_validity_claim: false
+
 evidence_envelope:
-  profile: epistemic-pipeline/evidence-envelope@1
+  profile: epistemic-pipeline/evidence-envelope@2
   output_dir: evidence/
   entrypoint: python3 core/run_bundle.py <graph>
   artifact_kinds: [graph, trace, checkpoint, provenance]
+  claim_observability_profile: epistemic-pipeline/claim-index@1
+  process_disclosure_profile: epistemic-pipeline/process-disclosure@1
   payloads_embedded: false
+  claim_text_embedded: false
   reproducibility_default: R1
   scientific_validity_claim: false
 
 research_contract:
   file: RESEARCH_CONTRACT.md
   status: active
+  companion_claim_audit: CLAIM_AUDIT_CONTRACT.md
   local_reproducibility_levels: [R0, R1, R2, R3]
   note: R3 requires an actual separate rerun and declared comparison criterion
 
@@ -123,7 +145,10 @@ interoperability_targets:
     profile: epistemic-pipeline/prov@2
   evidence_handoff:
     status: implemented_profile
-    profile: epistemic-pipeline/evidence-envelope@1
+    profile: epistemic-pipeline/evidence-envelope@2
+  claim_audit:
+    status: implemented_profile
+    profile: epistemic-pipeline/claim-index@1
   ro_crate:
     status: proposed_interoperability
     version: "1.3"
