@@ -1,6 +1,6 @@
 # Architecture — Epistemic Pipeline
 
-> Calibrated 2026-08-24. This document describes repository runtime semantics, not GitHub platform governance.
+> Calibrated 2026-08-26. This document describes repository runtime semantics, not GitHub platform governance.
 
 ## 1. Thesis: research execution is an evidence-bearing state-transition system
 
@@ -13,11 +13,13 @@ The repository separates concerns that generic “multi-agent workflow” langua
 5. **score semantics** — what bounded numerical signals mean and do not mean;
 6. **recovery identity** — which graph definition a checkpoint belongs to;
 7. **lineage** — how graph, node outputs, trace and checkpoint relate;
-8. **handoff** — how a downstream tool can reference the run without copying payloads.
+8. **claim observability** — which claim identities point to which source/evidence refs;
+9. **process disclosure** — what provider/model and human-review context is explicitly declared;
+10. **handoff** — how a downstream tool can reference the run without copying payloads.
 
 The main design question is therefore:
 
-> Can a run explain its inputs, transitions, constraints, numerical semantics, recovery identity and evidence artifacts without pretending that process correctness equals scientific truth?
+> Can a run explain its inputs, transitions, constraints, numerical semantics, recovery identity, claim/evidence relationships and process context without pretending that process correctness equals scientific truth?
 
 ## 2. Canonical runtime
 
@@ -40,7 +42,9 @@ The main design question is therefore:
              ↓
 [Run Bundle]
      ├─ PROV-aligned lineage @2
-     └─ Evidence Envelope @1
+     ├─ Claim Index @1
+     ├─ Process Disclosure @1
+     └─ Evidence Envelope @2
 ```
 
 The modules remain separable. `run_bundle.py` composes them; it does not redefine scientific validity.
@@ -77,9 +81,14 @@ Legacy checkpoints without `graph_sha256` are intentionally rejected as ambiguou
 
 ```text
 LLMProvider.complete(system, user, schema) -> dict
+LLMProvider.describe() -> dict
 ```
 
-`MockProvider` is a deterministic fixture. It is not evidence of real model performance.
+`complete` is the structured execution contract. `describe` is a bounded process-disclosure hook.
+
+The base `describe` implementation only knows the Python provider class and leaves vendor/model/version unknown. External providers can override it. Unknown metadata is left unset rather than guessed.
+
+`MockProvider` is a deterministic fixture and explicitly declares that it does not perform an external model call. It is not evidence of real model performance.
 
 State YAML defines role bindings, transition descriptions, outputs and active `runtime_policies`. Human-readable `entry_condition`, `exit_condition`, `transition.condition` and `rule` strings remain explanatory metadata unless a corresponding executable mechanism exists.
 
@@ -194,14 +203,80 @@ The serialization is project-owned JSON. It is **not PROV-O RDF**.
 
 The profile records canonical/file graph hashes, node-output hashes, stage/status metadata and trace/checkpoint hashes without embedding complete research payloads by default.
 
-## 10. Evidence Envelope
+## 10. Claim-aware observability
+
+`core/run_bundle.py` derives a compact index from structured `claims_registry` and `evidence_chains` outputs:
+
+```text
+epistemic-pipeline/claim-index@1
+```
+
+Each index entry can include:
+
+```text
+claim_id
+state_id
+claim_record_sha256
+source_refs[]
+evidence_refs[]
+relations[]
+```
+
+The envelope intentionally excludes claim prose. The original structured outputs remain in their normal run/checkpoint paths.
+
+This is a scientific-audit index, not a truth graph:
+
+```text
+claim hash ≠ semantic truth
+source ref ≠ source credibility
+evidence ref ≠ evidence sufficiency
+relation label ≠ verified entailment
+```
+
+The separation responds to a practical observability problem: operation telemetry alone cannot tell a downstream tool which scientific claim is attached to which evidence reference.
+
+## 11. Process disclosure
+
+The run bundle can preserve provider and human-review context through:
+
+```text
+epistemic-pipeline/process-disclosure@1
+```
+
+Provider metadata comes from `LLMProvider.describe()`. Human review is explicitly supplied through:
+
+```bash
+python3 core/run_bundle.py graphs/linear.yaml --human-review reviewed
+```
+
+Allowed values:
+
+```text
+reviewed
+partial
+not_reviewed
+not_declared
+```
+
+The default is `not_declared`.
+
+This is intentionally weaker than an authorship or peer-review model:
+
+```text
+provider/model identity ≠ output validity
+human review ≠ peer review
+human review ≠ truth
+process disclosure ≠ publisher compliance
+```
+
+## 12. Evidence Envelope
 
 PROV answers lineage questions. A cross-tool handoff needs a smaller project-level index.
 
 `core/evidence_envelope.py` implements:
 
 ```text
-epistemic-pipeline/evidence-envelope@1
+epistemic-pipeline/evidence-envelope@2
 ```
 
 The envelope references available:
@@ -213,18 +288,35 @@ checkpoint
 provenance
 ```
 
-with SHA-256 identity plus profile and semantic declarations. It explicitly records:
+with SHA-256 identity plus profile and semantic declarations. Version 2 also carries:
+
+```text
+claim_observability
+process_disclosure
+```
+
+and explicitly records:
 
 ```text
 confidence_semantics
 reproducibility.level = R1
 scientific_validity_claim = false
 payloads_embedded = false
+claim_observability.payload_text_embedded = false
 ```
 
 This is the preferred boundary for downstream research tooling such as `sci-render-kit`; it does not require direct runtime coupling between repositories.
 
-## 11. Experimental modules
+## 13. Why the 2026-08-26 delta matters
+
+Two recent research directions make the distinction between telemetry and scientific auditability concrete:
+
+- *Artifact-centered Claim-aware Observability for Autonomous Scientific Agents* argues that model-call logging alone is insufficient and that claim/artifact relations should become first-class audit objects.
+- *EarthVerse* evaluates scientific agents on package-scoped investigations and reports that systems can complete many local answer units while still failing strict end-to-end consistency across evidence, units, calculations and interpretation.
+
+The architectural response here is deliberately bounded: do not add another generic observability stack; add the missing **claim/evidence reference index** and **declared process context** alongside existing trace and provenance layers.
+
+## 14. Experimental modules
 
 The following remain outside the canonical engine:
 
@@ -239,30 +331,33 @@ The following remain outside the canonical engine:
 
 Names are compatibility surfaces, not capability proofs.
 
-## 12. Cross-repository research architecture
+## 15. Cross-repository research architecture
 
 The three research repositories form a conceptual chain:
 
 ```text
 auto-doc-engine
-  research material / artifact identity
+  research material / artifact identity / declared process context
         ↓
 epistemic-pipeline
-  claims / evidence / conflicts / bounded scores / lineage
+  claims / evidence / conflicts / bounded scores / lineage / provider disclosure
         ↓
 sci-render-kit
-  scientific communication / uncertainty / accessibility / figure provenance
+  scientific communication / uncertainty / claim binding / accessibility / figure provenance
 ```
 
 The repositories remain independently runnable. Interoperability is expressed through artifacts and contracts, not hidden imports.
 
-## 13. Scientific-integrity invariants
+## 16. Scientific-integrity invariants
 
 ```text
 Structured output ≠ truthful output
 Runtime policy pass ≠ scientific validity
 Heuristic score ≠ calibrated probability
 Numerical convergence ≠ epistemic certainty
+Claim index ≠ truth graph
+Provider/model identity ≠ output validity
+Human review ≠ peer review
 Trace integrity ≠ immutable external audit log
 Provenance ≠ truth
 Checkpoint resume ≠ independent reproduction
