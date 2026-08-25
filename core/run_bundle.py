@@ -5,10 +5,12 @@
 adds two distinct evidence layers:
 
 - ``epistemic-pipeline/prov@2`` for PROV-aligned lineage relationships;
-- ``epistemic-pipeline/evidence-envelope@1`` for cross-repository handoff.
+- ``epistemic-pipeline/evidence-envelope@2`` for cross-repository handoff,
+  including a payload-minimizing claim index and process disclosure.
 
 Neither layer embeds full node payloads by default or claims scientific truth,
-external standards certification, or independent reproduction.
+external standards certification, authorship adjudication, peer review, or
+independent reproduction.
 """
 
 from __future__ import annotations
@@ -18,7 +20,7 @@ import json
 import sys
 import uuid
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, Iterable, Optional
 
 import yaml
 
@@ -35,6 +37,8 @@ from core.provenance import (
 )
 from core.run_tracer import RunTracer
 
+HUMAN_REVIEW_VALUES = ("reviewed", "partial", "not_reviewed", "not_declared")
+
 
 def _load_graph(path: str) -> dict:
     graph_path = Path(path)
@@ -47,6 +51,120 @@ def _load_graph(path: str) -> dict:
     return data
 
 
+def _string_list(value: Any) -> list[str]:
+    if not isinstance(value, (list, tuple, set)):
+        return []
+    result = []
+    seen = set()
+    for item in value:
+        text = str(item).strip()
+        if text and text not in seen:
+            result.append(text)
+            seen.add(text)
+    return result
+
+
+def _build_claim_index(run_result: dict) -> list[dict]:
+    """Extract claim identity/evidence refs without embedding claim prose.
+
+    The run's full outputs remain in their existing execution/checkpoint paths.
+    This index is intentionally small so downstream tools can discover claim to
+    evidence relationships without turning the Evidence Envelope into another
+    copy of every provider payload.
+    """
+    claims: Dict[str, dict] = {}
+    evidence_refs: Dict[str, set[str]] = {}
+    relations: Dict[str, set[str]] = {}
+
+    results = run_result.get("results") or {}
+    if not isinstance(results, dict):
+        return []
+
+    for state_id, node_result in results.items():
+        if not isinstance(node_result, dict):
+            continue
+        outputs = node_result.get("outputs") or {}
+        if not isinstance(outputs, dict):
+            continue
+
+        for claim in outputs.get("claims_registry") or []:
+            if not isinstance(claim, dict):
+                continue
+            claim_id = str(claim.get("claim_id") or "").strip()
+            if not claim_id:
+                continue
+            entry = claims.setdefault(
+                claim_id,
+                {
+                    "claim_id": claim_id,
+                    "state_id": str(state_id),
+                    "claim_record_sha256": canonical_sha256(claim),
+                    "source_refs": [],
+                },
+            )
+            merged_sources = set(entry.get("source_refs") or [])
+            merged_sources.update(_string_list(claim.get("source_refs")))
+            entry["source_refs"] = sorted(merged_sources)
+
+        for chain in outputs.get("evidence_chains") or []:
+            if not isinstance(chain, dict):
+                continue
+            claim_id = str(chain.get("claim_id") or "").strip()
+            if not claim_id:
+                continue
+            evidence_refs.setdefault(claim_id, set()).update(
+                _string_list(chain.get("evidence_refs"))
+            )
+            relation = str(chain.get("relation") or "").strip()
+            if relation:
+                relations.setdefault(claim_id, set()).add(relation)
+
+    index = []
+    for claim_id in sorted(set(claims) | set(evidence_refs)):
+        base = claims.get(
+            claim_id,
+            {
+                "claim_id": claim_id,
+                "state_id": None,
+                "claim_record_sha256": None,
+                "source_refs": [],
+            },
+        )
+        index.append(
+            {
+                **base,
+                "evidence_refs": sorted(evidence_refs.get(claim_id, set())),
+                "relations": sorted(relations.get(claim_id, set())),
+            }
+        )
+    return index
+
+
+def _provider_disclosure(engine: Optional[StateMachineEngine]) -> dict:
+    if engine is None:
+        return {
+            "provider_class": None,
+            "provider": None,
+            "model": None,
+            "version": None,
+            "mode": "engine_not_initialized",
+            "external_model_call": None,
+            "metadata_semantics": "engine initialization failed before provider disclosure was available",
+        }
+    try:
+        return engine.harness.describe_provider(mock=engine.mock_llm)
+    except Exception as exc:
+        return {
+            "provider_class": None,
+            "provider": None,
+            "model": None,
+            "version": None,
+            "mode": "disclosure_error",
+            "external_model_call": None,
+            "metadata_semantics": f"provider disclosure unavailable: {type(exc).__name__}",
+        }
+
+
 def run_bundle(
     graph_path: str,
     resume_from: Optional[str] = None,
@@ -54,12 +172,18 @@ def run_bundle(
     checkpoint_dir: str = "checkpoints",
     provenance_dir: str = "provenance",
     evidence_dir: str = "evidence",
+    human_review: str = "not_declared",
 ) -> dict:
     """Run one graph and write bounded provenance/evidence sidecars."""
+    if human_review not in HUMAN_REVIEW_VALUES:
+        raise ValueError(
+            f"human_review must be one of {HUMAN_REVIEW_VALUES}, got {human_review!r}"
+        )
+
     graph_data = _load_graph(graph_path)
     graph_canonical_sha256 = canonical_sha256(graph_data)
     graph_file_sha256 = file_sha256(graph_path)
-    engine = None
+    engine: Optional[StateMachineEngine] = None
 
     try:
         engine = StateMachineEngine(
@@ -111,6 +235,8 @@ def run_bundle(
     }
     provenance_path = write_provenance(provenance, provenance_dir)
 
+    claim_index = _build_claim_index(result)
+    provider_disclosure = _provider_disclosure(engine)
     envelope = build_evidence_envelope(
         run_id=run_id,
         graph_id=graph_data.get("id"),
@@ -122,12 +248,16 @@ def run_bundle(
         checkpoint_path=checkpoint_ref,
         provenance_path=provenance_path,
         trace_chain_internal_valid=trace_chain_valid,
+        claim_index=claim_index,
+        provider_disclosure=provider_disclosure,
+        human_review=human_review,
     )
     evidence_path = write_evidence_envelope(envelope, evidence_dir)
 
     result["provenance_path"] = provenance_path
     result["evidence_envelope_path"] = evidence_path
     result["graph_file_sha256"] = graph_file_sha256
+    result["claim_index_count"] = len(claim_index)
     return result
 
 
@@ -135,7 +265,7 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Run an epistemic graph and emit PROV-aligned lineage plus a "
-            "project evidence envelope"
+            "claim-aware project evidence envelope"
         )
     )
     parser.add_argument("graph", help="path to an executable graph YAML")
@@ -144,6 +274,12 @@ def main(argv=None) -> int:
     parser.add_argument("--checkpoint-dir", default="checkpoints")
     parser.add_argument("--provenance-dir", default="provenance")
     parser.add_argument("--evidence-dir", default="evidence")
+    parser.add_argument(
+        "--human-review",
+        choices=HUMAN_REVIEW_VALUES,
+        default="not_declared",
+        help="declared human-review state for process disclosure; not peer-review status",
+    )
     args = parser.parse_args(argv)
 
     result = run_bundle(
@@ -153,6 +289,7 @@ def main(argv=None) -> int:
         checkpoint_dir=args.checkpoint_dir,
         provenance_dir=args.provenance_dir,
         evidence_dir=args.evidence_dir,
+        human_review=args.human_review,
     )
     print(
         json.dumps(
@@ -163,6 +300,7 @@ def main(argv=None) -> int:
                 "graph_file_sha256": result.get("graph_file_sha256"),
                 "provenance_path": result.get("provenance_path"),
                 "evidence_envelope_path": result.get("evidence_envelope_path"),
+                "claim_index_count": result.get("claim_index_count", 0),
                 "errors": result.get("errors", []),
             },
             ensure_ascii=False,
