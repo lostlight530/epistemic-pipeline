@@ -2,19 +2,25 @@
 """Versioned evidence envelope for epistemic-pipeline research runs.
 
 The envelope is a small project-owned interchange object that references the
-run's graph, trace, checkpoint and provenance artifacts without duplicating
-node payloads. It is intentionally separate from W3C PROV semantics: PROV
-expresses lineage relationships, while this envelope expresses the repository's
-cross-tool handoff contract and scientific-integrity boundaries.
+run's graph, trace, checkpoint, provenance and claim-verification artifacts
+without duplicating node payloads. It is intentionally separate from W3C PROV
+semantics: PROV expresses lineage relationships, while this envelope expresses
+the repository's cross-tool handoff contract and scientific-integrity
+boundaries.
 
-Version 2 adds two bounded audit surfaces without turning the envelope into a
-full research database:
+Version 2 retains two bounded audit surfaces introduced in the 2026-08 refresh:
 
 - a claim-aware index containing claim identities plus source/evidence refs,
   never full claim prose;
 - process disclosure for the provider path and declared human-review state.
 
-Neither surface establishes truth, authorship, peer review, or model validity.
+The 2026-08-27 consolidation adds compatible references to a separate
+``claim-verification@1`` sidecar and to optional upstream artifact/evidence
+records. These references are deliberately additive: the Evidence Envelope
+stays an index rather than becoming another research database.
+
+None of these surfaces establishes truth, authorship, peer review, source
+credibility, model validity, or scientific correctness.
 """
 
 from __future__ import annotations
@@ -24,12 +30,15 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, Optional
+from urllib.parse import urlsplit
 
 from core.provenance import file_sha256
 
 PROFILE = "epistemic-pipeline/evidence-envelope@2"
 CLAIM_INDEX_PROFILE = "epistemic-pipeline/claim-index@1"
+CLAIM_VERIFICATION_PROFILE = "epistemic-pipeline/claim-verification@1"
 PROCESS_DISCLOSURE_PROFILE = "epistemic-pipeline/process-disclosure@1"
+UPSTREAM_REFERENCE_PROFILE = "epistemic-pipeline/upstream-reference@1"
 HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
 
 
@@ -44,6 +53,40 @@ def _artifact_ref(kind: str, path: Optional[str]) -> Optional[dict]:
     if not digest:
         return None
     return {"kind": kind, "path": str(path), "file_sha256": digest}
+
+
+def _reference(kind: str, value: Any) -> Optional[dict]:
+    """Normalize local files or opaque references without network access."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    record = {"kind": kind, "ref": text}
+    digest = file_sha256(text)
+    if digest:
+        record["resolution"] = "local-file"
+        record["file_sha256"] = digest
+        return record
+    parsed = urlsplit(text)
+    record["resolution"] = (
+        "opaque-uri-not-dereferenced" if parsed.scheme else "opaque-reference-not-resolved"
+    )
+    return record
+
+
+def _reference_list(kind: str, values: Optional[Iterable[Any]]) -> list[dict]:
+    records: list[dict] = []
+    seen: set[str] = set()
+    for value in values or []:
+        text = str(value).strip()
+        if not text or text in seen:
+            continue
+        record = _reference(kind, text)
+        if record:
+            records.append(record)
+            seen.add(text)
+    return records
 
 
 def _string_list(value: Any) -> list[str]:
@@ -109,8 +152,11 @@ def build_evidence_envelope(
     provenance_path: Optional[str],
     trace_chain_internal_valid: Optional[bool],
     claim_index: Optional[Iterable[dict]] = None,
+    claim_audit_path: Optional[str] = None,
     provider_disclosure: Optional[Dict[str, Any]] = None,
     human_review: str = "not_declared",
+    upstream_artifact_refs: Optional[Iterable[str]] = None,
+    upstream_evidence_refs: Optional[Iterable[str]] = None,
 ) -> dict:
     """Build the project-owned handoff envelope for one run."""
     if human_review not in HUMAN_REVIEW_VALUES:
@@ -124,12 +170,14 @@ def build_evidence_envelope(
         ("trace", trace_path),
         ("checkpoint", checkpoint_path),
         ("provenance", provenance_path),
+        ("claim-audit", claim_audit_path),
     ):
         ref = _artifact_ref(kind, path)
         if ref:
             artifacts.append(ref)
 
     claims = _normalize_claim_index(claim_index)
+    claim_audit_ref = _reference("claim-verification", claim_audit_path)
 
     return {
         "profile": PROFILE,
@@ -155,7 +203,9 @@ def build_evidence_envelope(
             "provenance": "epistemic-pipeline/prov@2",
             "confidence": "epistemic-pipeline/confidence-heuristic@1",
             "claim_index": CLAIM_INDEX_PROFILE,
+            "claim_verification": CLAIM_VERIFICATION_PROFILE,
             "process_disclosure": PROCESS_DISCLOSURE_PROFILE,
+            "upstream_reference": UPSTREAM_REFERENCE_PROFILE,
         },
         "integrity": {
             "trace_chain_internal_valid": trace_chain_internal_valid,
@@ -164,14 +214,25 @@ def build_evidence_envelope(
                 "not externally anchored tamper-proof logging"
             ),
         },
+        "upstream_inputs": {
+            "profile": UPSTREAM_REFERENCE_PROFILE,
+            "artifact_refs": _reference_list("upstream-artifact", upstream_artifact_refs),
+            "evidence_refs": _reference_list("upstream-evidence", upstream_evidence_refs),
+            "resolution_semantics": (
+                "existing local files are hashed; URI/opaque references are retained without dereferencing"
+            ),
+            "scientific_validity_inherited": False,
+        },
         "claim_observability": {
             "profile": CLAIM_INDEX_PROFILE,
             "claims": claims,
             "claim_count": len(claims),
+            "verification_record": claim_audit_ref,
+            "verification_profile": CLAIM_VERIFICATION_PROFILE,
             "payload_text_embedded": False,
             "semantics": (
                 "claim identities plus declared source/evidence references for audit and handoff; "
-                "not truth adjudication, citation verification, or a complete claim database"
+                "the separate verification record preserves checks/conflicts without converting them into truth labels"
             ),
         },
         "process_disclosure": {
