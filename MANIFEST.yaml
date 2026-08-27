@@ -1,180 +1,213 @@
 name: epistemic-pipeline
-purpose: Evidence-aware state-machine execution for research workflows | 面向科研工程的状态机执行、证据关系、运行时约束、恢复与溯源层
-
-architecture_version: "2026-08-26"
+purpose: evidence-aware state-machine execution for research workflows
+calibrated: "2026-08-27"
 
 principles:
-  - 状态机优先: discover -> analyze -> verify -> synthesize -> archive 是规范研究状态
-  - DAG执行: 线性与并行由依赖图计算，不靠固定 Agent 顺序
-  - 图身份: checkpoint 同时绑定 graph_id 与 canonical graph SHA-256
-  - Provider解耦: LLMProvider 协议与 StateMachineEngine 分离
-  - Provider披露: LLMProvider.describe 可提供声明式 provider/model/version 元数据；未知字段不猜测
-  - 运行时约束: state 使用 machine-readable runtime_policies，文本 rule 不参与执行
-  - 失败显式: 未知 policy check、永久错误、跨图续跑与未接入能力 fail-closed
-  - score边界: [0,1] 是 bounded heuristic score，不自动解释为概率
-  - 可观测: 项目 JSONL 可复用适用 OTel GenAI Development 命名，但不冒充 OTel exporter/span
-  - claim审计: claim-index 只保留 claim identity + source/evidence refs，不复制 claim 正文或冒充 truth graph
-  - 可溯源: PROV-aligned lineage 与 Evidence Envelope 分离
-  - 内容最小暴露: provenance/evidence 默认记录 hash + 结构元数据，不复制研究 payload
-  - 科学边界: structured output / policy pass / numerical convergence / provenance / human review 均不等于科学真值
+  - explicit_state_transition
+  - machine_readable_runtime_policy
+  - claim_evidence_conflict_separation
+  - bounded_heuristic_scores_not_probabilities
+  - recovery_identity_before_resume
+  - trace_provenance_claim_audit_are_distinct
+  - provenance_not_truth
+  - no_scientific_verdict_from_structure_alone
+  - stable_internal_identifiers_without_decorative_versions
+  - github_governance_separate_from_research_architecture
 
-states: [discover, analyze, verify, synthesize, archive]
+stable_profiles:
+  engine: epistemic-pipeline/engine
+  runtime_policy: epistemic-pipeline/runtime-policy
+  trace: epistemic-pipeline/trace
+  checkpoint: epistemic-pipeline/checkpoint
+  provenance: epistemic-pipeline/prov
+  confidence: epistemic-pipeline/confidence-heuristic
+  network_input: epistemic-pipeline/network-input
+  claim_index: epistemic-pipeline/claim-index
+  claim_verification: epistemic-pipeline/claim-verification
+  process_disclosure: epistemic-pipeline/process-disclosure
+  upstream_reference: epistemic-pipeline/upstream-reference
+  evidence_envelope: epistemic-pipeline/evidence-envelope
+  reference_rules: epistemic-pipeline/reference-rules
 
-roles:
-  implemented: [explorer, analyst, verifier, synthesizer, auditor]
-  binding: dynamic-per-state
-
-graphs:
-  executable: [linear, parallel, diamond]
-  experimental: [adaptive]
-  validation:
-    - duplicate_node_id
-    - unknown_dependency
-    - cycle
-    - reachability
-  identity:
-    human: graph_id
-    canonical: sha256_of_parsed_graph_structure
-
-engine:
-  profile: epistemic-pipeline/engine@2
-  entrypoint: python3 core/engine.py run <graph>
-  provider_protocol: LLMProvider.complete(system, user, schema) -> dict
-  provider_disclosure_hook: LLMProvider.describe() -> dict
-  default_provider: deterministic_mock
-  real_provider_builtin: false
-
-runtime_policy:
-  profile: epistemic-pipeline/runtime-policy@1
-  active_state_key: runtime_policies
-  evaluator: RuntimePolicyEvaluator
-  executable_definition: check + parameters
-  prose_rule_is_executable: false
-  compatibility:
-    class_name: Gatekeeper
-    method: check_quality_gates
-    state_key: quality_gates
-    status: deprecated_compatibility_only
-
-confidence:
-  profile: epistemic-pipeline/confidence-heuristic@1
-  range: [0.0, 1.0]
-  semantics: bounded weighted heuristic score; not calibrated probability
-  update: synchronous_iteration
-  convergence: numerical_delta_threshold_only
-  numpy_required: false
-  temperature_transform:
-    available: true
-    probability_calibration_claim_without_labelled_fit: false
-
-reliability:
-  retry: transient_errors_with_exponential_backoff_and_jitter
-  permanent_error: fail_fast
-  timeout: caller_timeout_does_not_kill_underlying_thread
-  checkpoint:
-    profile: epistemic-pipeline/checkpoint@2
-    output_dir: checkpoints/
-    atomic_write: true
-    identity_fields: [graph_id, graph_sha256]
-    legacy_checkpoint_without_digest: rejected_as_ambiguous
-    resume: successful_nodes_only_same_graph_digest
-
-observability:
+canonical_runtime:
+  graph:
+    module: core/dependency_graph.py
+    status: implemented
+    semantics: structural_dag_validation_and_ordering
+  engine:
+    module: core/engine.py
+    status: implemented
+    outputs_profile: epistemic-pipeline/engine
+  provider_contract:
+    module: core/llm_harness.py
+    status: implemented
+    built_in_real_provider: false
+    mock_provider:
+      mode: synthetic_fixture
+      model: null
+      version: null
+      external_model_call: false
+  runtime_policy:
+    module: core/gatekeeper.py
+    status: implemented
+    active_api: RuntimePolicyEvaluator
+    compatibility_names: [Gatekeeper, check_quality_gates, quality_gates]
+    unknown_check_behavior: fail_explicitly
+  confidence_network:
+    module: core/confidence_net.py
+    status: implemented
+    range: "[0,1]"
+    semantics: bounded_weighted_heuristic_not_calibrated_probability
+    convergence_truth_claim: false
+  calibration_transform:
+    module: core/calibration.py
+    status: implemented_transform
+    empirically_fitted_by_repository: false
+    probability_calibration_claim: false
   trace:
-    profile: epistemic-pipeline/trace@2
-    output_dir: traces/
-    format: project-jsonl
-    integrity: sha256_prev_hash_internal_sequence_consistency
+    module: core/run_tracer.py
+    status: implemented
+    profile: epistemic-pipeline/trace
+    sha256_previous_record_chain: true
     externally_anchored: false
-  otel_genai:
-    observed: "2026-08-24"
-    convention_status: Development
-    alignment: selected_naming_only
-    sdk_dependency: false
-    local_identity_fields: [epistemic.run.id, epistemic.node.id, epistemic.stage]
-    local_run_id_is_provider_conversation_id: false
-  claim_index:
-    profile: epistemic-pipeline/claim-index@1
-    source_fields: [claims_registry, evidence_chains]
-    emitted_fields: [claim_id, state_id, claim_record_sha256, source_refs, evidence_refs, relations]
-    claim_text_embedded: false
-    truth_graph_claim: false
+    opentelemetry_exporter: false
+  checkpoint:
+    module: core/engine.py
+    status: implemented
+    profile: epistemic-pipeline/checkpoint
+    resume_identity: [graph_id, graph_sha256]
+  provenance:
+    module: core/provenance.py
+    status: implemented
+    profile: epistemic-pipeline/prov
+    alignment: W3C_PROV_concepts
+    prov_o_rdf_serializer: false
+    full_w3c_serialization_conformance_claim: false
+  claim_verification:
+    module: core/claim_audit.py
+    status: implemented
+    profile: epistemic-pipeline/claim-verification
+    output_suffix: .claim-audit.json
+    payload_text_embedded: false
+    audit_states:
+      - indexed_only
+      - evidence_bound
+      - structurally_checked
+      - conflict_recorded
+      - structurally_checked_with_conflict
+    scientific_verdict_labels: false
+    truth_claim: false
+  evidence_envelope:
+    module: core/evidence_envelope.py
+    status: implemented
+    profile: epistemic-pipeline/evidence-envelope
+    references:
+      - graph
+      - trace
+      - checkpoint
+      - provenance
+      - claim_index
+      - claim_verification
+      - process_disclosure
+      - upstream_artifacts
+      - upstream_evidence
+    local_reference_hashing: sha256_when_file_exists
+    network_dereference: false
+  run_bundle:
+    module: core/run_bundle.py
+    status: implemented
+    outputs: [provenance, claim_audit, evidence_envelope]
+    upstream_reference_iterables_materialized_once: true
 
-provenance:
-  profile: epistemic-pipeline/prov@2
-  output_dir: provenance/
-  model: W3C-PROV-aligned-project-JSON
-  prov_namespace: http://www.w3.org/ns/prov#
-  core_terms: [Entity, Activity, SoftwareAgent, used, wasGeneratedBy, wasDerivedFrom, wasAssociatedWith]
-  rdf_serializer: false
-  payloads_embedded_by_default: false
-  graph_identity: [canonical_sha256, file_sha256]
-  node_output_identity: canonical_sha256
+claim_verification_semantics:
+  evidence_binding: declared_relationship_not_sufficiency
+  structural_observation: runtime_or_provider_observation_not_truth
+  conflict: disagreement_or_limitation_not_automatic_adjudication
+  initial_score: verify_stage_heuristic_observation
+  final_score: synthesize_stage_heuristic_observation
+  probability_calibration_claim: false
+  human_review_peer_review_equivalence: false
 
-process_disclosure:
-  profile: epistemic-pipeline/process-disclosure@1
-  provider_source: LLMProvider.describe
-  human_review_values: [reviewed, partial, not_reviewed, not_declared]
-  human_review_default: not_declared
-  peer_review_claim: false
-  authorship_claim: false
-  scientific_validity_claim: false
+interoperability:
+  upstream_auto_doc:
+    preferred_profile: auto-doc-engine/artifact-record
+    direct_runtime_coupling: false
+  downstream_sci_render:
+    preferred_profiles:
+      - sci-render-kit/figure-claim-audit
+      - sci-render-kit/figure-evidence
+    direct_runtime_coupling: false
+  open_telemetry_genai:
+    status: scoped_naming_alignment_only
+    reused_name: gen_ai.operation.name
+    exporter_implementation: false
+    conversation_id_mapping_claim: false
+  w3c_prov:
+    status: concept_alignment
+    prov_o_rdf: false
 
-evidence_envelope:
-  profile: epistemic-pipeline/evidence-envelope@2
-  output_dir: evidence/
-  entrypoint: python3 core/run_bundle.py <graph>
-  artifact_kinds: [graph, trace, checkpoint, provenance]
-  claim_observability_profile: epistemic-pipeline/claim-index@1
-  process_disclosure_profile: epistemic-pipeline/process-disclosure@1
-  payloads_embedded: false
-  claim_text_embedded: false
-  reproducibility_default: R1
-  scientific_validity_claim: false
+reproducibility_levels:
+  R0: traceable
+  R1: replay_addressable
+  R2: environment_bounded
+  R3: separate_rerun_plus_declared_comparison
+  automatic_r3_claim: false
+
+experimental_modules:
+  anti_entropy:
+    path: core/anti_entropy.py
+    semantics: normalized_shannon_entropy_indicator_window
+    physical_entropy_claim: false
+  convergence:
+    path: core/convergence.py
+    semantics: bounded_momentum_score_tracker
+    bayesian_belief_claim: false
+  infinite_regression:
+    path: core/infinite_regression.py
+    status: experimental
+  neuro_symbolic:
+    path: core/neuro_symbolic.py
+    status: experimental
+  perception:
+    path: core/perception.py
+    status: experimental
+  thread_collapse:
+    path: core/thread_collapse.py
+    status: experimental
 
 research_contract:
   file: RESEARCH_CONTRACT.md
-  status: active
-  companion_claim_audit: CLAIM_AUDIT_CONTRACT.md
-  local_reproducibility_levels: [R0, R1, R2, R3]
-  note: R3 requires an actual separate rerun and declared comparison criterion
+  claim_audit_contract: CLAIM_AUDIT_CONTRACT.md
+  four_day_consolidation: FOUR_DAY_CONSOLIDATION.md
+  frontier_alignment: FRONTIER_ALIGNMENT.md
 
-interoperability_targets:
-  prov:
-    status: implemented_profile
-    profile: epistemic-pipeline/prov@2
-  evidence_handoff:
-    status: implemented_profile
-    profile: epistemic-pipeline/evidence-envelope@2
-  claim_audit:
-    status: implemented_profile
-    profile: epistemic-pipeline/claim-index@1
-  ro_crate:
-    status: proposed_interoperability
-    version: "1.3"
-    note: this repository does not currently emit an RO-Crate
-
-validators:
-  - confidence.schema.yaml
-  - epistemic.rules.yaml
+external_research_calibration_2026_08:
+  - provenance_grounds_trust_in_autonomous_science
+  - responsible_transparent_ai_scientific_publishing
+  - artifact_centered_claim_aware_observability
+  - brain_researcher
+  - trajectories_to_evidence
+  - earthverse
+  note: design_calibration_only_not_external_certification
 
 research_software:
   citation: CITATION.cff
   cff_version: "1.2.0"
 
-runtime_dependencies:
-  required: [pyyaml]
-  numpy: not_required_by_current_core
-
 local_checks:
-  command: make test
   mode: manual_optional
-  note: local maintenance aid; not repository architecture or scientific validation
+  tests_run_for_2026_08_27_consolidation: false
+  github_actions: false
+  codeql_added: false
+  merge_gate: false
 
-experimental_modules:
-  anti_entropy: normalized_shannon_entropy_metric_window
-  convergence: momentum_style_bounded_heuristic_updater
-  infinite_regression: bounded_recursive_termination_controller
-  neuro_symbolic: caller_predicate_rule_dispatch
-  perception: signal_intake_prototypes_no_http_websocket_network_io
-  thread_collapse: bounded_hypothesis_score_aggregation
+scientific_boundaries:
+  provenance_is_truth: false
+  run_success_is_scientific_validity: false
+  runtime_policy_pass_is_scientific_validity: false
+  claim_index_is_truth_graph: false
+  claim_verification_is_scientific_verdict: false
+  heuristic_score_is_probability: false
+  convergence_is_certainty: false
+  human_review_is_peer_review: false
+  metadata_is_reproduction: false

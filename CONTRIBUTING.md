@@ -1,6 +1,6 @@
-# Contributing
+# Contributing — Epistemic Pipeline
 
-Changes should strengthen explicit research-execution semantics rather than only increase module count.
+Changes should strengthen explicit research-execution semantics, evidence traceability or honest boundaries rather than merely increase module count.
 
 ## Setup
 
@@ -8,48 +8,71 @@ Changes should strengthen explicit research-execution semantics rather than only
 python -m pip install pyyaml
 ```
 
-`make test` remains an optional local maintenance command. It is not repository architecture, GitHub merge policy, or scientific validation.
+Existing local checks may be used when useful, but they are optional maintenance aids. They are not GitHub merge gates or scientific validation.
 
-## Contribution rules
+## Contribution principles
 
-- Keep executable graph semantics explicit: duplicate IDs, missing dependencies, cycles and unreachable nodes must remain observable.
-- Checkpoint identity is content-sensitive: preserve `graph_id + graph_sha256` binding.
-- Current state definitions use `runtime_policies`; machine-readable `check` fields define executable behavior.
-- Do not parse human rule prose to invent execution semantics.
-- Historical `Gatekeeper` names are compatibility surfaces only; new code should use `RuntimePolicyEvaluator` language.
-- Provider integrations implement `LLMProvider`; do not put vendor SDK calls into `StateMachineEngine`.
-- External providers may override `LLMProvider.describe()` for bounded provider/model/version disclosure. Unknown metadata must remain unknown rather than guessed.
-- Deterministic mock outputs are fixtures, not evidence of real-model quality. `MockProvider` must continue to declare `external_model_call: false`.
-- Preserve bounded heuristic score semantics; do not relabel `[0,1]` as probability without calibration evidence.
-- Numerical convergence does not establish truth, consensus or robustness.
-- Preserve transient/permanent retry distinction and caller-side thread-timeout limitations.
-- Keep local run IDs separate from provider conversation/session identifiers.
-- `epistemic-pipeline/prov@2` is W3C PROV-aligned project JSON, not PROV-O RDF.
-- `epistemic-pipeline/claim-index@1` is an audit/reference index, not a truth graph. Source/evidence references do not prove credibility or sufficiency.
-- `epistemic-pipeline/process-disclosure@1` records provider and declared human-review context only; `reviewed` is not peer review.
-- `epistemic-pipeline/evidence-envelope@2` is a project handoff contract, not an external certification format.
-- Provenance/evidence defaults to hashes and structural metadata; full payload capture needs an explicit privacy design.
-- Claim text remains outside the Evidence Envelope by default; do not silently duplicate provider payloads into audit metadata.
-- Experimental modules and `adaptive.yaml` remain Experimental until deliberately integrated into the canonical engine.
-- Update README, ARCHITECTURE, RESEARCH_CONTRACT, CLAIM_AUDIT_CONTRACT, AGENTS, MANIFEST and examples when a public capability boundary changes.
+1. Change the smallest layer that owns the requirement.
+2. Keep graph/state/provider/policy/score/trace/provenance/claim-audit/handoff concerns separate.
+3. Fail explicitly for unsupported machine checks and ambiguous recovery identity.
+4. Keep provider/model/version metadata unknown when it is unknown.
+5. Never infer scientific truth from structural success.
+6. Keep experimental modules labelled experimental until deliberately integrated.
+7. Update authoritative documentation when public semantics change.
 
-## Research integrity
+## Stable internal identifiers
 
-A successful local run, claim index, provider disclosure, human-review declaration or policy evaluation may establish a narrow engineering property. It does not prove:
+Do not introduce decorative project versions such as `@1`, `@2`, `/v1`, or fake fixture/model versions.
+
+Use stable project identifiers such as:
 
 ```text
-source truth
-claim truth
-evidence sufficiency
-scientific validity
-probability calibration
-provider/model validity
-authorship
-peer review
-external service availability
-independent reproduction
+epistemic-pipeline/engine
+epistemic-pipeline/runtime-policy
+epistemic-pipeline/trace
+epistemic-pipeline/prov
+epistemic-pipeline/claim-verification
+epistemic-pipeline/evidence-envelope
 ```
 
-## Repository governance
+Preserve actual external standard versions where those standards define versions.
 
-Ordinary research-maintenance contributions must not introduce GitHub Actions, CodeQL, dependency-update bots or merge-gate assumptions unless repository governance is explicitly being redesigned as a separate task.
+## Claim/evidence changes
+
+When changing claim/evidence structures:
+
+- retain claim IDs separately from prose;
+- never manufacture missing evidence refs;
+- keep conflict records distinct from adjudication;
+- do not turn claim audit into `verified=true`;
+- update `CLAIM_AUDIT_CONTRACT.md` and examples.
+
+## Score changes
+
+Any new score semantics must say whether values are heuristic, empirically calibrated, probabilistic or something else. `[0,1]` alone is not evidence of probability semantics.
+
+## Provider integrations
+
+Real providers belong behind `LLMProvider`. Their `describe()` metadata must reflect what the integration actually knows. Do not guess model versions.
+
+## Trace/provenance changes
+
+OpenTelemetry naming alignment must not be described as an OTel exporter unless an exporter is actually implemented. PROV-aligned JSON must not be described as PROV-O RDF unless a real serializer exists.
+
+## Cross-repository changes
+
+Preferred loose handoff:
+
+```text
+auto-doc-engine/artifact-record
+        ↓
+epistemic-pipeline/evidence-envelope
+        ↓
+sci-render-kit/figure-evidence
+```
+
+References do not inherit truth or scientific validity.
+
+## Governance boundary
+
+Do not add GitHub Actions, CI, CodeQL, dependency bots, branch protection or merge-gate architecture as ordinary maintenance for this repository unless explicitly requested.

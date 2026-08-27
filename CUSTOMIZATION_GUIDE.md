@@ -1,239 +1,152 @@
-# Customization Guide
+# Customization Guide — Epistemic Pipeline
 
-## 1. Choose the smallest layer
+## 1. Choose the smallest owning layer
 
-Epistemic Pipeline separates graph topology, state definition, provider execution, provider disclosure, runtime policy, bounded score propagation, resilience, trace, checkpoint identity, provenance, claim-aware audit and cross-tool evidence handoff.
+The repository separates:
+
+```text
+graph topology
+state definition
+provider execution
+provider disclosure
+runtime policy
+bounded score propagation
+retry/timeout
+trace
+checkpoint identity
+PROV-aligned lineage
+claim verification
+evidence handoff
+```
 
 Extend the smallest layer that actually owns the requirement.
 
-## 2. Add or modify an executable graph
+## 2. Custom graph
 
-Executable graphs contain `nodes` with `id`, `stage` and `dependencies`.
+Add a graph under `graphs/` when the change is about dependency topology. Graph nodes must remain uniquely identifiable and dependency-valid.
 
-```bash
-python3 core/engine.py validate graphs/linear.yaml
+Do not encode scientific truth in topology labels.
+
+## 3. Custom state behavior
+
+State semantics live in `states/*.yaml`. Runtime constraints use machine-readable `runtime_policies` checks. Human-readable rule prose is descriptive only.
+
+If a desired check does not exist, implement it explicitly in `RuntimePolicyEvaluator`; do not pretend prose is executable.
+
+## 4. Custom provider
+
+Implement `LLMProvider.complete(...)` and optionally `describe()`.
+
+`describe()` should return only known process metadata:
+
+```python
+{
+    "provider_class": "...",
+    "provider": "...",   # or None
+    "model": "...",      # or None
+    "version": None,      # remain None when unknown
+    "mode": "injected_provider",
+    "external_model_call": True,
+}
 ```
 
-Validation checks duplicate IDs, unknown dependencies, cycles and reachability. `adaptive.yaml` remains an Experimental specification, not an executable DAG.
+Do not infer vendor/model/version metadata from prompts or class names.
 
-Checkpoint resume is bound to both graph ID and canonical graph SHA-256. A changed graph with the same ID is a different executable definition.
+## 5. Custom runtime policy
 
-## 3. Add or modify a state
-
-Keep these contracts aligned:
-
-1. state outputs and role bindings;
-2. `LLMProvider` / `MockProvider` structured output keys;
-3. `runtime_policies` machine-readable checks;
-4. downstream score/evidence expectations.
-
-Example:
-
-```yaml
-runtime_policies:
-  - id: claims_exist
-    check: non_empty
-    field: claims_registry
-```
-
-Do not encode executable behavior only in prose.
-
-## 4. Add a runtime policy predicate
-
-Implement the predicate in `RuntimePolicyEvaluator._evaluate_rule()` and reference it through a stable `check` name.
-
-Unknown checks fail explicitly. A predicate should establish a narrow structural/numeric property; it must not claim semantic truth that the code cannot evaluate.
-
-Historical `quality_gates` input is accepted only for compatibility.
-
-## 5. Add a real model provider
-
-Implement:
+Supported checks currently include:
 
 ```text
-LLMProvider.complete(system, user, schema) -> dict
+min_items
+non_empty
+every_item_fields
+claim_evidence_ratio
+numeric_min
+numeric_max_exclusive
+conflicts_have_fields
+mapping_required_keys
 ```
 
-and inject it into the harness/engine. Keep provider/session/model identifiers explicit. Do not reinterpret project-local `run_id` as provider conversation identity.
+Unknown checks fail explicitly.
 
-For process disclosure, optionally override:
+## 6. Custom score network
+
+`ConfidenceNetwork` is heuristic. If you replace or extend it, document the mathematical semantics explicitly.
+
+Do not call a score a probability unless a real probabilistic/calibration model and empirical evidence justify that interpretation.
+
+## 7. Custom claim verification
+
+`core/claim_audit.py` aggregates already-emitted claim/evidence/verification structures into an audit sidecar.
+
+A new claim audit field should answer an inspectable question such as:
 
 ```text
-LLMProvider.describe() -> dict
+what source/evidence ref was declared?
+what structural observation was recorded?
+what conflict was recorded?
+what score observation existed at which stage?
 ```
 
-Recommended declared fields include:
+Do not introduce a universal truth/verdict field merely for convenience.
+
+Stable profile:
 
 ```text
-provider_class
-provider
-model
-version
-mode
-external_model_call
-metadata_semantics
+epistemic-pipeline/claim-verification
 ```
 
-Unknown vendor/model/version values should remain `None`/unknown. Do not derive a model name from filenames, environment assumptions, prompt content or marketing defaults.
+## 8. Custom evidence handoff
 
-A provider label is process metadata, not evidence that the model is correct or that a particular output is authentic.
+`core/evidence_envelope.py` should remain a compact index. Prefer adding references to separately inspectable artifacts instead of embedding full copies.
 
-## 6. Configure resilience
-
-Nodes may declare retry/timeout parameters supported by `core/resilience.py`.
-
-- Retry only failures classified as transient.
-- A caller-side thread timeout cannot kill an already running Python worker.
-- External side effects therefore require their own idempotency/cancellation design.
-
-## 7. Use checkpoints
-
-```bash
-python3 core/engine.py run graphs/linear.yaml --resume-from <run_id>
-```
-
-Current `checkpoint@2` requires matching:
+Stable profile:
 
 ```text
-graph_id
-graph_sha256
+epistemic-pipeline/evidence-envelope
 ```
 
-Legacy checkpoints without digest identity are rejected as ambiguous.
+Local reference files can be hashed. Opaque/URI refs should stay unresolved unless a future explicit resolver is implemented.
 
-## 8. Produce an evidence-bearing run
+## 9. Trace customization
 
-```bash
-python3 core/run_bundle.py graphs/linear.yaml
-```
+Project trace fields may borrow applicable OpenTelemetry GenAI names, but do not claim OTel exporter/span compliance unless that integration is actually implemented.
 
-Optionally declare the human-review state of the run/handoff:
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml --human-review reviewed
-```
-
-Allowed values:
+Stable project trace profile:
 
 ```text
-reviewed
-partial
-not_reviewed
-not_declared
+epistemic-pipeline/trace
 ```
 
-Default: `not_declared`.
+## 10. Provenance customization
 
-The wrapper can produce:
+Current provenance is project JSON aligned with W3C PROV concepts. A future PROV-O/RDF export should be introduced as an actual serializer, not by renaming the current JSON.
+
+## 11. Cross-repository handoff
+
+Upstream artifact refs can point to:
 
 ```text
-traces/<run_id>.jsonl
-checkpoints/<run_id>/checkpoint.json
-provenance/<run_id>.prov.json
-evidence/<run_id>.evidence.json
+auto-doc-engine/artifact-record
 ```
 
-Custom directories:
-
-```bash
-python3 core/run_bundle.py graphs/parallel.yaml \
-  --trace-dir traces \
-  --checkpoint-dir checkpoints \
-  --provenance-dir provenance \
-  --evidence-dir evidence \
-  --human-review partial
-```
-
-## 9. Extend provenance
-
-`core/provenance.py` uses `epistemic-pipeline/prov@2`.
-
-When changing entity/relation semantics:
-
-- use stable logical identifiers;
-- preserve canonical/file SHA-256 distinctions;
-- avoid full payload duplication by default;
-- bump the profile when existing meaning breaks;
-- never claim PROV-O RDF conformance without an actual serializer.
-
-## 10. Extend claim-aware audit
-
-`core/run_bundle.py` derives `epistemic-pipeline/claim-index@1` from structured `claims_registry` and `evidence_chains` outputs.
-
-Current index fields are intentionally narrow:
+Downstream figures can consume references to:
 
 ```text
-claim_id
-state_id
-claim_record_sha256
-source_refs[]
-evidence_refs[]
-relations[]
+epistemic-pipeline/claim-verification
+epistemic-pipeline/evidence-envelope
 ```
 
-Full claim prose is not embedded in the Evidence Envelope.
+No repository needs to import another repository's Python package to use these references.
 
-If extending the index:
+## 12. Internal identifier rule
 
-- add only fields that answer a concrete audit/handoff question;
-- preserve the distinction between identity/reference and scientific truth;
-- do not compute “truth scores” from the presence/number of evidence refs;
-- do not infer entailment from relation labels;
-- update `CLAIM_AUDIT_CONTRACT.md`, README, Architecture and Manifest together.
+Project-owned profile names are stable and unversioned. Do not add `@1/@2`, `/v1`, or synthetic provider/fixture versions. External standard versions remain explicit where real standards define them.
 
-## 11. Extend process disclosure
+## 13. Experimental work
 
-Provider disclosure comes from `LLMProvider.describe()`. Human-review disclosure is caller supplied.
+Experimental modules can be refined independently, but they do not become canonical capabilities merely because they compile or have documentation.
 
-Do not add optimistic defaults:
+## 14. Governance
 
-```text
-missing provider ≠ no AI used
-missing human_review ≠ reviewed
-model name ≠ capability proof
-human review ≠ peer review
-```
-
-If a new disclosure field would adjudicate authorship, source credibility, journal policy compliance or scientific validity, it belongs outside this bounded project profile unless a separate explicit system is designed.
-
-## 12. Extend the Evidence Envelope
-
-`core/evidence_envelope.py` implements `epistemic-pipeline/evidence-envelope@2`, separate from PROV lineage.
-
-Current major sections include:
-
-```text
-graph
-artifacts
-profiles
-integrity
-claim_observability
-process_disclosure
-confidence_semantics
-reproducibility
-scientific_validity_claim
-payloads_embedded
-```
-
-New fields should answer a concrete interoperability question and preserve explicit boundaries.
-
-A downstream RO-Crate mapping may consume this envelope, but this repository does not currently emit an RO-Crate itself.
-
-## 13. Work with heuristic scores
-
-Historical `confidence_*` field names may remain for compatibility. Treat them as bounded heuristic scores unless an external calibration contract says otherwise.
-
-Do not add a calibration claim merely because a monotonic transform exists.
-
-## 14. Experimental modules
-
-Experimental modules are safe places to explore bounded mechanisms, but their filenames are not capability claims. Do not wire an Experimental module into `StateMachineEngine` merely because it was corrected or documented.
-
-## 15. Local maintenance
-
-```bash
-python -m pip install pyyaml
-make test
-```
-
-Keep README, ARCHITECTURE, RESEARCH_CONTRACT, CLAIM_AUDIT_CONTRACT, AGENTS, MANIFEST, CONTRIBUTING and examples synchronized with public behavior.
+Do not wire customization through GitHub Actions/CI/merge gates as part of the research architecture unless explicitly requested. Local validation remains a caller/maintainer choice.

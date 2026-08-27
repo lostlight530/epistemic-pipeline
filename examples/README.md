@@ -1,174 +1,150 @@
 # Epistemic Pipeline Examples
 
-## Validate an executable graph
+These examples show actual repository entry points. They are not GitHub workflow instructions and do not imply scientific validation.
+
+## 1. Validate an executable graph
 
 ```bash
 python3 core/engine.py validate graphs/linear.yaml
 ```
 
-`linear`, `parallel`, and `diamond` are executable. `adaptive` remains Experimental.
+Validation checks graph structure such as dependencies/cycles/reachability. A valid graph is not a scientifically valid study.
 
-Validation covers graph structure; it does not evaluate research truth.
-
-## Run the low-level engine
+## 2. Run the state machine
 
 ```bash
 python3 core/engine.py run graphs/linear.yaml
-python3 core/engine.py run graphs/parallel.yaml
 ```
 
-The default provider is deterministic `MockProvider`. A successful local run is not evidence of a live external model.
+The default provider path is `MockProvider`, a deterministic synthetic fixture. It is not evidence of real-model performance.
 
-The engine result includes graph identity such as:
-
-```text
-graph_id
-graph_sha256
-engine_profile
-```
-
-## Resume from a digest-bound checkpoint
-
-```bash
-python3 core/engine.py run graphs/linear.yaml --resume-from <run_id>
-```
-
-`checkpoint@2` reuses successful nodes only when both graph ID and canonical graph SHA-256 match. Same name with changed graph content is rejected.
-
-## Runtime policies
-
-Current state YAML uses machine-readable rules:
-
-```yaml
-runtime_policies:
-  - id: report_complete
-    check: mapping_required_keys
-    field: synthesis_report
-    required_keys:
-      - summary
-      - comparison
-      - insights
-      - recommendation
-      - confidence_semantics
-```
-
-A policy pass means the declared predicate passed. It does not mean the report is scientifically correct.
-
-## Produce a research evidence bundle
+## 3. Produce the full evidence bundle
 
 ```bash
 python3 core/run_bundle.py graphs/linear.yaml
 ```
 
-Optionally declare the run/handoff's human-review state:
+Typical generated paths:
+
+```text
+traces/<run>.jsonl
+checkpoints/<run>/checkpoint.json
+provenance/<run>.prov.json
+claim-audits/<run>.claim-audit.json
+evidence/<run>.evidence.json
+```
+
+Stable internal profiles:
+
+```text
+epistemic-pipeline/trace
+epistemic-pipeline/checkpoint
+epistemic-pipeline/prov
+epistemic-pipeline/claim-verification
+epistemic-pipeline/evidence-envelope
+```
+
+## 4. Declare human-review context
 
 ```bash
-python3 core/run_bundle.py graphs/linear.yaml --human-review reviewed
+python3 core/run_bundle.py graphs/linear.yaml \
+  --human-review partial
 ```
 
-Allowed values:
+`partial` records declared review context only. It does not mean peer review or scientific validation.
+
+## 5. Link an upstream Auto Doc artifact
+
+```bash
+python3 core/run_bundle.py graphs/linear.yaml \
+  --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json
+```
+
+If the path exists locally, the Evidence Envelope records its SHA-256. Otherwise an opaque ref is retained without dereferencing.
+
+Preferred upstream profile:
 
 ```text
-reviewed
-partial
-not_reviewed
-not_declared
+auto-doc-engine/artifact-record
 ```
 
-The default is `not_declared`; missing review metadata is never inferred as reviewed.
+## 6. Add upstream evidence/provenance references
 
-The wrapper composes available artifacts:
-
-```text
-engine result
-+ traces/<run_id>.jsonl
-+ checkpoints/<run_id>/checkpoint.json
-+ provenance/<run_id>.prov.json
-+ evidence/<run_id>.evidence.json
+```bash
+python3 core/run_bundle.py graphs/linear.yaml \
+  --upstream-evidence-ref ./inputs/source-evidence.json \
+  --upstream-evidence-ref urn:example:external-record
 ```
 
-### Provenance
+Opaque URIs remain references; the repository does not fetch or certify them.
 
-`epistemic-pipeline/prov@2` records W3C PROV-aligned Entity / Activity / SoftwareAgent relationships in project JSON. It stores canonical hashes and structural metadata rather than duplicating full node payloads by default.
+## 7. Inspect claim verification
 
-### Claim-aware index
-
-The run bundle scans structured `claims_registry` and `evidence_chains` outputs and builds:
-
-```text
-epistemic-pipeline/claim-index@1
-```
-
-Example logical shape:
+A claim-audit record separates dimensions such as:
 
 ```json
 {
   "claim_id": "c1",
-  "state_id": "analyze",
-  "claim_record_sha256": "sha256:...",
-  "source_refs": ["src_001"],
   "evidence_refs": ["src_001#seg_001"],
-  "relations": ["declared_by_fixture"]
+  "audit_state": "structurally_checked_with_conflict",
+  "heuristic_scores": {
+    "initial": {"value": 0.5, "stage": "verify"},
+    "final": {"value": 0.5, "stage": "synthesize"}
+  }
 }
 ```
 
-The Evidence Envelope does **not** embed claim prose. The index is for discoverability/audit/handoff, not truth adjudication.
+This does **not** mean the claim is scientifically verified.
+
+## 8. Runtime policy
+
+State files use machine-readable checks. Example structure:
+
+```yaml
+runtime_policies:
+  - id: verification_coverage
+    check: numeric_min
+    field: coverage
+    min: 0.95
+```
+
+The prose `rule` field is descriptive only.
+
+## 9. Provider integration sketch
+
+```python
+from core.llm_harness import LLMProvider
+
+class MyProvider(LLMProvider):
+    def complete(self, system, user, schema=None):
+        return {"...": "structured output"}
+
+    def describe(self):
+        return {
+            "provider_class": type(self).__name__,
+            "provider": "known-provider-or-none",
+            "model": None,
+            "version": None,
+            "mode": "injected_provider",
+            "external_model_call": True,
+        }
+```
+
+Leave unknown metadata unknown rather than guessing.
+
+## 10. Score semantics
+
+A score-network output in `[0,1]` remains heuristic:
 
 ```text
-claim hash ≠ claim truth
-source ref ≠ source credibility
-evidence ref ≠ evidence sufficiency
+0.8 != 80% probability
+converged=true != scientific certainty
 ```
 
-### Provider disclosure
+## 11. Reproducibility
 
-`LLMProvider.describe()` can expose bounded process metadata for an injected provider. The base class leaves provider/model/version unknown rather than guessing.
+Evidence artifacts can make a run traceable/replay-addressable. They do not establish R3 without a separate rerun and declared comparison criterion.
 
-`MockProvider` explicitly declares itself as a local synthetic fixture with:
+## 12. No CI assumption
 
-```text
-external_model_call: false
-```
-
-Provider/model metadata is not evidence of scientific validity or output authenticity.
-
-### Evidence Envelope
-
-`epistemic-pipeline/evidence-envelope@2` references graph / trace / checkpoint / provenance files with SHA-256 identity and adds:
-
-```text
-claim_observability
-process_disclosure
-```
-
-The envelope declares score/reproducibility/scientific-validity boundaries for downstream tools and keeps:
-
-```text
-payloads_embedded: false
-claim_observability.payload_text_embedded: false
-scientific_validity_claim: false
-```
-
-It is a project interchange object, not an external certification format.
-
-A downstream figure recipe can reference this envelope and use its claim IDs, for example through `sci-render-kit/figure-claim-binding@1`, without requiring direct runtime coupling.
-
-## Score semantics
-
-The score network produces bounded heuristic values in `[0,1]`.
-
-```text
-heuristic score ≠ probability
-numerical convergence ≠ certainty
-```
-
-Temperature scaling in this repository is a transform unless a separate labelled-data fitting/evaluation process exists.
-
-## Optional local maintenance
-
-```bash
-python -m pip install pyyaml
-make test
-```
-
-The command is a local maintenance aid. No GitHub workflow is required by the repository architecture, and this 2026-08-26 maintenance pass does not use test execution as its completion criterion.
+These commands are local operational examples only. The repository does not require GitHub Actions, CodeQL or merge gates as part of its research architecture.

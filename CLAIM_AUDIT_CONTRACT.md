@@ -1,167 +1,160 @@
-# Claim-aware Audit Contract — epistemic-pipeline
+# Claim Audit Contract — Epistemic Pipeline
 
-**Calibration:** 2026-08-26  
-**Status:** implemented companion contract for `epistemic-pipeline/evidence-envelope@2`  
-**Scope:** claim identity, evidence references, provider-process disclosure, human-review declaration, and privacy-minimizing handoff
+**Calibration:** 2026-08-27  
+**Implemented profile:** `epistemic-pipeline/claim-verification`  
+**Scope:** claim identity, evidence bindings, structural observations, conflicts, bounded heuristic scores and process context
 
-## 1. Problem
+## 1. Why a separate claim audit exists
 
-A run-level trace can answer when operations happened, but scientific auditing often needs another layer:
-
-```text
-Which claim was produced?
-Which source/evidence references were attached to it?
-Which run/provider path produced the surrounding outputs?
-Was human review declared?
-Can downstream tools inspect those relationships without copying all model payloads?
-```
-
-`evidence-envelope@2` adds that layer while keeping full claim prose and node payloads outside the envelope.
-
-## 2. Claim index
-
-The run bundle scans structured node outputs for:
+Run-level telemetry answers when operations happened. Provenance answers lineage questions. Neither is enough to answer:
 
 ```text
-claims_registry
-evidence_chains
+Which claim was indexed?
+Which evidence refs were attached?
+Was any structural consistency observation recorded?
+Was a cross-source observation recorded?
+Were conflicts recorded?
+What initial/final heuristic score observations existed?
+What provider/review context surrounded the run?
 ```
 
-and emits a compact `claim_observability` section using profile:
+`core/claim_audit.py` therefore writes a separate `<run_id>.claim-audit.json` sidecar.
 
-```text
-epistemic-pipeline/claim-index@1
-```
+## 2. It is not a truth graph
 
-Each indexed claim can carry:
+The sidecar intentionally contains no universal `verified` boolean.
+
+A claim can be structurally checked and still be wrong. Evidence can be linked and still be weak, irrelevant or misinterpreted. No recorded conflict does not imply independent corroboration.
+
+## 3. Claim record fields
+
+A normalized claim audit can contain:
 
 ```text
 claim_id
-state_id
+origin_state_id
 claim_record_sha256
 source_refs[]
 evidence_refs[]
-relations[]
+evidence_relations[]
+observations.internal_consistency
+observations.cross_source
+conflicts[]
+heuristic_scores.initial
+heuristic_scores.final
+audit_state
 ```
 
-The hash identifies the canonical structured claim record observed in the run. The envelope intentionally does **not** embed claim text.
+Full claim prose is not duplicated into this sidecar by default.
 
-### Boundary
+## 4. Audit states
+
+Current states describe only the observed structural/audit situation:
+
+- `indexed_only`
+- `evidence_bound`
+- `structurally_checked`
+- `conflict_recorded`
+- `structurally_checked_with_conflict`
+
+They are not scientific-review outcomes.
+
+In particular, this repository does **not** map them to `accepted`, `rejected`, `validated`, `confirmed`, `proven`, or similar verdict language.
+
+## 5. Structural observations
+
+`internal_consistency_report` and `cross_source_matrix` are retained as provider/runtime observations.
+
+They can show what the current workflow recorded, but the audit layer does not independently rerun external experiments, inspect every source, or establish scientific correctness.
+
+## 6. Conflict records
+
+Conflicts are linked to a claim when the claim ID appears as the declared source or target of a conflict item. The audit record keeps:
 
 ```text
-claim index != truth graph
-claim hash != semantic truth
-source ref != source credibility
-attached evidence != sufficient evidence
-relation label != verified entailment
+other_ref
+relation
+severity
+conflict_record_sha256
 ```
 
-The index exists for discoverability, audit, and cross-tool handoff.
+The hash identifies the recorded conflict structure. The repository does not automatically adjudicate which side is correct.
 
-## 3. Provider disclosure
+## 7. Heuristic scores
 
-`LLMProvider.describe()` is an optional provider hook. The base implementation only knows the Python provider class and leaves vendor/model/version unset.
-
-An external integration may override it to declare fields such as:
-
-```json
-{
-  "provider_class": "ExampleProvider",
-  "provider": "example-vendor",
-  "model": "example-model",
-  "version": "deployment-or-model-version",
-  "mode": "injected_provider",
-  "external_model_call": true
-}
-```
-
-Unknown fields should remain unknown rather than being guessed.
-
-The built-in `MockProvider` explicitly declares itself as a deterministic synthetic fixture with `external_model_call: false`.
-
-### Boundary
+The audit preserves two distinct observations when available:
 
 ```text
-provider identity != output authenticity proof
-model name != model capability proof
-version label != reproducibility
-provider metadata != scientific validity
+initial -> verify-stage seed
+final   -> synthesize-stage propagated score
 ```
 
-## 4. Human-review declaration
-
-`core/run_bundle.py` accepts:
-
-```bash
---human-review reviewed|partial|not_reviewed|not_declared
-```
-
-This value is copied into the Evidence Envelope process disclosure.
-
-It describes only the declared review state of the run/artifact handoff.
+Both remain heuristic values.
 
 ```text
-human review != peer review
-human review != expert validation
-human review != factual correctness
-human review != journal acceptance
+score != calibrated probability
+score change != probability update
+final score != truth score
 ```
 
-The default is `not_declared` so the repository never infers oversight that was not explicitly supplied.
+## 8. Process context
 
-## 5. Evidence Envelope v2
+The audit keeps minimal provider disclosure and declared human-review state.
 
-`epistemic-pipeline/evidence-envelope@2` keeps the existing graph/artifact/integrity/reproducibility fields and adds:
+Unknown provider/model/version values remain `null`; they are never guessed from class names, prompts or external marketing names.
+
+The built-in `MockProvider` declares no model and no version because neither exists as an independently meaningful provider release.
+
+## 9. Relationship to the Evidence Envelope
 
 ```text
-claim_observability
-process_disclosure
+claim-verification sidecar
+        ↓ referenced by
+evidence-envelope
 ```
 
-The envelope remains payload-minimizing:
+The Evidence Envelope records the sidecar path/hash where locally available. It does not copy every audit record into the envelope.
+
+This keeps the envelope compact and makes claim audit independently inspectable.
+
+## 10. Relationship to upstream/downstream artifacts
+
+Upstream Auto Doc records may be carried as references:
 
 ```text
-payloads_embedded: false
-claim_observability.payload_text_embedded: false
+auto-doc-engine/artifact-record
 ```
 
-This design allows a downstream system such as `sci-render-kit` to bind a figure to claim IDs without forcing the entire provider transcript or scientific payload into the figure package.
+Downstream Sci Render can reference this claim audit through `research_context.claim_audit_ref`, allowing a scientific figure to state which upstream claim-audit artifact informed its communication context.
 
-## 6. Why this exists now
+A reference does not inherit truth.
 
-Three 2026 signals converge on the same engineering requirement:
+## 11. Privacy and payload minimization
 
-1. **Artifact-centered Claim-aware Observability for Autonomous Scientific Agents** argues that logging model calls is insufficient and proposes portable claim/artifact lineage as an audit layer complementary to telemetry and standards such as PROV-O and RO-Crate.
-2. **EarthVerse** evaluates scientific agents on package-scoped investigations and finds a substantial gap between completing individual answer units and maintaining an end-to-end consistent chain across evidence, scales, units, calculations, and physical interpretation.
-3. Nature Computational Science's August 2026 editorial position emphasizes transparency, accountability, and human oversight as AI becomes embedded across research and publishing.
+The audit stores claim IDs, hashes and references rather than duplicating full claim/source payloads by default. This improves portability and limits accidental duplication of sensitive research text.
 
-These sources motivate the audit surface. They do not define or certify this project's profile.
+It is not a confidentiality guarantee; callers remain responsible for what they place in IDs, refs, notes and upstream artifacts.
 
-## 7. Relation to existing layers
+## 12. Global research calibration
+
+Recent 2026 work strengthens the need for this separation:
+
+- artifact-centered claim-aware observability argues that model-call logs alone are insufficient;
+- *From Trajectories to Evidence* explicitly separates completed trajectories from auditable evidence;
+- *Brain Researcher* emphasizes evidence-bounded claim qualification and scientific review;
+- *EarthVerse* shows local task success can coexist with weak strict end-to-end scientific consistency.
+
+This repository borrows the architectural lesson: **record verification dimensions separately from scientific verdicts**. It does not copy domain-review verdict labels that the runtime is not qualified to produce.
+
+## 13. Forbidden interpretations
 
 ```text
-OpenTelemetry-like trace names
-    -> operation/runtime observability
-
-W3C PROV-aligned project JSON
-    -> entity/activity/agent lineage
-
-claim-index@1
-    -> claim/source/evidence discoverability
-
-process-disclosure@1
-    -> provider + declared human-review context
-
-Evidence Envelope @2
-    -> portable cross-tool handoff
+indexed_only -> false
+structurally_checked -> true
+no conflict -> corroborated
+human_review=reviewed -> peer reviewed
+provider declared -> provider authenticated
+claim_record_sha256 -> semantic truth
 ```
 
-No single layer substitutes for the others.
-
-## 8. References
-
-- https://arxiv.org/abs/2608.18312
-- https://arxiv.org/abs/2608.23525
-- https://www.nature.com/articles/s43588-026-01043-4
-- https://www.nature.com/articles/s43588-026-01035-4
-- https://www.w3.org/TR/prov-overview/
+None of those implications is valid.

@@ -34,13 +34,7 @@ class LLMProvider(ABC):
         raise NotImplementedError
 
     def describe(self) -> Dict[str, Any]:
-        """Return optional human-auditable provider/model metadata.
-
-        External integrations can override this method. The default deliberately
-        records only the Python provider class because the base protocol cannot
-        infer a vendor, model, deployment, or version without risking false
-        provenance.
-        """
+        """Return optional human-auditable provider/model metadata."""
         return {
             "provider_class": type(self).__name__,
             "provider": None,
@@ -94,11 +88,11 @@ class MockProvider(LLMProvider):
             "provider_class": type(self).__name__,
             "provider": "epistemic-pipeline",
             "model": None,
-            "version": "mock-fixture@1",
+            "version": None,
             "mode": "synthetic_fixture",
             "external_model_call": False,
             "metadata_semantics": (
-                "deterministic local fixture; not an external model and not scientific evidence"
+                "deterministic local fixture; no external model/version claim and not scientific evidence"
             ),
         }
 
@@ -186,7 +180,7 @@ class MockProvider(LLMProvider):
                 "artifact_bundle": {"synthesis_report": "in-memory-mock-output"},
                 "provenance_chain": {"c1": ["src_001#seg_001"]},
                 "metadata_package": {
-                    "profile": "epistemic-pipeline/mock-archive@1",
+                    "profile": "epistemic-pipeline/mock-archive",
                     "generated_by": "MockProvider",
                     "content_semantics": "synthetic_fixture_not_external_evidence",
                 },

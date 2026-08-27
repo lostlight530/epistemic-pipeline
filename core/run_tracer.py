@@ -22,7 +22,7 @@ import time
 from pathlib import Path
 from typing import Dict, Optional
 
-PROFILE = "epistemic-pipeline/trace@2"
+PROFILE = "epistemic-pipeline/trace"
 OP_INVOKE_AGENT = "invoke_agent"
 
 

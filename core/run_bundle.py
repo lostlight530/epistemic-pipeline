@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-"""Evidence-bearing run wrapper for engine + trace/checkpoint + lineage/handoff.
+"""Evidence-bearing run wrapper for engine + trace/checkpoint + audit/handoff.
 
 ``core.engine.StateMachineEngine`` remains the low-level executor. This wrapper
-adds two distinct evidence layers:
+adds distinct evidence layers instead of collapsing every concern into one log:
 
-- ``epistemic-pipeline/prov@2`` for PROV-aligned lineage relationships;
-- ``epistemic-pipeline/evidence-envelope@2`` for cross-repository handoff,
-  including a payload-minimizing claim index and process disclosure.
+- ``epistemic-pipeline/prov`` for PROV-aligned lineage relationships;
+- ``epistemic-pipeline/claim-verification`` for claim-level evidence,
+  consistency/conflict and heuristic-score audit dimensions;
+- ``epistemic-pipeline/evidence-envelope`` for cross-repository handoff,
+  including a payload-minimizing claim index, process disclosure, the separate
+  claim-verification reference and optional upstream artifact/evidence refs.
 
 Neither layer embeds full node payloads by default or claims scientific truth,
-external standards certification, authorship adjudication, peer review, or
-independent reproduction.
+external standards certification, authorship adjudication, peer review, source
+credibility, probability calibration, or independent reproduction.
 """
 
 from __future__ import annotations
@@ -27,6 +30,7 @@ import yaml
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from core.claim_audit import build_claim_verification, write_claim_verification
 from core.engine import StateMachineEngine
 from core.evidence_envelope import build_evidence_envelope, write_evidence_envelope
 from core.provenance import (
@@ -65,13 +69,7 @@ def _string_list(value: Any) -> list[str]:
 
 
 def _build_claim_index(run_result: dict) -> list[dict]:
-    """Extract claim identity/evidence refs without embedding claim prose.
-
-    The run's full outputs remain in their existing execution/checkpoint paths.
-    This index is intentionally small so downstream tools can discover claim to
-    evidence relationships without turning the Evidence Envelope into another
-    copy of every provider payload.
-    """
+    """Extract claim identity/evidence refs without embedding claim prose."""
     claims: Dict[str, dict] = {}
     evidence_refs: Dict[str, set[str]] = {}
     relations: Dict[str, set[str]] = {}
@@ -171,14 +169,20 @@ def run_bundle(
     trace_dir: str = "traces",
     checkpoint_dir: str = "checkpoints",
     provenance_dir: str = "provenance",
+    claim_audit_dir: str = "claim-audits",
     evidence_dir: str = "evidence",
     human_review: str = "not_declared",
+    upstream_artifact_refs: Optional[Iterable[str]] = None,
+    upstream_evidence_refs: Optional[Iterable[str]] = None,
 ) -> dict:
-    """Run one graph and write bounded provenance/evidence sidecars."""
+    """Run one graph and write bounded provenance/audit/evidence sidecars."""
     if human_review not in HUMAN_REVIEW_VALUES:
         raise ValueError(
             f"human_review must be one of {HUMAN_REVIEW_VALUES}, got {human_review!r}"
         )
+
+    artifact_refs = [str(value) for value in (upstream_artifact_refs or [])]
+    evidence_refs = [str(value) for value in (upstream_evidence_refs or [])]
 
     graph_data = _load_graph(graph_path)
     graph_canonical_sha256 = canonical_sha256(graph_data)
@@ -237,6 +241,13 @@ def run_bundle(
 
     claim_index = _build_claim_index(result)
     provider_disclosure = _provider_disclosure(engine)
+    claim_audit = build_claim_verification(
+        result,
+        provider_disclosure=provider_disclosure,
+        human_review=human_review,
+    )
+    claim_audit_path = write_claim_verification(claim_audit, claim_audit_dir)
+
     envelope = build_evidence_envelope(
         run_id=run_id,
         graph_id=graph_data.get("id"),
@@ -249,23 +260,30 @@ def run_bundle(
         provenance_path=provenance_path,
         trace_chain_internal_valid=trace_chain_valid,
         claim_index=claim_index,
+        claim_audit_path=claim_audit_path,
         provider_disclosure=provider_disclosure,
         human_review=human_review,
+        upstream_artifact_refs=artifact_refs,
+        upstream_evidence_refs=evidence_refs,
     )
     evidence_path = write_evidence_envelope(envelope, evidence_dir)
 
     result["provenance_path"] = provenance_path
+    result["claim_audit_path"] = claim_audit_path
     result["evidence_envelope_path"] = evidence_path
     result["graph_file_sha256"] = graph_file_sha256
     result["claim_index_count"] = len(claim_index)
+    result["claim_audit_count"] = int(claim_audit.get("claim_count") or 0)
+    result["upstream_artifact_ref_count"] = len(artifact_refs)
+    result["upstream_evidence_ref_count"] = len(evidence_refs)
     return result
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Run an epistemic graph and emit PROV-aligned lineage plus a "
-            "claim-aware project evidence envelope"
+            "Run an epistemic graph and emit PROV-aligned lineage, claim-level "
+            "verification audit and a claim-aware project evidence envelope"
         )
     )
     parser.add_argument("graph", help="path to an executable graph YAML")
@@ -273,7 +291,20 @@ def main(argv=None) -> int:
     parser.add_argument("--trace-dir", default="traces")
     parser.add_argument("--checkpoint-dir", default="checkpoints")
     parser.add_argument("--provenance-dir", default="provenance")
+    parser.add_argument("--claim-audit-dir", default="claim-audits")
     parser.add_argument("--evidence-dir", default="evidence")
+    parser.add_argument(
+        "--upstream-artifact-ref",
+        action="append",
+        default=[],
+        help="local path or opaque URI/reference to an upstream artifact record; may be repeated",
+    )
+    parser.add_argument(
+        "--upstream-evidence-ref",
+        action="append",
+        default=[],
+        help="local path or opaque URI/reference to upstream evidence/provenance; may be repeated",
+    )
     parser.add_argument(
         "--human-review",
         choices=HUMAN_REVIEW_VALUES,
@@ -288,8 +319,11 @@ def main(argv=None) -> int:
         trace_dir=args.trace_dir,
         checkpoint_dir=args.checkpoint_dir,
         provenance_dir=args.provenance_dir,
+        claim_audit_dir=args.claim_audit_dir,
         evidence_dir=args.evidence_dir,
         human_review=args.human_review,
+        upstream_artifact_refs=args.upstream_artifact_ref,
+        upstream_evidence_refs=args.upstream_evidence_ref,
     )
     print(
         json.dumps(
@@ -299,8 +333,12 @@ def main(argv=None) -> int:
                 "graph_sha256": result.get("graph_sha256"),
                 "graph_file_sha256": result.get("graph_file_sha256"),
                 "provenance_path": result.get("provenance_path"),
+                "claim_audit_path": result.get("claim_audit_path"),
                 "evidence_envelope_path": result.get("evidence_envelope_path"),
                 "claim_index_count": result.get("claim_index_count", 0),
+                "claim_audit_count": result.get("claim_audit_count", 0),
+                "upstream_artifact_ref_count": result.get("upstream_artifact_ref_count", 0),
+                "upstream_evidence_ref_count": result.get("upstream_evidence_ref_count", 0),
                 "errors": result.get("errors", []),
             },
             ensure_ascii=False,

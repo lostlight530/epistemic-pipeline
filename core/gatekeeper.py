@@ -20,7 +20,7 @@ from typing import Any, Dict, List, Tuple
 import yaml
 
 logger = logging.getLogger(__name__)
-PROFILE = "epistemic-pipeline/runtime-policy@1"
+PROFILE = "epistemic-pipeline/runtime-policy"
 
 
 class RuntimePolicyEvaluator:
