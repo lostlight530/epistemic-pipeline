@@ -2,7 +2,7 @@ title: "Bounded Claim Score Network Schema"
 description: >
   epistemic-pipeline 启发式 claim-score propagation 的结构定义。
   数值在 [0,1] 内，但默认不是校准概率；数值收敛也不等于真值或科学确定性。
-profile: epistemic-pipeline/confidence-heuristic@1
+profile: epistemic-pipeline/confidence-heuristic
 
 type: object
 required:
