@@ -154,7 +154,7 @@ class ConfidenceNetwork:
     def get_report(self) -> dict:
         final, iterations, converged = self.converge()
         return {
-            "profile": "epistemic-pipeline/confidence-heuristic@1",
+            "profile": "epistemic-pipeline/confidence-heuristic",
             "semantics": "bounded_weighted_heuristic_not_calibrated_probability",
             "converged": converged,
             "iterations": iterations,
