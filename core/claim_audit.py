@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Claim-level verification records for epistemic-pipeline research runs.
 
-``epistemic-pipeline/claim-verification@1`` is a project-owned audit profile
+``epistemic-pipeline/claim-verification`` is a project-owned audit profile
 built from structures the canonical pipeline already emits. It deliberately
 keeps different verification dimensions separate:
 
@@ -26,7 +26,7 @@ from typing import Any, Dict, Mapping, Optional
 
 from core.provenance import canonical_sha256
 
-PROFILE = "epistemic-pipeline/claim-verification@1"
+PROFILE = "epistemic-pipeline/claim-verification"
 HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
 
 
@@ -218,9 +218,6 @@ def build_claim_verification(
                     if claim_text:
                         final_scores[claim_text] = score
             elif network and all(isinstance(key, str) for key in network):
-                # Compatibility for provider fixtures that return a direct
-                # claim->score mapping before the engine replaces it with the
-                # versioned propagation report.
                 for claim_id, score in network.items():
                     if isinstance(score, (int, float)) and not isinstance(score, bool):
                         claim_text = str(claim_id).strip()
