@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Versioned evidence envelope for epistemic-pipeline research runs.
+"""Stable evidence envelope for epistemic-pipeline research runs.
 
 The envelope is a small project-owned interchange object that references the
 run's graph, trace, checkpoint, provenance and claim-verification artifacts
@@ -8,16 +8,9 @@ semantics: PROV expresses lineage relationships, while this envelope expresses
 the repository's cross-tool handoff contract and scientific-integrity
 boundaries.
 
-Version 2 retains two bounded audit surfaces introduced in the 2026-08 refresh:
-
-- a claim-aware index containing claim identities plus source/evidence refs,
-  never full claim prose;
-- process disclosure for the provider path and declared human-review state.
-
-The 2026-08-27 consolidation adds compatible references to a separate
-``claim-verification@1`` sidecar and to optional upstream artifact/evidence
-records. These references are deliberately additive: the Evidence Envelope
-stays an index rather than becoming another research database.
+The envelope carries a claim-aware index, process disclosure, a separate
+claim-verification reference and optional upstream artifact/evidence records.
+It stays an index rather than becoming another research database.
 
 None of these surfaces establishes truth, authorship, peer review, source
 credibility, model validity, or scientific correctness.
@@ -34,11 +27,11 @@ from urllib.parse import urlsplit
 
 from core.provenance import file_sha256
 
-PROFILE = "epistemic-pipeline/evidence-envelope@2"
-CLAIM_INDEX_PROFILE = "epistemic-pipeline/claim-index@1"
-CLAIM_VERIFICATION_PROFILE = "epistemic-pipeline/claim-verification@1"
-PROCESS_DISCLOSURE_PROFILE = "epistemic-pipeline/process-disclosure@1"
-UPSTREAM_REFERENCE_PROFILE = "epistemic-pipeline/upstream-reference@1"
+PROFILE = "epistemic-pipeline/evidence-envelope"
+CLAIM_INDEX_PROFILE = "epistemic-pipeline/claim-index"
+CLAIM_VERIFICATION_PROFILE = "epistemic-pipeline/claim-verification"
+PROCESS_DISCLOSURE_PROFILE = "epistemic-pipeline/process-disclosure"
+UPSTREAM_REFERENCE_PROFILE = "epistemic-pipeline/upstream-reference"
 HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
 
 
@@ -196,12 +189,12 @@ def build_evidence_envelope(
         "status": status,
         "artifacts": artifacts,
         "profiles": {
-            "engine": "epistemic-pipeline/engine@2",
-            "runtime_policy": "epistemic-pipeline/runtime-policy@1",
-            "trace": "epistemic-pipeline/trace@2",
-            "checkpoint": "epistemic-pipeline/checkpoint@2",
-            "provenance": "epistemic-pipeline/prov@2",
-            "confidence": "epistemic-pipeline/confidence-heuristic@1",
+            "engine": "epistemic-pipeline/engine",
+            "runtime_policy": "epistemic-pipeline/runtime-policy",
+            "trace": "epistemic-pipeline/trace",
+            "checkpoint": "epistemic-pipeline/checkpoint",
+            "provenance": "epistemic-pipeline/prov",
+            "confidence": "epistemic-pipeline/confidence-heuristic",
             "claim_index": CLAIM_INDEX_PROFILE,
             "claim_verification": CLAIM_VERIFICATION_PROFILE,
             "process_disclosure": PROCESS_DISCLOSURE_PROFILE,
