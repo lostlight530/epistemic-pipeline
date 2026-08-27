@@ -1,237 +1,87 @@
-# Research Contract — epistemic-pipeline
+# Research Contract — Epistemic Pipeline
 
 **Calibration:** 2026-08-27  
-**Status:** active contract for runtime semantics, claim/evidence structure, recovery identity, process disclosure, claim verification, provenance and cross-repository handoff
+**Status:** active research-engineering contract  
+**Scope:** runtime semantics, evidence relations, recovery identity, provenance, claim verification, process disclosure and cross-repository handoff
 
-`epistemic-pipeline` is the **evidence-aware research execution / claim-audit plane** of the three-repository research toolchain.
+This is a scientific-integrity contract, not a GitHub merge policy.
 
-This contract defines what repository artifacts can and cannot establish. It is not GitHub merge policy and not a scientific-review standard.
+## 1. Repository role
 
-## 1. Canonical role
-
-```text
-upstream artifact/evidence refs
-        ↓
-validated graph + state definitions
-        ↓
-provider / role contract
-        ↓
-runtime-policy evaluation
-        ↓
-claim / evidence / conflict structures
-        ↓
-initial / final bounded heuristic scores
-        ↓
-trace + checkpoint
-        ↓
-PROV-aligned lineage
-        ↓
-claim-verification@1
-        ↓
-evidence-envelope@2
-```
-
-The repository does not automatically determine scientific truth, source credibility, causal validity, statistical validity, authorship, peer review or journal acceptance.
-
-## 2. Core evidence surfaces
-
-The repository intentionally keeps five surfaces distinct.
-
-### 2.1 Trace
+Epistemic Pipeline is the **evidence-aware research execution plane**:
 
 ```text
-epistemic-pipeline/trace@2
+validated graph
+  -> structured provider outputs
+  -> runtime policy
+  -> claim/evidence/conflict structures
+  -> bounded heuristic score propagation
+  -> trace/checkpoint
+  -> provenance
+  -> claim verification record
+  -> evidence envelope
 ```
 
-Answers:
+## 2. Stable project profile names
 
-> What runtime events were recorded?
-
-Does not establish:
-
-- scientific correctness;
-- immutable/tamper-proof external logging;
-- provider conversation identity from local run ID.
-
-### 2.2 Checkpoint
+Project-owned identifiers are unversioned:
 
 ```text
-epistemic-pipeline/checkpoint@2
+epistemic-pipeline/engine
+epistemic-pipeline/runtime-policy
+epistemic-pipeline/trace
+epistemic-pipeline/checkpoint
+epistemic-pipeline/prov
+epistemic-pipeline/confidence-heuristic
+epistemic-pipeline/network-input
+epistemic-pipeline/claim-index
+epistemic-pipeline/claim-verification
+epistemic-pipeline/process-disclosure
+epistemic-pipeline/upstream-reference
+epistemic-pipeline/evidence-envelope
+epistemic-pipeline/reference-rules
 ```
 
-Answers:
+Internal identifiers are semantic names, not pseudo-release numbers. External standard versions remain explicit only when they are real external versions.
 
-> Which successful node results may be reused under the same graph identity?
+## 3. Runtime-policy contract
 
-Does not establish independent reproduction or external side-effect idempotency.
+A runtime-policy pass establishes only that explicit machine predicates passed over the available output structure.
 
-### 2.3 PROV-aligned lineage
+It does not establish:
 
-```text
-epistemic-pipeline/prov@2
-```
+- source credibility;
+- factual truth;
+- statistical validity;
+- causal validity;
+- peer review;
+- scientific acceptance.
 
-Answers:
+Unknown checks fail explicitly.
 
-> How do recorded entities, activities and software agents relate?
+## 4. Claim/evidence contract
 
-It is project JSON aligned with W3C PROV concepts. It is not PROV-O RDF.
+Claims and evidence remain distinguishable objects. A claim can be indexed with zero evidence refs; this is visible rather than silently filled in.
 
-### 2.4 Claim Verification
+`evidence_chains` record declared links. They do not independently prove that the linked evidence is sufficient or correctly interpreted.
 
-```text
-epistemic-pipeline/claim-verification@1
-```
+## 5. Claim verification contract
 
-Answers:
+`epistemic-pipeline/claim-verification` is an audit record, not a truth oracle.
 
-> What evidence bindings, runtime consistency observations, conflicts, score observations and process context were recorded for each claim?
+For each claim the record may carry:
 
-It deliberately does not emit a scientific `verified=true` flag.
+- claim identity/hash;
+- declared source refs;
+- declared evidence refs/relations;
+- internal-consistency observations;
+- cross-source observations;
+- conflict records;
+- initial and final heuristic scores;
+- descriptive audit state;
+- provider and human-review context.
 
-### 2.5 Evidence Envelope
-
-```text
-epistemic-pipeline/evidence-envelope@2
-```
-
-Answers:
-
-> Which graph/run/evidence artifacts and profiles should travel to another tool?
-
-It is a project-owned handoff index, not an external scientific-evidence standard.
-
-## 3. Graph and recovery contract
-
-Executable graph validation covers:
-
-- duplicate node IDs;
-- unknown dependencies;
-- cycles;
-- reachability.
-
-Graph identity uses both:
-
-```text
-graph_id
-graph_sha256
-```
-
-Checkpoint resume requires matching graph identity.
-
-Hard boundary:
-
-```text
-same graph ID != same graph definition
-checkpoint reuse != reproduction
-```
-
-## 4. Provider contract
-
-Provider interface:
-
-```text
-LLMProvider.complete(system, user, schema) -> dict
-LLMProvider.describe() -> bounded process metadata
-```
-
-`MockProvider` is deterministic synthetic fixture behavior.
-
-Provider disclosure may include human-readable provider/model/version/mode fields.
-
-It does **not** prove:
-
-- the provider/model string is externally verified;
-- model identity implies capability;
-- model capability implies output validity;
-- external API behavior was exercised by a mock run.
-
-## 5. Runtime-policy contract
-
-Active semantics:
-
-```text
-epistemic-pipeline/runtime-policy@1
-```
-
-Machine behavior comes from explicit `check` + parameters.
-
-Human prose is explanatory unless an executable mechanism exists.
-
-A runtime-policy success establishes only the declared machine predicate over the current structured output.
-
-```text
-runtime-policy pass != scientific validity
-runtime-policy pass != source credibility
-runtime-policy pass != peer review
-```
-
-Historical Gatekeeper/quality-gate names remain compatibility surfaces only.
-
-## 6. Claim / evidence / conflict contract
-
-The runtime keeps:
-
-```text
-claims_registry
-evidence_chains
-conflict_registry
-```
-
-as distinct structures.
-
-### Claim identity
-
-Claim IDs/hashes provide audit identity for repository records. Hashing the claim record does not prove claim truth.
-
-### Evidence binding
-
-Evidence refs establish declared linkage, not sufficiency or credibility.
-
-```text
-evidence bound != evidence sufficient
-citation present != citation faithful
-source cited != source credible
-```
-
-### Conflict records
-
-Conflicts preserve disagreement/limitation information. Absence of a conflict does not imply correctness or consensus.
-
-## 7. Claim Verification contract
-
-Project profile:
-
-```text
-epistemic-pipeline/claim-verification@1
-```
-
-### 7.1 Claim record fields
-
-A record may contain:
-
-```text
-claim_id
-origin_state_id
-claim_record_sha256
-source_refs[]
-evidence_refs[]
-evidence_relations[]
-observations.internal_consistency
-observations.cross_source
-conflicts[]
-heuristic_scores.initial
-heuristic_scores.final
-audit_state
-truth_claim=false
-citation_verification_claim=false
-```
-
-Full claim prose is not duplicated into the sidecar by default.
-
-### 7.2 Audit states
-
-Current states are descriptive process labels:
+Allowed audit states are deliberately non-verdict states:
 
 ```text
 indexed_only
@@ -241,240 +91,154 @@ conflict_recorded
 structurally_checked_with_conflict
 ```
 
-They answer:
+The repository does not emit `verified=true`, `accepted`, `rejected` or equivalent scientific-review verdicts because it does not contain an independent domain scientific-review authority.
 
-> Which audit structures/observations exist for this claim?
+## 6. Score contract
 
-They do not answer:
-
-- whether the claim is scientifically accepted;
-- whether it is true/false;
-- whether it passed peer review;
-- whether its evidence is sufficient;
-- whether statistical/causal design is valid.
-
-### 7.3 Why no accepted/rejected state
-
-Research systems such as Brain Researcher demonstrate the value of explicit scientific claim qualification using accepted/qualified/revised/blocked/rejected/deferred outcomes.
-
-This repository does not implement the independent domain scientific-review authority required to make those labels defensible.
-
-Therefore `claim-verification@1` retains narrower structural/process states.
-
-## 8. Score contract
-
-Active profile:
+Any bounded score produced by the default network is a heuristic value in `[0,1]`.
 
 ```text
-epistemic-pipeline/confidence-heuristic@1
-```
-
-Current `[0,1]` numbers are bounded heuristic scores.
-
-Claim audit can preserve:
-
-```text
-heuristic_scores.initial @ verify
-heuristic_scores.final   @ synthesize
-```
-
-Hard rules:
-
-```text
-initial score != prior probability
-final score != posterior probability
-score delta != probability delta
+heuristic score != calibrated probability
+final score != probability posterior
+score increase != stronger scientific truth
 numerical convergence != certainty
 ```
 
-Temperature scaling remains a transform unless fitted/evaluated on labelled data under a declared calibration objective.
+A temperature transform that was not fitted/evaluated on labelled data remains a transform and must not be presented as empirical probability calibration.
 
-## 9. Process-disclosure contract
+## 7. Trace contract
 
-Project profile:
+`epistemic-pipeline/trace` records project events and internal correlation. Reused OpenTelemetry GenAI field names are scoped naming alignment only.
 
-```text
-epistemic-pipeline/process-disclosure@1
-```
+The SHA-256 previous-record chain demonstrates internal linkage for the records present. It is not an externally anchored immutable ledger.
 
-It may carry provider metadata and:
+## 8. Checkpoint contract
 
-```text
-human_review: reviewed | partial | not_reviewed | not_declared
-```
+`epistemic-pipeline/checkpoint` binds successful node results to graph ID and canonical graph SHA-256.
 
-Interpretation boundaries:
+Resume identity checks prevent ambiguous graph mismatch. They do not prove that non-deterministic providers will replay the same output.
 
-```text
-provider identity != output validity
-human review != peer review
-reviewed != scientific validation
-process metadata != authorship adjudication
-```
+## 9. Provenance contract
 
-## 10. Provenance contract
+`epistemic-pipeline/prov` uses W3C PROV concepts in project JSON.
 
-`prov@2` uses W3C PROV-aligned terms in project JSON.
-
-Current lineage can record graph identity, node-output identities, trace/checkpoint refs and relations.
-
-It does not claim:
+It can establish declared lineage relationships and byte/structural identities. It does not claim:
 
 - PROV-O RDF serialization;
-- complete ontological coverage;
-- immutable provenance;
-- scientific truth.
+- complete W3C PROV conformance;
+- scientific truth;
+- independent reproduction.
 
-## 11. Evidence Envelope contract
+## 10. Evidence Envelope contract
 
-`evidence-envelope@2` remains deliberately small.
-
-It may reference:
+`epistemic-pipeline/evidence-envelope` is the compact handoff object. It can reference:
 
 ```text
 graph
 trace
 checkpoint
 provenance
-claim-audit
+claim-index
+claim-verification
+process disclosure
 upstream artifact refs
 upstream evidence refs
 ```
 
-It also carries:
+It does not duplicate full research payloads by default.
 
-- claim index;
-- profile identifiers;
-- process disclosure;
-- trace-integrity semantics;
-- local reproducibility level;
-- scientific-validity boundary flags.
+A local upstream file can be hashed. An opaque URI/reference is retained without dereferencing. Neither case imports scientific validity from upstream.
 
-The envelope references claim audit instead of embedding it, so the handoff layer does not become a second research database.
+## 11. Provider disclosure contract
 
-## 12. Upstream-reference contract
+Provider metadata describes the execution route only. Unknown fields remain unknown.
 
-`run_bundle.py` accepts repeatable:
+The built-in synthetic fixture declares:
 
 ```text
---upstream-artifact-ref
---upstream-evidence-ref
+model: null
+version: null
+mode: synthetic_fixture
+external_model_call: false
 ```
 
-Reference behavior:
+No version is invented for a fixture that has no externally meaningful release identity.
 
-- existing local file: hash may be recorded;
-- URI: retained as opaque, not dereferenced;
-- unresolved local/opaque text: preserved explicitly.
+## 12. Human-review contract
 
-A downstream/upstream link does not transfer scientific validity.
+Current values:
 
-This is the preferred loose-coupling path from `auto-doc-engine/artifact-record@1`.
+```text
+reviewed
+partial
+not_reviewed
+not_declared
+```
 
-## 13. Trace / OpenTelemetry boundary
+These record declared human involvement only.
 
-The project trace may align selected naming with evolving OpenTelemetry GenAI semantic conventions.
+```text
+human review != peer review
+human review != scientific validation
+```
 
-It does not claim:
+## 13. Upstream/downstream handoff
 
-- OTel SDK integration;
-- exporter compatibility;
-- span-event conformance;
-- that `epistemic.run.id` is a provider conversation ID.
+Preferred upstream artifact profile:
 
-The distinction remains explicit because GenAI semantic conventions continue to evolve.
+```text
+auto-doc-engine/artifact-record
+```
+
+Preferred downstream communication profiles:
+
+```text
+sci-render-kit/figure-claim-audit
+sci-render-kit/figure-evidence
+```
+
+Cross-repository interoperability is reference-based and optional; no direct runtime import is required.
 
 ## 14. Reproducibility levels
 
-Local project terms:
-
-- **R0 Traceable** — research artifacts/relationships can be associated.
-- **R1 Replay-addressable** — stable input/config/graph/artifact identities address intended replay.
-- **R2 Environment-bounded** — relevant runtime/dependency assumptions are bounded.
+- **R0 Traceable** — identity/source pointers exist.
+- **R1 Replay-addressable** — intended run/input/config identities can be located.
+- **R2 Environment-bounded** — relevant environment/dependency assumptions are recorded.
 - **R3 Reproduced** — a separate rerun actually occurred and was compared under a declared criterion.
 
-Trace/checkpoint/provenance/claim-audit/envelope creation does not self-award R3.
+Trace, checkpoint, provenance, claim verification or Evidence Envelope artifacts can support auditability; none automatically establishes R3.
 
-## 15. Cross-repository contract
+## 15. External research calibration
 
-```text
-auto-doc-engine
-  artifact-record@1
-        ↓
-epistemic-pipeline
-  upstream-reference@1
-  claim-index@1
-  claim-verification@1
-  evidence-envelope@2
-        ↓
-sci-render-kit
-  research_context.claim_audit_ref
-  figure-claim-audit@1
-  figure-evidence@2
-```
+The 2026-08-27 design is informed by recent work on:
 
-No direct runtime imports are required.
+- provenance-grounded trust in autonomous science;
+- transparent/responsible AI use in scientific publishing;
+- artifact-centered claim-aware observability;
+- evidence-constrained claim qualification;
+- trajectory-to-evidence conversion;
+- strict end-to-end evaluation of scientific agents.
 
-## 16. Global research calibration
+The repository borrows design principles only. The referenced publications do not validate this implementation.
 
-The 2026-08-27 architecture borrows bounded design lessons from:
+## 16. Non-inference rules
 
-- **Provenance grounds trust in autonomous science** — re-openable corrective provenance;
-- **Artifact-centered Claim-aware Observability** — claims/artifacts/verification relations beyond logs;
-- **EarthVerse** — local competence does not guarantee end-to-end scientific-chain consistency;
-- **Brain Researcher** — explicit claim scope/qualification matters;
-- **From Trajectories to Evidence** — a completed trajectory is not automatically admitted evidence;
-- W3C PROV and evolving OpenTelemetry GenAI semantics.
-
-These are research directions, not scientific validation, endorsement or standards conformance of this repository.
-
-## 17. Experimental-module rule
-
-Experimental modules remain outside the canonical engine unless deliberately integrated:
-
-- `anti_entropy.py`
-- `convergence.py`
-- `infinite_regression.py`
-- `neuro_symbolic.py`
-- `perception.py`
-- `thread_collapse.py`
-
-Fixing or documenting an experimental implementation does not promote it.
-
-## 18. Shared hard boundaries
+The following implications are forbidden:
 
 ```text
-Structured output != truthful output
-Runtime policy pass != scientific validity
-Evidence binding != evidence sufficiency
-Consistency observation != truth
-Conflict absence != correctness
-Heuristic score != calibrated probability
-Numerical convergence != certainty
-Audit state != scientific acceptance
-Provider identity != output validity
-Human review != peer review
-Trace integrity != immutable ledger
-Provenance != truth
-Checkpoint resume != independent reproduction
+run success -> scientific validity
+runtime policy pass -> truth
+claim indexed -> claim true
+evidence linked -> evidence sufficient
+no conflict -> corroborated truth
+heuristic score -> probability
+convergence -> certainty
+provider identity -> output validity
+human review -> peer review
+provenance -> truth
+metadata -> reproduction
 ```
 
-## 19. Maintenance model
+## 17. Governance boundary
 
-Local checks are optional maintenance aids, not GitHub merge policy or scientific-validation evidence.
-
-The repository does not require GitHub Actions, CI, CodeQL, dependency bots, branch protection or merge gates as research architecture.
-
-The 2026-08-27 consolidation does not use test execution as completion evidence.
-
-## 20. Primary references
-
-Checked through 2026-08-27:
-
-- W3C PROV overview: https://www.w3.org/TR/prov-overview/
-- OpenTelemetry GenAI semantic conventions: https://github.com/open-telemetry/semantic-conventions-genai
-- Nature Computational Science, *Provenance grounds trust in autonomous science*: https://doi.org/10.1038/s43588-026-01035-4
-- Yin et al., *Artifact-centered Claim-aware Observability for Autonomous Scientific Agents*: https://arxiv.org/abs/2608.18312
-- *EarthVerse*: https://arxiv.org/abs/2608.23525
-- Chen et al., *Bringing analytic rigor to agentic AI for science: The Brain Researcher platform for neuroimaging data analysis*: https://arxiv.org/abs/2608.19902
-- Zhuang et al., *From Trajectories to Evidence*: https://arxiv.org/abs/2608.05235
+GitHub Actions, CI, CodeQL, dependency bots, branch protection and merge gates are outside this research architecture. Existing tests/local checks remain optional maintenance aids and are not the completion criterion for the 2026-08-27 consolidation.
