@@ -1,5 +1,5 @@
 title: "Epistemic Runtime Reference Rules"
-profile: epistemic-pipeline/reference-rules@2
+profile: epistemic-pipeline/reference-rules
 description: >
   仓库级参考规则地图。这个文件不是通用 policy interpreter；
   只有明确写入对应模块/state check 的规则才真正执行。
@@ -84,6 +84,12 @@ rules:
     description: "evidence envelope 是项目 handoff profile，不是外部标准"
     enforced_by: core/evidence_envelope.py
     semantics: cross_repository_handoff
+
+  - id: claim_verification_scope
+    severity: info
+    description: "claim verification 记录结构观察、证据绑定与冲突，不产生 verified=true 或科学真值标签"
+    enforced_by: core/claim_audit.py
+    semantics: claim_audit_boundary
 
   - id: scientific_validity_not_inferred
     severity: error
