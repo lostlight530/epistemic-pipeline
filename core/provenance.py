@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Optional
 
-PROFILE = "epistemic-pipeline/prov@2"
+PROFILE = "epistemic-pipeline/prov"
 PROV_NAMESPACE = "http://www.w3.org/ns/prov#"
 SOFTWARE_AGENT = "agent:epistemic-pipeline"
 
@@ -104,9 +104,9 @@ def build_run_provenance(
             "wasAssociatedWith": [{"activity": run_activity, "agent": SOFTWARE_AGENT}],
         },
         "profiles": {
-            "runtime_policy": "epistemic-pipeline/runtime-policy@1",
-            "trace": "epistemic-pipeline/trace@2",
-            "confidence": "epistemic-pipeline/confidence-heuristic@1",
+            "runtime_policy": "epistemic-pipeline/runtime-policy",
+            "trace": "epistemic-pipeline/trace",
+            "confidence": "epistemic-pipeline/confidence-heuristic",
         },
         "privacy": {
             "payloads_embedded": False,
