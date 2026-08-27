@@ -1,25 +1,14 @@
 # Architecture — Epistemic Pipeline
 
-> Calibrated 2026-08-27. This document describes implemented runtime semantics and research-integrity boundaries. It does not define GitHub platform governance.
+> Calibrated 2026-08-28. This document describes implemented runtime semantics and research-integrity boundaries. It does not define GitHub platform governance.
 
-## 1. Architectural thesis
+## Architectural thesis
 
-Research execution is modeled as an **evidence-bearing state-transition system**. The repository separates:
+Research execution is modeled as an **evidence-bearing state-transition system**. The repository separates dependency structure, provider execution, runtime-policy predicates, claim/evidence/conflict structures, heuristic scores, recovery identity, tracing, provenance, claim-level verification observations, assertion basis, dimensional audit coverage and cross-tool handoff.
 
-1. dependency structure;
-2. provider execution;
-3. runtime-policy predicates;
-4. claim/evidence/conflict structures;
-5. bounded heuristic scores;
-6. recovery identity;
-7. run tracing;
-8. provenance lineage;
-9. claim-level verification observations;
-10. cross-tool handoff.
+A single “agent success” flag would collapse materially different properties, so the architecture does not use one as a scientific claim.
 
-The system deliberately avoids a single “agent success” flag because execution completion, structural validity, evidence support and scientific validity are different properties.
-
-## 2. Canonical runtime
+## Canonical runtime and evidence path
 
 ```text
 graph YAML
@@ -36,14 +25,20 @@ ConfidenceNetwork where configured
   ↓
 RunTracer + checkpoint
   ↓
-run result
+PROV-aligned lineage
+  ↓
+claim-verification
+    ├─ assertion / observation basis
+    └─ dimensional claim audit coverage
+  ↓
+evidence-envelope
+    ├─ upstream-reference coverage
+    └─ compact cross-tool handoff
 ```
 
-`discover -> analyze -> verify -> synthesize -> archive` is the default semantic progression, while the actual executable ordering is derived from graph dependencies.
+`discover -> analyze -> verify -> synthesize -> archive` is the default semantic progression; executable ordering comes from graph dependencies.
 
-## 3. Stable project identifiers
-
-Internal profile names are stable semantic identifiers and carry no decorative release suffixes:
+## Stable project identifiers
 
 ```text
 epistemic-pipeline/engine
@@ -61,96 +56,90 @@ epistemic-pipeline/evidence-envelope
 epistemic-pipeline/reference-rules
 ```
 
-Schema evolution is documented through contracts and fields rather than arbitrary `@1/@2` labels. External standards retain their actual published versions where applicable.
+Internal project identifiers are unversioned; real external standard/runtime versions remain explicit when genuinely applicable.
 
-## 4. Dependency graph
+## Dependency graph
 
-`core/dependency_graph.py` validates structural properties such as duplicate IDs, missing dependencies, cycles and reachability, and produces deterministic topological ordering / parallel groups.
-
-This is graph validity, not research validity.
-
-## 5. Provider boundary
-
-`LLMProvider` is a small interface:
+`core/dependency_graph.py` validates duplicate IDs, missing dependencies, cycles and reachability, then produces deterministic topological ordering / parallel groups.
 
 ```text
-system prompt + user prompt + optional schema
-          ↓
-structured mapping
+graph validity != research validity
 ```
 
-The repository contains only `MockProvider`, a deterministic synthetic fixture. It declares no model and no invented version. Real model/provider integrations must be injected by callers.
+## Provider boundary and assertion basis
 
-Provider metadata is process context only.
+`LLMProvider` is a provider-neutral structured-output interface. The repository ships only `MockProvider` as a deterministic synthetic fixture.
 
-## 6. Runtime policy
-
-`RuntimePolicyEvaluator` executes only explicit machine-readable checks in state definitions. Human `rule` descriptions are never parsed into executable logic.
-
-The legacy names `Gatekeeper`, `check_quality_gates` and the fallback `quality_gates` state key remain compatibility surfaces, not the active conceptual model.
+Day 5 makes provider metadata provenance explicit:
 
 ```text
-runtime-policy success = declared structural/output predicates passed
+injected provider describe() -> provider-adapter-reported
+MockProvider                -> synthetic-fixture-runtime
+no provider configured      -> runtime-harness-state
+```
+
+Unknown model/version fields remain `null`.
+
+```text
+provider-adapter-reported != vendor certification
+provider identity != output validity
+provider metadata != AI-text detection
+```
+
+The provider path records `automatic_ai_detection_used: false`; it does not infer AI authorship/use from output prose.
+
+## Runtime policy
+
+`RuntimePolicyEvaluator` executes only explicit machine-readable checks. Human `rule` descriptions are documentation, not code. Historical Gatekeeper naming remains compatibility-only.
+
+```text
 runtime-policy success != scientific validity
+runtime-policy success != evidence credibility
 ```
 
-## 7. Score layer
+## Score layer
 
-`ConfidenceNetwork` performs synchronous bounded weighted propagation. The historical class name remains for compatibility, but its semantics are explicitly heuristic.
-
-`core/calibration.py` provides a monotone transform, not empirical probability calibration unless a caller separately fits and evaluates it on labelled data.
-
-## 8. Trace layer
-
-`RunTracer` writes JSONL records with project correlation fields and an internal SHA-256 previous-record chain.
-
-OpenTelemetry GenAI naming is borrowed only where semantically appropriate, notably `gen_ai.operation.name`. The implementation is not an OpenTelemetry SDK exporter and project run IDs are not presented as provider conversation IDs.
-
-Internal chain verification demonstrates consistency over the records currently present; without an external anchor/count it is not tamper-proof.
-
-## 9. Checkpoint and recovery identity
-
-Checkpoint data records:
+`ConfidenceNetwork` performs bounded weighted heuristic propagation. `core/calibration.py` provides a monotone transform, not empirical probability calibration without separate labelled fitting/evaluation.
 
 ```text
-profile: epistemic-pipeline/checkpoint
-run_id
-graph_id
-graph_sha256
-completed nodes
-results
+score in [0,1] != calibrated probability
+convergence != certainty
+score change != Bayesian update
 ```
 
-Resume refuses a checkpoint whose graph ID or canonical graph digest does not match the current graph.
+## Trace and checkpoint
 
-This guards against ambiguous recovery; it cannot guarantee deterministic external-provider replay.
+`RunTracer` writes project JSONL with internal SHA-256 linkage. Selected OpenTelemetry GenAI names may be borrowed where semantically appropriate, but this is not an OTel exporter or span-conformance claim.
 
-## 10. PROV-aligned lineage
+Checkpoint graph identity protects bounded resume from mismatched graph definitions. It cannot guarantee deterministic replay of external providers/tools.
 
-`core/provenance.py` emits a payload-minimizing project JSON using W3C PROV concepts. Node outputs are represented through identities and structural metadata rather than duplicated payload text.
+## PROV-aligned lineage
 
-It is not a PROV-O RDF serializer and does not claim complete W3C PROV serialization conformance.
-
-## 11. Claim verification architecture
-
-`core/claim_audit.py` exists because “verify stage executed” is too coarse to describe research status.
-
-For each claim it records independent dimensions:
+`core/provenance.py` emits payload-minimizing project JSON using PROV concepts. It is not PROV-O RDF serialization or complete standards conformance.
 
 ```text
-identity
+lineage != truth
+hash identity != semantic equivalence
+```
+
+## Claim-verification architecture
+
+`core/claim_audit.py` separates:
+
+```text
+claim identity
 source refs
-evidence refs
-relations
+evidence refs / relations
 internal consistency observation
 cross-source observation
 conflicts
 initial heuristic score
 final heuristic score
 audit state
+assertion / observation basis
 ```
 
-Audit states are descriptive process states only:
+Audit states remain descriptive:
 
 ```text
 indexed_only
@@ -160,102 +149,147 @@ conflict_recorded
 structurally_checked_with_conflict
 ```
 
-No `verified=true`, accepted/rejected verdict or scientific truth label is emitted.
+No `verified=true`, accepted/rejected scientific verdict or truth label is emitted.
 
-## 12. Evidence Envelope
+## Claim assertion / observation basis
 
-The Evidence Envelope is a compact project-owned interchange index. It references rather than duplicates:
+Day 5 adds explicit bases:
 
-```text
-graph
-trace
-checkpoint
-provenance
-claim audit
-claim index
-process disclosure
-upstream artifact/evidence refs
-```
+| Surface | Basis |
+|---|---|
+| claim/source/evidence refs | `structured-analyze-output` |
+| consistency observations | `structured-verify-output` |
+| conflicts | `structured-verify-output` |
+| heuristic scores | `structured-state-output` |
+| provider metadata | provider-adapter / fixture runtime |
+| human review | caller-declared when supplied |
 
-Local upstream files are hashed; opaque or URI references are retained without network dereference. Scientific validity is never inherited automatically from upstream metadata.
-
-## 13. Evidence stack
-
-The canonical post-run evidence stack is:
+This is provenance of the recorded assertion/observation, not external validation.
 
 ```text
-RunTracer
-    │ execution chronology
-    ▼
-Checkpoint
-    │ recovery state
-    ▼
-PROV-aligned lineage
-    │ derivation relationships
-    ▼
-Claim verification record
-    │ claim-level observations/conflicts/scores
-    ▼
-Evidence Envelope
-      cross-tool index/handoff
+assertion basis != correctness
+structured-verify-output != scientific verification
 ```
 
-These artifacts are complementary, not interchangeable.
+## Dimensional claim audit coverage
 
-## 14. Cross-repository architecture
+`claim-verification` computes separate counts and ratios over indexed claims for:
+
+```text
+source refs
+evidence refs
+internal consistency observations
+cross-source observations
+conflicts
+initial heuristic scores
+final heuristic scores
+```
+
+No aggregate quality score is computed:
+
+```json
+{"aggregate_score": null}
+```
+
+```text
+coverage != scientific validity
+coverage ratio != probability
+coverage != provenance soundness
+```
+
+Current claim-level auditability research motivates separating coverage from soundness; this repository implements coverage only where its own structured artifacts support it.
+
+## Evidence Envelope
+
+The Evidence Envelope references graph, trace, checkpoint, provenance, claim audit/index, process disclosure and optional upstream artifact/evidence refs.
+
+Day 5 adds reference-resolution coverage:
+
+```text
+reference_count
+by_resolution
+local_file_ratio
+aggregate_score: null
+```
+
+A local-file ratio indicates local resolvability/hashing at envelope generation time, not source credibility or evidence quality.
+
+The Envelope stays compact and does not duplicate claim-verification payloads.
+
+## Evidence stack
+
+```text
+Trace             -> chronology
+Checkpoint        -> recovery state
+PROV lineage      -> derivation relationships
+Claim verification-> per-claim observations/basis/coverage
+Evidence Envelope -> compact cross-tool index
+```
+
+These artifacts are complementary, not interchangeable proof objects.
+
+## Cross-repository architecture
 
 ```text
 auto-doc-engine
-artifact-record + process context
+  artifact-record + assertion basis + artifact coverage
         ↓
 epistemic-pipeline
-claim/evidence structure + claim verification + lineage
+  claim-verification + audit coverage + evidence-envelope
         ↓
 sci-render-kit
-claim-to-visual communication + communication audit
+  figure-claim-audit + communication coverage + figure-evidence
 ```
 
-The repositories are loosely coupled through references and stable semantic identifiers. They do not need direct imports.
+Repositories are loosely coupled through references, not imports or inherited scientific validity.
 
-## 15. Reproducibility
-
-R0–R3 are local project terms, not external standards:
+## Reproducibility
 
 ```text
 R0 traceable
 R1 replay-addressable
 R2 environment-bounded
-R3 reproduced by a separate rerun and declared comparison
+R3 actual separate rerun + declared comparison
 ```
 
-Evidence sidecars can support R0/R1 bookkeeping. They cannot self-declare a run R3 without an actual separate rerun.
+Evidence sidecars support bookkeeping; they do not self-award R3.
 
-## 16. Current global design calibration
+## Five-day global calibration
 
-The architecture is consistent with several 2026 research directions:
+The 2026-08-24 → 2026-08-28 architecture is informed by re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse end-to-end consistency gaps and claim-level auditability work separating provenance coverage, soundness, contradiction transparency and audit effort.
 
-- re-openable provenance for autonomous science;
-- transparent AI use and human responsibility in scientific publishing;
-- artifact-centered claim-aware observability;
-- distinguishing completed trajectories from defensible evidence;
-- evidence-constrained claim qualification;
-- evaluating end-to-end scientific consistency rather than only local task success.
+Borrowed: explicit audit objects, dimensional coverage, assertion provenance, contradiction visibility and evidence-bounded qualification.
 
-The repository borrows these design lessons, not external authority. None of these publications certifies this implementation.
+Not claimed: provenance soundness, scientific-review authority, citation correctness, calibrated truth probability or peer review.
 
-## 17. Non-goals
-
-The architecture does not currently provide:
+## Non-goals
 
 - scientific truth adjudication;
-- citation-content verification against external literature by itself;
+- external citation-content verification by itself;
+- provenance soundness validation;
 - calibrated probabilities by default;
+- automatic AI-text detection;
 - automatic peer review;
-- a tamper-proof external ledger;
+- tamper-proof external ledger;
 - PROV-O RDF serialization;
 - built-in production LLM providers;
 - GitHub CI/merge governance.
 
-## 18. Maintenance rule
+## Hard invariants
 
-When implementation, README, Architecture, Research Contract, Manifest and examples disagree, implementation plus explicit contracts are authoritative and documentation must be corrected. New capability claims require an actual code path or an explicit `planned/experimental` label.
+```text
+Assertion basis != correctness
+Audit coverage != scientific validity
+Coverage ratio != probability
+Evidence ref != evidence sufficiency
+Conflict absent != corroboration
+Provider identity != output validity
+Human review != peer review
+Runtime-policy pass != scientific validation
+Convergence != certainty
+Provenance != truth
+```
+
+## Maintenance rule
+
+When code and docs disagree, correct the implementation/documentation explicitly. New capability claims require a real code path or a clear planned/experimental label. GitHub Actions, CI, CodeQL, dependency bots and merge gates remain outside the research architecture.
