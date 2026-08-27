@@ -1,81 +1,119 @@
 # Epistemic Pipeline
 
-> 面向科研工程的状态机执行、claim/evidence/conflict 结构、运行时约束、恢复、溯源与 claim-level audit 层  
-> Evidence-aware state-machine execution with claim-level verification records for research workflows
+> Evidence-aware state-machine execution for research workflows, with explicit claim/evidence structure, runtime policy, recovery identity, provenance, claim verification, and cross-tool handoff.
 
-[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Claim Audit Contract](CLAIM_AUDIT_CONTRACT.md) · [Four-Day Consolidation](FOUR_DAY_CONSOLIDATION.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Customization](CUSTOMIZATION_GUIDE.md) · [Examples](examples/README.md)
+[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Claim Audit Contract](CLAIM_AUDIT_CONTRACT.md) · [Customization](CUSTOMIZATION_GUIDE.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md) · [Four-Day Consolidation](FOUR_DAY_CONSOLIDATION.md)
 
----
+## Positioning
 
-## 简体中文
-
-### 当前定位
-
-Epistemic Pipeline 不是“多个 Agent 排队聊天”的框架，也不是 scientific truth oracle
-
-它把科研分析过程拆成可检查的执行与证据结构：
+Epistemic Pipeline is not a framework for “several agents chatting in sequence”. It treats research execution as an inspectable state-transition system:
 
 ```text
 discover -> analyze -> verify -> synthesize -> archive
 ```
 
-核心问题不是“用了几个 Agent”，而是：
-
-- 输入、状态和依赖是否明确
-- provider 输出是否满足机器可读 runtime policy
-- claim / evidence / conflict 是否保持分离
-- claim 到底绑定了哪些 source / evidence
-- verify 阶段记录了哪些 consistency / conflict observations
-- 初始和最终 `[0,1]` heuristic score 到底是什么语义
-- run 是否能 trace / checkpoint / resume
-- provenance、claim audit 和 cross-tool evidence handoff 是否保持不同职责
-- provider / human-review context 是否被显式声明
-
-### Day-4 规范主链
+The canonical path separates concerns that are often collapsed into one opaque agent trajectory:
 
 ```text
-upstream artifact / evidence refs
-        ↓
-Graph + State Definition
-        ↓
-Role Binding + LLMProvider contract
-        ↓
-RuntimePolicyEvaluator @1
-        ↓
+validated graph
+    ↓
+provider-neutral structured outputs
+    ↓
+runtime policy predicates
+    ↓
 claim / evidence / conflict structures
-        ↓
-initial heuristic scores @ verify
-        ↓
-final heuristic scores @ synthesize
-        ↓
-Trace @2 + Checkpoint @2
-        ↓
-PROV-aligned lineage @2
-        ↓
-Claim Verification @1
-        ↓
-Evidence Envelope @2
+    ↓
+bounded heuristic score propagation
+    ↓
+trace + checkpoint
+    ↓
+PROV-aligned lineage
+    ↓
+claim verification record
+    ↓
+evidence envelope
 ```
 
-### 已接入能力
+A completed run is not automatically scientific evidence. A structural check is not scientific verification. A score is not a probability. Provenance is not truth.
 
-- **DAG 执行**：`linear` / `parallel` / `diamond` 可执行；`adaptive` 仍是实验性规格
-- **图身份**：`graph_id` + canonical graph SHA-256；checkpoint resume 不仅相信同名 ID
-- **Provider 解耦**：`LLMProvider.complete(system, user, schema) -> dict`
-- **Provider disclosure**：`LLMProvider.describe()` 暴露有界 provider/model/process 元数据；默认 `MockProvider` 明确是 synthetic fixture
-- **运行时策略**：state YAML 使用 machine-readable `runtime_policies`; 人类 `rule` 文本不参与执行
-- **启发式 score network**：同步 bounded weighted propagation，不是 Bayesian posterior
-- **弹性执行**：transient/permanent 分类、指数退避+jitter、caller-side timeout
-- **checkpoint**：`epistemic-pipeline/checkpoint@2`，原子写入并绑定 graph digest
-- **trace**：`epistemic-pipeline/trace@2` 项目 JSONL；借用适用的 OTel GenAI 命名，但不是 exporter/span 实现
-- **provenance**：`epistemic-pipeline/prov@2`，W3C PROV-aligned project JSON，不是 PROV-O RDF
-- **claim index**：`epistemic-pipeline/claim-index@1`，只索引 claim ID/source/evidence refs，不复制完整 claim prose
-- **claim verification**：`epistemic-pipeline/claim-verification@1`，把 claim 的 evidence、consistency、conflict、score evolution 和 process context 分开记录
-- **evidence envelope**：`epistemic-pipeline/evidence-envelope@2`，汇总 graph/trace/checkpoint/provenance/claim-audit 与 upstream refs 成跨工具 handoff index
+## Stable internal identifiers
 
-## 为什么新增 Claim Verification
+Project-owned profile identifiers are intentionally **unversioned**. They are stable semantic names, not release numbers:
 
-`verify` state 以前已经输出：
+```text
+epistemic-pipeline/engine
+epistemic-pipeline/runtime-policy
+epistemic-pipeline/trace
+epistemic-pipeline/checkpoint
+epistemic-pipeline/prov
+epistemic-pipeline/confidence-heuristic
+epistemic-pipeline/network-input
+epistemic-pipeline/claim-index
+epistemic-pipeline/claim-verification
+epistemic-pipeline/process-disclosure
+epistemic-pipeline/upstream-reference
+epistemic-pipeline/evidence-envelope
+epistemic-pipeline/reference-rules
+```
+
+External standard versions remain explicit where they actually matter. For example, W3C PROV terminology and OpenTelemetry semantic-convention names are external references; this repository does not invent versions for them and does not claim full standards conformance unless implemented and evidenced.
+
+## Core modules
+
+| Module | Role | Boundary |
+|---|---|---|
+| `core/dependency_graph.py` | DAG validation, deterministic topological structure and parallel groups | structural graph semantics only |
+| `core/engine.py` | state execution, runtime policy, retry/timeout, checkpoint/resume | run success is not scientific validity |
+| `core/llm_harness.py` | provider-neutral structured-output contract | repository ships only a synthetic `MockProvider`; real providers must be injected |
+| `core/gatekeeper.py` | machine-readable runtime-policy predicates | not a scientific reviewer; historical `Gatekeeper` API remains compatibility-only |
+| `core/confidence_net.py` | bounded weighted heuristic score propagation | `[0,1]` does not mean calibrated probability |
+| `core/calibration.py` | monotone score transform | does not become empirical probability calibration without labelled fit/evaluation |
+| `core/run_tracer.py` | JSONL trace with internal SHA-256 chain | not an OpenTelemetry exporter or tamper-proof ledger |
+| `core/provenance.py` | PROV-aligned project JSON lineage | not PROV-O RDF or complete W3C serialization conformance |
+| `core/claim_audit.py` | per-claim verification observations | never emits `verified=true` or a truth label |
+| `core/evidence_envelope.py` | compact cross-tool handoff index | references evidence artifacts rather than duplicating all payloads |
+| `core/run_bundle.py` | evidence-bearing wrapper | coordinates trace/checkpoint/provenance/claim audit/envelope |
+
+Experimental modules remain separate from this canonical path unless explicitly documented as integrated.
+
+## Runtime policy
+
+State definitions use `runtime_policies`. The legacy `quality_gates` key remains a compatibility fallback only.
+
+Rules execute through explicit machine checks such as:
+
+```text
+min_items
+non_empty
+every_item_fields
+claim_evidence_ratio
+numeric_min
+numeric_max_exclusive
+conflicts_have_fields
+mapping_required_keys
+```
+
+Human-readable `rule` text is not interpreted as code. Unknown checks fail explicitly rather than being silently accepted.
+
+A runtime-policy pass means only that the declared machine predicates passed for the current outputs.
+
+```text
+runtime policy pass != scientific validity
+runtime policy pass != peer review
+runtime policy pass != evidence credibility
+```
+
+## Claim and evidence model
+
+The analyze stage can emit:
+
+```text
+claims_registry
+evidence_chains
+methodology_index
+```
+
+The verify stage can emit:
 
 ```text
 internal_consistency_report
@@ -85,41 +123,34 @@ confidence_seed
 coverage
 ```
 
-但这些只存在于运行输出里，并没有形成独立、可携带的 claim-level audit artifact
+The synthesize stage can emit the final bounded score-network result. These structures are retained separately because they answer different questions.
 
-2026-08-27 新增：
+## Claim verification record
 
-```text
-epistemic-pipeline/claim-verification@1
-```
-
-它故意**不输出**：
+`core/claim_audit.py` emits `<run_id>.claim-audit.json` with profile:
 
 ```text
-verified: true
+epistemic-pipeline/claim-verification
 ```
 
-因为“核验”不是一个 boolean 科学真值标签
-
-每条 claim 可以分别记录：
+Each claim record can carry:
 
 ```text
 claim_id
+origin_state_id
+claim_record_sha256
 source_refs[]
 evidence_refs[]
 evidence_relations[]
-internal_consistency observation
-cross_source observation
+internal-consistency observation
+cross-source observation
 conflicts[]
-heuristic_scores.initial
-heuristic_scores.final
+initial heuristic score
+final heuristic score
 audit_state
-provider / human-review context
 ```
 
-### audit_state 的真实含义
-
-当前 descriptive states：
+Current descriptive audit states are deliberately weak:
 
 ```text
 indexed_only
@@ -129,384 +160,194 @@ conflict_recorded
 structurally_checked_with_conflict
 ```
 
-它们只说明**运行时留下了什么审计结构**
-
-它们不表示：
+They are not accepted/rejected scientific-review decisions.
 
 ```text
-accepted by science
-rejected by science
-true
-false
-peer reviewed
-statistically valid
-causally valid
+structurally_checked != scientifically verified
+evidence_bound != evidence sufficient
+no conflict recorded != truth
+initial/final score != probability
+score increase != probability increase
 ```
 
-### Initial / Final heuristic score
+## Heuristic score semantics
 
-claim audit 同时保存：
+`ConfidenceNetwork` preserves its historical class name for API continuity. Its actual semantics are bounded weighted heuristic propagation.
 
 ```text
-initial score @ verify
-final score @ synthesize
+score in [0,1] != calibrated probability
+numerical convergence != certainty
+threshold stability != truth
 ```
 
-两者都是：
+If the optional temperature transform is used without labelled empirical fitting, the output remains a score transform and explicitly carries `probability_calibration_claim: false`.
 
-> bounded/runtime heuristic score observation
+## Trace and checkpoint
 
-不是：
-
-- calibrated probability
-- posterior probability
-- truth score
-- confidence interval
-- certainty
-
-score 变高也不表示“真值概率变高”
-
-## 推荐运行入口
-
-低层执行：
-
-```bash
-python3 core/engine.py validate graphs/linear.yaml
-python3 core/engine.py run graphs/linear.yaml
-```
-
-完整 evidence-bearing run：
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml
-```
-
-典型产物：
+Trace records use:
 
 ```text
-traces/<run_id>.jsonl
-checkpoints/<run_id>/checkpoint.json
-provenance/<run_id>.prov.json
-claim-audits/<run_id>.claim-audit.json
-evidence/<run_id>.evidence.json
+epistemic.run.id
+epistemic.node.id
+epistemic.stage
+gen_ai.operation.name
 ```
 
-职责严格分开：
+The use of `gen_ai.operation.name` is scoped naming alignment with OpenTelemetry GenAI semantic conventions. This repository is not an OTel exporter, does not claim OTel span compliance, and does not map the project run ID to a provider conversation ID.
 
-| 产物 | 回答的问题 |
-|---|---|
-| trace | 运行过程中发生了什么 |
-| checkpoint | 哪些成功节点可在同一 graph digest 下复用 |
-| provenance | Entity / Activity / Agent 之间如何形成 lineage |
-| claim audit | 每个 claim 绑定了什么 evidence、记录了什么检查/冲突/score 观察 |
-| evidence envelope | 这次 run 的跨工具引用、profiles、upstream refs 与科学边界是什么 |
+The trace SHA-256 chain verifies internal linkage for records currently present. Without an externally anchored head/count it is not a tamper-proof ledger and may not detect every tail truncation.
 
-## 从 Auto Doc 接入上游 Artifact
+Checkpoint resume requires the declared graph identity to match. It is a recovery/replay identity check, not proof that external tools or models will reproduce identical outputs.
 
-`run_bundle.py` 支持 repeatable：
+## PROV-aligned lineage
 
-```bash
-python3 core/run_bundle.py graphs/linear.yaml \
-  --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json \
-  --upstream-evidence-ref ../auto-doc-engine/output/ro-crate-metadata.json
-```
-
-也可以传 URI/opaque reference
-
-解析边界：
+`core/provenance.py` writes a project-owned JSON representation using PROV concepts:
 
 ```text
-存在的本地文件 -> hash
-URI -> opaque，不联网解引用
-其他 unresolved string -> 保留 unresolved/opaque
+Entity
+Activity
+SoftwareAgent
+used
+wasGeneratedBy
+wasDerivedFrom
+wasAssociatedWith
 ```
 
-`upstream artifact/evidence ref` 只建立 handoff/context
-
-它不会自动继承上游的：
-
-- scientific validity
-- source credibility
-- peer review
-- authorship
-
-## Runtime Policy，不是真理门禁
-
-示例：
-
-```yaml
-runtime_policies:
-  - id: evidence_linked
-    check: claim_evidence_ratio
-    claims_field: claims_registry
-    evidence_field: evidence_chains
-    min_ratio: 0.8
-```
-
-Python 只执行 `check` 与参数，不解析中文规则 prose
-
-policy pass 只表示：
-
-> 声明的 machine predicate 在当前 structured output 上成立
-
-它不表示：
+It records graph/output/trace/checkpoint identities while avoiding full research-payload duplication.
 
 ```text
-结论为真
-来源可靠
-同行评审完成
-统计设计正确
-scientific validity established
+PROV-aligned != PROV-O RDF
+lineage != truth
+hash identity != semantic equivalence
 ```
 
-历史 `Gatekeeper` / `quality_gates` / `check_quality_gates()` / `use_gatekeeper` 仅兼容旧调用；当前术语是 **runtime policy / constraint evaluation**
+## Evidence Envelope
 
-## Score 与 convergence 边界
-
-`synthesize` 的 `[0,1]` 数值是：
-
-> **bounded weighted heuristic score**
-
-`converged=True` 只表示数值迭代达到设定 delta 阈值
+`core/evidence_envelope.py` writes the stable handoff profile:
 
 ```text
-heuristic score != probability
-numerical convergence != epistemic certainty
+epistemic-pipeline/evidence-envelope
 ```
 
-`core/calibration.py` 提供 temperature-scaling **transform**；没有 labelled fit + independent evaluation 就不声称概率校准
-
-## Trace 与 OpenTelemetry 边界
-
-项目 trace：
+It references:
 
 ```text
-epistemic-pipeline/trace@2
-```
-
-当前原则：
-
-- 可以借用适用的 `gen_ai.operation.name`
-- 使用自己的 `epistemic.run.id` / `epistemic.node.id` / `epistemic.stage`
-- local run ID 不等于 provider conversation/session ID
-- JSONL start/end records 不是 OTel SDK Span Event objects
-- hash chain 只建立现有 records 的内部顺序/哈希一致性，不是外部锚定 immutable ledger
-
-GenAI semantic conventions 仍持续演化，所以仓库坚持 **selected naming alignment, not conformance claim**
-
-## PROV 与 Evidence Envelope
-
-`epistemic-pipeline/prov@2`：
-
-- W3C PROV-aligned project JSON
-- 不是 PROV-O RDF serializer
-- 默认记录 hash + 结构元数据
-- 不复制完整研究 payload
-
-`epistemic-pipeline/evidence-envelope@2`：
-
-- 不是 PROV 的替代品
-- 不是外部标准
-- 是跨工具 handoff/index
-- 可引用 `claim-verification@1`
-- 可引用 upstream artifact/evidence
-
-Evidence Envelope 保持小，是为了不把它变成第二个 research database
-
-## 2026-08-27 全球前沿借鉴
-
-### Provenance grounds trust in autonomous science
-
-Nature Computational Science 2026-08-20 强调 complete, re-openable provenance 作为纠错基础设施
-
-借鉴：运行记录必须能重新打开和追溯
-
-不借鉴成：provenance = truth
-
-### Artifact-centered Claim-aware Observability
-
-arXiv:2608.18312 强调仅记录 model call 不够，需要 artifact / claim / evidence / verification relations
-
-这与当前五层拆分高度相邻：
-
-```text
+graph
 trace
+checkpoint
 provenance
-claim index
 claim verification
-evidence envelope
+claim index
+provider/process disclosure
+upstream artifact refs
+upstream evidence refs
 ```
 
-### EarthVerse
+Existing local upstream refs receive file SHA-256 identity. URI or opaque refs are retained without network dereferencing.
 
-arXiv:2608.23525 暴露一个关键问题：agent 可以局部步骤做得不错，但仍无法维持 evidence / scale / unit / calculation / interpretation 的端到端一致链
+The envelope stays compact. It does not become a second copy of every node payload.
 
-借鉴：不要从 final answer 反推中间过程正确；每个 transition 都要保留 identity/semantics
-
-### Brain Researcher
-
-arXiv:2608.19902 强调 analytic output 只有在替代方案被权衡、claim scope 被限制到 evidence 支持范围后，才成为 defensible claim，并引入 accepted / qualified / revised / blocked / rejected / deferred 等 scientific-review outcomes
-
-借鉴：**claim qualification 是一等研究操作**
-
-不直接照搬 review labels：本仓没有独立 scientific reviewer，因此当前 `audit_state` 只描述 runtime audit structure
-
-### From Trajectories to Evidence
-
-arXiv:2608.05235 的核心提醒：
-
-> completed trajectory is not automatically evidence
-
-它强调 artifact verification、execution validity/attribution 与 post-execution claim qualification
-
-这直接支持本仓把：
-
-```text
-run success
-runtime policy
-claim audit
-provenance
-scientific validity
-```
-
-保持成不同语义层
-
-详见 [FOUR_DAY_CONSOLIDATION.md](FOUR_DAY_CONSOLIDATION.md)
-
-## Experimental 区
-
-仍未接入 canonical engine：
-
-- `anti_entropy.py`：normalized Shannon-entropy metric window
-- `convergence.py`：momentum-style bounded heuristic updater
-- `infinite_regression.py`：bounded recursive termination controller
-- `neuro_symbolic.py`：caller-supplied predicate dispatcher
-- `perception.py`：signal intake prototypes；HTTP/WebSocket 当前不执行真实网络 I/O
-- `thread_collapse.py`：bounded hypothesis-score aggregator
-
-**修正 Experimental 实现 != 升级为主链能力**
-
-## 本地维护
+## Evidence-bearing CLI
 
 ```bash
-python -m pip install pyyaml
-make test
-```
-
-只是可选本地维护工具，不属于 GitHub 平台门禁，也不构成科学正确性证明
-
-2026-08-27 四日总整合不以测试执行作为完成证据
-
-## 科研完整性硬边界
-
-```text
-Structured output != truthful output
-Runtime policy pass != scientific validity
-Evidence bound != evidence sufficient
-Consistency observed != truth
-Conflict absent != correctness
-Heuristic score != probability
-Numerical convergence != certainty
-Audit state != scientific acceptance
-Provider identity != output validity
-Human review != peer review
-Provenance != truth
-Checkpoint resume != independent reproduction
-```
-
----
-
-## English
-
-### Positioning
-
-Epistemic Pipeline is an **evidence-aware research execution and claim-audit layer**, not a generic multi-agent chat framework or scientific truth oracle.
-
-Current Day-4 chain:
-
-```text
-upstream artifact/evidence refs
-  -> Graph + State Definition
-  -> LLMProvider / Role contract
-  -> Runtime Policy Evaluation
-  -> claim / evidence / conflict structures
-  -> initial heuristic scores
-  -> final heuristic scores
-  -> Trace + Digest-bound Checkpoint
-  -> PROV-aligned Lineage
-  -> Claim Verification @1
-  -> Evidence Envelope @2
-```
-
-### Claim Verification
-
-`epistemic-pipeline/claim-verification@1` preserves claim-specific dimensions separately:
-
-- claim identity;
-- source/evidence refs;
-- evidence relations;
-- internal/cross-source observations;
-- conflict records;
-- initial/final heuristic scores;
-- descriptive audit state;
-- provider/human-review context.
-
-It intentionally does **not** emit a scientific `verified=true` label.
-
-### Evidence-bearing run
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml \
-  --upstream-artifact-ref path/to/report.artifact.json \
-  --human-review reviewed
+python core/run_bundle.py graphs/linear.yaml \
+  --human-review partial \
+  --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json \
+  --upstream-evidence-ref ./inputs/source-evidence.json
 ```
 
 Outputs can include:
 
 ```text
-trace
-checkpoint
-provenance
-claim audit
-evidence envelope
+traces/<run>.jsonl
+checkpoints/<run>/checkpoint.json
+provenance/<run>.prov.json
+claim-audits/<run>.claim-audit.json
+evidence/<run>.evidence.json
 ```
 
-Each artifact answers a different audit question.
+`run_bundle()` materializes upstream reference iterables once so programmatic callers can safely pass lists, tuples or generators without consuming them before final reference counts are recorded.
 
-### Hard boundaries
+## Provider disclosure
+
+The built-in `MockProvider` is a deterministic synthetic fixture only:
 
 ```text
-Evidence binding != evidence sufficiency
-Structural checking != scientific verification
-Heuristic score != calibrated probability
-Numerical convergence != certainty
-Audit state != claim acceptance
-Provider identity != output validity
-Human review != peer review
-Provenance != truth
+provider: epistemic-pipeline
+model: null
+version: null
+mode: synthetic_fixture
+external_model_call: false
 ```
 
-### Local maintenance
+There is intentionally no invented fixture/model version. Real integrations must implement `LLMProvider` and may return only metadata they can actually know.
 
-```bash
-python -m pip install pyyaml
-make test
+Provider identity does not prove output authenticity, reliability or scientific validity.
+
+## Three-repository handoff
+
+```text
+auto-doc-engine
+artifact identity + process context
+        ↓
+epistemic-pipeline
+claim/evidence/conflict + claim verification + lineage
+        ↓
+sci-render-kit
+claim-aware scientific communication + communication audit
 ```
 
-Local checks are optional maintenance tools. They are neither GitHub merge policy nor scientific validation.
+Preferred upstream Auto Doc identifier:
 
-## Documentation
+```text
+auto-doc-engine/artifact-record
+```
 
-- [Architecture](ARCHITECTURE.md)
-- [Research Contract](RESEARCH_CONTRACT.md)
-- [Claim Audit Contract](CLAIM_AUDIT_CONTRACT.md)
-- [Four-Day Consolidation](FOUR_DAY_CONSOLIDATION.md)
-- [Frontier Alignment](FRONTIER_ALIGNMENT.md)
-- [Customization Guide](CUSTOMIZATION_GUIDE.md)
-- [Examples](examples/README.md)
-- [Agent Guide](AGENTS.md)
-- [Manifest](MANIFEST.yaml)
+Preferred downstream Sci Render identifiers:
 
-## License
+```text
+sci-render-kit/figure-claim-audit
+sci-render-kit/figure-evidence
+```
 
-MIT License
+These are loose interoperability contracts. The repositories do not import one another at runtime.
+
+## Reproducibility semantics
+
+Shared project terminology:
+
+- **R0 Traceable** — source/artifact identity can be located.
+- **R1 Replay-addressable** — intended inputs/configuration/run identity can be located.
+- **R2 Environment-bounded** — relevant environment/dependency assumptions are also recorded.
+- **R3 Reproduced** — a genuinely separate rerun occurred and was compared using a declared criterion.
+
+A checkpoint, trace, hash, claim audit or evidence envelope alone does not establish R3.
+
+## 2026 global research calibration
+
+Current design was rechecked against recent research rather than inferred from repo naming alone:
+
+- Nature Computational Science, *Provenance grounds trust in autonomous science* (20 Aug 2026): complete, re-openable records are central to auditing and correcting autonomous-science processes.
+- Nature Computational Science, *Responsible and transparent use of AI in scientific publishing* (20 Aug 2026): transparency, accountability and human oversight remain central.
+- *Artifact-centered Claim-aware Observability for Autonomous Scientific Agents* (18 Aug 2026): model-call logs alone are insufficient for claim/artifact/evidence auditability.
+- *Brain Researcher* (20 Aug 2026): defensible claims require explicit evidence constraints and review; this repository borrows the separation principle, **not** its domain scientific-review verdict labels.
+- *From Trajectories to Evidence* (5 Aug 2026): completed trajectories are not automatically evidence; artifact verification and post-execution claim qualification must be separated.
+- *EarthVerse* (24 Aug 2026): strong local task performance can coexist with much weaker strict end-to-end scientific consistency.
+
+These publications motivate design choices. They do not validate, certify or endorse this repository.
+
+## Scientific-integrity boundaries
+
+- Provenance is not truth.
+- Claim indexing is not truth adjudication.
+- Claim verification records are observations, not scientific verdicts.
+- Provider identity is not output validity.
+- Human review is not peer review.
+- Runtime-policy success is not scientific validation.
+- Numerical convergence is not certainty.
+- Scores are not probabilities unless separately calibrated and empirically evidenced.
+- A completed trajectory is not automatically evidence.
+
+## Governance boundary
+
+No GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge gates are part of this research architecture. Existing local checks are optional maintenance aids. No test suite is used as the completion criterion for the 2026-08-27 consolidation.
