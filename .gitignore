@@ -15,6 +15,7 @@ output/
 traces/
 checkpoints/
 provenance/
+claim-audits/
 evidence/
 
 # Virtual environments
