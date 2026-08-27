@@ -4,10 +4,10 @@
 ``core.engine.StateMachineEngine`` remains the low-level executor. This wrapper
 adds distinct evidence layers instead of collapsing every concern into one log:
 
-- ``epistemic-pipeline/prov@2`` for PROV-aligned lineage relationships;
-- ``epistemic-pipeline/claim-verification@1`` for claim-level evidence,
+- ``epistemic-pipeline/prov`` for PROV-aligned lineage relationships;
+- ``epistemic-pipeline/claim-verification`` for claim-level evidence,
   consistency/conflict and heuristic-score audit dimensions;
-- ``epistemic-pipeline/evidence-envelope@2`` for cross-repository handoff,
+- ``epistemic-pipeline/evidence-envelope`` for cross-repository handoff,
   including a payload-minimizing claim index, process disclosure, the separate
   claim-verification reference and optional upstream artifact/evidence refs.
 
@@ -69,13 +69,7 @@ def _string_list(value: Any) -> list[str]:
 
 
 def _build_claim_index(run_result: dict) -> list[dict]:
-    """Extract claim identity/evidence refs without embedding claim prose.
-
-    The run's full outputs remain in their existing execution/checkpoint paths.
-    This index is intentionally small so downstream tools can discover claim to
-    evidence relationships without turning the Evidence Envelope into another
-    copy of every provider payload.
-    """
+    """Extract claim identity/evidence refs without embedding claim prose."""
     claims: Dict[str, dict] = {}
     evidence_refs: Dict[str, set[str]] = {}
     relations: Dict[str, set[str]] = {}
@@ -187,6 +181,9 @@ def run_bundle(
             f"human_review must be one of {HUMAN_REVIEW_VALUES}, got {human_review!r}"
         )
 
+    artifact_refs = [str(value) for value in (upstream_artifact_refs or [])]
+    evidence_refs = [str(value) for value in (upstream_evidence_refs or [])]
+
     graph_data = _load_graph(graph_path)
     graph_canonical_sha256 = canonical_sha256(graph_data)
     graph_file_sha256 = file_sha256(graph_path)
@@ -266,8 +263,8 @@ def run_bundle(
         claim_audit_path=claim_audit_path,
         provider_disclosure=provider_disclosure,
         human_review=human_review,
-        upstream_artifact_refs=upstream_artifact_refs,
-        upstream_evidence_refs=upstream_evidence_refs,
+        upstream_artifact_refs=artifact_refs,
+        upstream_evidence_refs=evidence_refs,
     )
     evidence_path = write_evidence_envelope(envelope, evidence_dir)
 
@@ -277,8 +274,8 @@ def run_bundle(
     result["graph_file_sha256"] = graph_file_sha256
     result["claim_index_count"] = len(claim_index)
     result["claim_audit_count"] = int(claim_audit.get("claim_count") or 0)
-    result["upstream_artifact_ref_count"] = len(list(upstream_artifact_refs or []))
-    result["upstream_evidence_ref_count"] = len(list(upstream_evidence_refs or []))
+    result["upstream_artifact_ref_count"] = len(artifact_refs)
+    result["upstream_evidence_ref_count"] = len(evidence_refs)
     return result
 
 
