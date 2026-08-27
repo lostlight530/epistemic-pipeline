@@ -33,7 +33,7 @@ from core.resilience import RetryPolicy, classify_error, run_with_retry, run_wit
 from core.run_tracer import RunTracer
 
 
-ENGINE_PROFILE = "epistemic-pipeline/engine@2"
+ENGINE_PROFILE = "epistemic-pipeline/engine"
 
 
 def canonical_sha256(value: object) -> str:
@@ -53,7 +53,7 @@ class StateMachineEngine:
         self,
         graph_path: str,
         mock_llm: bool = True,
-        use_gatekeeper: bool = True,  # historical compatibility argument
+        use_gatekeeper: bool = True,
         use_confidence_net: bool = True,
         harness: Optional[LLMHarness] = None,
         trace_dir: Optional[str] = "traces",
@@ -76,7 +76,6 @@ class StateMachineEngine:
         policy_enabled = use_gatekeeper if use_runtime_policy is None else use_runtime_policy
         self.use_runtime_policy = bool(policy_enabled)
         self.policy_evaluator = RuntimePolicyEvaluator() if self.use_runtime_policy else None
-        # Compatibility attribute for external callers that referenced ``engine.gatekeeper``.
         self.gatekeeper = self.policy_evaluator
 
         self.trace_dir = trace_dir
@@ -105,10 +104,6 @@ class StateMachineEngine:
         self.execution_order = self.dep_graph.topological_sort()
         return self.execution_order
 
-    # ------------------------------------------------------------------
-    # Checkpoint / resume
-    # ------------------------------------------------------------------
-
     def _checkpoint_path(self, run_id: str) -> Path:
         if not self.checkpoint_dir:
             raise ValueError("checkpoint_dir is disabled")
@@ -120,7 +115,7 @@ class StateMachineEngine:
         path = self._checkpoint_path(run_id)
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "profile": "epistemic-pipeline/checkpoint@2",
+            "profile": "epistemic-pipeline/checkpoint",
             "run_id": run_id,
             "graph_id": self.graph_data.get("id"),
             "graph_sha256": self.graph_sha256,
@@ -163,17 +158,12 @@ class StateMachineEngine:
             if isinstance(result, dict) and result.get("status") == "success"
         }
 
-    # ------------------------------------------------------------------
-    # Node execution
-    # ------------------------------------------------------------------
-
     def _execute_node(
         self,
         state_id: str,
         results_dict: dict,
         tracer: Optional[RunTracer] = None,
     ) -> dict:
-        """Execute one node with trace, retry, timeout and runtime policy."""
         node = self.nodes[state_id]
         stage = node["stage"]
 
@@ -254,7 +244,7 @@ class StateMachineEngine:
                     "state_id": state_id,
                     "stage": stage,
                     "failure_kind": "runtime_policy",
-                    "runtime_policy_profile": "epistemic-pipeline/runtime-policy@1",
+                    "runtime_policy_profile": "epistemic-pipeline/runtime-policy",
                     "runtime_policy_passed": False,
                     "errors": policy_errors,
                 }
@@ -272,7 +262,6 @@ class StateMachineEngine:
         return result
 
     def _run_confidence_network(self, results_dict: dict) -> dict:
-        """Propagate bounded heuristic claim scores for the synthesize stage."""
         claims_by_id: Dict[str, dict] = {}
         conflicts: List[dict] = []
         score_seed: Dict[str, float] = {}
@@ -301,10 +290,7 @@ class StateMachineEngine:
             net.add_node(node["claim_id"], node["initial_confidence"])
         for edge in network_input["edges"]:
             net.add_edge(
-                edge["source"],
-                edge["target"],
-                edge["weight"],
-                edge["edge_type"],
+                edge["source"], edge["target"], edge["weight"], edge["edge_type"]
             )
 
         if not net.nodes:
@@ -339,10 +325,6 @@ class StateMachineEngine:
             f"(iterations={iterations}, delta={net.last_delta:.4f})"
         )
         return {"confidence_network": report, "delta": net.last_delta}
-
-    # ------------------------------------------------------------------
-    # Pipeline execution
-    # ------------------------------------------------------------------
 
     def run(self, resume_from: Optional[str] = None) -> dict:
         valid, errors = self.validate()
