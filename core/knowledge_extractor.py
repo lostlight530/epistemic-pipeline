@@ -62,7 +62,7 @@ class KnowledgeExtractor:
             )
 
         return {
-            "profile": "epistemic-pipeline/network-input@1",
+            "profile": "epistemic-pipeline/network-input",
             "semantics": "structural bridge only; scores are heuristic unless separately evidenced",
             "nodes": nodes,
             "edges": edges,
