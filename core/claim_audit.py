@@ -8,7 +8,7 @@ keeps different verification dimensions separate:
 - claim identity and declared source/evidence bindings;
 - internal-consistency and cross-source observations;
 - conflict records;
-- bounded heuristic score signals;
+- initial and final bounded heuristic score observations;
 - provider/process disclosure and declared human-review state.
 
 The profile never collapses those dimensions into ``verified = true``. A claim
@@ -22,7 +22,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, Mapping, Optional
+from typing import Any, Dict, Mapping, Optional
 
 from core.provenance import canonical_sha256
 
@@ -103,6 +103,23 @@ def _audit_state(
     return "indexed_only"
 
 
+def _score_observation(value: Any, stage: str) -> Optional[dict]:
+    if value is None:
+        return None
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        normalized: Any = float(value)
+    else:
+        normalized = value
+    return {
+        "value": normalized,
+        "stage": stage,
+        "semantics": (
+            "bounded/runtime heuristic score observation; not calibrated probability, "
+            "truth score, confidence interval, or scientific certainty"
+        ),
+    }
+
+
 def build_claim_verification(
     run_result: dict,
     *,
@@ -125,7 +142,8 @@ def build_claim_verification(
     relations: Dict[str, set[str]] = {}
     internal_observations: Dict[str, Any] = {}
     cross_source_observations: Dict[str, Any] = {}
-    heuristic_scores: Dict[str, Any] = {}
+    initial_scores: Dict[str, Any] = {}
+    final_scores: Dict[str, Any] = {}
     conflicts: list[dict] = []
     verification_coverage: list[Any] = []
 
@@ -189,7 +207,25 @@ def build_claim_verification(
             for claim_id, score in seed.items():
                 claim_text = str(claim_id).strip()
                 if claim_text:
-                    heuristic_scores[claim_text] = score
+                    initial_scores[claim_text] = score
+
+        network = outputs.get("confidence_network")
+        if isinstance(network, dict):
+            final = network.get("final")
+            if isinstance(final, dict):
+                for claim_id, score in final.items():
+                    claim_text = str(claim_id).strip()
+                    if claim_text:
+                        final_scores[claim_text] = score
+            elif network and all(isinstance(key, str) for key in network):
+                # Compatibility for provider fixtures that return a direct
+                # claim->score mapping before the engine replaces it with the
+                # versioned propagation report.
+                for claim_id, score in network.items():
+                    if isinstance(score, (int, float)) and not isinstance(score, bool):
+                        claim_text = str(claim_id).strip()
+                        if claim_text:
+                            final_scores[claim_text] = score
 
         registry = outputs.get("conflict_registry")
         if isinstance(registry, list):
@@ -203,7 +239,8 @@ def build_claim_verification(
         | set(evidence_refs)
         | set(internal_observations)
         | set(cross_source_observations)
-        | set(heuristic_scores)
+        | set(initial_scores)
+        | set(final_scores)
     )
 
     claim_records: list[dict] = []
@@ -234,19 +271,6 @@ def build_claim_verification(
         )
         state_counts[state] = state_counts.get(state, 0) + 1
 
-        score = heuristic_scores.get(claim_id)
-        score_record = None
-        if isinstance(score, (int, float)) and not isinstance(score, bool):
-            score_record = {
-                "value": float(score),
-                "semantics": "bounded heuristic score; not calibrated probability or truth score",
-            }
-        elif score is not None:
-            score_record = {
-                "value": score,
-                "semantics": "uninterpreted provider/runtime score value; no probability claim",
-            }
-
         claim_records.append(
             {
                 "claim_id": claim_id,
@@ -263,7 +287,11 @@ def build_claim_verification(
                     ),
                 },
                 "conflicts": claim_conflicts,
-                "heuristic_score": score_record,
+                "heuristic_scores": {
+                    "initial": _score_observation(initial_scores.get(claim_id), "verify"),
+                    "final": _score_observation(final_scores.get(claim_id), "synthesize"),
+                    "probability_calibration_claim": False,
+                },
                 "audit_state": state,
                 "truth_claim": False,
                 "citation_verification_claim": False,
@@ -298,7 +326,7 @@ def build_claim_verification(
             "evidence_binding": "records declared links, not evidence sufficiency",
             "consistency_observation": "records runtime/provider observations, not truth",
             "conflict": "records disagreement/limitation structure, not automatic adjudication",
-            "heuristic_score": "not calibrated probability",
+            "heuristic_score": "initial/final bounded observations; not calibrated probability",
             "audit_state": "descriptive process state, never a truth label",
         },
         "payload_text_embedded": False,
