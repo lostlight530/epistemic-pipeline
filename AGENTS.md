@@ -4,35 +4,13 @@ This guide defines how coding/research agents should modify the repository witho
 
 ## Canonical authority
 
-Current capability/semantic authority is:
+Implementation in `core/`, `states/`, `graphs/`, `validators/` plus the active contracts (`RESEARCH_CONTRACT.md`, `CLAIM_AUDIT_CONTRACT.md`, `ASSERTION_BASIS_AND_AUDIT_COVERAGE.md`, `ARCHITECTURE.md`, `MANIFEST.yaml`) define current semantics.
 
-1. implementation in `core/`, `states/`, `graphs/`, `validators/`;
-2. `RESEARCH_CONTRACT.md`;
-3. `CLAIM_AUDIT_CONTRACT.md`;
-4. `ARCHITECTURE.md`;
-5. `MANIFEST.yaml`;
-6. `README.md` and examples.
-
-If documentation disagrees with code, correct the documentation or the implementation explicitly; do not invent a capability to reconcile them.
+If docs disagree with code, correct one explicitly; do not invent a capability to reconcile them.
 
 ## Stable internal identifiers
 
-Project-owned profile names are unversioned. Do **not** add decorative `@1/@2`, `/v1`, `mock-fixture@1`, or similar pseudo-version suffixes.
-
-Use stable identifiers such as:
-
-```text
-epistemic-pipeline/engine
-epistemic-pipeline/runtime-policy
-epistemic-pipeline/trace
-epistemic-pipeline/checkpoint
-epistemic-pipeline/prov
-epistemic-pipeline/confidence-heuristic
-epistemic-pipeline/claim-verification
-epistemic-pipeline/evidence-envelope
-```
-
-External standard versions are different: preserve real versions when an external standard actually defines them.
+Project-owned profile names are unversioned. Do not add decorative `@1/@2`, `/v1`, fake fixture/model versions, or similar pseudo-version suffixes. Preserve real external standard/runtime versions when genuinely applicable.
 
 ## System identity
 
@@ -44,42 +22,25 @@ graphs/*.yaml
   -> RuntimePolicyEvaluator
   -> bounded heuristic score network
   -> RunTracer + checkpoint
-
-core/run_bundle.py
   -> PROV-aligned lineage
-  -> claim verification sidecar
-  -> evidence envelope
+  -> claim-verification
+       ├─ assertion / observation basis
+       └─ dimensional audit coverage
+  -> evidence-envelope
+       └─ upstream-reference coverage
 ```
-
-Executable graphs currently include linear, parallel and diamond forms. Experimental topologies remain experimental until integrated.
 
 ## No hallucinated provider identity
 
 `LLMProvider.describe()` may contain only metadata actually known by the provider integration.
 
 - unknown vendor/model/version -> `null` or omitted;
-- do not infer a model from prompt style, class name, environment variable name or marketing copy;
-- `MockProvider` remains a local synthetic fixture with `model: null`, `version: null` and `external_model_call: false`.
+- never infer model identity from prompt style, class name, environment-variable name or marketing copy;
+- MockProvider remains a synthetic fixture with `model: null`, `version: null`, `external_model_call: false`;
+- provider descriptions must preserve assertion basis (`provider-adapter-reported`, `synthetic-fixture-runtime`, or `runtime-harness-state` as applicable);
+- the canonical path records `automatic_ai_detection_used: false`; do not infer AI authorship/use from generated prose.
 
-## Runtime vocabulary
-
-Use active terms:
-
-```text
-runtime policy
-bounded heuristic score
-numerical convergence
-project trace
-checkpoint identity
-PROV-aligned lineage
-claim verification
-process disclosure
-Evidence Envelope
-```
-
-Historical compatibility names such as `Gatekeeper`, `quality_gates`, `check_quality_gates` and `use_gatekeeper` may remain in code where needed, but should not drive the conceptual architecture.
-
-## Claim verification rule
+## Claim verification rules
 
 `core/claim_audit.py` records audit dimensions, not scientific verdicts.
 
@@ -93,87 +54,92 @@ conflict_recorded
 structurally_checked_with_conflict
 ```
 
-Do not add universal `verified=true`, `accepted`, `rejected`, `proven`, or equivalent scientific verdicts unless a future implementation has a separately specified and evidenced review authority.
+Do not add universal `verified=true`, accepted/rejected/proven verdicts without a separately designed and evidenced scientific-review authority.
 
-## Score rule
+## Assertion / observation basis rules
 
-Never describe:
+Current bases include:
 
-- `[0,1]` as probability by default;
-- convergence as certainty;
-- score change as Bayesian update;
-- unfitted temperature scaling as calibrated probability.
+```text
+structured-analyze-output
+structured-verify-output
+structured-state-output
+provider-adapter-reported
+synthetic-fixture-runtime
+runtime-harness-state
+caller-declared
+runtime-observed-local-filesystem
+```
 
-## Provenance and trace rule
+Never upgrade basis into correctness:
 
-`core/provenance.py` is PROV-aligned project JSON, not a PROV-O RDF serializer. `core/run_tracer.py` is project JSONL tracing, not an OpenTelemetry exporter.
+```text
+structured-verify-output != scientific verification
+provider-adapter-reported != vendor certification
+caller-declared review != peer review
+```
 
-Do not upgrade alignment language into standards-conformance claims.
+## Audit coverage rules
+
+Coverage remains dimensional. Do not create a synthetic aggregate research-quality score.
+
+```text
+coverage != provenance soundness
+coverage != scientific validity
+coverage ratio != probability
+coverage ratio != evidence sufficiency
+```
+
+`aggregate_score` remains `null` unless a future explicitly validated evaluation regime is designed and documented.
+
+## Score rules
+
+Never describe `[0,1]` as probability by default, convergence as certainty, score change as Bayesian update, or unfitted temperature scaling as calibrated probability.
+
+## Provenance / trace rules
+
+`core/provenance.py` is PROV-aligned project JSON, not PROV-O RDF conformance. `core/run_tracer.py` is project JSONL tracing, not an OpenTelemetry exporter or tamper-proof ledger.
 
 ## Runtime policy rule
 
 Machine behavior comes from `check` + explicit parameters. Human-readable `rule` text is documentation only. Unknown checks fail explicitly.
 
-## Evidence stack separation
-
-Keep these distinct:
+## Evidence-stack separation
 
 ```text
 trace -> chronology
 checkpoint -> recovery state
 provenance -> lineage
-claim audit -> claim-level observations/conflicts/scores
-evidence envelope -> compact cross-tool index
+claim audit -> claim observations/basis/coverage
+evidence envelope -> compact handoff + ref coverage
 ```
 
-Do not merge all of them into one “proof” object.
+Do not merge them into one proof object.
 
 ## Cross-repository handoff
 
-Preferred upstream:
-
 ```text
 auto-doc-engine/artifact-record
+  -> epistemic-pipeline/claim-verification
+  -> epistemic-pipeline/evidence-envelope
+  -> sci-render-kit/figure-claim-audit
+  -> sci-render-kit/figure-evidence
 ```
 
-Preferred downstream:
-
-```text
-sci-render-kit/figure-claim-audit
-sci-render-kit/figure-evidence
-```
-
-These are references, not runtime imports or inherited truth claims.
+References are not runtime imports or inherited truth claims.
 
 ## Experimental modules
 
-Files such as `anti_entropy.py`, `convergence.py`, `infinite_regression.py`, `neuro_symbolic.py`, `perception.py`, and `thread_collapse.py` remain experimental unless deliberately integrated and documented.
-
-Do not infer capability from metaphorical filenames.
+`anti_entropy.py`, `convergence.py`, `infinite_regression.py`, `neuro_symbolic.py`, `perception.py`, and `thread_collapse.py` remain experimental unless deliberately integrated. Metaphorical names are not capability evidence.
 
 ## R3 discipline
 
-Metadata, checkpoint, provenance, provider disclosure or a claim audit never counts as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
+Metadata, checkpoint, provenance, provider disclosure, audit coverage or a claim audit never counts as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
 
 ## Governance boundary
 
-Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate language as part of ordinary repository architecture unless the user explicitly asks.
-
-Local checks/tests are optional maintenance aids and must not be presented as scientific validation.
+Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions or merge-gate architecture as ordinary repository architecture. Local checks/tests are optional maintenance aids, not scientific validation.
 
 ## Documentation synchronization
 
-Whenever a core contract changes, synchronize:
-
-```text
-README.md
-ARCHITECTURE.md
-RESEARCH_CONTRACT.md
-CLAIM_AUDIT_CONTRACT.md
-MANIFEST.yaml
-CUSTOMIZATION_GUIDE.md
-examples/README.md
-FRONTIER_ALIGNMENT.md
-```
-
-Prefer honest `implemented / experimental / proposed / not integrated` states over aspirational wording.
+When a public contract changes, synchronize README, Architecture, Research Contract, Claim Audit Contract, Assertion Basis contract, Manifest, Customization, Examples and Frontier Alignment. Prefer honest `implemented / experimental / proposed / not integrated` states over aspirational wording.
