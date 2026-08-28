@@ -1,6 +1,6 @@
 name: epistemic-pipeline
 purpose: evidence-aware state-machine execution for research workflows
-calibrated: "2026-08-28"
+calibrated: "2026-08-29"
 
 principles:
   - explicit_state_transition
@@ -13,6 +13,8 @@ principles:
   - audit_coverage_separate_from_provenance_soundness
   - no_aggregate_research_quality_score
   - explicit_provider_disclosure_basis
+  - portable_claim_transfer_with_non_inheritance_constraints
+  - conflicts_remain_visible_during_handoff
   - no_automatic_ai_text_detection
   - provenance_not_truth
   - no_scientific_verdict_from_structure_alone
@@ -29,6 +31,7 @@ stable_profiles:
   network_input: epistemic-pipeline/network-input
   claim_index: epistemic-pipeline/claim-index
   claim_verification: epistemic-pipeline/claim-verification
+  claim_transfer: epistemic-pipeline/claim-transfer
   process_disclosure: epistemic-pipeline/process-disclosure
   upstream_reference: epistemic-pipeline/upstream-reference
   evidence_envelope: epistemic-pipeline/evidence-envelope
@@ -128,6 +131,30 @@ canonical_runtime:
       probability_claim: false
     scientific_verdict_labels: false
     truth_claim: false
+  claim_transfer:
+    module: core/claim_transfer.py
+    status: implemented
+    profile: epistemic-pipeline/claim-transfer
+    source_profile: epistemic-pipeline/claim-verification
+    explicit_claim_selection: true
+    missing_claim_behavior: fail_explicitly
+    payload_text_embedded: false
+    transfer_constraints:
+      scientific_validity_inherited: false
+      evidence_sufficiency_inherited: false
+      peer_review_inherited: false
+      conflicts_must_remain_visible: true
+      heuristic_scores_must_retain_non_probability_semantics: true
+    transfer_coverage:
+      dimensions:
+        - selected_claim_count
+        - claims_with_evidence_refs
+        - claims_with_conflicts
+        - claims_with_structural_observations
+        - claims_with_final_heuristic_score
+      aggregate_score: null
+      provenance_soundness_claim: false
+      scientific_validity_claim: false
   evidence_envelope:
     module: core/evidence_envelope.py
     status: implemented
@@ -167,14 +194,25 @@ claim_verification_semantics:
   probability_calibration_claim: false
   human_review_peer_review_equivalence: false
 
+claim_transfer_semantics:
+  transfer_is_acceptance: false
+  inherited_scientific_validity: false
+  inherited_evidence_sufficiency: false
+  inherited_peer_review: false
+  conflicts_preserved: true
+  heuristic_probability_upgrade_allowed: false
+
 interoperability:
   upstream_auto_doc:
-    preferred_profile: auto-doc-engine/artifact-record
+    preferred_profiles:
+      - auto-doc-engine/artifact-record
+      - auto-doc-engine/artifact-lineage
     direct_runtime_coupling: false
   downstream_sci_render:
     preferred_profiles:
       - sci-render-kit/figure-claim-audit
       - sci-render-kit/figure-evidence
+      - sci-render-kit/communication-transfer
     direct_runtime_coupling: false
   open_telemetry_genai:
     status: scoped_naming_alignment_only
@@ -197,6 +235,7 @@ not_integrated:
   - provenance_soundness_validator
   - automatic_citation_content_verification
   - automatic_ai_text_detection
+  - automatic_scientific_claim_acceptance
   - scientific_review_authority
   - peer_review_engine
   - prov_o_rdf_serializer
@@ -227,8 +266,10 @@ experimental_modules:
 research_contract:
   file: RESEARCH_CONTRACT.md
   claim_audit_contract: CLAIM_AUDIT_CONTRACT.md
+  claim_transfer_contract: CLAIM_TRANSFER_CONTRACT.md
   assertion_basis_audit_coverage: ASSERTION_BASIS_AND_AUDIT_COVERAGE.md
   five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
+  six_day_consolidation: SIX_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
 external_research_calibration_2026_08:
@@ -240,6 +281,8 @@ external_research_calibration_2026_08:
   - earthverse
   - claim_level_auditability_provenance_coverage
   - ai_detection_distinct_from_disclosure
+  - praxist_solution_lineages
+  - reproagent_persistent_contracts
   note: design_calibration_only_not_external_certification
 
 research_software:
@@ -248,7 +291,7 @@ research_software:
 
 local_checks:
   mode: manual_optional
-  tests_required_for_2026_08_28_consolidation: false
+  tests_required_for_2026_08_29_consolidation: false
   github_actions: false
   codeql_added: false
   merge_gate: false
@@ -259,6 +302,8 @@ scientific_boundaries:
   audit_coverage_is_quality: false
   coverage_ratio_is_probability: false
   provenance_soundness_claimed: false
+  claim_transfer_is_acceptance: false
+  inheritance_is_validation: false
   run_success_is_scientific_validity: false
   runtime_policy_pass_is_scientific_validity: false
   claim_index_is_truth_graph: false
