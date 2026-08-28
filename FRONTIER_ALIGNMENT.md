@@ -1,170 +1,175 @@
-# Frontier Alignment — 2026-08-27
+# Frontier Alignment — Epistemic Pipeline
 
 **Repository:** `epistemic-pipeline`  
 **Status:** non-normative research-positioning snapshot  
-**Normative boundaries:** `RESEARCH_CONTRACT.md` and `CLAIM_AUDIT_CONTRACT.md`
+**Calibrated:** 2026-08-28  
+**Normative boundaries:** `RESEARCH_CONTRACT.md`, `CLAIM_AUDIT_CONTRACT.md`, `ASSERTION_BASIS_AND_AUDIT_COVERAGE.md`
 
-## 1. Current research question
+## Current research question
 
-The relevant 2026 frontier is no longer only “can an agent complete a workflow?” It increasingly asks:
+The 2026 frontier increasingly asks not only whether an agent completed a workflow, but whether the resulting record can be reopened and audited:
 
 ```text
-Can the resulting scientific record be reopened?
 Can artifacts be attributed to actions?
 Can claims be linked to evidence?
-Can conflicts and qualification be inspected?
+Can conflicts/qualification be inspected?
+Can the basis of a recorded assertion be identified?
+Can audit coverage be measured without pretending it is truth?
 Can human/AI process context be disclosed?
-Can the system avoid turning execution success into scientific truth?
 ```
 
-Epistemic Pipeline addresses these questions at the research-execution/evidence-contract layer.
+Epistemic Pipeline addresses these at the research-execution/evidence-contract layer.
 
-## 2. Verified external signals
+## Day-5 architecture response
 
-### Provenance grounds trust in autonomous science
+The repository now separates:
 
-Nature Computational Science (20 Aug 2026) emphasizes complete, re-openable records of reasoning/actions/measurements as a basis for audit and correction in autonomous science.
+```text
+claim/evidence content
+assertion / observation basis
+dimensional audit coverage
+provenance lineage
+scientific validity
+```
 
-Borrowed design lesson:
+For claim verification, current bases identify whether information came from analyze output, verify output, state output, provider-adapter metadata or caller declaration.
 
-> Preserve inspectable lineage and run artifacts.
+Coverage counts how many indexed claims carry particular audit dimensions. It is not a scientific-quality or probability score.
 
-Not borrowed:
+## External signals
 
-> The publication does not certify this repository or prove its records are scientifically correct.
+### Provenance in autonomous science
 
-### Responsible and transparent AI in scientific publishing
+Re-openable provenance supports auditing/correction of autonomous research processes.
 
-Nature Computational Science (20 Aug 2026) emphasizes transparency, accountability and human oversight.
+Borrowed: preserve lineage and run artifacts.
 
-Borrowed design lesson:
+Not borrowed: provenance makes the science correct.
 
-> Provider/process disclosure and declared human-review context should remain visible.
+### Transparent AI use / human oversight
 
-Boundary:
+Current scientific-publishing guidance emphasizes transparency, accountability and human oversight.
 
-> `human_review=reviewed` is not peer review.
+Borrowed: preserve provider/process disclosure and human-review context.
+
+Boundary: `human_review=reviewed` is not peer review.
 
 ### Artifact-centered claim-aware observability
 
-The 18 Aug 2026 preprint argues that model-call logs alone are insufficient for autonomous scientific agents; artifacts, claims, evidence and verification records need portable relations.
+Scientific-agent observability work argues model-call logs alone are insufficient; artifacts, claims, evidence and verification relations should be portable audit objects.
 
-Borrowed design lesson:
+Borrowed:
 
 ```text
 trace != provenance != claim audit != evidence envelope
 ```
 
-Each object should answer a different audit question.
+### From Trajectories to Evidence
+
+Completed execution is not automatically evidence.
+
+Borrowed: execution validity, artifact identity, attribution and claim qualification remain distinct.
 
 ### Brain Researcher
 
-The 20 Aug 2026 work emphasizes evidence-constrained claim formulation and explicit scientific review outcomes.
+Evidence-constrained claim formulation and explicit review outcomes motivate keeping evidence support and qualification visible.
 
-Borrowed design lesson:
-
-> Keep claim qualification and evidence support explicit.
-
-Not borrowed:
-
-> This repository does not adopt `accepted/rejected/qualified` as runtime truth states because it has no independent domain scientific-review authority.
-
-### From Trajectories to Evidence
-
-The 5 Aug 2026 work makes an important distinction: a completed trajectory is not automatically evidence.
-
-Borrowed design lesson:
-
-> Execution validity, artifact identity, attribution and claim qualification should remain distinct.
+Not borrowed: accepted/rejected/qualified runtime truth states; this repository has no independent domain scientific-review authority.
 
 ### EarthVerse
 
-The 24 Aug 2026 benchmark demonstrates that scientific agents can perform many local steps while strict end-to-end consistency remains substantially harder.
+Strong local task performance can coexist with weak strict end-to-end consistency across evidence, scales, units, calculations and interpretation.
 
-Borrowed design lesson:
+Borrowed: record the chain rather than treating local success as global correctness.
 
-> Record the chain across evidence, calculations, interpretation and claims instead of treating local success as global correctness.
+### Claim-level auditability
 
-## 3. Neighbouring systems
+*From Fluent to Verifiable* distinguishes provenance coverage, provenance soundness, contradiction transparency and audit effort.
 
-Current adjacent systems include scientific RAG/evidence systems, typed scientific runtimes, autonomous-scientist systems, domain research agents and workflow/provenance tooling.
+Day-5 implementation borrows **coverage as a measurable structural dimension**.
 
-The closest architectural overlap is around:
+It does not claim provenance soundness, because soundness requires stronger verification than the current runtime performs.
 
-- typed/scoped scientific execution;
-- evidence graphs;
-- provenance;
-- tool-use transparency;
-- claim-aware auditability.
+### AI detection versus disclosure
 
-Epistemic Pipeline's distinct focus is the bounded contract between **claim/evidence/conflict structure, runtime-policy observations, heuristic score semantics, lineage and cross-tool handoff**.
+Current reporting on AI-detection tools reinforces that detection is a separate inference problem from explicit disclosure.
 
-This is a positioning observation, not a claim of global uniqueness or superiority.
+This repository uses provider-adapter metadata/caller declarations and records `automatic_ai_detection_used: false`; it does not classify prose to infer AI authorship/use.
 
-## 4. Current internal architecture response
+## Neighbouring systems
 
-The repository now exposes stable project-owned identifiers without decorative release suffixes:
+Adjacent systems include scientific RAG/evidence systems, typed scientific runtimes, autonomous-scientist systems, domain research agents and workflow/provenance tooling.
+
+Epistemic Pipeline's focus is the bounded contract between:
 
 ```text
-epistemic-pipeline/trace
-epistemic-pipeline/prov
-epistemic-pipeline/claim-verification
-epistemic-pipeline/evidence-envelope
+claim/evidence/conflict structure
+runtime-policy observations
+heuristic-score semantics
+assertion basis
+claim audit coverage
+lineage
+cross-tool handoff
 ```
 
-The key four-day change is the explicit claim-verification sidecar:
+This is positioning, not a claim of global uniqueness or superiority.
 
-```text
-claim identity
-+ evidence binding
-+ consistency observations
-+ conflicts
-+ initial/final heuristic scores
-+ process context
-```
-
-without a universal `verified=true` verdict.
-
-## 5. Why internal version suffixes were removed
-
-Identifiers such as `profile@1` or `profile@2` looked like standards/releases without an actual published compatibility regime. They created documentation churn and could imply stronger stability guarantees than existed.
-
-The repository now prefers stable semantic profile names. Real external standard versions remain explicit where they are genuine external standards.
-
-## 6. What remains intentionally absent
+## What remains intentionally absent
 
 - built-in production LLM provider;
 - scientific truth oracle;
-- automatic citation-content verification against the literature;
-- automatic scientific peer review;
-- empirically calibrated probabilities by default;
+- provenance soundness validator;
+- automatic citation-content verification;
+- automatic AI-text detection;
+- scientific peer-review engine;
+- calibrated truth probabilities by default;
 - tamper-proof external trace anchoring;
 - PROV-O RDF serializer;
-- automatic acceptance/rejection of scientific claims.
+- automatic accepted/rejected claim verdicts.
 
-These absences are part of the truthful architecture, not missing marketing labels.
+These absences are truthful architecture boundaries.
 
-## 7. Research-engineering interpretation
-
-The repository's useful contribution is not “an agent that knows science”. It is infrastructure that makes an agent-assisted research run easier to inspect without falsely upgrading metadata into scientific authority.
+## Research-engineering interpretation
 
 ```text
-execution -> evidence-bearing record
+execution -> inspectable evidence-bearing record
 not
 execution -> truth
 ```
 
-## 8. Cross-repository frontier position
+Day 5 extends this to:
+
+```text
+recorded field -> explicit basis
+recorded claims -> dimensional coverage
+not
+basis/coverage -> correctness
+```
+
+## Cross-repository frontier position
 
 ```text
 auto-doc-engine
-research artifact identity / process context
+  artifact identity / assertion basis / artifact coverage
         ↓
 epistemic-pipeline
-claim-evidence execution / verification observations / provenance
+  claim-evidence execution / observation basis / claim coverage / provenance
         ↓
 sci-render-kit
-claim-aware scientific communication / communication audit
+  claim-aware communication / communication coverage / figure evidence
 ```
 
-Together the three repositories explore an evidence-aware research infrastructure shape. Adjacent mature tools exist at every individual layer; the value proposition is the explicit semantic handoff across the layers.
+Together the repositories explore evidence-aware research infrastructure. Mature adjacent tools exist at individual layers; the emphasis here is explicit semantic handoff without inherited truth claims.
+
+## Hard boundaries
+
+```text
+assertion basis != correctness
+audit coverage != scientific validity
+coverage ratio != probability
+coverage != provenance soundness
+evidence binding != evidence sufficiency
+provider identity != output validity
+human review != peer review
+provenance != truth
+```

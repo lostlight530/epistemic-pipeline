@@ -8,12 +8,10 @@ semantics: PROV expresses lineage relationships, while this envelope expresses
 the repository's cross-tool handoff contract and scientific-integrity
 boundaries.
 
-The envelope carries a claim-aware index, process disclosure, a separate
-claim-verification reference and optional upstream artifact/evidence records.
-It stays an index rather than becoming another research database.
-
-None of these surfaces establishes truth, authorship, peer review, source
-credibility, model validity, or scientific correctness.
+Day-5 additions preserve assertion basis and dimensional upstream-reference
+coverage without turning the envelope into a research database or quality
+score. None of these surfaces establishes truth, authorship, peer review,
+source credibility, model validity, or scientific correctness.
 """
 
 from __future__ import annotations
@@ -45,7 +43,12 @@ def _artifact_ref(kind: str, path: Optional[str]) -> Optional[dict]:
     digest = file_sha256(path)
     if not digest:
         return None
-    return {"kind": kind, "path": str(path), "file_sha256": digest}
+    return {
+        "kind": kind,
+        "path": str(path),
+        "file_sha256": digest,
+        "identity_basis": "runtime-observed-local-bytes",
+    }
 
 
 def _reference(kind: str, value: Any) -> Optional[dict]:
@@ -60,11 +63,13 @@ def _reference(kind: str, value: Any) -> Optional[dict]:
     if digest:
         record["resolution"] = "local-file"
         record["file_sha256"] = digest
+        record["resolution_basis"] = "runtime-observed-local-filesystem"
         return record
     parsed = urlsplit(text)
     record["resolution"] = (
         "opaque-uri-not-dereferenced" if parsed.scheme else "opaque-reference-not-resolved"
     )
+    record["resolution_basis"] = "declared-reference"
     return record
 
 
@@ -80,6 +85,25 @@ def _reference_list(kind: str, values: Optional[Iterable[Any]]) -> list[dict]:
             records.append(record)
             seen.add(text)
     return records
+
+
+def _reference_coverage(records: list[dict]) -> dict:
+    counts: Dict[str, int] = {}
+    for record in records:
+        state = str(record.get("resolution") or "not-recorded")
+        counts[state] = counts.get(state, 0) + 1
+    total = len(records)
+    local_count = counts.get("local-file", 0)
+    return {
+        "reference_count": total,
+        "by_resolution": counts,
+        "local_file_ratio": (local_count / total) if total else None,
+        "aggregate_score": None,
+        "semantics": (
+            "reference-resolution coverage at envelope-generation time; not source credibility, evidence quality, "
+            "citation verification, network availability, or scientific validity"
+        ),
+    }
 
 
 def _string_list(value: Any) -> list[str]:
@@ -112,6 +136,7 @@ def _normalize_claim_index(records: Optional[Iterable[dict]]) -> list[dict]:
                 "source_refs": _string_list(record.get("source_refs")),
                 "evidence_refs": _string_list(record.get("evidence_refs")),
                 "relations": _string_list(record.get("relations")),
+                "assertion_basis": "structured-run-output",
             }
         )
     normalized.sort(key=lambda item: item["claim_id"])
@@ -127,9 +152,13 @@ def _normalize_provider_disclosure(value: Optional[Dict[str, Any]]) -> dict:
             "version": None,
             "mode": "not_declared",
             "external_model_call": None,
+            "assertion_basis": "not_declared",
             "metadata_semantics": "provider/model process metadata was not declared",
         }
-    return dict(value)
+    result = dict(value)
+    result.setdefault("assertion_basis", "provider-adapter-reported")
+    result.setdefault("basis_inferred", False)
+    return result
 
 
 def build_evidence_envelope(
@@ -171,6 +200,8 @@ def build_evidence_envelope(
 
     claims = _normalize_claim_index(claim_index)
     claim_audit_ref = _reference("claim-verification", claim_audit_path)
+    upstream_artifacts = _reference_list("upstream-artifact", upstream_artifact_refs)
+    upstream_evidence = _reference_list("upstream-evidence", upstream_evidence_refs)
 
     return {
         "profile": PROFILE,
@@ -181,9 +212,9 @@ def build_evidence_envelope(
             "path": graph_path,
             "canonical_sha256": graph_canonical_sha256,
             "file_sha256": graph_file_sha256,
+            "identity_basis": "runtime-observed-local-file-and-canonical-serialization",
             "identity_semantics": (
-                "canonical_sha256 identifies parsed graph structure; "
-                "file_sha256 identifies source file bytes"
+                "canonical_sha256 identifies parsed graph structure; file_sha256 identifies source file bytes"
             ),
         },
         "status": status,
@@ -202,15 +233,18 @@ def build_evidence_envelope(
         },
         "integrity": {
             "trace_chain_internal_valid": trace_chain_internal_valid,
+            "observation_basis": "runtime-trace-validation" if trace_chain_internal_valid is not None else "not_observed",
             "semantics": (
-                "internal sequence/hash consistency over records currently present; "
-                "not externally anchored tamper-proof logging"
+                "internal sequence/hash consistency over records currently present; not externally anchored tamper-proof logging"
             ),
         },
         "upstream_inputs": {
             "profile": UPSTREAM_REFERENCE_PROFILE,
-            "artifact_refs": _reference_list("upstream-artifact", upstream_artifact_refs),
-            "evidence_refs": _reference_list("upstream-evidence", upstream_evidence_refs),
+            "artifact_refs": upstream_artifacts,
+            "evidence_refs": upstream_evidence,
+            "artifact_ref_coverage": _reference_coverage(upstream_artifacts),
+            "evidence_ref_coverage": _reference_coverage(upstream_evidence),
+            "assertion_basis": "caller-declared-with-optional-local-resolution",
             "resolution_semantics": (
                 "existing local files are hashed; URI/opaque references are retained without dereferencing"
             ),
@@ -223,18 +257,21 @@ def build_evidence_envelope(
             "verification_record": claim_audit_ref,
             "verification_profile": CLAIM_VERIFICATION_PROFILE,
             "payload_text_embedded": False,
+            "assertion_basis": "structured-run-output",
             "semantics": (
-                "claim identities plus declared source/evidence references for audit and handoff; "
-                "the separate verification record preserves checks/conflicts without converting them into truth labels"
+                "claim identities plus declared source/evidence references for audit and handoff; the separate "
+                "verification record preserves checks/conflicts without converting them into truth labels"
             ),
         },
         "process_disclosure": {
             "profile": PROCESS_DISCLOSURE_PROFILE,
             "provider": _normalize_provider_disclosure(provider_disclosure),
             "human_review": human_review,
+            "human_review_basis": "caller-declared" if human_review != "not_declared" else "not_declared",
+            "automatic_ai_detection_used": False,
             "semantics": (
-                "declared execution/review context only; provider identity and human review "
-                "do not establish authorship, peer review, correctness, or scientific validity"
+                "execution/review context with explicit assertion basis; provider identity and human review do not "
+                "establish authorship, AI-content detection, peer review, correctness, or scientific validity"
             ),
         },
         "confidence_semantics": (
@@ -243,8 +280,7 @@ def build_evidence_envelope(
         "reproducibility": {
             "level": "R1",
             "semantics": (
-                "replay-addressable project evidence; R3 requires a separate rerun "
-                "and declared comparison"
+                "replay-addressable project evidence; R3 requires a separate rerun and declared comparison"
             ),
         },
         "scientific_validity_claim": False,

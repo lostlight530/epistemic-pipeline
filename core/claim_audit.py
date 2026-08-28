@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
 """Claim-level verification records for epistemic-pipeline research runs.
 
-``epistemic-pipeline/claim-verification`` is a project-owned audit profile
-built from structures the canonical pipeline already emits. It deliberately
-keeps different verification dimensions separate:
+``epistemic-pipeline/claim-verification`` is a project-owned audit profile built
+from structures the canonical pipeline already emits. Verification dimensions
+remain separate: claim identity, source/evidence bindings, consistency
+observations, conflicts, heuristic-score observations, and process context.
 
-- claim identity and declared source/evidence bindings;
-- internal-consistency and cross-source observations;
-- conflict records;
-- initial and final bounded heuristic score observations;
-- provider/process disclosure and declared human-review state.
+Day-5 semantics add two explicit surfaces:
 
-The profile never collapses those dimensions into ``verified = true``. A claim
-can be structurally checked and still be wrong, weakly sourced, contradicted,
-misinterpreted, or outside the competence of the provider/verifier.
+- assertion/observation basis: where a recorded field came from;
+- dimensional audit coverage: how many indexed claims carry each audit surface.
+
+Neither surface is a scientific verdict. The profile never collapses these
+dimensions into ``verified = true`` or an aggregate quality score.
 """
 
 from __future__ import annotations
@@ -56,8 +55,9 @@ def _minimal_provider_disclosure(value: Optional[Mapping[str, Any]]) -> dict:
             "version": None,
             "mode": "not_declared",
             "external_model_call": None,
+            "assertion_basis": "not_declared",
         }
-    return {
+    result = {
         key: value.get(key)
         for key in (
             "provider_class",
@@ -68,6 +68,9 @@ def _minimal_provider_disclosure(value: Optional[Mapping[str, Any]]) -> dict:
             "external_model_call",
         )
     }
+    result["assertion_basis"] = "provider-adapter-reported"
+    result["basis_inferred"] = False
+    return result
 
 
 def _conflict_record(claim_id: str, conflict: dict) -> Optional[dict]:
@@ -83,6 +86,7 @@ def _conflict_record(claim_id: str, conflict: dict) -> Optional[dict]:
         "relation": relation,
         "severity": severity,
         "conflict_record_sha256": canonical_sha256(conflict),
+        "observation_basis": "structured-verify-output",
     }
 
 
@@ -113,9 +117,60 @@ def _score_observation(value: Any, stage: str) -> Optional[dict]:
     return {
         "value": normalized,
         "stage": stage,
+        "observation_basis": "structured-state-output",
         "semantics": (
             "bounded/runtime heuristic score observation; not calibrated probability, "
             "truth score, confidence interval, or scientific certainty"
+        ),
+    }
+
+
+def _ratio(count: int, total: int) -> Optional[float]:
+    return (count / total) if total else None
+
+
+def _coverage_summary(claim_records: list[dict]) -> dict:
+    total = len(claim_records)
+    counts = {
+        "claims_indexed": total,
+        "claims_with_source_refs": 0,
+        "claims_with_evidence_refs": 0,
+        "claims_with_internal_consistency_observation": 0,
+        "claims_with_cross_source_observation": 0,
+        "claims_with_conflicts": 0,
+        "claims_with_initial_heuristic_score": 0,
+        "claims_with_final_heuristic_score": 0,
+    }
+    for record in claim_records:
+        if record.get("source_refs"):
+            counts["claims_with_source_refs"] += 1
+        if record.get("evidence_refs"):
+            counts["claims_with_evidence_refs"] += 1
+        observations = record.get("observations") or {}
+        if observations.get("internal_consistency") is not None:
+            counts["claims_with_internal_consistency_observation"] += 1
+        if observations.get("cross_source") is not None:
+            counts["claims_with_cross_source_observation"] += 1
+        if record.get("conflicts"):
+            counts["claims_with_conflicts"] += 1
+        scores = record.get("heuristic_scores") or {}
+        if scores.get("initial") is not None:
+            counts["claims_with_initial_heuristic_score"] += 1
+        if scores.get("final") is not None:
+            counts["claims_with_final_heuristic_score"] += 1
+
+    ratios = {
+        key.replace("claims_with_", "") + "_ratio": _ratio(value, total)
+        for key, value in counts.items()
+        if key.startswith("claims_with_")
+    }
+    return {
+        "counts": counts,
+        "ratios": ratios,
+        "aggregate_score": None,
+        "semantics": (
+            "coverage of recorded audit dimensions among indexed claims. Coverage is not provenance soundness, "
+            "citation correctness, evidence sufficiency, scientific validity, or a probability of correctness"
         ),
     }
 
@@ -276,6 +331,15 @@ def build_claim_verification(
                 "source_refs": sorted(base.get("source_refs") or []),
                 "evidence_refs": refs,
                 "evidence_relations": sorted(relations.get(claim_id, set())),
+                "observation_basis": {
+                    "claim_identity": "structured-analyze-output",
+                    "source_refs": "structured-analyze-output",
+                    "evidence_refs": "structured-analyze-output",
+                    "consistency": "structured-verify-output",
+                    "conflicts": "structured-verify-output",
+                    "heuristic_scores": "structured-state-output",
+                    "basis_inferred": False,
+                },
                 "observations": {
                     "internal_consistency": internal,
                     "cross_source": cross_source,
@@ -311,12 +375,16 @@ def build_claim_verification(
         "claims": claim_records,
         "claim_count": len(claim_records),
         "audit_state_counts": state_counts,
+        "audit_coverage": _coverage_summary(claim_records),
         "verification_coverage_observations": coverage_values,
         "process_context": {
             "provider": _minimal_provider_disclosure(provider_disclosure),
             "human_review": human_review,
+            "human_review_basis": "caller-declared" if human_review != "not_declared" else "not_declared",
+            "automatic_ai_detection_used": False,
             "semantics": (
-                "declared execution/review context; provider identity and human review do not establish correctness or peer review"
+                "execution/review context with explicit assertion basis; provider identity and human review "
+                "do not establish correctness, authorship, AI-content detection, or peer review"
             ),
         },
         "semantics": {
@@ -325,6 +393,7 @@ def build_claim_verification(
             "conflict": "records disagreement/limitation structure, not automatic adjudication",
             "heuristic_score": "initial/final bounded observations; not calibrated probability",
             "audit_state": "descriptive process state, never a truth label",
+            "audit_coverage": "dimension coverage, not correctness or provenance soundness",
         },
         "payload_text_embedded": False,
         "scientific_validity_claim": False,

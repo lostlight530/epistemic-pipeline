@@ -1,6 +1,6 @@
 name: epistemic-pipeline
 purpose: evidence-aware state-machine execution for research workflows
-calibrated: "2026-08-27"
+calibrated: "2026-08-28"
 
 principles:
   - explicit_state_transition
@@ -9,6 +9,11 @@ principles:
   - bounded_heuristic_scores_not_probabilities
   - recovery_identity_before_resume
   - trace_provenance_claim_audit_are_distinct
+  - assertion_basis_separate_from_correctness
+  - audit_coverage_separate_from_provenance_soundness
+  - no_aggregate_research_quality_score
+  - explicit_provider_disclosure_basis
+  - no_automatic_ai_text_detection
   - provenance_not_truth
   - no_scientific_verdict_from_structure_alone
   - stable_internal_identifiers_without_decorative_versions
@@ -37,11 +42,16 @@ canonical_runtime:
   engine:
     module: core/engine.py
     status: implemented
-    outputs_profile: epistemic-pipeline/engine
   provider_contract:
     module: core/llm_harness.py
     status: implemented
     built_in_real_provider: false
+    assertion_basis:
+      injected_provider: provider-adapter-reported
+      mock_provider: synthetic-fixture-runtime
+      no_provider: runtime-harness-state
+      basis_inferred: false
+      automatic_ai_detection_used: false
     mock_provider:
       mode: synthetic_fixture
       model: null
@@ -95,6 +105,27 @@ canonical_runtime:
       - structurally_checked
       - conflict_recorded
       - structurally_checked_with_conflict
+    observation_basis:
+      claim_and_source_refs: structured-analyze-output
+      evidence_refs: structured-analyze-output
+      consistency: structured-verify-output
+      conflicts: structured-verify-output
+      heuristic_scores: structured-state-output
+      basis_inferred: false
+    audit_coverage:
+      denominator: claims_indexed
+      dimensions:
+        - claims_with_source_refs
+        - claims_with_evidence_refs
+        - claims_with_internal_consistency_observation
+        - claims_with_cross_source_observation
+        - claims_with_conflicts
+        - claims_with_initial_heuristic_score
+        - claims_with_final_heuristic_score
+      aggregate_score: null
+      provenance_soundness_claim: false
+      scientific_validity_claim: false
+      probability_claim: false
     scientific_verdict_labels: false
     truth_claim: false
   evidence_envelope:
@@ -113,6 +144,11 @@ canonical_runtime:
       - upstream_evidence
     local_reference_hashing: sha256_when_file_exists
     network_dereference: false
+    upstream_reference_coverage:
+      dimensions: [reference_count, by_resolution, local_file_ratio]
+      aggregate_score: null
+      source_credibility_claim: false
+      evidence_quality_claim: false
   run_bundle:
     module: core/run_bundle.py
     status: implemented
@@ -125,6 +161,9 @@ claim_verification_semantics:
   conflict: disagreement_or_limitation_not_automatic_adjudication
   initial_score: verify_stage_heuristic_observation
   final_score: synthesize_stage_heuristic_observation
+  assertion_basis_is_correctness: false
+  audit_coverage_is_provenance_soundness: false
+  audit_coverage_is_probability: false
   probability_calibration_claim: false
   human_review_peer_review_equivalence: false
 
@@ -153,6 +192,16 @@ reproducibility_levels:
   R3: separate_rerun_plus_declared_comparison
   automatic_r3_claim: false
 
+not_integrated:
+  - built_in_production_llm_provider
+  - provenance_soundness_validator
+  - automatic_citation_content_verification
+  - automatic_ai_text_detection
+  - scientific_review_authority
+  - peer_review_engine
+  - prov_o_rdf_serializer
+  - tamper_proof_external_ledger
+
 experimental_modules:
   anti_entropy:
     path: core/anti_entropy.py
@@ -178,16 +227,19 @@ experimental_modules:
 research_contract:
   file: RESEARCH_CONTRACT.md
   claim_audit_contract: CLAIM_AUDIT_CONTRACT.md
-  four_day_consolidation: FOUR_DAY_CONSOLIDATION.md
+  assertion_basis_audit_coverage: ASSERTION_BASIS_AND_AUDIT_COVERAGE.md
+  five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
 external_research_calibration_2026_08:
   - provenance_grounds_trust_in_autonomous_science
   - responsible_transparent_ai_scientific_publishing
   - artifact_centered_claim_aware_observability
-  - brain_researcher
   - trajectories_to_evidence
+  - brain_researcher
   - earthverse
+  - claim_level_auditability_provenance_coverage
+  - ai_detection_distinct_from_disclosure
   note: design_calibration_only_not_external_certification
 
 research_software:
@@ -196,18 +248,23 @@ research_software:
 
 local_checks:
   mode: manual_optional
-  tests_run_for_2026_08_27_consolidation: false
+  tests_required_for_2026_08_28_consolidation: false
   github_actions: false
   codeql_added: false
   merge_gate: false
 
 scientific_boundaries:
   provenance_is_truth: false
+  assertion_basis_is_correctness: false
+  audit_coverage_is_quality: false
+  coverage_ratio_is_probability: false
+  provenance_soundness_claimed: false
   run_success_is_scientific_validity: false
   runtime_policy_pass_is_scientific_validity: false
   claim_index_is_truth_graph: false
   claim_verification_is_scientific_verdict: false
   heuristic_score_is_probability: false
   convergence_is_certainty: false
+  provider_identity_is_output_validity: false
   human_review_is_peer_review: false
   metadata_is_reproduction: false

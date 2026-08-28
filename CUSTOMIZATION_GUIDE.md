@@ -1,58 +1,42 @@
 # Customization Guide — Epistemic Pipeline
 
-## 1. Choose the smallest owning layer
+## Choose the smallest owning layer
 
-The repository separates:
+The repository separates graph topology, state definition, provider execution/disclosure, runtime policy, bounded score propagation, retry/timeout, trace, checkpoint identity, PROV-aligned lineage, claim verification, assertion basis, audit coverage and evidence handoff.
 
-```text
-graph topology
-state definition
-provider execution
-provider disclosure
-runtime policy
-bounded score propagation
-retry/timeout
-trace
-checkpoint identity
-PROV-aligned lineage
-claim verification
-evidence handoff
-```
+Extend only the smallest layer that owns the requirement.
 
-Extend the smallest layer that actually owns the requirement.
+## Custom graph
 
-## 2. Custom graph
+Add graph topology under `graphs/`. Keep IDs unique and dependencies valid. Do not encode scientific truth in graph labels.
 
-Add a graph under `graphs/` when the change is about dependency topology. Graph nodes must remain uniquely identifiable and dependency-valid.
+## Custom state behavior
 
-Do not encode scientific truth in topology labels.
+State semantics live in `states/*.yaml`. Runtime constraints use machine-readable `runtime_policies`. Human-readable prose is descriptive only.
 
-## 3. Custom state behavior
-
-State semantics live in `states/*.yaml`. Runtime constraints use machine-readable `runtime_policies` checks. Human-readable rule prose is descriptive only.
-
-If a desired check does not exist, implement it explicitly in `RuntimePolicyEvaluator`; do not pretend prose is executable.
-
-## 4. Custom provider
+## Custom provider
 
 Implement `LLMProvider.complete(...)` and optionally `describe()`.
 
-`describe()` should return only known process metadata:
+A truthful description can look like:
 
 ```python
 {
-    "provider_class": "...",
-    "provider": "...",   # or None
-    "model": "...",      # or None
-    "version": None,      # remain None when unknown
+    "provider_class": "MyProvider",
+    "provider": "known-provider-or-none",
+    "model": None,
+    "version": None,
     "mode": "injected_provider",
     "external_model_call": True,
+    "assertion_basis": "provider-adapter-reported",
+    "basis_inferred": False,
+    "automatic_ai_detection_used": False,
 }
 ```
 
-Do not infer vendor/model/version metadata from prompts or class names.
+Do not infer vendor/model/version from prompts, class names, writing style or marketing copy.
 
-## 5. Custom runtime policy
+## Custom runtime policy
 
 Supported checks currently include:
 
@@ -69,84 +53,90 @@ mapping_required_keys
 
 Unknown checks fail explicitly.
 
-## 6. Custom score network
+## Custom score network
 
-`ConfidenceNetwork` is heuristic. If you replace or extend it, document the mathematical semantics explicitly.
+`ConfidenceNetwork` is heuristic. If extended, document mathematical semantics explicitly. Do not call a score a probability without a genuine probabilistic/calibration model and empirical evidence.
 
-Do not call a score a probability unless a real probabilistic/calibration model and empirical evidence justify that interpretation.
+## Custom claim verification
 
-## 7. Custom claim verification
+`core/claim_audit.py` aggregates already-emitted structures into a claim-audit sidecar.
 
-`core/claim_audit.py` aggregates already-emitted claim/evidence/verification structures into an audit sidecar.
-
-A new claim audit field should answer an inspectable question such as:
+A new field should answer an inspectable question and declare its observation basis:
 
 ```text
-what source/evidence ref was declared?
-what structural observation was recorded?
-what conflict was recorded?
-what score observation existed at which stage?
+what value/relationship was recorded?
+which state/provider/caller produced that observation?
 ```
 
-Do not introduce a universal truth/verdict field merely for convenience.
-
-Stable profile:
+Useful bases include:
 
 ```text
-epistemic-pipeline/claim-verification
+structured-analyze-output
+structured-verify-output
+structured-state-output
+provider-adapter-reported
+caller-declared
 ```
 
-## 8. Custom evidence handoff
+Do not introduce a universal truth/verdict field.
 
-`core/evidence_envelope.py` should remain a compact index. Prefer adding references to separately inspectable artifacts instead of embedding full copies.
+## Custom audit coverage
 
-Stable profile:
+Coverage should remain a set of transparent counts/ratios over known denominators. Example:
 
 ```text
-epistemic-pipeline/evidence-envelope
+claims_with_evidence_refs / claims_indexed
 ```
 
-Local reference files can be hashed. Opaque/URI refs should stay unresolved unless a future explicit resolver is implemented.
+Never silently convert it to provenance soundness, evidence sufficiency, probability or aggregate research quality.
 
-## 9. Trace customization
+```json
+{"aggregate_score": null}
+```
+
+If a future composite metric is desired, it requires an explicit validated evaluation design rather than arbitrary weights.
+
+## Custom evidence handoff
+
+`core/evidence_envelope.py` should remain a compact index. Prefer references to separately inspectable artifacts instead of embedding full copies.
+
+For upstream-reference coverage, local-file resolution is only an environment observation:
+
+```text
+local resolution != source credibility
+opaque reference != invalid evidence
+```
+
+## Trace customization
 
 Project trace fields may borrow applicable OpenTelemetry GenAI names, but do not claim OTel exporter/span compliance unless that integration is actually implemented.
 
-Stable project trace profile:
+## Provenance customization
 
-```text
-epistemic-pipeline/trace
-```
+Current provenance is project JSON aligned with W3C PROV concepts. A future PROV-O/RDF export must be an actual serializer, not a renamed current JSON object.
 
-## 10. Provenance customization
-
-Current provenance is project JSON aligned with W3C PROV concepts. A future PROV-O/RDF export should be introduced as an actual serializer, not by renaming the current JSON.
-
-## 11. Cross-repository handoff
-
-Upstream artifact refs can point to:
+## Cross-repository handoff
 
 ```text
 auto-doc-engine/artifact-record
-```
-
-Downstream figures can consume references to:
-
-```text
+        ↓
 epistemic-pipeline/claim-verification
 epistemic-pipeline/evidence-envelope
+        ↓
+sci-render-kit/figure-claim-audit
+sci-render-kit/figure-evidence
 ```
 
-No repository needs to import another repository's Python package to use these references.
+No direct package imports are required.
 
-## 12. Internal identifier rule
+## Internal identifier rule
 
-Project-owned profile names are stable and unversioned. Do not add `@1/@2`, `/v1`, or synthetic provider/fixture versions. External standard versions remain explicit where real standards define them.
+Project-owned identifiers are stable and unversioned. Do not add `@1/@2`, `/v1`, or synthetic provider/fixture versions. External standard/runtime versions remain explicit when real.
 
-## 13. Experimental work
+## Experimental work
 
-Experimental modules can be refined independently, but they do not become canonical capabilities merely because they compile or have documentation.
+Experimental modules remain outside canonical capabilities until deliberately integrated and documented.
 
-## 14. Governance
+## Governance
 
-Do not wire customization through GitHub Actions/CI/merge gates as part of the research architecture unless explicitly requested. Local validation remains a caller/maintainer choice.
+Do not wire customization through GitHub Actions/CI/merge gates as part of the research architecture unless explicitly requested. Local validation remains a maintainer choice and is not scientific validation.

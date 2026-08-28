@@ -8,8 +8,9 @@ must never be presented as evidence of real model reasoning or scientific
 validation.
 
 Providers may expose bounded process-disclosure metadata through ``describe``.
-The disclosure is audit context only: a provider/model label does not prove
-that an output is correct, authentic, reproducible, or scientifically valid.
+Day-5 semantics require the disclosure to carry an explicit assertion basis.
+Provider/model labels remain audit context only: they do not prove correctness,
+authenticity, reproducibility, authorship, or scientific validity.
 """
 
 from __future__ import annotations
@@ -42,9 +43,12 @@ class LLMProvider(ABC):
             "version": None,
             "mode": "injected_provider",
             "external_model_call": None,
+            "assertion_basis": "provider-adapter-reported",
+            "basis_inferred": False,
+            "automatic_ai_detection_used": False,
             "metadata_semantics": (
-                "provider-supplied process disclosure; unset fields are unknown, "
-                "not evidence of absence"
+                "provider-adapter-reported process disclosure; unset fields are unknown, "
+                "not evidence of absence and not vendor certification"
             ),
         }
 
@@ -91,8 +95,11 @@ class MockProvider(LLMProvider):
             "version": None,
             "mode": "synthetic_fixture",
             "external_model_call": False,
+            "assertion_basis": "synthetic-fixture-runtime",
+            "basis_inferred": False,
+            "automatic_ai_detection_used": False,
             "metadata_semantics": (
-                "deterministic local fixture; no external model/version claim and not scientific evidence"
+                "deterministic local fixture runtime metadata; no external model/version claim and not scientific evidence"
             ),
         }
 
@@ -219,12 +226,19 @@ class LLMHarness:
                 "version": None,
                 "mode": "not_configured",
                 "external_model_call": None,
+                "assertion_basis": "runtime-harness-state",
+                "basis_inferred": False,
+                "automatic_ai_detection_used": False,
                 "metadata_semantics": "no provider was configured for this harness",
             }
         record = provider.describe()
         if not isinstance(record, dict):
             raise TypeError("LLMProvider.describe must return a dict")
-        return dict(record)
+        result = dict(record)
+        result.setdefault("assertion_basis", "provider-adapter-reported")
+        result.setdefault("basis_inferred", False)
+        result.setdefault("automatic_ai_detection_used", False)
+        return result
 
     def load_role_prompt(self, role_name: str) -> str:
         path = self.roles_dir / f"{role_name}.md"
