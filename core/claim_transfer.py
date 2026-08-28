@@ -101,15 +101,21 @@ def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict
     return selected
 
 
+def _has_structural_observation(item: dict) -> bool:
+    observations = item.get("observations") or {}
+    if not isinstance(observations, dict):
+        return False
+    return (
+        observations.get("internal_consistency") is not None
+        or observations.get("cross_source") is not None
+    )
+
+
 def _coverage(claims: list[dict]) -> dict:
     total = len(claims)
     with_evidence = sum(1 for item in claims if item.get("evidence_refs"))
     with_conflicts = sum(1 for item in claims if item.get("conflicts"))
-    with_observations = sum(
-        1
-        for item in claims
-        if any(value is not None for value in (item.get("observations") or {}).values())
-    )
+    with_observations = sum(1 for item in claims if _has_structural_observation(item))
     with_final_scores = sum(
         1 for item in claims if (item.get("heuristic_scores") or {}).get("final") is not None
     )
@@ -122,8 +128,10 @@ def _coverage(claims: list[dict]) -> dict:
         "evidence_reference_ratio": (with_evidence / total) if total else None,
         "aggregate_score": None,
         "semantics": (
-            "descriptive transfer coverage only; not provenance soundness, evidence sufficiency, "
-            "scientific validity, review acceptance, or probability of correctness"
+            "descriptive transfer coverage only; structural-observation coverage counts only explicit "
+            "internal_consistency/cross_source observations, not explanatory metadata. Coverage is not "
+            "provenance soundness, evidence sufficiency, scientific validity, review acceptance, or "
+            "probability of correctness"
         ),
     }
 
