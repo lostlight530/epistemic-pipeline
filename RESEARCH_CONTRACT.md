@@ -1,8 +1,8 @@
 # Research Contract — Epistemic Pipeline
 
-**Calibration:** 2026-08-28  
+**Calibration:** 2026-08-29  
 **Status:** active research-engineering contract  
-**Scope:** runtime semantics, evidence relations, recovery identity, provenance, claim verification, assertion basis, audit coverage, process disclosure and cross-repository handoff
+**Scope:** runtime semantics, evidence relations, recovery identity, provenance, claim verification, claim transfer, assertion basis, audit coverage, process disclosure and cross-repository handoff
 
 This is a scientific-integrity contract, not a GitHub merge policy.
 
@@ -19,6 +19,9 @@ validated graph
   -> claim-verification
        ├─ assertion/observation basis
        └─ dimensional audit coverage
+  -> optional claim-transfer
+       ├─ explicit claim selection
+       └─ non-inheritance constraints
   -> evidence-envelope
        └─ upstream-reference coverage
 ```
@@ -26,6 +29,14 @@ validated graph
 ## Stable project identifiers
 
 Project-owned identifiers are unversioned semantic names. Real external standard/runtime versions remain explicit only when genuinely defined/observed.
+
+Key handoff profiles now include:
+
+```text
+epistemic-pipeline/claim-verification
+epistemic-pipeline/claim-transfer
+epistemic-pipeline/evidence-envelope
+```
 
 ## Runtime-policy contract
 
@@ -50,17 +61,7 @@ Claims and evidence remain distinguishable objects. A claim may be indexed with 
 
 `epistemic-pipeline/claim-verification` is an audit record, not a truth oracle.
 
-Per claim it may preserve:
-
-- identity/hash;
-- source refs;
-- evidence refs/relations;
-- internal-consistency observation;
-- cross-source observation;
-- conflicts;
-- initial/final heuristic scores;
-- descriptive audit state;
-- assertion/observation basis.
+Per claim it may preserve identity/hash, source refs, evidence refs/relations, internal-consistency observation, cross-source observation, conflicts, initial/final heuristic scores, descriptive audit state and assertion/observation basis.
 
 Allowed audit states remain non-verdict states:
 
@@ -73,6 +74,43 @@ structurally_checked_with_conflict
 ```
 
 No `verified=true`, `accepted`, `rejected` or equivalent scientific-review verdict is emitted because the repository has no independent domain scientific-review authority.
+
+## Claim-transfer contract
+
+`epistemic-pipeline/claim-transfer` creates a bounded downstream view over an existing claim-verification sidecar.
+
+A caller may explicitly select claim IDs. A requested claim ID that does not exist fails explicitly rather than being manufactured.
+
+The transfer preserves:
+
+```text
+claim identity/hash
+source refs
+evidence refs / relations
+structural observations
+conflicts
+initial/final heuristic-score observations
+audit state
+```
+
+and attaches mandatory non-inheritance constraints:
+
+```text
+scientific_validity_inherited: false
+evidence_sufficiency_inherited: false
+peer_review_inherited: false
+conflicts_must_remain_visible: true
+heuristic_scores_must_retain_non_probability_semantics: true
+```
+
+Hard rules:
+
+```text
+claim transfer != acceptance
+inheritance != validation
+conflict preservation != conflict adjudication
+copied sidecar record != independently reverified record
+```
 
 ## Assertion / observation basis contract
 
@@ -87,6 +125,7 @@ synthetic-fixture-runtime
 runtime-harness-state
 caller-declared
 runtime-observed-local-filesystem
+copied-from-local-claim-verification-sidecar
 ```
 
 Hard rule:
@@ -97,7 +136,7 @@ structured-verify-output != external scientific verification
 provider-adapter-reported != vendor certification
 ```
 
-Process disclosure also records `automatic_ai_detection_used: false`; this repository does not infer AI authorship/use from text.
+Process disclosure records `automatic_ai_detection_used: false`; this repository does not infer AI authorship/use from text.
 
 ## Audit-coverage contract
 
@@ -113,7 +152,7 @@ claims with initial heuristic scores
 claims with final heuristic scores
 ```
 
-Ratios use indexed claims as the denominator where defined.
+`claim-transfer` separately reports selected-claim count plus evidence/conflict/observation/final-score coverage for the transferred subset.
 
 No aggregate quality score is produced:
 
@@ -127,8 +166,6 @@ coverage != scientific validity
 coverage ratio != probability
 coverage ratio != evidence sufficiency
 ```
-
-Current claim-level auditability research motivates measuring coverage separately from soundness. This implementation does not claim provenance soundness.
 
 ## Score contract
 
@@ -163,24 +200,15 @@ lineage != independent reproduction
 
 ## Evidence Envelope contract
 
-`epistemic-pipeline/evidence-envelope` is a compact handoff index referencing graph, trace, checkpoint, provenance, claim index, claim verification, process disclosure and optional upstream artifact/evidence refs.
+`epistemic-pipeline/evidence-envelope` is a compact run-level handoff index referencing graph, trace, checkpoint, provenance, claim index, claim verification, process disclosure and optional upstream artifact/evidence refs.
 
-Day 5 adds reference-resolution coverage:
-
-```text
-reference_count
-by_resolution
-local_file_ratio
-aggregate_score: null
-```
+It records upstream reference-resolution coverage but does not duplicate the full claim audit or claim-transfer records.
 
 ```text
 local resolution != source credibility
 reference coverage != evidence quality
 opaque URI != invalid evidence
 ```
-
-The Envelope references the claim-verification artifact rather than duplicating its full contents.
 
 ## Provider disclosure contract
 
@@ -219,18 +247,21 @@ human review != scientific validation
 
 ```text
 auto-doc-engine/artifact-record
-  assertion basis + artifact coverage
+        ↓
+auto-doc-engine/artifact-lineage
         ↓
 epistemic-pipeline/claim-verification
-  observation basis + claim audit coverage
+        ↓ optional selected handoff
+epistemic-pipeline/claim-transfer
         ↓
 epistemic-pipeline/evidence-envelope
         ↓
 sci-render-kit/figure-claim-audit
 sci-render-kit/figure-evidence
+sci-render-kit/communication-transfer
 ```
 
-Interoperability is reference-based and optional; no direct runtime import or inherited scientific validity is required.
+Interoperability is reference/transfer based and optional; no direct runtime import or inherited scientific validity is required.
 
 ## Reproducibility levels
 
@@ -239,13 +270,13 @@ Interoperability is reference-based and optional; no direct runtime import or in
 - **R2 Environment-bounded** — relevant environment/dependency assumptions recorded.
 - **R3 Reproduced** — a separate rerun actually occurred and was compared under a declared criterion.
 
-No trace/checkpoint/provenance/claim-verification/envelope artifact self-awards R3.
+No trace/checkpoint/provenance/claim-verification/claim-transfer/envelope artifact self-awards R3.
 
-## Five-day external calibration
+## Six-day external calibration
 
-The 2026-08-24 → 2026-08-28 design is informed by work on re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse end-to-end consistency, and claim-level auditability separating provenance coverage, soundness, contradiction transparency and audit effort.
+The design is informed by work on re-openable autonomous-science provenance, transparent AI use/human oversight, artifact-centered claim-aware observability, trajectory-to-evidence qualification, Brain Researcher evidence-bounded claims, EarthVerse end-to-end consistency, claim-level auditability, **Praxist** solution/evidence lineages (arXiv:2608.25955) and **ReproAgent** persistent implementation/reference contracts (arXiv:2608.24291).
 
-Borrowed: explicit audit objects, dimensional coverage, contradiction visibility, assertion provenance and evidence-bounded qualification.
+Borrowed: explicit audit objects, dimensional coverage, contradiction visibility, assertion provenance, evidence-bounded qualification and persistence of constraints across long research trajectories.
 
 Not claimed: provenance soundness, citation correctness, scientific-review authority, calibrated truth probability, AI-content detection, peer review or independent reproduction.
 
@@ -256,6 +287,7 @@ run success -> scientific validity
 runtime policy pass -> truth
 claim indexed -> claim true
 evidence linked -> evidence sufficient
+claim transferred -> accepted
 assertion basis -> correctness
 coverage -> quality
 coverage ratio -> probability
