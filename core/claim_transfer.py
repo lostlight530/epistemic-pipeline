@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any, Iterable, Optional
 
 PROFILE = "epistemic-pipeline/claim-transfer"
+SOURCE_PROFILE = "epistemic-pipeline/claim-verification"
 
 
 def _now() -> str:
@@ -40,6 +41,11 @@ def _load_json(path: str | Path) -> dict:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError("claim audit must be a JSON object")
+    source_profile = data.get("profile")
+    if source_profile != SOURCE_PROFILE:
+        raise ValueError(
+            f"claim transfer requires source profile {SOURCE_PROFILE!r}, got {source_profile!r}"
+        )
     return data
 
 
