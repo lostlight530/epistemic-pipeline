@@ -2,29 +2,24 @@
 
 These examples show actual repository entry points. They are not GitHub workflow instructions and do not imply scientific validation.
 
-## 1. Validate an executable graph
+## Validate and run
 
 ```bash
 python3 core/engine.py validate graphs/linear.yaml
-```
-
-Validation checks graph structure such as dependencies/cycles/reachability. A valid graph is not a scientifically valid study.
-
-## 2. Run the state machine
-
-```bash
 python3 core/engine.py run graphs/linear.yaml
 ```
 
-The default provider path is `MockProvider`, a deterministic synthetic fixture. It is not evidence of real-model performance.
+Graph validation is structural. The default MockProvider is a deterministic synthetic fixture, not real-model performance evidence.
 
-## 3. Produce the full evidence bundle
+## Produce the evidence bundle
 
 ```bash
-python3 core/run_bundle.py graphs/linear.yaml
+python3 core/run_bundle.py graphs/linear.yaml \
+  --human-review partial \
+  --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json
 ```
 
-Typical generated paths:
+Typical paths:
 
 ```text
 traces/<run>.jsonl
@@ -34,83 +29,64 @@ claim-audits/<run>.claim-audit.json
 evidence/<run>.evidence.json
 ```
 
-Stable internal profiles:
+## Claim verification with observation basis
 
-```text
-epistemic-pipeline/trace
-epistemic-pipeline/checkpoint
-epistemic-pipeline/prov
-epistemic-pipeline/claim-verification
-epistemic-pipeline/evidence-envelope
-```
-
-## 4. Declare human-review context
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml \
-  --human-review partial
-```
-
-`partial` records declared review context only. It does not mean peer review or scientific validation.
-
-## 5. Link an upstream Auto Doc artifact
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml \
-  --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json
-```
-
-If the path exists locally, the Evidence Envelope records its SHA-256. Otherwise an opaque ref is retained without dereferencing.
-
-Preferred upstream profile:
-
-```text
-auto-doc-engine/artifact-record
-```
-
-## 6. Add upstream evidence/provenance references
-
-```bash
-python3 core/run_bundle.py graphs/linear.yaml \
-  --upstream-evidence-ref ./inputs/source-evidence.json \
-  --upstream-evidence-ref urn:example:external-record
-```
-
-Opaque URIs remain references; the repository does not fetch or certify them.
-
-## 7. Inspect claim verification
-
-A claim-audit record separates dimensions such as:
+A bounded claim record can look like:
 
 ```json
 {
   "claim_id": "c1",
+  "source_refs": ["src_001"],
   "evidence_refs": ["src_001#seg_001"],
-  "audit_state": "structurally_checked_with_conflict",
-  "heuristic_scores": {
-    "initial": {"value": 0.5, "stage": "verify"},
-    "final": {"value": 0.5, "stage": "synthesize"}
+  "observation_basis": {
+    "claim_identity": "structured-analyze-output",
+    "evidence_refs": "structured-analyze-output",
+    "consistency": "structured-verify-output",
+    "conflicts": "structured-verify-output",
+    "heuristic_scores": "structured-state-output",
+    "basis_inferred": false
+  },
+  "audit_state": "structurally_checked_with_conflict"
+}
+```
+
+```text
+structured-verify-output != external scientific verification
+```
+
+## Dimensional claim audit coverage
+
+The sidecar also records separate coverage dimensions:
+
+```json
+{
+  "audit_coverage": {
+    "counts": {
+      "claims_indexed": 10,
+      "claims_with_source_refs": 10,
+      "claims_with_evidence_refs": 8,
+      "claims_with_conflicts": 2
+    },
+    "ratios": {
+      "evidence_refs_ratio": 0.8
+    },
+    "aggregate_score": null
   }
 }
 ```
 
-This does **not** mean the claim is scientifically verified.
+Interpretation:
 
-## 8. Runtime policy
-
-State files use machine-readable checks. Example structure:
-
-```yaml
-runtime_policies:
-  - id: verification_coverage
-    check: numeric_min
-    field: coverage
-    min: 0.95
+```text
+0.8 = 80% of indexed claims carry evidence refs
+0.8 != 80% probability of truth
+0.8 != provenance soundness
+0.8 != evidence sufficiency
 ```
 
-The prose `rule` field is descriptive only.
+## Provider disclosure basis
 
-## 9. Provider integration sketch
+A custom provider may describe only what it really knows:
 
 ```python
 from core.llm_harness import LLMProvider
@@ -127,24 +103,62 @@ class MyProvider(LLMProvider):
             "version": None,
             "mode": "injected_provider",
             "external_model_call": True,
+            "assertion_basis": "provider-adapter-reported",
+            "basis_inferred": False,
+            "automatic_ai_detection_used": False,
         }
 ```
 
-Leave unknown metadata unknown rather than guessing.
+Leave unknown metadata unknown. Provider metadata is not AI-text detection or output validation.
 
-## 10. Score semantics
+## Evidence Envelope upstream coverage
 
-A score-network output in `[0,1]` remains heuristic:
+If upstream references are supplied, the Envelope can preserve resolution coverage:
+
+```json
+{
+  "artifact_ref_coverage": {
+    "reference_count": 2,
+    "by_resolution": {
+      "local-file": 1,
+      "opaque-uri-not-dereferenced": 1
+    },
+    "local_file_ratio": 0.5,
+    "aggregate_score": null
+  }
+}
+```
+
+This is environment/reference coverage only:
 
 ```text
-0.8 != 80% probability
+local_file_ratio != source credibility
+opaque URI != invalid evidence
+```
+
+## Runtime policy
+
+```yaml
+runtime_policies:
+  - id: verification_coverage
+    check: numeric_min
+    field: coverage
+    min: 0.95
+```
+
+The prose `rule` field is descriptive only. Runtime-policy success is not scientific validation.
+
+## Score semantics
+
+```text
+0.8 heuristic score != 80% probability
 converged=true != scientific certainty
 ```
 
-## 11. Reproducibility
+## Reproducibility
 
-Evidence artifacts can make a run traceable/replay-addressable. They do not establish R3 without a separate rerun and declared comparison criterion.
+Evidence artifacts can support traceability/replay addressing. They do not establish R3 without a separate rerun and declared comparison criterion.
 
-## 12. No CI assumption
+## No CI assumption
 
 These commands are local operational examples only. The repository does not require GitHub Actions, CodeQL or merge gates as part of its research architecture.
