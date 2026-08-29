@@ -2,46 +2,53 @@
 
 **Repository:** `epistemic-pipeline`  
 **Status:** non-normative research-positioning snapshot  
-**Calibrated:** 2026-08-29  
+**Calibrated:** 2026-08-30  
 **Normative boundaries:** `RESEARCH_CONTRACT.md`, `CLAIM_AUDIT_CONTRACT.md`, `CLAIM_TRANSFER_CONTRACT.md`, `ASSERTION_BASIS_AND_AUDIT_COVERAGE.md`
 
 ## Current research question
 
-The 2026 frontier increasingly asks not only whether an agent completed a workflow, but whether the resulting record can be reopened, audited and safely handed forward:
+The 2026 frontier increasingly asks not only whether an agent completed a workflow, but whether the resulting record can be reopened, audited, safely handed forward, and maintained across changing research phases
 
 ```text
-Can artifacts be attributed to actions?
-Can claims be linked to evidence?
-Can conflicts/qualification be inspected?
-Can the basis of a recorded assertion be identified?
-Can audit coverage be measured without pretending it is truth?
-Can a claim move downstream without losing its constraints?
-Can human/AI process context be disclosed?
+Can artifacts be attributed to actions
+Can claims be linked to evidence
+Can conflicts and qualification remain visible
+Can assertion basis be identified
+Can audit coverage be measured without pretending it is truth
+Can a claim move downstream without losing its constraints
+Can the repository be revalidated at the right research horizon without rewriting history
 ```
 
-Epistemic Pipeline addresses these at the research-execution/evidence-contract layer.
+Epistemic Pipeline addresses these at the research-execution and evidence-contract layer
 
-## Day-5 architecture response
-
-The repository separates:
+## Current architecture response
 
 ```text
-claim/evidence content
-assertion / observation basis
-dimensional audit coverage
-provenance lineage
-scientific validity
+claim / evidence / conflict
+      ↓
+runtime policy + bounded heuristic scores
+      ↓
+trace / checkpoint / provenance
+      ↓
+claim-verification
+  assertion basis + dimensional coverage
+      ↓
+claim-transfer
+  explicit selection + non-inheritance constraints
+      ↓
+evidence-envelope
+  compact cross-tool handoff
 ```
 
-Coverage counts how many indexed claims carry particular audit dimensions. It is not a scientific-quality or probability score.
+```text
+trace != provenance != claim audit != claim transfer != evidence envelope
+```
 
-## Day-6 architecture response: claim transfer
+## Claim transfer and non-inheritance
 
-A claim ID is not enough for long-horizon research. If it moves downstream without its evidence refs, conflicts, observations and score semantics, the new context can silently overstate it.
+A downstream claim must retain its evidence refs, conflicts, structural observations, audit state, and heuristic-score semantics
 
-`core/claim_transfer.py` therefore emits `epistemic-pipeline/claim-transfer` as a bounded subset contract over an existing claim-verification sidecar.
-
-Every transferred claim carries explicit non-inheritance constraints:
+Required constraints remain
 
 ```text
 scientific_validity_inherited: false
@@ -57,147 +64,92 @@ inheritance != validation
 conflict preservation != conflict adjudication
 ```
 
+## Day-7 phase-aware maintenance
+
+Long-horizon research work increasingly reports phase structure, persistent workspaces, recovery segments, and the need for re-validation when the research regime changes
+
+A behavioural study of long-horizon autonomous architecture research found clear phase transitions and argued for regime-aware re-validation rather than assuming one workflow remains optimal across the whole run
+
+ScienceFlow similarly organizes long-horizon research into persistent research segments to support continuity, recovery from dead ends, and evolving state
+
+Current autonomous-science provenance work emphasizes that research records should remain re-openable, auditable, and correctable
+
+Borrowed maintenance principle
+
+```text
+different drift horizons deserve different review scopes
+```
+
+The repository now distinguishes
+
+```text
+daily
+  local runtime / claim / evidence drift
+
+weekly
+  cross-day evidence-stack reconciliation
+
+monthly or explicit phase-close
+  canonical hash baseline / history inventory / deprecation review
+```
+
+This is implemented in `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, and `STAGE_2026_08_MAINTENANCE.md`
+
+The scanner is local and read-only
+It does not run the research workflow, call an LLM, verify citations, judge evidence sufficiency, delete history, or claim provenance soundness
+
+On 2026-08-30 the August maintenance snapshot is month-to-date, not final calendar-month close
+
+```text
+maintenance clean != scientific validity
+weekly consistency != evidence sufficiency
+monthly baseline != reproduction
+history inventory != deprecation decision
+```
+
 ## External signals
 
-### Provenance in autonomous science
+Current calibration includes
 
-Re-openable provenance supports auditing/correction of autonomous research processes.
+- Nature Computational Science on re-openable provenance for autonomous science
+- transparent AI use and human oversight in scientific publishing
+- artifact-centered claim-aware observability
+- From Trajectories to Evidence
+- Brain Researcher evidence-bounded claims
+- EarthVerse end-to-end consistency gaps
+- claim-level auditability separating provenance coverage from soundness
+- Praxist solution/evidence lineages
+- ReproAgent persistent implementation contracts
+- long-horizon autonomous architecture research with phase-aware re-validation
+- ScienceFlow segmented long-horizon research and recovery
 
-Borrowed: preserve lineage and run artifacts.
+Borrowed principles are limited to explicit state, evidence, constraints, lineage, recovery, and maintenance boundaries
 
-Not borrowed: provenance makes the science correct.
-
-### Transparent AI use / human oversight
-
-Current scientific-publishing guidance emphasizes transparency, accountability and human oversight.
-
-Borrowed: preserve provider/process disclosure and human-review context.
-
-Boundary: `human_review=reviewed` is not peer review.
-
-### Artifact-centered claim-aware observability
-
-Scientific-agent observability work argues model-call logs alone are insufficient; artifacts, claims, evidence and verification relations should be portable audit objects.
-
-Borrowed:
+Not claimed
 
 ```text
-trace != provenance != claim audit != claim transfer != evidence envelope
-```
-
-### From Trajectories to Evidence
-
-Completed execution is not automatically evidence.
-
-Borrowed: execution validity, artifact identity, attribution and claim qualification remain distinct.
-
-### Brain Researcher
-
-Evidence-constrained claim formulation and explicit review outcomes motivate keeping evidence support and qualification visible.
-
-Not borrowed: accepted/rejected/qualified runtime truth states; this repository has no independent domain scientific-review authority.
-
-### EarthVerse
-
-Strong local task performance can coexist with weak strict end-to-end consistency across evidence, scales, units, calculations and interpretation.
-
-Borrowed: record the chain rather than treating local success as global correctness.
-
-### Claim-level auditability
-
-*From Fluent to Verifiable* distinguishes provenance coverage, provenance soundness, contradiction transparency and audit effort.
-
-Borrowed: coverage as a measurable structural dimension and conflict visibility as a first-class audit concern.
-
-Not claimed: provenance soundness.
-
-### Praxist — solution/evidence lineages
-
-**Praxist: From Experimental Artifacts to Solution Lineages** (arXiv:2608.25955, 26 Aug 2026) argues that isolated attempts and logs lose causal/useful research inheritance, and materializes typed evidence/solution lineage across generations.
-
-Borrowed principle: downstream generations should inherit explicit records of unresolved claims, useful constraints and evidence relationships rather than reconstruct them from conversation history.
-
-Not borrowed: Praxist's full generational R&D loop, evaluator authority or benchmark claims.
-
-### ReproAgent — persistent contracts
-
-**ReproAgent: Contract-Guided Paper-to-Code Reproduction** (arXiv:2608.24291, 25 Aug 2026) persists implementation requirements and reference evidence across planning, generation and repair.
-
-Borrowed principle: constraints/evidence context should survive long agent trajectories as explicit contracts.
-
-Not borrowed: its paper-to-code reproduction task or reported benchmark authority.
-
-### AI detection versus disclosure
-
-Detection is a separate inference problem from explicit disclosure.
-
-This repository uses provider-adapter metadata/caller declarations and records `automatic_ai_detection_used: false`; it does not classify prose to infer AI authorship/use.
-
-## Neighbouring systems
-
-Adjacent systems include scientific RAG/evidence systems, typed scientific runtimes, autonomous-scientist systems, generational R&D systems, reproduction agents, domain research agents and workflow/provenance tooling.
-
-Epistemic Pipeline's focus is the bounded contract between:
-
-```text
-claim/evidence/conflict structure
-runtime-policy observations
-heuristic-score semantics
-assertion basis
-claim audit coverage
-claim transfer constraints
-lineage
-cross-tool handoff
-```
-
-This is positioning, not a claim of global uniqueness or superiority.
-
-## What remains intentionally absent
-
-- built-in production LLM provider;
-- scientific truth oracle;
-- provenance soundness validator;
-- automatic citation-content verification;
-- automatic AI-text detection;
-- scientific peer-review engine;
-- calibrated truth probabilities by default;
-- tamper-proof external trace anchoring;
-- PROV-O RDF serializer;
-- automatic accepted/rejected claim verdicts;
-- automatic downstream scientific acceptance from claim-transfer metadata.
-
-These absences are truthful architecture boundaries.
-
-## Research-engineering interpretation
-
-```text
-execution -> inspectable evidence-bearing record
-not
-execution -> truth
-```
-
-Day 6 adds:
-
-```text
-claim-verification -> bounded claim-transfer -> downstream use
-not
-claim reference -> inherited scientific authority
+scientific truth oracle
+provenance soundness
+citation correctness
+peer-review authority
+calibrated truth probability
+optimal maintenance frequency
 ```
 
 ## Cross-repository frontier position
 
 ```text
 auto-doc-engine
-  artifact identity / assertion basis / artifact coverage / artifact lineage
+  artifact identity / basis / coverage / lineage
         ↓
 epistemic-pipeline
-  claim-evidence execution / observation basis / claim coverage / claim transfer / provenance
+  claim-evidence execution / audit / transfer / provenance
         ↓
 sci-render-kit
-  claim-aware communication / communication coverage / figure evidence / communication transfer
+  claim-aware communication / figure evidence / communication transfer
 ```
 
-Together the repositories explore evidence-aware research infrastructure with explicit inheritance boundaries.
+Together the repositories explore evidence-aware research infrastructure with explicit inheritance and maintenance boundaries
 
 ## Hard boundaries
 
@@ -209,6 +161,8 @@ coverage != provenance soundness
 evidence binding != evidence sufficiency
 claim transfer != acceptance
 inheritance != validation
+maintenance clean != scientific validity
+monthly baseline != reproduction
 provider identity != output validity
 human review != peer review
 provenance != truth
