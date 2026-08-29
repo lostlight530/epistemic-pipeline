@@ -1,0 +1,49 @@
+{
+  "profile": "epistemic-pipeline/maintenance-cadence",
+  "calibrated": "2026-08-30",
+  "project_profile_prefix": "epistemic-pipeline/",
+  "canonical_paths": [
+    "MANIFEST.yaml",
+    "AGENTS.md",
+    "RESEARCH_CONTRACT.md",
+    "FRONTIER_ALIGNMENT.md",
+    "CLAIM_AUDIT_CONTRACT.md",
+    "CLAIM_TRANSFER_CONTRACT.md",
+    "core/claim_audit.py",
+    "core/claim_transfer.py",
+    "core/evidence_envelope.py"
+  ],
+  "scan_paths": ["MANIFEST.yaml", "AGENTS.md", "RESEARCH_CONTRACT.md", "FRONTIER_ALIGNMENT.md", "core", "validators"],
+  "forbidden_governance_paths": [".github/workflows"],
+  "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
+  "cadences": {
+    "daily": {
+      "purpose": "local claim/evidence/runtime drift and new-fact maintenance without history rewrite",
+      "calibration_max_age_days": 2,
+      "baseline_hashes": false,
+      "history_inventory": false
+    },
+    "weekly": {
+      "purpose": "cross-day evidence-contract reconciliation, score-semantics review, and handoff consistency",
+      "calibration_max_age_days": 8,
+      "baseline_hashes": true,
+      "history_inventory": true
+    },
+    "monthly": {
+      "purpose": "month-to-date or explicit phase-close baseline, evidence-stack inventory, and deprecation review",
+      "calibration_max_age_days": 35,
+      "baseline_hashes": true,
+      "history_inventory": true
+    }
+  },
+  "boundaries": {
+    "automatic_deletion": false,
+    "automatic_history_rewrite": false,
+    "github_actions": false,
+    "codeql": false,
+    "merge_gate": false,
+    "aggregate_quality_score": false,
+    "scientific_validity_claim": false,
+    "provenance_soundness_claim": false
+  }
+}
