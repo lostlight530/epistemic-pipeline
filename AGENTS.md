@@ -2,18 +2,52 @@
 
 This guide defines how coding/research agents should modify the repository without overstating scientific authority
 
-Implementation in `core/`, `states/`, `graphs/`, `validators/` plus the active contracts define current semantics
+Implementation in `core/`, `states/`, `graphs/`, `validators/` plus active contracts define current semantics
+
 If docs disagree with code, correct one explicitly and never invent a capability to reconcile them
+
+## Document authority
+
+Read `DOCUMENT_STATUS.md` before broad documentation work
+
+Current authoritative documents may be updated when source truth changes
+
+Historical consolidation snapshots remain time-scoped records, not current contracts
+
+```text
+FOUR_DAY_CONSOLIDATION.md
+FIVE_DAY_CONSOLIDATION.md
+SIX_DAY_CONSOLIDATION.md
+```
+
+```text
+historical snapshot != current contract
+later terminology != permission to rewrite history
+```
 
 ## Stable internal identifiers
 
 Project-owned profile names are unversioned semantic names
+
 Do not add decorative `@1/@2`, `/v1`, fake fixture/model versions, or similar pseudo-version suffixes
+
 Preserve real external standard/runtime versions when genuinely applicable
 
-Current stable maintenance identifiers include
-
 ```text
+epistemic-pipeline/engine
+epistemic-pipeline/runtime-policy
+epistemic-pipeline/trace
+epistemic-pipeline/checkpoint
+epistemic-pipeline/prov
+epistemic-pipeline/confidence-heuristic
+epistemic-pipeline/network-input
+epistemic-pipeline/claim-index
+epistemic-pipeline/claim-verification
+epistemic-pipeline/claim-transfer
+epistemic-pipeline/process-disclosure
+epistemic-pipeline/upstream-reference
+epistemic-pipeline/evidence-envelope
+epistemic-pipeline/reference-rules
 epistemic-pipeline/maintenance-cadence
 epistemic-pipeline/maintenance-report
 ```
@@ -37,6 +71,10 @@ graphs/*.yaml
        └─ non-inheritance constraints
   -> evidence-envelope
        └─ upstream-reference coverage
+
+repository state
+  -> daily / weekly / monthly maintenance
+       └─ current-document / calendar / stage reconciliation
 ```
 
 ## No hallucinated provider identity
@@ -80,6 +118,7 @@ heuristic_scores_must_retain_non_probability_semantics: true
 ```
 
 Never silently remove conflicts, upgrade audit states, convert heuristic scores into probabilities, or manufacture a missing requested claim ID
+
 Missing requested claim IDs fail explicitly
 
 ## Assertion / observation basis rules
@@ -110,6 +149,7 @@ copied-from-sidecar != independently reverified
 ## Audit coverage rules
 
 Coverage remains dimensional
+
 Do not create a synthetic aggregate research-quality score
 
 ```text
@@ -128,12 +168,15 @@ Never describe `[0,1]` as probability by default, convergence as certainty, scor
 ## Provenance / trace rules
 
 `core/provenance.py` is PROV-aligned project JSON, not PROV-O RDF conformance
+
 `core/run_tracer.py` is project JSONL tracing, not an OpenTelemetry exporter or tamper-proof ledger
 
 ## Runtime policy rule
 
 Machine behavior comes from `check` + explicit parameters
+
 Human-readable `rule` text is documentation only
+
 Unknown checks fail explicitly
 
 ## Evidence-stack separation
@@ -151,7 +194,7 @@ Do not merge them into one proof object
 
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md` and `maintenance/cadence.yaml` define the active daily / weekly / monthly maintenance contract
+`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
 
 Local scanner
 
@@ -165,28 +208,37 @@ Daily maintenance
 
 - start from current `main`
 - correct demonstrated runtime/claim/evidence/profile drift only
+- use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
 - preserve provider unknowns, conflict visibility, and heuristic non-probability semantics
-- do not rewrite historical stage snapshots or manufacture daily changes
+- do not manufacture daily changes
 
 Weekly maintenance
 
-- reconcile implementation, Manifest, Research Contract, Claim Audit Contract, Claim Transfer Contract, Agent Guide, Frontier Alignment, and cross-repository profile names
+- reconcile implementation, Manifest, Research Contract, Claim Audit Contract, Claim Transfer Contract, README/Architecture, Agent/Contributor/Customization guidance, examples, Document Status, Frontier Alignment, and cross-repository profile names
 - review trace/checkpoint/provenance/claim-audit/claim-transfer/envelope separation
-- inventory the prior seven days of snapshots without rewriting them
+- inventory historical snapshots without rewriting them
 
 Monthly or explicit phase-close maintenance
 
-- build a month-to-date or explicit phase-close canonical hash baseline
+- derive calendar status from the actual date
+- reconcile the complete current document set
+- build canonical hash baselines when useful
 - inventory historical snapshots and review deprecation candidates manually
 - confirm no structural state has been promoted into a truth verdict
-- state explicitly whether the month or research phase is actually closed
+- record whether the research phase is active or closed
 
-On 2026-08-30 the August maintenance record is month-to-date, not final calendar-month close
+Current closed stage
+
+```text
+as_of: 2026-08-31
+calendar_month: calendar-month-close
+stage: closed
+```
 
 ```text
 maintenance clean != scientific validity
 weekly consistency != evidence sufficiency
-monthly baseline != reproduction
+calendar-month close != reproduction
 coverage inventory != provenance soundness
 ```
 
@@ -210,20 +262,25 @@ References and transfers are not runtime imports or inherited truth claims
 ## Experimental modules
 
 `anti_entropy.py`, `convergence.py`, `infinite_regression.py`, `neuro_symbolic.py`, `perception.py`, and `thread_collapse.py` remain experimental unless deliberately integrated
+
 Metaphorical names are not capability evidence
 
 ## R3 discipline
 
 Metadata, checkpoint, provenance, provider disclosure, audit coverage, claim audit, claim transfer, maintenance reports, or hash baselines never count as independent reproduction
+
 R3 requires an actual separate rerun plus a declared comparison criterion
 
 ## Governance boundary
 
 Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary repository architecture
-Local checks/tests are optional maintenance aids, not scientific validation
+
+Local/manual checks are optional maintenance aids, not scientific validation
 
 ## Documentation synchronization
 
-When a public research contract changes, synchronize the relevant implementation, Manifest, contracts, examples, and frontier notes
-When maintenance cadence changes, synchronize `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, `STAGE_2026_08_MAINTENANCE.md`, Manifest, and this Agent Guide
+When a public research contract changes, synchronize relevant implementation, Manifest, active contracts, README/Architecture, examples, and frontier notes
+
+When maintenance/document governance changes, synchronize `MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, `STAGE_2026_08_MAINTENANCE.md`, Manifest, and this Agent Guide
+
 Prefer honest `implemented / experimental / proposed / not integrated` states over aspirational wording
