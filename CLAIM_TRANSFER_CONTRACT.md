@@ -1,14 +1,14 @@
 # Claim Transfer Contract — Epistemic Pipeline
 
 **Status:** implemented project-owned handoff contract  
-**Calibrated:** 2026-08-29  
+**Calibrated:** 2026-08-31  
 **Implementation:** `core/claim_transfer.py`
 
 ## Purpose
 
-`epistemic-pipeline/claim-transfer` packages selected records from an existing `epistemic-pipeline/claim-verification` sidecar for downstream research/communication workflows.
+`epistemic-pipeline/claim-transfer` packages selected records from an existing `epistemic-pipeline/claim-verification` sidecar for downstream research/communication workflows
 
-The transfer keeps the context that is easy to lose when a claim ID is copied by itself:
+The transfer keeps context that is easy to lose when a claim ID is copied by itself
 
 ```text
 source refs
@@ -20,7 +20,7 @@ audit state
 transfer constraints
 ```
 
-Full claim prose remains excluded by default.
+Full claim prose remains excluded by default
 
 ## Stable profile
 
@@ -28,19 +28,25 @@ Full claim prose remains excluded by default.
 epistemic-pipeline/claim-transfer
 ```
 
-## Selection semantics
+Project-owned identifiers remain unversioned
 
-A caller may select one or more claim IDs. A requested ID that is not present in the source claim audit fails explicitly rather than being silently manufactured.
+## Source-profile and selection semantics
 
-Selecting a claim means only:
+The source JSON must carry `epistemic-pipeline/claim-verification`
 
-> this claim record is intentionally being handed to a downstream context.
+Wrong-profile JSON fails explicitly rather than being guessed into a claim audit
 
-It does not mean accepted, verified, corroborated, publishable or true.
+A caller may select one or more claim IDs. A requested ID not present in the source claim audit fails explicitly rather than being silently manufactured
+
+Selecting a claim means only
+
+> this claim record is intentionally being handed to a downstream context
+
+It does not mean accepted, verified, corroborated, publishable, or true
 
 ## Transfer constraints
 
-Every transferred claim carries:
+Every transferred claim carries
 
 ```text
 scientific_validity_inherited: false
@@ -50,11 +56,11 @@ conflicts_must_remain_visible: true
 heuristic_scores_must_retain_non_probability_semantics: true
 ```
 
-These constraints prevent downstream systems from weakening the epistemic boundary during handoff.
+These constraints prevent downstream systems from weakening epistemic boundaries during handoff
 
 ## Assertion basis
 
-The source sidecar is locally byte-identified. Claim fields are copied from that sidecar; optional purpose is caller-declared.
+The source sidecar is locally byte-identified. Claim fields are copied from that sidecar; optional purpose is caller-declared
 
 ```text
 claim_records: copied-from-local-claim-verification-sidecar
@@ -62,17 +68,19 @@ purpose: caller-declared | not_declared
 basis_inferred: false
 ```
 
-No model is asked to reinterpret the records.
+No model is asked to reinterpret the records
 
 ## Transfer coverage
 
-The sidecar records selected-claim count and counts for evidence refs, conflicts, structural observations and final heuristic scores.
+The sidecar records selected-claim count and counts for evidence refs, conflicts, structural observations, and final heuristic scores
+
+Structural-observation coverage counts only explicit `internal_consistency` / `cross_source` observations, not explanatory metadata
 
 ```text
 aggregate_score: null
 ```
 
-Coverage is not provenance soundness, evidence sufficiency, scientific validity or probability.
+Coverage is not provenance soundness, evidence sufficiency, scientific validity, or probability
 
 ## CLI
 
@@ -85,7 +93,7 @@ python core/claim_transfer.py \
   --output transfers/run-42.claim-transfer.json
 ```
 
-Without `--claim-id`, all indexed records are transferred.
+Without `--claim-id`, all indexed records are transferred
 
 ## Relationship to other evidence objects
 
@@ -97,15 +105,41 @@ claim-transfer
 figure / report / archive workflow
 ```
 
-`claim-transfer` does not replace Trace, Checkpoint, PROV lineage or Evidence Envelope. It is a portable subset contract for claim-level handoff.
+`claim-transfer` does not replace Trace, Checkpoint, PROV lineage, or Evidence Envelope. It is a portable subset contract for claim-level handoff
 
-## Global calibration
+## Downstream role
 
-- **Praxist** (arXiv:2608.25955, 26 Aug 2026) highlights typed evidence/solution lineages that preserve validated mechanisms, unresolved claims and constraints across generations.
-- **ReproAgent** (arXiv:2608.24291, 25 Aug 2026) demonstrates the value of persistent contracts that survive planning, generation and repair.
-- **From Fluent to Verifiable** (arXiv:2602.13855) frames claim-level provenance, contradiction transparency and auditability as first-class concerns.
+Current downstream vocabulary includes
 
-The implementation borrows the persistence/visibility principle only. It does not claim the source audit has established provenance soundness or scientific review authority.
+```text
+epistemic-pipeline/claim-transfer
+  -> sci-render-kit/figure-claim-audit
+  -> sci-render-kit/figure-evidence
+  -> sci-render-kit/communication-transfer
+```
+
+A downstream communication artifact may preserve claim context, but it does not inherit scientific validity, evidence sufficiency, peer review, or calibrated probability
+
+## Research calibration
+
+Current calibration includes work on solution/evidence lineage, persistent implementation/reference contracts, claim-level provenance/contradiction transparency, and long-horizon process continuity
+
+The implementation borrows the persistence/visibility principle only
+
+It does not claim the source audit has established provenance soundness or scientific-review authority
+
+## Maintenance / document status
+
+This is a current authoritative specialized contract under `DOCUMENT_STATUS.md`
+
+Weekly/monthly maintenance may reconcile handoff vocabulary and upstream/downstream profile names, but must not delete conflicts, upgrade audit states, or reinterpret heuristic scores
+
+The August evidence-infrastructure stage closed on 2026-08-31
+
+```text
+stage close != claim acceptance
+calendar-month close != reproduction
+```
 
 ## Hard boundaries
 
@@ -117,4 +151,5 @@ Conflict visibility != Conflict adjudication
 Audit state != Scientific verdict
 Heuristic score != Probability
 Inheritance != Validation
+Maintenance clean != Scientific validity
 ```
