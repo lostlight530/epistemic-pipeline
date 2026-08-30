@@ -127,6 +127,34 @@ The scanner reports configured canonical paths, forbidden governance paths, deco
 
 It does not execute the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, evaluate provenance soundness, or modify repository files
 
+## First complete Daily / Weekly / Monthly demonstration
+
+The first complete three-horizon worked example is
+
+```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+Recommended read order
+
+```text
+MAINTENANCE_CADENCE.md
+        ↓ normative horizon semantics
+DOCUMENT_STATUS.md
+        ↓ current vs historical authority
+STAGE_2026_08_MAINTENANCE.md
+        ↓ closed evidence-infrastructure stage
+FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+        ↓ worked commands and evidence-layer interpretation
+```
+
+The dated demonstration does not invent a clean run, findings, or SHA-256 values that require execution
+
+```text
+reference demonstration != provenance soundness
+worked example != evidence sufficiency
+```
+
 ## Document authority and history
 
 `DOCUMENT_STATUS.md` is the current map of authoritative, historical, example/customization, and external-metadata documents
