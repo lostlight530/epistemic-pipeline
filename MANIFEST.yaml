@@ -1,6 +1,6 @@
 name: epistemic-pipeline
 purpose: evidence-aware state-machine execution for research workflows
-calibrated: "2026-08-30"
+calibrated: "2026-08-31"
 
 principles:
   - explicit_state_transition
@@ -16,7 +16,9 @@ principles:
   - portable_claim_transfer_with_non_inheritance_constraints
   - conflicts_remain_visible_during_handoff
   - maintenance_cadence_separates_daily_weekly_monthly_review
+  - document_authority_is_explicit
   - historical_snapshots_are_not_automatically_rewritten
+  - calendar_and_stage_status_are_date_or_config_derived
   - no_automatic_ai_text_detection
   - provenance_not_truth
   - no_scientific_verdict_from_structure_alone
@@ -40,6 +42,17 @@ stable_profiles:
   reference_rules: epistemic-pipeline/reference-rules
   maintenance_cadence: epistemic-pipeline/maintenance-cadence
   maintenance_report: epistemic-pipeline/maintenance-report
+
+stage_close:
+  id: 2026-08-evidence-infrastructure
+  window: ["2026-08-24", "2026-08-31"]
+  calendar_month_status: calendar-month-close
+  research_phase_status: closed
+  history_rewrite: false
+  automatic_deletion: false
+  scientific_validity_claim: false
+  provenance_soundness_claim: false
+  reproduction_claim: false
 
 canonical_runtime:
   graph:
@@ -190,6 +203,10 @@ canonical_runtime:
     config: maintenance/cadence.yaml
     profile: epistemic-pipeline/maintenance-report
     cadences: [daily, weekly, monthly]
+    calendar_status_is_date_derived: true
+    stage_status_is_config_derived: true
+    current_calendar_status: calendar-month-close
+    current_stage_status: closed
     mutates_repository: false
     remote_dereference: false
     tests_run_by_scanner: false
@@ -223,21 +240,23 @@ claim_transfer_semantics:
 maintenance:
   contract: MAINTENANCE_CADENCE.md
   config: maintenance/cadence.yaml
+  document_status: DOCUMENT_STATUS.md
   stage_index: STAGE_2026_08_MAINTENANCE.md
-  calendar_month_status_2026_08_30: month_to_date_not_final_close
+  current_calendar_status: calendar_month_close
+  current_stage_status: closed
   daily:
     scope: local_runtime_claim_evidence_drift
     history_rewrite: false
   weekly:
-    scope: cross_day_evidence_contract_reconciliation
+    scope: full_current_evidence_document_contract_reconciliation
     canonical_hash_baseline: true
     history_inventory: true
   monthly:
-    scope: month_to_date_or_explicit_phase_close
+    scope: calendar_month_or_explicit_phase_close
     canonical_hash_baseline: true
     history_inventory: true
     automatic_deletion: false
-    phase_close_must_be_explicit: true
+    phase_close_must_be_explicit_or_configured: true
 
 interoperability:
   upstream_auto_doc:
@@ -308,9 +327,12 @@ research_contract:
   claim_transfer_contract: CLAIM_TRANSFER_CONTRACT.md
   assertion_basis_audit_coverage: ASSERTION_BASIS_AND_AUDIT_COVERAGE.md
   maintenance_contract: MAINTENANCE_CADENCE.md
-  maintenance_stage_index: STAGE_2026_08_MAINTENANCE.md
-  five_day_consolidation: FIVE_DAY_CONSOLIDATION.md
-  six_day_consolidation: SIX_DAY_CONSOLIDATION.md
+  document_status: DOCUMENT_STATUS.md
+  closed_stage_index: STAGE_2026_08_MAINTENANCE.md
+  historical_snapshots:
+    - FOUR_DAY_CONSOLIDATION.md
+    - FIVE_DAY_CONSOLIDATION.md
+    - SIX_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
 external_research_calibration_2026_08:
@@ -326,6 +348,8 @@ external_research_calibration_2026_08:
   - reproagent_persistent_contracts
   - long_horizon_phase_behavior_and_regime_aware_revalidation
   - scienceflow_segmented_research_and_recovery
+  - beyond_final_scores_long_horizon_process_evaluation
+  - persistent_runtime_project_state_and_reviewed_routes
   note: design_calibration_only_not_external_certification
 
 research_software:
@@ -334,7 +358,7 @@ research_software:
 
 local_checks:
   mode: manual_optional
-  tests_required_for_2026_08_30_maintenance: false
+  tests_required_for_2026_08_31_stage_close: false
   github_actions: false
   codeql_added: false
   merge_gate: false
@@ -350,6 +374,7 @@ scientific_boundaries:
   inheritance_is_validation: false
   maintenance_clean_is_scientific_validity: false
   monthly_baseline_is_reproduction: false
+  calendar_month_close_is_reproduction: false
   run_success_is_scientific_validity: false
   runtime_policy_pass_is_scientific_validity: false
   claim_index_is_truth_graph: false
