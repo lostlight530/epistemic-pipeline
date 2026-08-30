@@ -1,6 +1,8 @@
 # Epistemic Pipeline Examples
 
-These examples show actual repository entry points. They are not GitHub workflow instructions and do not imply scientific validation.
+[Root README](../README.md) · [Claim Audit](../CLAIM_AUDIT_CONTRACT.md) · [Claim Transfer](../CLAIM_TRANSFER_CONTRACT.md) · [Maintenance](../MAINTENANCE_CADENCE.md) · [Document Status](../DOCUMENT_STATUS.md)
+
+These examples show actual repository entry points. They are not GitHub workflow instructions and do not imply scientific validation
 
 ## Validate and run
 
@@ -9,7 +11,7 @@ python3 core/engine.py validate graphs/linear.yaml
 python3 core/engine.py run graphs/linear.yaml
 ```
 
-Graph validation is structural. The default MockProvider is a deterministic synthetic fixture, not real-model performance evidence.
+Graph validation is structural. The default MockProvider is a deterministic synthetic fixture, not real-model performance evidence
 
 ## Produce the evidence bundle
 
@@ -19,7 +21,7 @@ python3 core/run_bundle.py graphs/linear.yaml \
   --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json
 ```
 
-Typical paths:
+Typical paths
 
 ```text
 traces/<run>.jsonl
@@ -31,7 +33,7 @@ evidence/<run>.evidence.json
 
 ## Claim verification with observation basis
 
-A bounded claim record can look like:
+A bounded claim record can look like
 
 ```json
 {
@@ -56,8 +58,6 @@ structured-verify-output != external scientific verification
 
 ## Dimensional claim audit coverage
 
-The sidecar also records separate coverage dimensions:
-
 ```json
 {
   "audit_coverage": {
@@ -75,8 +75,6 @@ The sidecar also records separate coverage dimensions:
 }
 ```
 
-Interpretation:
-
 ```text
 0.8 = 80% of indexed claims carry evidence refs
 0.8 != 80% probability of truth
@@ -84,9 +82,34 @@ Interpretation:
 0.8 != evidence sufficiency
 ```
 
+## Claim transfer
+
+Select a bounded downstream claim set from an existing claim audit
+
+```bash
+python core/claim_transfer.py \
+  claim-audits/run-42.claim-audit.json \
+  --claim-id c1 \
+  --purpose scientific-figure-handoff \
+  --output transfers/run-42.claim-transfer.json
+```
+
+The source JSON must carry the `epistemic-pipeline/claim-verification` profile
+
+Missing requested claim IDs fail explicitly
+
+Transferred records preserve evidence refs, structural observations, conflicts, heuristic-score observations, and audit state
+
+```text
+claim transfer != acceptance
+conflict visibility != conflict adjudication
+heuristic score != probability
+copied record != independent reverification
+```
+
 ## Provider disclosure basis
 
-A custom provider may describe only what it really knows:
+A custom provider may describe only what it really knows
 
 ```python
 from core.llm_harness import LLMProvider
@@ -109,11 +132,13 @@ class MyProvider(LLMProvider):
         }
 ```
 
-Leave unknown metadata unknown. Provider metadata is not AI-text detection or output validation.
+Leave unknown metadata unknown
+
+Provider metadata is not AI-text detection or output validation
 
 ## Evidence Envelope upstream coverage
 
-If upstream references are supplied, the Envelope can preserve resolution coverage:
+If upstream references are supplied, the Envelope can preserve resolution coverage
 
 ```json
 {
@@ -128,8 +153,6 @@ If upstream references are supplied, the Envelope can preserve resolution covera
   }
 }
 ```
-
-This is environment/reference coverage only:
 
 ```text
 local_file_ratio != source credibility
@@ -146,7 +169,9 @@ runtime_policies:
     min: 0.95
 ```
 
-The prose `rule` field is descriptive only. Runtime-policy success is not scientific validation.
+The prose `rule` field is descriptive only
+
+Runtime-policy success is not scientific validation
 
 ## Score semantics
 
@@ -155,10 +180,47 @@ The prose `rule` field is descriptive only. Runtime-policy success is not scient
 converged=true != scientific certainty
 ```
 
+## Daily / weekly / monthly maintenance
+
+```bash
+python core/maintenance_cadence.py daily
+python core/maintenance_cadence.py weekly
+python core/maintenance_cadence.py monthly --as-of 2026-08-31
+```
+
+Current closed stage
+
+```text
+window: 2026-08-24 -> 2026-08-31
+calendar_month: calendar-month-close
+stage: closed
+```
+
+The maintenance scanner is read-only and does not execute the research workflow, call an LLM, run tests, verify citations, or judge evidence sufficiency
+
+Historical Day-N consolidation files are snapshots, not current examples/contracts
+
+## Cross-repository handoff
+
+```text
+auto-doc-engine/artifact-record
+auto-doc-engine/artifact-lineage
+  -> epistemic-pipeline/claim-verification
+  -> epistemic-pipeline/claim-transfer
+  -> epistemic-pipeline/evidence-envelope
+  -> sci-render-kit/figure-claim-audit
+  -> sci-render-kit/figure-evidence
+  -> sci-render-kit/communication-transfer
+```
+
 ## Reproducibility
 
-Evidence artifacts can support traceability/replay addressing. They do not establish R3 without a separate rerun and declared comparison criterion.
+Evidence artifacts and maintenance baselines can support traceability/replay addressing
 
-## No CI assumption
+They do not establish R3 without a separate rerun and declared comparison criterion
 
-These commands are local operational examples only. The repository does not require GitHub Actions, CodeQL or merge gates as part of its research architecture.
+## Governance boundary
+
+These commands are local operational examples only
+
+The repository does not require GitHub Actions, CodeQL, CI, or merge gates as part of its research architecture

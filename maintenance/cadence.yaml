@@ -1,19 +1,55 @@
 {
   "profile": "epistemic-pipeline/maintenance-cadence",
-  "calibrated": "2026-08-30",
+  "calibrated": "2026-08-31",
   "project_profile_prefix": "epistemic-pipeline/",
+  "stage": {
+    "id": "2026-08-evidence-infrastructure",
+    "window_start": "2026-08-24",
+    "close_date": "2026-08-31",
+    "close_semantics": "calendar-month-close-and-explicit-research-phase-close"
+  },
   "canonical_paths": [
+    "README.md",
+    "ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
     "RESEARCH_CONTRACT.md",
     "FRONTIER_ALIGNMENT.md",
     "CLAIM_AUDIT_CONTRACT.md",
     "CLAIM_TRANSFER_CONTRACT.md",
+    "ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
+    "MAINTENANCE_CADENCE.md",
+    "DOCUMENT_STATUS.md",
+    "STAGE_2026_08_MAINTENANCE.md",
+    "CONTRIBUTING.md",
+    "CUSTOMIZATION_GUIDE.md",
+    "examples/README.md",
+    "maintenance/cadence.yaml",
+    "core/maintenance_cadence.py",
     "core/claim_audit.py",
     "core/claim_transfer.py",
     "core/evidence_envelope.py"
   ],
-  "scan_paths": ["MANIFEST.yaml", "AGENTS.md", "RESEARCH_CONTRACT.md", "FRONTIER_ALIGNMENT.md", "core", "validators"],
+  "scan_paths": [
+    "README.md",
+    "ARCHITECTURE.md",
+    "MANIFEST.yaml",
+    "AGENTS.md",
+    "RESEARCH_CONTRACT.md",
+    "FRONTIER_ALIGNMENT.md",
+    "CLAIM_AUDIT_CONTRACT.md",
+    "CLAIM_TRANSFER_CONTRACT.md",
+    "ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
+    "MAINTENANCE_CADENCE.md",
+    "DOCUMENT_STATUS.md",
+    "STAGE_2026_08_MAINTENANCE.md",
+    "CONTRIBUTING.md",
+    "CUSTOMIZATION_GUIDE.md",
+    "examples",
+    "maintenance",
+    "core",
+    "validators"
+  ],
   "forbidden_governance_paths": [".github/workflows"],
   "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
   "cadences": {
@@ -24,13 +60,13 @@
       "history_inventory": false
     },
     "weekly": {
-      "purpose": "cross-day evidence-contract reconciliation, score-semantics review, and handoff consistency",
+      "purpose": "cross-day evidence-contract reconciliation, document-authority review, score-semantics review, and handoff consistency",
       "calibration_max_age_days": 8,
       "baseline_hashes": true,
       "history_inventory": true
     },
     "monthly": {
-      "purpose": "month-to-date or explicit phase-close baseline, evidence-stack inventory, and deprecation review",
+      "purpose": "calendar-month or explicit phase-close baseline, full evidence/document inventory, and deprecation review",
       "calibration_max_age_days": 35,
       "baseline_hashes": true,
       "history_inventory": true
@@ -44,6 +80,7 @@
     "merge_gate": false,
     "aggregate_quality_score": false,
     "scientific_validity_claim": false,
-    "provenance_soundness_claim": false
+    "provenance_soundness_claim": false,
+    "calendar_close_is_reproduction": false
   }
 }

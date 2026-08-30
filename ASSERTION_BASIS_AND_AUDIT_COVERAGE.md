@@ -1,11 +1,11 @@
 # Assertion Basis & Claim Audit Coverage — epistemic-pipeline
 
-**Calibration:** 2026-08-28  
-**Status:** implemented companion contract for `epistemic-pipeline/claim-verification` and `epistemic-pipeline/evidence-envelope`
+**Calibration:** 2026-08-31  
+**Status:** implemented companion contract for `epistemic-pipeline/claim-verification`, `epistemic-pipeline/claim-transfer`, and `epistemic-pipeline/evidence-envelope`
 
 ## 1. Purpose
 
-A claim audit is only useful if an auditor can distinguish:
+A claim audit is only useful if an auditor can distinguish
 
 ```text
 what was recorded
@@ -14,11 +14,11 @@ what was actually checked
 what remains unknown
 ```
 
-The repository therefore separates **assertion/observation basis** from **claim content**, and **audit coverage** from **scientific correctness**.
+The repository separates assertion/observation basis from claim content, and audit coverage from scientific correctness
 
 ## 2. Assertion and observation bases
 
-Current claim-verification bases include:
+Current bases include
 
 | Surface | Basis |
 |---|---|
@@ -31,50 +31,66 @@ Current claim-verification bases include:
 | provider metadata | `provider-adapter-reported` |
 | human-review state | `caller-declared` when supplied |
 | local artifact/reference identity | runtime-observed local bytes/filesystem |
+| transferred claim record | `copied-from-local-claim-verification-sidecar` |
 
-These labels answer *how the field entered the audit record*. They do not make the value correct.
+These labels answer how a field entered the audit/transfer record. They do not make the value correct
 
 ```text
 provider-adapter-reported != vendor-certified identity
 structured-verify-output != external scientific verification
 caller-declared review != peer review
+copied-from-sidecar != independently reverified
 ```
 
 ## 3. Claim audit coverage
 
-`claim-verification` emits dimensional coverage counts for indexed claims:
+`claim-verification` emits dimensional coverage counts for indexed claims
 
-- claims with source refs;
-- claims with evidence refs;
-- claims with internal-consistency observations;
-- claims with cross-source observations;
-- claims with conflict records;
-- claims with initial heuristic scores;
-- claims with final heuristic scores.
+- claims with source refs
+- claims with evidence refs
+- claims with internal-consistency observations
+- claims with cross-source observations
+- claims with conflict records
+- claims with initial heuristic scores
+- claims with final heuristic scores
 
-Each dimension can also report a ratio using `claims_indexed` as denominator.
+Each dimension can report a ratio using `claims_indexed` as denominator
 
-Example interpretation:
+Example
 
 ```text
 evidence_refs_ratio = 0.80
 ```
 
-means:
+means 80% of indexed claims carry at least one evidence reference in structured run output
 
-> 80% of indexed claims carry at least one evidence reference in the structured run output.
+It does not mean
 
-It does **not** mean:
+- 80% of claims are correct
+- 80% of evidence is sufficient
+- provenance soundness is 0.80
+- citation accuracy is 80%
+- calibrated probability of truth is 0.80
 
-- 80% of claims are correct;
-- 80% of evidence is sufficient;
-- provenance soundness is 0.80;
-- citation accuracy is 80%;
-- calibrated probability of truth is 0.80.
+## 4. Claim-transfer coverage
 
-## 4. No aggregate audit score
+`claim-transfer` reports coverage over the selected portable subset
 
-The record deliberately emits:
+```text
+selected_claim_count
+claims_with_evidence_refs
+claims_with_conflicts
+claims_with_structural_observations
+claims_with_final_heuristic_score
+```
+
+Structural-observation counts are based on explicit internal-consistency / cross-source observations rather than descriptive metadata fields
+
+Transfer coverage does not establish that the selected claims are fit for downstream acceptance
+
+## 5. No aggregate audit score
+
+The records deliberately emit
 
 ```json
 {
@@ -82,20 +98,15 @@ The record deliberately emits:
 }
 ```
 
-Source presence, evidence linkage, contradiction visibility, consistency observations and heuristic scores are different dimensions. A scalar combination would require an explicit validated weighting/evaluation regime that this repository does not have.
+Source presence, evidence linkage, contradiction visibility, consistency observations, heuristic scores, and transfer presence are different dimensions. A scalar combination would require an explicit validated weighting/evaluation regime that this repository does not have
 
-## 5. Evidence Envelope coverage
+## 6. Evidence Envelope coverage
 
-The Evidence Envelope remains an index. It does not duplicate the full claim-verification record.
+The Evidence Envelope remains an index. It does not duplicate full claim-verification or claim-transfer records
 
-It may summarize reference-resolution coverage for:
+It may summarize reference-resolution coverage for upstream artifact/evidence refs
 
-```text
-upstream artifact refs
-upstream evidence refs
-```
-
-A local-file ratio means only that the referenced path resolved locally and could be hashed at envelope-generation time.
+A local-file ratio means only that a referenced path resolved locally and could be hashed at envelope-generation time
 
 ```text
 local resolution != source credibility
@@ -103,9 +114,9 @@ local resolution != evidence validity
 opaque URI != invalid evidence
 ```
 
-## 6. No automatic AI detection
+## 7. No automatic AI detection
 
-Process disclosure uses provider-adapter metadata and caller declarations. The repository does not inspect text and infer AI authorship/use.
+Process disclosure uses provider-adapter metadata and caller declarations. The repository does not inspect text and infer AI authorship/use
 
 ```text
 provider metadata != AI-text detection
@@ -113,22 +124,40 @@ AI-text detection != authorship decision
 human review != peer review
 ```
 
-Unknown provider/model/version metadata remains unknown.
+Unknown provider/model/version metadata remains unknown
 
-## 7. Relation to current research-agent work
+## 8. Maintenance coverage is separate
 
-External work provides useful design pressure without defining this repository:
+`epistemic-pipeline/maintenance-report` may report canonical document/path presence, stable-profile drift, history inventory, hashes, and calendar/stage status
 
-- claim-level auditability work highlights provenance coverage, soundness, contradiction transparency and audit effort;
-- artifact-centered claim-aware observability argues that claims, artifacts and verification records should be first-class audit objects;
-- trajectory-to-evidence work distinguishes completed execution from qualified evidence;
-- Brain Researcher limits claims to what evidence supports and uses explicit scientific-review outcomes;
-- EarthVerse shows that local task success can coexist with weak end-to-end evidence/scale/unit/calculation consistency;
-- autonomous-science provenance work emphasizes complete, re-openable records.
+This is repository-maintenance evidence, not claim-level scientific evidence
 
-This repository borrows **coverage as a measurable structural dimension**. It does not claim provenance soundness because soundness requires stronger external verification than the current runtime implements.
+```text
+maintenance coverage != claim correctness
+calendar-month close != reproduction
+```
 
-## 8. Hard boundaries
+## 9. Relation to research-agent work
+
+External work provides useful design pressure without defining this repository
+
+- claim-level auditability highlights provenance coverage, soundness, contradiction transparency, and audit effort
+- artifact-centered claim-aware observability argues claims, artifacts, and verification records should be first-class audit objects
+- trajectory-to-evidence work distinguishes completed execution from qualified evidence
+- evidence-bounded research agents constrain claims to what evidence can support
+- end-to-end scientific-agent evaluation shows local task success can coexist with weak global evidence/scale/unit/calculation consistency
+- long-horizon process evaluation shows final scores can hide where progress/regression occurs
+- autonomous-science provenance emphasizes complete re-openable records
+
+This repository borrows coverage as a measurable structural dimension. It does not claim provenance soundness because soundness requires stronger external verification than the current runtime implements
+
+## 10. Document / stage status
+
+This is a current authoritative specialized contract under `DOCUMENT_STATUS.md`
+
+The August evidence-infrastructure stage closed on 2026-08-31. Stage closure changes maintenance status only and does not alter the semantics of assertion basis, coverage, or claim validity
+
+## 11. Hard boundaries
 
 ```text
 Assertion basis != correctness
@@ -141,4 +170,7 @@ Convergence != certainty
 Provider identity != output validity
 Human review != peer review
 Evidence Envelope != proof object
+Claim transfer != acceptance
+Maintenance clean != scientific validity
+Calendar-month close != reproduction
 ```
