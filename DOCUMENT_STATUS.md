@@ -55,14 +55,23 @@ historical snapshot != current contract
 later claim qualification != permission to rewrite earlier context
 ```
 
-## Examples and customization guidance
+## Examples, customization and reference demonstrations
 
 ```text
 examples/README.md
 CUSTOMIZATION_GUIDE.md
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 ```
 
-These describe supported patterns and extension boundaries but do not override implementation, Manifest, or active contracts
+These describe supported patterns, extension boundaries and maintenance interpretation but do not override implementation, Manifest, or active contracts
+
+The dated maintenance demonstration is the first complete Daily / Weekly / Monthly worked example for the evidence stack
+It does not pre-assert a clean scanner result and does not become a scientific-review record
+
+```text
+reference demonstration != evidence sufficiency
+worked maintenance example != scientific validation
+```
 
 ## External / citation metadata
 
@@ -92,12 +101,15 @@ Weekly maintenance reconciles the complete current evidence stack
 
 Monthly or explicit phase-close maintenance records a closed baseline, inventories historical snapshots, and reviews current/experimental/not-integrated labels without deleting history
 
+The first complete cadence demonstration under `maintenance/` is reference material for future maintainers and agents after they read the active cadence contract
+
 ## Hard boundaries
 
 ```text
 document authority != claim truth
 historical snapshot != invalid evidence
 maintenance consistency != evidence sufficiency
+reference demonstration != runtime proof
 calendar close != scientific validation
 monthly baseline != independent reproduction
 ```
