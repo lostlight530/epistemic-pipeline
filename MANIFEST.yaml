@@ -19,6 +19,7 @@ principles:
   - document_authority_is_explicit
   - historical_snapshots_are_not_automatically_rewritten
   - calendar_and_stage_status_are_date_or_config_derived
+  - first_cadence_demonstration_is_reference_not_runtime_proof
   - no_automatic_ai_text_detection
   - provenance_not_truth
   - no_scientific_verdict_from_structure_alone
@@ -242,6 +243,9 @@ maintenance:
   config: maintenance/cadence.yaml
   document_status: DOCUMENT_STATUS.md
   stage_index: STAGE_2026_08_MAINTENANCE.md
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+  demonstration_status: reference_non_normative
+  demonstration_is_runtime_proof: false
   current_calendar_status: calendar_month_close
   current_stage_status: closed
   daily:
@@ -329,6 +333,7 @@ research_contract:
   maintenance_contract: MAINTENANCE_CADENCE.md
   document_status: DOCUMENT_STATUS.md
   closed_stage_index: STAGE_2026_08_MAINTENANCE.md
+  first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   historical_snapshots:
     - FOUR_DAY_CONSOLIDATION.md
     - FIVE_DAY_CONSOLIDATION.md
