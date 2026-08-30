@@ -34,6 +34,7 @@ Day 8 / stage close
 complete document-authority reconciliation
 calendar-month close
 machine-readable stage-close status
+first complete Daily / Weekly / Monthly evidence-maintenance demonstration
 ```
 
 Historical consolidation files remain historical snapshots and are not replaced by this stage index
@@ -80,6 +81,7 @@ The closed stage establishes these durable rules
 7. project-owned identifiers remain stable and unversioned
 8. current documents and historical snapshots are explicitly distinguished
 9. calendar/month-stage status is derived from actual date/configuration instead of agent assumption
+10. Daily / Weekly / Monthly evidence maintenance now has a first complete worked reference example with non-verdict interpretation boundaries
 
 ## Daily maintenance baseline after stage close
 
@@ -147,6 +149,34 @@ The close review should
 - confirm current cross-repository profile names
 - identify stale-document candidates without automatic deletion
 
+## First complete maintenance-cadence reference
+
+The first complete worked Daily / Weekly / Monthly evidence-maintenance example is
+
+```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+It demonstrates
+
+```text
+daily
+  bounded runtime / claim / evidence drift review
+
+weekly
+  full evidence-contract reconciliation + canonical hashes + history inventory
+
+monthly
+  closed calendar/stage baseline + full evidence/document review
+```
+
+The record deliberately does not fabricate a clean scanner run or SHA-256 baseline values
+
+```text
+reference demonstration != provenance soundness
+worked example != evidence sufficiency
+```
+
 ## Current cross-repository handoff
 
 ```text
@@ -197,4 +227,5 @@ coverage != provenance soundness
 weekly reconciliation != scientific review
 calendar-month close != reproduction
 phase close != scientific verdict
+reference demonstration != runtime proof
 ```
