@@ -235,7 +235,18 @@ calendar_month: calendar-month-close
 stage: closed
 ```
 
+First complete worked example
+
 ```text
+maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+```
+
+Read it after `MAINTENANCE_CADENCE.md` and `DOCUMENT_STATUS.md`
+It is a dated reference example, not a clean scanner log or scientific-review record
+If cadence semantics materially change later, create a new dated demonstration instead of rewriting this historical example
+
+```text
+reference demonstration != runtime proof
 maintenance clean != scientific validity
 weekly consistency != evidence sufficiency
 calendar-month close != reproduction
@@ -267,7 +278,7 @@ Metaphorical names are not capability evidence
 
 ## R3 discipline
 
-Metadata, checkpoint, provenance, provider disclosure, audit coverage, claim audit, claim transfer, maintenance reports, or hash baselines never count as independent reproduction
+Metadata, checkpoint, provenance, provider disclosure, audit coverage, claim audit, claim transfer, maintenance reports, demonstrations, or hash baselines never count as independent reproduction
 
 R3 requires an actual separate rerun plus a declared comparison criterion
 
@@ -282,5 +293,7 @@ Local/manual checks are optional maintenance aids, not scientific validation
 When a public research contract changes, synchronize relevant implementation, Manifest, active contracts, README/Architecture, examples, and frontier notes
 
 When maintenance/document governance changes, synchronize `MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, `STAGE_2026_08_MAINTENANCE.md`, Manifest, and this Agent Guide
+
+A dated maintenance demonstration is historical/reference evidence after creation; do not mechanically rewrite it during later maintenance
 
 Prefer honest `implemented / experimental / proposed / not integrated` states over aspirational wording
