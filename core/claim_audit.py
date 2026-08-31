@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
 """Claim-level verification records for epistemic-pipeline research runs.
 
-``epistemic-pipeline/claim-verification`` is a project-owned audit profile built
-from structures the canonical pipeline already emits. Verification dimensions
-remain separate: claim identity, source/evidence bindings, consistency
-observations, conflicts, heuristic-score observations, and process context.
+The audit keeps claim identity, source/evidence bindings, observations,
+conflicts, heuristic-score observations, assertion basis and dimensional
+coverage separate. If one ``claim_id`` appears with multiple distinct structured
+claim records or from multiple states, that ambiguity is recorded explicitly
+rather than being silently collapsed into the first occurrence.
 
-Day-5 semantics add two explicit surfaces:
-
-- assertion/observation basis: where a recorded field came from;
-- dimensional audit coverage: how many indexed claims carry each audit surface.
-
-Neither surface is a scientific verdict. The profile never collapses these
-dimensions into ``verified = true`` or an aggregate quality score.
+No audit surface is a scientific verdict.
 """
 
 from __future__ import annotations
@@ -140,6 +135,8 @@ def _coverage_summary(claim_records: list[dict]) -> dict:
         "claims_with_conflicts": 0,
         "claims_with_initial_heuristic_score": 0,
         "claims_with_final_heuristic_score": 0,
+        "claims_with_origin_ambiguity": 0,
+        "claims_with_identity_ambiguity": 0,
     }
     for record in claim_records:
         if record.get("source_refs"):
@@ -158,6 +155,10 @@ def _coverage_summary(claim_records: list[dict]) -> dict:
             counts["claims_with_initial_heuristic_score"] += 1
         if scores.get("final") is not None:
             counts["claims_with_final_heuristic_score"] += 1
+        if record.get("claim_origin_ambiguous"):
+            counts["claims_with_origin_ambiguity"] += 1
+        if record.get("claim_identity_ambiguous"):
+            counts["claims_with_identity_ambiguity"] += 1
 
     ratios = {
         key.replace("claims_with_", "") + "_ratio": _ratio(value, total)
@@ -169,8 +170,9 @@ def _coverage_summary(claim_records: list[dict]) -> dict:
         "ratios": ratios,
         "aggregate_score": None,
         "semantics": (
-            "coverage of recorded audit dimensions among indexed claims. Coverage is not provenance soundness, "
-            "citation correctness, evidence sufficiency, scientific validity, or a probability of correctness"
+            "coverage of recorded audit dimensions among indexed claims. Identity/origin ambiguity counts "
+            "show structural provenance ambiguity only. Coverage is not provenance soundness, citation "
+            "correctness, evidence sufficiency, scientific validity, or probability of correctness"
         ),
     }
 
@@ -181,12 +183,7 @@ def build_claim_verification(
     provider_disclosure: Optional[Mapping[str, Any]] = None,
     human_review: str = "not_declared",
 ) -> dict:
-    """Build claim-level audit records from one engine run result.
-
-    Full claim prose is intentionally not copied into the audit sidecar. The
-    canonical execution/checkpoint artifacts remain the place where provider
-    payloads live.
-    """
+    """Build claim-level audit records from one engine run result."""
     if human_review not in HUMAN_REVIEW_VALUES:
         raise ValueError(
             f"human_review must be one of {sorted(HUMAN_REVIEW_VALUES)}, got {human_review!r}"
@@ -223,11 +220,13 @@ def build_claim_verification(
                 claim_id,
                 {
                     "claim_id": claim_id,
-                    "origin_state_id": str(state_id),
-                    "claim_record_sha256": canonical_sha256(claim),
+                    "origin_state_ids": set(),
+                    "claim_record_sha256s": set(),
                     "source_refs": set(),
                 },
             )
+            entry["origin_state_ids"].add(str(state_id))
+            entry["claim_record_sha256s"].add(canonical_sha256(claim))
             entry["source_refs"].update(_string_list(claim.get("source_refs")))
 
         for chain in outputs.get("evidence_chains") or []:
@@ -302,11 +301,16 @@ def build_claim_verification(
             claim_id,
             {
                 "claim_id": claim_id,
-                "origin_state_id": None,
-                "claim_record_sha256": None,
+                "origin_state_ids": set(),
+                "claim_record_sha256s": set(),
                 "source_refs": set(),
             },
         )
+        origin_state_ids = sorted(base.get("origin_state_ids") or [])
+        record_hashes = sorted(base.get("claim_record_sha256s") or [])
+        origin_ambiguous = len(origin_state_ids) > 1
+        identity_ambiguous = len(record_hashes) > 1
+
         claim_conflicts = [
             record
             for conflict in conflicts
@@ -326,8 +330,12 @@ def build_claim_verification(
         claim_records.append(
             {
                 "claim_id": claim_id,
-                "origin_state_id": base.get("origin_state_id"),
-                "claim_record_sha256": base.get("claim_record_sha256"),
+                "origin_state_id": origin_state_ids[0] if len(origin_state_ids) == 1 else None,
+                "origin_state_ids": origin_state_ids,
+                "claim_origin_ambiguous": origin_ambiguous,
+                "claim_record_sha256": record_hashes[0] if len(record_hashes) == 1 else None,
+                "claim_record_sha256s": record_hashes,
+                "claim_identity_ambiguous": identity_ambiguous,
                 "source_refs": sorted(base.get("source_refs") or []),
                 "evidence_refs": refs,
                 "evidence_relations": sorted(relations.get(claim_id, set())),
@@ -364,6 +372,15 @@ def build_claim_verification(
         for value in verification_coverage
         if isinstance(value, (int, float)) and not isinstance(value, bool)
     ]
+    audit_coverage = _coverage_summary(claim_records)
+    ambiguity_counts = {
+        "claim_origin_ambiguity_count": sum(
+            1 for item in claim_records if item.get("claim_origin_ambiguous")
+        ),
+        "claim_identity_ambiguity_count": sum(
+            1 for item in claim_records if item.get("claim_identity_ambiguous")
+        ),
+    }
 
     return {
         "profile": PROFILE,
@@ -375,7 +392,8 @@ def build_claim_verification(
         "claims": claim_records,
         "claim_count": len(claim_records),
         "audit_state_counts": state_counts,
-        "audit_coverage": _coverage_summary(claim_records),
+        "claim_identity_ambiguity": ambiguity_counts,
+        "audit_coverage": audit_coverage,
         "verification_coverage_observations": coverage_values,
         "process_context": {
             "provider": _minimal_provider_disclosure(provider_disclosure),
@@ -388,6 +406,10 @@ def build_claim_verification(
             ),
         },
         "semantics": {
+            "claim_identity": (
+                "one claim_id may map to multiple structured claim hashes/origin states; ambiguity remains "
+                "explicit and is not silently resolved"
+            ),
             "evidence_binding": "records declared links, not evidence sufficiency",
             "consistency_observation": "records runtime/provider observations, not truth",
             "conflict": "records disagreement/limitation structure, not automatic adjudication",
