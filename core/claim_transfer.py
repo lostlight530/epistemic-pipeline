@@ -3,11 +3,9 @@
 
 This module selects claim records from an existing claim-verification sidecar
 and emits a smaller downstream transfer object. It preserves source/evidence
-references, conflicts, audit state, heuristic-score observations and process
-context without copying claim prose or upgrading audit state into a scientific
-verdict.
-
-The transfer is lineage/contract infrastructure, not a scientific reviewer.
+references, conflicts, audit state, heuristic-score observations, process
+context, and any source-record identity/origin ambiguity without copying claim
+prose or upgrading audit state into a scientific verdict.
 """
 
 from __future__ import annotations
@@ -82,8 +80,12 @@ def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict
         selected.append(
             {
                 "claim_id": claim_id,
-                "claim_record_sha256": record.get("claim_record_sha256"),
                 "origin_state_id": record.get("origin_state_id"),
+                "origin_state_ids": _string_list(record.get("origin_state_ids")),
+                "claim_origin_ambiguous": bool(record.get("claim_origin_ambiguous", False)),
+                "claim_record_sha256": record.get("claim_record_sha256"),
+                "claim_record_sha256s": _string_list(record.get("claim_record_sha256s")),
+                "claim_identity_ambiguous": bool(record.get("claim_identity_ambiguous", False)),
                 "source_refs": _string_list(record.get("source_refs")),
                 "evidence_refs": _string_list(record.get("evidence_refs")),
                 "evidence_relations": _string_list(record.get("evidence_relations")),
@@ -96,6 +98,8 @@ def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict
                     "evidence_sufficiency_inherited": False,
                     "peer_review_inherited": False,
                     "conflicts_must_remain_visible": True,
+                    "claim_origin_ambiguity_must_remain_visible": True,
+                    "claim_identity_ambiguity_must_remain_visible": True,
                     "heuristic_scores_must_retain_non_probability_semantics": True,
                 },
             }
@@ -125,19 +129,24 @@ def _coverage(claims: list[dict]) -> dict:
     with_final_scores = sum(
         1 for item in claims if (item.get("heuristic_scores") or {}).get("final") is not None
     )
+    with_origin_ambiguity = sum(1 for item in claims if item.get("claim_origin_ambiguous"))
+    with_identity_ambiguity = sum(1 for item in claims if item.get("claim_identity_ambiguous"))
     return {
         "selected_claim_count": total,
         "claims_with_evidence_refs": with_evidence,
         "claims_with_conflicts": with_conflicts,
         "claims_with_structural_observations": with_observations,
         "claims_with_final_heuristic_score": with_final_scores,
+        "claims_with_origin_ambiguity": with_origin_ambiguity,
+        "claims_with_identity_ambiguity": with_identity_ambiguity,
         "evidence_reference_ratio": (with_evidence / total) if total else None,
+        "origin_ambiguity_ratio": (with_origin_ambiguity / total) if total else None,
+        "identity_ambiguity_ratio": (with_identity_ambiguity / total) if total else None,
         "aggregate_score": None,
         "semantics": (
-            "descriptive transfer coverage only; structural-observation coverage counts only explicit "
-            "internal_consistency/cross_source observations, not explanatory metadata. Coverage is not "
-            "provenance soundness, evidence sufficiency, scientific validity, review acceptance, or "
-            "probability of correctness"
+            "descriptive transfer coverage only; ambiguity ratios describe source-record/origin multiplicity, "
+            "not contradiction, provenance soundness, evidence sufficiency, scientific validity, review "
+            "acceptance, or probability of correctness"
         ),
     }
 
@@ -168,6 +177,7 @@ def build_claim_transfer(
         "transfer_coverage": _coverage(selected),
         "assertion_basis": {
             "claim_records": "copied-from-local-claim-verification-sidecar",
+            "claim_identity_ambiguity": "copied-without-adjudication",
             "purpose": "caller-declared" if purpose else "not_declared",
             "basis_inferred": False,
         },
