@@ -1,11 +1,12 @@
 name: epistemic-pipeline
 purpose: evidence-aware state-machine execution for research workflows
-calibrated: "2026-08-31"
+calibrated: "2026-09-01"
 
 principles:
   - explicit_state_transition
   - machine_readable_runtime_policy
   - claim_evidence_conflict_separation
+  - claim_identity_and_origin_ambiguity_explicit
   - bounded_heuristic_scores_not_probabilities
   - recovery_identity_before_resume
   - trace_provenance_claim_audit_are_distinct
@@ -14,8 +15,11 @@ principles:
   - no_aggregate_research_quality_score
   - explicit_provider_disclosure_basis
   - portable_claim_transfer_with_non_inheritance_constraints
-  - conflicts_remain_visible_during_handoff
+  - conflicts_and_identity_ambiguity_remain_visible_during_handoff
   - maintenance_cadence_separates_daily_weekly_monthly_review
+  - maintenance_scope_is_repository_bounded
+  - maintenance_reports_use_portable_relative_paths_and_config_sha256
+  - report_output_write_is_explicitly_recorded
   - document_authority_is_explicit
   - historical_snapshots_are_not_automatically_rewritten
   - calendar_and_stage_status_are_date_or_config_derived
@@ -54,6 +58,12 @@ stage_close:
   scientific_validity_claim: false
   provenance_soundness_claim: false
   reproduction_claim: false
+
+current_temporal_status:
+  as_of: "2026-09-01"
+  calendar_month_status: month-to-date
+  closed_stage_status: closed
+  stage_reopened_by_repair: false
 
 canonical_runtime:
   graph:
@@ -126,6 +136,14 @@ canonical_runtime:
       - structurally_checked
       - conflict_recorded
       - structurally_checked_with_conflict
+    identity_ambiguity:
+      origin_state_ids_preserved: true
+      claim_record_sha256s_preserved: true
+      singular_origin_only_when_unique: true
+      singular_record_hash_only_when_unique: true
+      claim_origin_ambiguous_flag: true
+      claim_identity_ambiguous_flag: true
+      scientific_conflict_inferred_from_ambiguity: false
     observation_basis:
       claim_and_source_refs: structured-analyze-output
       evidence_refs: structured-analyze-output
@@ -143,6 +161,8 @@ canonical_runtime:
         - claims_with_conflicts
         - claims_with_initial_heuristic_score
         - claims_with_final_heuristic_score
+        - claims_with_origin_ambiguity
+        - claims_with_identity_ambiguity
       aggregate_score: null
       provenance_soundness_claim: false
       scientific_validity_claim: false
@@ -157,11 +177,15 @@ canonical_runtime:
     explicit_claim_selection: true
     missing_claim_behavior: fail_explicitly
     payload_text_embedded: false
+    preserves_origin_state_ids: true
+    preserves_claim_record_sha256s: true
     transfer_constraints:
       scientific_validity_inherited: false
       evidence_sufficiency_inherited: false
       peer_review_inherited: false
       conflicts_must_remain_visible: true
+      claim_origin_ambiguity_must_remain_visible: true
+      claim_identity_ambiguity_must_remain_visible: true
       heuristic_scores_must_retain_non_probability_semantics: true
     transfer_coverage:
       dimensions:
@@ -170,6 +194,8 @@ canonical_runtime:
         - claims_with_conflicts
         - claims_with_structural_observations
         - claims_with_final_heuristic_score
+        - claims_with_origin_ambiguity
+        - claims_with_identity_ambiguity
       aggregate_score: null
       provenance_soundness_claim: false
       scientific_validity_claim: false
@@ -206,9 +232,17 @@ canonical_runtime:
     cadences: [daily, weekly, monthly]
     calendar_status_is_date_derived: true
     stage_status_is_config_derived: true
-    current_calendar_status: calendar-month-close
+    current_calendar_status: month-to-date
     current_stage_status: closed
-    mutates_repository: false
+    repository_scope_enforced: true
+    configured_absolute_paths_allowed: false
+    configured_parent_traversal_allowed: false
+    configuration_sha256_recorded: true
+    repo_local_paths_are_relative: true
+    absolute_repository_root_embedded: false
+    inspected_files_mutated: false
+    report_output_write_supported: true
+    report_output_write_recorded: true
     remote_dereference: false
     tests_run_by_scanner: false
     github_actions_used: false
@@ -222,6 +256,7 @@ claim_verification_semantics:
   evidence_binding: declared_relationship_not_sufficiency
   structural_observation: runtime_or_provider_observation_not_truth
   conflict: disagreement_or_limitation_not_automatic_adjudication
+  identity_ambiguity: multiple_structured_origins_or_hashes_not_scientific_verdict
   initial_score: verify_stage_heuristic_observation
   final_score: synthesize_stage_heuristic_observation
   assertion_basis_is_correctness: false
@@ -236,6 +271,7 @@ claim_transfer_semantics:
   inherited_evidence_sufficiency: false
   inherited_peer_review: false
   conflicts_preserved: true
+  identity_ambiguity_preserved: true
   heuristic_probability_upgrade_allowed: false
 
 maintenance:
@@ -243,10 +279,11 @@ maintenance:
   config: maintenance/cadence.yaml
   document_status: DOCUMENT_STATUS.md
   stage_index: STAGE_2026_08_MAINTENANCE.md
+  post_stage_repair: POST_STAGE_REPAIR_2026_09_01.md
   first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   demonstration_status: reference_non_normative
   demonstration_is_runtime_proof: false
-  current_calendar_status: calendar_month_close
+  current_calendar_status: month_to_date
   current_stage_status: closed
   daily:
     scope: local_runtime_claim_evidence_drift
@@ -302,6 +339,7 @@ not_integrated:
   - tamper_proof_external_ledger
   - automatic_repository_scheduler
   - automatic_history_deletion
+  - claim_identity_ambiguity_adjudication
 
 experimental_modules:
   anti_entropy:
@@ -333,6 +371,7 @@ research_contract:
   maintenance_contract: MAINTENANCE_CADENCE.md
   document_status: DOCUMENT_STATUS.md
   closed_stage_index: STAGE_2026_08_MAINTENANCE.md
+  post_stage_repair: POST_STAGE_REPAIR_2026_09_01.md
   first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   historical_snapshots:
     - FOUR_DAY_CONSOLIDATION.md
@@ -340,21 +379,24 @@ research_contract:
     - SIX_DAY_CONSOLIDATION.md
   frontier_alignment: FRONTIER_ALIGNMENT.md
 
-external_research_calibration_2026_08:
-  - provenance_grounds_trust_in_autonomous_science
-  - responsible_transparent_ai_scientific_publishing
-  - artifact_centered_claim_aware_observability
-  - trajectories_to_evidence
-  - brain_researcher
-  - earthverse
-  - claim_level_auditability_provenance_coverage
-  - ai_detection_distinct_from_disclosure
-  - praxist_solution_lineages
-  - reproagent_persistent_contracts
-  - long_horizon_phase_behavior_and_regime_aware_revalidation
-  - scienceflow_segmented_research_and_recovery
-  - beyond_final_scores_long_horizon_process_evaluation
-  - persistent_runtime_project_state_and_reviewed_routes
+external_research_calibration:
+  checked_through: "2026-09-01"
+  signals:
+    - provenance_grounds_trust_in_autonomous_science
+    - responsible_transparent_ai_scientific_publishing
+    - artifact_centered_claim_aware_observability
+    - trajectories_to_evidence
+    - brain_researcher
+    - earthverse
+    - claim_level_auditability_provenance_coverage
+    - ai_detection_distinct_from_disclosure
+    - praxist_solution_lineages
+    - reproagent_persistent_contracts
+    - long_horizon_phase_behavior_and_regime_aware_revalidation
+    - scienceflow_segmented_research_and_recovery
+    - beyond_final_scores_long_horizon_process_evaluation
+    - trajectory_honesty_and_intermediate_error_propagation
+    - explicit_scientific_agent_interface_state_and_safety_boundaries
   note: design_calibration_only_not_external_certification
 
 research_software:
@@ -363,7 +405,7 @@ research_software:
 
 local_checks:
   mode: manual_optional
-  tests_required_for_2026_08_31_stage_close: false
+  tests_required_for_2026_09_01_repair: false
   github_actions: false
   codeql_added: false
   merge_gate: false
@@ -375,6 +417,7 @@ scientific_boundaries:
   audit_coverage_is_quality: false
   coverage_ratio_is_probability: false
   provenance_soundness_claimed: false
+  identity_ambiguity_is_scientific_conflict: false
   claim_transfer_is_acceptance: false
   inheritance_is_validation: false
   maintenance_clean_is_scientific_validity: false
