@@ -1,33 +1,38 @@
 # Claim Audit Contract — Epistemic Pipeline
 
-**Calibration:** 2026-08-31  
+**Calibration:** 2026-09-01  
 **Implemented profile:** `epistemic-pipeline/claim-verification`  
-**Scope:** claim identity, evidence bindings, structural observations, conflicts, heuristic scores, assertion basis, dimensional audit coverage, and process context
+**Scope:** claim identity, evidence bindings, structural observations, conflicts, heuristic scores, assertion basis, identity/origin ambiguity, dimensional audit coverage, and process context
 
 ## Why a separate claim audit exists
 
-Run telemetry answers when operations happened. Provenance answers lineage questions. Neither alone answers which claim had which evidence refs, observations, conflicts, scores, and audit coverage
+Run telemetry answers when operations happened. Provenance answers lineage questions. Neither alone answers which claim had which evidence refs, observations, conflicts, scores, identity ambiguity, and audit coverage.
 
-`core/claim_audit.py` therefore writes a separate `<run_id>.claim-audit.json` sidecar
+`core/claim_audit.py` therefore writes a separate `<run_id>.claim-audit.json` sidecar.
 
 ## It is not a truth graph
 
-There is no universal `verified` boolean
+There is no universal `verified` boolean.
 
 ```text
 structurally checked != scientifically correct
 evidence linked != evidence sufficient
 no conflict recorded != independent corroboration
+identity ambiguity != scientific contradiction
 ```
 
 ## Claim record fields
 
-A normalized claim audit can contain
+A normalized claim audit can contain:
 
 ```text
 claim_id
 origin_state_id
+origin_state_ids[]
+claim_origin_ambiguous
 claim_record_sha256
+claim_record_sha256s[]
+claim_identity_ambiguous
 source_refs[]
 evidence_refs[]
 evidence_relations[]
@@ -40,7 +45,28 @@ audit_state
 observation_basis
 ```
 
-Full claim prose is not duplicated by default
+Full claim prose is not duplicated by default.
+
+## Claim identity / origin ambiguity
+
+Before the 2026-09-01 repair, repeated `claim_id` values were merged while the first observed `origin_state_id` and `claim_record_sha256` remained in the singular fields. That could hide an important provenance ambiguity.
+
+The current rule is explicit:
+
+- every structured occurrence contributes its `state_id` to `origin_state_ids[]`;
+- every structured claim record contributes its canonical SHA-256 to `claim_record_sha256s[]`;
+- if exactly one origin exists, `origin_state_id` remains populated; otherwise it becomes `null` and `claim_origin_ambiguous: true`;
+- if exactly one record hash exists, `claim_record_sha256` remains populated; otherwise it becomes `null` and `claim_identity_ambiguous: true`.
+
+This is intentionally additive and conservative.
+
+```text
+same claim_id + multiple origins != automatically wrong claim
+same claim_id + multiple record hashes != automatically scientific conflict
+ambiguity recorded != ambiguity adjudicated
+```
+
+The audit state vocabulary is not changed by identity ambiguity. Scientific conflict remains a separate structured observation surface.
 
 ## Audit states
 
@@ -52,11 +78,9 @@ conflict_recorded
 structurally_checked_with_conflict
 ```
 
-These are descriptive process states, not `accepted`, `rejected`, `validated`, `confirmed`, `proven`, or other scientific-review verdicts
+These are descriptive process states, not `accepted`, `rejected`, `validated`, `confirmed`, `proven`, or other scientific-review verdicts.
 
 ## Assertion / observation basis
-
-Audit fields record how they entered the sidecar
 
 | Surface | Basis |
 |---|---|
@@ -74,26 +98,20 @@ structured-verify-output != external scientific verification
 provider-adapter-reported != vendor authentication
 ```
 
-## Structural observations
+## Structural observations and conflicts
 
-`internal_consistency_report` and `cross_source_matrix` are retained as provider/runtime observations. The audit layer does not independently rerun experiments or validate all sources
+`internal_consistency_report` and `cross_source_matrix` are retained as provider/runtime observations. Conflict records retain relation/severity/other-ref plus structure hash.
 
-## Conflict records
-
-Claim-linked conflict records retain relation/severity/other-ref plus a structure hash and `observation_basis: structured-verify-output`
-
-A conflict hash identifies recorded conflict structure; it does not adjudicate which side is correct
+A conflict hash identifies recorded structure; it does not adjudicate which side is correct.
 
 ## Heuristic scores
 
-When available
+When available:
 
 ```text
 initial -> verify-stage observation
 final   -> synthesize-stage observation
 ```
-
-Both carry `observation_basis: structured-state-output` and remain heuristic values
 
 ```text
 score != calibrated probability
@@ -103,43 +121,26 @@ final score != truth score
 
 ## Dimensional audit coverage
 
-The sidecar summarizes indexed-claim coverage for
+Coverage now includes the previous dimensions plus:
 
 ```text
-source refs
-evidence refs
-internal-consistency observations
-cross-source observations
-conflicts
-initial heuristic scores
-final heuristic scores
+claims_with_origin_ambiguity
+claims_with_identity_ambiguity
+origin_ambiguity_ratio
+identity_ambiguity_ratio
 ```
 
-Each dimension can have a count and ratio over `claims_indexed`
-
-Example
-
-```text
-evidence_refs_ratio = 0.80
-```
-
-means 80% of indexed claims carry at least one evidence reference in structured run output
-
-It does not mean 80% correctness, evidence sufficiency, provenance soundness, or truth probability
+These ratios mean only that multiple structured origins or identities were observed for a claim ID.
 
 ```json
 {"aggregate_score": null}
 ```
 
-Coverage dimensions are not combined into an unsupported research-quality score
+Coverage dimensions are not combined into an unsupported research-quality score.
 
 ## Process context
 
-Provider metadata carries explicit assertion basis. Unknown model/version stays `null`. MockProvider declares `synthetic-fixture-runtime`; no fake release version is invented
-
-Human-review state is caller-declared when supplied
-
-The current process path records
+Unknown model/version stays `null`. MockProvider remains a synthetic fixture; no fake release version is invented. Human review is caller-declared when supplied.
 
 ```json
 {"automatic_ai_detection_used": false}
@@ -158,57 +159,25 @@ claim-verification
         └─ reference/hash       -> evidence-envelope
 ```
 
-Claim Transfer preserves selected audit context and explicit non-inheritance constraints
+Claim Transfer must preserve claim identity/origin ambiguity rather than collapsing it downstream.
 
-Evidence Envelope remains compact and does not duplicate full claim audit content
-
-```text
-claim transfer != acceptance
-evidence envelope != proof object
-```
-
-## Upstream/downstream role
-
-```text
-auto-doc-engine/artifact-record
-auto-doc-engine/artifact-lineage
-        ↓
-epistemic-pipeline/claim-verification
-        ↓ optional claim-transfer / envelope reference
-sci-render-kit research_context / figure evidence
-```
-
-References do not inherit truth
+Evidence Envelope remains compact and does not duplicate full claim audit content.
 
 ## Privacy and payload minimization
 
-The audit stores IDs, hashes, and references rather than full claim/source prose by default. This limits payload duplication but is not a confidentiality guarantee
+The audit stores IDs, hashes, and references rather than full claim/source prose by default. This limits payload duplication but is not a confidentiality guarantee.
 
 ## Research calibration
 
-Current research signals support separating audit dimensions from verdicts
+Current research signals continue to support process-level inspection rather than terminal-score-only evaluation. The 2026-09-01 repair is especially aligned with the narrow lesson that a final run state can hide intermediate structural ambiguity.
 
-- artifact-centered claim-aware observability
-- trajectory-to-evidence qualification
-- evidence-bounded claim review
-- end-to-end scientific-agent consistency gaps
-- claim-level auditability separating provenance coverage, provenance soundness, contradiction transparency, and audit effort
-- long-horizon process evaluation showing terminal scores alone can hide where progress/regression occurs
-
-This repository implements measurable coverage and explicit observation provenance. It does not claim provenance soundness or domain scientific-review authority
+This repository implements explicit audit dimensions. It does not claim provenance soundness, citation correctness, domain scientific-review authority, or external verification.
 
 ## Maintenance / document status
 
-This is a current authoritative specialized contract under `DOCUMENT_STATUS.md`
+This is a current authoritative specialized contract under `DOCUMENT_STATUS.md`.
 
-Weekly/monthly maintenance may reconcile terminology, profile names, and evidence-stack references, but it must not rewrite historical claim-audit records or convert descriptive audit states into truth labels
-
-The August evidence-infrastructure stage closed on 2026-08-31
-
-```text
-stage close != scientific validation
-calendar-month close != reproduction
-```
+The August evidence-infrastructure stage closed on 2026-08-31. This 2026-09-01 repair hardens the closed-stage implementation; it does not rewrite or reopen the stage.
 
 ## Forbidden interpretations
 
@@ -216,6 +185,7 @@ calendar-month close != reproduction
 indexed_only -> false
 structurally_checked -> true
 no conflict -> corroborated
+identity ambiguity -> contradiction
 coverage ratio -> probability
 coverage -> provenance soundness
 human_review=reviewed -> peer reviewed
