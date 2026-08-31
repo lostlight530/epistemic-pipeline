@@ -1,6 +1,6 @@
 {
   "profile": "epistemic-pipeline/maintenance-cadence",
-  "calibrated": "2026-08-31",
+  "calibrated": "2026-09-01",
   "project_profile_prefix": "epistemic-pipeline/",
   "stage": {
     "id": "2026-08-evidence-infrastructure",
@@ -21,6 +21,7 @@
     "MAINTENANCE_CADENCE.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
+    "POST_STAGE_REPAIR_2026_09_01.md",
     "CONTRIBUTING.md",
     "CUSTOMIZATION_GUIDE.md",
     "examples/README.md",
@@ -43,6 +44,7 @@
     "MAINTENANCE_CADENCE.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
+    "POST_STAGE_REPAIR_2026_09_01.md",
     "CONTRIBUTING.md",
     "CUSTOMIZATION_GUIDE.md",
     "examples",
@@ -81,6 +83,8 @@
     "aggregate_quality_score": false,
     "scientific_validity_claim": false,
     "provenance_soundness_claim": false,
-    "calendar_close_is_reproduction": false
+    "calendar_close_is_reproduction": false,
+    "scan_scope_outside_repository": false,
+    "absolute_repository_root_in_report": false
   }
 }
