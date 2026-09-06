@@ -65,17 +65,21 @@ SIX_DAY_CONSOLIDATION.md
 
 These remain historical evidence of earlier repository states. They are not current runtime or scientific contracts and should not be rewritten merely because current terminology evolved.
 
-## Dated maintenance / correction records
+## Dated maintenance / correction / research-calibration records
 
 ```text
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 POST_STAGE_REPAIR_2026_09_01.md
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
+maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
 ```
 
-The 2026-09-06 record documents a real Daily/Weekly authority/cadence reconciliation. It does not assert a scanner run, test run, evidence-sufficiency verdict, or scientific validation.
+- the 2026-09-06 Daily/Weekly record documents a real authority/cadence reconciliation and does not assert a scanner run, test run, evidence-sufficiency verdict, or scientific validation;
+- the 2026-09-01 through 2026-09-06 frontier refresh is **post-stage, non-normative, source-bounded research calibration** for provider/model provenance, execution status, long-running agents, telemetry, source-authority conflict and claim-transfer boundaries. It does not change the active Research Contract or turn external provider claims into scientific evidence.
 
-Dated records are time-scoped maintenance evidence and do not override later implementation changes.
+`FRONTIER_ALIGNMENT.md` remains the August stage-close positioning snapshot. The dated frontier refresh is the newer external-research observation record through 2026-09-06 and must not be used as a truth oracle or capability contract.
+
+Dated records are time-scoped maintenance/research evidence and do not override later implementation changes.
 
 ## Historical coding-agent / PR narratives
 
@@ -115,7 +119,7 @@ calendar_month: closed
 research_phase: closed
 ```
 
-The 2026-09-01 repair and 2026-09-06 maintenance reconciliation do not extend or reopen that window.
+The 2026-09-01 repair, 2026-09-06 maintenance reconciliation, and 2026-09-01 through 2026-09-06 frontier refresh do not extend or reopen that window.
 
 ## Maintenance rule
 
@@ -133,6 +137,8 @@ Monthly or explicit phase-close maintenance records a closed baseline, inventori
 document authority != claim truth
 historical snapshot != invalid evidence
 post-stage repair != stage rewrite
+frontier calibration != claim verification
+external provider event != evidence sufficiency
 maintenance consistency != evidence sufficiency
 reference demonstration != runtime proof
 calendar close != scientific validation
