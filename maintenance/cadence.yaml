@@ -1,6 +1,6 @@
 {
   "profile": "epistemic-pipeline/maintenance-cadence",
-  "calibrated": "2026-09-01",
+  "calibrated": "2026-09-06",
   "project_profile_prefix": "epistemic-pipeline/",
   "stage": {
     "id": "2026-08-evidence-infrastructure",
@@ -19,6 +19,7 @@
     "CLAIM_TRANSFER_CONTRACT.md",
     "ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
     "MAINTENANCE_CADENCE.md",
+    "JULES_CORRECTION_RECORD.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
     "POST_STAGE_REPAIR_2026_09_01.md",
@@ -42,6 +43,7 @@
     "CLAIM_TRANSFER_CONTRACT.md",
     "ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
     "MAINTENANCE_CADENCE.md",
+    "JULES_CORRECTION_RECORD.md",
     "DOCUMENT_STATUS.md",
     "STAGE_2026_08_MAINTENANCE.md",
     "POST_STAGE_REPAIR_2026_09_01.md",
@@ -56,13 +58,13 @@
   "history_patterns": ["*_DAY_CONSOLIDATION.md", "STAGE_*.md"],
   "cadences": {
     "daily": {
-      "purpose": "local claim/evidence/runtime drift and new-fact maintenance without history rewrite",
+      "purpose": "local claim/evidence/runtime drift and new-fact maintenance without history rewrite; current repository evidence outranks coding-agent task or PR narrative",
       "calibration_max_age_days": 2,
       "baseline_hashes": false,
       "history_inventory": false
     },
     "weekly": {
-      "purpose": "cross-day evidence-contract reconciliation, document-authority review, score-semantics review, and handoff consistency",
+      "purpose": "cross-day evidence-contract reconciliation, document-authority review, score-semantics and agent-provenance review, and handoff consistency; Daily and Weekly may coalesce into one real final PR",
       "calibration_max_age_days": 8,
       "baseline_hashes": true,
       "history_inventory": true
@@ -85,6 +87,8 @@
     "provenance_soundness_claim": false,
     "calendar_close_is_reproduction": false,
     "scan_scope_outside_repository": false,
-    "absolute_repository_root_in_report": false
+    "absolute_repository_root_in_report": false,
+    "agent_pr_narrative_is_authority": false,
+    "cadence_requires_duplicate_prs": false
   }
 }
