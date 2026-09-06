@@ -10,6 +10,8 @@ If docs disagree with code, correct one explicitly and never invent a capability
 
 Read `DOCUMENT_STATUS.md` before broad documentation work
 
+Read `JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current runtime or scientific evidence
+
 Current authoritative documents may be updated when source truth changes
 
 Historical consolidation snapshots remain time-scoped records, not current contracts
@@ -23,7 +25,25 @@ SIX_DAY_CONSOLIDATION.md
 ```text
 historical snapshot != current contract
 later terminology != permission to rewrite history
+historical agent PR narrative != current evidence contract
 ```
+
+### Recovery order
+
+```text
+current main implementation
+> MANIFEST.yaml and current machine-readable configuration
+> latest dated repair / current maintenance record
+> DOCUMENT_STATUS.md
+> AGENTS.md
+> active evidence/scientific-integrity contracts
+> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> Architecture / README
+> historical consolidation snapshots
+> historical PR / task narratives
+```
+
+An agent-generated PR body is proposal/delivery metadata, not a substitute for inspecting the actual current tree.
 
 ## Stable internal identifiers
 
@@ -165,6 +185,8 @@ coverage ratio != evidence sufficiency
 
 Never describe `[0,1]` as probability by default, convergence as certainty, score change as Bayesian update, or unfitted temperature scaling as calibrated probability
 
+Historical agent prose that uses confidence language does not override these current semantics.
+
 ## Provenance / trace rules
 
 `core/provenance.py` is PROV-aligned project JSON, not PROV-O RDF conformance
@@ -192,9 +214,22 @@ evidence envelope -> compact run-level handoff + ref coverage
 
 Do not merge them into one proof object
 
+## Coding-agent provenance rules
+
+1. Jules/Codex/other agent task descriptions, PR bodies, generated summaries, framework comparisons, and completion claims are proposal/delivery metadata, not automatic current authority.
+2. Historical `tests passed`, engine execution, test counts, convergence, `fully aligned`, `complete`, or similar assertions require current re-verification before reuse as current facts.
+3. Structured JSON output, a verifier role, a gatekeeper, or a confidence-network implementation must not be rhetorically promoted into scientific verification, probability, or certainty.
+4. If later `main` or active contracts supersede an old agent narrative, correct forward in current records and preserve the old PR as history.
+
+```text
+requires re-verification != false
+historical != current
+agent confidence != scientific confidence
+```
+
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
+`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
 
 Local scanner
 
@@ -207,16 +242,21 @@ python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 Daily maintenance
 
 - start from current `main`
-- correct demonstrated runtime/claim/evidence/profile drift only
+- correct demonstrated runtime/claim/evidence/profile/governance drift only
 - use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
+- read latest dated repair/current maintenance record before older PR/task narratives
 - preserve provider unknowns, conflict visibility, and heuristic non-probability semantics
+- do not rewrite historical snapshots or historical PR prose
 - do not manufacture daily changes
 
 Weekly maintenance
 
-- reconcile implementation, Manifest, Research Contract, Claim Audit Contract, Claim Transfer Contract, README/Architecture, Agent/Contributor/Customization guidance, examples, Document Status, Frontier Alignment, and cross-repository profile names
+- reconcile implementation, Manifest, Research Contract, Claim Audit Contract, Claim Transfer Contract, README/Architecture, Agent/Contributor/Customization guidance, examples, Document Status, Frontier Alignment, current maintenance/correction records, and cross-repository profile names
 - review trace/checkpoint/provenance/claim-audit/claim-transfer/envelope separation
+- audit whether coding-agent narratives are being treated as current runtime/scientific authority without current evidence
 - inventory historical snapshots without rewriting them
+
+If the same pass performs Daily and Weekly maintenance, one branch and one final PR should carry the combined real work whenever practical. Do not create duplicate churn solely because two cadence labels apply.
 
 Monthly or explicit phase-close maintenance
 
@@ -241,9 +281,13 @@ First complete worked example
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 ```
 
-Read it after `MAINTENANCE_CADENCE.md` and `DOCUMENT_STATUS.md`
-It is a dated reference example, not a clean scanner log or scientific-review record
-If cadence semantics materially change later, create a new dated demonstration instead of rewriting this historical example
+Current Daily/Weekly governance reconciliation
+
+```text
+maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
+```
+
+Dated records are time-scoped maintenance evidence, not automatic runtime or scientific proof.
 
 ```text
 reference demonstration != runtime proof
@@ -251,9 +295,10 @@ maintenance clean != scientific validity
 weekly consistency != evidence sufficiency
 calendar-month close != reproduction
 coverage inventory != provenance soundness
+agent narrative != current verification
 ```
 
-The scanner itself does not run the research workflow, call an LLM, run tests, verify citations, or judge evidence sufficiency
+The scanner itself does not run the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, or validate historical Jules claims
 
 ## Cross-repository handoff
 
@@ -292,7 +337,7 @@ Local/manual checks are optional maintenance aids, not scientific validation
 
 When a public research contract changes, synchronize relevant implementation, Manifest, active contracts, README/Architecture, examples, and frontier notes
 
-When maintenance/document governance changes, synchronize `MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `maintenance/cadence.yaml`, `core/maintenance_cadence.py`, `STAGE_2026_08_MAINTENANCE.md`, Manifest, and this Agent Guide
+When maintenance/document governance or coding-agent provenance rules change, synchronize `MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `maintenance/cadence.yaml`, current dated maintenance record, and this Agent Guide. Synchronize runtime scanner/Manifest only when executable/profile semantics actually change.
 
 A dated maintenance demonstration is historical/reference evidence after creation; do not mechanically rewrite it during later maintenance
 
