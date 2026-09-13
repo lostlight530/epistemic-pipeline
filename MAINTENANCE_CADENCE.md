@@ -1,7 +1,7 @@
 # Maintenance Cadence — epistemic-pipeline
 
 **Status:** active maintenance contract  
-**Calibrated:** 2026-09-06  
+**Calibrated:** 2026-09-13  
 **Current closed stage:** 2026-08-24 through 2026-08-31
 
 This contract separates daily, weekly, and monthly maintenance for the research-execution and evidence layer. It is not a scheduler, scientific-review authority, or GitHub merge gate.
@@ -99,6 +99,8 @@ stage: closed
 
 On and after 2026-09-01 that stage remains closed; post-stage hardening and later maintenance do not reopen it.
 
+Before the natural September month boundary, a monthly maintenance pass records `month-to-date`; it must not be represented as a calendar-month close.
+
 ## Deterministic local scanner
 
 ```bash
@@ -151,13 +153,19 @@ maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 
 It is reference material, not a pre-asserted clean scanner result.
 
-The current Daily/Weekly governance reconciliation is:
+The previous Daily/Weekly governance reconciliation is:
 
 ```text
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
 ```
 
-It is a dated maintenance record, not runtime or scientific-validation evidence.
+The current Daily/Weekly/month-to-date reconciliation record is:
+
+```text
+maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
+```
+
+These are dated maintenance records, not runtime or scientific-validation evidence. The 2026-09-13 record keeps `MANIFEST.yaml` / external-research capability calibration distinct from maintenance-layer freshness unless actual evidence-contract semantics change.
 
 ## External calibration
 
@@ -180,4 +188,5 @@ report written != evidence validated
 agent task / PR narrative != current repository truth
 claimed test pass != current runtime verification
 cadence label != requirement for duplicate PR churn
+maintenance calibration != evidence-contract transition
 ```

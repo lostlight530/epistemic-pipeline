@@ -1,7 +1,7 @@
 # Document Status — epistemic-pipeline
 
 **Status:** active document-governance map  
-**Calibrated:** 2026-09-06  
+**Calibrated:** 2026-09-13  
 **Stage:** August 2026 evidence-infrastructure phase closed on 2026-08-31
 
 This file classifies repository documentation by current authority and historical role.
@@ -72,12 +72,16 @@ maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
 POST_STAGE_REPAIR_2026_09_01.md
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
 maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
+maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
 ```
 
 - the 2026-09-06 Daily/Weekly record documents a real authority/cadence reconciliation and does not assert a scanner run, test run, evidence-sufficiency verdict, or scientific validation;
-- the 2026-09-01 through 2026-09-06 frontier refresh is **post-stage, non-normative, source-bounded research calibration** for provider/model provenance, execution status, long-running agents, telemetry, source-authority conflict and claim-transfer boundaries. It does not change the active Research Contract or turn external provider claims into scientific evidence.
+- the 2026-09-01 through 2026-09-06 frontier refresh is **post-stage, non-normative, source-bounded research calibration** for provider/model provenance, execution status, long-running agents, telemetry, source-authority conflict and claim-transfer boundaries. It does not change the active Research Contract or turn external provider claims into scientific evidence;
+- the 2026-09-13 Daily/Weekly/month-to-date reconciliation is the latest maintenance-authority checkpoint. It records `NO_CHANGE_REQUIRED` for implementation/evidence-contract semantics, refreshes maintenance-layer authority through 2026-09-13, keeps September open as month-to-date, and does not fabricate absent scanner or research-workflow runs.
 
 `FRONTIER_ALIGNMENT.md` remains the August stage-close positioning snapshot. The dated frontier refresh is the newer external-research observation record through 2026-09-06 and must not be used as a truth oracle or capability contract.
+
+The 2026-09-13 maintenance reconciliation does **not** mechanically advance `MANIFEST.yaml` or `external_research_calibration.checked_through`. Maintenance freshness is distinct from runtime/evidence-contract calibration unless current implementation or active contract semantics actually change.
 
 Dated records are time-scoped maintenance/research evidence and do not override later implementation changes.
 
@@ -119,7 +123,7 @@ calendar_month: closed
 research_phase: closed
 ```
 
-The 2026-09-01 repair, 2026-09-06 maintenance reconciliation, and 2026-09-01 through 2026-09-06 frontier refresh do not extend or reopen that window.
+The 2026-09-01 repair, 2026-09-06 maintenance reconciliation, 2026-09-01 through 2026-09-06 frontier refresh, and 2026-09-13 month-to-date reconciliation do not extend or reopen that window.
 
 ## Maintenance rule
 
@@ -129,7 +133,7 @@ Weekly maintenance reconciles the complete current evidence stack, current maint
 
 If one pass serves as both Daily and Weekly maintenance, one branch/PR may carry the combined real work; cadence labels do not require duplicate PR churn.
 
-Monthly or explicit phase-close maintenance records a closed baseline, inventories historical snapshots, and reviews current/experimental/not-integrated labels without deleting history.
+Monthly or explicit phase-close maintenance records a closed baseline, inventories historical snapshots, and reviews current/experimental/not-integrated labels without deleting history. Before September's natural month boundary, the calendar status remains month-to-date.
 
 ## Hard boundaries
 
@@ -145,4 +149,5 @@ calendar close != scientific validation
 monthly baseline != independent reproduction
 agent PR narrative != current repository truth
 cadence coalescing != skipped maintenance scope
+maintenance calibration != evidence-contract transition
 ```
