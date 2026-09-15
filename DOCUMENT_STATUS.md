@@ -1,153 +1,160 @@
 # Document Status — epistemic-pipeline
 
-**Status:** active document-governance map  
-**Calibrated:** 2026-09-13  
+**Status:** active document-governance router  
+**Calibrated:** 2026-09-15  
 **Stage:** August 2026 evidence-infrastructure phase closed on 2026-08-31
 
-This file classifies repository documentation by current authority and historical role.
+This file routes repository materials by current role and authority. It is a classifier/router, not an independent source of runtime, claim, or scientific truth.
 
-## Current authoritative documents
+See `docs/README.md` for the three-class taxonomy.
+
+## Class 01 — source and explanation
+
+Primary implementation and explanatory surfaces include:
 
 ```text
+core/
+graphs/
+states/
+roles/
+tests/
+Makefile
 README.md
 ARCHITECTURE.md
+```
+
+Implementation determines actual runtime behavior. README/Architecture explain current behavior and must follow implemented and contracted boundaries.
+
+`core/maintenance_cadence.py` is executable source in this class. It is not itself a preserved scanner run, evidence-sufficiency verdict, or external governance audit.
+
+## Class 02 — examples and contracts
+
+Current capability/usage constraints include:
+
+```text
+MANIFEST.yaml
+validators/
 RESEARCH_CONTRACT.md
 CLAIM_AUDIT_CONTRACT.md
 CLAIM_TRANSFER_CONTRACT.md
 ASSERTION_BASIS_AND_AUDIT_COVERAGE.md
-MAINTENANCE_CADENCE.md
-JULES_CORRECTION_RECORD.md
-STAGE_2026_08_MAINTENANCE.md
-POST_STAGE_REPAIR_2026_09_01.md
-MANIFEST.yaml
+examples/
+CUSTOMIZATION_GUIDE.md
 AGENTS.md
 CONTRIBUTING.md
-CUSTOMIZATION_GUIDE.md
-FRONTIER_ALIGNMENT.md
+CITATION.cff
+LICENSE
+```
+
+`MANIFEST.yaml` and validators are machine-readable capability/rule surfaces. The Research Contract and specialized evidence contracts define their named scientific/integrity semantics. Examples and customization/operator guidance demonstrate supported use but do not upgrade structural states into scientific truth.
+
+## Class 03 — maintenance and audit
+
+Current maintenance/governance surfaces:
+
+```text
 DOCUMENT_STATUS.md
+MAINTENANCE_CADENCE.md
 maintenance/cadence.yaml
+JULES_CORRECTION_RECORD.md
 ```
 
-Subject authority remains scoped:
-
-- implementation defines actual runtime behavior;
-- `MANIFEST.yaml` is the machine-readable capability map;
-- `RESEARCH_CONTRACT.md` defines current scientific-integrity semantics;
-- Claim Audit / Claim Transfer / Assertion Basis contracts define their named evidence surfaces;
-- `MAINTENANCE_CADENCE.md` defines daily, weekly, and monthly maintenance responsibilities;
-- `JULES_CORRECTION_RECORD.md` defines the evidence/authority boundary for historical Jules-created PR/task narratives;
-- `STAGE_2026_08_MAINTENANCE.md` is the closed August stage index and baseline;
-- `POST_STAGE_REPAIR_2026_09_01.md` records post-close hardening without reopening the stage;
-- `DOCUMENT_STATUS.md` defines documentation authority/history roles.
-
-## Authority precedence for recovery
-
-```text
-current main implementation
-> MANIFEST.yaml / current machine-readable configuration
-> latest dated repair / current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active evidence/scientific-integrity contracts
-> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
-> Architecture / README
-> historical snapshots
-> historical PR/task narratives
-```
-
-## Historical snapshots
-
-```text
-FOUR_DAY_CONSOLIDATION.md
-FIVE_DAY_CONSOLIDATION.md
-SIX_DAY_CONSOLIDATION.md
-```
-
-These remain historical evidence of earlier repository states. They are not current runtime or scientific contracts and should not be rewritten merely because current terminology evolved.
-
-## Dated maintenance / correction / research-calibration records
+Dated/stage/historical evidence:
 
 ```text
 maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+STAGE_2026_08_MAINTENANCE.md
 POST_STAGE_REPAIR_2026_09_01.md
 maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
 maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
 maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
+FRONTIER_ALIGNMENT.md
+FOUR_DAY_CONSOLIDATION.md
+FIVE_DAY_CONSOLIDATION.md
+SIX_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/superpowers/
 ```
 
-- the 2026-09-06 Daily/Weekly record documents a real authority/cadence reconciliation and does not assert a scanner run, test run, evidence-sufficiency verdict, or scientific validation;
-- the 2026-09-01 through 2026-09-06 frontier refresh is **post-stage, non-normative, source-bounded research calibration** for provider/model provenance, execution status, long-running agents, telemetry, source-authority conflict and claim-transfer boundaries. It does not change the active Research Contract or turn external provider claims into scientific evidence;
-- the 2026-09-13 Daily/Weekly/month-to-date reconciliation is the latest maintenance-authority checkpoint. It records `NO_CHANGE_REQUIRED` for implementation/evidence-contract semantics, refreshes maintenance-layer authority through 2026-09-13, keeps September open as month-to-date, and does not fabricate absent scanner or research-workflow runs.
+The archived Superpowers material is superseded historical design evidence. Its relocation does not make it current authority.
 
-`FRONTIER_ALIGNMENT.md` remains the August stage-close positioning snapshot. The dated frontier refresh is the newer external-research observation record through 2026-09-06 and must not be used as a truth oracle or capability contract.
+## Recovery authority
 
-The 2026-09-13 maintenance reconciliation does **not** mechanically advance `MANIFEST.yaml` or `external_research_calibration.checked_through`. Maintenance freshness is distinct from runtime/evidence-contract calibration unless current implementation or active contract semantics actually change.
-
-Dated records are time-scoped maintenance/research evidence and do not override later implementation changes.
-
-## Historical coding-agent / PR narratives
-
-Early Jules-created PRs remain preserved in GitHub history.
-
-Their task descriptions, PR bodies, automatic summaries, framework comparisons, test statements, confidence-related claims, and completion language are not current contracts or scientific evidence. Read `JULES_CORRECTION_RECORD.md` before reusing them.
+Use **subject-scoped** authority in this order:
 
 ```text
-historical agent proposal != current authority
-structured/test claim != current scientific verification
-requires re-verification != false
-correction != history deletion
+current merged main implementation
+> current machine-readable capability contract / schema / configuration for that subject
+> active RESEARCH_CONTRACT.md and active specialized contract for that subject
+> operational examples / configuration / test evidence for supported use
+> README / Architecture / current explanatory documentation
+> maintenance / audit / reconciliation evidence
+> historical snapshots / superseded plans / PR-task narratives
 ```
 
-## Examples, customization and reference material
+Important consequences:
+
+- a newer dated maintenance record does not outrank an active claim/evidence/scientific contract merely because its date is later;
+- `validators/` may define machine rules but does not convert heuristic scores into probability or structural verification into scientific verification;
+- `maintenance/cadence.yaml` is authoritative for its local maintenance/scanner configuration, not for claim truth, evidence sufficiency, provider identity, or transfer semantics;
+- `DOCUMENT_STATUS.md` routes documents but does not override implementation or active subject contracts;
+- `AGENTS.md` remains operational guidance and its hard rules remain active; if an older embedded recovery-order list conflicts with this 2026-09-15 router, this current router/taxonomy governs document recovery;
+- execution evidence exists only when the execution actually occurred and its result was preserved.
+
+## Dated evidence interpretation
+
+The 2026-08-31 cadence demonstration is historical/reference evidence, not an automatically preserved clean scanner or research-workflow run.
+
+The 2026-09-01 repair records post-stage hardening without reopening the August stage.
+
+The 2026-09-06 reconciliation records authority/cadence correction. The 2026-09-01 through 2026-09-06 frontier refresh is source-bounded post-stage calibration for provider/model provenance, execution status, long-running agents, telemetry, source-authority conflict, and claim-transfer boundaries; it does not itself establish scientific verification.
+
+The 2026-09-13 reconciliation remains valid point-in-time evidence that the pass found `NO_CHANGE_REQUIRED` for implementation/evidence-contract semantics, refreshed maintenance-layer observation through 2026-09-13, kept September month-to-date, and did not fabricate absent scanner or research-workflow runs. It does not mechanically advance `MANIFEST.yaml` or external-research calibration.
 
 ```text
-examples/README.md
-CUSTOMIZATION_GUIDE.md
+maintenance freshness != evidence-contract calibration
+structured state != scientific verdict
+latest observation != highest semantic authority
+NO_CHANGE_REQUIRED != skipped inspection
 ```
 
-These describe supported patterns but do not override implementation, Manifest, or active contracts.
+## Historical preservation
 
-## External / citation metadata
+`FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, `SIX_DAY_CONSOLIDATION.md`, closed-stage records, superseded design files, and historical PR/task narratives remain point-in-time evidence.
+
+Do not rewrite them merely because current terminology or behavior changed. Correct forward through a current file, correction, reconciliation, or later time-point record.
 
 ```text
-CITATION.cff
+historical snapshot != current contract
+historical != invalid
+later success != earlier success
+correction != history rewrite
+agent completion claim != current verification
 ```
 
-Real external standard/runtime versions remain legitimate provenance metadata. The no-decorative-version rule applies only to project-owned internal profile identifiers.
-
-## Stage-close and post-stage status
+## Stage status
 
 ```text
 window: 2026-08-24 -> 2026-08-31
 calendar_month: closed
 research_phase: closed
+September 2026: month-to-date until natural month close
 ```
 
-The 2026-09-01 repair, 2026-09-06 maintenance reconciliation, 2026-09-01 through 2026-09-06 frontier refresh, and 2026-09-13 month-to-date reconciliation do not extend or reopen that window.
-
-## Maintenance rule
-
-Daily maintenance corrects demonstrated local runtime/contract/governance drift.
-
-Weekly maintenance reconciles the complete current evidence stack, current maintenance/correction records, coding-agent authority handling, and historical inventory.
-
-If one pass serves as both Daily and Weekly maintenance, one branch/PR may carry the combined real work; cadence labels do not require duplicate PR churn.
-
-Monthly or explicit phase-close maintenance records a closed baseline, inventories historical snapshots, and reviews current/experimental/not-integrated labels without deleting history. Before September's natural month boundary, the calendar status remains month-to-date.
+Post-stage repairs, reconciliations, taxonomy work, and frontier refreshes do not reopen the August stage.
 
 ## Hard boundaries
 
 ```text
 document authority != claim truth
-historical snapshot != invalid evidence
-post-stage repair != stage rewrite
+implementation presence != execution evidence
+scanner source != scanner execution
+maintenance clean != evidence sufficiency
+heuristic score != probability
+claim transfer != acceptance
 frontier calibration != claim verification
-external provider event != evidence sufficiency
-maintenance consistency != evidence sufficiency
 reference demonstration != runtime proof
 calendar close != scientific validation
-monthly baseline != independent reproduction
-agent PR narrative != current repository truth
-cadence coalescing != skipped maintenance scope
-maintenance calibration != evidence-contract transition
+historical agent narrative != current repository truth
+path relocation != semantic change
+classification != deletion authority
 ```
