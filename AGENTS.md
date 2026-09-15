@@ -8,18 +8,18 @@ If docs disagree with code, correct one explicitly and never invent a capability
 
 ## Document authority
 
-Read `DOCUMENT_STATUS.md` before broad documentation work
+Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation work
 
-Read `JULES_CORRECTION_RECORD.md` before using early Jules task/PR prose as current runtime or scientific evidence
+Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical evidence. It is a dated correction record, not a current authority layer.
 
 Current authoritative documents may be updated when source truth changes
 
 Historical consolidation snapshots remain time-scoped records, not current contracts
 
 ```text
-FOUR_DAY_CONSOLIDATION.md
-FIVE_DAY_CONSOLIDATION.md
-SIX_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
+docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
 ```
 
 ```text
@@ -32,15 +32,12 @@ historical agent PR narrative != current evidence contract
 
 ```text
 current main implementation
-> MANIFEST.yaml and current machine-readable configuration
-> latest dated repair / current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active evidence/scientific-integrity contracts
-> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
-> Architecture / README
-> historical consolidation snapshots
-> historical PR / task narratives
+> current machine-readable capability contract / schema / configuration for the subject
+> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for the subject
+> operational examples / configuration / test evidence for supported use
+> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
+> maintenance / audit / reconciliation evidence
+> historical snapshots / superseded plans / PR-task narratives
 ```
 
 An agent-generated PR body is proposal/delivery metadata, not a substitute for inspecting the actual current tree.
@@ -229,7 +226,7 @@ agent confidence != scientific confidence
 
 ## Maintenance cadence
 
-`MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `STAGE_2026_08_MAINTENANCE.md`, and `maintenance/cadence.yaml` define active maintenance/document governance
+`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define active maintenance/document governance. Closed-stage and Jules-correction records under `docs/03-maintenance-and-audit/history/` remain evidence inputs, not current contracts.
 
 Local scanner
 
@@ -243,15 +240,15 @@ Daily maintenance
 
 - start from current `main`
 - correct demonstrated runtime/claim/evidence/profile/governance drift only
-- use `DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
-- read latest dated repair/current maintenance record before older PR/task narratives
+- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
+- read latest relevant dated repair/current maintenance record before older PR/task narratives
 - preserve provider unknowns, conflict visibility, and heuristic non-probability semantics
 - do not rewrite historical snapshots or historical PR prose
 - do not manufacture daily changes
 
 Weekly maintenance
 
-- reconcile implementation, Manifest, Research Contract, Claim Audit Contract, Claim Transfer Contract, README/Architecture, Agent/Contributor/Customization guidance, examples, Document Status, Frontier Alignment, current maintenance/correction records, and cross-repository profile names
+- reconcile implementation, Manifest, active contracts under `docs/02-examples-and-contracts/`, root README / Architecture, Agent/Contributor/Customization guidance, examples, current Document Status, current maintenance records, and cross-repository profile names
 - review trace/checkpoint/provenance/claim-audit/claim-transfer/envelope separation
 - audit whether coding-agent narratives are being treated as current runtime/scientific authority without current evidence
 - inventory historical snapshots without rewriting them
@@ -337,7 +334,7 @@ Local/manual checks are optional maintenance aids, not scientific validation
 
 When a public research contract changes, synchronize relevant implementation, Manifest, active contracts, README/Architecture, examples, and frontier notes
 
-When maintenance/document governance or coding-agent provenance rules change, synchronize `MAINTENANCE_CADENCE.md`, `DOCUMENT_STATUS.md`, `JULES_CORRECTION_RECORD.md`, `maintenance/cadence.yaml`, current dated maintenance record, and this Agent Guide. Synchronize runtime scanner/Manifest only when executable/profile semantics actually change.
+When maintenance/document governance or coding-agent provenance rules change, synchronize `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, `maintenance/cadence.yaml`, current dated maintenance record, and this Agent Guide. Consult the dated Jules correction in history when interpreting earlier agent narratives. Synchronize runtime scanner/Manifest only when executable/profile semantics or machine path contracts actually change.
 
 A dated maintenance demonstration is historical/reference evidence after creation; do not mechanically rewrite it during later maintenance
 
