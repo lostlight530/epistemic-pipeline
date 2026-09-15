@@ -6,7 +6,7 @@ This class answers: **when was the repository inspected or calibrated, what was 
 
 - `DOCUMENT_STATUS.md`
 - `MAINTENANCE_CADENCE.md`
-- `maintenance/cadence.yaml`
+- `maintenance/cadence.yaml` — machine-readable maintenance configuration; classified here by function even though it is a machine file
 
 ## Dated maintenance and calibration evidence
 
@@ -24,6 +24,6 @@ This class answers: **when was the repository inspected or calibrated, what was 
 - `FOUR_DAY_CONSOLIDATION.md`
 - `FIVE_DAY_CONSOLIDATION.md`
 - `SIX_DAY_CONSOLIDATION.md`
-- `docs/superpowers/` — historical implementation design/planning evidence
+- `docs/superpowers/` — superseded/historical implementation design and planning evidence
 
 These records are retained as point-in-time evidence. Classification does not rewrite their original claims or convert a past maintenance result into current implementation truth.

@@ -20,6 +20,10 @@ This class answers: **how should current capabilities be used, represented, cons
 - `CUSTOMIZATION_GUIDE.md`
 - `AGENTS.md`
 - `CONTRIBUTING.md`
+
+## Repository metadata
+
 - `CITATION.cff`
+- `LICENSE`
 
 Examples demonstrate supported use. They do not override implementation or active contracts and do not establish scientific validation.
