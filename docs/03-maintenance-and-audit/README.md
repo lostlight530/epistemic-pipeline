@@ -10,6 +10,7 @@ It does **not** define the repository's scientific or runtime semantics merely b
 - `MAINTENANCE_CADENCE.md` — human-readable repository-maintenance contract
 - `maintenance/cadence.yaml` — machine-readable local maintenance/scanner configuration; classified here by function
 - `JULES_CORRECTION_RECORD.md` — boundary for reusing historical coding-agent / PR narratives as evidence
+- `docs/03-maintenance-and-audit/independent-gpt/README.md` — public cold-start recovery router for a memoryless independent reviewer; it does not override subject-scoped authority
 
 `core/maintenance_cadence.py` remains **Class 01 source** because it is executable implementation. Its presence or a successful local scan is not the same thing as an external governance patrol, GitHub-state audit, scientific validation, or a preserved historical run.
 
