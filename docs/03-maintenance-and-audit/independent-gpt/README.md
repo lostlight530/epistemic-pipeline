@@ -3,7 +3,7 @@
 Status: current public recovery kernel
 Scope: repository-local recovery, independent audit, reconciliation, and bounded repair
 
-This directory is a public handoff point for a memoryless independent reviewer. It routes recovery into existing repository authority; it is not a new claim, evidence, or scientific authority layer.
+This directory is a public handoff point for a memoryless independent reviewer. It is a Class 03 maintenance/audit router, not a new claim, evidence, or scientific authority layer.
 
 ## Start from current main
 
@@ -31,7 +31,7 @@ This file does not override that order.
 4. `DOCUMENT_STATUS.md` routes document roles; `docs/README.md` defines the current three-class taxonomy.
 5. `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, and current maintenance records govern maintenance only within their declared scope.
 6. Dated stage, consolidation, frontier, correction, and reconciliation records are historical / maintenance evidence, not automatic current claim authority.
-7. Git history and revision-matched tests / workflow evidence resolve disputed execution, timing, path, provider identity, and provenance claims.
+7. Git history and revision-matched tests / GitHub Actions evidence resolve disputed execution, timing, path, provider identity, and provenance claims.
 
 ## Evidence boundaries
 
