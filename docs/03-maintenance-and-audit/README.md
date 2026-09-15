@@ -13,9 +13,9 @@ It does **not** define the repository's scientific or runtime semantics merely b
 
 `core/maintenance_cadence.py` remains **Class 01 source** because it is executable implementation. Its presence or a successful local scan is not the same thing as an external governance patrol, GitHub-state audit, scientific validation, or a preserved historical run.
 
-## Coordinated three-repository maintenance
+## Coordinated research-infrastructure context
 
-This repository may be inspected in one coordinated pass with:
+This repository participates in a coordinated research-infrastructure set with:
 
 ```text
 lostlight530/auto-doc-engine
@@ -23,15 +23,11 @@ lostlight530/epistemic-pipeline
 lostlight530/sci-render-kit
 ```
 
-Coordination means shared timing, cross-repository name/profile checks, and a common report. It does **not** create cross-repository authority. Each repository must recover from its own latest merged `main`, implementation, machine contracts/configuration, active subject contracts, current document router, maintenance evidence, and history.
+Coordination allows shared inspection windows and cross-repository checks for profile names, contract names, and handoff vocabulary. It does **not** create cross-repository authority. Each repository recovers from and is governed by its own current `main`, implementation, machine-readable contracts/configuration, active subject contracts, current document router, maintenance evidence, and preserved history.
 
-A legacy generic ordering such as `implementation > MANIFEST > latest repair > DOCUMENT_STATUS > AGENTS > contracts > cadence > Architecture/README > history` is not a universal authority law. When it conflicts with the current subject-scoped order in `DOCUMENT_STATUS.md`, the subject-scoped order wins.
+A generic historical authority ordering is not a permanent repository law. When older maintenance or correction prose conflicts with the current subject-scoped recovery order in `DOCUMENT_STATUS.md`, the current subject-scoped order governs present interpretation.
 
-The scheduled daily pass at 06:30 Asia/Shanghai is an inspection/maintenance opportunity, not a requirement to create churn. `NO_CHANGE_REQUIRED` is a valid result. Weekly or monthly artifacts are created only when the current contract, a natural calendar/phase boundary, accumulated evidence, demonstrated drift, or another explicit maintenance need justifies them.
-
-For an authorized change, refresh remote `main`, inspect recent relevant merged/open PR state, branch from the latest merged revision, make one coherent scoped change, run only checks that actually exist and were actually executed, compare `main...branch`, require `behind_by = 0`, open a Draft PR, verify mergeability, and stop for maintainer review unless the maintainer explicitly authorizes another delivery mode. Do not write directly to `main`, rewrite history, or modify GitHub Actions/CI/CodeQL/branch-governance automation as routine repository maintenance.
-
-When used by the coordinated research-maintenance GPT, the final user-facing report is written in Chinese while repository names, paths, SHAs, commands, state labels, profile names, and protocol terms remain canonical.
+Periodic maintenance is an opportunity to inspect current truth, not a requirement to manufacture changes. `NO_CHANGE_REQUIRED` is a valid outcome. Weekly or monthly synthesis is justified by the current contract, a natural calendar/phase boundary, accumulated evidence, demonstrated drift, or another explicit maintenance need rather than by schedule alone.
 
 ## Dated maintenance / calibration evidence
 
@@ -41,7 +37,7 @@ When used by the coordinated research-maintenance GPT, the final user-facing rep
 - root `maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md`
 - root `maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md`
 
-The 2026-08-24 through 2026-08-31 stage remains closed historical evidence. The 2026-09-01 post-stage repair is the dated starting checkpoint for steady-state maintenance, and current merged `main` may supersede that checkpoint only through explicit current evidence or reconciliation.
+The 2026-08-24 through 2026-08-31 research stage remains closed historical evidence. The 2026-09-01 post-stage repair is the dated starting checkpoint for steady-state maintenance, while current merged `main` may supersede that checkpoint through explicit current evidence or reconciliation.
 
 These records are point-in-time evidence. A later dated record may report a newer observation, correction, or maintenance result, but it does not silently override current implementation, machine contracts, or active scientific/specialized contracts.
 
@@ -52,7 +48,7 @@ These records are point-in-time evidence. A later dated record may report a newe
 - [`history/FOUR_DAY_CONSOLIDATION.md`](history/FOUR_DAY_CONSOLIDATION.md)
 - [`history/FIVE_DAY_CONSOLIDATION.md`](history/FIVE_DAY_CONSOLIDATION.md)
 - [`history/SIX_DAY_CONSOLIDATION.md`](history/SIX_DAY_CONSOLIDATION.md)
-- [`history/JULES_CORRECTION_RECORD.md`](history/JULES_CORRECTION_RECORD.md) — 2026-09-06 correction/authority record retained as historical calibration evidence, not a current top-level authority
+- [`history/JULES_CORRECTION_RECORD.md`](history/JULES_CORRECTION_RECORD.md) — dated correction/authority evidence retained at its original calibration boundary, not a current top-level authority
 - `history/superpowers/` — superseded/historical implementation design and planning evidence
 
 Historical records remain reviewable at their original time boundary. Physical reclassification does not rewrite their claims.
