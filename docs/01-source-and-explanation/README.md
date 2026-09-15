@@ -15,7 +15,7 @@ The repository's maintenance scanner implementation remains in this class becaus
 
 ## Explanatory documents
 
-- `README.md`
-- `ARCHITECTURE.md`
+- root `README.md`
+- [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 Implementation and observable test behavior remain the behavioral truth. Explanatory documents describe that behavior and do not override it.
