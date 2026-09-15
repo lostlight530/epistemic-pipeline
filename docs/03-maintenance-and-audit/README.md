@@ -24,6 +24,6 @@ This class answers: **when was the repository inspected or calibrated, what was 
 - `FOUR_DAY_CONSOLIDATION.md`
 - `FIVE_DAY_CONSOLIDATION.md`
 - `SIX_DAY_CONSOLIDATION.md`
-- `docs/superpowers/` — superseded/historical implementation design and planning evidence
+- `docs/03-maintenance-and-audit/history/superpowers/` — superseded/historical implementation design and planning evidence
 
 These records are retained as point-in-time evidence. Classification does not rewrite their original claims or convert a past maintenance result into current implementation truth.
