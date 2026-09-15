@@ -6,12 +6,32 @@ It does **not** define the repository's scientific or runtime semantics merely b
 
 ## Current maintenance / governance surfaces
 
-- [`DOCUMENT_STATUS.md`](DOCUMENT_STATUS.md) — current document-governance router and authority classifier
+- [`DOCUMENT_STATUS.md`](DOCUMENT_STATUS.md) — current document-governance router and subject-scoped authority classifier
 - [`MAINTENANCE_CADENCE.md`](MAINTENANCE_CADENCE.md) — human-readable repository-maintenance contract
 - root `maintenance/cadence.yaml` — machine-readable local maintenance/scanner configuration; classified here by function
-- [`independent-gpt/README.md`](independent-gpt/README.md) — public cold-start recovery router for a memoryless independent reviewer; it does not override subject-scoped authority
+- [`independent-gpt/README.md`](independent-gpt/README.md) — current public cold-start recovery kernel for a memoryless independent reviewer; it does not override subject-scoped authority
 
 `core/maintenance_cadence.py` remains **Class 01 source** because it is executable implementation. Its presence or a successful local scan is not the same thing as an external governance patrol, GitHub-state audit, scientific validation, or a preserved historical run.
+
+## Coordinated three-repository maintenance
+
+This repository may be inspected in one coordinated pass with:
+
+```text
+lostlight530/auto-doc-engine
+lostlight530/epistemic-pipeline
+lostlight530/sci-render-kit
+```
+
+Coordination means shared timing, cross-repository name/profile checks, and a common report. It does **not** create cross-repository authority. Each repository must recover from its own latest merged `main`, implementation, machine contracts/configuration, active subject contracts, current document router, maintenance evidence, and history.
+
+A legacy generic ordering such as `implementation > MANIFEST > latest repair > DOCUMENT_STATUS > AGENTS > contracts > cadence > Architecture/README > history` is not a universal authority law. When it conflicts with the current subject-scoped order in `DOCUMENT_STATUS.md`, the subject-scoped order wins.
+
+The scheduled daily pass at 06:30 Asia/Shanghai is an inspection/maintenance opportunity, not a requirement to create churn. `NO_CHANGE_REQUIRED` is a valid result. Weekly or monthly artifacts are created only when the current contract, a natural calendar/phase boundary, accumulated evidence, demonstrated drift, or another explicit maintenance need justifies them.
+
+For an authorized change, refresh remote `main`, inspect recent relevant merged/open PR state, branch from the latest merged revision, make one coherent scoped change, run only checks that actually exist and were actually executed, compare `main...branch`, require `behind_by = 0`, open a Draft PR, verify mergeability, and stop for maintainer review unless the maintainer explicitly authorizes another delivery mode. Do not write directly to `main`, rewrite history, or modify GitHub Actions/CI/CodeQL/branch-governance automation as routine repository maintenance.
+
+When used by the coordinated research-maintenance GPT, the final user-facing report is written in Chinese while repository names, paths, SHAs, commands, state labels, profile names, and protocol terms remain canonical.
 
 ## Dated maintenance / calibration evidence
 
@@ -21,7 +41,9 @@ It does **not** define the repository's scientific or runtime semantics merely b
 - root `maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md`
 - root `maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md`
 
-These are point-in-time evidence. A later dated record may report a newer observation, correction, or maintenance result, but it does not silently override current implementation, machine contracts, or active scientific/specialized contracts.
+The 2026-08-24 through 2026-08-31 stage remains closed historical evidence. The 2026-09-01 post-stage repair is the dated starting checkpoint for steady-state maintenance, and current merged `main` may supersede that checkpoint only through explicit current evidence or reconciliation.
+
+These records are point-in-time evidence. A later dated record may report a newer observation, correction, or maintenance result, but it does not silently override current implementation, machine contracts, or active scientific/specialized contracts.
 
 ## Stage / historical evidence
 
