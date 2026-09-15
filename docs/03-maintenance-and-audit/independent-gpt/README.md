@@ -9,14 +9,14 @@ This directory is a public handoff point for a memoryless independent reviewer. 
 
 At audit start record the current date, default branch, current `main` SHA, relevant open pull requests, recent merged changes, and checks actually executed.
 
-Then follow the repository’s current subject-scoped recovery order from `DOCUMENT_STATUS.md`:
+Then follow the repository’s current subject-scoped recovery order from `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`:
 
 ```text
 current merged main implementation
 > current machine-readable capability contract / schema / configuration for that subject
-> active RESEARCH_CONTRACT.md and active specialized contract for that subject
+> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for that subject
 > operational examples / configuration / test evidence for supported use
-> README / Architecture / current explanatory documentation
+> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
 > maintenance / audit / reconciliation evidence
 > historical snapshots / superseded plans / PR-task narratives
 ```
@@ -27,10 +27,10 @@ This file does not override that order.
 
 1. `core/`, `graphs/`, `states/`, `roles/`, `tests/`, and current implementation determine actual runtime behavior.
 2. `MANIFEST.yaml` and `validators/` define machine-readable capability and rule surfaces only for their named subjects.
-3. `RESEARCH_CONTRACT.md`, `CLAIM_AUDIT_CONTRACT.md`, `CLAIM_TRANSFER_CONTRACT.md`, and `ASSERTION_BASIS_AND_AUDIT_COVERAGE.md` govern their named claim / evidence / transfer semantics.
-4. `DOCUMENT_STATUS.md` routes document roles; `docs/README.md` defines the current three-class taxonomy.
-5. `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, and current maintenance records govern maintenance only within their declared scope.
-6. Dated stage, consolidation, frontier, correction, and reconciliation records are historical / maintenance evidence, not automatic current claim authority.
+3. `docs/02-examples-and-contracts/RESEARCH_CONTRACT.md` and the specialized contracts beside it govern their named claim / evidence / transfer semantics.
+4. `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` routes document roles; `docs/README.md` defines the current three-class taxonomy.
+5. `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, and current maintenance records govern maintenance only within their declared scope.
+6. Dated stage, consolidation, frontier, Jules-correction, and superseded design records under `docs/03-maintenance-and-audit/history/` are historical evidence, not automatic current claim authority.
 7. Git history and revision-matched tests / GitHub Actions evidence resolve disputed execution, timing, path, provider identity, and provenance claims.
 
 ## Evidence boundaries
