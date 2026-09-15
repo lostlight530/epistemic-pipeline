@@ -1,58 +1,78 @@
 # Independent GPT Governance — Epistemic Sentry
 
 Status: current public recovery kernel
-Scope: repository-local recovery, independent audit, reconciliation, and bounded repair
+Scope: repository-local recovery, independent audit, reconciliation, bounded repair, and participation in coordinated research-infrastructure review
 
-This directory is a public handoff point for a memoryless independent reviewer. It is a Class 03 maintenance/audit router, not a new claim, evidence, or scientific authority layer.
+This directory is the current public handoff point for a memoryless independent reviewer. It is a Class 03 maintenance/audit router, not a new claim, evidence, or scientific authority layer.
 
-## Start from current main
+## Coordinated research-infrastructure context
 
-At audit start record the current date, default branch, current `main` SHA, relevant open pull requests, recent merged changes, and checks actually executed.
+This repository participates in the coordinated set:
 
-Then follow the repository’s current subject-scoped recovery order from `DOCUMENT_STATUS.md`:
+```text
+lostlight530/auto-doc-engine
+lostlight530/epistemic-pipeline
+lostlight530/sci-render-kit
+```
+
+Cross-repository review may compare shared profile names, contract names, handoff vocabulary, and maintenance state. Coordination does not merge authority: each repository must be recovered and judged from its own current `main` and repository truth.
+
+## Recovery order
+
+Start from current repository state and record the revision and evidence window actually examined. Then use the subject-scoped order defined by `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`:
 
 ```text
 current merged main implementation
 > current machine-readable capability contract / schema / configuration for that subject
-> active RESEARCH_CONTRACT.md and active specialized contract for that subject
+> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for that subject
 > operational examples / configuration / test evidence for supported use
-> README / Architecture / current explanatory documentation
+> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
 > maintenance / audit / reconciliation evidence
 > historical snapshots / superseded plans / PR-task narratives
 ```
 
-This file does not override that order.
+Older maintenance or correction records remain evidence at their original time boundary and do not override this current subject-scoped order.
 
 ## Repository map
 
 1. `core/`, `graphs/`, `states/`, `roles/`, `tests/`, and current implementation determine actual runtime behavior.
-2. `MANIFEST.yaml` and `validators/` define machine-readable capability and rule surfaces only for their named subjects.
-3. `RESEARCH_CONTRACT.md`, `CLAIM_AUDIT_CONTRACT.md`, `CLAIM_TRANSFER_CONTRACT.md`, and `ASSERTION_BASIS_AND_AUDIT_COVERAGE.md` govern their named claim / evidence / transfer semantics.
-4. `DOCUMENT_STATUS.md` routes document roles; `docs/README.md` defines the current three-class taxonomy.
-5. `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, and current maintenance records govern maintenance only within their declared scope.
-6. Dated stage, consolidation, frontier, correction, and reconciliation records are historical / maintenance evidence, not automatic current claim authority.
-7. Git history and revision-matched tests / GitHub Actions evidence resolve disputed execution, timing, path, provider identity, and provenance claims.
+2. Root `MANIFEST.yaml`, `validators/`, and other machine-readable configuration define capability/rule surfaces only for their named subjects.
+3. `docs/02-examples-and-contracts/RESEARCH_CONTRACT.md` and the specialized contracts beside it govern their named claim, evidence, audit, and transfer semantics.
+4. `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` routes document roles; `docs/README.md` defines the three-class taxonomy.
+5. `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, and current maintenance records govern maintenance only within their declared scope.
+6. `maintenance/POST_STAGE_REPAIR_2026_09_01.md` is a dated post-stage checkpoint.
+7. Closed-stage, consolidation, frontier, Jules-correction, and superseded design records under `docs/03-maintenance-and-audit/history/` are historical evidence, not automatic current claim authority.
+8. Git history and revision-matched execution evidence resolve disputed path, timing, provider, and execution claims.
 
-## Evidence boundaries
+## Repository-specific doctrine
 
-Structured state is not a scientific verdict. Heuristic scores are not probabilities unless an active contract explicitly says so. Source presence is not independent corroboration. Maintenance freshness is not evidence-contract calibration. Execution evidence exists only when execution actually occurred and its result was preserved.
+Preserve these boundaries:
 
-Independent governance may audit claim/evidence links, provenance, transfer, provider identity, validation scope, current documentation, and maintenance records, but it must not promote maintenance prose above current subject contracts.
+```text
+claim identity ambiguity != scientific contradiction
+MockProvider = deterministic fixture only
+structured verification != external scientific verification
+heuristic score != probability
+claim transfer != acceptance
+conflict preservation != conflict adjudication
+assertion basis != correctness
+coverage != quality
+coverage ratio != probability
+R1 != R3
+```
 
-## History discipline
+Do not promote a deterministic fixture, provider-adapter report, structured claim state, or clean maintenance result into vendor authentication, external corroboration, peer review, evidence sufficiency, or scientific truth.
 
-Historical records remain point-in-time evidence. Later evidence may change current interpretation through a dated correction or reconciliation; it does not rewrite the earlier record. Preserve negative, failed, missing, blocked, insufficient-evidence, superseded, and unknown states. Do not fabricate absent scanner or research-workflow runs.
+## Maintenance and evidence discipline
 
-## Independent audit outcome
+Periodic maintenance is an inspection opportunity, not a requirement to manufacture changes. `NO_CHANGE_REQUIRED` is valid when no current defect or drift is demonstrated. Weekly or monthly synthesis requires an actual contract, calendar/phase, evidence, or drift reason.
 
-Separate current facts, historical facts, corrections, external claims, execution evidence, inference, and unknown state. When a concise governance status is useful, use `HEALTHY`, `REPAIR`, `COORDINATE`, or `BLOCKED`.
+The 2026-08-24 through 2026-08-31 research stage is closed historical evidence. The 2026-09-01 post-stage repair is the dated starting checkpoint for steady-state maintenance; current merged `main` may supersede it through explicit current evidence or reconciliation.
 
-`HEALTHY` means no repair is required for the audited surface. If repair is justified, change only the owning current file(s) and the contracts or projections that must remain synchronized. Do not create activity-only edits.
+Execution evidence exists only when execution actually occurred and its result was preserved. Preserve negative, failed, missing, blocked, insufficient-evidence, superseded, and unknown states. Do not fabricate absent scanner or research-workflow runs.
 
-## Public boundary and handoff
+## Repair boundary
 
-This kernel is intentionally repository-bounded and does not require reconstruction of unavailable operator context or unrelated orchestration.
+When drift is confirmed, identify the owning current surface and every machine contract, router, or current explanation that must remain synchronized. Make the smallest truthful change, keep configured paths repository-relative and inside the repository root, preserve configuration identity where required, and do not rewrite historical bodies.
 
-A durable audit should leave the next reviewer able to identify the base `main` SHA, scope and evidence window, authority used, checks run, checks not run, current findings, historical findings, corrections, unresolved items, and whether history and negative evidence were preserved.
-
-Independent governance may recommend or prepare bounded changes. Final merge and doctrine authority remains with the maintainer.
+Independent governance may recommend or prepare bounded changes. Delivery mechanics are session- and maintainer-controlled rather than encoded as repository doctrine. Final merge and doctrine authority remains with the maintainer.

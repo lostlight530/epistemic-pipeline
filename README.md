@@ -2,7 +2,7 @@
 
 > Evidence-aware state-machine execution for research workflows, with explicit claim/evidence/conflict structure, runtime policy, recovery identity, provenance, claim verification, claim transfer, assertion basis, dimensional audit coverage, compact evidence handoff, and phase-aware maintenance
 
-[Architecture](ARCHITECTURE.md) · [Research Contract](RESEARCH_CONTRACT.md) · [Claim Audit Contract](CLAIM_AUDIT_CONTRACT.md) · [Claim Transfer Contract](CLAIM_TRANSFER_CONTRACT.md) · [Assertion Basis & Audit Coverage](ASSERTION_BASIS_AND_AUDIT_COVERAGE.md) · [Maintenance](MAINTENANCE_CADENCE.md) · [Document Status](DOCUMENT_STATUS.md) · [August Stage Close](STAGE_2026_08_MAINTENANCE.md) · [Customization](CUSTOMIZATION_GUIDE.md) · [Frontier Alignment](FRONTIER_ALIGNMENT.md)
+[Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Claim Audit Contract](docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md) · [Claim Transfer Contract](docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md) · [Assertion Basis & Audit Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Customization](docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md)
 
 ## Positioning
 
@@ -348,11 +348,11 @@ python core/claim_transfer.py claim-audits/<run>.claim-audit.json \
 
 ## Daily / weekly / monthly maintenance
 
-Maintenance is defined in [MAINTENANCE_CADENCE.md](MAINTENANCE_CADENCE.md)
+Maintenance is defined in [MAINTENANCE_CADENCE.md](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md)
 
-Current document authority is defined in [DOCUMENT_STATUS.md](DOCUMENT_STATUS.md)
+Current document authority is defined in [DOCUMENT_STATUS.md](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md)
 
-The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](STAGE_2026_08_MAINTENANCE.md)
+The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 ```bash
 python core/maintenance_cadence.py daily
@@ -368,7 +368,7 @@ calendar_month: calendar-month-close
 stage: closed
 ```
 
-Historical `FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, and `SIX_DAY_CONSOLIDATION.md` remain historical snapshots rather than current contracts
+Historical `docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md`, `FIVE_DAY_CONSOLIDATION.md`, and `SIX_DAY_CONSOLIDATION.md` remain historical snapshots rather than current contracts
 
 ## Stage-close research calibration
 
@@ -392,7 +392,7 @@ Borrowed: explicit audit objects, dimensional coverage, contradiction visibility
 
 Not claimed: provenance soundness, universal scientific-review verdicts, citation correctness, calibrated truth probability, peer review, or independent reproduction
 
-See [FRONTIER_ALIGNMENT.md](FRONTIER_ALIGNMENT.md)
+See [FRONTIER_ALIGNMENT.md](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md)
 
 ## Cross-repository handoff
 

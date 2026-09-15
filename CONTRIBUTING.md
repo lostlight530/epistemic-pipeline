@@ -8,15 +8,15 @@ Read
 
 ```text
 README.md
-ARCHITECTURE.md
-RESEARCH_CONTRACT.md
-DOCUMENT_STATUS.md
-MAINTENANCE_CADENCE.md
+docs/01-source-and-explanation/ARCHITECTURE.md
+docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
+docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
 MANIFEST.yaml
 AGENTS.md
 ```
 
-Use `DOCUMENT_STATUS.md` to distinguish current authority from historical consolidation snapshots
+Use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical consolidation snapshots
 
 ## Contribution principles
 
@@ -46,7 +46,7 @@ When changing claim/evidence structures
 - do not turn claim audit into `verified=true`
 - preserve assertion/observation basis for new audit fields
 - keep coverage dimensional; do not create an aggregate research-quality score
-- update Claim Audit, Assertion Basis, Manifest, examples, and relevant current docs
+- update the contracts under `docs/02-examples-and-contracts/`, Manifest, examples, and relevant current docs
 
 ## Claim-transfer changes
 
@@ -58,7 +58,7 @@ When changing transfer behavior
 - never remove conflict context to make a downstream handoff look cleaner
 - never upgrade heuristic scores to probability
 - never imply acceptance, peer review, or evidence sufficiency through transfer
-- synchronize `CLAIM_TRANSFER_CONTRACT.md`, Manifest, examples, and downstream profile references
+- synchronize `docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md`, Manifest, examples, and downstream profile references
 
 ## Assertion-basis rule
 
@@ -103,9 +103,9 @@ PROV-aligned JSON must not be described as PROV-O RDF unless a real serializer e
 
 ## Daily / weekly / monthly maintenance
 
-Maintenance rules are defined in `MAINTENANCE_CADENCE.md` and `maintenance/cadence.yaml`
+Maintenance rules are defined in `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md` and `maintenance/cadence.yaml`
 
-Current document/historical roles are defined in `DOCUMENT_STATUS.md`
+Current document/historical roles are defined in `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`
 
 ```text
 daily -> bounded demonstrated runtime/claim/evidence drift
