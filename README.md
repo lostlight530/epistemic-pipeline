@@ -1,5 +1,7 @@
 # Epistemic Pipeline
 
+[![DOI](https://zenodo.org/badge/1274159348.svg)](https://zenodo.org/badge/latestdoi/1274159348)
+
 > Evidence-aware state-machine execution for research workflows, with explicit claim/evidence/conflict structure, runtime policy, recovery identity, provenance, claim verification, claim transfer, assertion basis, dimensional audit coverage, compact evidence handoff, and phase-aware maintenance
 
 [Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Claim Audit Contract](docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md) · [Claim Transfer Contract](docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md) · [Assertion Basis & Audit Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Customization](docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md)
