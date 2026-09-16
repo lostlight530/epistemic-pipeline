@@ -1,6 +1,6 @@
 # Epistemic Pipeline
 
-[![DOI](https://zenodo.org/badge/1274159348.svg)](https://zenodo.org/badge/latestdoi/1274159348)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22791463.svg)](https://doi.org/10.5281/zenodo.22791463)
 
 > Evidence-aware state-machine execution for research workflows, with explicit claim/evidence/conflict structure, runtime policy, recovery identity, provenance, claim verification, claim transfer, assertion basis, dimensional audit coverage, compact evidence handoff, and phase-aware maintenance
 
