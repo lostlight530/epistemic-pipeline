@@ -4,6 +4,8 @@
   "name": "Epistemic Pipeline",
   "description": "An evidence-aware state-machine research execution toolkit with explicit runtime policies, bounded score propagation, digest-bound checkpoints, provenance, claim verification, and portable evidence handoff.",
   "codeRepository": "https://github.com/lostlight530/epistemic-pipeline",
+  "identifier": "https://doi.org/10.5281/zenodo.22791463",
+  "datePublished": "2026-09-16",
   "license": "https://spdx.org/licenses/MIT.html",
   "author": {
     "@type": "Person",
