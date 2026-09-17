@@ -1,10 +1,10 @@
 # Contributing — Epistemic Pipeline
 
-Changes should strengthen explicit research-execution semantics, evidence traceability, portable constraints, or honest maintenance boundaries rather than merely increase module count
+Changes should strengthen explicit research-execution semantics, evidence traceability, portable constraints, or honest maintenance boundaries rather than merely increase module count.
 
 ## Before changing the repository
 
-Read
+Read:
 
 ```text
 README.md
@@ -12,100 +12,65 @@ docs/01-source-and-explanation/ARCHITECTURE.md
 docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
 docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
 docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
+docs/03-maintenance-and-audit/independent-gpt/README.md
 MANIFEST.yaml
 AGENTS.md
 ```
 
-Use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical consolidation snapshots
+For maintenance work, start from exact current merged `main`, inspect live PRs/branches for overlapping ownership, and identify the owning surface before writing.
+
+Record, when applicable:
+
+```text
+repository + owning surface/task + logical period/evidence window
++ producer/maintainer + exact base revision + run identity when available
+```
+
+Overlap means `COORDINATE`. No confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
 
 ## Contribution principles
 
-1. Change the smallest layer that owns the requirement
-2. Keep graph/state/provider/policy/score/trace/provenance/claim-audit/claim-transfer/envelope concerns separate
-3. Fail explicitly for unsupported machine checks, wrong sidecar profiles, missing requested claims, and ambiguous recovery identity
-4. Keep provider/model/version metadata unknown when unknown; preserve assertion basis for metadata that is known
-5. Never infer scientific truth from structural success
-6. Preserve conflicts and non-probability score semantics during transfer
-7. Keep experimental modules experimental until deliberately integrated
-8. Update authoritative documentation when public semantics change
-9. Do not rewrite historical Day-N snapshots merely because current terminology changed
+1. Change the smallest layer that owns the requirement.
+2. Keep graph/state/provider/policy/score/trace/provenance/claim-audit/claim-transfer/envelope concerns separate.
+3. Fail explicitly for unsupported checks, wrong profiles, missing requested claims, and ambiguous recovery identity.
+4. Keep provider/model/version metadata unknown when unknown; preserve assertion basis when known.
+5. Never infer scientific truth from structural success.
+6. Preserve conflicts and non-probability score semantics during transfer.
+7. Keep experimental modules experimental until deliberately integrated.
+8. Update authoritative documentation when public semantics change.
+9. Do not rewrite historical snapshots merely because terminology changes later.
 
-## Stable internal identifiers
+## Core evidence boundaries
 
-Do not introduce decorative project versions such as `@1`, `@2`, `/v1`, or fake fixture/model versions
+```text
+claim indexed != claim true
+evidence linked != evidence sufficient
+structured verification != scientific verification
+heuristic score != probability
+runtime-policy pass != truth
+claim transfer != acceptance
+identity ambiguity != contradiction
+provider report != vendor authentication
+coverage != provenance soundness
+```
 
-Preserve actual external standard/runtime versions when those are real
-
-## Claim/evidence changes
-
-When changing claim/evidence structures
-
-- retain claim IDs separately from prose
-- never manufacture missing evidence refs
-- keep conflict records distinct from adjudication
-- do not turn claim audit into `verified=true`
-- preserve assertion/observation basis for new audit fields
-- keep coverage dimensional; do not create an aggregate research-quality score
-- update the contracts under `docs/02-examples-and-contracts/`, Manifest, examples, and relevant current docs
+Any new claim/evidence field must state both the value and how this repository obtained it. Caller-declared or provider-reported basis does not become correctness, peer review, or external authentication.
 
 ## Claim-transfer changes
 
-When changing transfer behavior
+When changing transfer behavior:
 
-- require the expected source profile
-- fail explicitly for missing requested claim IDs
-- preserve source/evidence refs, structural observations, conflicts, heuristic-score semantics, and audit state
-- never remove conflict context to make a downstream handoff look cleaner
-- never upgrade heuristic scores to probability
-- never imply acceptance, peer review, or evidence sufficiency through transfer
-- synchronize `docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md`, Manifest, examples, and downstream profile references
+- require the expected source profile;
+- fail explicitly for missing requested claim IDs;
+- preserve source/evidence refs, structural observations, conflicts, heuristic-score semantics, and audit state;
+- never remove conflict context to make a handoff look cleaner;
+- never upgrade heuristic scores to probability;
+- never imply acceptance, peer review, or evidence sufficiency through transfer;
+- synchronize the transfer contract, Manifest, examples, and downstream profile references when semantics actually change.
 
-## Assertion-basis rule
+## Maintenance workflow
 
-A new audit field should answer both
-
-```text
-What value is recorded
-How did this repository obtain that value
-```
-
-If the basis is only a provider report or caller declaration, say so. Do not upgrade it to vendor authentication, external verification, or scientific truth
-
-## Coverage rule
-
-```text
-coverage != provenance soundness
-coverage != scientific validity
-coverage ratio != probability
-```
-
-The current repository has no validated weighting regime for a composite audit-quality score, so `aggregate_score` remains `null`
-
-## Score changes
-
-Any new score semantics must state whether values are heuristic, empirically calibrated, probabilistic, or something else
-
-`[0,1]` alone is not evidence of probability semantics
-
-## Provider integrations
-
-Real providers belong behind `LLMProvider`
-
-Their `describe()` metadata must reflect what the integration actually knows and include truthful assertion basis
-
-Do not guess model versions or infer AI authorship/use from prose
-
-## Trace/provenance changes
-
-OpenTelemetry naming alignment must not be described as an OTel exporter unless implemented
-
-PROV-aligned JSON must not be described as PROV-O RDF unless a real serializer exists
-
-## Daily / weekly / monthly maintenance
-
-Maintenance rules are defined in `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md` and `maintenance/cadence.yaml`
-
-Current document/historical roles are defined in `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`
+Maintenance is defined by `DOCUMENT_STATUS.md`, `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `AGENTS.md`, and the Independent GPT recovery kernel.
 
 ```text
 daily -> bounded demonstrated runtime/claim/evidence drift
@@ -113,20 +78,26 @@ weekly -> full current evidence/document reconciliation
 monthly -> calendar-month or explicit phase-close baseline
 ```
 
-Current closed stage
+Cadence is not an obligation to manufacture a change. Daily/Weekly work may coalesce into one real branch/PR when they own the same correction.
 
-```text
-window: 2026-08-24 -> 2026-08-31
-calendar_month: calendar-month-close
-stage: closed
-```
+The maintenance scanner `.py` implementation is not rewritten merely to synchronize governance prose. Source/config inspection is not scanner execution.
 
-Maintenance reports are structural evidence only
+Before delivery:
+
+1. verify the aggregate diff against the exact base;
+2. refresh current `main` and live overlap;
+3. list checks actually executed and checks not run;
+4. open one bounded **Draft PR**;
+5. stop for maintainer review.
+
+Use `NOT_EXECUTED` for an unrun checker/test and `EXECUTION_NOT_OBSERVED` when execution itself was not observed.
 
 ```text
 maintenance clean != scientific validity
 calendar close != reproduction
 history inventory != deprecation decision
+checker source != checker execution
+Draft PR != validation success
 ```
 
 ## Cross-repository changes
@@ -144,12 +115,14 @@ sci-render-kit/figure-evidence
 sci-render-kit/communication-transfer
 ```
 
-References do not inherit truth or scientific validity
+References do not inherit truth, acceptance, or scientific validity.
 
 ## Governance boundary
 
-Local/manual checks may be used when useful
+Local/manual checks may be used when useful. Test execution is engineering evidence for the tested surface, not scientific-validation evidence.
 
-Do not add GitHub Actions, CI, CodeQL, dependency bots, branch protection, or merge-gate architecture as ordinary maintenance unless explicitly requested
+Do not add GitHub Actions, CI, CodeQL, dependency bots, branch protection, or merge-gate architecture as ordinary maintenance unless explicitly requested.
 
-Test execution is not scientific-validation evidence and is not a default completion gate for this repository-maintenance workflow
+Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may encode the effect of a rule without copying private control text.
+
+Final review, doctrine, and merge authority remains with the maintainer.
