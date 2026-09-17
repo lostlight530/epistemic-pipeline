@@ -1,46 +1,28 @@
 # Contributing — Epistemic Pipeline
 
-Changes should strengthen explicit research-execution semantics, evidence traceability, portable constraints, or honest maintenance boundaries rather than merely increase module count.
+Contributions should strengthen explicit research-execution semantics, evidence traceability, portable constraints, tests, documentation, or public metadata without turning structural success into scientific truth.
 
-## Before changing the repository
+## Start from the owning surface
 
-Read:
-
-```text
-README.md
-docs/01-source-and-explanation/ARCHITECTURE.md
-docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
-docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
-docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
-docs/03-maintenance-and-audit/independent-gpt/README.md
-MANIFEST.yaml
-AGENTS.md
-```
-
-For maintenance work, start from exact current merged `main`, inspect live PRs/branches for overlapping ownership, and identify the owning surface before writing.
-
-Record, when applicable:
-
-```text
-repository + owning surface/task + logical period/evidence window
-+ producer/maintainer + exact base revision + run identity when available
-```
-
-Overlap means `COORDINATE`. No confirmed defect means `NO_CHANGE_REQUIRED` and no activity-only branch/PR. **Write never probes.**
+- implementation under `core/`, `graphs/`, `states/`, and `roles/` owns runtime behavior;
+- `validators/` owns explicit machine predicates;
+- `MANIFEST.yaml` owns the machine-readable capability map;
+- `docs/02-examples-and-contracts/` owns claim/evidence/transfer semantics;
+- `docs/01-source-and-explanation/` and README explain current behavior;
+- `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` routes current documents and historical evidence;
+- root metadata, `.github/`, security, citation, CodeMeta, and release files are repository infrastructure.
 
 ## Contribution principles
 
 1. Change the smallest layer that owns the requirement.
-2. Keep graph/state/provider/policy/score/trace/provenance/claim-audit/claim-transfer/envelope concerns separate.
+2. Keep graph, state, provider, runtime policy, score, trace, provenance, claim audit, claim transfer, and evidence-envelope concerns separate.
 3. Fail explicitly for unsupported checks, wrong profiles, missing requested claims, and ambiguous recovery identity.
-4. Keep provider/model/version metadata unknown when unknown; preserve assertion basis when known.
-5. Never infer scientific truth from structural success.
-6. Preserve conflicts and non-probability score semantics during transfer.
-7. Keep experimental modules experimental until deliberately integrated.
-8. Update authoritative documentation when public semantics change.
-9. Do not rewrite historical snapshots merely because terminology changes later.
+4. Preserve unknown provider/model/version metadata rather than guessing.
+5. Preserve conflicts and the non-probability semantics of heuristic scores.
+6. Update machine contracts and public documentation only when their semantics actually change.
+7. Keep historical point-in-time records recoverable.
 
-## Core evidence boundaries
+## Evidence boundaries
 
 ```text
 claim indexed != claim true
@@ -49,80 +31,55 @@ structured verification != scientific verification
 heuristic score != probability
 runtime-policy pass != truth
 claim transfer != acceptance
-identity ambiguity != contradiction
 provider report != vendor authentication
-coverage != provenance soundness
+assertion basis != correctness
+coverage != quality
+repository DOI != claim evidence
 ```
 
-Any new claim/evidence field must state both the value and how this repository obtained it. Caller-declared or provider-reported basis does not become correctness, peer review, or external authentication.
+Any new claim/evidence field should make clear both the value and how the repository obtained it. Caller-declared or provider-reported basis does not become correctness, peer review, or external authentication.
 
 ## Claim-transfer changes
 
-When changing transfer behavior:
+When transfer behavior changes:
 
 - require the expected source profile;
 - fail explicitly for missing requested claim IDs;
-- preserve source/evidence refs, structural observations, conflicts, heuristic-score semantics, and audit state;
-- never remove conflict context to make a handoff look cleaner;
-- never upgrade heuristic scores to probability;
+- preserve source/evidence refs, observations, conflicts, score semantics, and audit state;
+- never remove conflict context merely to make a handoff cleaner;
+- never upgrade a heuristic score to probability;
 - never imply acceptance, peer review, or evidence sufficiency through transfer;
-- synchronize the transfer contract, Manifest, examples, and downstream profile references when semantics actually change.
+- synchronize the owning contract, Manifest, examples, and downstream profile references when semantics actually change.
 
-## Maintenance workflow
+## Verification
 
-Maintenance is defined by `DOCUMENT_STATUS.md`, `MAINTENANCE_CADENCE.md`, `maintenance/cadence.yaml`, `AGENTS.md`, and the Independent GPT recovery kernel.
+Run tests, validators, schema checks, or targeted commands relevant to the changed surface and supported by the environment. Record exact commands and observed results in the pull request.
 
-```text
-daily -> bounded demonstrated runtime/claim/evidence drift
-weekly -> full current evidence/document reconciliation
-monthly -> calendar-month or explicit phase-close baseline
-```
+An unrun validator, scanner, provider route, or external service is not a pass. Structural validation is engineering evidence for the tested predicates, not scientific validation.
 
-Cadence is not an obligation to manufacture a change. Daily/Weekly work may coalesce into one real branch/PR when they own the same correction.
+## Documentation and historical evidence
 
-The maintenance scanner `.py` implementation is not rewritten merely to synchronize governance prose. Source/config inspection is not scanner execution.
+Use `DOCUMENT_STATUS.md` to distinguish current contracts from dated/historical records. Correct current interpretation forward; do not rewrite historical snapshots merely to make them match later knowledge.
 
-Before delivery:
+## Publication and citation metadata
 
-1. verify the aggregate diff against the exact base;
-2. refresh current `main` and live overlap;
-3. list checks actually executed and checks not run;
-4. open one bounded **Draft PR**;
-5. stop for maintainer review.
+`CITATION.cff`, `codemeta.json`, and `RELEASE_POLICY.md` describe the public software publication. A DOI identifies an archived software object; it does not verify a claim, establish evidence sufficiency, calibrate a heuristic score, or reproduce an execution.
 
-Use `NOT_EXECUTED` for an unrun checker/test and `EXECUTION_NOT_OBSERVED` when execution itself was not observed.
+## Pull requests
 
-```text
-maintenance clean != scientific validity
-calendar close != reproduction
-history inventory != deprecation decision
-checker source != checker execution
-Draft PR != validation success
-```
+Use the repository pull-request template and include:
 
-## Cross-repository changes
+- the problem and bounded change;
+- affected implementation, validators, Manifest/contracts, examples, docs, or metadata;
+- evidence/rationale and semantic impact;
+- verification actually performed;
+- checks or environments not exercised;
+- compatibility and historical impact;
+- security/privacy impact;
+- a practical rollback.
 
-```text
-auto-doc-engine/artifact-record
-auto-doc-engine/artifact-lineage
-        ↓
-epistemic-pipeline/claim-verification
-epistemic-pipeline/claim-transfer
-epistemic-pipeline/evidence-envelope
-        ↓
-sci-render-kit/figure-claim-audit
-sci-render-kit/figure-evidence
-sci-render-kit/communication-transfer
-```
+## Security, privacy, license, and attribution
 
-References do not inherit truth, acceptance, or scientific validity.
+Follow `SECURITY.md` for sensitive reports. Do not publish credentials, private data, or exploit details requiring coordinated disclosure.
 
-## Governance boundary
-
-Local/manual checks may be used when useful. Test execution is engineering evidence for the tested surface, not scientific-validation evidence.
-
-Do not add GitHub Actions, CI, CodeQL, dependency bots, branch protection, or merge-gate architecture as ordinary maintenance unless explicitly requested.
-
-Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may encode the effect of a rule without copying private control text.
-
-Final review, doctrine, and merge authority remains with the maintainer.
+Contributions to repository-owned work are licensed under the repository license. Third-party material retains its original attribution and licensing, and Git/PR history remains the source of contribution attribution.
