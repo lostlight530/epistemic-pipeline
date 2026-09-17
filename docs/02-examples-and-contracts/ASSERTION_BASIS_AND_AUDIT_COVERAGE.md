@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / EVIDENCE CONTRACT`
+> - **Role:** Current contract separating assertion/observation basis from dimensional claim-audit coverage
+> - **Authority:** Owning prose authority for field acquisition basis and coverage meaning
+> - **Current meaning:** Use basis to say how a field entered the audit and coverage to say which structured dimensions are present; neither is correctness
+> - **Evidence / implementation boundary:** structured-verify output is not external scientific verification; copied sidecar data is not independently reverified; coverage ratio is not probability or provenance soundness
+> - **Cross-repository relation:** Upstream auto-doc artifacts may be referenced; downstream sci-render communication may consume bounded claim context. Neither direction creates hidden runtime coupling or inherited scientific validity
+> - **Update trigger:** Update only when the owned runtime/evidence contract, implemented claim semantics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current authority without rewriting historical stage evidence
+
 # Assertion Basis & Claim Audit Coverage — epistemic-pipeline
 
 **Calibration:** 2026-08-31  

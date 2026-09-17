@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / TRANSFER CONTRACT`
+> - **Role:** Current bounded handoff contract for selected claim-audit records
+> - **Authority:** Owning prose authority for what survives claim transfer and what must not be inherited
+> - **Current meaning:** Transfer preserves claim context, ambiguity, conflicts, evidence refs, observations, scores, and explicit non-inheritance constraints without re-adjudicating them
+> - **Evidence / implementation boundary:** selection is not acceptance; copied records are not independently verified; downstream systems do not inherit scientific validity, evidence sufficiency, peer review, or probability semantics
+> - **Cross-repository relation:** Upstream auto-doc artifacts may be referenced; downstream sci-render communication may consume bounded claim context. Neither direction creates hidden runtime coupling or inherited scientific validity
+> - **Update trigger:** Update only when the owned runtime/evidence contract, implemented claim semantics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current authority without rewriting historical stage evidence
+
 # Claim Transfer Contract — Epistemic Pipeline
 
 **Status:** implemented project-owned handoff contract  

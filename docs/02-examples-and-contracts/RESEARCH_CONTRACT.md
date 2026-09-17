@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `DEFINITION / RESEARCH CONTRACT`
+> - **Role:** Top-level scientific-integrity contract tying runtime semantics, evidence relations, recovery identity, provenance, claim audit/transfer, coverage, and handoff together
+> - **Authority:** Repository-native integration authority for epistemic-pipeline research semantics
+> - **Current meaning:** Use this contract to keep run success, policy checks, evidence links, claim states, provenance, transfer, and reproduction as distinct evidence objects
+> - **Evidence / implementation boundary:** run success is not scientific validity; evidence link is not sufficiency; claim transfer is not acceptance; convergence is not certainty; maintenance clean is not truth
+> - **Cross-repository relation:** Upstream auto-doc artifacts may be referenced; downstream sci-render communication may consume bounded claim context. Neither direction creates hidden runtime coupling or inherited scientific validity
+> - **Update trigger:** Update only when the owned runtime/evidence contract, implemented claim semantics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current authority without rewriting historical stage evidence
+
 # Research Contract — Epistemic Pipeline
 
 **Calibration:** 2026-08-31  

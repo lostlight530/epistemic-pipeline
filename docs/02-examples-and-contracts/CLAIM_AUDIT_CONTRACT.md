@@ -1,3 +1,14 @@
+> [!NOTE]
+> **Current architecture interpretation — 2026-09-18**
+> - **Subject class:** `METHOD / CLAIM-AUDIT CONTRACT`
+> - **Role:** Current contract for claim identity, source/evidence bindings, structural observations, conflicts, ambiguity, heuristic scores, and audit state
+> - **Authority:** Owning prose authority for `epistemic-pipeline/claim-verification` semantics
+> - **Current meaning:** Treat audit states as descriptive structured observations, never accepted/rejected truth verdicts; preserve identity/origin ambiguity rather than collapsing it
+> - **Evidence / implementation boundary:** indexed/linked/structurally checked does not mean true; no conflict is not corroboration; record hashes are not semantic truth
+> - **Cross-repository relation:** Upstream auto-doc artifacts may be referenced; downstream sci-render communication may consume bounded claim context. Neither direction creates hidden runtime coupling or inherited scientific validity
+> - **Update trigger:** Update only when the owned runtime/evidence contract, implemented claim semantics, or handoff constraints materially change
+> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current authority without rewriting historical stage evidence
+
 # Claim Audit Contract — Epistemic Pipeline
 
 **Calibration:** 2026-09-01  
