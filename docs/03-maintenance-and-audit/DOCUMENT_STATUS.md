@@ -2,15 +2,15 @@
 
 **Status:** active document-governance router  
 **Calibrated:** 2026-09-17  
-**Stage:** August 2026 evidence-infrastructure phase closed on 2026-08-31
+**Stage note:** the August 2026 evidence-infrastructure phase closed on 2026-08-31
 
-This file routes repository materials by current role and authority. It is a classifier/router, not an independent source of runtime, claim, provider, evidence-sufficiency, or scientific truth.
+This file classifies current repository surfaces by role and authority. It is a router, not an independent source of runtime behavior, claim truth, provider identity, evidence sufficiency, or scientific validity.
 
-See `docs/README.md` for the three-class taxonomy.
+See `docs/README.md` for the repository documentation taxonomy.
 
-## Class 01 — source and explanation
+## Class 01 — implementation and explanation
 
-Primary implementation and explanatory surfaces include:
+Primary implementation and explanatory surfaces:
 
 ```text
 core/
@@ -23,13 +23,13 @@ README.md
 docs/01-source-and-explanation/ARCHITECTURE.md
 ```
 
-Implementation determines actual runtime behavior. README/Architecture explain current behavior and must follow implemented and contracted boundaries.
+Implementation determines actual runtime behavior. README and Architecture explain current behavior and must remain bounded by implementation and active contracts.
 
-`core/maintenance_cadence.py` is executable source in this class. Scanner source presence is not scanner execution.
+`core/maintenance_cadence.py` is executable source. Source presence is not scanner execution.
 
-## Class 02 — examples and contracts
+## Class 02 — machine rules, research contracts, examples, and scholarly metadata
 
-Current capability/usage constraints include:
+Current capability and evidence constraints include:
 
 ```text
 MANIFEST.yaml
@@ -43,14 +43,27 @@ examples/
 AGENTS.md
 CONTRIBUTING.md
 CITATION.cff
+codemeta.json
+RELEASE_POLICY.md
 LICENSE
 ```
 
-`MANIFEST.yaml` and validators are machine-readable capability/rule surfaces. Specialized evidence contracts define their named semantics. Structural state, validator success, and imported references do not become scientific truth merely by being indexed or machine-readable.
+`MANIFEST.yaml` and validators are machine-readable capability/rule surfaces. Specialized contracts define the semantics of claim, evidence, transfer, assertion-basis, and coverage records.
 
-## Class 03 — maintenance and audit
+Structural state, validator success, linked evidence, imported references, and machine-readable metadata do not become scientific truth merely by being present or parseable.
 
-Current maintenance/governance surfaces:
+`CITATION.cff`, `codemeta.json`, and `RELEASE_POLICY.md` describe public software discovery, citation, release, and archival identity.
+
+```text
+repository DOI != claim verification
+citation metadata != evidence sufficiency
+publication identity != current runtime state
+DOI != R3 reproduction
+```
+
+## Class 03 — current maintenance and repository governance
+
+Current maintenance surfaces include:
 
 ```text
 docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
@@ -59,69 +72,49 @@ docs/03-maintenance-and-audit/README.md
 docs/03-maintenance-and-audit/independent-gpt/README.md
 maintenance/cadence.yaml
 .github/pull_request_template.md
-.github/ISSUE_TEMPLATE/governance.md
+.github/ISSUE_TEMPLATE/
 ```
 
-The Independent GPT file is a public cold-start recovery/delivery router inside Class 03. It does not create a fourth class and does not outrank implementation, validators, or active subject-specific evidence contracts.
+These files govern maintenance, recovery, contribution, and delivery behavior. They do not outrank implementation, validators, machine contracts, or subject-specific research contracts for epistemic semantics.
 
-Dated maintenance evidence includes:
+## Historical and dated evidence
+
+Dated maintenance records and materials under the maintenance `history/` tree remain point-in-time evidence. The August stage, frontier material, FOUR/FIVE/SIX_DAY consolidations, correction records, demonstrations, and later dated reconciliations remain recoverable at their original time boundary.
 
 ```text
-maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
-maintenance/POST_STAGE_REPAIR_2026_09_01.md
-maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
-maintenance/FRONTIER_REFRESH_2026_09_01_THROUGH_2026_09_06.md
-maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
+historical snapshot != current contract
+current path presence != earlier execution
+later success != earlier success
+correction != history rewrite
 ```
 
-Closed-stage/historical evidence includes the `history/` stage, frontier, FOUR/FIVE/SIX_DAY, Jules-correction, and superseded design materials. These remain point-in-time evidence.
+A later current document can narrow or correct interpretation without pretending that the corrected meaning existed at the earlier observation time.
 
-## Two authority questions must not be collapsed
+## Current authority by question
 
-### Claim / evidence / runtime semantics
+### Runtime / claim / evidence question
 
 ```text
 current implementation
-> current validator / machine-readable rule / configuration for the subject
+> current validator or machine-readable rule/configuration for the subject
 > active subject-specific contract
-> executable/operational evidence for supported use
+> revision-matched executable/operational evidence
 > current explanatory documentation
-> maintenance evidence
+> current maintenance/document router
 > historical records
 ```
 
-### Maintenance-control recovery
+### Publication or citation question
 
 ```text
-current merged main implementation
-> MANIFEST.yaml / validators / machine-readable configuration
-> latest relevant dated repair or current maintenance record
-> DOCUMENT_STATUS.md
-> AGENTS.md
-> active subject-specific contracts
-> MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
-> current Architecture / README explanation
-> historical snapshots / superseded plans / PR-task narratives
+CITATION.cff / codemeta.json / RELEASE_POLICY.md / DOI record
 ```
 
-A newer maintenance observation does not outrank implementation for claim truth or evidence sufficiency.
+These identify the software publication and citation surface; they do not validate the repository's claims or external evidence.
 
-## Maintenance task ownership
+### Maintenance/document-routing question
 
-A maintenance attempt should retain, when applicable:
-
-```text
-repository
-+ owning surface/task
-+ logical period/evidence window
-+ producer/maintainer
-+ exact base revision
-+ run identity when available
-```
-
-Before a write, inspect current open PRs/live branches for overlapping ownership. Same owning surface and period with another live owner means `COORDINATE`, not a parallel repair.
-
-No confirmed defect means `NO_CHANGE_REQUIRED`; do not create activity-only branch/PR churn. **Write never probes.**
+Use the current maintenance contract, this router, cadence configuration, and current repository state. Dated maintenance records inform history but remain time-scoped.
 
 ## Epistemic hard boundaries
 
@@ -141,21 +134,6 @@ coverage ratio != probability
 
 `validators/` may define machine rules but cannot silently promote a structural result into probability, source authority, external corroboration, peer review, or scientific truth.
 
-## Dated evidence interpretation
-
-The 2026-08-31 cadence demonstration is historical/reference evidence, not an automatically preserved clean scanner or research-workflow run.
-
-The 2026-09-01 repair records post-stage hardening without reopening August. The 2026-09-06 reconciliation records authority/cadence correction. The frontier refresh is source-bounded calibration, not scientific verification.
-
-The 2026-09-13 reconciliation remains valid point-in-time evidence that the pass found `NO_CHANGE_REQUIRED` for implementation/evidence-contract semantics, refreshed maintenance observation through 2026-09-13, kept September month-to-date, and did not fabricate absent scanner/research runs. It does not mechanically advance `MANIFEST.yaml` or external-research calibration.
-
-```text
-maintenance freshness != evidence-contract calibration
-structured state != scientific verdict
-latest observation != highest semantic authority
-NO_CHANGE_REQUIRED != skipped inspection
-```
-
 ## Execution evidence boundary
 
 ```text
@@ -166,40 +144,10 @@ contract inspection != checker PASS
 historical PASS != current PASS
 ```
 
-Unrun checks are `NOT_EXECUTED`. Unobserved scheduler/workflow execution is `EXECUTION_NOT_OBSERVED` when material.
+Unknown or unexecuted evidence remains unknown or unexecuted. A document or metadata update must not manufacture runtime evidence.
 
-## Historical preservation
+## Current stage interpretation
 
-Do not rewrite historical bodies merely because current terminology, paths, or behavior changed. Correct forward through a current file, correction, reconciliation, or later time-point record.
+The 2026-08-24 through 2026-08-31 evidence-infrastructure phase is closed. Later maintenance and publication updates do not reopen that historical phase.
 
-```text
-historical snapshot != current contract
-historical != invalid
-later success != earlier success
-correction != history rewrite
-agent completion claim != current verification
-path relocation != semantic change
-```
-
-## Stage status
-
-```text
-window: 2026-08-24 -> 2026-08-31
-calendar_month: closed
-research_phase: closed
-September 2026: month-to-date until natural month close
-```
-
-Post-stage maintenance does not reopen August.
-
-## Delivery boundary
-
-For a confirmed maintenance repair, verify the aggregate branch diff, refresh current-main/live-overlap state, open one bounded **Draft PR**, and stop for maintainer review. Do not auto-merge, force-push, or write maintenance repairs directly to `main`.
-
-```text
-Draft PR != validation success
-maintenance clean != evidence sufficiency
-calendar close != scientific validation
-historical agent narrative != current repository truth
-classification != deletion authority
-```
+Current September state must be recovered from current repository truth and current dated records rather than copied from an August or earlier September snapshot.
