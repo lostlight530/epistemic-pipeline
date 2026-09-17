@@ -1,26 +1,16 @@
 # Agent Guide — Epistemic Pipeline
 
-This guide defines how coding/research agents should modify the repository without overstating scientific authority
+This guide defines how coding/research agents should modify the repository without overstating scientific authority.
 
-Implementation in `core/`, `states/`, `graphs/`, `validators/` plus active contracts define current semantics
-
-If docs disagree with code, correct one explicitly and never invent a capability to reconcile them
+Implementation in `core/`, `states/`, `graphs/`, `validators/` plus active contracts define current semantics. If docs disagree with code or machine rules, correct the owning layer explicitly and never invent a capability to reconcile them.
 
 ## Document authority
 
-Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation work
+Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation or governance work.
 
 Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical evidence. It is a dated correction record, not a current authority layer.
 
-Current authoritative documents may be updated when source truth changes
-
-Historical consolidation snapshots remain time-scoped records, not current contracts
-
-```text
-docs/03-maintenance-and-audit/history/FOUR_DAY_CONSOLIDATION.md
-docs/03-maintenance-and-audit/history/FIVE_DAY_CONSOLIDATION.md
-docs/03-maintenance-and-audit/history/SIX_DAY_CONSOLIDATION.md
-```
+Historical consolidation snapshots remain time-scoped records, not current contracts.
 
 ```text
 historical snapshot != current contract
@@ -28,46 +18,65 @@ later terminology != permission to rewrite history
 historical agent PR narrative != current evidence contract
 ```
 
-### Recovery order
+## Recovery orders
+
+Do not collapse maintenance-control recovery and claim/evidence/runtime semantic authority.
+
+### Maintenance-control recovery
 
 ```text
-current main implementation
-> current machine-readable capability contract / schema / configuration for the subject
-> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for the subject
-> operational examples / configuration / test evidence for supported use
-> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
-> maintenance / audit / reconciliation evidence
+current merged main implementation
+> MANIFEST.yaml / validators / current machine-readable configuration
+> latest relevant dated repair or current maintenance record
+> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+> AGENTS.md
+> active subject-specific contracts
+> docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md / maintenance/cadence.yaml
+> current Architecture / README explanation
 > historical snapshots / superseded plans / PR-task narratives
 ```
 
-An agent-generated PR body is proposal/delivery metadata, not a substitute for inspecting the actual current tree.
+### Subject-specific semantics
+
+```text
+current implementation
+> current validator / machine-readable contract / configuration for the subject
+> active subject-specific contract
+> executable/operational evidence for supported use
+> current explanatory documentation
+> maintenance evidence
+> historical records
+```
+
+A maintenance record may be newer without becoming stronger authority for claim truth, evidence sufficiency, provider identity, or scientific validity.
+
+## Maintenance task identity
+
+Record, when applicable:
+
+```text
+repository
++ owning surface / task
++ logical period or evidence window
++ producer / maintainer
++ exact base revision
++ run identity when available
+```
+
+Before any write, inspect open PRs/live branches for the same owning surface and logical period.
+
+```text
+overlap -> COORDINATE
+no confirmed defect -> NO_CHANGE_REQUIRED
+confirmed current drift -> REPAIR
+unsafe or unrecoverable evidence/access -> BLOCKED
+```
+
+Do not create repository objects to test write access. **Write never probes.**
 
 ## Stable internal identifiers
 
-Project-owned profile names are unversioned semantic names
-
-Do not add decorative `@1/@2`, `/v1`, fake fixture/model versions, or similar pseudo-version suffixes
-
-Preserve real external standard/runtime versions when genuinely applicable
-
-```text
-epistemic-pipeline/engine
-epistemic-pipeline/runtime-policy
-epistemic-pipeline/trace
-epistemic-pipeline/checkpoint
-epistemic-pipeline/prov
-epistemic-pipeline/confidence-heuristic
-epistemic-pipeline/network-input
-epistemic-pipeline/claim-index
-epistemic-pipeline/claim-verification
-epistemic-pipeline/claim-transfer
-epistemic-pipeline/process-disclosure
-epistemic-pipeline/upstream-reference
-epistemic-pipeline/evidence-envelope
-epistemic-pipeline/reference-rules
-epistemic-pipeline/maintenance-cadence
-epistemic-pipeline/maintenance-report
-```
+Project-owned profile names are unversioned semantic names. Do not add decorative `@1/@2`, `/v1`, fake fixture/model versions, or similar pseudo-version suffixes. Preserve real external standard/runtime versions when genuinely applicable.
 
 ## System identity
 
@@ -91,112 +100,55 @@ graphs/*.yaml
 
 repository state
   -> daily / weekly / monthly maintenance
-       └─ current-document / calendar / stage reconciliation
+       └─ current-document / calendar / stage / delivery reconciliation
 ```
 
-## No hallucinated provider identity
-
-`LLMProvider.describe()` may contain only metadata actually known by the provider integration
-
-- unknown vendor/model/version -> `null` or omitted
-- never infer model identity from prompt style, class name, environment-variable name, or marketing copy
-- MockProvider remains a synthetic fixture with `model: null`, `version: null`, `external_model_call: false`
-- provider descriptions preserve assertion basis
-- the canonical path records `automatic_ai_detection_used: false`
-
-## Claim verification rules
-
-`core/claim_audit.py` records audit dimensions, not scientific verdicts
-
-Allowed descriptive states
+## Epistemic invariants
 
 ```text
-indexed_only
-evidence_bound
-structurally_checked
-conflict_recorded
-structurally_checked_with_conflict
-```
-
-Do not add universal `verified=true`, accepted/rejected/proven verdicts without a separately designed and evidenced scientific-review authority
-
-## Claim transfer rules
-
-`core/claim_transfer.py` may select existing claim records for downstream handoff, but transfer is not acceptance
-
-Required invariants
-
-```text
-scientific_validity_inherited: false
-evidence_sufficiency_inherited: false
-peer_review_inherited: false
-conflicts_must_remain_visible: true
-heuristic_scores_must_retain_non_probability_semantics: true
-```
-
-Never silently remove conflicts, upgrade audit states, convert heuristic scores into probabilities, or manufacture a missing requested claim ID
-
-Missing requested claim IDs fail explicitly
-
-## Assertion / observation basis rules
-
-Current bases include
-
-```text
-structured-analyze-output
-structured-verify-output
-structured-state-output
-provider-adapter-reported
-synthetic-fixture-runtime
-runtime-harness-state
-caller-declared
-runtime-observed-local-filesystem
-copied-from-local-claim-verification-sidecar
-```
-
-Never upgrade basis into correctness
-
-```text
-structured-verify-output != scientific verification
-provider-adapter-reported != vendor certification
-caller-declared review != peer review
-copied-from-sidecar != independently reverified
-```
-
-## Audit coverage rules
-
-Coverage remains dimensional
-
-Do not create a synthetic aggregate research-quality score
-
-```text
-coverage != provenance soundness
-coverage != scientific validity
+claim indexed != claim true
+evidence linked != evidence sufficient
+structured verification != external scientific verification
+heuristic score != probability
+runtime-policy pass != truth
+claim transfer != acceptance
+identity ambiguity != scientific contradiction
+conflict preservation != conflict adjudication
+assertion basis != correctness
+coverage != quality
 coverage ratio != probability
-coverage ratio != evidence sufficiency
+R1 != R3
 ```
 
-`aggregate_score` remains `null` unless a future explicitly validated evaluation regime is designed and documented
+Never silently remove conflicts, upgrade audit states, convert heuristic scores into probabilities, authenticate a provider from adapter prose, or manufacture a missing requested claim ID.
 
-## Score rules
+## Provider identity
 
-Never describe `[0,1]` as probability by default, convergence as certainty, score change as Bayesian update, or unfitted temperature scaling as calibrated probability
+`LLMProvider.describe()` may contain only metadata actually known by the integration.
 
-Historical agent prose that uses confidence language does not override these current semantics.
+- unknown vendor/model/version -> `null` or omitted;
+- never infer model identity from prompt style, class name, environment-variable name, or marketing copy;
+- MockProvider remains a synthetic fixture;
+- provider descriptions preserve assertion basis;
+- automatic AI detection is not part of the canonical path.
 
-## Provenance / trace rules
+## Claim verification / transfer
 
-`core/provenance.py` is PROV-aligned project JSON, not PROV-O RDF conformance
+`core/claim_audit.py` records audit dimensions, not scientific verdicts. Allowed structural states do not imply `verified=true`.
 
-`core/run_tracer.py` is project JSONL tracing, not an OpenTelemetry exporter or tamper-proof ledger
+`core/claim_transfer.py` may select existing claim records for downstream handoff, but transfer is not acceptance. Preserve source/evidence refs, audit state, conflicts, score semantics, and non-inheritance constraints.
 
-## Runtime policy rule
+## Assertion basis / coverage / score
 
-Machine behavior comes from `check` + explicit parameters
+Never upgrade basis into correctness. Coverage remains dimensional and does not become provenance soundness, scientific validity, probability, or evidence sufficiency. `aggregate_score` remains `null` absent a separately validated evaluation regime.
 
-Human-readable `rule` text is documentation only
+`[0,1]` alone is not probability semantics; convergence is not certainty; score movement is not a Bayesian update by default.
 
-Unknown checks fail explicitly
+## Provenance / trace / policy
+
+`core/provenance.py` is PROV-aligned project JSON, not PROV-O RDF conformance. `core/run_tracer.py` is project JSONL tracing, not OpenTelemetry export or a tamper-proof ledger.
+
+Machine behavior comes from implemented checks and explicit parameters. Human-readable rule text is documentation only. Unknown checks fail explicitly.
 
 ## Evidence-stack separation
 
@@ -209,26 +161,31 @@ claim transfer -> selected portable claim handoff
 evidence envelope -> compact run-level handoff + ref coverage
 ```
 
-Do not merge them into one proof object
+Do not merge them into one proof object.
 
-## Coding-agent provenance rules
+## Coding-agent provenance
 
-1. Jules/Codex/other agent task descriptions, PR bodies, generated summaries, framework comparisons, and completion claims are proposal/delivery metadata, not automatic current authority.
-2. Historical `tests passed`, engine execution, test counts, convergence, `fully aligned`, `complete`, or similar assertions require current re-verification before reuse as current facts.
-3. Structured JSON output, a verifier role, a gatekeeper, or a confidence-network implementation must not be rhetorically promoted into scientific verification, probability, or certainty.
-4. If later `main` or active contracts supersede an old agent narrative, correct forward in current records and preserve the old PR as history.
-
-```text
-requires re-verification != false
-historical != current
-agent confidence != scientific confidence
-```
+1. Jules/Codex/other task descriptions, PR bodies, summaries, framework comparisons, and completion claims are proposal/delivery metadata, not automatic current authority.
+2. Historical `tests passed`, engine execution, convergence, `fully aligned`, `complete`, or similar assertions require current re-verification before reuse.
+3. Structured JSON, verifier roles, gatekeepers, validators, or confidence networks must not be promoted rhetorically into scientific verification, probability, or certainty.
+4. Later `main` or active contracts supersede an old narrative through current evidence; preserve the old PR as history.
 
 ## Maintenance cadence
 
-`docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, and `maintenance/cadence.yaml` define active maintenance/document governance. Closed-stage and Jules-correction records under `docs/03-maintenance-and-audit/history/` remain evidence inputs, not current contracts.
+The active maintenance system is jointly owned by:
 
-Local scanner
+```text
+docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md
+docs/03-maintenance-and-audit/README.md
+docs/03-maintenance-and-audit/independent-gpt/README.md
+maintenance/cadence.yaml
+core/maintenance_cadence.py
+```
+
+The `.py` scanner is executable implementation. It is not changed merely because governance prose changes, and its source/config inspection is not execution evidence.
+
+Local scanner:
 
 ```bash
 python core/maintenance_cadence.py daily
@@ -236,66 +193,25 @@ python core/maintenance_cadence.py weekly
 python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 ```
 
-Daily maintenance
+Daily maintenance corrects demonstrated runtime/claim/evidence/profile/governance drift only and permits `NO_CHANGE_REQUIRED` without branch/PR churn.
 
-- start from current `main`
-- correct demonstrated runtime/claim/evidence/profile/governance drift only
-- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to distinguish current authority from historical snapshots
-- read latest relevant dated repair/current maintenance record before older PR/task narratives
-- preserve provider unknowns, conflict visibility, and heuristic non-probability semantics
-- do not rewrite historical snapshots or historical PR prose
-- do not manufacture daily changes
+Weekly maintenance reconciles implementation, Manifest, validators, active contracts, README/Architecture, Agent/Contributor/Customization guidance, examples, document status, maintenance config/records, checker ownership, and cross-repository profile names.
 
-Weekly maintenance
+Monthly/phase-close derives calendar/phase status from the actual date and never converts closure into scientific validation or reproduction.
 
-- reconcile implementation, Manifest, active contracts under `docs/02-examples-and-contracts/`, root README / Architecture, Agent/Contributor/Customization guidance, examples, current Document Status, current maintenance records, and cross-repository profile names
-- review trace/checkpoint/provenance/claim-audit/claim-transfer/envelope separation
-- audit whether coding-agent narratives are being treated as current runtime/scientific authority without current evidence
-- inventory historical snapshots without rewriting them
+If Daily and Weekly own the same real correction, use one branch and one final Draft PR whenever practical.
 
-If the same pass performs Daily and Weekly maintenance, one branch and one final PR should carry the combined real work whenever practical. Do not create duplicate churn solely because two cadence labels apply.
-
-Monthly or explicit phase-close maintenance
-
-- derive calendar status from the actual date
-- reconcile the complete current document set
-- build canonical hash baselines when useful
-- inventory historical snapshots and review deprecation candidates manually
-- confirm no structural state has been promoted into a truth verdict
-- record whether the research phase is active or closed
-
-Current closed stage
+## Execution evidence
 
 ```text
-as_of: 2026-08-31
-calendar_month: calendar-month-close
-stage: closed
+scanner/checker source present != executed
+executed != passed
+passed != scientific validity
+historical pass != current pass
+contract inspection != runtime verification
 ```
 
-First complete worked example
-
-```text
-maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
-```
-
-Current Daily/Weekly governance reconciliation
-
-```text
-maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
-```
-
-Dated records are time-scoped maintenance evidence, not automatic runtime or scientific proof.
-
-```text
-reference demonstration != runtime proof
-maintenance clean != scientific validity
-weekly consistency != evidence sufficiency
-calendar-month close != reproduction
-coverage inventory != provenance soundness
-agent narrative != current verification
-```
-
-The scanner itself does not run the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, or validate historical Jules claims
+Unrun checks are `NOT_EXECUTED`. Unobserved scheduler/workflow execution is `EXECUTION_NOT_OBSERVED` when material.
 
 ## Cross-repository handoff
 
@@ -310,32 +226,30 @@ auto-doc-engine/artifact-record
   -> sci-render-kit/communication-transfer
 ```
 
-References and transfers are not runtime imports or inherited truth claims
+References and transfers are not runtime imports or inherited truth claims.
 
-## Experimental modules
+## Experimental modules and R3
 
-`anti_entropy.py`, `convergence.py`, `infinite_regression.py`, `neuro_symbolic.py`, `perception.py`, and `thread_collapse.py` remain experimental unless deliberately integrated
+Experimental modules remain experimental until deliberately integrated; metaphorical names are not capability evidence.
 
-Metaphorical names are not capability evidence
+Metadata, checkpoints, provenance, provider disclosure, coverage, claim audit/transfer, maintenance reports, demonstrations, and hash baselines never count as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
 
-## R3 discipline
+## Delivery boundary
 
-Metadata, checkpoint, provenance, provider disclosure, audit coverage, claim audit, claim transfer, maintenance reports, demonstrations, or hash baselines never count as independent reproduction
+For a confirmed maintenance repair:
 
-R3 requires an actual separate rerun plus a declared comparison criterion
+1. branch from the exact observed current `main`;
+2. synchronize owning control surfaces and true dependencies only;
+3. inspect the aggregate branch diff;
+4. refresh current-main/open-PR overlap;
+5. record executed and unexecuted checks separately;
+6. open one bounded **Draft PR**;
+7. stop for maintainer review.
+
+Do not auto-merge, force-push, or write maintenance repairs directly to `main`. Final doctrine and merge authority remains with the maintainer.
 
 ## Governance boundary
 
-Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary repository architecture
+Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary repository maintenance.
 
-Local/manual checks are optional maintenance aids, not scientific validation
-
-## Documentation synchronization
-
-When a public research contract changes, synchronize relevant implementation, Manifest, active contracts, README/Architecture, examples, and frontier notes
-
-When maintenance/document governance or coding-agent provenance rules change, synchronize `docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`, `maintenance/cadence.yaml`, current dated maintenance record, and this Agent Guide. Consult the dated Jules correction in history when interpreting earlier agent narratives. Synchronize runtime scanner/Manifest only when executable/profile semantics or machine path contracts actually change.
-
-A dated maintenance demonstration is historical/reference evidence after creation; do not mechanically rewrite it during later maintenance
-
-Prefer honest `implemented / experimental / proposed / not integrated` states over aspirational wording
+Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may preserve the effect of a rule without copying private control text.
