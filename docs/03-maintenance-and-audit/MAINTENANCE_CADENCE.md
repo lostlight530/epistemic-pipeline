@@ -1,26 +1,52 @@
 # Maintenance Cadence — epistemic-pipeline
 
 **Status:** active maintenance contract  
-**Calibrated:** 2026-09-15  
+**Calibrated:** 2026-09-17  
 **Current closed stage:** 2026-08-24 through 2026-08-31
 
-This contract separates daily, weekly, and monthly maintenance for the research-execution and evidence layer. It is not a scheduler, scientific-review authority, or GitHub merge gate.
+This contract separates Daily, Weekly, and Monthly maintenance for the research-execution and evidence layer. It is not a scheduler, scientific-review authority, provider authenticator, or GitHub merge gate.
 
 ## Authority recovery before every pass
 
-Use the most specific current subject authority rather than document date or legacy path placement:
+For maintenance-control recovery use:
 
 ```text
-current main implementation
-> current machine-readable capability contract / schema / configuration for the subject
-> active docs/02-examples-and-contracts/RESEARCH_CONTRACT.md and active specialized contract for the subject
-> operational examples / configuration / test evidence for supported use
-> README / docs/01-source-and-explanation/ARCHITECTURE.md / current explanatory documentation
-> maintenance / audit / reconciliation evidence
+current merged main implementation
+> MANIFEST.yaml / validators / current machine-readable configuration for the subject
+> latest relevant dated repair or current maintenance record
+> docs/03-maintenance-and-audit/DOCUMENT_STATUS.md
+> AGENTS.md
+> active subject-specific contracts
+> maintenance/cadence.yaml and this cadence contract
+> current Architecture / README explanation
 > historical snapshots / superseded plans / PR-task narratives
 ```
 
-The historical `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` records the 2026-09-06 correction boundary for earlier coding-agent task/PR narratives. Its historical authority-order wording does not override the current subject-scoped order above.
+For a claim/evidence/runtime semantic question, use the most specific implementation, machine rule, and active subject contract. Maintenance recency is not scientific authority.
+
+## Maintenance identity and idempotency
+
+Record when applicable:
+
+```text
+repository
+owning surface / task
+logical period or evidence window
+producer / maintainer
+exact base revision
+run identity when available
+```
+
+Before any write, inspect open PRs and live branches for the same owning surface and logical period.
+
+```text
+overlap -> COORDINATE
+no confirmed defect -> NO_CHANGE_REQUIRED
+confirmed current drift -> REPAIR
+unsafe or unrecoverable evidence/access -> BLOCKED
+```
+
+`NO_CHANGE_REQUIRED` follows real inspection. Do not create an activity-only branch or PR. **Write never probes.**
 
 ## Cadence model
 
@@ -29,140 +55,134 @@ daily
   local runtime / claim / evidence drift
         ↓
 weekly
-  cross-day evidence-stack and document-authority reconciliation
+  cross-day evidence-stack / authority / maintenance reconciliation
         ↓
 monthly or explicit phase-close
-  calendar baseline / complete evidence-document inventory / deprecation review
+  calendar baseline / complete current evidence-document inventory
 ```
+
+Cadence labels do not require duplicate delivery. One real correction may satisfy Daily and Weekly scope in one branch and one Draft PR.
 
 ## Daily
 
-Required checks:
+Required behavior:
 
-- start from current `main`;
-- use `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` to identify current authoritative documentation;
-- read the latest relevant dated repair/current maintenance record before older snapshots or PR narratives;
-- verify claim-verification, claim-transfer, Evidence Envelope, provider disclosure, trace/checkpoint/provenance names remain consistent;
+- start from current merged `main`;
+- use `DOCUMENT_STATUS.md` to identify current authority and retained history;
+- read the latest relevant dated repair/current maintenance record before older snapshots when relevant;
+- inspect claim-verification, claim-transfer, Evidence Envelope, provider disclosure, trace/checkpoint/provenance names, validator rules, and maintenance ownership for drift;
 - preserve claim identity/origin ambiguity rather than collapsing it;
 - preserve unknown provider/model/version values as unknown;
-- preserve heuristic score semantics as non-probability;
-- preserve conflicts during claim transfer;
+- preserve heuristic-score non-probability semantics;
+- preserve conflicts during transfer;
 - keep unsupported composite quality scores absent or null;
-- incorporate new research only when it changes a real evidence-contract decision;
-- treat Jules/Codex/other coding-agent PR/task narratives and historical test/completeness claims as proposal/delivery metadata unless current evidence independently supports them;
-- create at most one final maintenance PR for the repository.
+- treat coding-agent PR/task narratives as proposal/delivery metadata unless current evidence independently supports them;
+- record checks actually executed separately from checks merely available;
+- create at most one bounded Draft PR when a real repair exists.
 
-Daily maintenance must not rewrite historical snapshots or historical PR prose, promote audit states into scientific verdicts, convert coverage into provenance soundness, treat structured output as scientific verification, or add GitHub-native merge governance.
-
-Historical `tests passed`, engine-run, convergence, `fully aligned`, or comparable agent assertions require current re-verification before being reused as current facts.
+Daily maintenance must not rewrite historical snapshots or PR prose, promote audit states into scientific verdicts, convert coverage into provenance soundness, treat structured output as scientific verification, or manufacture a change merely to satisfy cadence.
 
 ## Weekly
 
-Weekly maintenance includes daily checks plus complete current-evidence reconciliation:
+Weekly maintenance includes Daily checks plus complete current-evidence reconciliation:
 
-- implementation ↔ Manifest ↔ active contracts under `docs/02-examples-and-contracts/`;
-- root README / `docs/01-source-and-explanation/ARCHITECTURE.md` / Contributor / Customization / Examples consistency;
-- `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` against files actually present;
-- current dated correction/maintenance records;
+- implementation ↔ `MANIFEST.yaml` ↔ validators ↔ active evidence contracts;
+- README / Architecture / Contributor / Customization / Examples consistency;
+- `DOCUMENT_STATUS.md` against files actually present;
+- current maintenance configuration, recovery kernel, and operator/delivery surfaces;
 - trace / checkpoint / provenance / claim audit / claim transfer / Evidence Envelope separation;
-- cross-repository profile names;
 - provider assertion basis and unknown-value handling;
 - score/interval semantics;
-- previous seven days of maintenance/correction history and historical snapshots without rewriting them;
-- frontier calibration freshness;
-- whether coding-agent narratives are being treated as current runtime/scientific authority without current evidence;
-- canonical SHA-256 baseline when the local scanner is used.
+- previous maintenance/correction window and retained historical snapshots without rewriting them;
+- cross-repository handoff names;
+- whether agent narratives are being treated as current runtime/scientific authority without current evidence;
+- SHA-256 baselines only when the local scanner is actually used.
 
 ### Daily + Weekly coalescing
-
-If one real maintenance pass serves as both Daily and Weekly reconciliation, prefer one branch and one final PR for the combined work.
 
 ```text
 one evidence-backed correction
 != two required PRs because two cadence labels apply
 ```
 
-Both scopes must be documented; duplicate cosmetic changes or duplicate PRs must not be manufactured.
-
 ## Monthly / explicit phase-close
 
-Monthly maintenance performs the strongest evidence-stack review while remaining non-destructive.
+Monthly maintenance performs the strongest non-destructive evidence-stack review.
 
-For the closed August stage:
+Required behavior:
 
-```text
-as_of: 2026-08-31
-calendar_month: calendar-month-close
-stage: closed
-```
+- derive calendar status from the actual date;
+- use `month-to-date` before natural month close and `calendar-month-close` only at natural month close;
+- reconcile the complete current document/evidence-control set;
+- inventory historical records non-destructively;
+- review current / experimental / proposed / not-integrated states;
+- verify that structural states have not been rhetorically promoted into truth verdicts;
+- never convert calendar closure into scientific validation or reproduction.
 
-On and after 2026-09-01 that stage remains closed; post-stage hardening and later maintenance do not reopen it.
-
-Before the natural September month boundary, a monthly maintenance pass records `month-to-date`; it must not be represented as a calendar-month close.
-
-Historical consolidation and closed-stage inventory lives under `docs/03-maintenance-and-audit/history/`.
+The August 2026 evidence-infrastructure phase remains closed after 2026-08-31.
 
 ## Deterministic local scanner
 
 ```bash
 python core/maintenance_cadence.py daily
 python core/maintenance_cadence.py weekly
-python core/maintenance_cadence.py monthly --as-of 2026-08-31
+python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 ```
 
 Optional report output:
 
 ```bash
-python core/maintenance_cadence.py daily --as-of 2026-09-06 --output output/evidence-maintenance-2026-09-06.json
+python core/maintenance_cadence.py daily --as-of YYYY-MM-DD --output output/evidence-maintenance-YYYY-MM-DD.json
 ```
 
-The scanner matches its declared repository-local scope: configured paths remain repository-relative; absolute paths, `..`, and resolutions outside the repository fail closed; repository-local config identity is SHA-256-bound; duplicate paths are warnings; and report output is only written when explicitly requested.
+The scanner enforces its declared repository-local structural scope. It does not execute the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, evaluate provenance soundness, scientifically adjudicate identity ambiguity, inspect GitHub PR ownership, or validate historical Jules claims.
+
+## Execution evidence
 
 ```text
-inspected_files_mutated: false
-report_output_write_requested: true | false
-report_output_inside_repository: true | false | null
+scanner source present != scanner executed
+scanner executed != scanner passed
+scanner passed != scientific validity
+historical pass != current pass
+structured state != scientific verdict
+contract inspection != runtime verification
 ```
 
-The scanner does not execute the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, evaluate provenance soundness, scientifically adjudicate identity ambiguity, or validate historical Jules PR/task claims.
+If a relevant check was not run, record `NOT_EXECUTED`. If execution itself was not observed, use `EXECUTION_NOT_OBSERVED` when material.
 
 ## Dated maintenance evidence
 
-The first complete worked example remains:
+The August demonstration, 2026-09-01 repair, 2026-09-06 reconciliation, frontier refresh, and 2026-09-13 month-to-date reconciliation remain dated point-in-time evidence. They are not silently rewritten into current runtime or scientific-validation evidence.
+
+`MANIFEST.yaml` / external-research capability calibration changes only when actual evidence-contract semantics or machine capability change. Maintenance freshness alone does not authorize that bump.
+
+## History and correction discipline
+
+Preserve closed-stage consolidations, frontier alignment, Jules correction, and superseded design evidence.
 
 ```text
-maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
+historical snapshot != current contract
+historical != invalid
+later success != earlier success
+correction != history rewrite
+path relocation != semantic change
 ```
 
-The post-stage repair is:
+Correct forward through a current owning file or later dated reconciliation.
 
-```text
-maintenance/POST_STAGE_REPAIR_2026_09_01.md
-```
+## Delivery contract
 
-The previous Daily/Weekly governance reconciliation is:
+When a repair is confirmed:
 
-```text
-maintenance/DAILY_WEEKLY_RECONCILIATION_2026_09_06.md
-```
+1. branch from the exact observed current `main`;
+2. modify only owning control surfaces and true synchronized dependencies;
+3. inspect the aggregate `main...branch` diff;
+4. refresh current-main and overlap state;
+5. record executed and unexecuted checks separately;
+6. open one bounded **Draft PR**;
+7. stop for maintainer review.
 
-The current Daily/Weekly/month-to-date reconciliation record is:
-
-```text
-maintenance/DAILY_WEEKLY_MONTH_TO_DATE_RECONCILIATION_2026_09_13.md
-```
-
-These are dated maintenance records, not runtime or scientific-validation evidence. The 2026-09-13 record keeps `MANIFEST.yaml` / external-research capability calibration distinct from maintenance-layer freshness unless actual evidence-contract semantics change.
-
-## Historical evidence
-
-Closed-stage consolidations, frontier alignment, and the dated Jules correction live under `docs/03-maintenance-and-audit/history/`. Their paths changed; their point-in-time claims did not.
-
-## External calibration
-
-Long-horizon and scientific-agent evaluation increasingly shows that terminal results alone can hide intermediate errors or structural ambiguity. Current Google Jules guidance similarly preserves a human-review boundary for generated code and evaluates agent insight quality rather than assuming confidence equals correctness.
-
-These sources calibrate maintenance design only. They do not establish optimal maintenance frequency, provenance soundness, scientific-review authority, or any historical Jules change as false.
+Do not auto-merge, force-push, or write maintenance repairs directly to `main`.
 
 ## Shared boundaries
 
@@ -171,14 +191,17 @@ maintenance clean != scientific validity
 weekly consistency != evidence sufficiency
 calendar-month close != reproduction
 identity ambiguity != scientific contradiction
+claim indexed != claim true
+evidence linked != evidence sufficient
 coverage != provenance soundness
 heuristic score != probability
+runtime-policy pass != truth
+claim transfer != acceptance
 structured output != scientific verification
-provenance != truth
 report written != evidence validated
 agent task / PR narrative != current repository truth
 claimed test pass != current runtime verification
-cadence label != requirement for duplicate PR churn
+cadence label != duplicate PR requirement
 maintenance calibration != evidence-contract transition
-path relocation != semantic change
+Draft PR != validation success
 ```
