@@ -1,6 +1,6 @@
 {
   "profile": "epistemic-pipeline/maintenance-cadence",
-  "calibrated": "2026-09-15",
+  "calibrated": "2026-09-17",
   "project_profile_prefix": "epistemic-pipeline/",
   "stage": {
     "id": "2026-08-evidence-infrastructure",
@@ -8,25 +8,46 @@
     "close_date": "2026-08-31",
     "close_semantics": "calendar-month-close-and-explicit-research-phase-close"
   },
+  "maintenance_control": {
+    "task_identity_fields": [
+      "repository",
+      "owning_surface_or_task",
+      "logical_period_or_evidence_window",
+      "producer_or_maintainer",
+      "exact_base_revision",
+      "run_identity_when_available"
+    ],
+    "overlap_action": "COORDINATE",
+    "no_change_action": "NO_CHANGE_REQUIRED",
+    "blocked_action": "BLOCKED",
+    "write_never_probe": true,
+    "activity_only_branch_or_pr": false,
+    "unexecuted_check_status": "NOT_EXECUTED",
+    "unobserved_execution_status": "EXECUTION_NOT_OBSERVED",
+    "delivery_surface": "draft-pull-request",
+    "auto_merge": false,
+    "direct_main_write": false
+  },
   "canonical_paths": [
     "README.md",
     "docs/01-source-and-explanation/ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
+    "CONTRIBUTING.md",
+    ".github/pull_request_template.md",
+    ".github/ISSUE_TEMPLATE/governance.md",
     "docs/02-examples-and-contracts/RESEARCH_CONTRACT.md",
-    "docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md",
     "docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md",
     "docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md",
     "docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
+    "docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md",
+    "docs/03-maintenance-and-audit/README.md",
     "docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md",
     "docs/03-maintenance-and-audit/DOCUMENT_STATUS.md",
-    "docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md",
-    "maintenance/POST_STAGE_REPAIR_2026_09_01.md",
-    "CONTRIBUTING.md",
-    "docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md",
-    "examples/README.md",
+    "docs/03-maintenance-and-audit/independent-gpt/README.md",
     "maintenance/cadence.yaml",
     "core/maintenance_cadence.py",
+    "examples/README.md",
     "core/claim_audit.py",
     "core/claim_transfer.py",
     "core/evidence_envelope.py"
@@ -36,17 +57,19 @@
     "docs/01-source-and-explanation/ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
+    "CONTRIBUTING.md",
+    ".github/pull_request_template.md",
+    ".github/ISSUE_TEMPLATE/governance.md",
     "docs/02-examples-and-contracts/RESEARCH_CONTRACT.md",
-    "docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md",
     "docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md",
     "docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md",
     "docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
+    "docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md",
+    "docs/03-maintenance-and-audit/README.md",
     "docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md",
     "docs/03-maintenance-and-audit/DOCUMENT_STATUS.md",
-    "docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md",
-    "maintenance/POST_STAGE_REPAIR_2026_09_01.md",
-    "CONTRIBUTING.md",
-    "docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md",
+    "docs/03-maintenance-and-audit/independent-gpt/README.md",
+    "maintenance/cadence.yaml",
     "examples",
     "maintenance",
     "docs/03-maintenance-and-audit/history",
@@ -60,19 +83,19 @@
   ],
   "cadences": {
     "daily": {
-      "purpose": "local claim/evidence/runtime drift and new-fact maintenance without history rewrite; current repository evidence outranks coding-agent task or PR narrative",
+      "purpose": "local claim/evidence/runtime drift and new-fact maintenance without history rewrite; no defect permits NO_CHANGE_REQUIRED without activity-only delivery",
       "calibration_max_age_days": 2,
       "baseline_hashes": false,
       "history_inventory": false
     },
     "weekly": {
-      "purpose": "cross-day evidence-contract reconciliation, document-authority review, score-semantics and agent-provenance review, and handoff consistency; Daily and Weekly may coalesce into one real final PR",
+      "purpose": "cross-day evidence-contract reconciliation, document-authority review, score-semantics review, agent-provenance review, overlap review, and handoff consistency; Daily and Weekly may coalesce into one real final Draft PR",
       "calibration_max_age_days": 8,
       "baseline_hashes": true,
       "history_inventory": true
     },
     "monthly": {
-      "purpose": "calendar-month or explicit phase-close baseline, full evidence/document inventory, and deprecation review",
+      "purpose": "calendar-month or explicit phase-close baseline, full current evidence/document inventory, and deprecation review without history rewrite",
       "calibration_max_age_days": 35,
       "baseline_hashes": true,
       "history_inventory": true
@@ -91,6 +114,11 @@
     "scan_scope_outside_repository": false,
     "absolute_repository_root_in_report": false,
     "agent_pr_narrative_is_authority": false,
-    "cadence_requires_duplicate_prs": false
+    "cadence_requires_duplicate_prs": false,
+    "checker_definition_is_execution": false,
+    "historical_pass_is_current_pass": false,
+    "maintenance_freshness_is_evidence_contract_change": false,
+    "claim_transfer_is_acceptance": false,
+    "heuristic_score_is_probability": false
   }
 }
