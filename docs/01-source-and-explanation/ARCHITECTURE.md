@@ -1,13 +1,13 @@
 > [!NOTE]
 > **Current architecture interpretation — 2026-09-18**
-> - **Subject class:** `DEFINITION / ARCHITECTURE`
-> - **Role:** Current architecture map for graph execution, provider boundary, runtime policy, trace/checkpoint, provenance, claim audit, claim transfer, and evidence envelope
-> - **Authority:** Current architecture authority for implemented epistemic-pipeline semantics
-> - **Current meaning:** Interpret the repository as an evidence-bearing state-transition system with distinct runtime, claim, provenance, score, audit, and transfer planes
-> - **Evidence / implementation boundary:** graph validity is not research validity; provider identity is not output validity; runtime-policy pass is not truth; heuristic score is not probability; provenance is not truth
-> - **Cross-repository relation:** Upstream auto-doc artifacts may be referenced; downstream sci-render communication may consume bounded claim context. Neither direction creates hidden runtime coupling or inherited scientific validity
-> - **Update trigger:** Update only when the owned runtime/evidence contract, implemented claim semantics, or handoff constraints materially change
-> - **Preservation rule:** Existing contract prose remains the owning subject text; this pass clarifies current authority without rewriting historical stage evidence
+> - **Subject class:** `ARCHITECTURE`
+> - **Role:** Current architecture explanation for graph execution, provider/runtime policy, provenance, claim audit, transfer, and evidence-envelope layers
+> - **Authority:** Current repository-native authority for the epistemic semantics explicitly owned by this file; current implementation and machine contracts remain the executable-behavior boundary
+> - **Current meaning:** Read this subject inside the `claim identity → evidence/observation → audit → bounded transfer → evidence envelope` chain. The repository records structure, provenance and descriptive audit state rather than universal scientific verdicts
+> - **Evidence / implementation boundary:** Indexed does not mean true; evidence linked does not mean sufficient; structured verification does not mean scientific verification; conflict absence does not mean corroboration; heuristic score does not mean calibrated probability; transfer does not mean acceptance; provider metadata does not mean vendor certification
+> - **Cross-document relation:** Architecture integrates runtime/evidence planes; specialized contracts own claim-audit and transfer semantics; current code/machine contracts bound implementation; `DOCUMENT_STATUS.md` separates current contracts from historical snapshots
+> - **Update trigger:** Update when owned claim/evidence semantics or implemented mechanics materially change, or when a confirmed cross-document/current-authority conflict appears
+> - **Preservation rule:** Existing technical content and dated calibration remain intact. Closed-stage statements remain stage evidence and are not promoted into current runtime or scientific-validation claims
 
 # Architecture — Epistemic Pipeline
 
