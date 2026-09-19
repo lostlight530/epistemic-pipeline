@@ -1,153 +1,74 @@
-# Frontier Research Stages
+# Frontier Research Documentation
 
 **Repository:** `lostlight530/epistemic-pipeline`  
-**Status:** research guidance / non-normative support surface  
-**Default horizon:** one three-month research stage  
-**Method calibration checked:** 2026-09-19  
-**Effect on runtime or active contracts:** none unless a separate evidence-backed repository change is later justified
+**Research layer:** longitudinal frontier research / non-normative to runtime  
+**First-batch specification:** 2026-09-19  
+**Default stage horizon:** one three-month research stage  
+**Primary specification:** [FIRST_BATCH_SPECIFICATION.md](FIRST_BATCH_SPECIFICATION.md)
 
-## 1. Purpose
+## Research, not a maintenance log
 
-This directory supports longitudinal research into the external research-engineering landscape relevant to this repository.
+This directory contains research artifacts. Its purpose is to formulate questions, collect and discriminate evidence, preserve counterevidence, analyse change, synthesize findings, and support longitudinal interpretation.
 
-Repository lens: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
+The directory lives under `maintenance/` because frontier research must remain governable, dated, reviewable, and recoverable alongside repository maintenance. That location does **not** turn the contents into activity logs.
 
-A frontier stage is research, not scheduled report generation and not an automation target. A three-month window is one project-defined research stage. The stage may contain as many independent research parts as the evidence and research questions require, followed by an explicit stage-level synthesis.
+```text
+research artifact != activity log
+search record != research conclusion
+source register != source-count metric
+stage index != stage synthesis
+stage close != final truth
+```
 
-**Do not split a stage into monthly sections merely because the window spans three months. Decomposition is by research subject, not by calendar month.**
+No template has a target word count. Do not simplify a research structure merely to reduce tokens, file size, or review effort. Omit a section only when it is genuinely not applicable and state why.
 
-## 2. External-method calibration
+## Repository research lens
 
-The method borrows bounded practices from established open-science and evidence-synthesis approaches without claiming conformance to any of them.
+This repository studies external research-engineering developments through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
 
-- OSF projects/components support modular research work where sub-projects can remain independently documented.
-- Cochrane review guidance emphasizes defining the review question and eligibility logic before searching, documenting searches in enough detail for later reporting/reproduction, and retaining selection decisions.
-- PRISMA-S emphasizes recording information sources, exact search strategies, limits, search dates, updating methods, peer review where applicable, and record-management details.
-- OSF preregistration guidance supports timestamped research plans and transparent later updates rather than silently making the initial plan appear correct in hindsight.
-- W3C PROV distinguishes entities, activities, and responsible agents; this stage model likewise separates sources/results from research actions and responsibility.
-- RO-Crate provenance guidance models creation/update activities and supports retaining prior versions when curation creates a new version; this aligns with forward correction rather than silent history rewrite.
-- The Turing Way describes a research compendium as a collection of the digital parts of a research project, supporting the decision to keep research parts and synthesis together but separately inspectable.
+## First-batch document family
 
-These precedents support the **method discipline**, not the three-month duration. The three-month stage horizon is this project's own research convention.
+- [STAGE_BRIEF_TEMPLATE.md](STAGE_BRIEF_TEMPLATE.md) — research protocol / study design for a three-month stage
+- [RESEARCH_PART_TEMPLATE.md](RESEARCH_PART_TEMPLATE.md) — one independently inspectable research question or bounded sub-study
+- [SOURCE_OBJECT_REGISTER_TEMPLATE.md](SOURCE_OBJECT_REGISTER_TEMPLATE.md) — distinguishes research objects/events from the sources that report them
+- [EVIDENCE_CHART_TEMPLATE.md](EVIDENCE_CHART_TEMPLATE.md) — structured extraction/charting across selected evidence
+- [STAGE_SYNTHESIS_TEMPLATE.md](STAGE_SYNTHESIS_TEMPLATE.md) — whole-stage interpretation built from completed research parts
+- [LONGITUDINAL_INDEX_TEMPLATE.md](LONGITUDINAL_INDEX_TEMPLATE.md) — chronology and routing across stages; not a research conclusion
+- [LONGITUDINAL_SYNTHESIS_TEMPLATE.md](LONGITUDINAL_SYNTHESIS_TEMPLATE.md) — research across multiple stages
+- [CORRECTION_RECONCILIATION_TEMPLATE.md](CORRECTION_RECONCILIATION_TEMPLATE.md) — forward correction without silent history rewrite
+- [STAGE_HANDOFF_TEMPLATE.md](STAGE_HANDOFF_TEMPLATE.md) — bounded export to cross-repository/L3 synthesis without authority transfer
+- [CONTRIBUTOR_STATEMENT_TEMPLATE.md](CONTRIBUTOR_STATEMENT_TEMPLATE.md) — research responsibility and contribution attribution separated from tool provenance
+- [RESEARCH_REVIEW_TEMPLATE.md](RESEARCH_REVIEW_TEMPLATE.md) — method/evidence/synthesis review, including reviewer-independence status
+
+## External method calibration
+
+The first-batch specification was calibrated on 2026-09-19 against current public research-method guidance. These are informative precedents, not compliance claims:
+
+- OSF Projects / Components — modular research organization and separately configurable components: https://help.osf.io/article/353-welcome-to-projects
+- OSF preregistration/update guidance — timestamped plans and transparent later updates: https://help.osf.io/article/626-simplifying-the-preregistration-process and https://help.osf.io/article/330-welcome-to-registrations
+- Cochrane Handbook Chapter 4 — planned searching, documented searches, source selection, and distinction between a study and multiple reports: https://training.cochrane.org/handbook/current/chapter-04
+- PRISMA-Search (PRISMA-S) — reporting guidance for literature searches, including information sources, search strategies, limits, dates, and record-management transparency: https://www.prisma-statement.org/prisma-search
+- PRISMA-ScR — explicit objectives, eligibility, sources, charting methods, results, limitations, and conclusions for scoping reviews: https://www.prisma-statement.org/scoping
+- JBI Manual for Evidence Synthesis, Scoping Reviews — protocol, aligned questions/eligibility, searching, selection, extraction/charting, analysis, presentation, and summary: https://jbi-global-wiki.refined.site/space/MANUAL/355862497/10.%2BScoping%2Breviews%C2%A0
+- W3C PROV — provenance as relations among entities, activities, and responsible agents: https://www.w3.org/TR/prov-overview/ and https://www.w3.org/TR/prov-primer/
+- RO-Crate 1.3 — research-object metadata and provenance for creation/update actions: https://www.researchobject.org/ro-crate/specification/1.3/
+- CRediT — contributor-role transparency; roles are contribution descriptors, not authorship rules: https://credit.niso.org/
+- The Turing Way Research Compendia — keeping digital research parts together while separating methods/data/output and preserving a clear research structure: https://book.the-turing-way.org/reproducible-research/compendia/
+- Cochrane living-review guidance — update frequency, update triggers, and method-review decisions should be explicit when a research product is maintained over time: https://www.cochrane.org/learn/courses-and-resources/interactive-learning/module-14-conducting-living-systematic-reviews
 
 ### Explicit non-claims
 
 ```text
 three-month stage != external standard
-this template != PRISMA compliance
-this template != Cochrane systematic review
+this research family != PRISMA compliance
+this research family != JBI scoping-review compliance
+this research family != Cochrane systematic review
 web search != exhaustive literature search
+structured documentation != scientific validity
 source count != evidence quality
-structured record != scientific validity
 ```
 
-Each stage must state its own search/coverage class. Default to `SOURCE_BOUNDED` unless a stronger method was actually executed and documented.
-
-## 3. Stage model
-
-```text
-three-month stage
-    ↓
-stage brief / research protocol
-    ↓
-independent research parts chosen for this stage
-    ↓
-search + selection + extraction + counterevidence records
-    ↓
-repository-specific interpretation
-    ↓
-stage synthesis
-    ↓
-forward correction / next-stage questions when needed
-```
-
-A part is a research unit, not a template-filling task. Different stages may have different numbers of parts and different topics. Projects, papers, standards, runtimes, failures, provenance, reproducibility, scientific workflows, and other themes are examples only; the research question determines the decomposition.
-
-## 4. Historical reconstruction vs live research
-
-- **RETROSPECTIVE** — research reconstructed later for a historical three-month window.
-- **LIVE_STAGE** — research conducted contemporaneously during or near the stage.
-- **CORRECTION / RECONCILIATION** — later evidence that narrows or corrects an earlier stage without rewriting it.
-
-```text
-historical event date
-!= reconstruction date
-!= search execution date
-!= repository implementation date
-!= evidence that this repository derived from that event
-```
-
-Historical reconstruction must never be written as though it was performed at the historical date.
-
-## 5. Stage identity and layout
-
-Prefer a human stage label plus an explicit canonical period and exact dates:
-
-```text
-Stage: A
-Canonical period: 2024-Q1
-Window: 2024-01-01 through 2024-03-31
-Record type: RETROSPECTIVE
-Coverage class: SOURCE_BOUNDED
-```
-
-The stage letter is a human research label. The canonical period and exact dates remain the authoritative time identity.
-
-```text
-maintenance/frontier-research/
-└── stage-a-2024-q1/
-    ├── STAGE_BRIEF.md
-    ├── A1_<research-topic>.md
-    ├── A2_<research-topic>.md
-    ├── ...
-    └── STAGE_SYNTHESIS.md
-```
-
-Add source registers, appendices, comparison tables, or mapping studies when the research needs them. Do not create empty files to satisfy a shape.
-
-## 6. Research-part independence
-
-Each part preserves its own research question, time boundary, search and source record, observations, counterevidence, unresolved facts, interpretation, repository relevance, and explicit non-claims. Parts may disagree or remain unresolved.
-
-```text
-part finding != whole-stage conclusion
-whole-stage conclusion != rewrite of part evidence
-synthesis != source evidence
-repetition != independent corroboration
-```
-
-## 7. Search and source discipline
-
-Whenever search is part of the method, preserve the actual search surface, exact query or query family, execution date, filters/limits, relevant coverage boundary, and selection rationale. If exact reproduction is impossible because a search engine, ranking system, or database changes over time, record that limitation.
-
-Do not infer provenance or intellectual lineage from similarity alone.
-
-```text
-historical similarity != lineage
-earlier similar project != predecessor
-parallel design != influence
-later repository design != evidence of historical derivation
-```
-
-Unknown influence remains unknown.
-
-## 8. Amendments and deviations
-
-Research plans are allowed to improve. Changes to questions, search strategy, eligibility, or synthesis method should be recorded as dated amendments/deviations rather than silently editing the record so that the final method appears to have been the original method.
-
-## 9. Repository authority boundary
-
-Frontier-stage research is a calibration and research-memory surface. It does not outrank current repository truth. External research enters the repository-change path only when current repository evidence independently establishes a real defect, drift, or justified semantic transition.
-
-A valid stage may end with:
-
-```text
-NO_CURRENT_REPOSITORY_DRIFT
-NO_RUNTIME_CHANGE
-NO_CONTRACT_CHANGE
-```
-
-## 10. Repository-specific hard boundaries
+## Repository-specific hard boundaries
 
 - `claim indexed != claim true`
 - `evidence linked != evidence sufficient`
@@ -158,31 +79,10 @@ NO_CONTRACT_CHANGE
 - `provider identity != output validity`
 - `provenance != truth`
 
-These boundaries remain in force during historical comparison and frontier synthesis.
+These remain in force in every retrospective, live, longitudinal, correction, handoff, and review artifact.
 
-## 11. Completion semantics
+## Versioning rule
 
-A stage is complete only when the stage brief fixes its time/evidence boundaries; the actually required research parts have explicit outcomes; search/selection limitations are inspectable; material counterevidence and unresolved questions remain visible; amendments are recorded; repository relevance is assessed without converting similarity into provenance; and a stage synthesis is written from the completed parts.
+Every instantiated stage records the specification/template version it used. Later template improvements do not retroactively change the method used by an earlier stage. Substantive historical corrections are additive and use correction/reconciliation records.
 
-Research outcomes may include `SUPPORTED_OBSERVATION`, `CONTESTED`, `INSUFFICIENT_EVIDENCE`, `UNKNOWN`, `NOT_APPLICABLE`, `NO_MATERIAL_FRONTIER_CHANGE`, `WATCH`, `CANDIDATE_REPOSITORY_RELEVANCE`, and `NO_CURRENT_REPOSITORY_DRIFT`. These are research outcomes, not runtime status codes.
-
-Stage close means that the declared research process reached its closure boundary. It does not mean final truth; later evidence is handled through correction/reconciliation or a later stage.
-
-## 12. Method references
-
-- Open Science Framework Projects / Components: https://help.osf.io/article/353-welcome-to-projects
-- OSF preregistration guidance on timestamped plans and transparent updates: https://help.osf.io/article/626-simplifying-the-preregistration-process
-- Cochrane Handbook, defining scope / eligibility / synthesis: https://training.cochrane.org/handbook/current/chapter-03
-- Cochrane Handbook, searching / selection / documenting searches: https://training.cochrane.org/handbook/current/chapter-04
-- PRISMA-S, reporting literature searches: https://www.prisma-statement.org/prisma-search
-- W3C PROV overview / primer: https://www.w3.org/TR/prov-overview/ and https://www.w3.org/TR/prov-primer/
-- RO-Crate 1.3 specification / provenance: https://www.researchobject.org/ro-crate/specification/1.3/introduction.html
-- The Turing Way, Research Compendia: https://book.the-turing-way.org/reproducible-research/compendia/
-
-## 13. Templates
-
-- [STAGE_BRIEF_TEMPLATE.md](STAGE_BRIEF_TEMPLATE.md)
-- [RESEARCH_PART_TEMPLATE.md](RESEARCH_PART_TEMPLATE.md)
-- [STAGE_SYNTHESIS_TEMPLATE.md](STAGE_SYNTHESIS_TEMPLATE.md)
-
-Copy templates into a stage directory and replace placeholders with actual research. The templates are scaffolding; they do not determine the number or subject of research parts.
+See [FIRST_BATCH_SPECIFICATION.md](FIRST_BATCH_SPECIFICATION.md) for the complete artifact relationships, completion rules, and authority boundaries.

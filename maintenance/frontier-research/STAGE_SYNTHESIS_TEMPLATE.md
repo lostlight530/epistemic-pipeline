@@ -1,97 +1,114 @@
 # Frontier Research Stage Synthesis — TEMPLATE
 
-> Write this only after the stage's substantive research parts are sufficiently complete. This file does not replace the part records, their search logs, or their source evidence.
+> Instantiate as `STAGE_SYNTHESIS.md` only after substantive research Parts are sufficiently complete. This is the whole-stage research product, not a compressed activity summary.
 
 ## 0. Stage identity
 
 - **Repository:** `lostlight530/epistemic-pipeline`
-- **Stage ID:** `<A / B / ...>`
-- **Canonical period:** `<YYYY-QN>`
-- **Research window:** `<YYYY-MM-DD> through <YYYY-MM-DD>`
+- **Specification version:** `2026-09-19-first-batch`
+- **Stage:** `<ID / period>`
+- **Research window:** `<dates>`
 - **Record type:** `<RETROSPECTIVE | LIVE_STAGE>`
-- **Coverage class:** `<SOURCE_BOUNDED | SEARCH_BOUNDED | METHODICALLY_SCOPED>`
-- **Synthesis date:** `<YYYY-MM-DD>`
-- **Source cutoff:** `<YYYY-MM-DD>`
-- **Stage status:** `<READY_FOR_SYNTHESIS | COMPLETE | PARTIAL>`
+- **Research design(s):** `<designs>`
+- **Coverage actually achieved:** `<class>`
+- **Synthesis date:** `<date>`
+- **Source cutoff:** `<date>`
+- **Status:** `<READY_FOR_REVIEW | COMPLETE | PARTIAL>`
 
-## 1. Research inputs included
+## 1. Research questions revisited
 
-| Part | Title | Outcome | Search/source boundary | Material unresolved issue |
-|---|---|---|---|---|
-| `<A1>` | `<title>` | `<outcome>` | `<boundary>` | `<issue or none>` |
+List each Stage research question and whether it was answered, partially answered, unresolved, or found to be ill-posed.
 
-Identify intentionally excluded or incomplete parts. Do not imply completeness when a material part remains unresolved.
+| RQ | Outcome | Parts/evidence | Remaining limitation |
+|---|---|---|---|
+| `<RQ1>` | `<answered/partial/unresolved>` | `<refs>` | `<limit>` |
 
-## 2. Method and coverage reconciliation
+## 2. Research inputs
 
-Summarize how the stage was actually researched, not merely how it was planned.
+| Part | Title | Design | Coverage | Outcome | Material unresolved issue |
+|---|---|---|---|---|---|
+| `<A1>` | `<title>` | `<design>` | `<coverage>` | `<outcome>` | `<issue>` |
 
-- **Planned vs executed searches:** `<summary>`
-- **Material eligibility/selection changes:** `<summary>`
-- **Unsearchable / inaccessible evidence classes:** `<summary>`
-- **Known coverage gaps:** `<summary>`
-- **Peer/independent review of search or selection, if any:** `<performed / NOT_PERFORMED / not applicable>`
+Identify intentionally omitted or incomplete Parts.
 
-Do not upgrade `SOURCE_BOUNDED` or `SEARCH_BOUNDED` into an exhaustive/systematic-completeness claim.
+## 3. Method actually executed
 
-## 3. Amendment / deviation reconciliation
+Reconcile protocol vs execution:
 
-List material changes from the stage brief and explain their effect on comparability, coverage, or interpretation. Preserve the earlier plan rather than rewriting it away.
+- discovery/search surfaces actually used;
+- material query/navigation changes;
+- eligibility/selection changes;
+- source/object grouping decisions;
+- charting/extraction changes;
+- appraisal performed or not performed;
+- synthesis method actually used;
+- reviewer involvement.
 
-## 4. Cross-part evidence map
+Do not present the final method as if all changes were known a priori.
 
-| Synthesis finding | Supporting parts | Independent source families | Counterevidence | Strength / limitation |
-|---|---|---|---|---|
-| `<finding>` | `<A1,A3>` | `<independent / same-origin / mixed / unknown>` | `<part/source>` | `<bounded assessment>` |
+## 4. Evidence coverage and selection
 
-Repeated claims from one originating source are one source family, not independent convergence.
+Describe evidence classes covered, important inaccessible classes, and selection limits. If counts are meaningful and actually observed, report identified/screened/included/excluded counts; otherwise do not manufacture flow numbers.
 
-## 5. What changed during the stage
+## 5. Source-family and independence assessment
 
-Describe the strongest time-bounded changes supported across the parts: newly introduced systems/methods/standards, maturation/adoption, failures/reversals, promotional or unverified claims, and changes in evidence quality.
-
-## 6. What persisted
-
-Identify durable problems, constraints, and engineering patterns that remained stable.
-
-## 7. Conflicts and counterevidence
-
-Preserve meaningful disagreements between parts or sources.
+Identify findings that rely on one originating source family versus findings supported by materially independent evidence.
 
 ```text
-synthesis != majority vote
 repetition != independence
-later success != earlier success
-current knowledge != historical knowledge
+multiple articles != multiple independent objects
+vendor + vendor documentation != independent corroboration
 ```
 
-Where evidence does not resolve a conflict, keep it unresolved.
+## 6. What changed during the Stage
 
-## 8. Negative space
+Provide a substantive, evidence-backed account of the period's important research-engineering changes. Distinguish introduction, adoption, maturation, validation, reversal, deprecation, and merely increased visibility.
 
-Summarize important things the stage did not establish, including missing capabilities, absent independent reproduction, standards without demonstrated adoption, unverified external claims, unknown provenance/influence, and missing archival evidence.
+## 7. What persisted
 
-## 9. Repository-level interpretation
+Identify durable technical/research problems, constraints, unresolved questions, and practices that remained stable.
 
-Interpret the stage through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
+## 8. What weakened, failed, or disappeared
+
+Preserve failed directions, negative results, discontinued approaches, contradictions, retractions/corrections, or claims that did not gain supporting evidence.
+
+## 9. Evidence maturity
+
+Distinguish stages such as: announcement/claim, public artifact, implementation, documented execution, independent reproduction, broader adoption, standardization, or unresolved. Do not treat these as a universal linear maturity score.
+
+## 10. Counterevidence and competing interpretations
+
+Present the strongest competing explanations or contradictory source sets. Do not force a single conclusion when the evidence remains contested.
+
+## 11. Negative space
+
+Summarize meaningful things the research did not establish and what was actually checked.
+
+## 12. Cross-Part synthesis
+
+Analyse relationships across Parts: reinforcing findings, tensions, causal/mechanistic hypotheses, shared infrastructure, divergent domains, and evidence dependencies.
+
+## 13. Repository-level interpretation
+
+Interpret the Stage through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
 
 ### Independent convergence
 
-What external developments resemble current repository choices without proving influence?
+`<external developments resembling current repository choices without proving influence>`
 
 ### Deliberate divergence
 
-Where does the repository intentionally maintain a different boundary or architecture?
+`<where this repository intentionally keeps different boundaries>`
 
-### Potential gaps
+### Potential gaps / watch items
 
-Which developments deserve watch or a separate current-state audit?
+`<bounded candidates requiring separate current-state audit>`
 
 ### Non-gaps
 
-Which developments are interesting but do not expose a current repository defect?
+`<interesting external developments that do not expose a repository defect>`
 
-## 10. Repository-specific hard boundaries preserved
+## 14. Repository-specific hard boundaries preserved
 
 - `claim indexed != claim true`
 - `evidence linked != evidence sufficient`
@@ -102,23 +119,25 @@ Which developments are interesting but do not expose a current repository defect
 - `provider identity != output validity`
 - `provenance != truth`
 
-## 11. Temporal reconciliation
+## 15. Temporal reconciliation
 
-For retrospective stages, distinguish what was knowable during the historical window, what later evidence revealed, what the repository did not yet contain, and what it contains now. Do not back-project current semantics into the historical period.
+For retrospective research, distinguish: what existed in the Stage window; what was knowable then; what later sources revealed; what this repository did or did not yet contain; and what is known now.
 
-For a stage that crosses repository creation, explicitly distinguish the pre-creation external landscape from post-creation repository history.
+Do not back-project current semantics into the historical period.
 
-## 12. Delta from the previous stage
+## 16. Previous-Stage delta
 
-Where a prior stage exists, state only evidence-backed transitions: `NEW`, `STRENGTHENED`, `WEAKENED`, `REVERSED`, `PERSISTENT`, `UNRESOLVED`, or `NOT_COMPARABLE`. Do not force a delta where methods or source coverage are not comparable.
+When a prior comparable Stage exists, classify only evidence-supported changes: `NEW`, `STRENGTHENED`, `WEAKENED`, `REVERSED`, `PERSISTENT`, `RESOLVED`, `UNRESOLVED`, `NOT_COMPARABLE`.
 
-## 13. Current repository assessment
+Explain method/source-coverage differences before comparing results.
 
-- **Current implementation drift confirmed:** `<YES / NO / UNKNOWN>`
-- **Current active-contract drift confirmed:** `<YES / NO / UNKNOWN>`
-- **Current documentation drift confirmed:** `<YES / NO / UNKNOWN>`
+## 17. Current-repository assessment
+
+- **Implementation drift confirmed:** `<YES / NO / UNKNOWN>`
+- **Active-contract drift confirmed:** `<YES / NO / UNKNOWN>`
+- **Documentation drift confirmed:** `<YES / NO / UNKNOWN>`
+- **Separate audit/repair required:** `<YES / NO>`
 - **Research-only watch items:** `<list>`
-- **Separate repair/audit required:** `<YES / NO>`
 
 If no current defect is independently established:
 
@@ -128,26 +147,32 @@ NO_RUNTIME_CHANGE
 NO_CONTRACT_CHANGE
 ```
 
-## 14. Synthesis provenance
+## 18. Contribution and synthesis provenance
 
-| Activity | Responsible person/agent when known | Tool/surface when known | Date | Input set |
-|---|---|---|---|---|
-| `<synthesis>` | `<identity or UNKNOWN>` | `<tool or UNKNOWN>` | `<date>` | `<parts/refs>` |
+Reference `CONTRIBUTOR_STATEMENT.md` or describe responsible contributions and instruments here. Do not convert tool use into authorship.
 
-## 15. Stage conclusion
+## 19. Limitations
 
-Use `FRONTIER_STAGE_COMPLETE` or `FRONTIER_STAGE_PARTIAL`, followed by a prose conclusion that keeps external research separate from current repository truth.
+Discuss methodological, source-access, temporal, language, search-ranking, archival, interpretation, reviewer-independence, and repository-mapping limitations.
 
-```text
-stage close != final truth
-stage synthesis != deletion of part-level uncertainty
-later correction != rewrite of historical research
-```
+## 20. Review readiness
 
-## 16. Correction / update triggers
+List claims/sections that especially require independent or specialist review.
 
-State what future evidence would justify reopening interpretation through a new correction/reconciliation record, for example a newly recovered primary source, corrected publication identity, later independent reproduction, or a discovered historical contradiction.
+## 21. Stage conclusion
 
-## 17. Carry-forward questions
+Use `FRONTIER_STAGE_COMPLETE`, `FRONTIER_STAGE_PARTIAL`, or another explicitly defined bounded state only after review requirements are satisfied.
 
-- `<question for the next stage or later correction>`
+Write a full prose conclusion. Do not replace research synthesis with a status line.
+
+## 22. Correction/update triggers
+
+State what future evidence would justify a correction/reconciliation or longitudinal reinterpretation.
+
+## 23. Carry-forward research questions
+
+- `<question>`
+
+## 24. Safe handoff set
+
+Identify which findings can be exported to L3/cross-repository synthesis, with their evidence boundaries and unresolved constraints.
