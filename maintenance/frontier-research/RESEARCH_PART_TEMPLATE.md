@@ -1,140 +1,172 @@
 # Frontier Research Part — TEMPLATE
 
-> One file represents one independent research question or tightly bounded subject within a three-month stage. Duplicate this template only when another independent research part is actually justified.
+> Instantiate one file per independently meaningful research question or bounded sub-study. A Part is research, not a progress note.
 
 ## 0. Part identity
 
 - **Repository:** `lostlight530/epistemic-pipeline`
+- **Specification version:** `2026-09-19-first-batch`
 - **Stage:** `<Stage ID / canonical period>`
 - **Part ID:** `<A1 / A2 / ...>`
 - **Title:** `<research subject>`
-- **Research window:** `<YYYY-MM-DD> through <YYYY-MM-DD>`
-- **Research performed / reconstructed on:** `<YYYY-MM-DD>`
-- **Source cutoff:** `<YYYY-MM-DD>`
-- **Coverage statement:** `<SOURCE_BOUNDED / SEARCH_BOUNDED / other bounded description>`
+- **Research design:** `<design class>`
+- **Research window:** `<date range>`
+- **Research performed/reconstructed on:** `<date>`
+- **Source cutoff:** `<date>`
+- **Coverage achieved:** `<coverage class>`
 - **Status:** `<IN_PROGRESS | COMPLETE | INSUFFICIENT_EVIDENCE | NOT_APPLICABLE>`
 
-## 1. Research question
+## 1. Research question and rationale
 
-> `<one falsifiable or answerable question>`
+> `<question>`
 
-Explain why this question matters within the stage.
+Explain why this question is analytically distinct and how it contributes to the Stage.
 
-## 2. Scope, inclusion, and exclusions
+## 2. Scope and unit of analysis
 
-### In scope
+Define the unit(s) being studied: project, system, release, standard version, paper/method, benchmark, incident, workflow, community practice, or another explicit object.
 
-- `<scope / eligible evidence>`
+State when versions/releases count as the same object and when they are distinct.
 
-### Explicitly out of scope
+## 3. Eligibility and selection criteria
 
-- `<exclusion>`
+### Include
 
-### Selection rules
+- `<criterion>`
 
-- `<why a candidate source/system/event is included or excluded>`
+### Exclude
 
-State temporal, geographic, technical, domain, version, language, and source limitations where material.
+- `<criterion>`
 
-## 3. Research activity provenance
+### Hold / unresolved
 
-| Activity ID | Activity | Person/agent when known | Tool/surface when known | Executed at | Notes |
+- `<criterion>`
+
+## 4. Discovery/search method actually executed
+
+Record the method that actually ran, not a cleaned-up reconstruction.
+
+| ID | Surface | Exact query or navigation method | Executed at | Filters/limits | Coverage/reproducibility limitation |
 |---|---|---|---|---|---|
-| `R1` | `<search / browse / inspect / compare / extract>` | `<identity or UNKNOWN>` | `<tool or UNKNOWN>` | `<date/time>` | `<notes>` |
+| `Q1` | `<surface>` | `<exact query/navigation>` | `<date/time>` | `<limits>` | `<limitation>` |
 
-Observed identity only; unknown stays unknown.
+For direct known-source retrieval, citation chaining, repository history, or standards navigation, describe the exact route used.
 
-## 4. Search / discovery log
+## 5. Research-object and source selection
 
-Preserve the actual search that was executed, not a cleaned-up query reconstructed after the fact.
+Use stable local object/source IDs or reference `SOURCE_OBJECT_REGISTER.md`.
 
-| Search ID | Surface | Exact query / navigation method | Executed at | Filters / limits | Result count if observable | Reproducibility limitation |
-|---|---|---|---|---|---|---|
-| `Q1` | `<surface>` | `<exact query>` | `<date/time>` | `<limits>` | `<count / NOT_OBSERVED>` | `<ranking/index/history limitation>` |
-
-If discovery used citation chaining, direct URL inspection, repository history, standards navigation, or another non-query method, record that method explicitly.
-
-## 5. Candidate / selection ledger
-
-Record materially relevant inclusion/exclusion decisions. This is not a claim that every search result was exhaustively screened unless that was actually done.
-
-| Candidate ID | Candidate | Found via | Decision | Reason |
+| Candidate/Object | Source(s) | Decision | Reason | Object identity/version note |
 |---|---|---|---|---|
-| `CAND-1` | `<source/system/event>` | `Q1` | `<INCLUDE / EXCLUDE / HOLD>` | `<reason>` |
+| `<O1>` | `<S1,S2>` | `<INCLUDE / EXCLUDE / HOLD>` | `<reason>` | `<identity>` |
 
-## 6. Source register
+Do not count repeated reports of the same object as independent objects.
 
-| ID | Source | Source type | Event/publication date | Version/revision | Authority for this claim | Limitations / conflicts |
+## 6. Source authority and provenance
+
+| Source ID | Type | Origin/source family | Event date | Publication/update date | Version/revision | Authority | Limitations |
+|---|---|---|---|---|---|---|---|
+| `S1` | `<type>` | `<family>` | `<date>` | `<date>` | `<version>` | `<bounded authority>` | `<limits>` |
+
+## 7. Evidence extraction / charting
+
+Use `EVIDENCE_CHART.md` for large structured studies; otherwise record the necessary extraction here.
+
+| Finding candidate | Object | Supporting source(s) | Contradicting source(s) | Evidence class | Temporal scope | Independence |
 |---|---|---|---|---|---|---|
-| `S1` | `<source>` | `<paper / official docs / repository / standard / status / secondary>` | `<date>` | `<version>` | `<bounded authority>` | `<limits>` |
-
-Do not count multiple restatements of the same underlying claim as independent corroboration.
-
-## 7. Evidence extraction matrix
-
-| Finding ID | Claim / observation candidate | Supporting source IDs | Counter-source IDs | Evidence class | Time scope | Independence note |
-|---|---|---|---|---|---|---|
-| `F1` | `<bounded finding>` | `S1` | `<Sx / none found>` | `<vendor / paper / standard / runtime / independent / secondary>` | `<window>` | `<same-origin / independent / unknown>` |
+| `F1` | `O1` | `S1` | `<Sx / none found>` | `<class>` | `<scope>` | `<independent / same-origin / unknown>` |
 
 ## 8. Observations
 
-Record what the sources actually establish. Keep observation separate from interpretation.
+Observations are bounded statements directly supported by sources. Separate them from interpretation.
 
 ### O1 — `<observation>`
 
-- Evidence: `S1, S2`
-- Time scope: `<date/window>`
-- Evidence boundary: `<bounded statement>`
-
-Add observations as needed.
+- **Evidence:** `<source IDs>`
+- **Object/event:** `<object ID>`
+- **Time scope:** `<scope>`
+- **Authority boundary:** `<what is actually established>`
 
 ## 9. Counterevidence and competing interpretations
 
-Actively record evidence that contradicts, narrows, shows source dependence, shows non-adoption/failure, or remains unresolved. Absence of a counterevidence search is not corroboration.
+Actively search for and preserve material evidence that weakens, narrows, contradicts, or contextualizes the initial interpretation.
 
-### C1 — `<counterevidence or alternative>`
+### C1 — `<counterevidence / alternative>`
 
-`<analysis>`
+- Evidence: `<source IDs>`
+- Effect: `<contradicts / narrows / source-dependent / unresolved / other>`
 
-## 10. Negative space / what was not established
+Absence of a counterevidence search is not corroboration.
 
-Record meaningful non-findings: undemonstrated capabilities, unpublished/unadopted standards, missing independent reproduction, unavailable historical artifacts, unknown influence/provenance, or claims that could not be verified.
+## 10. Negative space
 
-## 11. Interpretation
+Record meaningful non-findings and absences: no public implementation, no independent reproduction, inaccessible historical revision, no adoption evidence, missing benchmark detail, no provenance link, or another research-relevant absence.
 
-Distinguish `observed fact`, `attributed external claim`, `research interpretation`, `inference`, and `unknown / unresolved`.
+Distinguish `NOT_FOUND_IN_DECLARED_SEARCH` from `DOES_NOT_EXIST`.
 
-## 12. Relation to this repository
+## 11. Critical appraisal, when used
 
-Assess relevance through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
+State appraisal method and result without converting qualitative judgment into an invented universal score.
 
-Useful relationship labels: `DIRECTLY_RELEVANT`, `CONTEXTUAL`, `PARALLEL_CONVERGENCE`, `DELIBERATE_DIVERGENCE`, `WATCH`, `NO_MATERIAL_RELATION`, `UNKNOWN`.
+- **Appraisal method:** `<none / declared method>`
+- **Key strengths:** `<...>`
+- **Key limitations:** `<...>`
+- **Effect on synthesis:** `<...>`
 
-Do not turn similarity into lineage or influence.
+## 12. Analysis
 
-## 13. Current repository effect
+Explain patterns, mechanisms, relationships, transitions, or differences supported by the evidence. This is the analytic core of the Part and should not be reduced to a bullet inventory of sources.
+
+## 13. Interpretation and competing explanations
+
+Separate:
+
+- observed fact;
+- attributed external claim;
+- research interpretation;
+- inference;
+- unresolved/unknown.
+
+Where multiple explanations remain plausible, keep them visible.
+
+## 14. Relation to this repository
+
+Interpret through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
+
+Possible relationship labels: `DIRECTLY_RELEVANT`, `CONTEXTUAL`, `PARALLEL_CONVERGENCE`, `DELIBERATE_DIVERGENCE`, `WATCH`, `NO_MATERIAL_RELATION`, `UNKNOWN`.
+
+Do not infer lineage, influence, or predecessor status from similarity.
+
+## 15. Current-repository implication boundary
 
 - **Current implementation defect established?** `<YES / NO / UNKNOWN>`
 - **Current active-contract drift established?** `<YES / NO / UNKNOWN>`
-- **Runtime change justified by this part alone?** `NO`
-- **Separate follow-up candidate?** `<none / bounded candidate>`
+- **Current documentation drift established?** `<YES / NO / UNKNOWN>`
+- **Candidate follow-up:** `<none / bounded question>`
+- **Runtime change justified by this Part alone?** `NO`
 
-A research finding is not itself authorization to modify the repository.
+## 16. Method amendments / deviations
 
-## 14. Amendments / deviations within this part
-
-| Date | Change | Reason | Effect on coverage or interpretation |
+| Date | Change | Reason | Effect on coverage/interpretation/comparability |
 |---|---|---|---|
 | `<date>` | `<change>` | `<reason>` | `<effect>` |
 
-Use `NONE` if no material deviation occurred.
+Use `NONE` when no material deviation occurred.
 
-## 15. Part conclusion and limitations
+## 17. Contribution and instrument provenance
 
-Use a bounded outcome such as `SUPPORTED_OBSERVATION`, `CONTESTED`, `INSUFFICIENT_EVIDENCE`, `UNKNOWN`, `NO_MATERIAL_FRONTIER_CHANGE`, `WATCH`, `CANDIDATE_REPOSITORY_RELEVANCE`, or `NO_CURRENT_REPOSITORY_DRIFT`.
+Identify who/what performed conceptualization, methodology, investigation, evidence curation, analysis, validation/review, and writing/synthesis when known. Keep responsible contributor attribution separate from tools/models used as instruments.
 
-State the strongest conclusion the evidence supports, followed immediately by the important limitations on that conclusion.
+## 18. Part conclusion
 
-## 16. Unresolved questions
+Use bounded outcome labels such as `SUPPORTED_OBSERVATION`, `CONTESTED`, `INSUFFICIENT_EVIDENCE`, `UNKNOWN`, `NOT_COMPARABLE`, `NO_MATERIAL_FRONTIER_CHANGE`, `WATCH`, `CANDIDATE_REPOSITORY_RELEVANCE`, or `NO_CURRENT_REPOSITORY_DRIFT`.
 
-- `<question the stage synthesis must preserve rather than hide>`
+Write the strongest defensible conclusion in prose, followed by its limitations.
+
+## 19. Unresolved questions
+
+- `<question>`
+
+## 20. Inputs to Stage synthesis
+
+State what the Stage synthesis may safely carry forward and what must remain unresolved or source-qualified.

@@ -1,113 +1,32 @@
 # Frontier Research Stage Brief — TEMPLATE
 
-> Copy this file into a stage directory as `STAGE_BRIEF.md`. Replace placeholders with actual research design. The template itself is not execution evidence.
+> Instantiate as `STAGE_BRIEF.md`. This is a research protocol/study-design artifact, not an activity log.
 
-## 0. Stage identity
+## 0. Identity
 
 - **Repository:** `lostlight530/epistemic-pipeline`
+- **Specification version:** `2026-09-19-first-batch`
 - **Stage ID:** `<A / B / ...>`
 - **Canonical period:** `<YYYY-QN>`
 - **Research window:** `<YYYY-MM-DD> through <YYYY-MM-DD>`
 - **Record type:** `<RETROSPECTIVE | LIVE_STAGE>`
-- **Coverage class:** `<SOURCE_BOUNDED | SEARCH_BOUNDED | METHODICALLY_SCOPED>`
-- **Research started / reconstructed on:** `<YYYY-MM-DD>`
-- **Research cutoff:** `<YYYY-MM-DD>`
+- **Research design class(es):** `<HISTORICAL_FRONTIER_RECONSTRUCTION | LIVE_FRONTIER_RESEARCH | LANDSCAPE_MAPPING | SCOPING_STYLE_EVIDENCE_MAPPING | TARGETED_EVIDENCE_SYNTHESIS | COMPARATIVE_TECHNICAL_STUDY | MIXED>`
+- **Coverage class intended:** `<SOURCE_BOUNDED | SEARCH_BOUNDED | METHODICALLY_SCOPED | EXHAUSTIVE_WITHIN_DECLARED_SOURCES>`
+- **Protocol/reconstruction date:** `<date>`
+- **Research cutoff:** `<date>`
 - **Status:** `<PLANNED | IN_PROGRESS | READY_FOR_SYNTHESIS | COMPLETE>`
 
-Do not claim exhaustive or systematic coverage unless the executed method actually supports that claim.
+## 1. Rationale
 
-## 1. Why this stage exists
+Explain why this three-month window deserves research and what is not adequately answered by existing Stage or repository records. For retrospective work, explain why reconstruction is being undertaken now.
 
-State why this three-month window deserves research. For retrospective work, state why the historical window is being reconstructed now and do not imply contemporaneous observation.
+## 2. Repository lens and non-claims
 
-## 2. Repository lens
+Repository lens: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
 
-This repository examines external developments through: **claims, evidence, state transitions, provenance, uncertainty, verification, conflicts, transfer, evidence envelopes, and research-execution traceability.**
+State any narrower Stage-specific lens and explicit non-claims.
 
-State any narrower stage-specific emphasis.
-
-## 3. Core research questions
-
-List the real questions for this stage. Questions should drive search, source selection, extraction, and synthesis.
-
-1. `<question>`
-2. `<question>`
-3. `<question>`
-
-Add, merge, or remove questions as the design develops, but record material changes in the amendment log below.
-
-## 4. Scope and eligibility logic
-
-Define what evidence can answer the stage questions before broad searching begins.
-
-### Inclusion logic
-
-- `<source / event / system / paper / standard is in scope when ...>`
-
-### Exclusion logic
-
-- `<exclude when ...>`
-
-### Time and version rules
-
-- `<publication/event dates, versions, revisions, release windows>`
-
-### Source-authority rules
-
-- `<what a vendor page can establish>`
-- `<what a paper can establish>`
-- `<what repository/runtime evidence can establish>`
-- `<what requires independent corroboration>`
-
-## 5. Planned search and discovery method
-
-| Search ID | Surface / database / website | Query concepts or exact planned query | Date/window limits | Other limits | Purpose |
-|---|---|---|---|---|---|
-| `Q1` | `<surface>` | `<query>` | `<limits>` | `<language/type/etc.>` | `<question served>` |
-
-Record targeted browsing, citation chaining, repository searches, standards lookups, status-page checks, or expert/source leads when used. Different evidence classes may require different search methods.
-
-Searches may evolve as terminology changes or new source classes are discovered. Record material changes as amendments instead of replacing the original plan silently.
-
-## 6. Planned research parts
-
-| Part | Working title | Research question | Expected evidence classes | Status |
-|---|---|---|---|---|
-| `<A1>` | `<topic>` | `<question>` | `<papers / projects / standards / repositories / official records / ...>` | `PLANNED` |
-
-A stage may have two parts or twenty. Define parts by subject, not by month. Do not create empty parts to satisfy a predetermined taxonomy.
-
-## 7. Planned synthesis approach
-
-State how completed parts may be compared and what must remain separate.
-
-- `<which findings can be grouped>`
-- `<which evidence classes must not be collapsed>`
-- `<how source independence will be judged>`
-- `<how conflicting findings will be retained>`
-- `<what would count as a repository-relevant signal>`
-
-## 8. Research provenance and responsibility
-
-Record only observed/declared identity. Do not infer provider, model, researcher, or tool identity.
-
-| Activity | Responsible person/agent when known | Tool/surface when known | Date | Output |
-|---|---|---|---|---|
-| `<stage design>` | `<identity or UNKNOWN>` | `<tool or UNKNOWN>` | `<date>` | `STAGE_BRIEF.md` |
-
-## 9. Amendment / deviation log
-
-| Date | Item changed | Previous plan | New plan | Reason | Effect on comparability / coverage |
-|---|---|---|---|---|---|
-| `<date>` | `<question/search/eligibility/synthesis>` | `<old>` | `<new>` | `<reason>` | `<effect>` |
-
-If there are no amendments, state `NONE`. Do not delete earlier entries.
-
-## 10. Known historical boundaries
-
-Record repository creation boundaries, whether the repository did not yet exist, evidenced predecessor/influence status, archival gaps, and current facts that must not be projected backward.
-
-## 11. Repository-specific hard boundaries
+Repository hard boundaries:
 
 - `claim indexed != claim true`
 - `evidence linked != evidence sufficient`
@@ -118,21 +37,167 @@ Record repository creation boundaries, whether the repository did not yet exist,
 - `provider identity != output validity`
 - `provenance != truth`
 
-Add stage-specific non-claims when needed.
+## 3. Objectives and research questions
 
-## 12. Research-change rule
+State the overall objective, then the actual research questions. Questions drive discovery, selection, extraction/charting, analysis, and synthesis.
+
+### Objective
+
+`<objective>`
+
+### Research questions
+
+1. `<question>`
+2. `<question>`
+3. `<question>`
+
+## 4. Conceptual scope
+
+Define the concepts, technologies, practices, evidence forms, institutions, communities, and technical boundaries relevant to this Stage.
+
+State important adjacent topics that are intentionally excluded so that absence from the research is not mistaken for a negative finding.
+
+## 5. Temporal scope
+
+Distinguish:
+
+- event/implementation dates that fall inside the Stage;
+- publication dates for sources;
+- later sources used retrospectively to reconstruct earlier events;
+- repository creation date when relevant;
+- research/reconstruction date;
+- source-access/search date.
+
+## 6. Eligibility and selection logic
+
+### Inclusion criteria
+
+- `<criterion>`
+
+### Exclusion criteria
+
+- `<criterion>`
+
+### Hold / unresolved criteria
+
+- `<conditions that prevent immediate inclusion/exclusion>`
+
+State how multiple reports of one research object/event will be grouped.
+
+## 7. Source classes and authority plan
+
+| Source class | Intended use | What it can establish | What it cannot establish |
+|---|---|---|---|
+| `<official specification>` | `<use>` | `<authority>` | `<limit>` |
+| `<paper>` | `<use>` | `<authority>` | `<limit>` |
+| `<repository revision>` | `<use>` | `<authority>` | `<limit>` |
+| `<secondary report>` | `<use>` | `<authority>` | `<limit>` |
+
+## 8. Discovery and search design
+
+Document planned searches/discovery methods. Use different strategies for different evidence classes where necessary.
+
+| Search/Discovery ID | Surface | Planned query/navigation method | Date/version limits | Language/type limits | Research question served |
+|---|---|---|---|---|---|
+| `Q1` | `<surface>` | `<query/navigation>` | `<limits>` | `<limits>` | `<RQ>` |
+
+Include citation chaining, repository history inspection, standards-version navigation, direct known-source retrieval, status/archive checks, or expert/source leads when part of the design.
+
+## 9. Research-object model
+
+State what counts as a distinct object/event for this Stage and how versions/releases/updates are separated or grouped.
 
 ```text
-external finding
-→ bounded research interpretation
-→ compare against current repository truth
-→ confirmed current defect/drift?
-      NO → research record only
-      YES → separate repository repair process
+source != research object
+multiple reports != multiple independent objects
+version change may or may not constitute a new object; define the rule
 ```
 
-## 13. Completion gate
+## 10. Planned research Parts
 
-The stage can move to synthesis when planned research questions have explicit outcomes; executed searches are logged; material selection/exclusion decisions can be explained; relevant counterevidence is captured; unresolved questions remain visible; source dates and authority classes are traceable; material amendments are recorded; and no part has been silently replaced by the expected narrative.
+| Part ID | Working title | Research question | Method/design | Expected evidence | Dependencies |
+|---|---|---|---|---|---|
+| `<A1>` | `<title>` | `<question>` | `<design>` | `<sources>` | `<none / other Part>` |
 
-The stage synthesis is a separate research act, not an automatic concatenation.
+Part count is evidence-driven. Do not create placeholder Parts to satisfy a fixed taxonomy.
+
+## 11. Planned extraction / evidence charting
+
+List the variables/dimensions that will be extracted when structured charting is useful.
+
+- `<object identity/version>`
+- `<event/publication date>`
+- `<capability/method claim>`
+- `<implementation or execution evidence>`
+- `<source authority>`
+- `<independence/source family>`
+- `<counterevidence>`
+- `<uncertainty/unknowns>`
+- `<repository relevance>`
+
+Remove or add variables based on the actual research question. Material additions after research begins belong in the amendment record.
+
+## 12. Critical appraisal plan
+
+State whether formal or structured appraisal will be performed. If yes, define criteria before applying them and state how appraisal affects interpretation or inclusion.
+
+`<NONE / descriptive source-authority appraisal / domain-specific appraisal / other>`
+
+Do not invent a universal numeric quality score.
+
+## 13. Analysis and synthesis plan
+
+Describe how findings will be analysed: chronological analysis, thematic analysis, technical comparison, standards mapping, evidence-maturity analysis, source-family triangulation, negative-space analysis, or other declared method.
+
+State how contradictions and non-comparability will be handled.
+
+## 14. Longitudinal comparability plan
+
+If previous/future Stages are expected to be compared, identify the dimensions that should remain stable enough for comparison and the dimensions allowed to evolve.
+
+## 15. Review plan
+
+- **Research review required before Stage close:** `YES`
+- **Desired reviewer independence:** `<INDEPENDENT_REVIEW preferred / other>`
+- **Search-method review needed:** `<YES / NO / CONDITIONAL>`
+- **Domain specialist review needed:** `<YES / NO / CONDITIONAL>`
+- **What must be reviewed:** `<method / source identity / extraction / synthesis / boundary>`
+
+## 16. Contributor responsibility and instrument provenance plan
+
+Identify known responsible contributors/roles separately from software, models, search engines, scripts, and agents used as instruments.
+
+Do not infer hidden model/provider identity.
+
+## 17. Amendment / deviation record
+
+| Date | Affected design element | Original plan | Revised plan | Reason | Effect on coverage/comparability |
+|---|---|---|---|---|---|
+| `<date>` | `<element>` | `<old>` | `<new>` | `<reason>` | `<effect>` |
+
+Use `NONE` until a material amendment occurs. Preserve prior entries.
+
+## 18. Completion and stopping criteria
+
+Define what must be true before the Stage can be synthesized and closed. Include treatment of unresolved questions and inaccessible evidence.
+
+Stage completion does not require certainty; it requires completion of the declared research process and honest reporting of remaining uncertainty.
+
+## 19. Update / correction triggers
+
+State what later evidence would justify a new correction/reconciliation record, longitudinal reinterpretation, or targeted follow-up.
+
+## 20. Expected outputs
+
+- `STAGE_BRIEF.md`
+- substantive Part files
+- `SOURCE_OBJECT_REGISTER.md` when identity/source sharing justifies it
+- `EVIDENCE_CHART.md` when structured charting supports synthesis
+- `CONTRIBUTOR_STATEMENT.md` for multi-contributor research when appropriate
+- `STAGE_SYNTHESIS.md`
+- `RESEARCH_REVIEW.md`
+- `STAGE_HANDOFF.md` if exported to cross-repository synthesis
+
+## 21. Protocol limitations
+
+State expected blind spots: inaccessible databases, language limits, mutable search ranking, archival gaps, vendor-only evidence, missing historical revisions, or other constraints.
