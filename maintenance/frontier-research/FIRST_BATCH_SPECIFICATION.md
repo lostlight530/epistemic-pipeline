@@ -286,7 +286,7 @@ NO_CONTRACT_CHANGE
 
 ## 19. First-batch external basis
 
-This specification is method-calibrated against OSF modular projects and transparent updates; Cochrane search/selection/update guidance; PRISMA-ScR/JBI scoping-review structure and charting; W3C PROV; RO-Crate 1.3 provenance; CRediT contributor roles; and The Turing Way research-compendium practice. These sources inform the research architecture but do not certify this repository as conformant to those frameworks.
+This specification is method-calibrated against OSF modular projects and transparent updates; Cochrane search/selection/update guidance; PRISMA-Search reporting discipline; PRISMA-ScR/JBI scoping-review structure and charting; W3C PROV; RO-Crate 1.3 provenance; CRediT contributor roles; and The Turing Way research-compendium practice. These sources inform the research architecture but do not certify this repository as conformant to those frameworks.
 
 ## 20. Specification evolution
 

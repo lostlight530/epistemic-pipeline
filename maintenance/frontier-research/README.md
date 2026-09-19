@@ -47,6 +47,7 @@ The first-batch specification was calibrated on 2026-09-19 against current publi
 - OSF Projects / Components — modular research organization and separately configurable components: https://help.osf.io/article/353-welcome-to-projects
 - OSF preregistration/update guidance — timestamped plans and transparent later updates: https://help.osf.io/article/626-simplifying-the-preregistration-process and https://help.osf.io/article/330-welcome-to-registrations
 - Cochrane Handbook Chapter 4 — planned searching, documented searches, source selection, and distinction between a study and multiple reports: https://training.cochrane.org/handbook/current/chapter-04
+- PRISMA-Search (PRISMA-S) — reporting guidance for literature searches, including information sources, search strategies, limits, dates, and record-management transparency: https://www.prisma-statement.org/prisma-search
 - PRISMA-ScR — explicit objectives, eligibility, sources, charting methods, results, limitations, and conclusions for scoping reviews: https://www.prisma-statement.org/scoping
 - JBI Manual for Evidence Synthesis, Scoping Reviews — protocol, aligned questions/eligibility, searching, selection, extraction/charting, analysis, presentation, and summary: https://jbi-global-wiki.refined.site/space/MANUAL/355862497/10.%2BScoping%2Breviews%C2%A0
 - W3C PROV — provenance as relations among entities, activities, and responsible agents: https://www.w3.org/TR/prov-overview/ and https://www.w3.org/TR/prov-primer/
