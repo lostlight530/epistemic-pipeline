@@ -4,8 +4,8 @@
 
 - **Repository:** `lostlight530/epistemic-pipeline`
 - **Specification:** `2026-09-19-first-batch`
-- **Coverage:** `Stage A / 2024-Q1`
-- **Updated:** `2026-09-21`
+- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2`
+- **Updated:** `2026-09-22`
 
 ## Boundary
 
@@ -20,6 +20,7 @@ index = navigation + temporal/correction routing
 | Stage | Period | Window | Type | Design | Coverage | Status | Synthesis | Review | Handoff |
 |---|---|---|---|---|---|---|---|---|---|
 | A | 2024-Q1 | 2024-01-01 through 2024-03-31 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-a-2024-q1/STAGE_SYNTHESIS.md | stage-a-2024-q1/RESEARCH_REVIEW.md | stage-a-2024-q1/STAGE_HANDOFF.md |
+| B | 2024-Q2 | 2024-04-01 through 2024-06-30 | RETROSPECTIVE | HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS + COMPARATIVE_TECHNICAL_STUDY | SEARCH_BOUNDED | FRONTIER_STAGE_COMPLETE | stage-b-2024-q2/STAGE_SYNTHESIS.md | stage-b-2024-q2/RESEARCH_REVIEW.md | stage-b-2024-q2/STAGE_HANDOFF.md |
 
 ## Correction registry
 
@@ -29,10 +30,12 @@ No repository-local Stage correction record at initial close. The Stage itself r
 
 Stage A uses first-batch 2026-09-19 specification and establishes the initial longitudinal baseline.
 
+Stage B uses the same specification and is comparable to Stage A on evidence-envelope versioning, condition coverage, benchmark revision identity, and correction semantics while using a different object set.
+
 ## Longitudinal synthesis
 
-None yet; requires at least two sufficiently comparable Stages.
+Two completed Stages now exist. A formal Stage A→B longitudinal synthesis is methodologically eligible but is NOT_INSTANTIATED in this pass.
 
 ## Known gaps
 
-Pre-2024-Q1 periods unresearched in this sequence; 2024-Q2+ not yet instantiated; no exhaustive benchmark landscape.
+Pre-2024-Q1 periods remain unresearched in this sequence; 2024-Q3+ is not yet instantiated; no exhaustive benchmark landscape; no formal Stage A→B longitudinal synthesis yet.
