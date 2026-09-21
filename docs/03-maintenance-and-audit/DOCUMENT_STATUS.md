@@ -1,7 +1,7 @@
 # Document Status — epistemic-pipeline
 
 **Status:** active document-governance router  
-**Calibrated:** 2026-09-17  
+**Calibrated:** 2026-09-21  
 **Stage note:** the August 2026 evidence-infrastructure phase closed on 2026-08-31
 
 This file classifies current repository surfaces by role and authority. It is a router, not an independent source of runtime behavior, claim truth, provider identity, evidence sufficiency, or scientific validity.
@@ -76,6 +76,27 @@ maintenance/cadence.yaml
 ```
 
 These files govern maintenance, recovery, contribution, and delivery behavior. They do not outrank implementation, validators, machine contracts, or subject-specific research contracts for epistemic semantics.
+
+## Class 04 — active frontier-research documentation
+
+The current longitudinal frontier-research documentation surface is:
+
+```text
+maintenance/frontier-research/
+```
+
+`maintenance/frontier-research/FIRST_BATCH_SPECIFICATION.md` is the active documentation-method authority for this surface. Its templates and instantiated stages govern research framing, source/object discrimination, evidence charting, synthesis, review, correction/reconciliation, longitudinal routing, handoff, and contributor responsibility within the frontier-research documentation family.
+
+This surface is explicitly non-normative to repository runtime and capability state. It does not outrank current implementation, `MANIFEST.yaml`, machine-readable configuration, or active subject-specific research contracts.
+
+```text
+frontier-research documentation method != runtime capability
+structured research artifact != scientific truth
+research handoff != authority transfer
+later template revision != earlier stage rewrite
+```
+
+Instantiated Stage and Part records remain bounded by their declared evidence window and executed method. Later corrections move interpretation forward without silently rewriting earlier research artifacts.
 
 ## Historical and dated evidence
 
