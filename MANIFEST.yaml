@@ -1,6 +1,6 @@
 name: epistemic-pipeline
 purpose: evidence-aware state-machine execution for research workflows
-calibrated: "2026-09-01"
+calibrated: "2026-09-22"
 
 principles:
   - explicit_state_transition
@@ -60,7 +60,7 @@ stage_close:
   reproduction_claim: false
 
 current_temporal_status:
-  as_of: "2026-09-01"
+  as_of: "2026-09-22"
   calendar_month_status: month-to-date
   closed_stage_status: closed
   stage_reopened_by_repair: false
