@@ -172,3 +172,17 @@ Unknown or unexecuted evidence remains unknown or unexecuted. A document or meta
 The 2026-08-24 through 2026-08-31 evidence-infrastructure phase is closed. Later maintenance and publication updates do not reopen that historical phase.
 
 Current September state must be recovered from current repository truth and current dated records rather than copied from an August or earlier September snapshot.
+
+
+## Nightly September reconciliation — 2026-09-22
+
+Current-main review covers September maintenance through 2026-09-22, including the merged Stage C 2024-Q3 frontier reconstruction and all active evidence/claim-transfer governance surfaces.
+
+Current interpretation:
+- the August research-infrastructure stage remains closed;
+- September remains month-to-date;
+- Stage C reconstruction is research documentation, not new runtime verification or claim-validity evidence;
+- evidence-envelope / claim-verification / claim-transfer semantics remain bounded by their active contracts and implementation;
+- no validator/test/runtime execution is inferred from documentation maintenance alone.
+
+No standalone maintenance/audit sidecar is created by this nightly pass.
