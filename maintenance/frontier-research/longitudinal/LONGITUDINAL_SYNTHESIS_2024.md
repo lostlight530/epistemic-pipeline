@@ -62,3 +62,23 @@ NO_CONTRACT_CHANGE
 ```
 
 Future work should test concrete transfer/comparability rules with actual benchmark executions rather than promoting this documentary synthesis into runtime truth.
+
+
+## Current reconciliation — 2026-09-23
+
+The A→D longitudinal research sequence is now present as current documentation evidence.
+
+Its synthesis remains non-adjudicative:
+
+```text
+LONGITUDINAL_SYNTHESIS
+!= SCIENTIFIC_ADJUDICATION
+
+EVIDENCE_RELATION_RECORDED
+!= EVIDENCE_SUFFICIENT
+
+TRANSFER_READY
+!= DOWNSTREAM_ACCEPTED
+```
+
+Claim, evidence, ambiguity, conflict, provenance, verification state, and transfer state remain separate dimensions across the stage sequence.
