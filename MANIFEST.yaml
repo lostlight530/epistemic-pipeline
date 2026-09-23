@@ -435,7 +435,7 @@ scientific_boundaries:
   metadata_is_reproduction: false
 
 
-# 2026-09-23 n-1 maintenance calibration:
-# - calibrated=2026-09-22 remains the point-in-time cutoff of that repository review;
-# - later Stage D documentation is later state and does not retroactively become 2026-09-22 evidence;
-# - provenance, claim linkage, verification state, and transfer remain distinct from scientific truth or acceptance.
+# 2026-09-23 dual-view maintenance annotation:
+# N-1 view: calibrated=2026-09-22 remains the point-in-time manifest/router cutoff.
+# N view: later Stage D documentation is current state only and does not rewrite 2026-09-22 availability.
+# Provenance, claim linkage, verification, and transfer remain distinct from truth and acceptance.
