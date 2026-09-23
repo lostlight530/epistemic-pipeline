@@ -43,6 +43,26 @@ Four completed Stages now cover 2024. The formal additive synthesis is instantia
 
 Pre-2024-Q1 periods remain unresearched in this sequence; 2025-Q1+ is not yet instantiated; no exhaustive benchmark landscape is claimed; the 2024 full-year synthesis is instantiated but cross-year synthesis is not.
 
+
+## A2 current-state reconciliation — 2026-09-23
+
+Stage D / 2024-Q4 and the A→D longitudinal synthesis are now present on current main as research documentation.
+
+The current index preserves the evidence-pipeline boundary:
+
+```text
+STAGE_D_PRESENT
+!= CLAIM_TRUE
+
+LONGITUDINAL_RELATION
+!= EVIDENCE_SUFFICIENT
+
+RESEARCH_HANDOFF
+!= CLAIM_ACCEPTANCE
+```
+
+Earlier stages remain historical research records. Current routing does not silently rewrite their original claim/evidence states.
+
 ## SEPTEMBER_DUAL_CUTOFF_MAINTENANCE_2026-09-23
 
 ### A1 / N-1 cutoff — 2026-09-22
@@ -51,3 +71,10 @@ Pre-2024-Q1 periods remain unresearched in this sequence; 2025-Q1+ is not yet in
 - Preserve claim indexed != claim true, evidence linked != evidence sufficient, provenance != truth, verification != scientific adjudication, and transfer != acceptance.
 - The 2026-09-22 router/manifest remains the point-in-time cutoff; later Stage D material is not retroactive input.
 - Handoff preserves context/conflicts/uncertainty and does not inherit truth, peer review, or acceptance.
+
+### A2 / N cutoff — 2026-09-23
+
+- Stage D / 2024-Q4 and the A→D longitudinal synthesis/index are later current state.
+- Current longitudinal closure does not collapse ambiguity, conflict, provenance, verification, transfer, scientific validity, or acceptance into one status.
+- Stage D may update current routing without changing what was available at the 2026-09-22 cutoff.
+- This A2 note is additive to A1 and preserves the earlier evidence state.

@@ -22,3 +22,17 @@ handoff != acceptance
 evaluation evidence != scientific truth
 shared provenance concept != shared implementation
 ```
+
+
+## A2 handoff calibration — 2026-09-23
+
+This Stage D handoff carries scoped research context only. It does not transfer truth, acceptance, scientific adjudication, or runtime-policy success.
+
+```text
+HANDOFF_CONTEXT
+!= CLAIM_ACCEPTANCE
+!= TRUTH
+!= SCIENTIFIC_VALIDATION
+```
+
+Any downstream claim transfer must preserve origin identity, evidence references, ambiguity/conflict state, and its own acceptance decision.
