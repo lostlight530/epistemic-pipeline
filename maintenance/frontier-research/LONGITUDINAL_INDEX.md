@@ -42,3 +42,12 @@ Four completed Stages now cover 2024. The formal additive synthesis is instantia
 ## Known gaps
 
 Pre-2024-Q1 periods remain unresearched in this sequence; 2025-Q1+ is not yet instantiated; no exhaustive benchmark landscape is claimed; the 2024 full-year synthesis is instantiated but cross-year synthesis is not.
+
+## SEPTEMBER_DUAL_CUTOFF_MAINTENANCE_2026-09-23
+
+### A1 / N-1 cutoff — 2026-09-22
+
+- September review scope includes Stage A, B, and C research sets delivered on 2026-09-21, including claim/evidence records, source registers, reconstructions, reviews, syntheses, and handoffs.
+- Preserve claim indexed != claim true, evidence linked != evidence sufficient, provenance != truth, verification != scientific adjudication, and transfer != acceptance.
+- The 2026-09-22 router/manifest remains the point-in-time cutoff; later Stage D material is not retroactive input.
+- Handoff preserves context/conflicts/uncertainty and does not inherit truth, peer review, or acceptance.
