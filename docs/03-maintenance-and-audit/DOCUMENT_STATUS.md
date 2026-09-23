@@ -186,3 +186,22 @@ Current interpretation:
 - no validator/test/runtime execution is inferred from documentation maintenance alone.
 
 No standalone maintenance/audit sidecar is created by this nightly pass.
+
+
+## 2026-09-23 dual-view annotation on the 2026-09-22 router
+
+### View 1 — N-1 / 2026-09-22 router state
+
+The router remains the point-in-time document/authority map for that review cut.
+
+### View 2 — N / 2026-09-23 current interpretation
+
+Stage D / 2024-Q4 and the A→D longitudinal material are later current state. They may update current routing, but do not retroactively become 2026-09-22 evidence.
+
+```text
+N_MINUS_1_ROUTER_STATE
++
+N_CURRENT_ROUTER_INTERPRETATION
+!= EARLIER_AVAILABILITY_REWRITE
+!= CLAIM_ACCEPTANCE
+```
