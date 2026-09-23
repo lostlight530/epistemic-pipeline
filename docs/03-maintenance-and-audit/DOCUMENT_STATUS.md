@@ -186,3 +186,24 @@ Current interpretation:
 - no validator/test/runtime execution is inferred from documentation maintenance alone.
 
 No standalone maintenance/audit sidecar is created by this nightly pass.
+
+
+## 2026-09-23 n-1 calibration of the 2026-09-22 router
+
+The 2026-09-22 document-status calibration is retained as point-in-time evidence and is not silently upgraded by the later Stage D / 2024-Q4 research documentation now present on main.
+
+```text
+LATER_DOCUMENTATION_DELIVERY
+!= EARLIER_AVAILABILITY
+
+CLAIM_INDEXED
+!= CLAIM_TRUE
+
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+
+TRANSFERRED_CLAIM
+!= ACCEPTED_CLAIM
+```
+
+The router continues to distinguish current implementation/contracts from frontier-research documentation. Later longitudinal material can calibrate current interpretation, but does not retroactively alter the 2026-09-22 cutoff.
