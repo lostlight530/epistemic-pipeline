@@ -86,3 +86,22 @@ Earlier stages remain historical research records. Current routing does not sile
 - Preserve claim indexed != claim true, evidence linked != sufficient, provenance != truth, verification != scientific adjudication, and transfer != acceptance.
 - Current Stage D / longitudinal closure does not back-project into earlier stage availability or silently resolve historical ambiguity/conflict.
 - Handoff preserves context and uncertainty; it does not inherit truth, peer review, acceptance or downstream authority.
+### A2 / N cutoff — 2026-09-24 current-state reconciliation
+
+The merged A1 review already covers the full September Stage A→D evidence history through 2026-09-23.
+
+At the 2026-09-24 current cut:
+- Stage A, B, C and D remain the complete retained frontier-research stage set.
+- No Stage E / later-stage directory is retained on current main.
+- A→D longitudinal synthesis remains the current additive evidence-research owner.
+- Claim, evidence, ambiguity, conflict, provenance, verification, transfer and acceptance remain separate axes.
+- Current routing does not back-project Stage D or resolve earlier uncertainty silently.
+
+```text
+CURRENT_STAGE_SET = A_TO_D
+NO_STAGE_E_PATH_OBSERVED
+!= FUTURE_STAGE_IMPOSSIBLE
+LONGITUDINAL_RELATION
+!= CLAIM_TRUE
+!= EVIDENCE_SUFFICIENT
+```
