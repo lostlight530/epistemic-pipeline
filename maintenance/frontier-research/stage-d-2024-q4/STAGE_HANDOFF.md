@@ -36,3 +36,16 @@ HANDOFF_CONTEXT
 ```
 
 Any downstream claim transfer must preserve origin identity, evidence references, ambiguity/conflict state, and its own acceptance decision.
+## A2 handoff calibration — 2026-09-24
+
+Stage D remains the latest retained stage handoff on current main at this cut.
+
+This handoff carries scoped claim/evidence context only. It does not create Stage E, does not transfer truth or acceptance, and does not silently resolve ambiguity/conflict.
+
+```text
+LATEST_RETAINED_STAGE_HANDOFF = STAGE_D
+HANDOFF_CONTEXT
+!= CLAIM_ACCEPTANCE
+!= TRUTH
+!= SCIENTIFIC_VALIDATION
+```
