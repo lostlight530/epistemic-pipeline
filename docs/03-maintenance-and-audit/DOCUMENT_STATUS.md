@@ -225,3 +225,16 @@ TRANSFER
 ```
 
 No external audit file is created. Earlier ambiguity, conflicts and point-in-time evidence remain preserved.
+## Stage E current document-routing reconciliation — 2026-09-24
+
+Current frontier-research documentation now includes `stage-e-2025-q1/` and `longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q1.md`.
+
+The earlier same-day A2 observation that no Stage E path existed remains valid at that earlier cut. Later research delivery advances current routing only.
+
+```text
+STAGE_E_RESEARCH_PRESENT
+!= CLAIM_TRUE
+!= EVIDENCE_SUFFICIENT
+!= SCIENTIFIC_ADJUDICATION
+!= RUNTIME_CHANGE
+```
