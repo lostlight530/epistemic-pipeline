@@ -205,3 +205,23 @@ N_CURRENT_ROUTER_INTERPRETATION
 != EARLIER_AVAILABILITY_REWRITE
 != CLAIM_ACCEPTANCE
 ```
+## 2026-09-24 A1 full-period reconciliation
+
+Cutoff: 2026-09-23.
+
+Re-read the complete September Stage A→D evidence-research sequence together with claim/evidence records, source registers, reconstructions, reviews, syntheses, handoffs, current manifest/router and longitudinal owners.
+
+```text
+CLAIM_INDEXED
+!= CLAIM_TRUE
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+PROVENANCE
+!= TRUTH
+VERIFICATION
+!= SCIENTIFIC_ADJUDICATION
+TRANSFER
+!= ACCEPTANCE
+```
+
+No external audit file is created. Earlier ambiguity, conflicts and point-in-time evidence remain preserved.
