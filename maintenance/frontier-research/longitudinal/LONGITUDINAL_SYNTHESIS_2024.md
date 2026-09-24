@@ -82,3 +82,21 @@ TRANSFER_READY
 ```
 
 Claim, evidence, ambiguity, conflict, provenance, verification state, and transfer state remain separate dimensions across the stage sequence.
+## A2 current reconciliation — 2026-09-24
+
+The A1 full-period annotations remain intact. Current main still presents Stage A→D as the completed 2024 documentary/evidence sequence.
+
+No later Stage E research object is retained at this cut. That absence is a current repository fact only.
+
+The synthesis remains non-adjudicative:
+
+```text
+A_TO_D_SYNTHESIS_PRESENT
+!= SCIENTIFIC_ADJUDICATION
+EVIDENCE_RELATION_RECORDED
+!= EVIDENCE_SUFFICIENT
+TRANSFER_READY
+!= DOWNSTREAM_ACCEPTED
+```
+
+Historical ambiguity, conflicts and point-in-time claim states remain visible.
