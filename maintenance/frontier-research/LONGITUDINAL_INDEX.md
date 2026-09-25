@@ -170,3 +170,24 @@ TRANSFER
 PROVENANCE
 != TRUTH
 ```
+
+## 中秋加班维护补充 — A2 / N = 2026-09-24
+
+本轮 A2 从已合并 A1 的 main 出发, 对 2026-09-24 做 retrospective relational reconciliation. 早先 9 月 24 日 A2 只看到 Stage A→D, 随后同日 Stage E / 2025-Q1 才交付. 两个时间点都保留, 不互相覆盖.
+
+因此 N 日最终关系可以记录 Stage E 已成为 later-same-day evidence, 但不能声称它在早先 A2 cut 已经可用. 9 月 25 日 Stage F 是 next-day evidence. Claim/evidence/provenance/verification/transfer/acceptance 的边界不因 Stage 扩展而改变.
+
+这次中秋加班 A2 增加的是月内关系连续性, 不把 Stage E 的 documentary delivery 写成 claim true、scientific adjudication 或 runtime change.
+
+```text
+EARLIER_A_TO_D_CUT
++
+LATER_SAME_DAY_STAGE_E
+=
+RECONCILED_2026_09_24_RELATION
+
+TRANSFER
+!= ACCEPTANCE
+LATER_STAGE
+!= EARLIER_EVIDENCE_AVAILABILITY
+```
