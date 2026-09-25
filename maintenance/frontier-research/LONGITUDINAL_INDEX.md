@@ -191,3 +191,25 @@ TRANSFER
 LATER_STAGE
 != EARLIER_EVIDENCE_AVAILABILITY
 ```
+
+
+## 2026-09-25 A1 — full September coverage through 2026-09-24
+
+Base revision: `1765ca1061f5f7dc312e3970101a940c3b97b72d`. Cutoff: 2026-09-24 Asia/Shanghai.
+
+Coverage decision summary:
+- September Stage A-D claim/evidence research, registers, evidence charts, reconstructions, reviews, syntheses, handoffs, router/manifest, and longitudinal owners were re-read through the cutoff.
+- Previously reviewed A-D artifacts remain `NO_FOLLOW_UP` unless an existing dated reconciliation already owns the correction.
+- Claim, evidence, provenance, verification, transfer, acceptance, and scientific adjudication remain separate axes.
+- Stage F material delivered on 2026-09-25 is later current evidence and is outside this A1 cutoff.
+
+```text
+CLAIM_INDEXED
+!= CLAIM_TRUE
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+TRANSFER
+!= ACCEPTANCE
+LATER_STAGE_F
+!= 2026_09_24_CUTOFF_STATE
+```
