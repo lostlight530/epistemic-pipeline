@@ -213,3 +213,26 @@ TRANSFER
 LATER_STAGE_F
 != 2026_09_24_CUTOFF_STATE
 ```
+
+
+## 2026-09-25 A2 — current longitudinal relation with Stage F
+
+Base revision after merged A1: `03a57b1fba143550d83b47529ea34905ea04da8d`. N-day delivery input: Stage F / 2025-Q2 execution-trajectory narrative merged on 2026-09-25.
+
+Current relational evolution:
+- The merged A1 cutoff through 2026-09-24 remains intact and excludes Stage F from the earlier cutoff state.
+- Stage F is now later current repository state and can extend the longitudinal claim/evidence routing for its 2025-Q2 logical research period.
+- Claim identity, evidence linkage, provenance, verification, transfer, acceptance, and scientific adjudication remain distinct axes.
+- Delivery on 2026-09-25 does not silently resolve historical ambiguity/conflict or back-project Stage F into earlier availability.
+- Handoff transfers bounded context and unresolved state, not truth or downstream authority.
+
+```text
+CURRENT_STAGE_F_PRESENT
+!= EARLIER_STAGE_F_AVAILABLE
+CLAIM_TRANSFER
+!= ACCEPTANCE
+PROVENANCE
+!= TRUTH
+HANDOFF
+!= AUTHORITY_TRANSFER
+```
