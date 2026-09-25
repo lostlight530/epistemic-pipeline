@@ -149,3 +149,24 @@ STAGE_F_RESEARCH
 != SCIENTIFIC_ADJUDICATION
 != RUNTIME_CHANGE
 ```
+
+## 中秋加班维护补充 — A1 / 2026-09-24
+
+本轮以 2026-09-24 为 N 日, 用中秋加班维护窗口回看 9 月 1 日至 9 月 23 日的 Stage evidence chain. 当前 main 已包含后来 Stage E/F, 但它们只属于 later repository state, 不改变早期 cut 当时能看到什么.
+
+复核重点保持 claim、evidence、provenance、ambiguity、conflict、verification、transfer 与 acceptance 的分离. 一个 claim 被索引或被 evidence link 到, 不等于 claim true. 一个 transfer 完成, 不等于 downstream acceptance. heuristic score 也不因为月度关系整理而变成 probability.
+
+后续 Stage 扩展可以强化 longitudinal context, 但不能静默解决旧 ambiguity, 不能替代 scientific adjudication, 也不能给历史记录补造 runtime result.
+
+因此 A1 只把真正跨期的关系写入 longitudinal owner, 不把每个 Stage 文件机械加同一段话.
+
+```text
+LATER_STAGE_CONTEXT
+!= EARLIER_EVIDENCE_AVAILABILITY
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+TRANSFER
+!= ACCEPTANCE
+PROVENANCE
+!= TRUTH
+```
