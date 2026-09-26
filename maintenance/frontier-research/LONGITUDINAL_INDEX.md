@@ -383,3 +383,137 @@ Earlier Stage A→F records remain point-in-time research evidence. Stage G adds
 - Contract change authorized: NO.
 - Scientific validation/reproduction credit: NONE.
 - Required next step: merge this A1 successor, fresh-read main, then build A2 from the merged state with Stage F as N-day input.
+
+## SUCCESSOR_A2_CURRENT_MONTH_RELATION_2026-09-26_FOR_LOGICAL_2026-09-25
+
+- Maintenance task type: TEN_REPOSITORY_MONTHLY_A2_SUCCESSOR
+- Logical maintenance date: 2026-09-25
+- Current-month relation: September delivery history through the N-day Stage F delivery
+- Historical thin A2 PR retained: #57
+- Required predecessor successor A1: #59
+- Research plane: claim/evidence/trajectory
+- Stage G / 2025-Q3 delivered on 2026-09-26 and is explicitly outside this logical A2 input.
+- History rewrite: NO
+- Runtime/reproduction execution by this successor: NOT_EXECUTED
+
+### A2 temporal compilation
+
+- Stage A: retain prior September documentary delivery relation.
+- Stage B: retain prior September documentary delivery relation.
+- Stage C: retain prior September documentary delivery relation.
+- Stage D: retain later September delivery chronology and prior corrections.
+- Stage E: retain 2026-09-24 later-same-day delivery chronology without back-projecting to earlier same-day cuts.
+- Stage F: APPEND_RELATION / Stage F / 2025-Q2 is the 2026-09-25 N-day input. It adds PaperBench long-horizon replication trajectory, Terminal-Bench concrete execution environment/tests, and tau2-bench second-actor/shared-world state.
+- Stage G: LATER_EVIDENCE_2026-09-26 / OUTSIDE_LOGICAL_A2.
+
+### Stage-by-stage artifact relation ledger
+
+#### Stage A
+- STAGE_BRIEF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage A relation: inherited from merged A1 successor #59; no new authority is introduced.
+- Stage A history: current later-stage presence does not alter its original September availability or conclusions.
+- Stage A correction policy: existing dated correction/reconciliation remains the owner where present.
+#### Stage B
+- STAGE_BRIEF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage B relation: inherited from merged A1 successor #59; no new authority is introduced.
+- Stage B history: current later-stage presence does not alter its original September availability or conclusions.
+- Stage B correction policy: existing dated correction/reconciliation remains the owner where present.
+#### Stage C
+- STAGE_BRIEF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage C relation: inherited from merged A1 successor #59; no new authority is introduced.
+- Stage C history: current later-stage presence does not alter its original September availability or conclusions.
+- Stage C correction policy: existing dated correction/reconciliation remains the owner where present.
+#### Stage D
+- STAGE_BRIEF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage D relation: inherited from merged A1 successor #59; no new authority is introduced.
+- Stage D history: current later-stage presence does not alter its original September availability or conclusions.
+- Stage D correction policy: existing dated correction/reconciliation remains the owner where present.
+#### Stage E
+- STAGE_BRIEF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: RETAIN_A1_DECISION_NO_SILENT_REWRITE; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage E relation: inherited from merged A1 successor #59; no new authority is introduced.
+- Stage E history: current later-stage presence does not alter its original September availability or conclusions.
+- Stage E correction policy: existing dated correction/reconciliation remains the owner where present.
+#### Stage F
+- STAGE_BRIEF: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_PARTS: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- SOURCE_OBJECT_REGISTER: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- EVIDENCE_CHART: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- MONTH_RECONSTRUCTIONS: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_SYNTHESIS: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- RESEARCH_REVIEW: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- STAGE_HANDOFF: APPEND_RELATION_FROM_N_DAY_STAGE_F; preserve declared period, delivery date, source/object identity, review independence, and non-normative status.
+- Stage F N-day meaning: Stage F / 2025-Q2 is the 2026-09-25 N-day input. It adds PaperBench long-horizon replication trajectory, Terminal-Bench concrete execution environment/tests, and tau2-bench second-actor/shared-world state.
+- Stage F repository assessment remains NO_CURRENT_REPOSITORY_DRIFT / NO_RUNTIME_CHANGE / NO_CONTRACT_CHANGE where declared by its synthesis.
+- Stage F completeness is documentary frontier research, not runtime execution or scientific validation.
+
+### Longitudinal owner compilation
+
+- Pre-F longitudinal synthesis remains a preserved point-in-time artifact.
+- Stage F extends the current logical relation to A→F for 2026-09-25.
+- Stage G/A→G files that now exist on current main are later 2026-09-26 evidence and are excluded from this A2 logical cut.
+- LONGITUDINAL_INDEX may route later current state, but this successor records the explicit 9/25 historical relation separately.
+- MANIFEST/DOCUMENT_STATUS later annotations do not rewrite earlier stage availability.
+- Search-bounded stage coverage is not an exhaustive literature survey.
+- SAME_PRODUCER_REVIEW is not upgraded to independent review.
+- Documentary handoff is not authority transfer.
+
+### Domain hard-boundary checks
+
+- pass != truth
+- score != scientific adjudication
+- provenance != truth
+- transfer != acceptance
+- final outcome != complete execution explanation
+- Stage delivery != repository runtime change.
+- Research synthesis != independent reproduction.
+- Current file presence != earlier availability.
+- Later Stage G != 2026-09-25 A2 input.
+- A2 successor depth != new research credit.
+
+### A2 successor disposition
+
+- A1 predecessor merged before A2: YES.
+- Stage A-E relation: RETAINED_FROM_A1.
+- Stage F N-day input: INTEGRATED.
+- Stage G 9/26 later state: EXCLUDED_FROM_LOGICAL_A2.
+- Historical thin A2 retained: YES.
+- Runtime/contract change authorized: NO.
+- Scientific validation/reproduction credit: NONE.
+- September status: OPEN.
+- Natural-month finalization: NOT_DUE.
+- Successor maintenance status: COMPLETE_FOR_LOGICAL_2026-09-25_A2.
