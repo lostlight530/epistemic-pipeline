@@ -517,3 +517,50 @@ Earlier Stage A→F records remain point-in-time research evidence. Stage G adds
 - September status: OPEN.
 - Natural-month finalization: NOT_DUE.
 - Successor maintenance status: COMPLETE_FOR_LOGICAL_2026-09-25_A2.
+
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-26
+
+- Logical maintenance date: 2026-09-26
+- Cutoff: 2026-09-25
+- Exact base main: `3c9b42cfb5f3b5d33ac851dd53f945945b374cfc`
+- Scope: Stage A-F epistemic/evaluation lineage, longitudinal owner and retained stage packages.
+- Stage G and 2026-09-26 support annotations are later evidence reserved for A2.
+
+### Coverage decisions
+- 2026-09-01: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-02: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-03: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-04: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-05: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-06: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-07: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-08: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-09: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-10: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-11: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-12: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-13: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-14: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-15: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-16: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-17: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-18: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-19: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-20: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-21: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-22: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-23: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-24: REVIEWED / RETAIN_EXISTING_DECISION
+- 2026-09-25: REVIEWED / RETAIN_STAGE_F_RELATION / NO_FOLLOW_UP. Stage F remains execution-trajectory research evidence, not claim truth or benchmark reproduction.
+
+### Boundary
+- indexed != true; evidence linked != sufficient; provenance != truth.
+- transfer != acceptance; heuristic score != probability.
+- current later-stage presence does not rewrite earlier availability or review identity.
+- September remains OPEN; natural-month close is NOT_DUE.
+
+### A1 disposition
+- Coverage through 2026-09-25: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
+- Historical rewrite required: NO.
+- New truth/acceptance/runtime/independence credit: NONE.
