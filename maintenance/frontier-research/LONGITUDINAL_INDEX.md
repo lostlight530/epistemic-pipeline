@@ -590,3 +590,24 @@ Earlier Stage A→F records remain point-in-time research evidence. Stage G adds
 - 2026-09-26 epistemic relation: STAGE_G_PLUS_SUPPORT_CALIBRATION_INTEGRATED.
 - Historical rewrite: NO.
 - New truth/acceptance/runtime/independence credit: NONE.
+
+
+## Stage H / 2025-Q4 — Adaptive Trajectory and Tool-Environment Evidence
+
+Stage H extends A→G into a Q4 evaluation narrative centered on environment-aware execution evidence.
+
+- October: TRAJECT-Bench v1 separates final accuracy from tool-selection, argument, dependency and order correctness.
+- November: CostBench v1 adds dynamic cost/blocking state and replanning to evaluation identity.
+- December: MCPAgentBench v1 adds candidate/distractor tool-set, sandbox, completion and efficiency identity.
+
+```text
+trajectory evidence
+-> adaptive environment state
+-> replanning
+-> exact tool-set/sandbox identity
+-> completion + efficiency envelope
+```
+
+Historical paper version identity is retained explicitly; later revisions are later evidence, not Q4 facts.
+
+Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
