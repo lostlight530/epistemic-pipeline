@@ -257,3 +257,129 @@ CURRENT_STATE
 ```
 
 Earlier Stage A→F records remain point-in-time research evidence. Stage G adds later documentary context without silently resolving earlier ambiguity/conflict or rewriting prior availability.
+
+## SUCCESSOR_A1_FULL_COVERAGE_2026-09-26_FOR_LOGICAL_2026-09-25
+
+- Maintenance task type: TEN_REPOSITORY_MONTHLY_A1_SUCCESSOR
+- Logical maintenance date: 2026-09-25
+- Historical A1 cutoff: 2026-09-24 Asia/Shanghai
+- Historical thin A1 PR retained: #56
+- Research plane: claim/evidence/trajectory
+- Successor purpose: expand the already-merged A1 into explicit artifact/decision coverage without rewriting its base-revision observation.
+- Transport main contains later Stage F/G material; later availability is classified, never back-projected.
+- Runtime/reproduction execution by this successor: NOT_EXECUTED
+- History rewrite: NO
+
+### Delivery chronology preserved
+
+- Stage A / 2024-Q1: September research delivery retained as historical reconstruction.
+- Stage B / 2024-Q2: September research delivery retained as historical reconstruction.
+- Stage C / 2024-Q3: September research delivery retained as historical reconstruction.
+- Stage D / 2024-Q4: later September delivery retained; current routing does not make it earlier evidence.
+- Stage E / 2025-Q1: later-same-day 2026-09-24 delivery is preserved as later evidence relative to earlier 9/24 cuts.
+- Stage F / 2025-Q2: 2026-09-25 delivery; excluded from A1 input and reserved for A2.
+- Stage G / 2025-Q3: 2026-09-26 delivery; outside the logical 9/25 maintenance task.
+- Earlier A→D/A→E syntheses remain point-in-time artifacts even though later syntheses now exist.
+
+### Artifact-family coverage ledger
+
+#### Stage A
+- STAGE_BRIEF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_PARTS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- SOURCE_OBJECT_REGISTER: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- EVIDENCE_CHART: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- MONTH_RECONSTRUCTIONS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_SYNTHESIS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_REVIEW: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_HANDOFF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- Stage A chronology: preserve original research period and actual September delivery date as separate time axes.
+- Stage A authority: documentary research only; no runtime/scientific authority inherited.
+#### Stage B
+- STAGE_BRIEF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_PARTS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- SOURCE_OBJECT_REGISTER: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- EVIDENCE_CHART: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- MONTH_RECONSTRUCTIONS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_SYNTHESIS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_REVIEW: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_HANDOFF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- Stage B chronology: preserve original research period and actual September delivery date as separate time axes.
+- Stage B authority: documentary research only; no runtime/scientific authority inherited.
+#### Stage C
+- STAGE_BRIEF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_PARTS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- SOURCE_OBJECT_REGISTER: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- EVIDENCE_CHART: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- MONTH_RECONSTRUCTIONS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_SYNTHESIS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_REVIEW: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_HANDOFF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- Stage C chronology: preserve original research period and actual September delivery date as separate time axes.
+- Stage C authority: documentary research only; no runtime/scientific authority inherited.
+#### Stage D
+- STAGE_BRIEF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_PARTS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- SOURCE_OBJECT_REGISTER: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- EVIDENCE_CHART: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- MONTH_RECONSTRUCTIONS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_SYNTHESIS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_REVIEW: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_HANDOFF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- Stage D chronology: preserve original research period and actual September delivery date as separate time axes.
+- Stage D authority: documentary research only; no runtime/scientific authority inherited.
+#### Stage E
+- STAGE_BRIEF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_PARTS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- SOURCE_OBJECT_REGISTER: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- EVIDENCE_CHART: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- MONTH_RECONSTRUCTIONS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_SYNTHESIS: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- RESEARCH_REVIEW: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- STAGE_HANDOFF: REVIEWED_FOR_PRESENCE_RELATION_AND_EXISTING_CORRECTION; decision = NO_FOLLOW_UP unless an existing dated reconciliation already owns a correction.
+- Stage E chronology: preserve original research period and actual September delivery date as separate time axes.
+- Stage E authority: documentary research only; no runtime/scientific authority inherited.
+
+### Current routing/owner coverage
+
+- LONGITUDINAL_INDEX: REVIEWED; successor adds explicit historical-cut routing only.
+- latest pre-F longitudinal synthesis: REVIEWED as the A1-era current relation; later A→F/A→G files do not rewrite it.
+- MANIFEST/router: REVIEWED through preserved dated annotations; later Stage presence is not earlier availability.
+- DOCUMENT_STATUS: REVIEWED as current authority router, not as proof of stage execution.
+- contributor statements: REVIEWED for provenance role only; they do not create peer-review independence.
+- source/object registers: REVIEWED as identity/authority maps; register presence is not source truth.
+- evidence charts: REVIEWED as bounded evidence summaries; chart inclusion is not scientific validation.
+- month reconstructions: REVIEWED as retrospective records; reconstruction date is separate from logical research month.
+- reviews: SAME_PRODUCER_REVIEW where declared; no independent review is invented.
+- handoffs: context transfer only; no downstream authority inheritance is inferred.
+
+### Hard-boundary verification
+
+- claim indexed != claim true
+- evidence linked != evidence sufficient
+- provenance != truth
+- transfer != acceptance
+- current state != task-time state
+- Stage completeness != runtime execution.
+- Current path presence != earlier availability.
+- Later stage delivery != earlier stage input.
+- Retrospective reconstruction != contemporaneous 2025 execution.
+- Search-bounded coverage != exhaustive field survey.
+- Same project/source lineage != independent corroboration.
+- Documentary correction != historical rewrite.
+- A1 successor depth != new research credit.
+
+### A1 decision summary
+
+- Stage A: NO_FOLLOW_UP beyond existing reconciliation.
+- Stage B: NO_FOLLOW_UP beyond existing reconciliation.
+- Stage C: NO_FOLLOW_UP beyond existing reconciliation.
+- Stage D: NO_FOLLOW_UP beyond existing reconciliation; later delivery chronology preserved.
+- Stage E: APPEND_RELATION as later-same-day 2026-09-24 evidence where applicable; do not back-project into earlier same-day cuts.
+- Stage F: NOT_A1_INPUT / defer to A2 because delivery is 2026-09-25.
+- Stage G: OUTSIDE_LOGICAL_TASK / 2026-09-26 later evidence.
+- Current month status: OPEN.
+- Natural-month finalization: NOT_DUE.
+- Runtime change authorized: NO.
+- Contract change authorized: NO.
+- Scientific validation/reproduction credit: NONE.
+- Required next step: merge this A1 successor, fresh-read main, then build A2 from the merged state with Stage F as N-day input.
