@@ -23,8 +23,8 @@ epistemic 仓的 frontier-research 轴=**评估认识论**：评测证据包络�
 - [决定] NO_FOLLOW_UP
 
 ### Stage D / 2024-Q4（协议与可靠性奠基）
-- [事实核验] **Model Context Protocol 2024-11-25 发布**——工具调用协议单源首日，D 阶段对象域的锚事件（**本仓 D 文件必须收录——若缺失即漏事件，VERIFY_IN_PLACE**）；o1（2024-09-12）把"推理时计算"带进评测视野；agent 可靠性（重复执行方差）讨论升温
-- [决定] APPEND_RELATION：MCP 锚 + o1 背景锚
+- [事实核验] **Model Context Protocol 于 2024-11-25 发布**——这是 D 阶段对象域内值得核对的候选锚事件；但本仓 Stage 采用 SEARCH_BOUNDED，而非 exhaustive coverage，因此“未收录 MCP”本身只能算 candidate omission，不能直接判成 contract defect。o1（2024-09-12）把推理时计算带进评测视野；agent 可靠性（重复执行方差）讨论升温
+- [决定] APPEND_RELATION 候选：MCP 锚 + o1 背景锚；是否进入 Stage correction 仍需对照 Stage D 的 RQ / selection scope
 
 ### Stage E / 2025-Q1（终考与新范式）
 - [事实核验] **HLE（Humanity's Last Exam）2025-01 发布（arXiv 2501.14249，约 2,500 题跨学科）**——评估天花板事件；**SWE-Lancer（OpenAI，2025-02-19，双源验证）**——真实自由职业工程任务定价评测；DeepSeek R1（01-20）把开放权重推理带入第一梯队——**评估对象从闭源 API 扩到开放权重**，评测基础设施（本地推理/成本）语义变化
@@ -44,14 +44,14 @@ epistemic 仓的 frontier-research 轴=**评估认识论**：评测证据包络�
 ## 2. 治理件横切批注（七 Stage 合并）
 
 - **BRIEF RQ 编号**：仅 A 显式——治理注记（同 auto-doc 系）
-- **REVIEW 独立性**：七 Stage 全部未声明——GAP 汇总（本文件即外部 review 补位）
+- **REVIEW 独立性**：七 Stage 全部未声明——GAP 汇总；本文件形成新的外部 review 视角，但不回写历史 RESEARCH_REVIEW 的独立性状态
 - **REGISTER 密度**：A→G 衰减同 auto-doc 系（E/F 最薄）——correction 优先级 E/F
-- **厚度曲线**：A 最厚→F 最薄→G 回升，与 auto-doc 系同型——**同批同衰减=系统性生成特征而非单仓偶然**
+- **厚度曲线**：A 最厚→F 最薄→G 回升，与 auto-doc 系呈相似趋势；这支持“存在跨仓共同生成/交付特征”的调查方向，但单凭厚度相关性还不能确定因果来源
 
 ## 3. 纵向层与跨仓三角
 
 - 十二环节链在 epistemic 轴的对应物=**评估对象链：benchmark→contamination→refresh→factuality→judge→agent→trajectory→long-horizon**——纵向综合未显式给出 epistemic 侧的链（auto-doc 轴独占）——**correction 提案：纵向综合补 epistemic/sci-render 两轴的平行链**（三轴平行是三仓设计的本意，现只显式了一条）
-- MCP 事件（2024-11-25）在三仓的归属：epistemic（对象域内一等）/auto-doc（背景）/sci-render（无涉）——三角核对完成
+- MCP 事件（2024-11-25）在三仓的关系可暂记为：epistemic（对象域内强相关候选）/auto-doc（背景）/sci-render（当前未见直接关系）；这是跨仓关系候选，不构成 authority transfer
 
 ## 4. Search log
 MCP 双源（2024-11-25/2025-03 OpenAI）/SWE-Lancer（2025-02-19）/PaperBench（8,316）/Terminal-Bench（tbench.ai）/τ²-bench（2025-06-11）/HLE（2501.14249）七组锚；污染讨论与 judge 研究的具体 arXiv ID 未验证——UNKNOWN。2026-09-26。
