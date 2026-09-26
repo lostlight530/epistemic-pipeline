@@ -564,3 +564,29 @@ Earlier Stage A→F records remain point-in-time research evidence. Stage G adds
 - Coverage through 2026-09-25: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
 - Historical rewrite required: NO.
 - New truth/acceptance/runtime/independence credit: NONE.
+
+
+## A2_CURRENT_MONTH_RELATION_2026-09-26
+
+- Logical maintenance date: 2026-09-26
+- Exact A1-merged base main: `7d5e03b4aae88e3e90137589dd64a8f5c6ffbfc6`
+- Current-month relation window: 2026-09-01 through 2026-09-26
+- A1 coverage through 2026-09-25: INHERITED_FROM_MERGED_A1.
+
+### N-day integration — epistemic lineage
+- Stage G / 2025-Q3 is visible on current main and extends the evaluation/trajectory lineage beyond the Stage F cut retained by A1.
+- 2026-09-26 annotation/support artifacts add cross-stage comparison and relation candidates; they remain support inputs rather than a new governance or review authority layer.
+- The MCP 2024-11-25 event remains a strong candidate relation for Stage D, but absence from a SEARCH_BOUNDED stage is not by itself a contract defect.
+- Cross-repository parallel-chain observations remain analytical relations, not shared authority or causal proof.
+- Per-file density remains a descriptive signal only; content-level adequacy and source sufficiency remain separate questions.
+
+### Relation boundary
+- indexed != true; evidence-linked != sufficient.
+- provenance != truth; transfer != acceptance.
+- current external support review does not retroactively establish historical review independence.
+- September remains OPEN; natural-month close is NOT_DUE.
+
+### A2 disposition
+- 2026-09-26 epistemic relation: STAGE_G_PLUS_SUPPORT_CALIBRATION_INTEGRATED.
+- Historical rewrite: NO.
+- New truth/acceptance/runtime/independence credit: NONE.
