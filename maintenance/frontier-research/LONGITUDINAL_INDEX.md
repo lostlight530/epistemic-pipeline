@@ -611,3 +611,26 @@ trajectory evidence
 Historical paper version identity is retained explicitly; later revisions are later evidence, not Q4 facts.
 
 Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-27
+
+- Logical maintenance date: 2026-09-27
+- Cutoff: 2026-09-26
+- Exact base main: `0fe31f74f4ebc2febc36ab9741c9ab211cf6cb58`
+- Scope: September evidence/provenance/evaluation stage lineage through Stage G and the longitudinal owner; 2026-09-27 Stage H is reserved for A2.
+
+### Coverage decisions
+- 2026-09-01 through 2026-09-25: REVIEWED / RETAIN_EXISTING_DECISIONS
+- 2026-09-26 Stage G + support calibration: REVIEWED / RETAIN_STAGE_G_RELATION / NO_FOLLOW_UP
+- Existing trajectory/cost/tool-environment relations remain bounded to their exact evidence objects.
+
+### Boundary
+- indexed != true; evidence-linked != sufficient.
+- provenance != truth; transfer != acceptance.
+- search-bounded review != exhaustive benchmark coverage.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A1 disposition
+- 2026-09-26 epistemic relation: NO_FOLLOW_UP.
+- Historical rewrite required: NO.
+- New truth/acceptance/runtime/source-independence credit: NONE.
