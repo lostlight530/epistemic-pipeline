@@ -634,3 +634,28 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - 2026-09-26 epistemic relation: NO_FOLLOW_UP.
 - Historical rewrite required: NO.
 - New truth/acceptance/runtime/source-independence credit: NONE.
+
+## A2_CURRENT_MONTH_RELATION_2026-09-27
+
+- Logical maintenance date: 2026-09-27
+- Exact A1-merged base main: `a04b2435e83142a4bca7027b6e912cfe3f242011`
+- Current-month relation window: 2026-09-01 through 2026-09-27
+- A1 coverage through 2026-09-26: INHERITED_FROM_MERGED_A1.
+
+### N-day integration — Stage H / epistemic lineage
+- Stage H / 2025-Q4 retrospective is present as SEARCH_BOUNDED reconstructed research and extends the longitudinal evaluation/trajectory lineage beyond Stage G.
+- Retained exact historical v1 identities include TRAJECT-Bench v1 (2025-10-06), CostBench v1 (2025-11-04), and MCPAgentBench v1 (2025-12-31); later revisions are not silently substituted.
+- Benchmark score, trajectory evidence, modeled cost and simulated MCP interaction remain distinct from truth, real-world economics, live-service behavior or independent reproduction.
+- Current repository assessment remains NO_CURRENT_REPOSITORY_DRIFT / NO_RUNTIME_CHANGE / NO_CONTRACT_CHANGE within the Stage H review scope.
+
+### Relation boundary
+- benchmark result != truth.
+- modeled/simulated environment != live service.
+- exact object identity != independent reproduction.
+- SEARCH_BOUNDED != exhaustive benchmark coverage.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A2 disposition
+- 2026-09-27 epistemic relation: STAGE_H_INTEGRATED_WITH_EXACT_OBJECT_BOUNDARY.
+- New truth/acceptance/runtime/source-independence credit: NONE.
+- Historical rewrite: NO.
