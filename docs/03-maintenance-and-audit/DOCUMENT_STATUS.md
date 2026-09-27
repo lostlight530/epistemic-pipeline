@@ -268,3 +268,22 @@ STAGE_G_RESEARCH_PRESENT
 != SCIENTIFIC_ADJUDICATION
 != RUNTIME_CHANGE
 ```
+
+
+## Stage H current document-routing reconciliation — 2026-09-28
+
+Current `main` contains `maintenance/frontier-research/stage-h-2025-q4/`, and `maintenance/frontier-research/LONGITUDINAL_INDEX.md` already records the Stage H / 2025-Q4 relation in the current documentary lineage.
+
+The current `maintenance/frontier-research/longitudinal/` directory still ends at `LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md`. This reconciliation therefore does **not** infer, manufacture, or claim an A→H longitudinal synthesis artifact that is not present.
+
+Stage H remains `NON_NORMATIVE / SEARCH_BOUNDED` frontier-research documentation. This correction repairs current routing metadata only; it does not change implementation, machine-contract semantics, active research/communication contracts, release authority, reproduction status, or scientific validity.
+
+```text
+Provenance != Truth
+claim transfer != acceptance
+evidence presence != entailment
+maintenance clean != scientific validation
+Stage H presence != runtime capability
+LONGITUDINAL_INDEX relation != synthesis artifact presence
+historical stage record != current runtime authority
+```
