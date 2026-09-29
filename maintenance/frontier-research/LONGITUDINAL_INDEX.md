@@ -710,3 +710,27 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - 2026-09-28 epistemic relation: STAGE_H_ROUTING_RECONCILIATION_INTEGRATED.
 - New benchmark/runtime/truth/reproduction credit: NONE.
 - Historical rewrite: NO.
+
+## A1_MONTH_TO_DATE_REVALIDATION_2026-09-29
+
+- Logical maintenance date: 2026-09-29
+- Cutoff: 2026-09-28
+- Exact base main: `bbed9f00b84406c50af56dff47b02929ff25426e`
+
+### Coverage decisions
+- Through 2026-09-27 Stage H / 2025-Q4: REVIEWED / RETAIN_EXACT_OBJECT_AND_SEARCH_BOUNDED_RELATION.
+- 2026-09-28 current document-routing reconciliation: REVIEWED / RETAIN_ROUTING_CORRECTION / NO_FOLLOW_UP.
+- DOCUMENT_STATUS / MANIFEST route Stage H as current documentary evidence; physical synthesis still ends at 2025-Q3.
+- No A→H longitudinal synthesis artifact is inferred, manufactured, or backfilled.
+
+### Boundary
+- evidence presence != entailment.
+- provenance != truth.
+- Stage H presence != runtime capability.
+- LONGITUDINAL_INDEX relation != physical synthesis artifact.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+### A1 disposition
+- Coverage through N-1 = 2026-09-28: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
+- Historical rewrite required: NO.
+- New benchmark/runtime/truth/reproduction credit: NONE.
