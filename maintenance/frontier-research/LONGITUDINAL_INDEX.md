@@ -734,3 +734,30 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - Coverage through N-1 = 2026-09-28: VERIFIED_IN_CURRENT_LONGITUDINAL_OWNER.
 - Historical rewrite required: NO.
 - New benchmark/runtime/truth/reproduction credit: NONE.
+
+## A2_CURRENT_MONTH_RELATION_2026-09-29
+
+- Logical maintenance date: 2026-09-29
+- Exact A1-merged base main: `6ceb90efaa8d7db50dec8f2882086b7480b0903b`
+- Current-month relation window: 2026-09-01 through 2026-09-29.
+- A1 coverage through 2026-09-28: INHERITED_FROM_MERGED_A1.
+
+### N-day current-state relation
+- At this review cut, no new producer-native Stage I or later frontier-stage artifact is present on current main.
+- Decision state: NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+- This is not a missing-task, failure, scheduler-failure or no-ecosystem-change claim; this L3 pipeline is stage/state-triggered.
+- Current frontier narrative remains Stage H / 2025-Q4 with exact-object, adaptive-trajectory and tool-environment boundaries retained.
+- Current document routing is reconciled through Stage H; physical longitudinal synthesis still ends at 2025-Q3 and no A→H synthesis artifact is manufactured.
+
+### Relation boundary
+- NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK != STAGE_FAILURE.
+- STAGE_TRIGGERED_PIPELINE != DAILY_CADENCE_REQUIREMENT.
+- benchmark/tool-environment narrative != runtime validation or truth.
+- LONGITUDINAL_INDEX relation != physical synthesis artifact.
+- no new stage object != verified no external change.
+
+### A2 disposition
+- 2026-09-29 epistemic relation: STAGE_H_CURRENT / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+- Historical rewrite: NO.
+- New benchmark/runtime/truth/reproduction credit: NONE.
+- September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
