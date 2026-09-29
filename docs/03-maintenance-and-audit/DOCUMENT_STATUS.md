@@ -287,3 +287,22 @@ Stage H presence != runtime capability
 LONGITUDINAL_INDEX relation != synthesis artifact presence
 historical stage record != current runtime authority
 ```
+
+
+## September natural-month close — 2026-09-30
+
+On the natural final calendar day of September, current temporal state is `calendar-month-close`. Earlier `month-to-date` statements remain point-in-time observations for their declared cutoffs and are not rewritten retroactively.
+
+This is a temporal/current-state reconciliation only. It does not change implementation semantics, capability calibration, active subject-specific contracts, closed August stage status, frontier-research authority, reproduction status, or scientific validity.
+
+```text
+Provenance != Truth
+claim transfer != acceptance
+evidence presence != entailment
+maintenance clean != scientific validation
+calendar-month close != reproduction
+calendar-month close != runtime validation
+historical month-to-date observation != current month-close state
+```
+
+The current machine-readable temporal owner is `MANIFEST.yaml`; `calibrated: "2026-09-22"` remains unchanged because maintenance freshness alone is not a capability/profile/architecture recalibration trigger.
