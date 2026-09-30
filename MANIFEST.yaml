@@ -60,8 +60,8 @@ stage_close:
   reproduction_claim: false
 
 current_temporal_status:
-  as_of: "2026-09-30"
-  calendar_month_status: calendar-month-close
+  as_of: "2026-10-01"
+  calendar_month_status: month-to-date
   closed_stage_status: closed
   stage_reopened_by_repair: false
 
@@ -232,7 +232,7 @@ canonical_runtime:
     cadences: [daily, weekly, monthly]
     calendar_status_is_date_derived: true
     stage_status_is_config_derived: true
-    current_calendar_status: calendar-month-close
+    current_calendar_status: month-to-date
     current_stage_status: closed
     repository_scope_enforced: true
     configured_absolute_paths_allowed: false
@@ -283,7 +283,7 @@ maintenance:
   first_complete_cadence_demonstration: maintenance/FIRST_COMPLETE_CADENCE_DEMONSTRATION_2026_08_31.md
   demonstration_status: reference_non_normative
   demonstration_is_runtime_proof: false
-  current_calendar_status: calendar_month_close
+  current_calendar_status: month_to_date
   current_stage_status: closed
   daily:
     scope: local_runtime_claim_evidence_drift
