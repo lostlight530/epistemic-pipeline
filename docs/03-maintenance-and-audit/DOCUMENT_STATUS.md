@@ -306,3 +306,21 @@ historical month-to-date observation != current month-close state
 ```
 
 The current machine-readable temporal owner is `MANIFEST.yaml`; `calibrated: "2026-09-22"` remains unchanged because maintenance freshness alone is not a capability/profile/architecture recalibration trigger.
+
+## October month-open reconciliation — 2026-10-01
+
+On 2026-10-01 (Asia/Shanghai), September's natural calendar-month close remains point-in-time evidence while the current October calendar state returns to `month-to-date`.
+
+This repair changes current temporal routing only. It does not change dependency/claim/evidence implementation, active machine contracts, evidence acceptance semantics, closed August-stage status, frontier-research authority, reproduction status, or scientific validity.
+
+```text
+current implementation > machine contracts > current maintenance/authority records > historical snapshots
+Provenance != Truth
+claim transfer != acceptance
+evidence presence != entailment
+maintenance clean != scientific validation
+month-to-date != runtime validation
+historical month-close evidence != current calendar state
+```
+
+The machine-readable temporal owner is `MANIFEST.yaml`. The dated reconciliation record is `maintenance/OCTOBER_OPEN_RECONCILIATION_2026_10_01.md`.
