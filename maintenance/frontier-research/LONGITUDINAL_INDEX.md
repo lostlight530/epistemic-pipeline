@@ -791,3 +791,33 @@ PROVENANCE
 ```
 
 A1 disposition: MONTH_OPEN_BASELINE_RECORDED.
+
+
+### A2 / current October relation — 2026-10-01
+
+- Exact A1-merged base main: `8eaf51dceff2d6b01f5378215d9f3c40768ad03d`
+- N-day current inputs: `maintenance/OCTOBER_OPEN_RECONCILIATION_2026_10_01.md`, `MANIFEST.yaml`, `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md`
+- October relation window: 2026-10-01
+- Current Stage narrative remains Stage H / 2025-Q4
+- No new producer-native Stage I or later research object is established by the month-open reconciliation
+- Current routing preserves claim, evidence, provenance, verification and transfer as distinct states
+- Earlier Stage artifacts remain point-in-time research
+
+```text
+OCTOBER_OPEN_RECONCILIATION
+!= NEW_FRONTIER_STAGE
+
+CLAIM_INDEXED
+!= CLAIM_VERIFIED
+
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+
+TRANSFER
+!= ACCEPTANCE
+```
+
+A2 disposition: OCTOBER_DAY_1_ROUTING_INTEGRATED / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+Historical rewrite: NO.
+Extra audit executed: NO.
+New acceptance, runtime, reproduction, or source-independence credit: NONE.
