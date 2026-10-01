@@ -761,3 +761,33 @@ Stage H status: `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
 - Historical rewrite: NO.
 - New benchmark/runtime/truth/reproduction credit: NONE.
 - September remains OPEN / NATURAL_MONTH_CLOSE_NOT_DUE.
+
+
+## OCTOBER_DUAL_CUTOFF_MAINTENANCE_2026-10-01
+
+### A1 / month-open cutoff — before 2026-10-01
+
+- Exact base main: `4adda8a6a9b12e65a80034b8b9425236b461f420`
+- October Month Start → N-1 artifact set: EMPTY_BY_CALENDAR_BOUNDARY
+- Coverage decision: NO_PRIOR_OCTOBER_ARTIFACT_DUE
+- The current `maintenance/OCTOBER_OPEN_RECONCILIATION_2026_10_01.md`, MANIFEST and DOCUMENT_STATUS changes are N-day state and are intentionally excluded from A1
+- Current retained frontier narrative before N-day integration remains Stage H / 2025-Q4
+- Historical claim/evidence/transfer records are not rewritten
+- Extra audit executed: NO
+- New claim-truth, acceptance, runtime, reproduction, or source-independence credit: NONE
+
+```text
+NO_PRIOR_OCTOBER_ARTIFACT_DUE
+!= MISSING_STAGE
+
+N_DAY_RECONCILIATION_PRESENT
+!= A1_ELIGIBLE_INPUT
+
+EVIDENCE_PRESENT
+!= ENTAILMENT
+
+PROVENANCE
+!= TRUTH
+```
+
+A1 disposition: MONTH_OPEN_BASELINE_RECORDED.
