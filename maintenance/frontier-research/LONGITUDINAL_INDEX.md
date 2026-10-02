@@ -867,3 +867,45 @@ TRANSFER
 ```
 
 A1 result: VERIFIED_FULL_COVERAGE_THROUGH_2026-10-01.
+
+
+### A2 / current October relation — 2026-10-02
+
+- Exact A1-merged base main: `605299cf543f8631e64a089202801223f953a81b`
+- A1 full coverage through 2026-10-01: INHERITED_FROM_MERGED_A1
+- Current-main stage check: NO_NEW_STAGE_I_OR_LATER_OBJECT_OBSERVED_AT_THIS_CHECK
+- Pipeline cadence: STAGE_STATE_TRIGGERED
+- Current retained frontier narrative: Stage H / 2025-Q4
+- Current claim/evidence routing: Stage H retained
+- Benchmark/runtime/scientific-adjudication execution by maintenance: NOT_PERFORMED
+- Historical rewrite: NO
+
+### Current epistemic boundaries
+
+```text
+NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK
+!= STAGE_FAILURE
+!= SCHEDULER_FAILURE
+
+STAGE_STATE_TRIGGERED
+!= DAILY_CADENCE_REQUIREMENT
+
+CLAIM_INDEXED
+!= CLAIM_TRUE
+
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+
+PROVENANCE
+!= TRUTH
+
+TRANSFER
+!= ACCEPTANCE
+```
+
+- No Stage I/later claim-evidence object is inferred or manufactured.
+- No earlier ambiguity or conflict is silently resolved.
+- Current absence of a later-stage path is a repository-state observation, not a universal no-change claim.
+
+A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-02 / STAGE_H_CURRENT / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+New claim-truth/acceptance/runtime/reproduction credit: NONE.
