@@ -821,3 +821,49 @@ A2 disposition: OCTOBER_DAY_1_ROUTING_INTEGRATED / NO_NEW_STAGE_OBJECT_OBSERVED_
 Historical rewrite: NO.
 Extra audit executed: NO.
 New acceptance, runtime, reproduction, or source-independence credit: NONE.
+
+
+## A1_FULL_COVERAGE_2026-10-02
+
+- Logical maintenance date: 2026-10-02
+- Exact base main: `d4dce38adaf72a9954e231be60786ed445c9f0ed`
+- Coverage window: 2026-10-01
+- Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- A1 rule: REVIEWED != MODIFIED
+- Pipeline cadence: STAGE_STATE_TRIGGERED
+- Extra benchmark/runtime/adjudication execution: NOT_PERFORMED
+- Historical rewrite: NO
+
+### Coverage decisions
+
+| In-scope October-1 surface | Decision | Preserved boundary |
+| --- | --- | --- |
+| `maintenance/OCTOBER_OPEN_RECONCILIATION_2026_10_01.md` | REVIEWED / NO_FOLLOW_UP | month-open reconciliation is current routing evidence, not a new Stage I claim set |
+| `MANIFEST.yaml` October routing update | REVIEWED / NO_FOLLOW_UP | provenance/routing presence does not establish truth or acceptance |
+| `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` October status update | REVIEWED / NO_FOLLOW_UP | evidence linked remains distinct from evidence sufficient |
+| current `LONGITUDINAL_INDEX.md` through the 2026-10-01 A2 section | REVIEWED / NO_FOLLOW_UP | Stage H remains current; no A→H physical synthesis artifact is inferred or backfilled |
+
+### A1 disposition
+
+- Coverage completeness: COMPLETE_FOR_2026-10-01
+- Decision completeness: COMPLETE_FOR_2026-10-01
+- Original claim/evidence artifact mutation required: NO
+- New Stage I or later object established by A1: NO
+- New truth/acceptance/runtime/reproduction credit: NONE
+
+```text
+STAGE_STATE_TRIGGERED
+!= DAILY_CADENCE_REQUIREMENT
+
+EVIDENCE_PRESENT
+!= ENTAILMENT
+!= EVIDENCE_SUFFICIENT
+
+PROVENANCE
+!= TRUTH
+
+TRANSFER
+!= ACCEPTANCE
+```
+
+A1 result: VERIFIED_FULL_COVERAGE_THROUGH_2026-10-01.
