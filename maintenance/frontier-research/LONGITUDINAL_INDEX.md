@@ -909,3 +909,85 @@ TRANSFER
 
 A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-02 / STAGE_H_CURRENT / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
 New claim-truth/acceptance/runtime/reproduction credit: NONE.
+
+## A1_FULL_COVERAGE_2026-10-03
+
+- Logical maintenance date: 2026-10-03
+- Exact base main: `60fde3eb87a0271e0fd6b00654679a1708529d33`
+- Coverage window: 2026-10-01 through 2026-10-02
+- Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Trigger: a repository-native retrospective D30 audit was merged after the 2026-10-02 A2 cutoff
+- A1 rule: REVIEWED != MODIFIED
+- Pipeline cadence: STAGE_STATE_TRIGGERED
+- Extra validator/benchmark/runtime/scientific-adjudication execution: NOT_EXECUTED
+- Historical rewrite: NO
+
+### Coverage decisions
+
+| In-scope October-2 surface | Decision | Preserved boundary |
+| --- | --- | --- |
+| 2026-10-02 A1 full-coverage section in `LONGITUDINAL_INDEX.md` | REVIEWED / RETAIN | coverage relation does not make a claim true or evidence sufficient |
+| 2026-10-02 A2 current-relation section in `LONGITUDINAL_INDEX.md` | REVIEWED / RETAIN_AS_POINT_IN_TIME_CUTOFF | its `OCTOBER_CURRENT_THROUGH_2026-10-02` state predates the later D30 merge |
+| `maintenance/2026-10-02-september-d30-independent-gpt-audit.md` | REVIEWED / INTEGRATE_AS_LATER_10_02_EVIDENCE | retrospective audit; `NO_CHANGE_REQUIRED` does not equal truth/sufficiency/acceptance |
+| current Stage H / 2025-Q4 claim-evidence routing | REVIEWED / RETAIN | no native Stage I/later claim-evidence object is established by the audit |
+
+### Cutoff repair
+
+The 2026-10-02 A2 merge preceded the D30 audit merge. The earlier A2 remains valid for its review cut. This A1 extends longitudinal coverage to the later same-day repository evidence without rewriting either record.
+
+```text
+A2_CURRENT_THROUGH_2026-10-02
+!= ALL_FUTURE_10_02_MERGES_ALREADY_COVERED
+
+D30_AUDIT_PRESENT
+!= CLAIM_TRUE
+!= EVIDENCE_SUFFICIENT
+!= SCIENTIFIC_ADJUDICATION
+
+PROVENANCE
+!= TRUTH
+
+TRANSFER
+!= ACCEPTANCE
+```
+
+### A1 disposition
+
+- Coverage completeness: COMPLETE_THROUGH_2026-10-02_AT_THIS_CHECK
+- Decision completeness: COMPLETE_THROUGH_2026-10-02_AT_THIS_CHECK
+- D30 audit routed as later same-day repository evidence: YES
+- Original claim/evidence/audit/stage mutation required: NO
+- New Stage I or later object established by A1: NO
+- New truth/sufficiency/acceptance/runtime/reproduction credit: NONE
+
+### A2 / current October relation — 2026-10-03
+
+- Exact A1 producer base main: `60fde3eb87a0271e0fd6b00654679a1708529d33`
+- A1 full coverage through 2026-10-02: ESTABLISHED_BY_THIS_CHANGE
+- Current-main stage check: NO_NEW_STAGE_I_OR_LATER_OBJECT_OBSERVED_AT_THIS_CHECK
+- Current retained frontier narrative: Stage H / 2025-Q4
+- Current claim/evidence routing: Stage H retained
+- The D30 audit remains retrospective September evidence and does not silently resolve historical ambiguity/conflict or promote current truth
+- Validator/benchmark/runtime/scientific-adjudication execution by this maintenance pass: NOT_EXECUTED
+- Historical rewrite: NO
+
+```text
+STAGE_STATE_TRIGGERED
+!= DAILY_CADENCE_REQUIREMENT
+
+CLAIM_INDEXED
+!= CLAIM_TRUE
+
+EVIDENCE_LINKED
+!= EVIDENCE_SUFFICIENT
+
+RETROSPECTIVE_AUDIT
+!= ACCEPTANCE
+
+NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK
+!= VERIFIED_NO_EXTERNAL_CHANGE
+```
+
+A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-03_AT_THIS_CHECK / STAGE_H_CURRENT / D30_AUDIT_ROUTED / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
+New truth/sufficiency/acceptance/runtime/reproduction credit: NONE.
+
