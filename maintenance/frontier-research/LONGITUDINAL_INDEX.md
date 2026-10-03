@@ -991,3 +991,39 @@ NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK
 A2 disposition: OCTOBER_CURRENT_THROUGH_2026-10-03_AT_THIS_CHECK / STAGE_H_CURRENT / D30_AUDIT_ROUTED / NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK.
 New truth/sufficiency/acceptance/runtime/reproduction credit: NONE.
 
+
+
+## A1_SUCCESSOR_FULL_COVERAGE_2026-10-03
+
+- Logical maintenance date: 2026-10-03
+- Exact successor base main: `64fa325e5cd1da3016ff7fde948b0a0c4668efc0`
+- Coverage window: 2026-10-01 through 2026-10-02
+- Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE
+- Predecessor 2026-10-03 A1/A2 D30 reconciliation: PRESERVED_AS_POINT_IN_TIME_HISTORY
+- Current-main movement after that reconciliation before this successor: NONE OBSERVED
+- Stage cadence: STAGE_STATE_TRIGGERED
+- Successor review result: REVIEWED / NO_FOLLOW_UP
+- Historical rewrite: NO
+- Extra validator/runtime/scientific execution: NOT_PERFORMED
+
+```text
+SUCCESSOR_RECHECK
+!= DUPLICATE_STAGE_PRODUCTION
+
+NO_NEW_STAGE_OBJECT_OBSERVED_AT_THIS_CHECK
+!= STAGE_FAILURE
+!= SCHEDULER_FAILURE
+
+CLAIM_INDEXED != CLAIM_TRUE
+EVIDENCE_LINKED != EVIDENCE_SUFFICIENT
+TRANSFER != ACCEPTANCE
+```
+
+### Successor A1 disposition
+
+- N-1 coverage completeness: RECONFIRMED_THROUGH_2026-10-02
+- D30 later-same-day routing: RETAINED
+- Stage H routing: RETAINED
+- New Stage I or later object: NONE OBSERVED
+- New truth/sufficiency/acceptance/runtime/reproduction credit: NONE
+- A2 dependency: MUST_FRESH_READ_THIS_A1_MERGED_MAIN
