@@ -61,6 +61,8 @@ stage_close:
 
 current_temporal_status:
   as_of: "2026-10-01"
+  as_of_semantics: last_explicit_calendar_state_reconciliation_not_daily_heartbeat
+  runtime_report_as_of_semantics: execution_or_caller_supplied_observation_date
   calendar_month_status: month-to-date
   closed_stage_status: closed
   stage_reopened_by_repair: false
