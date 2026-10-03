@@ -24,6 +24,8 @@
     "activity_only_branch_or_pr": false,
     "unexecuted_check_status": "NOT_EXECUTED",
     "unobserved_execution_status": "EXECUTION_NOT_OBSERVED",
+    "manifest_temporal_as_of_semantics": "last-explicit-calendar-state-reconciliation-not-daily-heartbeat",
+    "runtime_report_as_of_semantics": "execution-or-caller-supplied-observation-date",
     "delivery_surface": "draft-pull-request",
     "auto_merge": false,
     "direct_main_write": false
