@@ -4,8 +4,8 @@
 
 - **Repository:** `lostlight530/epistemic-pipeline`
 - **Specification:** `2026-09-19-first-batch`
-- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3`
-- **Updated:** `2026-09-26`
+- **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
+- **Updated:** `2026-10-04`
 
 ## Boundary
 
@@ -1348,3 +1348,102 @@ MERGED_A1 + FRESH_MAIN_READ + TEMPORAL_SEMANTICS_2026_10_04
 = CURRENT_MONTH_RELATION_THROUGH_2026_10_04
 NO_NEW_STAGE_OBJECT != FAILURE
 ```
+
+
+## SPECIAL_RESEARCH_NARRATIVE_CLOSEOUT_2026-10-04
+
+### Current narrative identity
+
+Stage H / 2025-Q4 is already retained in the current documentary lineage. This special closeout synchronizes the index identity header with that existing reality.
+
+```text
+Stage A / 2024-Q1
+→ Stage B / 2024-Q2
+→ Stage C / 2024-Q3
+→ Stage D / 2024-Q4
+→ Stage E / 2025-Q1
+→ Stage F / 2025-Q2
+→ Stage G / 2025-Q3
+→ Stage H / 2025-Q4
+```
+
+The prior A–G identity header was stale routing metadata after Stage H integration.
+
+### Synthesis boundary
+
+The latest additive longitudinal synthesis artifact remains bounded to A→G / 2025-Q3.
+
+```text
+STAGE_H_PRESENT
+!= A_TO_H_LONGITUDINAL_SYNTHESIS_PRESENT
+
+INDEX_COVERAGE_A_TO_H
+!= SYNTHESIS_COVERAGE_A_TO_H
+```
+
+No A→H synthesis artifact is inferred or manufactured.
+
+### Stage H retained interpretation
+
+Stage H remains `FRONTIER_STAGE_COMPLETE / NON_NORMATIVE / SEARCH_BOUNDED`.
+
+Its retained selected objects include:
+
+- TRAJECT-Bench v1 (2025-10-06)
+- CostBench v1 (2025-11-04)
+- MCPAgentBench v1 (2025-12-31)
+
+The documentary narrative is bounded to adaptive trajectory, cost/blocking-state, replanning and tool-environment evidence.
+
+Permanent boundaries remain:
+
+- `benchmark result != truth`
+- `trajectory evidence != scientific adjudication`
+- `modeled cost != real-world economics`
+- `simulated MCP/tool environment != live service`
+- `claim transfer != acceptance`
+- `exact object identity != independent reproduction`
+
+### Temporal relation
+
+The 2026-10-04 temporal-semantics reconciliation remains current:
+
+```text
+runtime report as_of
+!= MANIFEST current_temporal_status.as_of
+
+MANIFEST current_temporal_status.as_of
+= last explicit calendar-state reconciliation
+!= daily heartbeat
+```
+
+The static MANIFEST temporal date is not advanced merely because historical-narrative maintenance ran.
+
+### Forward boundary
+
+No Stage I or later producer-native research object is established by this closeout.
+
+```text
+NO_STAGE_I_OBJECT_OBSERVED
+!= STAGE_FAILURE
+!= SCHEDULER_FAILURE
+
+HISTORICAL_NARRATIVE_CLOSEOUT
+!= NEW_RESEARCH_STAGE
+!= RUNTIME_CAPABILITY
+```
+
+### Disposition
+
+- Historical Stage A–G records: PRESERVED.
+- Stage H current documentary lineage: PRESERVED_AND_ROUTED.
+- Longitudinal identity header: CORRECTED_TO_A_THROUGH_H.
+- Existing A→G synthesis artifact: PRESERVED.
+- A→H synthesis fabrication: NO.
+- Stage I fabrication: NO.
+- Runtime execution by this closeout: NOT_PERFORMED.
+- Scientific validation by this closeout: NOT_PERFORMED.
+- Independent reproduction by this closeout: NOT_PERFORMED.
+- New research credit: NONE.
+- New source-independence credit: NONE.
+- Historical rewrite: NO.
