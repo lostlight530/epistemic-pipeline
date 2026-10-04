@@ -3,6 +3,13 @@
 Status: durable open-research production guide
 Scope: repository-level research positioning, independent research-production method, scholarly-metadata boundaries, and semantic-drift governance
 
+## Language policy / 语言政策
+
+English is the canonical and default language for this open-research contract. Chinese text is provided as an accessibility and interpretation aid. If wording diverges, the English normative text governs; repository evidence and current owning contracts remain authoritative over both.
+
+英文是本开放科研契约的默认与规范语言；中文用于辅助理解与可访问性。若中英文表述有差异，以英文规范文本为准；仓库事实与当前 owning contract 的权威仍高于任何翻译。
+
+
 ## Authority
 
 This guide complements implementation, `MANIFEST.yaml`, architecture, runtime-policy, claim/evidence/transfer contracts, maintenance contracts, release policy, and historical evidence. It does not replace them.
@@ -138,3 +145,12 @@ citation != reproduction
 metadata consistency != scientific correctness
 external indexing != repository self-definition
 ```
+
+
+## 中文摘要
+
+本文件定义仓库长期开放科研方法，并与 runtime policy、claim/evidence/provenance/transfer contract、maintenance 与历史记录分层。共同科研骨架要求研究问题、可证伪假设、证据/来源身份、固定 run/graph/revision 身份、实际执行程序、原始观测、反例检查、有界结论、研究增量与复验条件。
+
+claim indexed、structured verification、heuristic score、claim transfer、run completion 都不能自动升级为科学真值、充分证据、概率、接受或科研有效性。
+
+未来 scholarly metadata 保持 canonical type、one-line positioning、primary domains、non-goals、少量准确 subjects 与 5–7 个定义性 keywords；外部分类漂移只有在 upstream metadata 确有歧义时才修 owning layer，否则记录 classifier noise。
