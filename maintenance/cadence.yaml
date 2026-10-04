@@ -32,6 +32,8 @@
   },
   "canonical_paths": [
     "README.md",
+    "OPEN_RESEARCH.md",
+    "RESEARCH_TEMPLATE.md",
     "docs/01-source-and-explanation/ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
@@ -56,6 +58,8 @@
   ],
   "scan_paths": [
     "README.md",
+    "OPEN_RESEARCH.md",
+    "RESEARCH_TEMPLATE.md",
     "docs/01-source-and-explanation/ARCHITECTURE.md",
     "MANIFEST.yaml",
     "AGENTS.md",
