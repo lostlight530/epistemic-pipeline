@@ -35,7 +35,11 @@ Scholarly Graph Representation != Repository Self-Definition
 External systems such as Zenodo, DataCite, OpenAlex, OpenAIRE, search engines, citation indexes, or automated classifiers are downstream representations
 They may be recorded as observations but never silently redefine this repository
 
+Public research scope and workflow roles are described in [OPEN_RESEARCH.md](OPEN_RESEARCH.md). Existing canonical positioning and repository-native research workflows remain intact.
+
 ### External classification check
+
+Optional: complete this check only when the study concerns repository positioning or publication metadata. For other studies, omit this section or record NOT_APPLICABLE; do not run a downstream classifier merely to fill the template.
 
 - Channel / platform:
 - Observed classification:
@@ -43,7 +47,8 @@ They may be recorded as observations but never silently redefine this repository
 - Compared against canonical positioning:
 - Check status: RUN / NOT_RUN
 - Alignment (only when RUN): ALIGNED / PARTIALLY_ALIGNED / MISCLASSIFIED / CLASSIFIER_NOISE
-- Required repository change: NONE unless the repository's own canonical positioning is actually wrong
+- Required repository change: NONE unless a verified defect exists in repository-owned positioning or metadata
+- External classification alone does not justify changing repository identity
 - Downstream correction candidate:
 
 A downstream misclassification is evidence about the classifier or metadata projection, not evidence that the repository should change research identity
@@ -152,6 +157,7 @@ Research activity itself does not imply implementation, validation, reproduction
 
 State what must change, what must remain fixed, and what stronger evidence would alter the conclusion
 
+Existing frontier-research Stage and Part records continue to use [their native specification](maintenance/frontier-research/FIRST_BATCH_SPECIFICATION.md), [Stage Brief template](maintenance/frontier-research/STAGE_BRIEF_TEMPLATE.md), and [Research Part template](maintenance/frontier-research/RESEARCH_PART_TEMPLATE.md). The root research template is supplementary for bounded studies without a more specific native template. It does not replace these contracts or require rewriting existing records.
 ## Repository-specific research surfaces
 Record when relevant
 - claim under test and claim identity
