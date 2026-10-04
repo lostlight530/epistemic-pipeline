@@ -1,5 +1,9 @@
 # Contributing — Epistemic Pipeline
 
+## Open research contributions
+
+For independent research-method or positioning changes, start with [`OPEN_RESEARCH.md`](./OPEN_RESEARCH.md). For new bounded research records, use [`RESEARCH_TEMPLATE.md`](./RESEARCH_TEMPLATE.md). Implementation, MANIFEST, runtime policy, claim/evidence/transfer contracts, maintenance, and historical evidence remain authoritative for their own surfaces.
+
 Contributions should strengthen explicit research-execution semantics, evidence traceability, portable constraints, tests, documentation, or public metadata without turning structural success into scientific truth.
 
 ## Start from the owning surface
