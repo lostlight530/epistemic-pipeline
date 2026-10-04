@@ -1210,3 +1210,141 @@ N_DAY_2026_10_04_EXCLUDED
 =
 A1_COMPLETE_FOR_2026_10_04
 ```
+
+## A2 CURRENT MONTH RELATION — 2026-10-04
+
+- Repository: `lostlight530/epistemic-pipeline`
+- Plane: `A2 / CURRENT_MONTH_RELATIONAL_VERSION`
+- Logical maintenance date: `2026-10-04`
+- Exact A1-merged base main: `e2a1db0ac5e671471bd9e086f5f3f5bd139f209d`
+- Required predecessor A1: PR #90 / MERGED
+- Fresh-read after A1 merge: YES
+- Current relation window: 2026-10-01..2026-10-04
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: STAGE_STATE_TRIGGERED
+- Historical rewrite: NO
+- Producer replay: NO
+- Extra runtime/scientific execution: NOT_PERFORMED
+- Duplicate stage credit: NONE
+
+### A1 dependency
+- A1 #90 is present on this base.
+- A1 covers 2026-10-01..2026-10-03.
+- A2 consumes logical 2026-10-04 temporal-semantics input.
+- Prior A2 records remain point-in-time history.
+- A2 does not rerun the stage chain.
+
+### Inherited 2026-10-01 relation
+- Month-open relation retained.
+- Stage H / 2025-Q4 retained.
+- No native Stage I object established.
+- No daily-cadence requirement inferred.
+- No runtime credit added.
+
+### Inherited 2026-10-02 relation
+- A1/A2 relation retained.
+- D30 audit remains retrospective evidence.
+- D30 does not create a new native stage.
+- Later audit visibility does not rewrite earlier relation.
+- No scientific-validation credit added.
+
+### Inherited 2026-10-03 relation
+- Successor A1/A2 relation retained.
+- Stage H remains current.
+- No producer-native Stage I or later object observed.
+- Absence of a new stage object is not a scheduler failure.
+- No reproduction credit added.
+
+### 2026-10-04 temporal relation consumed
+- Temporal semantics PR #89 is merged and logically 2026-10-04.
+- Runtime report `as_of` is distinct from MANIFEST `current_temporal_status.as_of`.
+- MANIFEST temporal status records latest explicit calendar-state reconciliation.
+- MANIFEST temporal status is not a daily heartbeat.
+- Current Stage H epistemic routing remains unchanged.
+- No Stage I producer object is introduced.
+- No validator/runtime/scientific execution is introduced.
+
+### Current stage synthesis
+- Stage H remains the current retained frontier narrative.
+- No producer-native Stage I or later object is established.
+- Temporal semantics are now current through 2026-10-04.
+- MANIFEST temporal status is treated as explicit calendar-state reconciliation, not heartbeat.
+- Later maintenance/review activity does not require a temporal-status date bump when state is unchanged.
+- No Daily task is invented for the L3 system.
+- No stage failure is inferred from no new stage object.
+- October relation is current without claiming natural-month closure.
+
+### Relation matrix
+| Surface | A2 state | Boundary |
+| --- | --- | --- |
+| 2026-10-01 | RETAINED | Stage H month-open relation |
+| 2026-10-02 | RETAINED | D30 audit remains separate |
+| 2026-10-03 | RETAINED | successor chronology |
+| 2026-10-04 temporal semantics | CONSUMED | relation semantics only |
+| Stage H | CURRENT | no Stage I evidence |
+| Longitudinal Index | CURRENT | maintenance owner |
+| MANIFEST temporal status | EXPLICIT_STATE_RECONCILIATION | not daily heartbeat |
+| Prior A1 | CONSUMED | N-1 foundation |
+| Prior A2 | PRESERVED | no overwrite |
+
+### Evidence invariants
+- STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT.
+- NO_NEW_STAGE_OBJECT != STAGE_FAILURE.
+- NO_NEW_STAGE_OBJECT != SCHEDULER_FAILURE.
+- RUNTIME_REPORT_AS_OF != MANIFEST_CURRENT_TEMPORAL_STATUS_AS_OF.
+- MANIFEST_TEMPORAL_STATUS_AS_OF != DAILY_HEARTBEAT.
+- LATER_PATH_PRESENT != ORIGINAL_INPUT_AVAILABLE.
+- CURRENT_REPOSITORY_STATE != TASK_TIME_STATE.
+- SOURCE_CODE != EXECUTED_BEHAVIOR.
+- TEST_SOURCE != TEST_EXECUTION.
+- NATIVE_TASK_DELIVERY != A1_MAINTENANCE.
+- A1_MAINTENANCE != A2_RELATIONAL_VERSION.
+- A2_RELATIONAL_VERSION != PERIODIC_AUDIT.
+- PERIODIC_AUDIT != DURABLE_GOVERNANCE.
+
+### Repository-specific boundaries
+- CLAIM_INDEXED != CLAIM_TRUE.
+- EVIDENCE_LINKED != EVIDENCE_SUFFICIENT.
+- TRANSFER != ACCEPTANCE.
+- RETROSPECTIVE_AUDIT != SCIENTIFIC_ADJUDICATION.
+- Temporal metadata correctness does not establish epistemic truth.
+
+### Validation checklist
+- A1 merged before A2 branch: YES.
+- Fresh post-A1 base used: YES.
+- 2026-10-01 relation preserved: YES.
+- 2026-10-02 relation preserved: YES.
+- 2026-10-03 relation preserved: YES.
+- 2026-10-04 temporal semantics consumed: YES.
+- Stage H retained: YES.
+- Stage I fabricated: NO.
+- Daily scheduler failure fabricated: NO.
+- Runtime execution invented: NO.
+- Scientific validation invented: NO.
+- Reproduction claimed without execution: NO.
+- D30 converted into native stage credit: NO.
+- Historical relation rewritten: NO.
+- Natural-month final manufactured: NO.
+- Periodic audit manufactured: NO.
+- Durable governance promoted: NO.
+- Parallel maintenance owner created: NO.
+
+### A2 disposition
+- Current October relation: CURRENT_THROUGH_2026-10-04.
+- Current retained stage: STAGE_H.
+- New Stage I or later object: NONE_OBSERVED_AT_THIS_CHECK.
+- Temporal semantics: CURRENT.
+- Natural-month final: NOT_DUE.
+- Historical chronology: PRESERVED.
+- New stage credit: NONE.
+- New runtime credit: NONE.
+- New scientific-validation credit: NONE.
+- New reproduction credit: NONE.
+- New governance credit: NONE.
+- Next A1 must fresh-read this merged main.
+
+```text
+MERGED_A1 + FRESH_MAIN_READ + TEMPORAL_SEMANTICS_2026_10_04
+= CURRENT_MONTH_RELATION_THROUGH_2026_10_04
+NO_NEW_STAGE_OBJECT != FAILURE
+```
