@@ -33,6 +33,8 @@ Current capability and evidence constraints include:
 
 ```text
 MANIFEST.yaml
+OPEN_RESEARCH.md
+RESEARCH_TEMPLATE.md
 validators/
 docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
 docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md
@@ -49,6 +51,8 @@ LICENSE
 ```
 
 `MANIFEST.yaml` and validators are machine-readable capability/rule surfaces. Specialized contracts define the semantics of claim, evidence, transfer, assertion-basis, and coverage records.
+
+`OPEN_RESEARCH.md` is the durable repository-level open-research method and positioning guide. `RESEARCH_TEMPLATE.md` is prospective scaffolding for bounded research records. Both remain subordinate to current implementation, `MANIFEST.yaml`, validators, and more specific claim/evidence/runtime contracts; neither replaces the native `maintenance/frontier-research/` specification/templates nor rewrites historical Stage/Part records.
 
 Structural state, validator success, linked evidence, imported references, and machine-readable metadata do not become scientific truth merely by being present or parseable.
 
