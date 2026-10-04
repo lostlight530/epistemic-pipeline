@@ -1,7 +1,7 @@
 # Research Template / 科研记录模板
 
-Status: canonical research-entry template
-Scope: new research records only
+Status: prospective research-record template
+Scope: new research records only; durable open-research method is owned by `OPEN_RESEARCH.md`
 Historical records are not rewritten by this template
 
 ## Repository positioning boundary / 仓库定位边界
@@ -34,7 +34,8 @@ They may be recorded as observations but never silently redefine this repository
 - Observed classification:
 - Observation time:
 - Compared against canonical positioning:
-- Alignment: ALIGNED / PARTIALLY_ALIGNED / MISCLASSIFIED / LEGACY_NOISE / NOT_CHECKED
+- Check status: RUN / NOT_RUN
+- Alignment (only when RUN): ALIGNED / PARTIALLY_ALIGNED / MISCLASSIFIED / CLASSIFIER_NOISE
 - Required repository change: NONE unless the repository's own canonical positioning is actually wrong
 - Downstream correction candidate:
 
