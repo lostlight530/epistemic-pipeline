@@ -6,6 +6,8 @@ Implementation in `core/`, `states/`, `graphs/`, `validators/` plus active contr
 
 ## Document authority
 
+For repository-level open-research positioning or independent research-production work, read `OPEN_RESEARCH.md`. Use `RESEARCH_TEMPLATE.md` only for prospective bounded records when no more specific native template owns the surface. Neither file supersedes implementation, `MANIFEST.yaml`, validators, subject-specific claim/evidence/runtime contracts, or the native `maintenance/frontier-research/` specification/history.
+
 Read `docs/03-maintenance-and-audit/DOCUMENT_STATUS.md` before broad documentation or governance work.
 
 Use `docs/03-maintenance-and-audit/history/JULES_CORRECTION_RECORD.md` only when interpreting early Jules task/PR prose as historical evidence. It is a dated correction record, not a current authority layer.
