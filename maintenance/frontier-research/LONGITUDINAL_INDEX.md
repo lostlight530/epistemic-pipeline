@@ -1447,3 +1447,144 @@ HISTORICAL_NARRATIVE_CLOSEOUT
 - New research credit: NONE.
 - New source-independence credit: NONE.
 - Historical rewrite: NO.
+
+## A1 FULL COVERAGE — 2026-10-05 — EPISTEMIC
+
+- Repository: `lostlight530/epistemic-pipeline`
+- Plane: `A1 / FULL_COVERAGE_MAINTENANCE`
+- Logical maintenance date: `2026-10-05`
+- Exact base main: `fa16238f08c205edebb421a2047c6368be351c56`
+- Coverage window: `2026-10-01..2026-10-04`
+- N-day excluded: `2026-10-05`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Historical rewrite: NO
+- Stage replay: NO
+- Runtime/scientific execution by maintenance: NOT_PERFORMED
+- New stage credit: NONE
+
+### 1. Prior chain
+- 10/1–10/4 A1/A2 chain retained.
+- Special #92 synchronized Stage H epistemic historical identity.
+- Open Research #93 merged after the special.
+- Stage H remains the current producer-native documentary stage.
+- Historical narrative closeout does not create Stage I.
+- Open Research framework merged after the 10/4 special closeout and is now N-1 repository state.
+- Absence of a Daily cron is not a missing-task condition.
+
+### 2. 2026-10-01 coverage
+- Month-open Stage H relation retained.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 3. 2026-10-02 coverage
+- D30 retrospective audit remains separate from native stage production.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 4. 2026-10-03 coverage
+- Successor maintenance retained Stage H without manufacturing acceptance/truth.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 5. 2026-10-04 coverage
+- Temporal-as_of semantics and Stage H historical narrative closeout retained.
+- Index coverage A→H remains distinct from synthesis coverage A→G.
+- Decision: RETAIN.
+- New stage/runtime credit: NONE.
+
+### 6. Open Research / scholarly-submission relation
+- OPEN_RESEARCH.md is present on current main.
+- RESEARCH_TEMPLATE.md is present on current main.
+- README and CONTRIBUTING expose the new research-production entry points.
+- The root template is supplementary to stricter frontier-research templates.
+- Stage Brief / Research Part / Evidence Chart / Synthesis / Review / Handoff contracts remain controlling.
+- Open Research does not create a new Stage.
+- Open Research does not convert Stage H into Stage I.
+- Scholarly metadata does not extend scientific evidence coverage.
+- External classification does not redefine repository identity.
+- Publication metadata does not establish reproduction.
+- DOI/citation presence does not establish runtime behavior.
+- Semantic-drift review is a metadata/repository-identity check, not scientific validation.
+- Historical Stage A–H records are not retrofitted to the new template.
+- Existing longitudinal synthesis boundary remains explicit.
+- Current MANIFEST temporal semantics remain explicit calendar-state reconciliation, not heartbeat.
+
+### 7. Stage / document matrix
+| Surface | A1 state | Boundary |
+| --- | --- | --- |
+| Stage A–H history | REVIEWED | preserved |
+| Stage H | CURRENT | no Stage I inference |
+| Longitudinal Index | REVIEWED | current owner |
+| A→G synthesis artifact | RETAINED | not silently expanded to H |
+| Historical narrative special | REVIEWED | documentary closeout |
+| OPEN_RESEARCH.md | REVIEWED | supplementary durable guide |
+| RESEARCH_TEMPLATE.md | REVIEWED | prospective bounded studies |
+| MANIFEST temporal status | REVIEWED | not daily heartbeat |
+| 2026-10-05 routing reconciliation | BOUNDARY_ONLY | defer to A2 |
+
+### 8. 2026-10-05 boundary
+- Open-research routing reconciliation PR #94 is merged on the 2026-10-05 execution date.
+- It reconciles root Open Research routing with repository-native epistemic frontier-research contracts.
+- N-day routing state is visible only as cutoff evidence.
+- N-day routing state is not consumed by A1.
+- A2 will consume it after this A1 merges and current main is fresh-read.
+
+### 9. Evidence invariants
+- STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT.
+- NO_NEW_STAGE_OBJECT != STAGE_FAILURE.
+- INDEX_COVERAGE_A_TO_H != SYNTHESIS_COVERAGE_A_TO_H.
+- RUNTIME_REPORT_AS_OF != MANIFEST_CURRENT_TEMPORAL_STATUS_AS_OF.
+- MANIFEST_TEMPORAL_STATUS_AS_OF != DAILY_HEARTBEAT.
+- PUBLICATION != VALIDATION.
+- CITATION != REPRODUCTION.
+- EXTERNAL_CLASSIFICATION != REPOSITORY_IDENTITY.
+- OPEN_RESEARCH_GUIDE != NATIVE_FRONTIER_RESEARCH_CONTRACT.
+- RESEARCH_TEMPLATE != HISTORICAL_RECORD_REWRITE.
+- SOURCE_CODE != EXECUTED_BEHAVIOR.
+- TEST_SOURCE != TEST_EXECUTION.
+- NATIVE_TASK_DELIVERY != A1_MAINTENANCE.
+- A1_MAINTENANCE != A2_RELATIONAL_VERSION.
+
+### 10. Repository-specific boundaries
+- CLAIM_INDEXED != CLAIM_TRUE.
+- EVIDENCE_LINKED != EVIDENCE_SUFFICIENT.
+- TRANSFER != ACCEPTANCE.
+- STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT.
+
+### 11. Completeness
+- 10/1 represented: YES.
+- 10/2 represented: YES.
+- 10/3 represented: YES.
+- 10/4 represented: YES.
+- MonthStart→N-1 complete: YES.
+- Stage H history reviewed: YES.
+- Open Research relation reviewed: YES.
+- Scholarly/submission boundary reviewed: YES.
+- Stage I fabricated: NO.
+- Daily scheduler failure fabricated: NO.
+- Runtime execution invented: NO.
+- Scientific validation invented: NO.
+- Independent reproduction invented: NO.
+- Historical stage record rewritten: NO.
+- Natural-month final manufactured: NO.
+- 10/5 consumed by A1: NO.
+- A2 before A1 merge: NO.
+
+### 12. A1 disposition
+- Coverage: COMPLETE_THROUGH_2026-10-04_AT_THIS_CHECK.
+- Current retained stage: STAGE_H.
+- Open Research framework: PRESENT / RELATION_REVIEWED.
+- Historical narrative: CURRENT_THROUGH_10_04_SPECIAL.
+- A→G synthesis boundary: PRESERVED.
+- New Stage I: NONE.
+- New runtime/scientific/publication credit: NONE.
+- A2 dependency: MUST_MERGE_THIS_A1_THEN_FRESH_READ_CURRENT_MAIN.
+
+```text
+OCTOBER_1_TO_4_FULL_COVERAGE
++ STAGE_H_HISTORY_PRESERVED
++ OPEN_RESEARCH_RELATION_REVIEWED
++ N_DAY_2026_10_05_EXCLUDED
+= A1_COMPLETE_FOR_2026_10_05
+```
