@@ -5,13 +5,15 @@
 - **Repository:** `lostlight530/epistemic-pipeline`
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
-- **Updated:** `2026-10-04`
+- **Stage registry / identity updated:** `2026-10-04`
+- **Current maintenance relation through:** `2026-10-06`
 
 ## Boundary
 
 ```text
 index != synthesis
 index != current repository authority
+stage-registry identity date != current maintenance relation-through date
 index = navigation + temporal/correction routing
 ```
 
