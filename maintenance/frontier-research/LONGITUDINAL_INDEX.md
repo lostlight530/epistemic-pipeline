@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-06`
+- **Current maintenance relation through:** `2026-10-07`
 
 ## Boundary
 
@@ -2301,4 +2301,159 @@ OCTOBER_1_TO_6_FULL_COVERAGE
 + EPISTEMIC_BOUNDARIES_PRESERVED
 + N_DAY_NO_NEW_STAGE_NOT_MISSING
 = A1_COMPLETE_FOR_2026_10_07
+```
+
+
+## A2 CURRENT MONTH RELATION — 2026-10-07 — EPISTEMIC
+
+- Repository: `lostlight530/epistemic-pipeline`
+- Plane: `A2 / CURRENT_MONTH_RELATIONAL_VERSION`
+- Logical maintenance date: `2026-10-07`
+- Exact A1-merged base main: `332d4cfb7b4d60ca483f7da33ce31bc3ae513134`
+- Required predecessor A1: PR #100 / MERGED
+- Fresh-read after A1 merge: YES
+- Current relation window: `2026-10-01..2026-10-07`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Current retained producer stage: `STAGE_H`
+- Historical rewrite: NO
+- Stage replay: NO
+- Runtime/scientific execution by maintenance: NOT_PERFORMED
+- New claim/evidence/stage credit: NONE
+
+### 1. A1 dependency consumption
+- A1 #100 is present on this exact base.
+- A1 supplies complete 10/1→10/6 coverage.
+- A2 fresh-reads current main before evaluating N-day relation.
+- Date-semantics correction remains current.
+- Claim, evidence, provenance, transfer, and acceptance remain separate.
+- The Longitudinal Index remains the single owner.
+
+### 2. Header current-state update
+- Stage registry / identity date remains `2026-10-04`.
+- Current maintenance relation-through advances to `2026-10-07`.
+- The header records maintenance recency only.
+- Stage H identity is unchanged.
+- No Stage I is created by the header update.
+- Historical A1 blocks remain valid point-in-time evidence.
+
+### 3. Inherited 10/1→10/6 relation
+- Claim indexed remains distinct from claim true.
+- Evidence linked remains distinct from evidence sufficient.
+- D30/heuristic boundaries remain retained.
+- Unknown provider/model/version remains unknown where not evidenced.
+- Temporal_as_of remains state reconciliation rather than heartbeat.
+- 10/5 routing maintenance remains retained.
+- 10/6 no-new-stage and no-truth-promotion relation remains retained.
+
+### 4. 2026-10-07 producer-state read
+- No producer-native Stage I or later object is observed.
+- No new Stage Brief requiring advancement is observed.
+- No new Research Part set requiring advancement is observed.
+- No new Source/Object Register requiring advancement is observed.
+- No new Evidence Chart requiring advancement is observed.
+- No new Month Reconstruction requiring advancement is observed.
+- No new Stage Synthesis requiring advancement is observed.
+- No new Research Review requiring advancement is observed.
+- No new Stage Handoff requiring advancement is observed.
+- Current producer-stage delta is `NO_NEW_STAGE_OBJECT`.
+
+### 5. Cadence interpretation
+- The workload is stage/state-triggered.
+- `NO_NEW_STAGE_OBJECT` is not MISSING_WORK.
+- `NO_NEW_STAGE_OBJECT` is not SCHEDULER_FAILURE.
+- No synthetic Daily is created.
+- No Stage I placeholder is created.
+- No producer failure is inferred.
+- No scientific adjudication is manufactured.
+
+### 6. Claim/evidence current relation
+- Claim presence does not establish truth.
+- Evidence linkage does not establish sufficiency.
+- Verification state does not become scientific adjudication automatically.
+- Provider identity does not validate output.
+- Unknown provider/model/version remains unknown where not evidenced.
+- No 10/7 maintenance action changes claim truth state.
+- No 10/7 maintenance action creates external evidence.
+
+### 7. Transfer current relation
+- Transfer remains a transport/governance event rather than acceptance.
+- Downstream indexing does not inherit upstream truth authority.
+- Provenance preserves origin without proving correctness.
+- Ambiguous state is not rewritten as contradiction.
+- No 10/7 transfer acceptance transition is observed.
+- No synthetic acceptance record is created.
+- No repeated repository reference is counted as independent validation.
+
+### 8. Current relation matrix
+| Surface | A2 state | Boundary |
+| --- | --- | --- |
+| 10/1–10/4 | RETAINED | historical stage/epistemic relations |
+| 10/5 | RETAINED | routing maintenance |
+| 10/6 | RETAINED | no stage / no truth promotion |
+| 10/7 producer stage | NO_NEW_STAGE_OBJECT | not missing |
+| Stage H | CURRENT_RETAINED | no Stage I inference |
+| Claim/evidence state | UNCHANGED | no truth promotion |
+| Transfer/acceptance state | UNCHANGED | no acceptance promotion |
+| Stage registry date | 2026-10-04 | identity date |
+| Maintenance relation-through | 2026-10-07 | current owner recency |
+
+### 9. Implementation / MANIFEST relation
+- Current implementation remains highest authority.
+- MANIFEST remains below implementation and above historical narrative snapshots.
+- No implementation-versus-MANIFEST drift is identified in this relation pass.
+- No daily-heartbeat semantics are imposed on temporal metadata.
+- Header relation-through records maintenance recency rather than producer cadence.
+- Full repository runtime/scientific checks remain NOT_PERFORMED.
+
+### 10. Evidence invariants
+- `CLAIM_INDEXED != CLAIM_TRUE`.
+- `EVIDENCE_LINKED != EVIDENCE_SUFFICIENT`.
+- `CLAIM_VERIFICATION != SCIENTIFIC_ADJUDICATION`.
+- `CLAIM_TRANSFER != ACCEPTANCE`.
+- `HEURISTIC_SCORE != PROBABILITY`.
+- `RUNTIME_POLICY_PASS != TRUTH`.
+- `PROVENANCE != TRUTH`.
+- `AMBIGUITY != CONTRADICTION`.
+- `STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT`.
+- `NO_NEW_STAGE_OBJECT != MISSING_WORK`.
+- `STAGE_REGISTRY_IDENTITY_DATE != CURRENT_MAINTENANCE_RELATION_THROUGH_DATE`.
+- `A1_MAINTENANCE != A2_RELATIONAL_VERSION`.
+
+### 11. Validation checklist
+- A1 #100 merged before A2 branch: YES.
+- Fresh post-A1 main used: YES.
+- 10/1→10/6 relation retained: YES.
+- Header relation-through advanced to 10/7: YES.
+- Stage registry identity date rewritten: NO.
+- Stage I observed: NO.
+- Stage I fabricated: NO.
+- Missing Daily fabricated: NO.
+- Scheduler failure fabricated: NO.
+- Claim truth invented: NO.
+- Evidence sufficiency invented: NO.
+- Transfer acceptance invented: NO.
+- Runtime/scientific execution invented: NO.
+- Natural-month final manufactured: NO.
+- Parallel owner created: NO.
+
+### 12. A2 disposition
+- Current October relation: `CURRENT_THROUGH_2026-10-07`.
+- Current retained stage: `STAGE_H`.
+- N-day producer delta: `NO_NEW_STAGE_OBJECT`.
+- Cadence interpretation: `VALID_STATE_TRIGGERED_NO_CHANGE`.
+- Claim/evidence state: `UNCHANGED / NO_TRUTH_PROMOTION`.
+- Transfer state: `UNCHANGED / NO_ACCEPTANCE_PROMOTION`.
+- Stage registry identity date: `2026-10-04`.
+- Maintenance relation-through: `2026-10-07`.
+- New stage/scientific/adjudication credit: `NONE`.
+- Next A1 must fresh-read this merged main.
+
+```text
+MERGED_A1
++ FRESH_MAIN_READ
++ NO_NEW_STAGE_OBJECT
++ EPISTEMIC_BOUNDARIES_PRESERVED
++ HEADER_RELATION_THROUGH_2026_10_07
+= CURRENT_MONTH_RELATION_THROUGH_2026_10_07
 ```
