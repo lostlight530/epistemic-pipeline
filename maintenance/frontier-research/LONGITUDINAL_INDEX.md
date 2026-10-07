@@ -2112,3 +2112,193 @@ MERGED_A1
 = CURRENT_MONTH_RELATION_THROUGH_2026_10_06
 NO_NEW_STAGE_OBJECT != MISSING_WORK
 ```
+
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-07 — EPISTEMIC
+
+- Repository: `lostlight530/epistemic-pipeline`
+- Plane: `A1 / FULL-COVERAGE MAINTENANCE`
+- Logical maintenance date: `2026-10-07`
+- Exact base main: `3fa807b3e8cf1178f940548c572abf5915348ddb`
+- Coverage window: `2026-10-01..2026-10-06`
+- N-day boundary: `2026-10-07`
+- Owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Native cadence: `STAGE_STATE_TRIGGERED`
+- Current retained producer stage: `STAGE_H`
+- Historical rewrite: NO
+- Stage replay: NO
+- Runtime/scientific execution by maintenance: NOT_PERFORMED
+- New claim/evidence/stage credit: NONE
+- Natural-month final: NOT_DUE
+
+### 1. Fresh-start and correction gate
+- Current main was re-read after PR #99 corrected longitudinal-index date semantics.
+- Open PR overlap was checked before branch creation.
+- No conflicting open PR touched the Longitudinal Index.
+- The branch starts from the exact current main recorded above.
+- Current implementation remains the highest authority.
+- The corrected owner separates `Stage registry / identity updated: 2026-10-04` from `Current maintenance relation through: 2026-10-06`.
+- The correction governs interpretation of N-1 state rather than creating N-day producer evidence.
+- Claim, evidence, provenance, transfer, and acceptance semantics remain distinct.
+- The existing Longitudinal Index remains the single owner.
+
+### 2. Coverage denominator
+- 2026-10-01 Stage H month-open relation reviewed.
+- 2026-10-01 claim/evidence boundaries reviewed.
+- 2026-10-02 D30 and heuristic-score boundaries reviewed.
+- 2026-10-03 successor Stage H relation reviewed.
+- 2026-10-03 unknown/ambiguity semantics reviewed.
+- 2026-10-04 temporal_as_of relation reviewed.
+- 2026-10-04 Stage H historical closeout reviewed.
+- 2026-10-04 index A→H versus synthesis A→G boundary reviewed.
+- 2026-10-04 Open Research relation reviewed.
+- 2026-10-05 routing-maintenance relation reviewed.
+- 2026-10-06 no-new-stage current relation reviewed.
+- 2026-10-06 claim/evidence no-promotion relation reviewed.
+- 2026-10-06 transfer/acceptance no-promotion relation reviewed.
+- 2026-10-06 current-maintenance-through metadata reviewed.
+- PR #99 date-semantics correction reviewed as governance clarification.
+
+### 3. 2026-10-01 decision
+- Decision: `NO_FOLLOW_UP / RETAIN`.
+- Claim indexed remains distinct from claim true.
+- Evidence linked remains distinct from evidence sufficient.
+- Verification remains distinct from scientific adjudication.
+- Coverage for 2026-10-01 remains complete.
+
+### 4. 2026-10-02 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_AUDIT_BOUNDARY`.
+- D30 remains separate from native stage work.
+- Heuristic score remains distinct from probability.
+- Runtime-policy pass remains distinct from truth.
+- Provenance remains distinct from truth.
+- Coverage for 2026-10-02 remains complete.
+
+### 5. 2026-10-03 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_UNKNOWN_BOUNDARY`.
+- Successor Stage H history remains documentary.
+- Unknown provider/model/version remains unknown rather than guessed.
+- Ambiguity remains distinct from contradiction.
+- No Stage I is inferred from current visibility.
+- Coverage for 2026-10-03 remains complete.
+
+### 6. 2026-10-04 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_TEMPORAL_RELATION`.
+- Stage registry/identity date remains 2026-10-04.
+- MANIFEST temporal status remains state reconciliation, not heartbeat.
+- Stage H closeout remains documentary.
+- Index A→H remains distinct from synthesis A→G.
+- Coverage for 2026-10-04 remains complete.
+
+### 7. 2026-10-05 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_ROUTING_RELATION`.
+- Open-research routing remains maintenance/document-routing state.
+- Routing does not validate claims.
+- Routing does not establish evidence sufficiency.
+- Routing does not transform transfer into acceptance.
+- Coverage for 2026-10-05 remains complete.
+
+### 8. 2026-10-06 decision
+- Decision: `NO_FOLLOW_UP / RETAIN_VALID_STATE_TRIGGERED_NO_CHANGE`.
+- No producer-native Stage I or later object was observed.
+- This remains `NO_NEW_STAGE_OBJECT`, not MISSING_WORK.
+- Stage H remains current retained producer stage.
+- Claim/evidence state remains unchanged by maintenance.
+- No claim truth promotion occurred.
+- Transfer/acceptance state remains unchanged by maintenance.
+- No acceptance promotion occurred.
+- No runtime/scientific execution was added by maintenance.
+- Longitudinal Index relation is current through 2026-10-06.
+- Coverage for 2026-10-06 remains complete.
+
+### 9. PR #99 correction relation
+- PR #99 changed only the Longitudinal Index header semantics.
+- The old single `Updated: 2026-10-04` field was ambiguous after later maintenance.
+- Current main now preserves stage-registry identity date separately from maintenance-relation date.
+- `Stage registry / identity updated: 2026-10-04` remains a stage identity fact.
+- `Current maintenance relation through: 2026-10-06` remains a maintenance fact.
+- The correction does not create Stage I.
+- The correction does not validate any claim.
+- The correction does not change transfer acceptance state.
+- A1 consumes the corrected current-owner semantics because they govern N-1 interpretation.
+- Historical blocks remain point-in-time evidence.
+
+### 10. Artifact-class matrix
+| Surface | A1 decision | Boundary |
+| --- | --- | --- |
+| Stage A–H historical objects | REVIEWED | point-in-time history |
+| Stage H current retained state | RETAIN | no Stage I inference |
+| Longitudinal Index | APPEND_RELATION | current maintenance owner |
+| Claim/evidence state | REVIEW_BY_SEMANTICS | no truth promotion |
+| Transfer/acceptance state | REVIEW_BY_SEMANTICS | no acceptance promotion |
+| D30 / retrospective | REVIEWED_IF_PRESENT | separate audit plane |
+| Open Research / template | RETAIN | supplementary/prospective |
+| Header date correction | CONSUME_AS_GOVERNANCE_CORRECTION | no producer credit |
+| Prior A1/A2 | RETAIN | point-in-time maintenance |
+| 2026-10-07 producer stage | NO_NEW_STAGE_OBJECT | not missing by cadence |
+
+### 11. 2026-10-07 N-day producer boundary
+- No producer-native Stage I or later object is observed for 2026-10-07.
+- Stage/state-triggered cadence means no Daily producer artifact is required.
+- No missing-work status is inferred.
+- No scheduler-failure status is inferred.
+- No synthetic claim/evidence object is created.
+- The only current-main N-day change before A1 is PR #99 date-semantics correction.
+- That correction governs N-1 owner interpretation and is not producer-stage evidence.
+- A2 may record the 2026-10-07 no-new-stage current relation after A1 merges.
+- A1 creates no stage/scientific/adjudication credit.
+
+### 12. Evidence invariants
+- `CLAIM_INDEXED != CLAIM_TRUE`
+- `EVIDENCE_LINKED != EVIDENCE_SUFFICIENT`
+- `CLAIM_VERIFICATION != SCIENTIFIC_ADJUDICATION`
+- `CLAIM_TRANSFER != ACCEPTANCE`
+- `HEURISTIC_SCORE != PROBABILITY`
+- `RUNTIME_POLICY_PASS != TRUTH`
+- `PROVENANCE != TRUTH`
+- `AMBIGUITY != CONTRADICTION`
+- `STAGE_STATE_TRIGGERED != DAILY_CADENCE_REQUIREMENT`
+- `NO_NEW_STAGE_OBJECT != MISSING_WORK`
+- `STAGE_REGISTRY_IDENTITY_DATE != CURRENT_MAINTENANCE_RELATION_THROUGH_DATE`
+- `A1_MAINTENANCE != A2_RELATIONAL_VERSION`
+- `CURRENT_MONTH_RELATION != NATURAL_MONTH_FINAL`
+
+### 13. Decision completeness
+- 2026-10-01: REVIEWED.
+- 2026-10-02: REVIEWED.
+- 2026-10-03: REVIEWED.
+- 2026-10-04: REVIEWED.
+- 2026-10-05: REVIEWED.
+- 2026-10-06: REVIEWED.
+- MonthStart→N-1 coverage: COMPLETE.
+- PR #99 correction consumed as governance semantics: YES.
+- Stage I fabricated: NO.
+- Missing Daily fabricated: NO.
+- Scheduler failure fabricated: NO.
+- Claim truth invented: NO.
+- Evidence sufficiency invented: NO.
+- Transfer acceptance invented: NO.
+- Provider/model/version guessed: NO.
+- Runtime/scientific execution invented: NO.
+- Natural-month final manufactured: NO.
+- Parallel owner created: NO.
+- A2 allowed before this A1 merge: NO.
+
+### 14. A1 disposition
+- Coverage completeness: `COMPLETE_THROUGH_2026-10-06_AT_THIS_CHECK`.
+- Decision completeness: `COMPLETE_THROUGH_2026-10-06_AT_THIS_CHECK`.
+- Current retained stage: `STAGE_H`.
+- Stage registry identity date: `2026-10-04`.
+- Current maintenance relation through: `2026-10-06`.
+- 2026-10-07 producer-stage delta: `NO_NEW_STAGE_OBJECT`.
+- Required correction-in-place: `PR_99_ALREADY_MERGED_AND_CONSUMED`.
+- New stage/runtime/scientific/adjudication credit: `NONE`.
+- A2 dependency: `MUST_MERGE_THIS_A1_THEN_FRESH_READ_CURRENT_MAIN`.
+
+```text
+OCTOBER_1_TO_6_FULL_COVERAGE
++ DATE_SEMANTICS_CORRECTION_CONSUMED
++ EPISTEMIC_BOUNDARIES_PRESERVED
++ N_DAY_NO_NEW_STAGE_NOT_MISSING
+= A1_COMPLETE_FOR_2026_10_07
+```
