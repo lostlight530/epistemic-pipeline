@@ -2457,3 +2457,189 @@ MERGED_A1
 + HEADER_RELATION_THROUGH_2026_10_07
 = CURRENT_MONTH_RELATION_THROUGH_2026_10_07
 ```
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-08
+
+- Repository: `lostlight530/epistemic-pipeline`
+- Plane: `A1 / FULL_COVERAGE_MAINTENANCE`
+- Logical maintenance date: `2026-10-08`
+- System: Epistemic Frontier Research
+- Month start: `2026-10-01`
+- Coverage window: `2026-10-01..2026-10-07`
+- N-day excluded from A1: `2026-10-08`
+- Exact native-layer-closed base main: `1a57d54dacad9af2278cabfdc5b368f0d5441cb7`
+- Existing owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Owner policy: `SINGLE_EXISTING_OWNER / APPEND_ONLY`
+- Historical rewrite: `NO`
+- Native replay: `NO`
+- Extra runtime/test execution by maintenance: `NOT_PERFORMED`
+- New research credit by maintenance: `NONE`
+- New source-independence credit by maintenance: `NONE`
+- New local-incident credit by maintenance: `NONE`
+- Natural-month final: `NOT_DUE`
+
+### Cutoff and chronology contract
+
+- A1 consumes only October material whose logical date is at or before 2026-10-07.
+- 2026-10-08 producer-native artifacts are visible only to establish the upper cutoff boundary.
+- N-day producer visibility does not make N-day evidence eligible for this A1.
+- Prior A1 and A2 blocks remain point-in-time maintenance history.
+- Later path presence does not retroactively establish earlier task-time availability.
+- Later correction does not erase the original historical state that required correction.
+- Merged delivery proves repository state, not independent scientific or runtime verification.
+- Review completion does not create experiment, source, CASE, NOTES, or doctrine credit.
+
+### Month-start-to-N-1 coverage matrix
+
+#### 2026-10-01
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-02
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-03
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-04
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-05
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-06
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+#### 2026-10-07
+- Date is inside the A1 coverage window.
+- Existing owner chronology for this date: REVIEWED.
+- Previously merged A1/A2 maintenance relation for this date: RETAINED_AS_POINT_IN_TIME_HISTORY.
+- Producer-native evidence already represented on current main: RETAINED; not re-credited by this pass.
+- Historical blocked, degraded, unknown, partial, or provisional states: PRESERVED_WHERE_RECORDED.
+- Later-success backfill into earlier execution state: PROHIBITED.
+- Duplicate research/source/runtime credit: NONE.
+- Owning historical artifact mutation required at this A1 cut: NO.
+- Review disposition: `REVIEWED / NO_FOLLOW_UP_AT_THIS_CUTOFF`.
+
+### Artifact-class review
+
+- Producer-native Daily surfaces: REVIEWED_AS_EXISTING_EVIDENCE.
+- Weekly surfaces already due before the cutoff: RETAINED with their recorded final/provisional state.
+- Monthly owner: REVIEWED as the current relational owner, not a natural-month final.
+- Prior maintenance A1 sections: retained as audit history.
+- Prior maintenance A2 sections: retained as audit history.
+- Corrections already merged before this base: retained with correction provenance.
+- Closed-unmerged or superseded delivery history: not promoted into current evidence.
+- Indexes and registries: no mechanical mutation unless a current-state relation requires it.
+- N-day producer artifacts: BOUNDARY_ONLY / DEFER_TO_A2.
+- Independent-GPT maintenance text: governance plane only; no producer-native credit.
+
+### System-specific evidence boundaries
+
+- Stage registry / identity date remains distinct from maintenance relation-through date.
+- No new Stage I object is required merely because a calendar day advanced.
+- NO_NEW_STAGE_OBJECT is distinct from MISSING_WORK and from SCHEDULER_FAILURE.
+- Derived maintenance relation does not create new research-stage credit.
+- No producer-stage execution is inferred from index maintenance alone.
+- The relation-through date remains 2026-10-07 during A1 because N-day is excluded.
+- Unknown remains UNKNOWN when the underlying runtime, source, or task-time evidence was not observed.
+- Negative evidence is preserved and is not converted into positive capability claims.
+- Same-lineage repetition is not counted as independent corroboration.
+- Documentary presence is not treated as implementation or runtime execution.
+
+### Decision-completeness audit
+
+- Every calendar date from 2026-10-01 through 2026-10-07 has an explicit A1 review disposition above.
+- No date in the required N-1 interval is silently omitted.
+- No 2026-10-08 evidence has been consumed into A1.
+- No historical failure/degraded/blocked state has been rewritten as success.
+- No prior producer execution has been replayed.
+- No new external research was performed by this maintenance pass.
+- No new runtime verification was performed by this maintenance pass.
+- No host implementation claim was introduced.
+- No natural-month close was declared.
+- No parallel monthly owner was created.
+
+### A1 disposition
+
+- Coverage completeness: `COMPLETE_THROUGH_2026-10-07_AT_THIS_REVIEW_CUT`.
+- Decision completeness: `COMPLETE_THROUGH_2026-10-07_AT_THIS_REVIEW_CUT`.
+- Owning historical mutation required: `NO`.
+- Current owner mutation: `APPEND_THIS_A1_RECORD_ONLY`.
+- Unresolved maintenance defect inside the A1 window: `NONE_IDENTIFIED_IN_THIS_PASS`.
+- Evidence upgrade: `NONE`.
+- Durable doctrine/memory promotion: `NONE`.
+- A2 dependency: `MUST_FRESH_READ_POST_A1_MAIN`.
+
+```text
+MONTH_START_TO_N_MINUS_1_REVIEW
++
+PRESERVED_POINT_IN_TIME_HISTORY
++
+NO_DUPLICATE_CREDIT
+=
+A1_COMPLETE_FOR_2026_10_08
+
+N_DAY_VISIBLE
+!=
+N_DAY_CONSUMED_BY_A1
+
+MERGED_RECORD
+!=
+INDEPENDENT_RUNTIME_OR_SCIENTIFIC_VERIFICATION
+```
+
+### Handoff to A2
+
+- Merge this A1 before creating or updating A2.
+- Re-read canonical `main` after this A1 merge.
+- Confirm no producer/native or foreign PR inserted between A1 merge and A2 base recovery.
+- A2 may then consume the 2026-10-08 native layer together with this merged A1.
+- A2 must preserve the same source/runtime/history boundaries and must not duplicate prior credit.
