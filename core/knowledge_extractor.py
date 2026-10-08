@@ -9,7 +9,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-EDGE_TYPES = {"supports", "contradicts", "related", "derives"}
+NETWORK_EDGE_TYPES = {"supports", "contradicts", "related", "derives"}
+DOCUMENTARY_RELATION_TYPES = NETWORK_EDGE_TYPES | {"limited_by"}
 
 
 class KnowledgeExtractor:
@@ -41,6 +42,7 @@ class KnowledgeExtractor:
             nodes.append({"claim_id": claim_id, "initial_confidence": score})
 
         edges = []
+        non_network_relations = []
         for conflict in conflicts:
             if not isinstance(conflict, dict):
                 raise TypeError("each conflict/relation must be a mapping")
@@ -49,9 +51,12 @@ class KnowledgeExtractor:
             relation = str(conflict.get("relation") or "related")
             if not source or not target:
                 raise ValueError("each relation must declare source and target")
-            if relation not in EDGE_TYPES:
+            if relation not in DOCUMENTARY_RELATION_TYPES:
                 raise ValueError(f"unsupported relation type: {relation}")
             weight = float(conflict.get("weight", 0.5))
+            if relation not in NETWORK_EDGE_TYPES:
+                non_network_relations.append(dict(conflict))
+                continue
             edges.append(
                 {
                     "source": str(source),
@@ -66,4 +71,6 @@ class KnowledgeExtractor:
             "semantics": "structural bridge only; scores are heuristic unless separately evidenced",
             "nodes": nodes,
             "edges": edges,
+            "non_network_relations": non_network_relations,
         }
+

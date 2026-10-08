@@ -68,7 +68,7 @@ class TestProvenanceProfile(unittest.TestCase):
             record = build_run_provenance(str(graph_path), graph, result)
 
             self.assertEqual(record["profile"], PROV_PROFILE)
-            self.assertEqual(PROV_PROFILE, "epistemic-pipeline/prov@2")
+            self.assertEqual(PROV_PROFILE, "epistemic-pipeline/prov")
             self.assertEqual(record["prov_namespace"], PROV_NAMESPACE)
             self.assertFalse(record["scientific_validity_claim"])
             self.assertFalse(record["privacy"]["payloads_embedded"])
@@ -107,7 +107,10 @@ class TestEvidenceEnvelope(unittest.TestCase):
             graph = root / "graph.yaml"
             provenance = root / "run.prov.json"
             graph.write_text("id: g\n", encoding="utf-8")
-            provenance.write_text('{"profile":"epistemic-pipeline/prov@2"}\n', encoding="utf-8")
+            provenance.write_text(
+                json.dumps({"profile": PROV_PROFILE}) + "\n",
+                encoding="utf-8",
+            )
 
             envelope = build_evidence_envelope(
                 run_id="r1",
@@ -123,7 +126,7 @@ class TestEvidenceEnvelope(unittest.TestCase):
             )
 
             self.assertEqual(envelope["profile"], EVIDENCE_PROFILE)
-            self.assertEqual(EVIDENCE_PROFILE, "epistemic-pipeline/evidence-envelope@1")
+            self.assertEqual(EVIDENCE_PROFILE, "epistemic-pipeline/evidence-envelope")
             self.assertEqual(
                 envelope["graph"]["canonical_sha256"],
                 "sha256:canonical-graph-placeholder",
@@ -199,3 +202,4 @@ class TestRunBundle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

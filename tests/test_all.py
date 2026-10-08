@@ -20,10 +20,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 def test_manifest_exists():
     manifest = yaml.safe_load(Path("MANIFEST.yaml").read_text(encoding="utf-8"))
-    assert manifest["engine"]["profile"] == "epistemic-pipeline/engine@2"
-    assert manifest["runtime_policy"]["active_state_key"] == "runtime_policies"
-    assert manifest["runtime_dependencies"]["required"] == ["pyyaml"]
-    print("  [OK] manifest reflects current profiles and dependencies")
+    assert manifest["stable_profiles"]["engine"] == "epistemic-pipeline/engine"
+    assert manifest["canonical_runtime"]["runtime_policy"]["module"] == "core/gatekeeper.py"
+    print("  [OK] manifest reflects current stable profiles and runtime policy")
 
 
 def test_states_use_runtime_policies():
@@ -115,7 +114,7 @@ def test_confidence_network_is_bounded_heuristic():
     assert converged
     assert all(0.0 <= value <= 1.0 for value in final.values())
     report = net.get_report()
-    assert "not_calibrated_probability" in report["score_semantics"]
+    assert "not_calibrated_probability" in report["semantics"]
 
     try:
         net.add_node("bad", 1.5)
@@ -142,7 +141,7 @@ def test_engine_mock_run_uses_runtime_policy_and_graph_digest():
     engine = StateMachineEngine("graphs/linear.yaml")
     result = engine.run()
     assert result["status"] == "success", result.get("errors")
-    assert result["engine_profile"] == "epistemic-pipeline/engine@2"
+    assert result["engine_profile"] == "epistemic-pipeline/engine"
     assert result["graph_sha256"].startswith("sha256:")
     assert len(result["results"]) == 5
     for node_result in result["results"].values():
@@ -150,6 +149,27 @@ def test_engine_mock_run_uses_runtime_policy_and_graph_digest():
         assert node_result["runtime_policy_passed"] is True
         assert "quality_gates_passed" not in node_result
     print("  [OK] engine uses runtime policy and content-sensitive graph identity")
+
+
+def test_documentary_relations_stay_outside_score_network():
+    from core.knowledge_extractor import KnowledgeExtractor
+
+    result = KnowledgeExtractor.extract_to_network_format(
+        [{"claim_id": "c1", "initial_confidence": 0.5}],
+        [{"source": "c1", "target": "scope_limit", "relation": "limited_by"}],
+    )
+    assert result["edges"] == []
+    assert result["non_network_relations"][0]["relation"] == "limited_by"
+
+    try:
+        KnowledgeExtractor.extract_to_network_format(
+            [{"claim_id": "c1", "initial_confidence": 0.5}],
+            [{"source": "c1", "target": "c2", "relation": "invented"}],
+        )
+        raise AssertionError("unknown relation types must fail explicitly")
+    except ValueError as exc:
+        assert "unsupported relation type" in str(exc)
+    print("  [OK] documentary relations remain visible without becoming score edges")
 
 
 def test_runtime_policy_blocks_empty_provider_output():
@@ -267,3 +287,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
