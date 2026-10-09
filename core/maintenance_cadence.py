@@ -294,6 +294,15 @@ def build_report(
     pseudo_versions: list[dict[str, Any]] = []
     if pattern:
         for display, path in _iter_text_files(scan_entries):
+            # A repo-local directory may contain a symlink to an external file.
+            # Validate each resolved leaf before reading it, not just scan roots.
+            if _repo_relative(root, path) is None:
+                findings.append({
+                    "severity": "error",
+                    "kind": "maintenance-scan-file-outside-repository",
+                    "path": display,
+                })
+                continue
             text = path.read_text(encoding="utf-8", errors="replace")
             matches = sorted(set(pattern.findall(text)))
             if matches:
