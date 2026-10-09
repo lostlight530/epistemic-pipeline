@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-08`
+- **Current maintenance relation through:** `2026-10-09`
 
 ## Boundary
 
@@ -2977,3 +2977,130 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Current-month 2026-10-09 relationship is reserved for post-A1 A2.
 - Fresh all-ten-main prerequisite applies after A1 merges.
 - Disposition: N-1 OWNER_RELATION_REVIEW / STATE_TRIGGERED_BOUNDARY_PRESERVED.
+
+
+## A2 CURRENT-MONTH RELATION — 2026-10-09
+
+- October 1–9 maintenance relation; all ten A1 merged before this post-A1 main review.
+- Stage registry identity 2026-10-04 retained; relation through 2026-10-09 only.
+- No new Stage I producer stage or independent source observed in current owner.
+- No synthetic producer/scheduler failure or runtime result inferred.
+- Existing monthly LONGITUDINAL_INDEX remains sole owner.
+- Stage A-H original quarterly windows are not rewritten.
+- No production code, tests, historical stage synthesis or other file modified.
+- Month OPEN / natural-month final NOT_DUE.
+
+### Date-specific inherited evidence
+
+#### 2026-10-01: historical 2026-10-01: NO_EXPLICIT_DATE_SPECIFIC_A1_A2_HEADING_IN_CURRENT_OWNER
+- Inherited source detail 1: Owner evidence 1: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented 
+- Inherited source detail 2: Owner evidence 2: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented 
+- Inherited source detail 3: Owner evidence 3: NOT_EXPLICIT_FOR_DATE; stage trigger and historical identity must not be invented 
+- Stage gate 2026-10-01: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-01: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-01: no new stage is not scheduler failure.
+- Provenance gate 2026-10-01: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-01: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-01: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-01: inherited evidence only, no new research credit.
+
+#### 2026-10-02: historical 2026-10-02: A1_FULL_COVERAGE_2026-10-02
+- Inherited source detail 1: Owner evidence 1: Coverage window: 2026-10-01 
+- Inherited source detail 2: Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE 
+- Inherited source detail 3: Owner evidence 3: A1 rule: REVIEWED != MODIFIED 
+- Stage gate 2026-10-02: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-02: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-02: no new stage is not scheduler failure.
+- Provenance gate 2026-10-02: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-02: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-02: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-02: inherited evidence only, no new research credit.
+
+#### 2026-10-03: historical 2026-10-03: A1_SUCCESSOR_FULL_COVERAGE_2026-10-03
+- Inherited source detail 1: Owner evidence 1: Coverage window: 2026-10-01 through 2026-10-02 
+- Inherited source detail 2: Owner evidence 2: Coverage mode: MONTH_START_TO_N_MINUS_1_FULL_COVERAGE 
+- Inherited source detail 3: Owner evidence 3: Predecessor 2026-10-03 A1/A2 D30 reconciliation: PRESERVED_AS_POINT_IN_TIME_HISTORY 
+- Stage gate 2026-10-03: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-03: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-03: no new stage is not scheduler failure.
+- Provenance gate 2026-10-03: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-03: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-03: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-03: inherited evidence only, no new research credit.
+
+#### 2026-10-04: historical 2026-10-04: A2 CURRENT MONTH RELATION — 2026-10-04
+- Inherited source detail 1: Owner evidence 1: Required predecessor A1: PR #90 / MERGED 
+- Inherited source detail 2: Owner evidence 2: Fresh-read after A1 merge: YES 
+- Inherited source detail 3: Owner evidence 3: Current relation window: 2026-10-01..2026-10-04 
+- Stage gate 2026-10-04: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-04: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-04: no new stage is not scheduler failure.
+- Provenance gate 2026-10-04: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-04: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-04: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-04: inherited evidence only, no new research credit.
+
+#### 2026-10-05: historical 2026-10-05: A2 CURRENT MONTH RELATION — 2026-10-05 — EPISTEMIC
+- Inherited source detail 1: Owner evidence 1: Required predecessor A1: PR #95 / MERGED 
+- Inherited source detail 2: Owner evidence 2: Fresh-read after A1 merge: YES 
+- Inherited source detail 3: Owner evidence 3: Current relation window: `2026-10-01..2026-10-05` 
+- Stage gate 2026-10-05: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-05: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-05: no new stage is not scheduler failure.
+- Provenance gate 2026-10-05: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-05: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-05: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-05: inherited evidence only, no new research credit.
+
+#### 2026-10-06: historical 2026-10-06: A2 CURRENT MONTH RELATION — 2026-10-06 — EPISTEMIC
+- Inherited source detail 1: Owner evidence 1: Required predecessor A1: PR #97 / MERGED 
+- Inherited source detail 2: Owner evidence 2: Fresh-read after A1 merge: YES 
+- Inherited source detail 3: Owner evidence 3: Current month relation window: `2026-10-01..2026-10-06` 
+- Stage gate 2026-10-06: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-06: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-06: no new stage is not scheduler failure.
+- Provenance gate 2026-10-06: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-06: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-06: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-06: inherited evidence only, no new research credit.
+
+#### 2026-10-07: historical 2026-10-07: A2 CURRENT MONTH RELATION — 2026-10-07 — EPISTEMIC
+- Inherited source detail 1: Owner evidence 1: Required predecessor A1: PR #100 / MERGED 
+- Inherited source detail 2: Owner evidence 2: Fresh-read after A1 merge: YES 
+- Inherited source detail 3: Owner evidence 3: Current relation window: `2026-10-01..2026-10-07` 
+- Stage gate 2026-10-07: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-07: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-07: no new stage is not scheduler failure.
+- Provenance gate 2026-10-07: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-07: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-07: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-07: inherited evidence only, no new research credit.
+
+#### 2026-10-08: historical 2026-10-08: A2 CURRENT-MONTH RELATION — 2026-10-08
+- Inherited source detail 1: Owner evidence 1: Month start: `2026-10-01` 
+- Inherited source detail 2: Owner evidence 2: Current relation window: `2026-10-01..2026-10-08` 
+- Inherited source detail 3: Owner evidence 3: Existing owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md` 
+- Stage gate 2026-10-08: no unrecorded research Stage I synthesized.
+- Temporal gate 2026-10-08: owner relation is not stage identity or date of primary experiments.
+- Trigger gate 2026-10-08: no new stage is not scheduler failure.
+- Provenance gate 2026-10-08: repeated owner material is not independent corroboration.
+- Runtime gate 2026-10-08: index review did not invoke an epistemic runtime or verifier.
+- Correction gate 2026-10-08: keep original histories/UNKNOWN on their prior date cut.
+- Disposition 2026-10-08: inherited evidence only, no new research credit.
+
+### 2026-10-09 state-trigger current review
+
+- Current index remains Stage A-H, latest identity-date transition 2026-10-04.
+- Relation-through advances to 2026-10-09 without implying Stage I implementation.
+- NO_NEW_STAGE_OBJECT != MISSING_WORK.
+- NO_NEW_STAGE_OBJECT != SCHEDULER_FAILURE.
+- INDEX_RELATION_UPDATE != PRODUCER_RESEARCH_STAGE.
+- Current pipeline code/test repairs merged yesterday are engineering change, not independent frontier stage research.
+- A documented source class or score does not imply scientific truth or calibrated probability.
+- Evidence-chain normalization does not validate a live LLM provider.
+- Same-lineage sources are not counted twice.
+- No new browser/provider/runtime/evaluation invocation was executed.
+- No N-day producer Stage I object was added, so no synthesis, review or handoff is fabricated.
+- Historical stage registry, source and correction records unchanged.
+- Current-month closure OPEN; no natural-month final or doctrine promotion.
+- Only canonical owner updated with date-scoped relation evidence.
