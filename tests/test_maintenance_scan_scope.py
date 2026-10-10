@@ -70,5 +70,55 @@ class TestMaintenanceScanScope(unittest.TestCase):
             self.assertIn("decorative-project-version", kinds)
 
 
+    def _enable_weekly_history_inventory(self, config_path: Path) -> None:
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config["history_patterns"] = ["maintenance/*_DAY_CONSOLIDATION.md"]
+        config["cadences"]["weekly"] = {
+            "calibration_max_age_days": 0,
+            "baseline_hashes": False,
+            "history_inventory": True,
+        }
+        config_path.write_text(json.dumps(config), encoding="utf-8")
+
+    def test_external_history_link_finding_is_repository_relative(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            root, config, _ = self._setup(home)
+            self._enable_weekly_history_inventory(config)
+            outside = home / "outside.md"
+            outside.write_text("historical evidence", encoding="utf-8")
+            relative = "maintenance/FOUR_DAY_CONSOLIDATION.md"
+            self._link(root / relative, outside)
+
+            report = build_report(
+                root=root, config_path=config, cadence="weekly", as_of=date(2026, 10, 11)
+            )
+            matched = [
+                f for f in report["findings"]
+                if f["kind"] == "maintenance-history-match-outside-repository"
+            ]
+            self.assertEqual(len(matched), 1)
+            self.assertEqual(matched[0]["path"], relative)
+            self.assertEqual(report["history_snapshots"], [])
+            self.assertNotIn(str(root), json.dumps(report))
+
+    def test_internal_history_file_remains_in_inventory(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            root, config, _ = self._setup(home)
+            self._enable_weekly_history_inventory(config)
+            relative = "maintenance/FOUR_DAY_CONSOLIDATION.md"
+            (root / relative).write_text("historical evidence", encoding="utf-8")
+
+            report = build_report(
+                root=root, config_path=config, cadence="weekly", as_of=date(2026, 10, 11)
+            )
+            self.assertEqual(report["history_snapshots"], [relative])
+            self.assertNotIn(
+                "maintenance-history-match-outside-repository",
+                [f["kind"] for f in report["findings"]],
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
