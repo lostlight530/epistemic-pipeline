@@ -3104,3 +3104,174 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Historical stage registry, source and correction records unchanged.
 - Current-month closure OPEN; no natural-month final or doctrine promotion.
 - Only canonical owner updated with date-scoped relation evidence.
+
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-10
+
+- Domain EPISTEMIC; exact canonical owner `maintenance/frontier-research/LONGITUDINAL_INDEX.md`.
+- MonthStart-to-N-minus-1: 2026-10-01 through 2026-10-09.
+- Existing Stage A-H registry and October historical owner used as source; no original Stage producer rerun.
+- Current main registered stage identity 2026-10-04; relation-through before this pass 2026-10-09.
+- State-triggered semantics: no Stage I does not establish missing daily work or runtime failure.
+- No new source identity, experiment, benchmark or independent scholarly verification from A1 maintenance.
+- A1 reads the earlier governance owner as dated checkpoint evidence, not as a time-machine proof of historical task execution.
+
+### Monthly onset and dated evidence surfaces
+
+#### 2026-10-01
+- Index structure on 2026-10-01: no separate A2-level heading for this exact date in current owner; this does not determine the native Stage scheduler state.
+- Source interpretation: existing Stage A-H history and month-opening relation are inherited; no daily Stage 2026-10-01 object invented.
+- Reason for retaining unknown: owner heading absence is a routing/format observation, not an execution log.
+#### 2026-10-02
+- Index structure on 2026-10-02: no separate A2-level heading for this exact date in current owner; this does not determine the native Stage scheduler state.
+- Source interpretation: existing Stage A-H history and month-opening relation are inherited; no daily Stage 2026-10-02 object invented.
+- Reason for retaining unknown: owner heading absence is a routing/format observation, not an execution log.
+#### 2026-10-03
+- Index structure on 2026-10-03: no separate A2-level heading for this exact date in current owner; this does not determine the native Stage scheduler state.
+- Source interpretation: existing Stage A-H history and month-opening relation are inherited; no daily Stage 2026-10-03 object invented.
+- Reason for retaining unknown: owner heading absence is a routing/format observation, not an execution log.
+#### 2026-10-04
+- Exact prior owner section: `A2 CURRENT MONTH RELATION — 2026-10-04`.
+- Source evidence 01: Required predecessor A1: PR #90 / MERGED
+- Source evidence 02: Current relation window: 2026-10-01..2026-10-04
+- Source evidence 03: Extra runtime/scientific execution: NOT_PERFORMED
+- Source evidence 04: A2 consumes logical 2026-10-04 temporal-semantics input.
+- Source evidence 05: Prior A2 records remain point-in-time history.
+- Source evidence 06: D30 audit remains retrospective evidence.
+- Source evidence 07: D30 does not create a new native stage.
+- Source evidence 08: Later audit visibility does not rewrite earlier relation.
+- Source evidence 09: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT.
+- Source evidence 10: RETROSPECTIVE_AUDIT != SCIENTIFIC_ADJUDICATION.
+- Source evidence 11: Temporal metadata correctness does not establish epistemic truth.
+- Source evidence 12: 2026-10-04 temporal semantics consumed: YES.
+- Source evidence 13: Daily scheduler failure fabricated: NO.
+- Source evidence 14: Reproduction claimed without execution: NO.
+- Source evidence 15: D30 converted into native stage credit: NO.
+- Source evidence 16: Parallel maintenance owner created: NO.
+- Source evidence 17: Current October relation: CURRENT_THROUGH_2026-10-04.
+- Source evidence 18: New Stage I or later object: NONE_OBSERVED_AT_THIS_CHECK.
+- Reconciliation: 2026-10-04 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+#### 2026-10-05
+- Exact prior owner section: `A2 CURRENT MONTH RELATION — 2026-10-05 — EPISTEMIC`.
+- Source evidence 01: Required predecessor A1: PR #95 / MERGED
+- Source evidence 02: Current relation window: `2026-10-01..2026-10-05`
+- Source evidence 03: Native cadence: `STAGE_STATE_TRIGGERED`
+- Source evidence 04: Runtime/scientific execution by maintenance: NOT_PERFORMED
+- Source evidence 05: A1 covers 10/1–10/4 including Stage H historical and Open Research relations.
+- Source evidence 06: A2 consumes 10/5 open-research routing reconciliation.
+- Source evidence 07: Prior A1/A2/Special remain point-in-time history.
+- Source evidence 08: A2 does not create, simulate, or infer a new research stage.
+- Source evidence 09: RETROSPECTIVE_AUDIT != SCIENTIFIC_ADJUDICATION.
+- Source evidence 10: STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT.
+- Source evidence 11: 10/5 routing reconciliation consumed: YES.
+- Source evidence 12: Daily scheduler failure fabricated: NO.
+- Source evidence 13: Publication/reproduction credit invented: NO.
+- Source evidence 14: Parallel maintenance owner created: NO.
+- Source evidence 15: Current October relation: `CURRENT_THROUGH_2026-10-05`.
+- Source evidence 16: 10/5 open-research routing: `CONSUMED_AS_MAINTENANCE_STATE`.
+- Source evidence 17: Open Research framework: `CURRENT / SUBORDINATE_TO_NATIVE_FRONTIER_CONTRACTS`.
+- Source evidence 18: New Stage I or later object: `NONE_OBSERVED_AT_THIS_CHECK`.
+- Reconciliation: 2026-10-05 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+#### 2026-10-06
+- Exact prior owner section: `A2 CURRENT MONTH RELATION — 2026-10-06 — EPISTEMIC`.
+- Source evidence 01: Required predecessor A1: PR #97 / MERGED
+- Source evidence 02: Current month relation window: `2026-10-01..2026-10-06`
+- Source evidence 03: Native cadence: `STAGE_STATE_TRIGGERED`
+- Source evidence 04: Current retained producer stage: `STAGE_H`
+- Source evidence 05: Runtime/scientific execution by maintenance: NOT_PERFORMED
+- Source evidence 06: A1 supplies complete MonthStart→2026-10-05 coverage.
+- Source evidence 07: A2 evaluates 2026-10-06 current repository state under the stage/state-triggered contract.
+- Source evidence 08: Prior Stage, D30, Special, A1, and A2 records remain point-in-time history.
+- Source evidence 09: `STAGE_H_PRESENT != A_TO_H_SYNTHESIS_PRESENT`.
+- Source evidence 10: `A1_MAINTENANCE != A2_RELATIONAL_VERSION`.
+- Source evidence 11: `CURRENT_MONTH_RELATION != NATURAL_MONTH_FINAL`.
+- Source evidence 12: A2 base equals fresh post-A1 main: YES.
+- Source evidence 13: Runtime/scientific execution invented: NO.
+- Source evidence 14: Current October relation: `CURRENT_THROUGH_2026-10-06`.
+- Source evidence 15: 2026-10-06 producer-stage delta: `NO_NEW_STAGE_OBJECT`.
+- Source evidence 16: Cadence interpretation: `VALID_STATE_TRIGGERED_NO_CHANGE`.
+- Source evidence 17: Claim/evidence semantics: `UNCHANGED / NO_TRUTH_PROMOTION`.
+- Source evidence 18: Transfer semantics: `UNCHANGED / NO_ACCEPTANCE_PROMOTION`.
+- Reconciliation: 2026-10-06 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+#### 2026-10-07
+- Exact prior owner section: `A2 CURRENT MONTH RELATION — 2026-10-07 — EPISTEMIC`.
+- Source evidence 01: Required predecessor A1: PR #100 / MERGED
+- Source evidence 02: Current relation window: `2026-10-01..2026-10-07`
+- Source evidence 03: Native cadence: `STAGE_STATE_TRIGGERED`
+- Source evidence 04: Current retained producer stage: `STAGE_H`
+- Source evidence 05: Runtime/scientific execution by maintenance: NOT_PERFORMED
+- Source evidence 06: A1 supplies complete 10/1→10/6 coverage.
+- Source evidence 07: A2 fresh-reads current main before evaluating N-day relation.
+- Source evidence 08: Date-semantics correction remains current.
+- Source evidence 09: Header relation-through advanced to 10/7: YES.
+- Source evidence 10: Stage registry identity date rewritten: NO.
+- Source evidence 11: Runtime/scientific execution invented: NO.
+- Source evidence 12: Current October relation: `CURRENT_THROUGH_2026-10-07`.
+- Source evidence 13: N-day producer delta: `NO_NEW_STAGE_OBJECT`.
+- Source evidence 14: Cadence interpretation: `VALID_STATE_TRIGGERED_NO_CHANGE`.
+- Source evidence 15: Claim/evidence state: `UNCHANGED / NO_TRUTH_PROMOTION`.
+- Source evidence 16: Transfer state: `UNCHANGED / NO_ACCEPTANCE_PROMOTION`.
+- Source evidence 17: Stage registry identity date: `2026-10-04`.
+- Source evidence 18: Maintenance relation-through: `2026-10-07`.
+- Reconciliation: 2026-10-07 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+#### 2026-10-08
+- Exact prior owner section: `A2 CURRENT-MONTH RELATION — 2026-10-08`.
+- Source evidence 01: Current relation window: `2026-10-01..2026-10-08`
+- Source evidence 02: Existing owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Source evidence 03: A1 dependency: `PRESENT_ON_BASE_AND_CONSUMED`
+- Source evidence 04: A1 coverage inherited: `COMPLETE_THROUGH_2026-10-07_AT_A1_CUT`
+- Source evidence 05: Stage registry / identity date: `2026-10-04`
+- Source evidence 06: Maintenance relation-through after this A2: `2026-10-08`
+- Source evidence 07: This A2 begins from canonical main after this repository's A1 merge.
+- Source evidence 08: The post-A1 fresh-read showed zero open PRs.
+- Source evidence 09: Independent-source evidence: no new credit claimed.
+- Source evidence 10: Stage identity date mechanically changed: NO.
+- Source evidence 11: Current month relation: `UPDATED_THROUGH_2026-10-08`.
+- Source evidence 12: A1 dependency: `SATISFIED_FROM_FRESH_MERGED_MAIN`.
+- Source evidence 13: Stage registry identity: `2026-10-04 / UNCHANGED`.
+- Source evidence 14: N-day producer-stage state: `NO_NEW_STAGE_OBJECT_OBSERVED`.
+- Source evidence 15: New research/runtime/source credit: `NONE`.
+- Source evidence 16: Natural-month closure: `OPEN / NOT_DUE`.
+- Source evidence 17: Unresolved maintenance defect: `NONE_IDENTIFIED_IN_THIS_PASS`.
+- Source evidence 18: Preserve this relation-through update without changing stage identity.
+- Reconciliation: 2026-10-08 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+#### 2026-10-09
+- Exact prior owner section: `A2 CURRENT-MONTH RELATION — 2026-10-09`.
+- Source evidence 01: October 1–9 maintenance relation; all ten A1 merged before this post-A1 main review.
+- Source evidence 02: Stage registry identity 2026-10-04 retained; relation through 2026-10-09 only.
+- Source evidence 03: No new Stage I producer stage or independent source observed in current owner.
+- Source evidence 04: No synthetic producer/scheduler failure or runtime result inferred.
+- Source evidence 05: Existing monthly LONGITUDINAL_INDEX remains sole owner.
+- Source evidence 06: Stage A-H original quarterly windows are not rewritten.
+- Source evidence 07: No production code, tests, historical stage synthesis or other file modified.
+- Source evidence 08: Month OPEN / natural-month final NOT_DUE.
+- Source evidence 09: Relation-through advances to 2026-10-09 without implying Stage I implementation.
+- Source evidence 10: NO_NEW_STAGE_OBJECT != SCHEDULER_FAILURE.
+- Source evidence 11: INDEX_RELATION_UPDATE != PRODUCER_RESEARCH_STAGE.
+- Source evidence 12: Current pipeline code/test repairs merged yesterday are engineering change, not independent frontier stage research.
+- Source evidence 13: A documented source class or score does not imply scientific truth or calibrated probability.
+- Source evidence 14: Evidence-chain normalization does not validate a live LLM provider.
+- Source evidence 15: Same-lineage sources are not counted twice.
+- Source evidence 16: No new browser/provider/runtime/evaluation invocation was executed.
+- Source evidence 17: No N-day producer Stage I object was added, so no synthesis, review or handoff is fabricated.
+- Source evidence 18: Historical stage registry, source and correction records unchanged.
+- Reconciliation: 2026-10-09 owner assertions remain producer-independent, date-bounded, and do not create Stage I evidence.
+- Preservation: original unknown/missing/blocked conditions, if any, retain their original task-time meaning.
+### Cross-date technical and governance conclusions
+
+- EPISTEMIC constraint 1: Stage registry A-H is a research catalog, not an executed LLM provider.
+- EPISTEMIC constraint 2: Knowledge extractor adapter success != full synthesizer provenance persistence.
+- EPISTEMIC constraint 3: Documentary relation limited_by != graph network edge.
+- EPISTEMIC constraint 4: Path traversal scanner fix is production engineering, not Stage I.
+- Quarterly stage registry and dated maintenance recency are separate temporal axes.
+- Historical stage paths are not copied into new synthetic stage directory or rewrite target.
+- Zero owner-level new stage credit, zero runtime credit, zero independent-source credit.
+- No protected workflow, checker, code, historical Daily, archive or research synthesis mutated.
+- Month state OPEN; natural month final NOT_DUE; index only appends a dated A1 audit.
+- Current October-10 native input belongs to post-A1 A2, not to this N-1 section.
+- Full ten-A1 merge is a barrier before constructing the 2026-10-10 A2 owner relation.
