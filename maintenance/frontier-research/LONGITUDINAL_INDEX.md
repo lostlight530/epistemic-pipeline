@@ -3404,3 +3404,220 @@ STAGE_IDENTITY_DATE_2026_10_08
 - No month final, experiment credit, external provider result, benchmark or SCI validity claim by maintenance.
 - Revision principle: preserve prior owner sections and keep future correction as a new dated timepoint.
 - A2 outcome: RELATION_THROUGH_2026_10_10 / STAGE_IDENTITY_2026_10_04 / NO_STAGE_I.
+
+## A1 FULL-COVERAGE MAINTENANCE — 2026-10-11
+- Repository: `lostlight530/epistemic-pipeline`
+- Domain: Epistemic Frontier Research
+- Exact owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Logical date: 2026-10-11 Asia/Shanghai
+- Coverage cutoff: 2026-10-10
+- Coverage window: 2026-10-01..2026-10-10
+- Exact base revision: `51e1136eef2dc6173b7aa91f7a3829d0799b2e7d`
+- Previous A1 lineage: #108
+- Previous A2 lineage: #109
+- Producer role: HUMAN_AUTHORIZED_GOVERNANCE_MAINTENANCE
+- Native stage replay: NOT_PERFORMED
+- External research replay by maintenance: NOT_PERFORMED
+- Independent source credit added by maintenance: NONE
+- Scientific execution-window credit added by maintenance: NONE
+- Historical rewrite: NO
+- Month relation: OPEN
+- Natural-month final: NOT_DUE
+
+### Coverage and decision contract
+- Each date is reviewed against the canonical longitudinal owner and retained stage identity
+- REVIEWED does not imply MODIFIED
+- NO_NEW_STAGE_OBJECT is an admissible state for state-triggered cadence
+- NO_NEW_STAGE_OBJECT is not converted into scheduler failure or missing work
+- Relation-through metadata cannot manufacture a new stage identity
+- Engineering fixes remain engineering evidence unless independently admitted as research
+- Only the canonical LONGITUDINAL_INDEX owner is modified by this A1
+- Historical Stage A-H artifacts remain immutable point-in-time producer records
+- The next A2 must begin only after this A1 is merged and current main is freshly read
+
+#### 2026-10-01 full-coverage stage decision
+- Coverage identity: 2026-10-01 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-02 full-coverage stage decision
+- Coverage identity: 2026-10-02 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-03 full-coverage stage decision
+- Coverage identity: 2026-10-03 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-04 full-coverage stage decision
+- Coverage identity: 2026-10-04 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-05 full-coverage stage decision
+- Coverage identity: 2026-10-05 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-06 full-coverage stage decision
+- Coverage identity: 2026-10-06 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-07 full-coverage stage decision
+- Coverage identity: 2026-10-07 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-08 full-coverage stage decision
+- Coverage identity: 2026-10-08 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-09 full-coverage stage decision
+- Coverage identity: 2026-10-09 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+#### 2026-10-10 full-coverage stage decision
+- Coverage identity: 2026-10-10 / Epistemic Frontier Research / longitudinal owner
+- Owner review: REVIEWED
+- Stage-object observation: no new producer stage inferred from maintenance metadata
+- Retained stage registry identity: 2026-10-04 / Stage H
+- Relation-through semantics: governance recency only
+- Historical producer provenance: PRESERVED
+- Runtime/scientific execution by A1: NOT_PERFORMED
+- New independent-source credit: NONE
+- New Stage I synthetic credit: NONE
+- Earlier stage/audit assertions overwritten: NO
+- Decision completeness: COMPLETE_FOR_THIS_DATE_WITHIN_LONGITUDINAL_OWNER
+
+### 2026-10-10 cutoff-specific evidence adjudication
+- Cutoff fact 1: Current retained producer stage remains Stage H with registry identity date 2026-10-04
+- Cutoff fact 2: No Stage I research object is observed through the 2026-10-10 cutoff
+- Cutoff fact 3: Relation-through 2026-10-10 is governance/index currency rather than epistemic adjudication or a new scientific stage
+- Cutoff fact 4: The leaf-file repository-boundary repair is engineering evidence and does not itself create epistemic sufficiency
+- Cutoff fact 5: Evidence-linked remains distinct from evidence-sufficient
+- Cutoff fact 6: Retrospective audit remains distinct from scientific adjudication and month final
+- Cutoff decision: RETAIN / NO_NEW_STAGE_OBJECT
+- Stage registry identity changed by A1: NO
+- Relation-through cutoff reviewed: YES
+- New external research required by A1: NO
+- New runtime validation claimed by A1: NO
+
+### Post-cutoff visibility boundary
+- Post-cutoff item 1: No new producer Stage I object was observed at the A1 branch cut after 2026-10-10
+- Post-cutoff item 2: A2 may advance current relation-through to 2026-10-11 only after this A1 merges and current main is freshly read
+- Post-cutoff item 3: A2 must not convert relation recency into epistemic source independence or stage identity
+- 2026-10-11 relation is outside the A1 producer cutoff
+- Post-cutoff state may be consumed only by A2 after this A1 is merged
+
+### Domain evidence boundaries rechecked
+- Boundary 01: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT
+- Boundary 02: retrospective audit != scientific adjudication
+- Boundary 03: stage identity != relation-through date
+- Boundary 04: NO_NEW_STAGE_OBJECT != scheduler failure
+- Boundary 05: state-triggered cadence != daily cadence
+- Boundary 06: engineering repair != epistemic result
+- Boundary 07: regression test != scientific sufficiency
+- Boundary 08: index entry != independent evidence
+- Boundary 09: same source revisit != corroboration
+- Boundary 10: current owner relation != producer stage
+- Boundary 11: configured root confinement != universal evidence integrity
+- Boundary 12: leaf path accepted != source truth
+- Boundary 13: historical Stage H != inferred Stage I
+- Boundary 14: D30 audit != new producer event
+- Boundary 15: Open Research routing != new scientific execution
+- Boundary 16: maintenance A1 != A2 relation
+- Boundary 17: monthly OPEN != natural-month final
+- Boundary 18: later repository state != earlier task-time evidence
+- Boundary 19: negative/unknown evidence remains admissible
+- Boundary 20: correction is forward and non-destructive
+
+### A1 decision summary
+- Reviewed dated checkpoints: 10
+- Cutoff: 2026-10-10
+- Canonical owner modified: LONGITUDINAL_INDEX only
+- Historical stage files rewritten: 0
+- New Stage I producer artifacts: 0
+- New scientific executions: 0
+- New independent-source credit: 0
+- New month-final claim: 0
+- Engineering fixes promoted to research-stage evidence: 0
+- Overall A1 disposition: COVERAGE_COMPLETE / STAGE_IDENTITY_PRESERVED / RELATION_BOUNDARY_PRESERVED
+- Merge prerequisite for A2: YES
+- A2 may advance relation-through only after fresh-read merged main
+- A1 status: READY_FOR_MAINTAINER_REVIEW
