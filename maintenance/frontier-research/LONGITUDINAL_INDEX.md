@@ -3621,3 +3621,194 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Merge prerequisite for A2: YES
 - A2 may advance relation-through only after fresh-read merged main
 - A1 status: READY_FOR_MAINTAINER_REVIEW
+
+## A2 CURRENT-MONTH RELATION — 2026-10-11
+- Repository: `lostlight530/epistemic-pipeline`
+- Domain: Epistemic Frontier Research
+- Exact owner: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`
+- Logical N: 2026-10-11 Asia/Shanghai
+- Relation window: 2026-10-01..2026-10-11
+- Fresh post-A1 base: `4d6dc4dd5203c84d419de8de05ddfb2a519bb57a`
+- Required predecessor A1: #112 / MERGED / CONSUMED
+- Open PR state at A2 branch cut: 0 observed
+- Producer role: HUMAN_AUTHORIZED_GOVERNANCE_RELATION
+- Historical rewrite: NO
+- Native stage/scientific execution by A2: NOT_PERFORMED
+- External evidence retrieval by A2: NOT_PERFORMED
+- New independent-source credit by A2: NONE
+- Month relation: OPEN
+- Natural-month final: NOT_DUE
+
+### Dependency and relation contract
+- A2 starts only from post-A1 current main
+- A1 supplies MonthStart→N-1 full coverage and is consumed rather than repeated as evidence
+- N-day relation can advance without a producer stage under state-triggered cadence
+- Absence of a new stage object is not evidence of scheduler failure
+- Epistemic status cannot be upgraded merely because a path is linked or current
+- Engineering changes remain engineering evidence unless separately validated
+- Only the canonical LONGITUDINAL_INDEX is updated
+- No synthetic Stage I or scientific adjudication artifact is created
+- Future correction appends a new timepoint
+
+#### 2026-10-01 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-02 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-03 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-04 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-05 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-06 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-07 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-08 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-09 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+#### 2026-10-10 inherited A1 epistemic relation
+- A1 coverage source: merged predecessor #112
+- Historical owner checkpoint: CONSUMED
+- Historical Stage/evidence status: PRESERVED
+- Evidence-linked/sufficient distinction: PRESERVED
+- Scientific re-execution by A2: NOT_PERFORMED
+- New producer-stage credit: NONE
+- New independent-source credit: NONE
+- 10/11 relation used to rewrite this date: NO
+- Relation decision: RETAIN_AS_POINT_IN_TIME_HISTORY
+
+### 2026-10-11 current-main integration
+- Current fact 01: A1 #112 is merged and supplies complete 2026-10-01..2026-10-10 coverage on the canonical LONGITUDINAL_INDEX owner
+- Current fact 02: Fresh post-A1 current main shows no new native Stage I producer artifact at the A2 branch cut
+- Current fact 03: Current retained producer-stage identity remains Stage H / 2026-10-04
+- Current fact 04: Relation-through advances to 2026-10-11 as governance recency because current repository state was reviewed through N
+- Current fact 05: No-new-stage state does not become an epistemic failure, scheduler failure, or missing-work claim
+- Current fact 06: The leaf-file confinement repair remains engineering evidence; it does not establish evidence sufficiency, source truth, or a live incident
+- Current fact 07: EVIDENCE_LINKED remains distinct from EVIDENCE_SUFFICIENT
+- Current fact 08: Retrospective audit remains distinct from scientific adjudication
+- Current fact 09: No scientific/runtime execution or independent source is added by A2
+- Current fact 10: October relation remains OPEN and natural-month final is NOT_DUE
+- Current-day stage decision: NO_NEW_STAGE_OBJECT
+- Current-day relation decision: ADVANCE_RELATION_THROUGH_2026_10_11
+- Epistemic sufficiency upgrade: NO
+- Stage registry identity changed: NO
+- Runtime/scientific evidence added: NONE
+
+### Evidence boundaries rechecked
+- Boundary 01: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT
+- Boundary 02: retrospective audit != scientific adjudication
+- Boundary 03: Stage H identity != 10/11 relation-through
+- Boundary 04: NO_NEW_STAGE_OBJECT != scheduler failure
+- Boundary 05: state-triggered cadence != daily cadence
+- Boundary 06: relation-through metadata != producer event
+- Boundary 07: engineering repair != epistemic proof
+- Boundary 08: regression test != source truth
+- Boundary 09: accepted local path != external evidence correctness
+- Boundary 10: same owner repetition != independent corroboration
+- Boundary 11: historical Stage A-H != synthetic Stage I
+- Boundary 12: D30 audit != producer stage
+- Boundary 13: Open Research routing != new experiment
+- Boundary 14: maintenance A1 != A2 relation
+- Boundary 15: maintenance A2 != epistemic producer
+- Boundary 16: no new stage != no world change
+- Boundary 17: current main visibility != earlier execution availability
+- Boundary 18: month OPEN != final adjudication
+- Boundary 19: unknown remains unknown
+- Boundary 20: correction remains append-only and forward
+
+### A2 relation summary
+- Relation-through: 2026-10-11
+- A1 prerequisite: SATISFIED
+- Retained producer stage: Stage H / 2026-10-04
+- New Stage I observed: NO
+- Evidence sufficiency promoted: NO
+- New independent-source credit: NONE
+- Historical stage artifacts rewritten: 0
+- Engineering evidence promoted to scientific adjudication: 0
+- Natural-month final formed: NO
+- Current owner status: RELATION_THROUGH_2026_10_11 / STAGE_IDENTITY_2026_10_04 / NO_STAGE_I
+- Future A1 must fresh-read this merged main
+- A2 status: READY_FOR_MAINTAINER_REVIEW
