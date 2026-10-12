@@ -3983,3 +3983,186 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Runtime scientific executions: 0
 - Independent source credits: 0
 - Status: COVERAGE_COMPLETE / STAGE_HISTORY_PRESERVED / READY_FOR_A2_AFTER_MERGE
+
+## A2 CURRENT-MAIN OCTOBER MAINTENANCE — 2026-10-12
+- Repository: lostlight530/epistemic-pipeline
+- Domain: Epistemic / Stage-state research
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Logical date: 2026-10-12 Asia/Shanghai
+- Coverage window: 2026-10-01..2026-10-12
+- Relation-through: N = 2026-10-12
+- Fresh A1-merged base main: ff571d6faf8c889c9c95e1aa4728787598f5e706
+- A1 consumed: YES
+- Native 2026-10-12 stage object: NOT_OBSERVED
+- Producer replay by A2: NOT_PERFORMED
+- Historical rewrite: NO
+- Month state: OPEN
+- Natural-month final: NOT_DUE
+
+### Full October relation review
+
+#### 2026-10-01
+- Relation date: 2026-10-01
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-02
+- Relation date: 2026-10-02
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-03
+- Relation date: 2026-10-03
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-04
+- Relation date: 2026-10-04
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-05
+- Relation date: 2026-10-05
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-06
+- Relation date: 2026-10-06
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-07
+- Relation date: 2026-10-07
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-08
+- Relation date: 2026-10-08
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-09
+- Relation date: 2026-10-09
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-10
+- Relation date: 2026-10-10
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-11
+- Relation date: 2026-10-11
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+#### 2026-10-12
+- Relation date: 2026-10-12
+- Historical producer/stage record: RETAINED
+- Current-main path used as task-time proof: NO
+- No-new-stage interpreted as scheduler failure: NO
+- Relation-through used as stage identity: NO
+- Weekly/monthly promotion without producer evidence: NO
+- Independent-source credit created by A2: NONE
+- Runtime scientific execution by A2: NOT_PERFORMED
+- Decision: RELATION_REVIEWED / NO_SYNTHETIC_STAGE
+
+### 2026-10-12 stage/current-main adjudication
+- N1: No new 10/12 native scientific Stage I producer object is observed in current longitudinal owner.
+- N2: Latest observed native scientific stage remains STAGE_H with registry date 2026-10-04.
+- N3: A1 PR #114 merged and audited 10/01..10/11 without synthesizing a new stage.
+- N4: Relation-through may advance to 2026-10-12 as governance recency while stage identity remains unchanged.
+- N5: Engineering repair #107 remains scope-confinement evidence rather than scientific adjudication.
+- N6: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT; October owner remains OPEN.
+
+### Stage / Weekly / Monthly correction rules applied
+- Stage absence != scheduler failure.
+- Relation-through != stage identity.
+- Engineering repair != scientific validation.
+- Producer records remain point-in-time evidence.
+- Weekly synthesis does not manufacture missing producer stages.
+- Monthly owner may record relation maintenance while month is OPEN.
+- Natural-month finalization is not due on 2026-10-12.
+- Same-repository evidence is not independent corroboration.
+- Current success does not erase earlier negative or unknown states.
+- Correction must be forward and inspectable.
+- A2 is governance relation maintenance, not producer rerun.
+- No hidden runtime or scientific-validity credit is added.
+
+### A2 evidence ledger
+- 2026-10-01..2026-10-11: consumed from A1-merged current main.
+- 2026-10-12: no new Stage I producer object observed.
+- Historical rewrite count: 0.
+- Synthetic stage count: 0.
+- Independent sources newly credited by A2: 0.
+- Runtime scientific executions by A2: 0.
+- Monthly final seal: 0.
+- Relation-through advanced to: 2026-10-12.
+- Stage identity retained: STAGE_H / 2026-10-04.
+- Status: A2_RELATION_COMPLETE / MONTH_OPEN / STAGE_HISTORY_PRESERVED
