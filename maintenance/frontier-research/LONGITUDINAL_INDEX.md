@@ -3812,3 +3812,174 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Current owner status: RELATION_THROUGH_2026_10_11 / STAGE_IDENTITY_2026_10_04 / NO_STAGE_I
 - Future A1 must fresh-read this merged main
 - A2 status: READY_FOR_MAINTAINER_REVIEW
+
+## A1 FULL OCTOBER MAINTENANCE — 2026-10-12
+- Repository: lostlight530/epistemic-pipeline
+- Domain: Epistemic / Stage-state research
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Coverage window: 2026-10-01..2026-10-11
+- Cutoff: N-1 = 2026-10-11
+- Exact base main: 52fcb3474b1c2bec6ec6765016e34e677f1918b1
+- Cadence: STAGE_STATE_TRIGGERED
+- Producer replay: NOT_PERFORMED
+- Historical rewrite: NO
+- Month: OPEN
+- Stage I: NOT_OBSERVED
+
+### October date reconciliation
+
+#### 2026-10-01
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-02
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-03
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-04
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-05
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-06
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-07
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-08
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-09
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-10
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+#### 2026-10-11
+- Owner/history checkpoint: REVIEWED
+- Stage identity mutation: NONE
+- Synthetic stage creation: NO
+- Scheduler-failure inference from no new stage: NO
+- Relation-through used as stage identity: NO
+- Historical negative/unknown state rewrite: NO
+- Runtime scientific execution by A1: NOT_PERFORMED
+- Independent evidence credit: NONE
+- Monthly final: NOT_DUE
+
+### Repository-specific adjudication
+- F01: Latest observed native scientific stage remains STAGE_H with registry date 2026-10-04.
+- F02: No STAGE_I producer object is observed in current owner at the A1 cutoff.
+- F03: Absence of a new stage is not treated as scheduler failure.
+- F04: Relation-through from prior maintenance is 2026-10-11; A1 does not manufacture a 2026-10-12 producer stage.
+- F05: Engineering repair PR #107 concerns maintenance-scan leaf symlink confinement, not scientific adjudication.
+- F06: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT.
+- F07: RETROSPECTIVE_AUDIT != SCIENTIFIC_ADJUDICATION.
+- F08: Isolated engineering reproduction is not a full scientific validation run.
+- F09: Stage registry identity is not advanced by governance maintenance.
+- F10: No scientific simulation or evidence re-scoring is performed by A1.
+- F11: October longitudinal owner remains OPEN.
+- F12: Historical Stage A-H chronology is preserved.
+
+### Evidence boundaries
+- Stage absence != scheduler failure.
+- Relation-through != stage identity.
+- Engineering repair != scientific validation.
+- Evidence linked != evidence sufficient.
+- Retrospective audit != scientific adjudication.
+- Same repository evidence != independent corroboration.
+- A1 review != producer stage.
+- Current path != historical task-time availability.
+- Historical state remains point-in-time evidence.
+- No Stage I placeholder is authorized.
+- Month remains OPEN.
+
+### A1 disposition
+- Dates reviewed: 11
+- Historical rewrites: 0
+- New native stages: 0
+- Runtime scientific executions: 0
+- Independent source credits: 0
+- Status: COVERAGE_COMPLETE / STAGE_HISTORY_PRESERVED / READY_FOR_A2_AFTER_MERGE
