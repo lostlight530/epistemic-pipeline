@@ -4549,3 +4549,172 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Monthly final seal: 0
 - Relation-through advanced to: 2026-10-13
 - Status: A2_RELATION_COMPLETE / MONTH_OPEN / HISTORY_PRESERVED
+
+## FINAL A1 RECONCILIATION — 2026-10-13
+- Repository: lostlight530/epistemic-pipeline
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Coverage: 2026-10-01..2026-10-12
+- Cutoff: N-1
+- Purpose: rerun after native-original-file completion
+- Historical rewrite: NO
+- External/scientific rerun: NO
+- Month: OPEN
+
+### Date-by-date retained state
+
+#### 2026-10-01
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-02
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-03
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-04
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-05
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-06
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-07
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-08
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-09
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-10
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-11
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+#### 2026-10-12
+- Existing observation/stage/weekly/monthly state: REVIEWED
+- Point-in-time semantics: RETAINED
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact historical transition time: NO
+- Gap/unknown state remains legal evidence: YES
+- Independent-source credit added by this reconciliation: 0
+- Runtime/conformance/scientific replay: 0
+- Decision: RETAIN / NO_HISTORY_REWRITE
+
+### Native original-file adjudication
+- O1: No 10/13 native scientific stage artifact exists in the current longitudinal owner
+- O2: Latest scientific stage remains STAGE_H dated 2026-10-04
+- O3: Prior relation-through does not create Stage I or scientific adjudication
+- O4: Native original-file review found no 10/13 producer file requiring correction in this repository
+- O5: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT and retrospective audit remains distinct from scientific adjudication
+
+### Post-cutoff control
+- 2026-10-13 producer/correction artifacts remain post-cutoff visibility for A1
+- No 10/13 source check is backdated into 10/12
+- Original historical checkpoints remain inspectable
+- Current main is not substituted for historical observation time
+- Forward reconciliation remains dated
+
+### Evidence discipline
+- Observation date != event/publication/effective date
+- Current display != exact transition chronology
+- Same publisher lineage != independent support
+- Relation-through != stage identity
+- Stage absence != scheduler failure
+- Engineering repair != scientific validity
+- Evidence linkage != evidence sufficiency
+- Rendering success != scientific validity
+- Standard/project state != implementation/conformance
+- Correction != history rewrite
+- Unknown/gap remains visible
+- October remains OPEN
+
+### Final A1 disposition
+- Covered days: 12
+- Native original-file review incorporated: YES
+- Historical rewrites: 0
+- New research credit: 0
+- New runtime/conformance credit: 0
+- Month final seal: 0
+- Status: FINAL_A1_COMPLETE / READY_FOR_MERGE_THEN_FRESH_READ
