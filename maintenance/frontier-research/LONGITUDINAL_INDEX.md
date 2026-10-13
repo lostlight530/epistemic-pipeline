@@ -4718,3 +4718,174 @@ STAGE_IDENTITY_DATE_2026_10_08
 - New runtime/conformance credit: 0
 - Month final seal: 0
 - Status: FINAL_A1_COMPLETE / READY_FOR_MERGE_THEN_FRESH_READ
+
+## FINAL A2 CURRENT-MONTH RECONCILIATION — 2026-10-13
+- Repository: lostlight530/epistemic-pipeline
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Coverage: 2026-10-01..2026-10-13
+- Relation-through: 2026-10-13
+- Base: fresh Final-A1 merged main
+- Scientific replay: NO
+- Historical rewrite: NO
+- Month: OPEN
+
+### Date-by-date current relation
+
+#### 2026-10-01
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-02
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-03
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-04
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-05
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-06
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-07
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-08
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-09
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-10
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-11
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-12
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+#### 2026-10-13
+- Stage/history state: RETAINED
+- Current relation state: REVIEWED
+- Later state rewrites earlier state: NO
+- New stage inferred from relation maintenance: NO
+- Monthly-final promotion: NO
+- Independent-source credit added: 0
+- Scientific runtime replay: 0
+- Decision: CURRENT_RELATION_UPDATED / HISTORY_PRESERVED
+
+### 2026-10-13 state
+- S1: No 10/13 native Stage I producer artifact is observed
+- S2: STAGE_H dated 2026-10-04 remains the latest producer stage
+- S3: Relation-through advances independently of stage identity
+- S4: No 10/13 original producer file required correction in this repository
+- S5: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT and retrospective audit remains distinct from scientific adjudication
+- S6: Final A1 #118 merged from current main
+
+### Evidence controls
+- Relation-through != stage identity
+- Stage absence != scheduler failure
+- Engineering repair != scientific validation
+- Current path != historical execution
+- Correction != history rewrite
+- Unknown remains unknown
+- No new stage is created by maintenance
+- Month remains OPEN
+
+### Final A2 disposition
+- Covered days: 13
+- Final A1 consumed: YES
+- 10/13 stage state consumed: YES
+- Historical rewrites: 0
+- New scientific stage credit: 0
+- New runtime credit: 0
+- Monthly final seal: 0
+- Relation-through: 2026-10-13
+- Status: FINAL_A2_COMPLETE / MONTH_OPEN / HISTORY_PRESERVED
