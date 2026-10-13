@@ -4354,3 +4354,198 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Unsupported runtime/conformance claims added: 0
 - 2026-10-13 state admitted into A1 cutoff: NO
 - Ready condition: MERGE_A1_THEN_FRESH_READ_MAIN
+
+## A2 CURRENT-MAIN OCTOBER MAINTENANCE — 2026-10-13
+- Repository: lostlight530/epistemic-pipeline
+- Domain: Epistemic / Stage-state Research
+- Canonical owner: maintenance/frontier-research/LONGITUDINAL_INDEX.md
+- Logical date: 2026-10-13 Asia/Shanghai
+- Coverage window: 2026-10-01..2026-10-13
+- Relation-through: N = 2026-10-13
+- Fresh A1-merged base main: 5e7609fc883dab12be6fa3bbe7f5c6d4b4554131
+- A1 consumed: YES
+- 2026-10-13 native/stage/observatory state consumed where present: YES
+- External rerun by A2: NOT_PERFORMED
+- Historical rewrite: NO
+- Month state: OPEN
+- Natural-month final: NOT_DUE
+
+### Full October relational ledger
+
+#### 2026-10-01
+- Relation date: 2026-10-01
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-02
+- Relation date: 2026-10-02
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-03
+- Relation date: 2026-10-03
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-04
+- Relation date: 2026-10-04
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-05
+- Relation date: 2026-10-05
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-06
+- Relation date: 2026-10-06
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-07
+- Relation date: 2026-10-07
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-08
+- Relation date: 2026-10-08
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-09
+- Relation date: 2026-10-09
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-10
+- Relation date: 2026-10-10
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-11
+- Relation date: 2026-10-11
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-12
+- Relation date: 2026-10-12
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+#### 2026-10-13
+- Relation date: 2026-10-13
+- Existing producer / stage / observation object: RETAINED_AS_POINT_IN_TIME_EVIDENCE
+- Later observation used to fabricate earlier state: NO
+- Current display used as exact earlier transition timestamp: NO
+- Gap / negative / unknown state overwritten: NO
+- Weekly/stage promotion without direct evidence: NO
+- Monthly final promotion: NO
+- Independent-source credit created by A2: NONE
+- Decision: RELATION_REVIEWED / NO_BACKDATE
+
+### 2026-10-13 current-main adjudication
+- N1: No 2026-10-13 native Stage I producer object is observed in the longitudinal owner
+- N2: Latest observed native scientific stage remains STAGE_H with registry date 2026-10-04
+- N3: A1 #116 merged and reviewed 2026-10-01..2026-10-12 without creating synthetic stage identity
+- N4: Relation-through may advance to 2026-10-13 while stage identity remains unchanged
+- N5: Engineering repair #107 remains scope-confinement evidence rather than scientific adjudication
+- N6: EVIDENCE_LINKED != EVIDENCE_SUFFICIENT and RETROSPECTIVE_AUDIT != SCIENTIFIC_ADJUDICATION
+- N7: October longitudinal owner remains OPEN and natural-month final is NOT_DUE
+
+### Cross-layer rules applied
+- Observation date != event / publication / effective / transition date
+- Same publisher lineage != independent support
+- Stage absence != scheduler failure
+- Relation-through != stage identity
+- Engineering repair != scientific validity
+- Evidence linkage != evidence sufficiency
+- Rendering success != scientific validity
+- Standard/project status != implementation or conformance
+- Past-date gap is preserved and not silently backfilled
+- Current success does not erase earlier OPEN / UNKNOWN / gap states
+- A2 relation maintenance != native observation/scientific rerun
+- Correction moves forward without rewriting historical checkpoints
+- October remains OPEN
+
+### A2 evidence ledger
+- 2026-10-01..2026-10-12 consumed from merged A1
+- 2026-10-13 producer/stage/observatory state consumed where present
+- Historical rewrites: 0
+- External/scientific runs replayed by A2: 0
+- Independent sources newly credited: 0
+- Unsupported runtime/conformance claims added: 0
+- Monthly final seal: 0
+- Relation-through advanced to: 2026-10-13
+- Status: A2_RELATION_COMPLETE / MONTH_OPEN / HISTORY_PRESERVED
