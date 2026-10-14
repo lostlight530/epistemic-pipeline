@@ -4889,3 +4889,166 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Monthly final seal: 0
 - Relation-through: 2026-10-13
 - Status: FINAL_A2_COMPLETE / MONTH_OPEN / HISTORY_PRESERVED
+
+## A1 2026-10-14 immutable Stage H audit
+- Repository: lostlight530/epistemic-pipeline
+- Exact main: b78bb1d9f34b90793fb695e2c9ac1feb5f2fc70e
+- Coverage cutoff: 2026-10-01..2026-10-13
+- Stage H 2025-Q4 source files fetched: 13
+- Evidence-linked, evidence-sufficient and benchmark-validation are distinct states
+- Stage H literature and source objects are retained with original version and experimental conditions
+- No Stage I evidence was manufactured; no stage transition inferred from today
+- Original research files preserved; one canonical LONGITUDINAL_INDEX owner
+- Explicit scientific uncertainty, non-comparability and runtime limits stay bounded
+- Maintainer did not rerun a benchmark, task executor or scientific trial
+
+### maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md
+- Git blob: da159d467073a5fbe8b09f366cdb269430678fc5
+- Source text lines retrieved: 8
+- Heading count sampled: 1
+- Source heading 1: # Contributor Statement — Stage H / 2025-Q4
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md
+- Git blob: 1034a61ecf6a9d51e8aa23123b81059c068da6ce
+- Source text lines retrieved: 10
+- Heading count sampled: 1
+- Source heading 1: # Stage H Evidence Chart — 2025-Q4
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md
+- Git blob: 343639b75ce9a56b29c8aadd33f3a02da7b117d6
+- Source text lines retrieved: 33
+- Heading count sampled: 5
+- Source heading 1: # H1 — TRAJECT-Bench: Trajectory Correctness Beyond Final Accuracy
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md
+- Git blob: e4104bcce39fa0485cb641bea12c1841a65e15bb
+- Source text lines retrieved: 34
+- Heading count sampled: 5
+- Source heading 1: # H2 — CostBench v1: Dynamic Cost, Blocking Events, and Replanning State
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md
+- Git blob: a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56
+- Source text lines retrieved: 35
+- Heading count sampled: 5
+- Source heading 1: # H3 — MCPAgentBench v1: Tool-Set Environment Identity and Efficiency
+- Source heading 2: ## Source identity
+- Source heading 3: ## Frontier observation
+- Source heading 4: ## Boundary
+- Source heading 5: ## Repository interpretation
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md
+- Git blob: 11ba6ab242f53b34f00ae5b30db741a66c2c1cf5
+- Source text lines retrieved: 14
+- Heading count sampled: 5
+- Source heading 1: # October 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md
+- Git blob: 019dd901780c2b1508955107433547d06941cefc
+- Source text lines retrieved: 14
+- Heading count sampled: 5
+- Source heading 1: # November 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md
+- Git blob: fed0f15a26356ccc8c67ca52bc034cff88609118
+- Source text lines retrieved: 14
+- Heading count sampled: 5
+- Source heading 1: # December 2025 Reconstruction — Stage H
+- Source heading 2: ## Selected event
+- Source heading 3: ## Narrative
+- Source heading 4: ## Boundary
+- Source heading 5: ## Decision
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md
+- Git blob: 5dd9036705caddae7bf94d05b93e3f0a05d08d64
+- Source text lines retrieved: 16
+- Heading count sampled: 4
+- Source heading 1: # Stage H Research Review — 2025-Q4
+- Source heading 2: ## Review result
+- Source heading 3: ## Findings
+- Source heading 4: ## Limits
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md
+- Git blob: 24084d7efa1770c3b8b5435264caa3d2d660c35c
+- Source text lines retrieved: 11
+- Heading count sampled: 2
+- Source heading 1: # Stage H Source / Object Register — 2025-Q4
+- Source heading 2: ## Version rule
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md
+- Git blob: 58f3562d45e4ce76ef352f341c3853982bf31079
+- Source text lines retrieved: 33
+- Heading count sampled: 5
+- Source heading 1: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Rationale
+- Source heading 4: ## Selected historical versions
+- Source heading 5: ## Hard boundaries
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md
+- Git blob: d856c0089085b4cd7f3a4c1482ccf5911a7af3bb
+- Source text lines retrieved: 16
+- Heading count sampled: 4
+- Source heading 1: # Stage H Handoff — 2025-Q4
+- Source heading 2: ## Preserved findings
+- Source heading 3: ## Next questions
+- Source heading 4: ## Boundary
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md
+- Git blob: b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e
+- Source text lines retrieved: 46
+- Heading count sampled: 6
+- Source heading 1: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Source heading 2: ## Identity
+- Source heading 3: ## Quarter narrative
+- Source heading 4: ## Previous-stage delta
+- Source heading 5: ## Current repository assessment
+- Source heading 6: ## Conclusion
+- Evidence boundary tokens: NONE_OF_CHECKED_MARKERS
+- Per-source disposition: historical Stage H material only; benchmark evidence linkage alone does not establish sufficient validation
+
+### A1 decision
+- Original Stage files changed: 0
+- New benchmark evidence: 0
+- New source independence / runtime credit: 0
+- October monthly final: NOT_DUE
+- A2 gate: all ten A1 must merge and current main must be re-read
