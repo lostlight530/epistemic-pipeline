@@ -5052,3 +5052,187 @@ STAGE_IDENTITY_DATE_2026_10_08
 - New source independence / runtime credit: 0
 - October monthly final: NOT_DUE
 - A2 gate: all ten A1 must merge and current main must be re-read
+
+## A2 2026-10-14 source-to-benchmark cross-stage relation
+- Repository: lostlight530/epistemic-pipeline
+- A1 merged fresh main: 5a0ce06e532efb0ed3b50967aa610cb65b14e27f
+- Inherited A1 owner blob: f145274c539bc7e9553fcca1bde63319ad8e892a
+- Inclusive October coverage: 2026-10-01 through 2026-10-14
+- Stage-H 2025-Q4 native sources reread: 13
+- Stage-I new producer evidence on main: NOT_OBSERVED
+- Benchmark, version, evaluation setup, conditions and scoring authority are not interchangeable
+- EVIDENCE_LINKED does not establish EVIDENCE_SUFFICIENT, replicated findings or running system correctness
+- Historical Stage H research and source provenance retained unchanged, no new stage or unsupported state transitions
+- A2 maps role relations across research objects; scientific experiments were not rerun
+
+### A2 benchmark relation: CONTRIBUTOR_STATEMENT.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md
+- Original evidence blob: da159d467073a5fbe8b09f366cdb269430678fc5
+- Contract role: ATTRIBUTION
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Contributor Statement — Stage H / 2025-Q4
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: EVIDENCE_CHART.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md
+- Original evidence blob: 1034a61ecf6a9d51e8aa23123b81059c068da6ce
+- Contract role: CROSS_EVIDENCE_MAP
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Stage H Evidence Chart — 2025-Q4
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md
+- Original evidence blob: 343639b75ce9a56b29c8aadd33f3a02da7b117d6
+- Contract role: FOCUSED_BENCHMARK_CONDITION
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # H1 — TRAJECT-Bench: Trajectory Correctness Beyond Final Accuracy
+- Checked heading 2: ## Source identity
+- Checked heading 3: ## Frontier observation
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Repository interpretation
+- Historical source proposition 1: - v1 submitted: 2025-10-06
+- Historical source proposition 2: - Primary source: https://arxiv.org/abs/2510.04550
+- Historical source proposition 3: - execution-plan/trajectory match != claim truth
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md
+- Original evidence blob: e4104bcce39fa0485cb641bea12c1841a65e15bb
+- Contract role: FOCUSED_BENCHMARK_CONDITION
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # H2 — CostBench v1: Dynamic Cost, Blocking Events, and Replanning State
+- Checked heading 2: ## Source identity
+- Checked heading 3: ## Frontier observation
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Repository interpretation
+- Historical source proposition 1: - v1 submitted: 2025-11-04
+- Historical source proposition 2: - Primary source: https://arxiv.org/abs/2511.02734
+- Historical source proposition 3: - Note: later v2/v3 revisions exist; Stage H is bound to the v1 historical identity.
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md
+- Original evidence blob: a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56
+- Contract role: FOCUSED_BENCHMARK_CONDITION
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # H3 — MCPAgentBench v1: Tool-Set Environment Identity and Efficiency
+- Checked heading 2: ## Source identity
+- Checked heading 3: ## Frontier observation
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Repository interpretation
+- Historical source proposition 1: - v1 submitted: 2025-12-31
+- Historical source proposition 2: - Primary source: https://arxiv.org/abs/2512.24565
+- Historical source proposition 3: - simulated MCP tool != live service
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: MONTH_2025_10_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md
+- Original evidence blob: 11ba6ab242f53b34f00ae5b30db741a66c2c1cf5
+- Contract role: RETROSPECTIVE_MONTH
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # October 2025 Reconstruction — Stage H
+- Checked heading 2: ## Selected event
+- Checked heading 3: ## Narrative
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Decision
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: MONTH_2025_11_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md
+- Original evidence blob: 019dd901780c2b1508955107433547d06941cefc
+- Contract role: RETROSPECTIVE_MONTH
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # November 2025 Reconstruction — Stage H
+- Checked heading 2: ## Selected event
+- Checked heading 3: ## Narrative
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Decision
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: MONTH_2025_12_RECONSTRUCTION.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md
+- Original evidence blob: fed0f15a26356ccc8c67ca52bc034cff88609118
+- Contract role: RETROSPECTIVE_MONTH
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # December 2025 Reconstruction — Stage H
+- Checked heading 2: ## Selected event
+- Checked heading 3: ## Narrative
+- Checked heading 4: ## Boundary
+- Checked heading 5: ## Decision
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: RESEARCH_REVIEW.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md
+- Original evidence blob: 5dd9036705caddae7bf94d05b93e3f0a05d08d64
+- Contract role: EVIDENCE_SUFFICIENCY
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Stage H Research Review — 2025-Q4
+- Checked heading 2: ## Review result
+- Checked heading 3: ## Findings
+- Checked heading 4: ## Limits
+- Historical source proposition 1: - The three v1 objects create a coherent Q4 progression: trajectory correctness → adaptive planning state → exact tool-environment identity.
+- Historical source proposition 2: - Version identity matters because CostBench and MCPAgentBench later received revisions after Q4.
+- Historical source proposition 3: - None of the papers is local runtime evidence for epistemic-pipeline.
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: SOURCE_OBJECT_REGISTER.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md
+- Original evidence blob: 24084d7efa1770c3b8b5435264caa3d2d660c35c
+- Contract role: BENCHMARK_PROVENANCE
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Stage H Source / Object Register — 2025-Q4
+- Checked heading 2: ## Version rule
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: STAGE_BRIEF.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md
+- Original evidence blob: 58f3562d45e4ce76ef352f341c3853982bf31079
+- Contract role: STAGE_IDENTITY
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Checked heading 2: ## Identity
+- Checked heading 3: ## Rationale
+- Checked heading 4: ## Selected historical versions
+- Checked heading 5: ## Hard boundaries
+- Historical source proposition 1: - Repository: `lostlight530/epistemic-pipeline`
+- Historical source proposition 2: - Window: `2025-10-01 through 2025-12-31`
+- Historical source proposition 3: - Record type: `RETROSPECTIVE`
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: STAGE_HANDOFF.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md
+- Original evidence blob: d856c0089085b4cd7f3a4c1482ccf5911a7af3bb
+- Contract role: NEXT_STAGE_TRANSFER
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Stage H Handoff — 2025-Q4
+- Checked heading 2: ## Preserved findings
+- Checked heading 3: ## Next questions
+- Checked heading 4: ## Boundary
+- Historical source proposition 1: - Final answer quality and trajectory correctness are separate.
+- Historical source proposition 2: - Mutable cost/tool availability must be versioned when interpreting replanning.
+- Historical source proposition 3: - Tool-set/sandbox identity is part of benchmark identity.
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 benchmark relation: STAGE_SYNTHESIS.md
+- Native source: maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md
+- Original evidence blob: b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e
+- Contract role: BOUNDED_SYNTHESIS
+- A1 vs A2 source-state: RETAINED, no original producer mutation
+- Checked heading 1: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Checked heading 2: ## Identity
+- Checked heading 3: ## Quarter narrative
+- Checked heading 4: ## Previous-stage delta
+- Checked heading 5: ## Current repository assessment
+- Historical source proposition 1: - Window: `2025-10-01 through 2025-12-31`
+- Historical source proposition 2: - Coverage: `SEARCH_BOUNDED`
+- Historical source proposition 3: - Synthesis date: `2026-09-27`
+- Relation: evidence linkage is not universal benchmark sufficiency, real-world behavior or scientific validation
+
+### A2 decision
+- A1 genuinely inherited at 5a0ce06e532efb0ed3b50967aa610cb65b14e27f
+- Stage H source modifications: NONE
+- Stage I created by maintenance: NO
+- Scientific/benchmark reruns: NONE
+- October owner OPEN, historical Stage H chronology intact
+- Relation-through updated to October 14 only
