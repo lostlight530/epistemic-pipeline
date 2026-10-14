@@ -54,3 +54,15 @@
 - A later contradictory finding must receive a separate dated correction or later audit
 - Unresolved observations remain open rather than hidden to improve the narrative
 - No independent source, runtime, benchmark, deployment or conformance credit awarded by this audit
+
+## Forward reconciliation — 2026-10-14 — concurrent D14 review identities
+- Concurrency discovery: two distinct D14 documents were merged for the same 2026-10-01..2026-10-14 window.
+- PRIMARY_D14_RECORD: this file (`maintenance/2026-10-14-d14-pattern-formation-audit.md`), merged PR #122, audited main before this note.
+- SECONDARY_D14_REVIEW: `maintenance/2026-10-14-d14-pattern-formation.md`, merged PR #123 after the primary. Preserved as additional review context, **not** an independently recurring D14 audit window or a second D14 audit credit.
+- Reconciliation status: ONE_D14_WINDOW / TWO_RETAINED_VIEWS / ONE_GOVERNANCE_CANDIDATE_TRACK.
+- Provenance distinction: secondary baseline revision includes earlier primary audit merge, so document recency is not a new scientific result.
+- Decision precedence: compare concrete source evidence and corrections; later written view does not automatically supersede the primary, nor negate legitimate counterevidence.
+- Historical documents and both merge histories: PRESERVED. Neither file is removed, renamed, rebased, or silently modified.
+- Counts for D30: one D14 node for this repository. The secondary PR is supplemental reviewer evidence, not +1 audit, +1 execution, +1 scientific verification, or +1 source independence.
+- Remaining conflicting claims: NONE_ADJUDICATED_BY_THIS_RECONCILIATION; later factual disagreements require a source-level dated correction.
+- Scope: audit identity de-duplication only, no replay of native production, no testing, no new governance promotion.
