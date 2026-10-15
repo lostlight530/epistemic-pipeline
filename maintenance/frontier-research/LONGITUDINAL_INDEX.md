@@ -5236,3 +5236,167 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Scientific/benchmark reruns: NONE
 - October owner OPEN, historical Stage H chronology intact
 - Relation-through updated to October 14 only
+
+## A1 2026-10-15 | Epistemic Stage-H source/baseline and 2026-10 month relation
+- Main authority SHA: e3ffd65fdb9661416669059f974eeba7c4e473f8; longitudinal owner previous blob 1c028bc0ef4bc1dcdf3e0d17843a62d632e7c068.
+- October A1 review window: 2026-10-01 through 2026-10-14; original retained research Stage H is specifically 2025-Q4.
+- 13 original Stage-H native producer files were fetched at their exact main paths and checked, without modifying original contents.
+- No October Stage-I native execution is evidenced or manufactured; existing source coverage remains SEARCH_BOUNDED where so labeled.
+- Epistemic benchmark descriptions, acceptance claims, ground truth and evaluated production behavior are separate evidence classes.
+- Benchmark trajectory completion, dynamic cost response and MCP toolset efficiency must not be counted as the same experimental identity.
+- Earlier October A1/A2 owner append history stays intact; this is forward source-to-period reconciliation.
+- The existing quarter/month reconstruction documents are historical reports, not October 2026 Daily producer events.
+
+### CONTRIBUTOR_STATEMENT.md | stage review or supporting research
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`.
+- Git object identity: `da159d467073a5fbe8b09f366cdb269430678fc5`, 8 retrieved lines.
+- Source document heading: # Contributor Statement — Stage H / 2025-Q4.
+- Evidence dimension: stage review or supporting research; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Contributor Statement — Stage H / 2025-Q4
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### EVIDENCE_CHART.md | evidence chart
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`.
+- Git object identity: `1034a61ecf6a9d51e8aa23123b81059c068da6ce`, 10 retrieved lines.
+- Source document heading: # Stage H Evidence Chart — 2025-Q4.
+- Evidence dimension: evidence chart; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Stage H Evidence Chart — 2025-Q4
+- Sampled original boundary 2: Coverage is `SEARCH_BOUNDED`; paper claims remain paper-level evidence.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md | trajectory correctness and oracle/source identity
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md`.
+- Git object identity: `343639b75ce9a56b29c8aadd33f3a02da7b117d6`, 33 retrieved lines.
+- Source document heading: # H1 — TRAJECT-Bench: Trajectory Correctness Beyond Final Accuracy.
+- Evidence dimension: trajectory correctness and oracle/source identity; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: trajectory correctness cannot be inferred from task completion.
+
+### H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md | dynamic-cost and replanning evidence
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md`.
+- Git object identity: `e4104bcce39fa0485cb641bea12c1841a65e15bb`, 34 retrieved lines.
+- Source document heading: # H2 — CostBench v1: Dynamic Cost, Blocking Events, and Replanning State.
+- Evidence dimension: dynamic-cost and replanning evidence; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: cost evidence needs matching dynamic state and baseline.
+
+### H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md | MCP toolset/environment evaluation
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md`.
+- Git object identity: `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56`, 35 retrieved lines.
+- Source document heading: # H3 — MCPAgentBench v1: Tool-Set Environment Identity and Efficiency.
+- Evidence dimension: MCP toolset/environment evaluation; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: MCP toolset evidence is environment-specific.
+
+### MONTH_2025_10_RECONSTRUCTION.md | historical 2025-Q4 monthly reconstruction
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`.
+- Git object identity: `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5`, 14 retrieved lines.
+- Source document heading: # October 2025 Reconstruction — Stage H.
+- Evidence dimension: historical 2025-Q4 monthly reconstruction; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: historical month reconstruction cannot be recast as new October Daily.
+
+### MONTH_2025_11_RECONSTRUCTION.md | historical 2025-Q4 monthly reconstruction
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`.
+- Git object identity: `019dd901780c2b1508955107433547d06941cefc`, 14 retrieved lines.
+- Source document heading: # November 2025 Reconstruction — Stage H.
+- Evidence dimension: historical 2025-Q4 monthly reconstruction; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: historical month reconstruction cannot be recast as new October Daily.
+
+### MONTH_2025_12_RECONSTRUCTION.md | historical 2025-Q4 monthly reconstruction
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`.
+- Git object identity: `fed0f15a26356ccc8c67ca52bc034cff88609118`, 14 retrieved lines.
+- Source document heading: # December 2025 Reconstruction — Stage H.
+- Evidence dimension: historical 2025-Q4 monthly reconstruction; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: No explicit first matching boundary found in sampled metadata; leave source-level unknown.
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: historical month reconstruction cannot be recast as new October Daily.
+
+### RESEARCH_REVIEW.md | stage review or supporting research
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`.
+- Git object identity: `5dd9036705caddae7bf94d05b93e3f0a05d08d64`, 16 retrieved lines.
+- Source document heading: # Stage H Research Review — 2025-Q4.
+- Evidence dimension: stage review or supporting research; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Stage H Research Review — 2025-Q4
+- Sampled original boundary 2: - Coverage is search-bounded, not an exhaustive benchmark survey.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### SOURCE_OBJECT_REGISTER.md | canonical research source registry
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`.
+- Git object identity: `24084d7efa1770c3b8b5435264caa3d2d660c35c`, 11 retrieved lines.
+- Source document heading: # Stage H Source / Object Register — 2025-Q4.
+- Evidence dimension: canonical research source registry; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Stage H Source / Object Register — 2025-Q4
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### STAGE_BRIEF.md | stage review or supporting research
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`.
+- Git object identity: `58f3562d45e4ce76ef352f341c3853982bf31079`, 33 retrieved lines.
+- Source document heading: # Frontier Research Stage Brief — Stage H / 2025-Q4.
+- Evidence dimension: stage review or supporting research; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Sampled original boundary 2: - Stage: `H / 2025-Q4`
+- Sampled original boundary 3: - Window: `2025-10-01 through 2025-12-31`
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### STAGE_HANDOFF.md | stage handoff and next-state boundary
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`.
+- Git object identity: `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb`, 16 retrieved lines.
+- Source document heading: # Stage H Handoff — 2025-Q4.
+- Evidence dimension: stage handoff and next-state boundary; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Stage H Handoff — 2025-Q4
+- Sampled original boundary 2: No second metadata boundary observed; no fabricated interpretation.
+- Sampled original boundary 3: No third metadata boundary observed; no promotion.
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### STAGE_SYNTHESIS.md | integrated stage synthesis
+- Original producer path: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`.
+- Git object identity: `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e`, 46 retrieved lines.
+- Source document heading: # Frontier Research Stage Synthesis — Stage H / 2025-Q4.
+- Evidence dimension: integrated stage synthesis; this is not independently replayed by A1 maintenance.
+- Sampled original boundary 1: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Sampled original boundary 2: - Window: `2025-10-01 through 2025-12-31`
+- Sampled original boundary 3: - Coverage: `SEARCH_BOUNDED`
+- Research chronology: observed present in October 15 main; retained 2025-Q4 source-era identity and original stage-relative timing unchanged.
+- Downstream Epistemic contract: registry/evidence/report identity does not equal verified scientific replication.
+
+### A1 acceptance and A2 gate
+- All 13 documented Stage H source objects were read on authoritative current main, distinguished by path and hash.
+- October 2026 research month state remains OPEN; no current-month Stage-I producer result is inferred from main activity.
+- Historical 2025-10, 2025-11, 2025-12 monthly reconstruction chronology retained.
+- Stage reports remain distinct from original benchmark execution traces and external reproducibility.
+- No 2026-10-15 native Stage-I research event created, not-due criteria preserved.
+- Original source files and any independent D14 audit documents untouched by this A1.
+- A2 only after ten A1 merges and refreshed all-ten main snapshots.
+- Scope of this A1: file provenance, research period and relation consistency; no runtime or scientific reproduction performed.
+
