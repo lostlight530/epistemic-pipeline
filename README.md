@@ -445,3 +445,7 @@ Calendar-month close != reproduction
 ## Governance boundary
 
 GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, and merge gates remain outside this research architecture. Local/manual checks are optional maintenance aids; test execution is not the completion criterion for this stage-close reconciliation
+
+## Archived checkpoint — 2026-10-14
+
+[v2026.10-fourteen-day-evidence-checkpoint](https://github.com/lostlight530/epistemic-pipeline/releases/tag/v2026.10-fourteen-day-evidence-checkpoint) is archived as [10.5281/zenodo.23365517](https://doi.org/10.5281/zenodo.23365517). For the software-family concept DOI, earlier versions and exact-checkpoint citation, see [Release and Archival Policy](RELEASE_POLICY.md).
