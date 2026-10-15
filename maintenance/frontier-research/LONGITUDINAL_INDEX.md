@@ -5400,3 +5400,166 @@ STAGE_IDENTITY_DATE_2026_10_08
 - A2 only after ten A1 merges and refreshed all-ten main snapshots.
 - Scope of this A1: file provenance, research period and relation consistency; no runtime or scientific reproduction performed.
 
+## A2 2026-10-15 | Epistemic full-current-month benchmark/source reconciliation
+- Fresh post-A1 main: `68bdd4aa89672d748029c90d4333d279b7b49f55`, inheritance source A1 #126; existing owner blob `45922a0a3242ea4bce2bd96ca88e359cca7d7750`.
+- MonthStart–N now covers 2026-10-01 through 2026-10-15 inclusive for relationship maintenance.
+- The underlying producer Stage-H source window stays 2025-Q4; no Stage I native execution is inferred.
+- Current Stage-H cohort consists of 13 original files; never treat count as 13 independent benchmark executions.
+- Benchmark success, scientific reproducibility, provenance and source citation are distinct gates.
+- D14 research audit is separate from original scientific production and not a new monthly native task.
+- No Oct15 new Stage I source/run or 2026-10 full-month research closeout observed; October is OPEN.
+- Existing original source files, previous A1 and original corrections remain immutable.
+
+### CONTRIBUTOR_STATEMENT.md | source authorship/provenance statement
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`; fresh main git blob `da159d467073a5fbe8b09f366cdb269430678fc5`.
+- Evidence class: source authorship/provenance statement; retain original scientific period and source version.
+- Verification limit: contribution statement != new independent sample.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### EVIDENCE_CHART.md | claim-to-source evidence chart
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`; fresh main git blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce`.
+- Evidence class: claim-to-source evidence chart; retain original scientific period and source version.
+- Verification limit: source-linked matrix != executed runtime test.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md | Traject-Bench: trajectory correctness / oracle witness
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md`; fresh main git blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6`.
+- Evidence class: Traject-Bench: trajectory correctness / oracle witness; retain original scientific period and source version.
+- Verification limit: completed trajectory != correct trajectory; independent oracle check absent.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md | CostBench: dynamic cost and replanning state
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md`; fresh main git blob `e4104bcce39fa0485cb641bea12c1841a65e15bb`.
+- Evidence class: CostBench: dynamic cost and replanning state; retain original scientific period and source version.
+- Verification limit: cost reading != dynamic replanning success; actual environment replay absent.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md | MCPAgentBench: toolset/environment/efficiency
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md`; fresh main git blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56`.
+- Evidence class: MCPAgentBench: toolset/environment/efficiency; retain original scientific period and source version.
+- Verification limit: benchmark toolset != general agent efficacy; setup-specific score unknown.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### MONTH_2025_10_RECONSTRUCTION.md | 2025-Q4 historical monthly reconstruction
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`; fresh main git blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5`.
+- Evidence class: 2025-Q4 historical monthly reconstruction; retain original scientific period and source version.
+- Verification limit: historic 2025 source window != new 2026-10 native event.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### MONTH_2025_11_RECONSTRUCTION.md | 2025-Q4 historical monthly reconstruction
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`; fresh main git blob `019dd901780c2b1508955107433547d06941cefc`.
+- Evidence class: 2025-Q4 historical monthly reconstruction; retain original scientific period and source version.
+- Verification limit: historic 2025 source window != new 2026-10 native event.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### MONTH_2025_12_RECONSTRUCTION.md | 2025-Q4 historical monthly reconstruction
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`; fresh main git blob `fed0f15a26356ccc8c67ca52bc034cff88609118`.
+- Evidence class: 2025-Q4 historical monthly reconstruction; retain original scientific period and source version.
+- Verification limit: historic 2025 source window != new 2026-10 native event.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### RESEARCH_REVIEW.md | stage scientific review
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`; fresh main git blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64`.
+- Evidence class: stage scientific review; retain original scientific period and source version.
+- Verification limit: review statement != independently replicated experiment.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### SOURCE_OBJECT_REGISTER.md | canonical external source-object registry
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`; fresh main git blob `24084d7efa1770c3b8b5435264caa3d2d660c35c`.
+- Evidence class: canonical external source-object registry; retain original scientific period and source version.
+- Verification limit: source name/version != verified scientific claim.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### STAGE_BRIEF.md | Stage H 2025-Q4 scope contract
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`; fresh main git blob `58f3562d45e4ce76ef352f341c3853982bf31079`.
+- Evidence class: Stage H 2025-Q4 scope contract; retain original scientific period and source version.
+- Verification limit: SEARCH_BOUNDED coverage != exhaustive systematic survey.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### STAGE_HANDOFF.md | Stage H transition/handoff contract
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`; fresh main git blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb`.
+- Evidence class: Stage H transition/handoff contract; retain original scientific period and source version.
+- Verification limit: handoff is not native Stage I completion.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### STAGE_SYNTHESIS.md | Stage H bounded scientific synthesis
+- Native producer source path `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`; fresh main git blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e`.
+- Evidence class: Stage H bounded scientific synthesis; retain original scientific period and source version.
+- Verification limit: research summary != new daily producer run.
+- A1 continuity: same source file identified by #126 and still retained on post-A1 main.
+- Monthly source link: this is a Stage-H object, not an additional October Daily or another benchmark run.
+- Repository identity: blob confirms present content, not correctness of underlying publisher claims.
+- Propagation gate: a future changed result requires its own producer evidence and dated correction, not silent promotion.
+- Source independence: count independent upstream experiments only on verified distinct original execution, not repeated summary citations.
+- Current A2 disposition: original bytes NO_FOLLOW_UP, relation carried forward; UNKNOWN stays UNKNOWN.
+
+### Full-month, Special and successor state
+- Original 2025-10, 2025-11 and 2025-12 reconstructions remain within historic Stage H; not 2026-10 newly executed science.
+- Traject-Bench, CostBench and MCPAgentBench represent non-interchangeable outcome constructs.
+- The source register, evidence chart, review and synthesis have distinct roles and cannot all count as experiments.
+- No Stage-I 2026-10-15 producer report is verified; no synthetic Stage output created.
+- Current month status OPEN; calendar-end final is NOT_DUE.
+- No runtime benchmark, source download, model evaluation, conformance or scientific replication executed by this maintenance.
+- No unrelated repository docs, research templates, original observations or governance files modified.
+- A2 acceptance depends on actual GitHub diff/merge and final ten-main refresh, not text status.
+
