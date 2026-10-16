@@ -5563,3 +5563,192 @@ STAGE_IDENTITY_DATE_2026_10_08
 - No unrelated repository docs, research templates, original observations or governance files modified.
 - A2 acceptance depends on actual GitHub diff/merge and final ten-main refresh, not text status.
 
+## 2026-10-16 A1 — October cutoff 15 Stage-H evidence inventory and per-file decisions
+
+- Reviewed current main `0e759540a3a7f028ee955154d1c32de80250570d`, cutoff October 1–15, within the existing single longitudinal owner
+- A1 counts each retained Stage-H artifact as one original input, not one new research execution per October date
+- Original 2025-Q4 source windows and 2026-10 maintenance observation window must not share a producer timestamp
+- Examined 13 native artifacts, current Git blobs and original claim/limitation text; source paths and content excerpts recorded below
+- Historical decision hierarchy: source identity != benchmark construct != accepted claim != reproducible runtime outcome
+- No direct external benchmark jobs, reruns, model execution, conformance or source recertification performed in A1
+- No Stage-I producer artifact was established, no synthetic Stage-I file created; stage handoff remains bounded
+- Each entry below is a distinct owning-file A1 disposition, not an instruction to overwrite its original body
+### 01 CONTRIBUTOR_STATEMENT.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`
+- Inspected content identity: blob `da159d467073a5fbe8b09f366cdb269430678fc5` on `0e759540a3a7`
+- Original document claim surface: # Contributor Statement — Stage H / 2025-Q4
+- Structural boundary in source: SHORT_RECORD
+- Direct source excerpt L3: Reconstructed on 2026-09-27 using current repository authority and primary arXiv version histories.
+- Direct source excerpt L5: Historical statements are bound to TRAJECT-Bench v1, CostBench v1, and MCPAgentBench v1. Later paper revisions are not silently projected backward.
+- Direct source excerpt L7: No benchmark, model inference, live MCP service, or independent reproduction was executed. No Stage A-G historical file was rewritten.
+- Covered original lines: 8; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 02 EVIDENCE_CHART.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`
+- Inspected content identity: blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce` on `0e759540a3a7`
+- Original document claim surface: # Stage H Evidence Chart — 2025-Q4
+- Structural boundary in source: SHORT_RECORD
+- Direct source excerpt L3: | Question | Source | Supported | Not supported |
+- Direct source excerpt L5: | Can final success hide trajectory errors? | TRAJECT-Bench v1 | benchmark includes tool/argument/order trajectory diagnostics | universal correctness, local reproduction |
+- Direct source excerpt L6: | Can planning quality vary with dynamic resource state? | CostBench v1 | benchmark models cost and blocking changes requiring replanning | production outage behavior, real economic optimum |
+- Direct source excerpt L7: | Does MCP evaluation depend on exact tool environment? | MCPAgentBench v1 | candidate/distractor tool sets, simulated tools, sandbox, completion+efficiency metrics | live MCP service validity, cross-environment equivalence |
+- Covered original lines: 10; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 03 H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md`
+- Inspected content identity: blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6` on `0e759540a3a7`
+- Original document claim surface: # H1 — TRAJECT-Bench: Trajectory Correctness Beyond Final Accuracy
+- Structural boundary in source: ## Source identity
+- Direct source excerpt L4: - arXiv:2510.04550v1
+- Direct source excerpt L5: - v1 submitted: 2025-10-06
+- Direct source excerpt L6: - Primary source: https://arxiv.org/abs/2510.04550
+- Direct source excerpt L9: TRAJECT-Bench evaluates tool-use trajectories using diagnostics such as tool selection, argument correctness, and dependency/order satisfaction in addition to final task accuracy.
+- Covered original lines: 33; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 04 H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md`
+- Inspected content identity: blob `e4104bcce39fa0485cb641bea12c1841a65e15bb` on `0e759540a3a7`
+- Original document claim surface: # H2 — CostBench v1: Dynamic Cost, Blocking Events, and Replanning State
+- Structural boundary in source: ## Source identity
+- Direct source excerpt L4: - arXiv:2511.02734v1
+- Direct source excerpt L5: - v1 submitted: 2025-11-04
+- Direct source excerpt L6: - Primary source: https://arxiv.org/abs/2511.02734
+- Direct source excerpt L7: - Note: later v2/v3 revisions exist; Stage H is bound to the v1 historical identity.
+- Covered original lines: 34; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 05 H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md`
+- Inspected content identity: blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56` on `0e759540a3a7`
+- Original document claim surface: # H3 — MCPAgentBench v1: Tool-Set Environment Identity and Efficiency
+- Structural boundary in source: ## Source identity
+- Direct source excerpt L4: - arXiv:2512.24565v1
+- Direct source excerpt L5: - v1 submitted: 2025-12-31
+- Direct source excerpt L6: - Primary source: https://arxiv.org/abs/2512.24565
+- Direct source excerpt L9: MCPAgentBench constructs authentic tasks with simulated/local MCP tools, presents candidate tool sets containing distractors, and evaluates both task completion and execution efficiency.
+- Covered original lines: 35; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 06 MONTH_2025_10_RECONSTRUCTION.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`
+- Inspected content identity: blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5` on `0e759540a3a7`
+- Original document claim surface: # October 2025 Reconstruction — Stage H
+- Structural boundary in source: ## Selected event
+- Direct source excerpt L4: TRAJECT-Bench v1 was submitted on 2025-10-06.
+- Direct source excerpt L7: October makes the trajectory itself an evaluation object. Tool selection, arguments, and dependency/order can fail even when final output looks plausible.
+- Direct source excerpt L10: Trajectory diagnostics improve execution evidence; they do not prove task truth or production correctness.
+- Direct source excerpt L13: 'APPEND_RELATION — TRAJECTORY_CORRECTNESS_EXPLICIT'
+- Covered original lines: 14; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 07 MONTH_2025_11_RECONSTRUCTION.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`
+- Inspected content identity: blob `019dd901780c2b1508955107433547d06941cefc` on `0e759540a3a7`
+- Original document claim surface: # November 2025 Reconstruction — Stage H
+- Structural boundary in source: ## Selected event
+- Direct source excerpt L4: CostBench v1 was submitted on 2025-11-04.
+- Direct source excerpt L7: November makes environment cost and blockage part of evaluation state. Replanning quality therefore depends on which cost/tool state was observed when the decision was made.
+- Direct source excerpt L10: Benchmark economic rationality and simulated failure are not real billing, provider availability, or production recovery evidence.
+- Direct source excerpt L13: 'APPEND_RELATION — ADAPTIVE_RESOURCE_STATE_EXPLICIT'
+- Covered original lines: 14; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 08 MONTH_2025_12_RECONSTRUCTION.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`
+- Inspected content identity: blob `fed0f15a26356ccc8c67ca52bc034cff88609118` on `0e759540a3a7`
+- Original document claim surface: # December 2025 Reconstruction — Stage H
+- Structural boundary in source: ## Selected event
+- Direct source excerpt L4: MCPAgentBench v1 was submitted on 2025-12-31.
+- Direct source excerpt L7: December makes the candidate MCP tool environment, distractors, sandbox, completion, and efficiency part of one evaluation identity.
+- Direct source excerpt L10: A benchmark's simulated/local tools are not interchangeable with live service state, credentials, authorization, side effects, or recovery semantics.
+- Direct source excerpt L13: 'APPEND_RELATION — TOOL_ENVIRONMENT_IDENTITY_EXPLICIT'
+- Covered original lines: 14; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 09 RESEARCH_REVIEW.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`
+- Inspected content identity: blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64` on `0e759540a3a7`
+- Original document claim surface: # Stage H Research Review — 2025-Q4
+- Structural boundary in source: ## Review result
+- Direct source excerpt L4: 'ACCEPTED_AS_NON_NORMATIVE_FRONTIER_RESEARCH'
+- Direct source excerpt L7: - The three v1 objects create a coherent Q4 progression: trajectory correctness → adaptive planning state → exact tool-environment identity.
+- Direct source excerpt L8: - Version identity matters because CostBench and MCPAgentBench later received revisions after Q4.
+- Direct source excerpt L9: - None of the papers is local runtime evidence for epistemic-pipeline.
+- Covered original lines: 16; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 10 SOURCE_OBJECT_REGISTER.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`
+- Inspected content identity: blob `24084d7efa1770c3b8b5435264caa3d2d660c35c` on `0e759540a3a7`
+- Original document claim surface: # Stage H Source / Object Register — 2025-Q4
+- Structural boundary in source: ## Version rule
+- Direct source excerpt L3: | ID | Historical object | v1 date | Evidence role | Boundary |
+- Direct source excerpt L5: | H-E1 | TRAJECT-Bench 2510.04550v1 | 2025-10-06 | trajectory diagnostics | metric != truth |
+- Direct source excerpt L6: | H-E2 | CostBench 2511.02734v1 | 2025-11-04 | dynamic cost/replanning state | benchmark cost != real economics |
+- Direct source excerpt L7: | H-E3 | MCPAgentBench 2512.24565v1 | 2025-12-31 | tool-set/sandbox/efficiency identity | simulated MCP != live service |
+- Covered original lines: 11; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 11 STAGE_BRIEF.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`
+- Inspected content identity: blob `58f3562d45e4ce76ef352f341c3853982bf31079` on `0e759540a3a7`
+- Original document claim surface: # Frontier Research Stage Brief — Stage H / 2025-Q4
+- Structural boundary in source: ## Identity
+- Direct source excerpt L4: - Repository: 'lostlight530/epistemic-pipeline'
+- Direct source excerpt L5: - Stage: 'H / 2025-Q4'
+- Direct source excerpt L6: - Window: '2025-10-01 through 2025-12-31'
+- Direct source excerpt L7: - Record type: 'RETROSPECTIVE'
+- Covered original lines: 33; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 12 STAGE_HANDOFF.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`
+- Inspected content identity: blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb` on `0e759540a3a7`
+- Original document claim surface: # Stage H Handoff — 2025-Q4
+- Structural boundary in source: ## Preserved findings
+- Direct source excerpt L4: - Final answer quality and trajectory correctness are separate.
+- Direct source excerpt L5: - Mutable cost/tool availability must be versioned when interpreting replanning.
+- Direct source excerpt L6: - Tool-set/sandbox identity is part of benchmark identity.
+- Direct source excerpt L7: - Historical paper version must remain explicit.
+- Covered original lines: 16; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+### 13 STAGE_SYNTHESIS.md
+- Inspected original source: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`
+- Inspected content identity: blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e` on `0e759540a3a7`
+- Original document claim surface: # Frontier Research Stage Synthesis — Stage H / 2025-Q4
+- Structural boundary in source: ## Identity
+- Direct source excerpt L4: - Window: '2025-10-01 through 2025-12-31'
+- Direct source excerpt L5: - Coverage: 'SEARCH_BOUNDED'
+- Direct source excerpt L6: - Synthesis date: '2026-09-27'
+- Direct source excerpt L7: - Status: 'COMPLETE'
+- Covered original lines: 46; source remains historical Stage-H, not new October research
+- Review decision: NO_FOLLOW_UP to preserved source bytes, no independent benchmark execution inferred
+- Relationship gate: evaluate original claim/evidence and measurement target before admitting to current-month synthesis
+- External claim acceptance: NOT_EXECUTED by independent A1; this pass verifies repository bytes and attribution only
+
+### A1 whole-period relation and uncertainty register
+- The three H research subjects distinguish trajectory correctness, replanning/dynamic cost, and MCP toolset/environment; their evaluation denominators are not interchangeable
+- Register and Evidence Chart trace exact source objects and supported/unsupported conclusions; a listed source is not a locally rerun benchmark
+- Three 2025 monthly reconstruction objects remain period-specific historical research, not October 2026 native Monthly completion
+- Contributor attribution, Stage Brief, Research Review, Stage Synthesis and Handoff have separate documentary authority and cannot be double-counted as new experiments
+- Evidence transfer remains an explicit bounded action; source reference downstream does not automatically become verified research state
+- No inspected source-body defect was established that warranted destructive rewrite or provenance replacement
+- A1 cutoff is limited to Oct15 plus original historical Stage-H input files; current Oct16 delivery belongs only to successor A2 if evidenced
+- Evidence preserved: original 13 Stage-H Git blobs unchanged, negative cases and unsupported benchmarks remain as recorded
+- Status: A1_COVERAGE_WITH_DECISIONS / MONTH_OPEN / NO_NATIVE_SOURCE_REWRITE / PENDING_MERGE
