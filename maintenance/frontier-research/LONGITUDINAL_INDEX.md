@@ -5752,3 +5752,161 @@ STAGE_IDENTITY_DATE_2026_10_08
 - A1 cutoff is limited to Oct15 plus original historical Stage-H input files; current Oct16 delivery belongs only to successor A2 if evidenced
 - Evidence preserved: original 13 Stage-H Git blobs unchanged, negative cases and unsupported benchmarks remain as recorded
 - Status: A1_COVERAGE_WITH_DECISIONS / MONTH_OPEN / NO_NATIVE_SOURCE_REWRITE / PENDING_MERGE
+
+## 2026-10-16 A2 | Epistemic October 2026 current Stage-H relation after A1
+
+- Current main after A1 #129: `188883354f6814837064bce77c1f8056f04152e7`, one existing LONGITUDINAL_INDEX owner for 2026-10 current relationship
+- Stage H 2025-Q4 source set consists of 13 retained original files; no 2026-10-16 research producer Stage I result established
+- MANIFEST.yaml current source Git blob `2ded080e4dee14f439a9cc1d3e3ceca3945ac716`; runtime contract declaration is an input, no independent execution by A2
+- Current repository stable profiles include trace, checkpoint, claim-verification, claim-transfer, evidence-envelope, heuristic confidence; profile presence not experimental validity
+- Current month identity OPEN vs historical Stage-H synthesis COMPLETE on Sep27; published benchmark event/research check/month maintenance have different clocks
+- Previous Stage G separated final output and trajectory; Stage H extends with mutable cost/availability/replanning and toolset/distractors/efficiency
+- A1 had thirteen native document coverage entries; A2 now resolves full cross-document current relation and claim-bound handoff, without rewriting A1
+- Benchmark source-specific reporter claims remain attributed to papers, not to present repository's ability to reproduce those benchmarks
+- Claim-transfer origin ambiguity, conflicted evidence, evaluator revision and runtime state carry different evidence classes; none is automatically a calibrated truth probability
+- Original research object mapping and current evidence relations:
+### H-01 CONTRIBUTOR_STATEMENT.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`; Git blob `da159d467073a5fbe8b09f366cdb269430678fc5`
+- In current October relational version: Contributor declaration for Q4 source selection/review
+- Claim/evidence input classification: H Stage writer/review identity, not a second primary benchmark
+- Handoff consequence: Do not infer authorship or independent reproduction of TRAJECT/Cost/MCPAgent papers
+- Retained source content L3: Reconstructed on 2026-09-27 using current repository authority and primary arXiv version histories.
+- Retained source content L5: Historical statements are bound to TRAJECT-Bench v1, CostBench v1, and MCPAgentBench v1. Later paper revisions are not silently projected backward.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-02 EVIDENCE_CHART.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`; Git blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce`
+- In current October relational version: Original research question/support/unsupported table for 3 benchmark objects
+- Claim/evidence input classification: Claim-evidence boundary table, not a real benchmark-execution log
+- Handoff consequence: Transfer supported source narrative only, never score accuracy by assertion
+- Retained source content L9: Coverage is 'SEARCH_BOUNDED'; paper claims remain paper-level evidence.
+- Retained source content L0: NO_SECOND_ADDITIONAL_SOURCE_TEXT
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-03 H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md`; Git blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6`
+- In current October relational version: TRAJECT-Bench trajectory correctness: tool choice, arguments, order vs final answer
+- Claim/evidence input classification: Original trajectory evidence object differs from final answer score
+- Handoff consequence: Any current epistemic claim audit must carry steps/evaluator identity before judging execution
+- Retained source content L27: - correct tool choice != correct external state
+- Retained source content L28: - final success != justified intermediate evidence
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: EVIDENCE_METRIC_BOUNDARY; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-04 H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md`; Git blob `e4104bcce39fa0485cb641bea12c1841a65e15bb`
+- In current October relational version: CostBench dynamic costs and tool availability modify planning state
+- Claim/evidence input classification: Initial plan and replanned route require separate environment clocks
+- Handoff consequence: Current runtime policy cannot be certified by research paper benchmark alone
+- Retained source content L28: - simulated tool failure != provider incident
+- Retained source content L29: - cost-optimal under benchmark rules != globally optimal
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: EVIDENCE_METRIC_BOUNDARY; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-05 H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md`; Git blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56`
+- In current October relational version: MCPAgentBench tool candidates, distractors, sandbox and efficiency
+- Claim/evidence input classification: Completion metric vs efficiency metric and toolset identity cannot collapse
+- Handoff consequence: Current tool adapter claims must name environment and evaluator version
+- Retained source content L29: - completion rate != scientific truth
+- Retained source content L30: - efficiency metric != universal cost/latency quality
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: EVIDENCE_METRIC_BOUNDARY; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-06 MONTH_2025_10_RECONSTRUCTION.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`; Git blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5`
+- In current October relational version: Historical October 2025 TRAJECT event identity
+- Claim/evidence input classification: Original Q4 event date not present 2026-10 original Daily
+- Handoff consequence: Use to trace research chronology only, not live evaluator correctness
+- Retained source content L4: TRAJECT-Bench v1 was submitted on 2025-10-06.
+- Retained source content L7: October makes the trajectory itself an evaluation object. Tool selection, arguments, and dependency/order can fail even when final output looks plausible.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-07 MONTH_2025_11_RECONSTRUCTION.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`; Git blob `019dd901780c2b1508955107433547d06941cefc`
+- In current October relational version: Historical November CostBench dynamic cost identity
+- Claim/evidence input classification: Original paper revision/benchmark configuration distinguish source observation
+- Handoff consequence: Do not replace historical v1 claims with subsequent benchmark revision silently
+- Retained source content L4: CostBench v1 was submitted on 2025-11-04.
+- Retained source content L7: November makes environment cost and blockage part of evaluation state. Replanning quality therefore depends on which cost/tool state was observed when the decision was made.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-08 MONTH_2025_12_RECONSTRUCTION.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`; Git blob `fed0f15a26356ccc8c67ca52bc034cff88609118`
+- In current October relational version: Historical December MCPAgentBench selection and toolset
+- Claim/evidence input classification: 2025 source event, not a 2026 current benchmark run
+- Handoff consequence: No claimed current MCP toolset compatibility based solely on paper
+- Retained source content L4: MCPAgentBench v1 was submitted on 2025-12-31.
+- Retained source content L7: December makes the candidate MCP tool environment, distractors, sandbox, completion, and efficiency part of one evaluation identity.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-09 RESEARCH_REVIEW.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`; Git blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64`
+- In current October relational version: Source review accepted as non-normative frontier research
+- Claim/evidence input classification: Q4 paper source concepts, not local repo trace/claim verification execution
+- Handoff consequence: Score tables NOT_REPRODUCED remains a negative acceptance condition
+- Retained source content L10: - No metric is promoted into probability, claim truth, or scientific adjudication.
+- Retained source content L13: - Coverage is search-bounded, not an exhaustive benchmark survey.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-10 SOURCE_OBJECT_REGISTER.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`; Git blob `24084d7efa1770c3b8b5435264caa3d2d660c35c`
+- In current October relational version: H-S1/H-S2/H-S3 original paper objects and publisher/version identities
+- Claim/evidence input classification: Separately dated publisher papers with nonidentical metrics
+- Handoff consequence: Evidence must preserve version identities when cross-paper comparisons
+- Retained source content L10: Stage H binds each historical statement to the cited v1. Later arXiv revisions may be related evidence but do not silently replace the Q4 2025 object.
+- Retained source content L0: NO_SECOND_ADDITIONAL_SOURCE_TEXT
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-11 STAGE_BRIEF.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`; Git blob `58f3562d45e4ce76ef352f341c3853982bf31079`
+- In current October relational version: HISTORICAL_FRONTIER_RECONSTRUCTION + TARGETED_EVIDENCE_SYNTHESIS
+- Claim/evidence input classification: Search-bounded method not exhaustive benchmark meta-study
+- Handoff consequence: Research staging must not manufacture new tool execution
+- Retained source content L28: simulated MCP tool != live service behavior
+- Retained source content L29: efficiency score != scientific validity
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-12 STAGE_HANDOFF.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`; Git blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb`
+- In current October relational version: Open questions evaluator/environment revisions, telemetry and effect/recovery
+- Claim/evidence input classification: Conceptual handoff to claim transfer, no runtime benchmark authority
+- Handoff consequence: Require future native stage or evaluated telemetry before implementing successor
+- Retained source content L10: - How should evaluator and environment revisions be carried into claim transfer?
+- Retained source content L11: - When does runtime telemetry become sufficient to distinguish environment drift from policy failure?
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: NEXT_STAGE_QUESTION_OPEN; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+### H-13 STAGE_SYNTHESIS.md
+- Native historical evidence location: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`; Git blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e`
+- In current October relational version: One historical Q4 trajectory→cost→toolset synthesis
+- Claim/evidence input classification: COMPLETE historical stage 2025-Q4, completed research synthesis dated Sep27 2026
+- Handoff consequence: No current repo drift/runtime change, current October relational month stays OPEN
+- Retained source content L33: - NEW: candidate/distractor tool-set identity becomes explicit.
+- Retained source content L34: - NEW: completion and efficiency remain separate metrics.
+- Original historical time authority: source object Stage H 2025-Q4, not Oct16 newly produced experiment
+- A2 state: DOCUMENTARY_RELATION_RETAINED; no new benchmark score or scientific proof
+- Distinct A2 guard: step ordering, environment revisions and evidence provenance cannot silently become one calibrated correctness probability
+
+### Current October source graph / decisions / unresolved questions
+- Traject-Bench asks whether selected calls/arguments/order are correct, a different criterion from final answer success; both require evaluator/version identity
+- CostBench changes environment cost and tool blocking state, so an initial trajectory is not sufficient to infer correct replanning under changed conditions
+- MCPAgentBench exact available candidate/distractor toolset and sandbox boundaries constrain comparison and may affect completion and efficiency separately
+- The three benchmarks are different projects and release scopes; conceptual Stage-H progression does not mean scores share a denominator
+- CostBench/MCPAgentBench later paper revisions cannot supersede historical v1 Q4 observations without separately dated reconciliation
+- Stage H review explicitly says source tables NOT_INDEPENDENTLY_REPRODUCED, and retains NO_CURRENT_REPOSITORY_DRIFT / NO_RUNTIME_CHANGE
+- MANIFEST claim index and provenance structures may preserve claim origin, but evidence-envelope and trace hashes do not establish external scientific reproducibility
+- Current month no validated new claim score, autonomous workflow replay or live-service side-effect recovery; declare UNKNOWN rather than convert open questions
+- Handoff OPEN: evaluator and environment version propagation into claim-transfer objects; requires actual producer/implemented contract proof
+- Handoff OPEN: independently measured environment drift vs policy failure; needs runtime telemetry with mutable state identity
+- Handoff OPEN: side-effect and recovery evidence attached to trajectories, not inferred from local DAG validity
+- Original 13 source files unchanged; A2 only longitudinal index append; not a new scheduled Stage H producer run
+- Outcome: A2_OCTOBER_CLAIM_RELATION_OPEN / HISTORICAL_STAGE_H_COMPLETE / BENCHMARKS_NONREPRODUCED / STAGE_I_NOT_OBSERVED
