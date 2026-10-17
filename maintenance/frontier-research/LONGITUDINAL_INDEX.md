@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-10`
+- **Current maintenance relation through:** `2026-10-16`
 
 ## Boundary
 
@@ -5910,3 +5910,13 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Handoff OPEN: side-effect and recovery evidence attached to trajectories, not inferred from local DAG validity
 - Original 13 source files unchanged; A2 only longitudinal index append; not a new scheduled Stage H producer run
 - Outcome: A2_OCTOBER_CLAIM_RELATION_OPEN / HISTORICAL_STAGE_H_COMPLETE / BENCHMARKS_NONREPRODUCED / STAGE_I_NOT_OBSERVED
+
+
+## 2026-10-17 dated index-header reconciliation
+
+- Issue: the mutable current-relation header still read `2026-10-10` after October 16 A1/A2 maintenance was merged.
+- Verified current relation: October 16 A2 maintenance PR #130, based on merged A1 PR #129, appended Stage-H evidence and current handoff relationships to this canonical longitudinal index.
+- Correction: advance only the current-relation header to `2026-10-16`; keep `Stage registry / identity updated: 2026-10-04` unchanged as a different identity.
+- Original Stage-H sources, stage registry, historical completion, and all existing longitudinal evidence blocks remain byte-for-byte unchanged apart from the one current header line.
+- October 17 is this correction's observation date, not a Stage-I execution date, Stage-H rerun, source recertification, test pass, or new independent research window.
+- Status: CURRENT_HEADER_RECONCILED / OCTOBER_RELATION_OPEN / STAGE_I_NOT_EVIDENCED.
