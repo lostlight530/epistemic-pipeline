@@ -5920,3 +5920,130 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Original Stage-H sources, stage registry, historical completion, and all existing longitudinal evidence blocks remain byte-for-byte unchanged apart from the one current header line.
 - October 17 is this correction's observation date, not a Stage-I execution date, Stage-H rerun, source recertification, test pass, or new independent research window.
 - Status: CURRENT_HEADER_RECONCILED / OCTOBER_RELATION_OPEN / STAGE_I_NOT_EVIDENCED.
+
+## 2026-10-17 A1 | Epistemic Stage H full thirteen-file claim and evaluation boundary
+
+- Source snapshot main `1e00a2da6cbf1d822d32ae913ad7d4601fc05b6e`, October A1 cutoff 2026-10-01..16
+- Thirteen Stage-H archived research items under the canonical longitudinal router inspected for identity, role, existing claim and negative evidence
+- Native Stage H = 2025-Q4 retrospective SEARCH_BOUNDED state, complete only inside research contract
+- Original benchmark sources and benchmark-run receipts remain distinct; no independent rerun by maintenance
+- Stage-I evidence is not available, despite Handoff open questions and October owner upkeep
+- Prior 2026-10-16 A1/A2 and 2026-10-17 current-header correction are maintenance facts only
+- Preserve three separate result objects (TRAJECT / CostBench / MCPAgentBench) and distinct evaluation denominators
+
+### Original artifact decisions
+#### CONTRIBUTOR_STATEMENT.md | authorship scope
+- Original file `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md`
+- Current Git blob `da159d467073a5fbe8b09f366cdb269430678fc5` and file size 432 bytes; source integrity checked without replacing the content
+- Role in stage authority: Contributor credit supports provenance but not independent evaluator status
+- Specific evidence limitation: retain actual contributing identity; no unverified independent rerun
+- Original or later question: Not an observed trajectory run or benchmark scorer receipt
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### EVIDENCE_CHART.md | claim-to-evidence chart
+- Original file `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md`
+- Current Git blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce` and file size 770 bytes; source integrity checked without replacing the content
+- Role in stage authority: Link trajectory, cost and toolset object separately rather than merging numeric baselines
+- Specific evidence limitation: Missing reproducibility metadata must remain UNKNOWN
+- Original or later question: No claim score accepted because it appears in an evidence chart
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md | TRAJECT-Bench trajectory correctness
+- Original file `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md`
+- Current Git blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6` and file size 1008 bytes; source integrity checked without replacing the content
+- Role in stage authority: End-task outcome versus intermediate trajectory correctness use distinct semantics
+- Specific evidence limitation: Reward or final success does not prove every intermediate step correct
+- Original or later question: Bench identity and release specific evaluation harness not independently reproduced
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md | CostBench dynamic cost and replanning
+- Original file `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md`
+- Current Git blob `e4104bcce39fa0485cb641bea12c1841a65e15bb` and file size 1199 bytes; source integrity checked without replacing the content
+- Role in stage authority: Execution cost and topology/blocking events are distinct from task correctness
+- Specific evidence limitation: Uncontrolled environment and policy changes prevent naive cross-benchmark performance comparison
+- Original or later question: No shared denominator or same benchmark config with TRAJECT-Bench
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md | MCPAgentBench toolset/environment
+- Original file `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md`
+- Current Git blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56` and file size 1067 bytes; source integrity checked without replacing the content
+- Role in stage authority: Available distractor tools and sandbox config are part of execution identity
+- Specific evidence limitation: Tool-choice efficiency is separate from task success and external effects
+- Original or later question: Environment not a live agent production service receipt
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### MONTH_2025_10_RECONSTRUCTION.md | Oct2025 retrospective object window
+- Original file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md`
+- Current Git blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5` and file size 463 bytes; source integrity checked without replacing the content
+- Role in stage authority: Historical source date does not imply Oct2026 new execution
+- Specific evidence limitation: Retrospective TRAJECT-Bench month anchors evidence chronology
+- Original or later question: Do not move later interpretation to task-time evidence
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### MONTH_2025_11_RECONSTRUCTION.md | Nov2025 retrospective object window
+- Original file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md`
+- Current Git blob `019dd901780c2b1508955107433547d06941cefc` and file size 504 bytes; source integrity checked without replacing the content
+- Role in stage authority: Historical CostBench object identity must retain release boundaries
+- Specific evidence limitation: Dynamic cost outcomes were not replayed during October 2026 maintenance
+- Original or later question: Replanning metric not transferred to a different harness
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### MONTH_2025_12_RECONSTRUCTION.md | Dec2025 retrospective object window
+- Original file `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md`
+- Current Git blob `fed0f15a26356ccc8c67ca52bc034cff88609118` and file size 488 bytes; source integrity checked without replacing the content
+- Role in stage authority: MCPAgentBench tool selection evaluated with its own object configuration
+- Specific evidence limitation: Three benchmarks across three months do not define one cumulative success population
+- Original or later question: Not an externally repeated test result
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### RESEARCH_REVIEW.md | methodology and counterevidence review
+- Original file `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md`
+- Current Git blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64` and file size 751 bytes; source integrity checked without replacing the content
+- Role in stage authority: Review statuses can preserve bounded findings and missing third-party validation
+- Specific evidence limitation: Counterevidence must not be hidden to create favorable story
+- Original or later question: Methodological assessment not fresh benchmark experiment
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### SOURCE_OBJECT_REGISTER.md | publisher/benchmark register
+- Original file `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md`
+- Current Git blob `24084d7efa1770c3b8b5435264caa3d2d660c35c` and file size 632 bytes; source integrity checked without replacing the content
+- Role in stage authority: TRAJECT-Bench, CostBench and MCPAgentBench are distinct identities and versions
+- Specific evidence limitation: Bibliographic metadata does not establish benchmark-run identity
+- Original or later question: Registry inclusion is not automatic evidence acceptance
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### STAGE_BRIEF.md | Stage H scope contract
+- Original file `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md`
+- Current Git blob `58f3562d45e4ce76ef352f341c3853982bf31079` and file size 1384 bytes; source integrity checked without replacing the content
+- Role in stage authority: SEARCH_BOUNDED, 2025-Q4 retrospective experiment plan
+- Specific evidence limitation: Planned investigation is distinct from actual evaluator execution
+- Original or later question: Stage H COMPLETE does not evidence Stage I
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### STAGE_HANDOFF.md | next-stage open questions
+- Original file `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md`
+- Current Git blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb` and file size 726 bytes; source integrity checked without replacing the content
+- Role in stage authority: Evaluator/version propagation and recovery effects remain open
+- Specific evidence limitation: Receiving handoff does not create done-state for unresolved questions
+- Original or later question: No synthetic Stage I source or acceptance receipt
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+#### STAGE_SYNTHESIS.md | cross-source research synthesis
+- Original file `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md`
+- Current Git blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e` and file size 1788 bytes; source integrity checked without replacing the content
+- Role in stage authority: Claim identity/provenance transfer not scientific truth
+- Specific evidence limitation: No independently reproduced benchmark values or local pipeline runtime change
+- Original or later question: Historical completed research is not current live evidence
+- Current-month relational judgment: identity/claim-bearing source may inform Epistemic envelope only within its own methods
+- A1 state: `NO_FOLLOW_UP_OR_BOUNDED_RELATION`; historical file retained, no new evaluator/runner credit
+
+### Claim propagation, safety and stage gate
+- Benchmark final-result score and intermediate trace correctness do not share an automatic validity predicate
+- Dynamic cost and replanning events must carry environment mutation identity before trajectory comparisons
+- MCPAgentBench toolset availability and distractors affect tool-choice denominator and cannot be normalized away
+- Evidence chart can link source to claim but does not itself grant transfer acceptance into production runner
+- Current Epistemic claim envelopes/hashes cannot stand in for independent external benchmark ground truth
+- All original Stage-H source blobs untouched; only October relational owner gets this evidence matrix
+- Original date and October maintenance date remain separate clocks; W42 and month final not due by calendar
+- No evaluator replay, external paper recertification, Python test or CI executed in this A1
+- A1 disposition 13_STAGE_H_IDENTITIES_REVIEWED / NO_BENCHMARK_REPRODUCTION / STAGE_I_NOT_OBSERVED / MONTH_OPEN
