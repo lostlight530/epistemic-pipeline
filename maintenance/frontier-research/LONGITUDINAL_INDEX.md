@@ -6383,3 +6383,174 @@ STAGE_IDENTITY_DATE_2026_10_08
 - This A1 enumerates current-main file identities and PR data; it does not rerun tests, external sources, renderers or scientific evaluation
 - Total Stage source files enumerated=104; total UTC-created Oct01–17 PRs=53; identical-blob predecessor anchors=13
 - A1 current status: EIGHT_STAGE_RETROSPECTIVE_INVENTORY / OWNER_DATE_RECONCILED / FUTURE_STAGE_NOT_EVIDENCED / HISTORICAL_CONTENT_UNCHANGED / MONTH_OPEN
+
+## 2026-10-18 A2 | epistemic-pipeline full October 18-day claim / evaluator / benchmark-to-evidence relation
+- A1 merged current main d868ef845d1035b69f8d07eaf09e6e8d3ec91873; prior existing index Git object c3e6f893966bc61d4a14c6e60728e2f225ee5286
+- A2 is independent month-maintenance; its producer identity differs from 2025-Q4 native Stage-H retrospective science
+- Original Stage-A–H source history is immutable; Stage-I native delivery has not been established and October18 is not silently treated as a new Stage
+- Index date may advance through Oct18 while Stage registry and source production dates retain their separate historical identities
+- Essential risk: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- Evidence requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+
+### Logical Oct01–18 maintenance timeline and original-source guardrails
+#### 2026-10-01 | repo merge identities versus original Stage input
+- Calendar merge receipts=7 PRs; IDs=#76, #77, #78, #79, #80, #81, #82; calendar merge events, not 2026 original Stage research runs
+- 2026-10-01 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-01 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-01 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-01 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-02 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#83, #84, #85; calendar merge events, not 2026 original Stage research runs
+- 2026-10-02 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-02 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-02 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-02 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-03 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#86, #87, #88; calendar merge events, not 2026 original Stage research runs
+- 2026-10-03 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-03 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-03 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-03 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-04 | repo merge identities versus original Stage input
+- Calendar merge receipts=5 PRs; IDs=#89, #90, #91, #92, #93; calendar merge events, not 2026 original Stage research runs
+- 2026-10-04 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-04 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-04 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-04 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-05 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#94, #95, #96; calendar merge events, not 2026 original Stage research runs
+- 2026-10-05 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-05 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-05 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-05 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-06 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#97, #98; calendar merge events, not 2026 original Stage research runs
+- 2026-10-06 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-06 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-06 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-06 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-07 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#99, #100, #101; calendar merge events, not 2026 original Stage research runs
+- 2026-10-07 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-07 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-07 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-07 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-08 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#102, #103, #104; calendar merge events, not 2026 original Stage research runs
+- 2026-10-08 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-08 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-08 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-08 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-09 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#105, #106; calendar merge events, not 2026 original Stage research runs
+- 2026-10-09 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-09 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-09 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-09 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-10 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#107, #108, #109, #110; calendar merge events, not 2026 original Stage research runs
+- 2026-10-10 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-10 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-10 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-10 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-11 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#111, #112, #113; calendar merge events, not 2026 original Stage research runs
+- 2026-10-11 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-11 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-11 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-11 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-12 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#114, #115; calendar merge events, not 2026 original Stage research runs
+- 2026-10-12 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-12 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-12 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-12 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-13 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#116, #117, #118, #119; calendar merge events, not 2026 original Stage research runs
+- 2026-10-13 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-13 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-13 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-13 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-14 | repo merge identities versus original Stage input
+- Calendar merge receipts=5 PRs; IDs=#120, #121, #122, #123, #124; calendar merge events, not 2026 original Stage research runs
+- 2026-10-14 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-14 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-14 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-14 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-15 | repo merge identities versus original Stage input
+- Calendar merge receipts=4 PRs; IDs=#125, #126, #127, #128; calendar merge events, not 2026 original Stage research runs
+- 2026-10-15 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-15 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-15 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-15 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-16 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#129, #130; calendar merge events, not 2026 original Stage research runs
+- 2026-10-16 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-16 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-16 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-16 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-17 | repo merge identities versus original Stage input
+- Calendar merge receipts=3 PRs; IDs=#131, #132, #133; calendar merge events, not 2026 original Stage research runs
+- 2026-10-17 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-17 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-17 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-17 current disposition: ORIGINAL_A1_HISTORICAL_REVIEW_INHERITED; local replay NOT_EXECUTED, external evidence credit ZERO
+#### 2026-10-18 | repo merge identities versus original Stage input
+- Calendar merge receipts=2 PRs; IDs=#134, #135; calendar merge events, not 2026 original Stage research runs
+- 2026-10-18 source lineage: Stage H selection/review/transfer originates in 2025-Q4 source objects, separate from modern maintenance time
+- 2026-10-18 science evaluation: Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-18 transfer requirement: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- 2026-10-18 current disposition: CURRENT_MONTH_RELATION_ADVANCED_WITHOUT_STAGE_PRODUCER; local replay NOT_EXECUTED, external evidence credit ZERO
+
+### Thirteen distinct Stage-H owning artifacts and their admissible transfer
+- Source artifact CONTRIBUTOR_STATEMENT.md: maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md | Git blob da159d467073a5fbe8b09f366cdb269430678fc5 | size 432 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact EVIDENCE_CHART.md: maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md | Git blob 1034a61ecf6a9d51e8aa23123b81059c068da6ce | size 770 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md: maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md | Git blob 343639b75ce9a56b29c8aadd33f3a02da7b117d6 | size 1008 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md: maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md | Git blob e4104bcce39fa0485cb641bea12c1841a65e15bb | size 1199 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md: maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md | Git blob a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56 | size 1067 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact MONTH_2025_10_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md | Git blob 11ba6ab242f53b34f00ae5b30db741a66c2c1cf5 | size 463 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact MONTH_2025_11_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md | Git blob 019dd901780c2b1508955107433547d06941cefc | size 504 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact MONTH_2025_12_RECONSTRUCTION.md: maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md | Git blob fed0f15a26356ccc8c67ca52bc034cff88609118 | size 488 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact RESEARCH_REVIEW.md: maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md | Git blob 5dd9036705caddae7bf94d05b93e3f0a05d08d64 | size 751 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact SOURCE_OBJECT_REGISTER.md: maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md | Git blob 24084d7efa1770c3b8b5435264caa3d2d660c35c | size 632 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact STAGE_BRIEF.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md | Git blob 58f3562d45e4ce76ef352f341c3853982bf31079 | size 1384 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact STAGE_HANDOFF.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md | Git blob d856c0089085b4cd7f3a4c1482ccf5911a7af3bb | size 726 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+- Source artifact STAGE_SYNTHESIS.md: maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md | Git blob b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e | size 1788 bytes
+  - A1-inherited file decision: retain exact source revision and historical quarter; use is Stage-specific research review/handoff, not production verification
+  - A2 boundary: Transfer to an evaluator needs exact benchmark revision, tool inventory, environment state and trace; Stage-H text is not a replay
+
+### October and multi-stage interpretation
+- Final-answer scoring, full action trajectory, mutable costs and distractor-tool context are distinct denominators
+- 2026-10-17 relation correction advanced header to already-merged owner state but left 2026-10-04 Stage registry date unchanged; A2 updates only current interpretation
+- Historical 2025-10, 2025-11 and 2025-12 source choices are retrospective and not new October2026 experimental windows
+- Stage H RESEARCH_REVIEW, EVIDENCE_CHART, SOURCE_OBJECT_REGISTER and STAGE_HANDOFF have separate duties; none alone validates implemented systems
+- Historical empty/negative source findings remain negative data, not automatically SUCCESS
+- No new publisher fetch, benchmark execution, browser replay, CI or local algorithm tests performed in this A2
+- All Stage A–H sources, existing A1 and prior month corrections preserved; no native producer files replaced
+- Original Stage-I handoff questions remain OPEN until separately observed native Stage-I artifacts
+- Exact Stage-H objects inherited: 13/13; 18 calendar dates reviewed; maintenance creates zero independent research
+- A2 status: FULL_OCTOBER_RELATION / ORIGINAL_STAGE_H_EVIDENCE_IDENTITY / STAGE_I_NOT_EVIDENCED / MONTH_OPEN
