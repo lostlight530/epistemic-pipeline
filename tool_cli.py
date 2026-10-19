@@ -138,7 +138,7 @@ def invoke(name: str, args: Any) -> dict:
         _validate_args(name, args)
         receipt["output"] = _dispatch(name, args)
         receipt["status"] = "success"
-    except (OSError, ValueError, TypeError, KeyError, ImportError) as exc:
+    except Exception as exc:  # Core/schema failures remain structured tool errors.
         receipt["error"] = {"type": type(exc).__name__, "message": str(exc)}
     return receipt
 
@@ -218,7 +218,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.tool:
                 raise ValueError("agent takes no tool argument")
             result = run_plan(_read_input(args.input))
-    except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
+    except Exception as exc:  # Malformed JSON/plan remains a structured CLI failure.
         result = {"profile": PROFILE, "status": "failed",
                   "error": {"type": type(exc).__name__, "message": str(exc)}}
     rendered = json.dumps(result, indent=2, ensure_ascii=False, default=str) + "\n"
