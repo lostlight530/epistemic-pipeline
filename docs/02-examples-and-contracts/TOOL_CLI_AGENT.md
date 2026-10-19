@@ -71,6 +71,34 @@ print(json.dumps(result, ensure_ascii=False))
 
 Stringified JSON arguments are also supported for provider-neutral function-call transport, but there is no built-in provider loop, approval policy, retry orchestration or MCP protocol conformance.
 
+## Agent plan harness: human collaboration and bounded execution
+
+`agent_plan.run_plan(plan, approved=False)` preflights a caller-authored plan of **1–16** allowlisted tool calls without invoking any tool. It returns `APPROVAL_REQUIRED` with the proposed arguments. Unknown tool names, invalid arguments, unexpected keys or more than 16 steps are rejected before execution.
+
+```json
+{
+  "purpose": "review declared local research assets",
+  "on_error": "stop",
+  "steps": [
+    {"tool": "graph_inspect",
+     "arguments": {"graph":"graphs/diamond.yaml"}}
+  ]
+}
+```
+
+Save this object as `plan.json`, then review before explicitly approving:
+
+```bash
+python3 tool_cli.py plan --plan-file plan.json --format text
+python3 tool_cli.py plan --plan-file plan.json --approve --format json
+python3 tool_cli.py plan --plan-file plan.json --approve --format html --output output/approved-plan.html
+python3 -m unittest tests.test_agent_plan -v
+```
+
+`--approve` is **caller-granted approval, not authenticated human identity or remote authorization**. It is deliberately opt-in. On execution, each step returns its own original tool envelope; a failed domain check is retained as a failed step. `on_error: stop` is the default; `continue` must be specified explicitly. No hidden retries, parallel branches, autonomous model reasoning, durable execution, background scheduling or arbitrary shell are implied.
+
+The Agent plan is a narrow caller-to-tool **Harness**, not a replacement for `epistemic-pipeline`'s native StateMachineEngine nor an MCP host. A caller that requires persistent state must separately store and validate the returned JSON.
+
 ## Stable result contract
 
 ```json
