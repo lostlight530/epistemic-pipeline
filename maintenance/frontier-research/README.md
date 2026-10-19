@@ -111,3 +111,7 @@ Earlier index assertions `Stage I NOT_EVIDENCED` are **historical observations a
 ## 2026 MCP tool-policy supplementary source record (2026-10-19)
 
 - [Stage J additional official SDK release evidence](annotations/expansion/2026-10-19_STAGE_J_MCP_APPROVAL_SCHEMA_SOURCE_DELTA.md) — April callable approval and May tool-schema preservation as dated evidence candidates; original Stage J study and source IDs are not rewritten.
+
+## 2026 documentary release and route audit (2026-10-19)
+
+- [Stage I–L selected release/date and hierarchy audit](annotations/2026-10-19_STAGE_I_L_PRIMARY_RELEASE_AND_STRUCTURE_AUDIT.md) — 11/11 publisher-tag dates verified, 39/39 key research routes present, Stage L/YTD open, no changes to Stage A–H since the 2025 annual merge. Same-producer review; no benchmark rerun, independent proof or runtime PASS.
