@@ -223,7 +223,12 @@ def main(argv: list[str] | None = None) -> int:
                   "error": {"type": type(exc).__name__, "message": str(exc)}}
     rendered = json.dumps(result, indent=2, ensure_ascii=False, default=str) + "\n"
     if args.output:
-        _write_atomic(args.output, rendered)
+        try:
+            _write_atomic(args.output, rendered)
+        except OSError as exc:
+            result = {"profile": PROFILE, "status": "failed",
+                      "error": {"type": type(exc).__name__, "message": str(exc)}}
+            rendered = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
     sys.stdout.write(rendered)
     return 1 if result.get("status") == "failed" else 0
 
