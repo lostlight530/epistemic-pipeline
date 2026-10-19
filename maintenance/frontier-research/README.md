@@ -95,3 +95,15 @@ Monthly reconstruction is a time-bounded evidence input. A quarterly Stage is a 
 - [2024 to 2025-Q4 longitudinal synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q4.md) — additive Stage H extension; preserve earlier 2024→2025-Q3 record.
 - Neither artifact independently replays benchmarks, certifies a score nor closes 2026's native Stages. `Stage I NOT_EVIDENCED` remains the inherited boundary.
 - The large `LONGITUDINAL_INDEX.md` is a separate A2-owned router/current-relation surface; it has not been rewritten as an annual research conclusion.
+
+## Native 2026 research continuation (dated 2026-10-19)
+
+Subject-specific Research Parts **within** each quarter remain distinct from monthly chronology and the annual/cross-year synthesis layers. Stage I/J/K are retrospective, `SOURCE_BOUNDED` native documentary research, not independent experiments; Stage L is open through 2026-10-19 only.
+
+- [Stage I / 2026-Q1](stage-i-2026-q1/STAGE_SYNTHESIS.md) · [Stage J / 2026-Q2](stage-j-2026-q2/STAGE_SYNTHESIS.md) · [Stage K / 2026-Q3](stage-k-2026-q3/STAGE_SYNTHESIS.md)
+- [Stage L / Q4 OPEN brief](stage-l-2026-q4/STAGE_BRIEF.md) · [October reconstruction](stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md)
+- [2026 year-to-date longitudinal synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md)
+- [2024 to 2026 year-to-date cross-year synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2026_YTD_2026-10-19.md)
+- [2026-10-19 stage-registry/index reconciliation](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md)
+
+Earlier index assertions `Stage I NOT_EVIDENCED` are **historical observations at their own as-of time**; this dated research adds new native artifacts but does not retroactively claim previously executed Stage I runs. `Source release announcement != repository execution`, `same-producer review != independent validation`, `Q4 month != completed quarter`.
