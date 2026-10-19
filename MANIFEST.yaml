@@ -67,6 +67,22 @@ current_temporal_status:
   closed_stage_status: closed
   stage_reopened_by_repair: false
 
+tool_adapter:
+  profile: epistemic-pipeline/tool-adapter
+  registry: agent_tools.py
+  cli: tool_cli.py
+  test: tests/test_tool_cli.py
+  contract: docs/02-examples-and-contracts/TOOL_CLI_AGENT.md
+  tools: [graph_inspect, claim_transfer]
+  argument_schema: JSON_Schema_object_allowlist
+  transport: local_synchronous_function_call
+  presentations: [json, text_tty, offline_html]
+  automatic_remote_model_call: false
+  arbitrary_shell_execution: false
+  automatic_write_to_repository: false
+  mcp_server_conformance_claim: false
+  scientific_validity_claim: false
+
 canonical_runtime:
   graph:
     module: core/dependency_graph.py
