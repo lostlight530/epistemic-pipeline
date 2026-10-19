@@ -32,7 +32,8 @@ def _domain_failed(payload: dict) -> bool:
 
 def _human(payload: dict, color: bool) -> str:
     fail = _domain_failed(payload)
-    label = "CHECK FAILED" if fail else "EXECUTED"
+    label = ("NEEDS APPROVAL" if payload.get("status") == "approval_required"
+             else "CHECK FAILED" if fail else "EXECUTED")
     def tint(value: str, code: str) -> str:
         return "\x1b[" + code + "m" + value + "\x1b[0m" if color else value
     lines = [
@@ -51,7 +52,8 @@ def _html_report(payload: dict) -> str:
     fail = _domain_failed(payload)
     title = html.escape(str(payload.get("tool") or "Tool catalog"))
     profile = html.escape(str(payload.get("profile", "")))
-    status = "CHECK FAILED" if fail else "EXECUTED"
+    status = ("NEEDS APPROVAL" if payload.get("status") == "approval_required"
+              else "CHECK FAILED" if fail else "EXECUTED")
     pretty = html.escape(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True))
     # No scripts, remote fonts, trackers or unescaped caller content.
     return f"""<!doctype html>
@@ -112,7 +114,7 @@ def _read_arguments(args: argparse.Namespace) -> dict:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Research Tools: allowlisted local Agent/CLI console")
     sub = parser.add_subparsers(dest="command", required=True)
-    for command in ("list", "describe", "invoke"):
+    for command in ("list", "describe", "invoke", "plan"):
         cmd = sub.add_parser(command)
         if command in ("describe", "invoke"):
             cmd.add_argument("tool", help="allowlisted tool name")
@@ -120,6 +122,9 @@ def main(argv: list[str] | None = None) -> int:
             sources = cmd.add_mutually_exclusive_group()
             sources.add_argument("--args", default="{}", help="JSON object arguments")
             sources.add_argument("--args-file", help="JSON file path or - for stdin")
+        if command == "plan":
+            cmd.add_argument("--plan-file", default="-", help="JSON plan path, or - for stdin")
+            cmd.add_argument("--approve", action="store_true", help="explicitly permit bounded tool execution")
         cmd.add_argument("--format", choices=["json", "text", "html"], default="json")
         cmd.add_argument("--output", help="write formatted result to a local file")
         cmd.add_argument("--no-color", action="store_true")
@@ -134,6 +139,15 @@ def main(argv: list[str] | None = None) -> int:
                   "status": "ok" if info else "error", "result": info,
                   "error": None if info else {"code": "UNKNOWN_TOOL", "message": "tool is not allowlisted"},
                   "scientific_validity_claim": False, "remote_provider_called": False}
+    elif a.command == "plan":
+        try:
+            from agent_plan import run_plan
+            plan = _read_arguments(argparse.Namespace(args_file=a.plan_file, args="{}"))
+            result = run_plan(plan, approved=a.approve)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            result = {"profile": PROFILE, "tool": "agent_plan", "status": "error",
+                      "result": None, "error": {"code": "INVALID_PLAN", "message": str(exc)},
+                      "scientific_validity_claim": False, "remote_provider_called": False}
     else:
         try:
             parsed = _read_arguments(a)
