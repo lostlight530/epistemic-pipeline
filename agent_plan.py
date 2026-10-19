@@ -30,7 +30,7 @@ def _preflight(plan: Any) -> dict:
     if purpose is not None and (not isinstance(purpose, str) or not purpose.strip()):
         raise ValueError("purpose must be a nonempty string when present")
     policy = plan.get("on_error", "stop")
-    if policy not in {"stop", "continue"}:
+    if not isinstance(policy, str) or policy not in {"stop", "continue"}:
         raise ValueError("on_error must be stop or continue")
     steps = plan.get("steps")
     if not isinstance(steps, list) or not 1 <= len(steps) <= MAX_PLAN_STEPS:
