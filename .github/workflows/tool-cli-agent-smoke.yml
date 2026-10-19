@@ -5,6 +5,8 @@ on:
       - agent_tools.py
       - tool_cli.py
       - tests/test_tool_cli.py
+      - agent_plan.py
+      - tests/test_agent_plan.py
       - .github/workflows/tool-cli-agent-smoke.yml
   workflow_dispatch:
 
@@ -27,7 +29,7 @@ jobs:
       - name: Install bounded smoke dependencies
         run: python -m pip install --disable-pip-version-check "PyYAML==6.0.3"
       - name: Compile tool and test modules
-        run: python -m compileall -q agent_tools.py tool_cli.py tests/test_tool_cli.py
+        run: python -m compileall -q agent_tools.py agent_plan.py tool_cli.py tests/test_tool_cli.py tests/test_agent_plan.py
       - name: Test registry, CLI, UI and native tool calls
         run: python -m unittest tests.test_tool_cli -v
       - name: Run complete repository manual test suite
