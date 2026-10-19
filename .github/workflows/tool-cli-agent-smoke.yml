@@ -30,6 +30,8 @@ jobs:
         run: python -m compileall -q agent_tools.py tool_cli.py tests/test_tool_cli.py
       - name: Test registry, CLI, UI and native tool calls
         run: python -m unittest tests.test_tool_cli -v
+      - name: Run complete repository manual test suite
+        run: make test
       - name: Generate JSON and offline HTML catalog
         run: |
           python tool_cli.py list > /tmp/tools.json
