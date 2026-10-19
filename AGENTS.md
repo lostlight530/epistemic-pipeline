@@ -239,6 +239,12 @@ Experimental modules remain experimental until deliberately integrated; metaphor
 
 Metadata, checkpoints, provenance, provider disclosure, coverage, claim audit/transfer, maintenance reports, demonstrations, and hash baselines never count as independent reproduction. R3 requires an actual separate rerun plus a declared comparison criterion.
 
+## Optional Tool / CLI / Agent adapter
+
+`agent_tools.py` owns the local allowlist, argument contract and structured invocation envelope. `tool_cli.py` only presents these results as JSON, terminal output or static offline HTML. [TOOL_CLI_AGENT.md](docs/02-examples-and-contracts/TOOL_CLI_AGENT.md) is the usage guide. No dynamic tool import, shell execution, model/provider calls, automatic merging, MCP conformance, authority upgrade or remote server is implied.
+
+An executed tool is distinct from a passing domain check and from scientifically valid claims. Register, test and document any future additions explicitly.
+
 ## Delivery boundary
 
 For a confirmed maintenance repair:
