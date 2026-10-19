@@ -258,3 +258,7 @@ Do not auto-merge, force-push, or write maintenance repairs directly to `main`. 
 Do not add GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, or merge-gate architecture as ordinary repository maintenance.
 
 Do not publish private Jules prompts, repository memory, hidden reasoning, credentials, or unrelated operator context. Public governance may preserve the effect of a rule without copying private control text.
+
+## Native Tool / CLI / Agent interface (2026-10-19 proposal)
+
+`tool_cli.py` exposes two allowlisted core tools with explicit typed JSON receipts. Agent plans execute declared steps deterministically, stop after failure, and do not imply provider calls, scientific validity, independent review, or MCP transport. See `docs/02-examples-and-contracts/TOOL_CLI_AGENT_CONTRACT.md` and `tests/test_tool_cli.py`. Retain Draft/maintainer review boundary.
