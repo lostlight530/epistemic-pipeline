@@ -90,6 +90,12 @@ Project-owned identifiers are intentionally unversioned. Real external standards
 
 Experimental modules remain outside this canonical path unless deliberately integrated
 
+### Deep dependency-graph validation (2026-10-19)
+
+`DependencyGraph.detect_cycles()` now uses an explicit DFS frame stack and active-path index, avoiding Python recursion-limit failures for long but valid dependency chains. This changes the cycle *inspection implementation*, not graph identity, dependency semantics, cycle diagnostic shape, topological ordering, or scientific/evidence claims. The routine still reports back-edge cycles and never claims independent research validation.
+
+The regression in `tests/test_all.py` constructs a chain longer than `sys.getrecursionlimit()`, asserts it is a valid DAG, and separately checks a real two-node cycle. The local repository entrypoint is `make test`; test source or a Draft PR is not evidence that the command was executed on the proposed revision.
+
 ## Runtime policy
 
 State definitions use explicit machine checks such as
