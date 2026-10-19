@@ -18,4 +18,4 @@ test-provenance:
 	python3 -m unittest tests.test_provenance -v
 
 test-tools:
-	python3 -m unittest tests.test_tool_cli -v
+	python3 -m unittest tests.test_tool_cli tests.test_agent_plan -v
