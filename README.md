@@ -74,7 +74,7 @@ Project-owned identifiers are intentionally unversioned. Real external standards
 
 | Module | Role | Boundary |
 |---|---|---|
-| `core/dependency_graph.py` | DAG validation/topology | structural semantics only |
+| `core/dependency_graph.py` | DAG validation/topology | iterative cycle detection for deep DAGs; structural semantics only |
 | `core/engine.py` | state execution, runtime policy, retry/timeout, checkpoint | run success != scientific validity |
 | `core/llm_harness.py` | provider-neutral structured output + provider disclosure | real providers injected; unknown metadata stays unknown |
 | `core/gatekeeper.py` | explicit machine runtime predicates | not a scientific reviewer |
