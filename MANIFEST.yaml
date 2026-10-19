@@ -73,6 +73,7 @@ canonical_runtime:
     status: implemented
     semantics: structural_dag_validation_and_ordering
     cycle_detection: iterative_dfs_not_python_recursion_depth_bound
+    parallel_grouping: single_pass_level_buckets_sorted_by_depth_and_node_id
   engine:
     module: core/engine.py
     status: implemented
