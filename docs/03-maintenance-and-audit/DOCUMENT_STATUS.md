@@ -102,6 +102,12 @@ later template revision != earlier stage rewrite
 
 Instantiated Stage and Part records remain bounded by their declared evidence window and executed method. Later corrections move interpretation forward without silently rewriting earlier research artifacts.
 
+## Tool / CLI / Agent interface router — 2026-10-19 (additive)
+
+The new current implementation surface is `tool_cli.py` with its read-only allowlisted core calls, deterministic declared agent-plan runner, and `tests/test_tool_cli.py` as an optional local contract check. The active invocation/boundary document is `docs/02-examples-and-contracts/TOOL_CLI_AGENT_CONTRACT.md`, and `examples/tool_plan.json` is a synthetic usage fixture.
+
+This additive router does not advance the recorded Stage/calendar baseline, rewrite historical snapshots, certify MCP compliance, imply LLM agent execution, or assert a full GitHub CI/independent reproducibility result. Real behavior remains subordinate to the current code and machine contract; a Draft PR is not merged authority.
+
 ## Historical and dated evidence
 
 Dated maintenance records and materials under the maintenance `history/` tree remain point-in-time evidence. The August stage, frontier material, FOUR/FIVE/SIX_DAY consolidations, correction records, demonstrations, and later dated reconciliations remain recoverable at their original time boundary.
