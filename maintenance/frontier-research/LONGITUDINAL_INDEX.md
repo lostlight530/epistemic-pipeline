@@ -6554,3 +6554,267 @@ STAGE_IDENTITY_DATE_2026_10_08
 - Original Stage-I handoff questions remain OPEN until separately observed native Stage-I artifacts
 - Exact Stage-H objects inherited: 13/13; 18 calendar dates reviewed; maintenance creates zero independent research
 - A2 status: FULL_OCTOBER_RELATION / ORIGINAL_STAGE_H_EVIDENCE_IDENTITY / STAGE_I_NOT_EVIDENCED / MONTH_OPEN
+
+
+## 2026-10-19 independent GPT-6 A1 successor | epistemic-pipeline Stage A-H source identity
+- Identity: GPT6-A1-OCT19-EPISTEMICPIPELINE-11f68d78812f
+- Repository / producer: lostlight530/epistemic-pipeline / GPT-6 OpenAI cloud external maintainer, separate from native Stage producer.
+- Exact base main: 11f68d78812f39e8a1bd4231dba9909e4c047996; owner pre-append blob: e7c2ccdebb3420496e2dfd86c7fdfcb7b4601777.
+- A1 cutoff: October 01–18; Stage A–H quarters remain historical reconstruction windows, NOT newly executed October calendar experiments.
+- Current Stage A–H artifact denominator: 104; longitudinal/support artifacts: 7.
+- Previous Stage I native delivery remains NOT_EVIDENCED / NOT_DUE unless a separately observed native PR establishes it; absence cannot be repaired through text-generation.
+- Verifier: Git tree exact blob SHA and size plus prior index source/role anchors, not new web/research execution, native checker or content re-fetch.
+- Stage H current owner and previous A2 (relation-through Oct18) preserved; Stage registry identity date is not the same as current month maintenance date.
+- Original public evidence, Part roles, register, chart, Stage H handoff, search limitations and negative findings are all preserved as historical.
+
+### Stage A–H distinct source object and original role custody
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/A1_BENCHMARK_EVIDENCE_ENVELOPES.md` | blob `c2cda772d8c47cf01e58221b8380e79a86367891` | 5693 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/A2_CONDITIONAL_BEHAVIOR_VERIFICATION_LIMITS.md` | blob `09fa81e9ef8c7ea7a15434f4ba87ba8c9a289f76` | 4623 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/A3_REVISION_COMPARABILITY_STATE_TRANSITIONS.md` | blob `79f98ab2b1dee8af758cb7633b96c7d7657c80c2` | 4037 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / PROVENANCE: `maintenance/frontier-research/stage-a-2024-q1/CONTRIBUTOR_STATEMENT.md` | blob `55382292c4e3a27e0240768afa1727c71e04722f` | 1366 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / EVIDENCE_CHART: `maintenance/frontier-research/stage-a-2024-q1/EVIDENCE_CHART.md` | blob `3d2f7e15665fa4d1ca0ac8c39f2d9ced57c9bb0d` | 4892 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_01_RECONSTRUCTION.md` | blob `07e33ae451200529fd618020b22f7090702e4cee` | 2927 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_02_RECONSTRUCTION.md` | blob `9f6a35ddc4698550ad83946f2ac21aaff46030e9` | 2805 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_03_RECONSTRUCTION.md` | blob `bf4d5decddbee6ec86140efc60496332574503f5` | 3708 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / REVIEW: `maintenance/frontier-research/stage-a-2024-q1/RESEARCH_REVIEW.md` | blob `d138e90d0ca38e812cc90d026cb6d13eff533674` | 2765 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / SOURCE_REGISTER: `maintenance/frontier-research/stage-a-2024-q1/SOURCE_OBJECT_REGISTER.md` | blob `dc3662325775308e8e2d338ff89e50ed6c9d1785` | 5548 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / BRIEF: `maintenance/frontier-research/stage-a-2024-q1/STAGE_BRIEF.md` | blob `c8590b199140c00a569e9c021185e29f73421b51` | 5997 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / HANDOFF: `maintenance/frontier-research/stage-a-2024-q1/STAGE_HANDOFF.md` | blob `addf9a436a23bf9aa99680d927095c7179c3f7ce` | 1885 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage A / SYNTHESIS: `maintenance/frontier-research/stage-a-2024-q1/STAGE_SYNTHESIS.md` | blob `d488b4dd2fa3865229a057510fe4dfcff91ed4f7` | 15616 bytes | source-object identity retained.
+  - Stage A evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/B1_EFFECTIVE_CAPABILITY_UNDER_CONDITIONS.md` | blob `c929b641949ccc4d575dcbf7f98198b921947204` | 1881 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/B2_BENCHMARK_REVISION_AND_CONTAMINATION.md` | blob `cbb73c5d209e982f0fde0a0370d12575458c6818` | 2210 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/B3_HARDER_AND_LIVE_EVALUATION.md` | blob `6a2387ca51d9e9b9ff66451fcc66e866f7bbab46` | 2534 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / PROVENANCE: `maintenance/frontier-research/stage-b-2024-q2/CONTRIBUTOR_STATEMENT.md` | blob `cdc59b4c49bee17fdfe98c4c19a89e34e26da6b2` | 776 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / EVIDENCE_CHART: `maintenance/frontier-research/stage-b-2024-q2/EVIDENCE_CHART.md` | blob `b77e833009d2b06552960efe40700381f734a09c` | 2018 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_04_RECONSTRUCTION.md` | blob `98300d5e51065a92dd322d8da5c2c3e24d963a34` | 648 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_05_RECONSTRUCTION.md` | blob `76e208497cb0a9f0e2b88fc443a753d9e845bd5c` | 681 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_06_RECONSTRUCTION.md` | blob `c1ef5cddfab8ee83457414f758e5293f132b5c4e` | 892 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / REVIEW: `maintenance/frontier-research/stage-b-2024-q2/RESEARCH_REVIEW.md` | blob `dfffc0149b44e02197725e003b666b637d292da2` | 1452 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / SOURCE_REGISTER: `maintenance/frontier-research/stage-b-2024-q2/SOURCE_OBJECT_REGISTER.md` | blob `179f81a8a49c6ba68ddd850f33939d57a0a02a5e` | 2545 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / BRIEF: `maintenance/frontier-research/stage-b-2024-q2/STAGE_BRIEF.md` | blob `a414c139678205bd70d80a3dde8a5e4e83dda3e2` | 2114 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / HANDOFF: `maintenance/frontier-research/stage-b-2024-q2/STAGE_HANDOFF.md` | blob `567585c2d1a7b6adcad0ee2f62f93e77bf352b26` | 1206 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage B / SYNTHESIS: `maintenance/frontier-research/stage-b-2024-q2/STAGE_SYNTHESIS.md` | blob `f1e96f7efa298d7ce0daeb2797db01270be51a28` | 6201 bytes | source-object identity retained.
+  - Stage B evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/C1_BENCHMARK_VINTAGE_LIVE_REFRESH.md` | blob `071d2c0e3198126f1481006055ef9198f8741881` | 2342 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/C2_DOMAIN_CONDITIONED_EVALUATOR_AUTHORITY.md` | blob `dc362f61d2ca582e00ff5f09db1bb74ade5cb0aa` | 2096 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/C3_EVALUATOR_DATASET_CONFIG_IDENTITY.md` | blob `dd6ac24f211201e1b7e20c63d0f3ba6343a72e7e` | 2018 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / PROVENANCE: `maintenance/frontier-research/stage-c-2024-q3/CONTRIBUTOR_STATEMENT.md` | blob `2f4a2134f1fddc0f54ff76653b432f6d65fd756a` | 568 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / EVIDENCE_CHART: `maintenance/frontier-research/stage-c-2024-q3/EVIDENCE_CHART.md` | blob `7becaa4d01daa62c034ca6b61467f016b406bb58` | 2017 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_07_RECONSTRUCTION.md` | blob `178ead6ab8d65cf5038627de7887f805773eb37b` | 628 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_08_RECONSTRUCTION.md` | blob `d28079d2105dbeb7b1598d4c5250320b5bb9bab7` | 751 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_09_RECONSTRUCTION.md` | blob `faecb2aaad8eda84d620377c8a478ce50998c517` | 888 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / REVIEW: `maintenance/frontier-research/stage-c-2024-q3/RESEARCH_REVIEW.md` | blob `2cc1327132f3707a769a24871b9be668a8acc21a` | 1289 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / SOURCE_REGISTER: `maintenance/frontier-research/stage-c-2024-q3/SOURCE_OBJECT_REGISTER.md` | blob `ac4b8c36c7268f08b7270e4aa6514043db56bcb0` | 2972 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / BRIEF: `maintenance/frontier-research/stage-c-2024-q3/STAGE_BRIEF.md` | blob `4b704f5e6f0f57ccc58c13ec4f4cd922dae14e61` | 2957 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / HANDOFF: `maintenance/frontier-research/stage-c-2024-q3/STAGE_HANDOFF.md` | blob `0211ddcb7c1bd0328108e0e04ea3eaa06caee2fa` | 1040 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage C / SYNTHESIS: `maintenance/frontier-research/stage-c-2024-q3/STAGE_SYNTHESIS.md` | blob `85b67086bc25049af75d57b574a1873fc92d09f2` | 4485 bytes | source-object identity retained.
+  - Stage C evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / PROVENANCE: `maintenance/frontier-research/stage-d-2024-q4/CONTRIBUTOR_STATEMENT.md` | blob `0685eb77eb78e2c4da9f0a21d94c49da3182485d` | 708 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/D1_SCOPE_AND_DATASET_ERROR.md` | blob `4295a1e545b211237a7cf7bf780d7ff0f5630dac` | 1422 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/D2_FRESHNESS_DIFFICULTY_AND_VERSION_IDENTITY.md` | blob `46935fc6f7ed1ae17fe9f7c6116a1ffcea623990` | 1582 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/D3_GROUNDED_LONG_FORM_AND_JUDGE_ENSEMBLE.md` | blob `3c3e7d2789fb8f6fa78287437ef67b7951848d49` | 1493 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / EVIDENCE_CHART: `maintenance/frontier-research/stage-d-2024-q4/EVIDENCE_CHART.md` | blob `4b0890e8ec70aaa85df1f37156c689d7b4fe3372` | 1000 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_10_RECONSTRUCTION.md` | blob `b07d7c96a1d57eafc8b9cae1602517a5476bb0b8` | 510 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_11_RECONSTRUCTION.md` | blob `8450e73f89fe32b8a42e038bb973be0f143cdf8e` | 499 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_12_RECONSTRUCTION.md` | blob `13860f35bfbce9688b4555baf94ec84826664c03` | 478 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / REVIEW: `maintenance/frontier-research/stage-d-2024-q4/RESEARCH_REVIEW.md` | blob `55ae2992b5d8220a6b19b918b08484d9e5032185` | 1277 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / SOURCE_REGISTER: `maintenance/frontier-research/stage-d-2024-q4/SOURCE_OBJECT_REGISTER.md` | blob `6d09b0c481339e7a2e97c8ddae8ec4697efbda41` | 1291 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / BRIEF: `maintenance/frontier-research/stage-d-2024-q4/STAGE_BRIEF.md` | blob `c9d3bcf43994acee68a2c87698606840ce1f44fb` | 1582 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / HANDOFF: `maintenance/frontier-research/stage-d-2024-q4/STAGE_HANDOFF.md` | blob `e84f0baef687be21ef7966db1f11ebe37682ce23` | 1819 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage D / SYNTHESIS: `maintenance/frontier-research/stage-d-2024-q4/STAGE_SYNTHESIS.md` | blob `b128c28e3c998bebca841d3a60f34ffda9b26622` | 2638 bytes | source-object identity retained.
+  - Stage D evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / PROVENANCE: `maintenance/frontier-research/stage-e-2025-q1/CONTRIBUTOR_STATEMENT.md` | blob `5c0c4710c1ddade043f37d37ae8cbb849d6cb7b5` | 534 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/E1_HLE_DIFFICULTY_SCOPE_AND_CALIBRATION.md` | blob `133a1cdbac92e5561921e65a40d7858b9530aca2` | 1107 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/E2_SWELANCER_ECONOMIC_TASK_AND_GRADING_IDENTITY.md` | blob `e5a49d019cc637cd68476a6326a3f7fb4e6a856c` | 1333 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/E3_QUESTBENCH_UNDERSPECIFICATION_AND_INFORMATION_ACQUISITION.md` | blob `284d323203dd402913afc214d871a807424cddf4` | 1245 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / EVIDENCE_CHART: `maintenance/frontier-research/stage-e-2025-q1/EVIDENCE_CHART.md` | blob `b106165c738438234657e18ae6b7b2f0de95a019` | 984 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_01_RECONSTRUCTION.md` | blob `1c5373d3f1befec9d89c51eb2a6ad599365fa2ba` | 536 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_02_RECONSTRUCTION.md` | blob `f29d6657ec25f167f62ea7fd8a711ed28e238680` | 500 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_03_RECONSTRUCTION.md` | blob `d11d612f807427ee377d07a46663a11399e9c4b7` | 602 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / REVIEW: `maintenance/frontier-research/stage-e-2025-q1/RESEARCH_REVIEW.md` | blob `273592afb82452868e02c94bc907332495906235` | 1442 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / SOURCE_REGISTER: `maintenance/frontier-research/stage-e-2025-q1/SOURCE_OBJECT_REGISTER.md` | blob `424f4c8b95a43416f8e18802d28a6d889274cf3e` | 1011 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / BRIEF: `maintenance/frontier-research/stage-e-2025-q1/STAGE_BRIEF.md` | blob `50ee3a9a90c95c43b1655d27478050e851d61617` | 1682 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / HANDOFF: `maintenance/frontier-research/stage-e-2025-q1/STAGE_HANDOFF.md` | blob `4eb5675bab2c2fc1eba8bbe8b93e60e1c57f8e0e` | 1076 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage E / SYNTHESIS: `maintenance/frontier-research/stage-e-2025-q1/STAGE_SYNTHESIS.md` | blob `b10be4e2748ab1b6c1dfeb92bad6e39cfd8f00d2` | 3037 bytes | source-object identity retained.
+  - Stage E evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / PROVENANCE: `maintenance/frontier-research/stage-f-2025-q2/CONTRIBUTOR_STATEMENT.md` | blob `dc571ee6f248f03f35dfb182c4634655dede5a4a` | 381 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / EVIDENCE_CHART: `maintenance/frontier-research/stage-f-2025-q2/EVIDENCE_CHART.md` | blob `cb4f1a3c071c7e1e71cc9bfc8c7bec1d495179c5` | 903 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/F1_PAPERBENCH_REPLICATION_TASK_AND_JUDGE_PROVENANCE.md` | blob `1007c15211b965c6cbc9079c3678e8e57d9b0e52` | 1104 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/F2_TERMINAL_BENCH_ENVIRONMENT_TEST_AND_EXECUTION_IDENTITY.md` | blob `f1063001ec606549145b1986d9f2b961b4fe9071` | 911 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/F3_TAU2_DUAL_CONTROL_STATE_AND_COORDINATION_PROVENANCE.md` | blob `182c69e2fc14b350aeefa9338dbdecad384d2c89` | 1063 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_04_RECONSTRUCTION.md` | blob `c8efc6f5d780763e4d040f7f339e99a20cb0dbad` | 420 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_05_RECONSTRUCTION.md` | blob `da5e7f92828d4900af978eb4dc257ad66c58cb35` | 363 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_06_RECONSTRUCTION.md` | blob `7385cc1353ee4643468849174677cd59c8b5f7f0` | 414 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / REVIEW: `maintenance/frontier-research/stage-f-2025-q2/RESEARCH_REVIEW.md` | blob `d6c716fa560cd34d4c76ff9c7b7597d003e57b70` | 900 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / SOURCE_REGISTER: `maintenance/frontier-research/stage-f-2025-q2/SOURCE_OBJECT_REGISTER.md` | blob `2dd50f63d4ad28fdf488c0d513b73bb5d728c668` | 678 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / BRIEF: `maintenance/frontier-research/stage-f-2025-q2/STAGE_BRIEF.md` | blob `62f3671acd00ded07d3a0d5a6de6d5040b0384f3` | 1383 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / HANDOFF: `maintenance/frontier-research/stage-f-2025-q2/STAGE_HANDOFF.md` | blob `f346cce603cfb61d3a1bc5ba9b7d044699784388` | 785 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage F / SYNTHESIS: `maintenance/frontier-research/stage-f-2025-q2/STAGE_SYNTHESIS.md` | blob `78ad2f9c674dad3dc745d3f487b595919ce5d003` | 2074 bytes | source-object identity retained.
+  - Stage F evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / PROVENANCE: `maintenance/frontier-research/stage-g-2025-q3/CONTRIBUTOR_STATEMENT.md` | blob `754c6bc380533f97a76c2c30341321ac9f29d70b` | 790 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / EVIDENCE_CHART: `maintenance/frontier-research/stage-g-2025-q3/EVIDENCE_CHART.md` | blob `0842cdab894268dc7acd9abc2f8900ac4415cc4f` | 919 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/G1_ART_POLICY_VIOLATION_AND_ATTACK_TRAJECTORY.md` | blob `308cf0a6c53c188f4b87e34125407275d662a9d8` | 2160 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/G2_LIVEMCP101_EXECUTION_PLAN_AND_TOOL_ORCHESTRATION.md` | blob `e0194a1a06f53249be19d77d28c0466722649724` | 1921 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/G3_ULTRAHORIZON_PARTIAL_OBSERVABILITY_AND_LONG_TRACE.md` | blob `7a7cac9196f66882895697e7569842ca08add247` | 2156 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_07_RECONSTRUCTION.md` | blob `08a0c7d24a8bb35848658be7a5a407ba86ec939d` | 922 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_08_RECONSTRUCTION.md` | blob `2999dec5afe604df701518e6a2470e989559a357` | 746 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_09_RECONSTRUCTION.md` | blob `fa69b89e58f52601ada2062c32122c5a41058c76` | 881 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / REVIEW: `maintenance/frontier-research/stage-g-2025-q3/RESEARCH_REVIEW.md` | blob `67476fc754b223802c1bacd77d83dc4b8a414c27` | 1407 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / SOURCE_REGISTER: `maintenance/frontier-research/stage-g-2025-q3/SOURCE_OBJECT_REGISTER.md` | blob `025dc5d9e7d5b91b69585257531ac295d933dfbc` | 944 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / BRIEF: `maintenance/frontier-research/stage-g-2025-q3/STAGE_BRIEF.md` | blob `44d2df7fe715942ec90874d690fce5b6442ec8fc` | 1921 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / HANDOFF: `maintenance/frontier-research/stage-g-2025-q3/STAGE_HANDOFF.md` | blob `b89a55083ba16602b732b954a32a1bcd682cf5ab` | 966 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage G / SYNTHESIS: `maintenance/frontier-research/stage-g-2025-q3/STAGE_SYNTHESIS.md` | blob `b0dc41cbd26dfc99dab38307419b60386fff221e` | 2585 bytes | source-object identity retained.
+  - Stage G evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / PROVENANCE: `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md` | blob `da159d467073a5fbe8b09f366cdb269430678fc5` | 432 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / EVIDENCE_CHART: `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md` | blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce` | 770 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; evidence rows != host execution/independent reproduction; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / STAGE_RESEARCH_PART: `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md` | blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6` | 1008 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; Part-specific research cannot be counted as distinct new October experimental window; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / STAGE_RESEARCH_PART: `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md` | blob `e4104bcce39fa0485cb641bea12c1841a65e15bb` | 1199 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; Part-specific research cannot be counted as distinct new October experimental window; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / STAGE_RESEARCH_PART: `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md` | blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56` | 1067 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; Part-specific research cannot be counted as distinct new October experimental window; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md` | blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5` | 463 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md` | blob `019dd901780c2b1508955107433547d06941cefc` | 504 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / OTHER_STAGE_DOCUMENT: `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md` | blob `fed0f15a26356ccc8c67ca52bc034cff88609118` | 488 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / REVIEW: `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md` | blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64` | 751 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; reviewed-source status != new proof; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / SOURCE_REGISTER: `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md` | blob `24084d7efa1770c3b8b5435264caa3d2d660c35c` | 632 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; source bibliographic identity != claim correctness; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / BRIEF: `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md` | blob `58f3562d45e4ce76ef352f341c3853982bf31079` | 1384 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / HANDOFF: `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md` | blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb` | 726 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; handoff describes next hypothesis, not executed Stage I; disposition=NO_FOLLOW_UP_CUSTODY.
+- Stage H / SYNTHESIS: `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md` | blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e` | 1788 bytes | source-object identity retained.
+  - Stage H evidence relation: exact prior owner path/SHA anchor confirmed; historical Stage contract not month-close authority; disposition=NO_FOLLOW_UP_CUSTODY.
+
+### Longitudinal support identity and version provenance
+- Index/support `MANIFEST.yaml` | blob `2ded080e4dee14f439a9cc1d3e3ceca3945ac716` | 18478 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/cadence.yaml` | blob `b0c80847bb970d4aa3ef87c0c869df35e411b2dd` | 5141 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/frontier-research/README.md` | blob `c1c32b1ab9a81eb7d130076ae245d25f6268f26c` | 6608 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2024.md` | blob `ca0e28874551ab7aef9dfb9264fb39af08c31340` | 3627 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q1.md` | blob `98685361248d3590fb169dcfddb4ff2495e1da1e` | 1968 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q2.md` | blob `0dff34aae71f1cb212ee53207386d8eb20c43bca` | 1161 bytes; preserve routing role; do not reinterpret as native Stage result.
+- Index/support `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q3.md` | blob `8439c8f9e1018fef0f0629993393b9815454f8db` | 1811 bytes; preserve routing role; do not reinterpret as native Stage result.
+
+### October calendar/source-time relation
+- 2026-10-01: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-02: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-03: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-04: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-05: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-06: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-07: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-08: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-09: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-10: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-11: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-12: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-13: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-14: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-15: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-16: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-17: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+- 2026-10-18: current October maintenance checkpoint relation remains separate from Stage A–H original historical quarter and source-window dates; no new independent experiment or Stage-I result attributed to this date.
+
+### Reconciliation decisions
+- Stage H evidence chart, source object register, review, synthesis and handoff hold distinct responsibilities, not a single interchangeable PASS.
+- Earlier Stage A–H original research and source versions are not rewritten by maintenance; all stage directories remain original producer-owned.
+- Current source/binary revisions visible on current main are custody facts, not document conversion, tool/renderer semantics or benchmark execution.
+- A dated correction to the current maintenance-through field does not change immutable Stage registry provenance or 2024/2025 quarter identity.
+- Rereading source-index snippets does not independently verify cited publishers, standards, tools, algorithms or external conformance claims.
+- The producer's Stage I original work remains NOT_EVIDENCED unless a separately authorized original native execution and PR appear.
+- No extra D7/D10/D14/D30 audit credit, experiment, new independent source, CASE, NOTE, benchmark or publication acceptance attributed.
+- All earlier day versions, index corrections and Stage H facts retained; month closure remains OPEN.
+- Only canonical longitudinal current owner is append-only updated, with `Maintenance Provenance` distinguished from original Stage producer identity.
+- A1 bounded custody conclusion: 104 distinct original Stage A–H files identified, 104 with matching prior exact owner path/blob anchor, and 7 supporting objects; all date-bound assumptions guarded.
+- Next step: all 10 A1 PRs verified+merged, ten main fresh-read, then MonthStart→N A2 per-repo current relation.
