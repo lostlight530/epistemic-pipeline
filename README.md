@@ -70,6 +70,19 @@ epistemic-pipeline/maintenance-report
 
 Project-owned identifiers are intentionally unversioned. Real external standards/runtime versions remain explicit where genuinely applicable. Alignment language is not standards conformance
 
+## Tool / CLI / Agent integration (2026-10-19)
+
+`agent_tools.py` provides allowlisted `graph_inspect` and `claim_transfer` function-call tools, and `tool_cli.py` exposes the same results as machine JSON, styled terminal text or static offline HTML.
+
+```bash
+python3 tool_cli.py list
+python3 tool_cli.py invoke graph_inspect --args '{"graph":"graphs/diamond.yaml"}' --format text
+python3 tool_cli.py list --format html --output output/tool-catalog.html
+python3 -m unittest tests.test_tool_cli -v
+```
+
+[Complete Tool/CLI/Agent and UI contract](docs/02-examples-and-contracts/TOOL_CLI_AGENT.md). This adapter does not run any LLM or claim MCP compatibility, independent verification or scientific correctness.
+
 ## Core modules
 
 | Module | Role | Boundary |

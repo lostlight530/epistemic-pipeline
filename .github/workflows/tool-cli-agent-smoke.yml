@@ -1,0 +1,42 @@
+name: Tool CLI Agent smoke (optional)
+on:
+  pull_request:
+    paths:
+      - agent_tools.py
+      - tool_cli.py
+      - tests/test_tool_cli.py
+      - agent_plan.py
+      - tests/test_agent_plan.py
+      - .github/workflows/tool-cli-agent-smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-tool-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact PR revision
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Install bounded smoke dependencies
+        run: python -m pip install --disable-pip-version-check "PyYAML==6.0.3"
+      - name: Compile tool and test modules
+        run: python -m compileall -q agent_tools.py agent_plan.py tool_cli.py tests/test_tool_cli.py tests/test_agent_plan.py
+      - name: Test registry, CLI, UI and native tool calls
+        run: python -m unittest tests.test_tool_cli -v
+      - name: Run complete repository manual test suite
+        run: make test
+      - name: Generate JSON and offline HTML catalog
+        run: |
+          python tool_cli.py list > /tmp/tools.json
+          python tool_cli.py list --format html --output /tmp/tools.html
+          python -c "import json; d=json.load(open('/tmp/tools.json')); assert len(d['result']['tools']) == 2"
+          test -s /tmp/tools.html

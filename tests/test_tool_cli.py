@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+"""Contract tests for the opt-in, allowlisted local Tool/CLI/Agent surface."""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from agent_tools import PROFILE, list_tool_names, tool_definitions, execute_tool_call
+from tool_cli import _html_report, _human
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class TestToolContract(unittest.TestCase):
+    def test_registry_declarations_are_allowlisted(self):
+        declarations = tool_definitions()
+        names = [item["function"]["name"] for item in declarations]
+        self.assertEqual(sorted(names), list_tool_names())
+        self.assertEqual(len(names), 2)
+        for item in declarations:
+            schema = item["function"]["parameters"]
+            self.assertEqual(item["type"], "function")
+            self.assertFalse(schema["additionalProperties"])
+
+    def test_unknown_and_invalid_arguments_fail_closed(self):
+        unknown = execute_tool_call("arbitrary_python", {})
+        self.assertEqual(unknown["error"]["code"], "UNKNOWN_TOOL")
+        self.assertFalse(unknown["remote_provider_called"])
+        self.assertFalse(unknown["scientific_validity_claim"])
+        name = list_tool_names()[0]
+        malformed = execute_tool_call(name, "{broken")
+        self.assertEqual(malformed["error"]["code"], "INVALID_ARGUMENT")
+        hidden = execute_tool_call(name, {"unsafe_cmd": "rm -rf /"})
+        self.assertEqual(hidden["error"]["code"], "INVALID_ARGUMENT")
+
+    def test_cli_registry_machine_json_and_offline_html(self):
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tool_cli.py"), "list"],
+            text=True, capture_output=True, check=True, cwd=ROOT,
+        )
+        parsed = json.loads(proc.stdout)
+        self.assertEqual(parsed["profile"], PROFILE)
+        self.assertEqual(len(parsed["result"]["tools"]), 2)
+        self.assertNotIn("\x1b", proc.stdout)
+        self.assertEqual(proc.stderr, "")
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "report.html"
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "list",
+                 "--format", "html", "--output", str(path)],
+                text=True, capture_output=True, check=True, cwd=ROOT,
+            )
+            self.assertEqual(proc.stdout, "")
+            report = path.read_text(encoding="utf-8")
+            self.assertIn("<!doctype html>", report)
+            self.assertIn("@media(prefers-color-scheme:dark)", report)
+            self.assertNotIn("<script", report)
+            malicious = _html_report({"profile": PROFILE, "tool": "<script>alert(1)</script>",
+                                      "status": "error", "result": None, "error": None})
+            self.assertNotIn("<script>alert(1)</script>", malicious)
+            self.assertIn("&lt;script&gt;", malicious)
+            self.assertNotIn("\x1b", _human(parsed, color=False))
+
+    def test_cli_invalid_arguments_machine_failure(self):
+        name = list_tool_names()[0]
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tool_cli.py"), "invoke", name,
+             "--args", '{"unexpected":true}'],
+            text=True, capture_output=True, cwd=ROOT,
+        )
+        self.assertEqual(proc.returncode, 1)
+        parsed = json.loads(proc.stdout)
+        self.assertEqual(parsed["error"]["code"], "INVALID_ARGUMENT")
+
+
+class TestRepoIntegration(unittest.TestCase):
+    def test_graph_inspection_and_domain_failure(self):
+        valid = execute_tool_call("graph_inspect",
+                                  {"graph": str(ROOT / "graphs" / "diamond.yaml")})
+        self.assertEqual(valid["status"], "ok", valid.get("error"))
+        self.assertTrue(valid["result"]["valid"])
+        self.assertGreater(len(valid["result"]["parallel_groups"]), 1)
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "cycle.yaml"
+            path.write_text(
+                "id: cyclic\nnodes:\n"
+                "  - id: a\n    dependencies: [b]\n"
+                "  - id: b\n    dependencies: [a]\n",
+                encoding="utf-8",
+            )
+            invalid = execute_tool_call("graph_inspect", {"graph": str(path)})
+            self.assertEqual(invalid["status"], "ok")
+            self.assertFalse(invalid["result"]["valid"])
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "tool_cli.py"), "invoke", "graph_inspect",
+                 "--args", json.dumps({"graph": str(path)})],
+                capture_output=True, text=True, cwd=ROOT,
+            )
+            self.assertEqual(proc.returncode, 1)
+
+    def test_claim_transfer_rejects_wrong_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "wrong.json"
+            path.write_text('{"profile":"wrong"}', encoding="utf-8")
+            value = execute_tool_call("claim_transfer", {"claim_audit": str(path)})
+            self.assertEqual(value["status"], "error")
+
+
+if __name__ == "__main__":
+    unittest.main()
