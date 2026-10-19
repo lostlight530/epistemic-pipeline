@@ -107,3 +107,7 @@ Subject-specific Research Parts **within** each quarter remain distinct from mon
 - [2026-10-19 stage-registry/index reconciliation](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md)
 
 Earlier index assertions `Stage I NOT_EVIDENCED` are **historical observations at their own as-of time**; this dated research adds new native artifacts but does not retroactively claim previously executed Stage I runs. `Source release announcement != repository execution`, `same-producer review != independent validation`, `Q4 month != completed quarter`.
+
+## 2026 MCP tool-policy supplementary source record (2026-10-19)
+
+- [Stage J additional official SDK release evidence](annotations/expansion/2026-10-19_STAGE_J_MCP_APPROVAL_SCHEMA_SOURCE_DELTA.md) — April callable approval and May tool-schema preservation as dated evidence candidates; original Stage J study and source IDs are not rewritten.
