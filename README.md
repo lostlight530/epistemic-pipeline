@@ -6,6 +6,12 @@
 
 [Architecture](docs/01-source-and-explanation/ARCHITECTURE.md) · [Research Contract](docs/02-examples-and-contracts/RESEARCH_CONTRACT.md) · [Claim Audit Contract](docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md) · [Claim Transfer Contract](docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md) · [Assertion Basis & Audit Coverage](docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md) · [Maintenance](docs/03-maintenance-and-audit/MAINTENANCE_CADENCE.md) · [Document Status](docs/03-maintenance-and-audit/DOCUMENT_STATUS.md) · [August Stage Close](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md) · [Customization](docs/02-examples-and-contracts/CUSTOMIZATION_GUIDE.md) · [Frontier Alignment](docs/03-maintenance-and-audit/history/FRONTIER_ALIGNMENT.md)
 
+## Native Tool / CLI / Agent interface (2026-10-19 integration)
+
+This repository now exposes `tool_cli.py` for allowlisted local JSON tool discovery, calls, and deterministic declared agent plans. Run `python3 tool_cli.py list`, `python3 tool_cli.py call graph.inspect --input request.json`, or `python3 tool_cli.py agent --input examples/tool_plan.json --output output/agent-plan.json`.
+
+See [Tool/CLI/Agent contract](docs/02-examples-and-contracts/TOOL_CLI_AGENT_CONTRACT.md) for scope, input schemas, status interpretation and audit boundaries. Plans are not autonomous LLM agents, MCP servers or scientific validation.
+
 ## Positioning
 
 Epistemic Pipeline treats research execution as an inspectable state-transition and evidence-contract system rather than an opaque agent trajectory
