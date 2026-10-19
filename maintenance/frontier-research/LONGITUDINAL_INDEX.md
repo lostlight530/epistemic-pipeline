@@ -7103,3 +7103,20 @@ NATIVE_MODIFICATION_NOTE: appended existing LONGITUDINAL_INDEX only; no stage na
 - 104/104 Stage sources represented and relation-through Oct19, natural month remains OPEN.
 - A2 result: FULL_STAGE_RELATION_104_OF_104 / BOTH_A1_PR_VIEWS_INHERITED / STAGE_I_NOT_EVIDENCED / NO_NATIVE_RUN.
 NATIVE_MODIFICATION_NOTE: only existing longitudinal index modified, original source and research files unchanged.
+
+
+## New native research-stage observation — 2026-10-19 (post-2025 annual reconciliation)
+
+This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVIDENCED` and `NO_NEW_EXPERIMENT` statements are preserved as observations made before these files existed. The newly authored native research remains source-bounded, retrospective and documentation-only, not a reconstructed execution history.
+
+| Stage | Period | Current documentary status | Primary monthly and Stage owner | Review |
+|---|---|---|---|---|
+| I | 2026-Q1 | `FRONTIER_STAGE_COMPLETE / SOURCE_BOUNDED` | [Stage I synthesis](stage-i-2026-q1/STAGE_SYNTHESIS.md); Jan–Mar month reconstructions | [same-producer review](stage-i-2026-q1/RESEARCH_REVIEW.md) |
+| J | 2026-Q2 | `FRONTIER_STAGE_COMPLETE / SOURCE_BOUNDED` | [Stage J synthesis](stage-j-2026-q2/STAGE_SYNTHESIS.md); Apr–Jun month reconstructions | [same-producer review](stage-j-2026-q2/RESEARCH_REVIEW.md) |
+| K | 2026-Q3 | `FRONTIER_STAGE_COMPLETE / SOURCE_BOUNDED` | [Stage K synthesis](stage-k-2026-q3/STAGE_SYNTHESIS.md); Jul–Sep month reconstructions | [same-producer review](stage-k-2026-q3/RESEARCH_REVIEW.md) |
+| L | 2026-Q4 | `MONTH_OPEN / STAGE_NOT_COMPLETE` | [October reconstruction](stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md) and [brief](stage-l-2026-q4/STAGE_BRIEF.md), Oct 1–19 only | [partial review](stage-l-2026-q4/RESEARCH_REVIEW.md) |
+
+- [2026 YTD longitudinal synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md) — **YEAR_OPEN**.
+- [2024–2026 YTD cross-year bridge](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2026_YTD_2026-10-19.md) — historical analyses preserved, incompatible methods disclosed.
+- [Reconciliation of earlier Stage-I absence](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md) — correction forward, no rewrite of A2 as-of evidence.
+- No native benchmark execution, code change, conformance proof, independent scientific validation or CI completion is asserted by these research files.
