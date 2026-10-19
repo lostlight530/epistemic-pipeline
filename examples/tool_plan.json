@@ -1,0 +1,28 @@
+{
+  "steps": [
+    {
+      "id": "dag-inspection",
+      "tool": "graph.inspect",
+      "arguments": {
+        "nodes": [
+          {
+            "id": "discover",
+            "dependencies": []
+          },
+          {
+            "id": "analyze",
+            "dependencies": [
+              "discover"
+            ]
+          },
+          {
+            "id": "review",
+            "dependencies": [
+              "analyze"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
