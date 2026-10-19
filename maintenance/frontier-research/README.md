@@ -86,3 +86,12 @@ These remain in force in every retrospective, live, longitudinal, correction, ha
 Every instantiated stage records the specification/template version it used. Later template improvements do not retroactively change the method used by an earlier stage. Substantive historical corrections are additive and use correction/reconciliation records.
 
 See [FIRST_BATCH_SPECIFICATION.md](FIRST_BATCH_SPECIFICATION.md) for the complete artifact relationships, completion rules, and authority boundaries.
+
+## Dated annual and cross-year synthesis route (2026-10-19)
+
+Monthly reconstruction is a time-bounded evidence input. A quarterly Stage is a three-month research project containing issue-driven Research Parts, register/chart, synthesis, review and handoff; annual/cross-year synthesis integrates Stage findings rather than creating another Stage.
+
+- [2025 annual longitudinal synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2025.md) — Stages E–H and twelve month reconstructions, `SOURCE_BOUNDED`.
+- [2024 to 2025-Q4 longitudinal synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2025_Q4.md) — additive Stage H extension; preserve earlier 2024→2025-Q3 record.
+- Neither artifact independently replays benchmarks, certifies a score nor closes 2026's native Stages. `Stage I NOT_EVIDENCED` remains the inherited boundary.
+- The large `LONGITUDINAL_INDEX.md` is a separate A2-owned router/current-relation surface; it has not been rewritten as an annual research conclusion.
