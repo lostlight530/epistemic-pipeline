@@ -54,6 +54,20 @@ class ToolInterfaceTests(unittest.TestCase):
                 {"id": str(i), "tool": "unknown", "arguments": {}} for i in range(33)
             ]})
 
+    def test_missing_output_directory_parent_is_structured_failure(self):
+        with tempfile.TemporaryDirectory() as root:
+            file_parent = Path(root) / "not-a-directory"
+            file_parent.write_text("occupied", encoding="utf-8")
+            result = subprocess.run(
+                [sys.executable, "tool_cli.py", "list", "--output",
+                 str(file_parent / "receipt.json")],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertNotEqual(result.returncode, 0)
+            value = json.loads(result.stdout)
+            self.assertEqual(value["status"], "failed")
+            self.assertEqual(value["error"]["type"], "FileExistsError")
+
     def test_cli_list_and_atomic_receipt(self):
         with tempfile.TemporaryDirectory() as root:
             output = Path(root) / "receipt.json"
