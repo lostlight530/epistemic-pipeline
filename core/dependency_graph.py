@@ -87,14 +87,14 @@ class DependencyGraph:
         return levels
 
     def find_parallel_groups(self) -> List[List[str]]:
-        """Return deterministic node groups that share dependency depth."""
+        """Return deterministic depth groups using one pass over computed levels."""
         levels = self.compute_levels()
         if not levels:
             return []
-        return [
-            sorted(node_id for node_id, node_level in levels.items() if node_level == level)
-            for level in range(max(levels.values()) + 1)
-        ]
+        buckets: Dict[int, List[str]] = defaultdict(list)
+        for node_id, level in levels.items():
+            buckets[level].append(node_id)
+        return [sorted(buckets[level]) for level in sorted(buckets)]
 
     def get_critical_path(self) -> List[str]:
         """Return one longest path by node count; ties follow deterministic ordering."""
