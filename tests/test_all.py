@@ -104,6 +104,28 @@ def test_deep_acyclic_graph_and_cycle_diagnostics():
     print("  [OK] deep valid DAGs and cyclic graph diagnostics remain distinct")
 
 
+def test_deep_parallel_groups_linear_bucketing_contract():
+    from core.dependency_graph import DependencyGraph
+
+    count = 4000
+    chain = DependencyGraph([
+        {"id": f"n{i}", "dependencies": [f"n{i-1}"] if i else []}
+        for i in range(count)
+    ])
+    groups = chain.find_parallel_groups()
+    assert len(groups) == count
+    assert groups[0] == ["n0"] and groups[-1] == [f"n{count-1}"]
+
+    diamond = DependencyGraph([
+        {"id": "A", "dependencies": []},
+        {"id": "C", "dependencies": ["A"]},
+        {"id": "B", "dependencies": ["A"]},
+        {"id": "D", "dependencies": ["B", "C"]},
+    ])
+    assert diamond.find_parallel_groups() == [["A"], ["B", "C"], ["D"]]
+    print("  [OK] parallel groups preserve deterministic depth semantics for deep DAGs")
+
+
 def test_runtime_policy_evaluator():
     from core.gatekeeper import Gatekeeper, RuntimePolicyEvaluator
 
