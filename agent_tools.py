@@ -148,6 +148,10 @@ def execute_tool_call(name: str, arguments: dict | str) -> dict:
         envelope["status"] = "ok"
     except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
         envelope["error"] = {"code": "EXECUTION_FAILED", "message": str(exc)}
+    except Exception as exc:
+        # Third-party validators may raise domain-specific exception classes.
+        # Preserve a structured failure, never emit a traceback on JSON stdout.
+        envelope["error"] = {"code": "INTERNAL_ERROR", "message": type(exc).__name__ + ": " + str(exc)}
     return envelope
 
 
