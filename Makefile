@@ -9,10 +9,14 @@ clean:
 	rm -rf __pycache__ .pytest_cache output/ traces/ checkpoints/ provenance/ evidence/
 	@echo "Cleaned caches and generated research artifacts"
 
-test: test-core test-provenance
+test: test-core test-provenance test-tool-interface
 
 test-core:
 	python3 tests/test_all.py
 
 test-provenance:
 	python3 -m unittest tests.test_provenance -v
+
+.PHONY: test-tool-interface
+test-tool-interface:
+	python3 -m unittest tests.test_tool_cli -v
