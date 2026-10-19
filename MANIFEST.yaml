@@ -468,3 +468,18 @@ scientific_boundaries:
 # no A→H synthesis artifact is inferred or manufactured by this annotation.
 # This is routing metadata only: calibrated=2026-09-22 is preserved, and no runtime capability,
 # machine-contract semantics, scientific validation, reproduction status, or release authority is changed.
+
+# Native Tool/CLI proposal, 2026-10-19
+native_tool_cli:
+  module: tool_cli.py
+  profile: epistemic-pipeline/tool-execution
+  agent_plan_profile: epistemic-pipeline/agent-plan
+  declared_plan_max_steps: 32
+  allowlisted_tool_count: 2
+  output_receipt: explicit_atomic_write_only
+  transport: local_json_cli_not_mcp_server
+  model_calls: false
+  remote_tool_execution: false
+  scientific_validity_claim: false
+  independent_reproduction_claim: false
+  proof_scope: local_proposal_requires_real_test_evidence
