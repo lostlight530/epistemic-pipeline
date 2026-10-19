@@ -94,7 +94,9 @@ Experimental modules remain outside this canonical path unless deliberately inte
 
 `DependencyGraph.detect_cycles()` now uses an explicit DFS frame stack and active-path index, avoiding Python recursion-limit failures for long but valid dependency chains. This changes the cycle *inspection implementation*, not graph identity, dependency semantics, cycle diagnostic shape, topological ordering, or scientific/evidence claims. The routine still reports back-edge cycles and never claims independent research validation.
 
-The regression in `tests/test_all.py` constructs a chain longer than `sys.getrecursionlimit()`, asserts it is a valid DAG, and separately checks a real two-node cycle. The local repository entrypoint is `make test`; test source or a Draft PR is not evidence that the command was executed on the proposed revision.
+The regression in `tests/test_all.py` constructs a chain longer than `sys.getrecursionlimit()`, asserts it is a valid DAG, and separately checks a real two-node cycle.
+
+`find_parallel_groups()` now groups nodes by computed depth in one pass, instead of rescanning every node for each depth. This avoids depth-by-node quadratic grouping on long chains while preserving deterministic sorted output. The extra 4,000-node and diamond fixtures test grouping shape; they do not benchmark whole-engine throughput. The local repository entrypoint is `make test`; test source or a Draft PR is not evidence that the command was executed on the proposed revision.
 
 ## Runtime policy
 
