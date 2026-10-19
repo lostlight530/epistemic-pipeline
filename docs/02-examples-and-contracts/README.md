@@ -90,3 +90,7 @@ For a new claim/evidence integration:
 5. retain revision-matched execution evidence when reporting that validation or transfer actually ran.
 
 Architecture and implementation explanation live under [`../01-source-and-explanation/`](../01-source-and-explanation/). Maintenance/audit material in class 03 is operational/historical context, not claim truth.
+
+## Native Tool / CLI / Agent interface (2026-10-19)
+
+- [TOOL_CLI_AGENT_CONTRACT.md](TOOL_CLI_AGENT_CONTRACT.md) — allowlisted tools, JSON receipts, declared-plan runner and epistemic safety boundaries
