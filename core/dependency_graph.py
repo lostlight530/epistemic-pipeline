@@ -87,14 +87,14 @@ class DependencyGraph:
         return levels
 
     def find_parallel_groups(self) -> List[List[str]]:
-        """Return deterministic node groups that share dependency depth."""
+        """Return deterministic depth groups using one pass over computed levels."""
         levels = self.compute_levels()
         if not levels:
             return []
-        return [
-            sorted(node_id for node_id, node_level in levels.items() if node_level == level)
-            for level in range(max(levels.values()) + 1)
-        ]
+        buckets: Dict[int, List[str]] = defaultdict(list)
+        for node_id, level in levels.items():
+            buckets[level].append(node_id)
+        return [sorted(buckets[level]) for level in sorted(buckets)]
 
     def get_critical_path(self) -> List[str]:
         """Return one longest path by node count; ties follow deterministic ordering."""
@@ -118,32 +118,46 @@ class DependencyGraph:
         return list(reversed(path))
 
     def detect_cycles(self) -> List[List[str]]:
-        """Return DFS back-edge cycle reports for diagnostic purposes."""
-        visited: Set[str] = set()
-        recursion: Set[str] = set()
-        cycles: List[List[str]] = []
-        seen_signatures = set()
+        """Report DFS back-edge cycles without relying on Python recursion depth.
 
-        def dfs(node_id: str, path: List[str]) -> None:
-            visited.add(node_id)
-            recursion.add(node_id)
-            path.append(node_id)
-            for neighbor in sorted(self.adj[node_id]):
-                if neighbor not in visited:
-                    dfs(neighbor, path)
-                elif neighbor in recursion:
-                    start = path.index(neighbor)
-                    cycle = path[start:] + [neighbor]
+        The explicit frame stack preserves deterministic traversal and active
+        path order. It avoids treating a deep *acyclic* execution graph as an
+        invalid graph solely because Python's recursion limit was exceeded.
+        """
+        visited: Set[str] = set()
+        active_positions: Dict[str, int] = {}
+        cycles: List[List[str]] = []
+        seen_signatures: Set[tuple[str, ...]] = set()
+
+        for start in sorted(self.nodes):
+            if start in visited:
+                continue
+            visited.add(start)
+            path = [start]
+            active_positions[start] = 0
+            frames = [(start, iter(sorted(self.adj[start])))]
+            while frames:
+                current, neighbors = frames[-1]
+                try:
+                    neighbor = next(neighbors)
+                except StopIteration:
+                    frames.pop()
+                    active_positions.pop(current)
+                    path.pop()
+                    continue
+
+                if neighbor in active_positions:
+                    cycle = path[active_positions[neighbor]:] + [neighbor]
                     signature = tuple(cycle)
                     if signature not in seen_signatures:
                         seen_signatures.add(signature)
                         cycles.append(cycle)
-            path.pop()
-            recursion.remove(node_id)
+                elif neighbor not in visited:
+                    visited.add(neighbor)
+                    active_positions[neighbor] = len(path)
+                    path.append(neighbor)
+                    frames.append((neighbor, iter(sorted(self.adj[neighbor]))))
 
-        for node_id in sorted(self.nodes):
-            if node_id not in visited:
-                dfs(node_id, [])
         return cycles
 
     def validate(self) -> Tuple[bool, List[str]]:

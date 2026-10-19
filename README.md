@@ -74,7 +74,7 @@ Project-owned identifiers are intentionally unversioned. Real external standards
 
 | Module | Role | Boundary |
 |---|---|---|
-| `core/dependency_graph.py` | DAG validation/topology | structural semantics only |
+| `core/dependency_graph.py` | DAG validation/topology | iterative cycle detection for deep DAGs; structural semantics only |
 | `core/engine.py` | state execution, runtime policy, retry/timeout, checkpoint | run success != scientific validity |
 | `core/llm_harness.py` | provider-neutral structured output + provider disclosure | real providers injected; unknown metadata stays unknown |
 | `core/gatekeeper.py` | explicit machine runtime predicates | not a scientific reviewer |
@@ -89,6 +89,14 @@ Project-owned identifiers are intentionally unversioned. Real external standards
 | `core/maintenance_cadence.py` | read-only daily/weekly/monthly structural maintenance evidence | clean maintenance != scientific validity |
 
 Experimental modules remain outside this canonical path unless deliberately integrated
+
+### Deep dependency-graph validation (2026-10-19)
+
+`DependencyGraph.detect_cycles()` now uses an explicit DFS frame stack and active-path index, avoiding Python recursion-limit failures for long but valid dependency chains. This changes the cycle *inspection implementation*, not graph identity, dependency semantics, cycle diagnostic shape, topological ordering, or scientific/evidence claims. The routine still reports back-edge cycles and never claims independent research validation.
+
+The regression in `tests/test_all.py` constructs a chain longer than `sys.getrecursionlimit()`, asserts it is a valid DAG, and separately checks a real two-node cycle.
+
+`find_parallel_groups()` now groups nodes by computed depth in one pass, instead of rescanning every node for each depth. This avoids depth-by-node quadratic grouping on long chains while preserving deterministic sorted output. The extra 4,000-node and diamond fixtures test grouping shape; they do not benchmark whole-engine throughput. The local repository entrypoint is `make test`; test source or a Draft PR is not evidence that the command was executed on the proposed revision.
 
 ## Runtime policy
 

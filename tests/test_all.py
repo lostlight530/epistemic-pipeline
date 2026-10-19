@@ -77,6 +77,116 @@ def test_dependency_graph_validation():
     print("  [OK] dependency graph rejects duplicate/missing structural identity")
 
 
+def test_deep_acyclic_graph_and_cycle_diagnostics():
+    from core.dependency_graph import DependencyGraph
+
+    # A valid DAG may be deeper than Python's recursion limit.
+    count = sys.getrecursionlimit() + 32
+    graph = DependencyGraph([
+        {"id": f"n{i}", "dependencies": [f"n{i-1}"] if i else []}
+        for i in range(count)
+    ])
+    valid, errors = graph.validate()
+    assert valid, errors
+    assert graph.detect_cycles() == []
+    path = graph.get_critical_path()
+    assert len(path) == count and path[0] == "n0"
+    assert path[-1] == f"n{count-1}"
+
+    cyclic = DependencyGraph([
+        {"id": "root", "dependencies": []},
+        {"id": "a", "dependencies": ["b"]},
+        {"id": "b", "dependencies": ["a"]},
+    ])
+    assert cyclic.detect_cycles() == [["a", "b", "a"]]
+    valid, errors = cyclic.validate()
+    assert not valid and any("cycle:" in error for error in errors)
+    print("  [OK] deep valid DAGs and cyclic graph diagnostics remain distinct")
+
+
+def test_deep_parallel_groups_linear_bucketing_contract():
+    from core.dependency_graph import DependencyGraph
+
+    count = 4000
+    chain = DependencyGraph([
+        {"id": f"n{i}", "dependencies": [f"n{i-1}"] if i else []}
+        for i in range(count)
+    ])
+    groups = chain.find_parallel_groups()
+    assert len(groups) == count
+    assert groups[0] == ["n0"] and groups[-1] == [f"n{count-1}"]
+
+    diamond = DependencyGraph([
+        {"id": "A", "dependencies": []},
+        {"id": "C", "dependencies": ["A"]},
+        {"id": "B", "dependencies": ["A"]},
+        {"id": "D", "dependencies": ["B", "C"]},
+    ])
+    assert diamond.find_parallel_groups() == [["A"], ["B", "C"], ["D"]]
+    print("  [OK] parallel groups preserve deterministic depth semantics for deep DAGs")
+
+
+def test_seeded_graph_metamorphic_cycle_and_level_contract():
+    """Deterministic graph-oracle test; no provider or scientific truth involved."""
+    from collections import defaultdict, deque
+    from random import Random
+    from core.dependency_graph import DependencyGraph
+
+    rng = Random(20261019)
+    for case in range(96):
+        count = rng.randrange(1, 24)
+        names = [f"n{i:02d}" for i in range(count)]
+        arbitrary_edges = case % 3 == 0
+        nodes = []
+        for i, name in enumerate(names):
+            candidates = names if arbitrary_edges else names[:i]
+            take = rng.randrange(min(len(candidates), 5) + 1)
+            dependencies = rng.sample(candidates, take)
+            nodes.append({"id": name, "dependencies": dependencies})
+        rng.shuffle(nodes)
+        graph = DependencyGraph(nodes)
+
+        indegree = {name: 0 for name in names}
+        successor = defaultdict(list)
+        for node in nodes:
+            for dependency in node["dependencies"]:
+                successor[dependency].append(node["id"])
+                indegree[node["id"]] += 1
+        queue = deque(name for name, degree in indegree.items() if degree == 0)
+        traversed = 0
+        while queue:
+            current = queue.popleft()
+            traversed += 1
+            for neighbor in successor[current]:
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+        oracle_has_cycle = traversed != len(nodes)
+
+        cycles = graph.detect_cycles()
+        assert bool(cycles) == oracle_has_cycle, (case, cycles)
+        for cycle in cycles:
+            assert cycle[0] == cycle[-1]
+            assert all(
+                source in graph.rev_adj[target]
+                for source, target in zip(cycle, cycle[1:])
+            ), (case, cycle)
+
+        valid, errors = graph.validate()
+        if oracle_has_cycle:
+            assert not valid and any("cycle:" in item for item in errors)
+        else:
+            assert valid, (case, errors)
+            levels = graph.compute_levels()
+            groups = graph.find_parallel_groups()
+            assert groups == [
+                sorted(node_id for node_id, depth in levels.items() if depth == level)
+                for level in range(max(levels.values()) + 1)
+            ]
+            assert len(graph.get_critical_path()) == max(levels.values()) + 1
+    print("  [OK] seeded DAG/cycle/level checks agree with independent Kahn oracle")
+
+
 def test_runtime_policy_evaluator():
     from core.gatekeeper import Gatekeeper, RuntimePolicyEvaluator
 

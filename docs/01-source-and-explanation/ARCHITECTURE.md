@@ -87,7 +87,11 @@ Internal project identifiers are unversioned; real external standard/runtime ver
 
 ## Dependency graph
 
-`core/dependency_graph.py` validates duplicate IDs, missing dependencies, cycles, and reachability, then produces deterministic topological ordering / parallel groups
+`core/dependency_graph.py` validates duplicate IDs, missing dependencies, cycles, and reachability, then produces deterministic topological ordering / parallel groups.
+
+The 2026-10-19 cycle-checking implementation uses iterative DFS with explicit active frames rather than Python recursive calls.
+
+Deep-graph grouping uses depth buckets accumulated in a single pass, then deterministically ordered by level and node ID. Graph-level parallel-group computation is not proof of actual parallel execution or runtime throughput. A long, acyclic, structurally valid dependency chain must not fail only because the interpreter recursion limit was reached. Cycles remain diagnostic back-edge reports; any actual node execution, recovery permission, or scientific/evidence conclusion belongs to separate runtime and verification layers.
 
 ```text
 graph validity != research validity
