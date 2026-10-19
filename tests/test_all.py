@@ -77,6 +77,33 @@ def test_dependency_graph_validation():
     print("  [OK] dependency graph rejects duplicate/missing structural identity")
 
 
+def test_deep_acyclic_graph_and_cycle_diagnostics():
+    from core.dependency_graph import DependencyGraph
+
+    # A valid DAG may be deeper than Python's recursion limit.
+    count = sys.getrecursionlimit() + 32
+    graph = DependencyGraph([
+        {"id": f"n{i}", "dependencies": [f"n{i-1}"] if i else []}
+        for i in range(count)
+    ])
+    valid, errors = graph.validate()
+    assert valid, errors
+    assert graph.detect_cycles() == []
+    path = graph.get_critical_path()
+    assert len(path) == count and path[0] == "n0"
+    assert path[-1] == f"n{count-1}"
+
+    cyclic = DependencyGraph([
+        {"id": "root", "dependencies": []},
+        {"id": "a", "dependencies": ["b"]},
+        {"id": "b", "dependencies": ["a"]},
+    ])
+    assert cyclic.detect_cycles() == [["a", "b", "a"]]
+    valid, errors = cyclic.validate()
+    assert not valid and any("cycle:" in error for error in errors)
+    print("  [OK] deep valid DAGs and cyclic graph diagnostics remain distinct")
+
+
 def test_runtime_policy_evaluator():
     from core.gatekeeper import Gatekeeper, RuntimePolicyEvaluator
 
