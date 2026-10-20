@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-19`
+- **Current maintenance relation through:** `2026-10-20` (bounded no-new-source delta check)
 
 ## Boundary
 
@@ -7120,3 +7120,14 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - [2024–2026 YTD cross-year bridge](longitudinal/LONGITUDINAL_SYNTHESIS_2024_TO_2026_YTD_2026-10-19.md) — historical analyses preserved, incompatible methods disclosed.
 - [Reconciliation of earlier Stage-I absence](corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md) — correction forward, no rewrite of A2 as-of evidence.
 - No native benchmark execution, code change, conformance proof, independent scientific validation or CI completion is asserted by these research files.
+
+
+## A2 current relation — 2026-10-20 source-delta check
+
+- Source main `608e8c6aa666424095ea35b786576221de216a50`, A1 custody `maintenance/frontier-research/annotations/2026-10-20_A1_STAGE_SOURCE_CUSTODY.md` exact blob `e18830c2ba059c590a77580166490579b16a4bba`
+- A2 current path `maintenance/frontier-research/annotations/2026-10-20_A2_STAGE_CURRENT_RELATION.md` compares 151 Stage source identities against current main with 0 changes
+- Stage L original October reconstruction `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md` retains its exact Oct19 source-publisher cut, no newly observed primary Stage L source dated October20
+- SDK MCP annotations and pending-approval compaction publisher claims are not real tool effects, current deployment or independent conformance
+- No earlier Stage or source-register mutation, no new research credit, original provenance and month-open boundary retained
+- Full runtime/agent/approval tests and publisher recertification NOT_EXECUTED by this A2 documentary successor
+- A2 state: A1_151_INHERITED / N_SOURCE_SHA_DRIFT_0 / OCT20_STAGE_SOURCE_NOT_OBSERVED / NO_RESEARCH_CREDIT
