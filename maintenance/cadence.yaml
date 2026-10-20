@@ -83,6 +83,7 @@
     "validators"
   ],
   "forbidden_governance_paths": [".github/workflows"],
+  "allowed_governance_paths": [".github/workflows/tool-cli-agent-smoke.yml"],
   "history_patterns": [
     "docs/03-maintenance-and-audit/history/*_DAY_CONSOLIDATION.md",
     "docs/03-maintenance-and-audit/history/STAGE_*.md"

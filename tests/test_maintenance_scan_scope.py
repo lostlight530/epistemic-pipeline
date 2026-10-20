@@ -120,5 +120,57 @@ class TestMaintenanceScanScope(unittest.TestCase):
             )
 
 
+
+    def _configure_optional_smoke_workflow(self, config_path: Path) -> None:
+        config = json.loads(config_path.read_text(encoding="utf-8"))
+        config["forbidden_governance_paths"] = [".github/workflows"]
+        config["allowed_governance_paths"] = [".github/workflows/tool-cli-agent-smoke.yml"]
+        config_path.write_text(json.dumps(config), encoding="utf-8")
+
+    def test_optional_smoke_workflow_is_allowlisted(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root, config, _ = self._setup(Path(tmp))
+            self._configure_optional_smoke_workflow(config)
+            folder = root / ".github" / "workflows"
+            folder.mkdir(parents=True)
+            (folder / "tool-cli-agent-smoke.yml").write_text("name: optional smoke", encoding="utf-8")
+            report = build_report(root=root, config_path=config, cadence="daily", as_of=date(2026, 10, 21))
+            self.assertEqual(report["checks"]["forbidden_governance_paths_present"], [])
+            self.assertNotIn(
+                "forbidden-governance-path-present",
+                [finding["kind"] for finding in report["findings"]],
+            )
+
+    def test_unapproved_workflow_is_still_forbidden(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root, config, _ = self._setup(Path(tmp))
+            self._configure_optional_smoke_workflow(config)
+            folder = root / ".github" / "workflows"
+            folder.mkdir(parents=True)
+            (folder / "tool-cli-agent-smoke.yml").write_text("name: optional smoke", encoding="utf-8")
+            (folder / "unexpected.yml").write_text("name: unapproved", encoding="utf-8")
+            report = build_report(root=root, config_path=config, cadence="daily", as_of=date(2026, 10, 21))
+            self.assertEqual(
+                report["checks"]["forbidden_governance_paths_present"],
+                [".github/workflows/unexpected.yml"],
+            )
+
+    def test_allowlisted_symlink_cannot_escape_repository(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            root, config, _ = self._setup(home)
+            self._configure_optional_smoke_workflow(config)
+            folder = root / ".github" / "workflows"
+            folder.mkdir(parents=True)
+            outside = home / "foreign.yml"
+            outside.write_text("name: foreign", encoding="utf-8")
+            self._link(folder / "tool-cli-agent-smoke.yml", outside)
+            report = build_report(root=root, config_path=config, cadence="daily", as_of=date(2026, 10, 21))
+            self.assertIn(
+                ".github/workflows/tool-cli-agent-smoke.yml",
+                report["checks"]["forbidden_governance_paths_present"],
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
