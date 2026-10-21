@@ -155,6 +155,14 @@ python core/maintenance_cadence.py daily --as-of YYYY-MM-DD --output output/evid
 
 The scanner enforces its declared repository-local structural scope. It does not execute the research workflow, call an LLM, run tests, verify citations, judge evidence sufficiency, evaluate provenance soundness, scientifically adjudicate identity ambiguity, inspect GitHub PR ownership, or validate historical Jules claims.
 
+### Optional Tool CLI smoke workflow boundary
+
+The current repository has one deliberately introduced optional smoke workflow at `.github/workflows/tool-cli-agent-smoke.yml`, which is a Tool / CLI / Agent integration aid, not a mandatory merge gate or scientific validation
+
+The maintenance scanner's `forbidden_governance_paths` continues to cover the workflow directory, while `allowed_governance_paths` permits only that exact file, any other workflow file, including a symlink at the allowed path, remains an error-level governance finding
+
+Allowlisting a workflow path does not establish its execution, passing checks, branch protection, required review, scientific validity, or authorization to merge
+
 ## Execution evidence
 
 ```text

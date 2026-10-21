@@ -278,13 +278,30 @@ def build_report(
     for path in missing:
         findings.append({"severity": "error", "kind": "missing-canonical-path", "path": path})
 
-    governance_present = [display for display, path in governance_entries if path.exists()]
+    allowed_governance_paths = {
+        display for display, _ in _validated_entries(
+            root, config.get("allowed_governance_paths") or [],
+            field="allowed_governance_paths", findings=findings,
+        )
+    }
+    governance_present: list[str] = []
+    for display, path in governance_entries:
+        if not path.exists():
+            continue
+        candidates = path.rglob("*") if path.is_dir() else (path,)
+        for candidate in candidates:
+            if not candidate.is_file() and not candidate.is_symlink():
+                continue
+            relative = candidate.relative_to(root).as_posix()
+            if candidate.is_symlink() or relative not in allowed_governance_paths:
+                governance_present.append(relative)
+    governance_present = sorted(set(governance_present))
     for path in governance_present:
         findings.append({
             "severity": "error",
             "kind": "forbidden-governance-path-present",
             "path": path,
-            "semantics": "GitHub-native merge-gate automation is outside the research architecture",
+            "semantics": "unapproved governance file; narrowly allowlisted optional smoke workflow is not a merge gate",
         })
 
     prefix = str(config.get("project_profile_prefix") or "")
