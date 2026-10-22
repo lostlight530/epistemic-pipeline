@@ -43,6 +43,7 @@ _SPECS = [
           "items": {
             "type": "string"
           },
+          "minItems": 1,
           "description": "Optional explicit claim IDs; omission selects all indexed claims"
         },
         "purpose": {
@@ -70,25 +71,45 @@ def tool_definitions() -> list[dict]:
     }} for spec in _SPECS]
 
 
+def _check_schema_value(value: Any, schema: dict, path: str) -> None:
+    """Validate declared parameter types, including nested array items."""
+    kind = schema.get("type")
+    if kind == "string":
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{path} must be a nonempty string")
+    elif kind == "boolean":
+        if not isinstance(value, bool):
+            raise ValueError(f"{path} must be a boolean")
+    elif kind == "array":
+        if not isinstance(value, list):
+            raise ValueError(f"{path} must be an array")
+        if len(value) < schema.get("minItems", 0):
+            raise ValueError(f'{path} must contain at least {schema["minItems"]} items')
+        if "items" in schema:
+            for index, item in enumerate(value):
+                _check_schema_value(item, schema["items"], f"{path}[{index}]")
+    elif kind == "object":
+        if not isinstance(value, dict):
+            raise ValueError(f"{path} must be an object")
+        properties = schema.get("properties", {})
+        if schema.get("additionalProperties") is False:
+            unknown = set(value) - set(properties)
+            if unknown:
+                raise ValueError(f'{path} has unexpected keys: {", ".join(sorted(unknown))}')
+        missing = set(schema.get("required", [])) - set(value)
+        if missing:
+            raise ValueError(f'{path} is missing keys: {", ".join(sorted(missing))}')
+        for key, item in value.items():
+            if key in properties:
+                _check_schema_value(item, properties[key], f"{path}.{key}")
+    else:
+        raise ValueError(f"unsupported parameter schema type: {kind}")
+    if "enum" in schema and value not in schema["enum"]:
+        raise ValueError(f"{path} must be an allowed value")
+
+
 def _check_arguments(name: str, arguments: Any) -> dict:
-    if not isinstance(arguments, dict):
-        raise ValueError("arguments must be a JSON object")
-    schema = TOOL_SPECS[name]["parameters"]
-    properties = schema["properties"]
-    unknown = set(arguments) - set(properties)
-    if unknown:
-        raise ValueError("unexpected argument(s): " + ", ".join(sorted(unknown)))
-    missing = set(schema.get("required", [])) - set(arguments)
-    if missing:
-        raise ValueError("missing argument(s): " + ", ".join(sorted(missing)))
-    for key, value in arguments.items():
-        typ = properties[key]["type"]
-        if typ == "string" and (not isinstance(value, str) or not value.strip()):
-            raise ValueError(key + " must be a nonempty string")
-        if typ == "boolean" and not isinstance(value, bool):
-            raise ValueError(key + " must be a boolean")
-        if typ == "array" and not isinstance(value, list):
-            raise ValueError(key + " must be an array")
+    _check_schema_value(arguments, TOOL_SPECS[name]["parameters"], "arguments")
     return arguments
 
 

@@ -40,6 +40,23 @@ class TestToolContract(unittest.TestCase):
         hidden = execute_tool_call(name, {"unsafe_cmd": "rm -rf /"})
         self.assertEqual(hidden["error"]["code"], "INVALID_ARGUMENT")
 
+    def test_nested_claim_ids_preflight_fails_before_execution(self):
+        from agent_plan import run_plan
+        invalid_ids = [[7], [""], [], ["claim-1", None]]
+        for claim_ids in invalid_ids:
+            arguments = {"claim_audit": "not-opened.json", "claim_ids": claim_ids}
+            with self.subTest(claim_ids=claim_ids):
+                direct = execute_tool_call("claim_transfer", arguments)
+                self.assertEqual(direct["error"]["code"], "INVALID_ARGUMENT")
+                plan = {"steps": [{"tool": "claim_transfer", "arguments": arguments}]}
+                preview = run_plan(plan)
+                self.assertEqual(preview["error"]["code"], "INVALID_PLAN")
+                self.assertFalse(preview["approval_granted"])
+        valid = {"steps": [{"tool": "claim_transfer", "arguments": {
+            "claim_audit": "not-opened.json", "claim_ids": ["claim-1"],
+        }}]}
+        self.assertEqual(run_plan(valid)["status"], "approval_required")
+
     def test_cli_registry_machine_json_and_offline_html(self):
         proc = subprocess.run(
             [sys.executable, str(ROOT / "tool_cli.py"), "list"],
