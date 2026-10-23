@@ -7,7 +7,7 @@
 - Fixed month identity: `2026-10`; Stage research is state-triggered, not a daily continuity task
 - Current Stage source identities rechecked: 151; missing: 0; changed relative to A1 table: 0
 - New Stage source objects through 2026-10-23: 0; no new source-register/evidence-pipeline object is admitted by path presence alone
-- Fresh main and recursive tree SHA match; all 151 Stage source paths exist with matching current blob identity
+- Fresh `main` commit `fa33c89e125030866cafad99cb4d2066168cbce5` records root tree `d8342f653760d02b888d16b53c35d692ac8b283b`; all 151 mapped paths, blob SHAs, and byte sizes match the recursive tree for that commit.
 
 ## Complete Stage source-to-current mapping
 
@@ -187,3 +187,9 @@
 ## Result
 
 `A2_STAGE_MONTH_VERSION_2026-10 / 151_SOURCE_IDENTITIES_PRESERVED / NO_NEW_STAGE_SOURCE / STAGE_OPEN`
+
+## 2026-10-23 post-merge correction — Git object identity
+
+- Superseded wording: “Fresh main and recursive tree SHA match; all 151 Stage source paths exist with matching current blob identity”. The original version remains in Git history.
+- Correction: a commit SHA identifies a Git commit object; a tree SHA identifies a separate tree object. The recorded base commit and root-tree SHA are distinct. The recursive tree response returned the root-tree SHA, and all 151 mapped rows matched path, blob SHA, and byte size against that tree.
+- Scope: wording precision only. The 151 Stage source identities, zero-new-Stage-source conclusion, Stage owner OPEN state, and quarter-close NOT_DUE state are unchanged. No execution, test, external-source, or scientific-validation credit is added by this correction.
