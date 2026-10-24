@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import os
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Optional
@@ -191,10 +192,30 @@ def build_claim_transfer(
 
 def write_claim_transfer(record: dict, output: str | Path) -> Path:
     path = Path(output)
+    source_path = (record.get("source_claim_audit") or {}).get("path")
+    if source_path and path.resolve() == Path(source_path).resolve():
+        raise ValueError("claim transfer output must not overwrite the source claim-verification sidecar")
+
     path.parent.mkdir(parents=True, exist_ok=True)
-    temp = path.with_suffix(path.suffix + ".tmp")
-    temp.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(temp, path)
+    staged = None
+    try:
+        # Use an exclusive, same-directory temporary file: a fixed .tmp name
+        # could itself be an existing source sidecar.
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(record, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
     return path
 
 
