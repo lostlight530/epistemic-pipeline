@@ -432,6 +432,23 @@ def main(argv: Optional[list[str]] = None) -> int:
         config_path = root / config_path
     output_path = Path(args.output).resolve() if args.output else None
 
+    # A report must not overwrite an inspected source, Manifest, or cadence
+    # configuration. Repeated runs may replace their own prior report only.
+    if output_path is not None and output_path.exists():
+        try:
+            previous = json.loads(output_path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            parser.error("--output target is not an existing maintenance report")
+        if not (
+            isinstance(previous, dict)
+            and previous.get("profile") == PROFILE
+            and previous.get("cadence") in {"daily", "weekly", "monthly"}
+            and isinstance(previous.get("maintenance_boundaries"), dict)
+            and isinstance(previous.get("configuration_file_sha256"), str)
+            and previous["configuration_file_sha256"].startswith("sha256:")
+        ):
+            parser.error("--output target is not an existing maintenance report")
+
     report = build_report(
         root=root,
         config_path=config_path,
