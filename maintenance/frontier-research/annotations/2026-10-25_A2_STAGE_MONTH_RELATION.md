@@ -1,0 +1,228 @@
+# A2 | epistemic-pipeline | October 2026 Stage A-L monthly relation through Oct25
+
+- Exact post-all-ten-A1 main: `dda82e567e8d40235af93ba79875aacc1d3f7be9`
+- Merged current A1: `maintenance/frontier-research/annotations/2026-10-25_A1_STAGE_SOURCE_CUSTODY.md` @ blob `6e0b372abcf5e2baeef84646262e8676374bc487`
+- Prior Oct24 A2 merged main: `8adcda591233b88d05be4f919834008aee120514`
+- Fixed MONTH_VERSION `2026-10` / range Oct01–25 inclusive
+- In-scope Stage A-L directories 12, source objects 151, supporting owner/annotation objects 21.
+- N-day genuine merged native code PRs: #165; no fixed Oct25 Stage M research production.
+- Web GPT original Stage owner preserved; Independent GPT relation review is not an original experiment or run.
+- Source/original claim/evidence chart/hand-off/runtime validation are separate evidence planes.
+- Stage cadence is trigger/state-driven; October natural month remains OPEN, Periodic D7/D10/D14/D30 remain separate.
+
+## Incremental October-current judgment since merged A1
+- Source code `core/claim_transfer.py` rejects output path resolving to the input claim-verification source sidecar, preserving source evidence custody.
+- Native #165 source-sidecar overwrite fix is on main; source-claim audit descriptors remain author/source-bounded.
+- A claim transfer record maps local claim audit elements; it is not independent verification or an executable deployment permission.
+- A1 is exact merged prerequisite, not regenerated. Oct01–24 source custody carries only immutable confirmed source objects.
+- N=Oct25 admits new first-party source-code and test object SHA; no other Stage bibliography/quarter authoring is manufactured.
+- Static code review and existing test file presence are not a native test execution receipt. PR merge does not prove a runtime test passed.
+- No owner Stage file changed merely to meet a row quota; new relationship is recorded in this current-month A2 maintenance owner.
+
+## Stage-by-Stage source → evidence → handoff relation
+- 01 | `maintenance/frontier-research/stage-a-2024-q1` | 13 objects | SOURCE `dc3662325775308e8e2d338ff89e50ed6c9d1785` → CHART `3d2f7e15665fa4d1ca0ac8c39f2d9ced57c9bb0d` → HANDOFF `addf9a436a23bf9aa99680d927095c7179c3f7ce` | link != downstream executed
+- 02 | `maintenance/frontier-research/stage-b-2024-q2` | 13 objects | SOURCE `179f81a8a49c6ba68ddd850f33939d57a0a02a5e` → CHART `b77e833009d2b06552960efe40700381f734a09c` → HANDOFF `567585c2d1a7b6adcad0ee2f62f93e77bf352b26` | link != downstream executed
+- 03 | `maintenance/frontier-research/stage-c-2024-q3` | 13 objects | SOURCE `ac4b8c36c7268f08b7270e4aa6514043db56bcb0` → CHART `7becaa4d01daa62c034ca6b61467f016b406bb58` → HANDOFF `0211ddcb7c1bd0328108e0e04ea3eaa06caee2fa` | link != downstream executed
+- 04 | `maintenance/frontier-research/stage-d-2024-q4` | 13 objects | SOURCE `6d09b0c481339e7a2e97c8ddae8ec4697efbda41` → CHART `4b0890e8ec70aaa85df1f37156c689d7b4fe3372` → HANDOFF `e84f0baef687be21ef7966db1f11ebe37682ce23` | link != downstream executed
+- 05 | `maintenance/frontier-research/stage-e-2025-q1` | 13 objects | SOURCE `424f4c8b95a43416f8e18802d28a6d889274cf3e` → CHART `b106165c738438234657e18ae6b7b2f0de95a019` → HANDOFF `4eb5675bab2c2fc1eba8bbe8b93e60e1c57f8e0e` | link != downstream executed
+- 06 | `maintenance/frontier-research/stage-f-2025-q2` | 13 objects | SOURCE `2dd50f63d4ad28fdf488c0d513b73bb5d728c668` → CHART `cb4f1a3c071c7e1e71cc9bfc8c7bec1d495179c5` → HANDOFF `f346cce603cfb61d3a1bc5ba9b7d044699784388` | link != downstream executed
+- 07 | `maintenance/frontier-research/stage-g-2025-q3` | 13 objects | SOURCE `025dc5d9e7d5b91b69585257531ac295d933dfbc` → CHART `0842cdab894268dc7acd9abc2f8900ac4415cc4f` → HANDOFF `b89a55083ba16602b732b954a32a1bcd682cf5ab` | link != downstream executed
+- 08 | `maintenance/frontier-research/stage-h-2025-q4` | 13 objects | SOURCE `24084d7efa1770c3b8b5435264caa3d2d660c35c` → CHART `1034a61ecf6a9d51e8aa23123b81059c068da6ce` → HANDOFF `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb` | link != downstream executed
+- 09 | `maintenance/frontier-research/stage-i-2026-q1` | 13 objects | SOURCE `ec9ffb7be6d1fae6d6032579646bbfe67e30af11` → CHART `d4f6cc0e408f8a9689b0c7036fb994481d9ee040` → HANDOFF `6c88e3f0bb78eaa21afc7130a4415bbce45d6fb1` | link != downstream executed
+- 10 | `maintenance/frontier-research/stage-j-2026-q2` | 13 objects | SOURCE `b33d4694b28207c50a9973bc0e0742f36adc57d0` → CHART `5d937d0791f1dec4693e7cf35bbac454428988d9` → HANDOFF `3177b16422f2a9a0440576500a1c706d6e840337` | link != downstream executed
+- 11 | `maintenance/frontier-research/stage-k-2026-q3` | 14 objects | SOURCE `cd3777cb3b7b20be579dcaa33a089a872d4a11fd` → CHART `4552953fd42b85298b0758eeb4f3fb30c5b1bc1d` → HANDOFF `5e8900c9dac666f4c54ff861a0eba5c59aadea0e` | link != downstream executed
+- 12 | `maintenance/frontier-research/stage-l-2026-q4` | 7 objects | SOURCE `f13e5723679162b6a3ed3cda89cd4a65d39771e8` → CHART `d6f39ef3861bff6567cb9abab03143fdb5fc9185` → HANDOFF `MISSING` | link != downstream executed
+
+## Oct25 actual source-code and test differences
+- `core/claim_transfer.py` | modified | +24/-3 | CORE_RUNTIME_BEHAVIOR_SOURCE | no formal conformance claim
+- `tests/test_tool_cli.py` | modified | +40/-0 | TEST_CASES_ADDED_NOT_EXECUTED_HERE | no formal conformance claim
+- Current actual implementation source: `core/claim_transfer.py` @ `dbf698385c9fb252c4ebdc028f5abf5a10f40767` | first-party exact Git source.
+- No published external science results or independent in-situ test run were created by this A2.
+
+## Full Stage current source-object relationship ledger
+- 001 | `maintenance/frontier-research/annotations/2026-09-26_QI_PER_FILE_VERDICT_LEDGER.md` | blob `db5c4f1135cd57d2603d4c844a0872b9eb00fe76` | 59292 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 002 | `maintenance/frontier-research/annotations/2026-09-26_QI_STAGE_A-G_ANNOTATION.md` | blob `3a9787893ab7b392a923223887b981c82b240959` | 6079 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 003 | `maintenance/frontier-research/annotations/2026-10-19_STAGE_I_L_PRIMARY_RELEASE_AND_STRUCTURE_AUDIT.md` | blob `5c50f635814e25cf9997e73feca51b8783803b06` | 6626 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 004 | `maintenance/frontier-research/annotations/2026-10-20_A1_STAGE_SOURCE_CUSTODY.md` | blob `e18830c2ba059c590a77580166490579b16a4bba` | 33370 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 005 | `maintenance/frontier-research/annotations/2026-10-20_A2_STAGE_CURRENT_RELATION.md` | blob `095d32a02e3bffc852524bd78caadaefa1f1f61b` | 43434 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 006 | `maintenance/frontier-research/annotations/2026-10-21_A1_STAGE_SOURCE_CUSTODY.md` | blob `6cae013b904e15399896d8a13ee4c75fe0768fe3` | 33070 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 007 | `maintenance/frontier-research/annotations/2026-10-21_A2_STAGE_MONTH_RELATION.md` | blob `6689432cf6ff6c3da7090f359e78944bf73c7ff4` | 31078 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 008 | `maintenance/frontier-research/annotations/2026-10-23_A1_STAGE_SOURCE_CUSTODY.md` | blob `5f6737bb436dc6a69aba8b407f2d7e8bd81139b3` | 36255 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 009 | `maintenance/frontier-research/annotations/2026-10-23_A2_STAGE_MONTH_RELATION.md` | blob `1917fce2e81c8bda4a8234ec98ff3e388a9319b8` | 31017 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 010 | `maintenance/frontier-research/annotations/2026-10-24_A1_STAGE_SOURCE_CUSTODY.md` | blob `307f450657115b5f9d044ade12c701e14ff9d9b7` | 21406 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 011 | `maintenance/frontier-research/annotations/2026-10-24_A2_STAGE_MONTH_RELATION.md` | blob `e73c656bcccc15b6a84a6207ff7297303507ca5d` | 17288 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 012 | `maintenance/frontier-research/annotations/2026-10-25_A1_STAGE_SOURCE_CUSTODY.md` | blob `6e0b372abcf5e2baeef84646262e8676374bc487` | 51198 B | A1_A2_RELATION_SUCCESSOR | MERGED_CURRENT_A1_INHERITED | SOURCE_EXISTS_NOT_EXECUTED
+- 013 | `maintenance/frontier-research/annotations/expansion/2026-10-19_AGENT_SDK_RETRYABILITY_SOURCE_CANDIDATE.md` | blob `a431ca2923f3747f1466cbebd80499cf89f414f6` | 3896 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 014 | `maintenance/frontier-research/annotations/expansion/2026-10-19_SECOND_PASS_RELEASE_EVIDENCE_CANDIDATES.md` | blob `0c7826987742d16c1de0619be168e10ad3f5fd67` | 6247 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 015 | `maintenance/frontier-research/annotations/expansion/2026-10-19_STAGE_J_MCP_APPROVAL_SCHEMA_SOURCE_DELTA.md` | blob `3766e316c59ebfd5210f67d48d3ebd33fbd254e2` | 4438 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 016 | `maintenance/frontier-research/annotations/expansion/stage-a-2024-q1_LEDGER.md` | blob `3f2b221771d2f50b9c4d4c6f39b42b97f1cc80dd` | 1975 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 017 | `maintenance/frontier-research/annotations/expansion/stage-b-2024-q2_LEDGER.md` | blob `db21b0c4b5b8cfe5d91a25410f322dbc081be1d9` | 1965 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 018 | `maintenance/frontier-research/annotations/expansion/stage-c-2024-q3_LEDGER.md` | blob `3e1094c341b2ee2b177d2dc2ff35eb3f246cd962` | 1935 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 019 | `maintenance/frontier-research/annotations/expansion/stage-g-2025-q3_LEDGER.md` | blob `7671daafa2df93b60a5713fd26076b0388c082b2` | 921 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 020 | `maintenance/frontier-research/annotations/PARALLEL_SOURCE_SELECTION_RECONCILIATION_2026-10-19.md` | blob `c20bfd16cc7ff23032b281cacbb1604728871f29` | 3714 B | A1_A2_RELATION_SUCCESSOR | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 021 | `maintenance/frontier-research/README.md` | blob `3ce87c076ac272e3200763c0862bacfe5f9fec9e` | 9701 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 022 | `maintenance/frontier-research/stage-a-2024-q1/A1_BENCHMARK_EVIDENCE_ENVELOPES.md` | blob `c2cda772d8c47cf01e58221b8380e79a86367891` | 5693 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 023 | `maintenance/frontier-research/stage-a-2024-q1/A2_CONDITIONAL_BEHAVIOR_VERIFICATION_LIMITS.md` | blob `09fa81e9ef8c7ea7a15434f4ba87ba8c9a289f76` | 4623 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 024 | `maintenance/frontier-research/stage-a-2024-q1/A3_REVISION_COMPARABILITY_STATE_TRANSITIONS.md` | blob `79f98ab2b1dee8af758cb7633b96c7d7657c80c2` | 4037 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 025 | `maintenance/frontier-research/stage-a-2024-q1/CONTRIBUTOR_STATEMENT.md` | blob `55382292c4e3a27e0240768afa1727c71e04722f` | 1366 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 026 | `maintenance/frontier-research/stage-a-2024-q1/EVIDENCE_CHART.md` | blob `3d2f7e15665fa4d1ca0ac8c39f2d9ced57c9bb0d` | 4892 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 027 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_01_RECONSTRUCTION.md` | blob `07e33ae451200529fd618020b22f7090702e4cee` | 2927 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 028 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_02_RECONSTRUCTION.md` | blob `9f6a35ddc4698550ad83946f2ac21aaff46030e9` | 2805 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 029 | `maintenance/frontier-research/stage-a-2024-q1/MONTH_2024_03_RECONSTRUCTION.md` | blob `bf4d5decddbee6ec86140efc60496332574503f5` | 3708 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 030 | `maintenance/frontier-research/stage-a-2024-q1/RESEARCH_REVIEW.md` | blob `d138e90d0ca38e812cc90d026cb6d13eff533674` | 2765 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 031 | `maintenance/frontier-research/stage-a-2024-q1/SOURCE_OBJECT_REGISTER.md` | blob `dc3662325775308e8e2d338ff89e50ed6c9d1785` | 5548 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 032 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_BRIEF.md` | blob `c8590b199140c00a569e9c021185e29f73421b51` | 5997 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 033 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_HANDOFF.md` | blob `addf9a436a23bf9aa99680d927095c7179c3f7ce` | 1885 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 034 | `maintenance/frontier-research/stage-a-2024-q1/STAGE_SYNTHESIS.md` | blob `d488b4dd2fa3865229a057510fe4dfcff91ed4f7` | 15616 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 035 | `maintenance/frontier-research/stage-b-2024-q2/B1_EFFECTIVE_CAPABILITY_UNDER_CONDITIONS.md` | blob `c929b641949ccc4d575dcbf7f98198b921947204` | 1881 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 036 | `maintenance/frontier-research/stage-b-2024-q2/B2_BENCHMARK_REVISION_AND_CONTAMINATION.md` | blob `cbb73c5d209e982f0fde0a0370d12575458c6818` | 2210 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 037 | `maintenance/frontier-research/stage-b-2024-q2/B3_HARDER_AND_LIVE_EVALUATION.md` | blob `6a2387ca51d9e9b9ff66451fcc66e866f7bbab46` | 2534 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 038 | `maintenance/frontier-research/stage-b-2024-q2/CONTRIBUTOR_STATEMENT.md` | blob `cdc59b4c49bee17fdfe98c4c19a89e34e26da6b2` | 776 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 039 | `maintenance/frontier-research/stage-b-2024-q2/EVIDENCE_CHART.md` | blob `b77e833009d2b06552960efe40700381f734a09c` | 2018 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 040 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_04_RECONSTRUCTION.md` | blob `98300d5e51065a92dd322d8da5c2c3e24d963a34` | 648 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 041 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_05_RECONSTRUCTION.md` | blob `76e208497cb0a9f0e2b88fc443a753d9e845bd5c` | 681 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 042 | `maintenance/frontier-research/stage-b-2024-q2/MONTH_2024_06_RECONSTRUCTION.md` | blob `c1ef5cddfab8ee83457414f758e5293f132b5c4e` | 892 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 043 | `maintenance/frontier-research/stage-b-2024-q2/RESEARCH_REVIEW.md` | blob `dfffc0149b44e02197725e003b666b637d292da2` | 1452 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 044 | `maintenance/frontier-research/stage-b-2024-q2/SOURCE_OBJECT_REGISTER.md` | blob `179f81a8a49c6ba68ddd850f33939d57a0a02a5e` | 2545 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 045 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_BRIEF.md` | blob `a414c139678205bd70d80a3dde8a5e4e83dda3e2` | 2114 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 046 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_HANDOFF.md` | blob `567585c2d1a7b6adcad0ee2f62f93e77bf352b26` | 1206 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 047 | `maintenance/frontier-research/stage-b-2024-q2/STAGE_SYNTHESIS.md` | blob `f1e96f7efa298d7ce0daeb2797db01270be51a28` | 6201 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 048 | `maintenance/frontier-research/stage-c-2024-q3/C1_BENCHMARK_VINTAGE_LIVE_REFRESH.md` | blob `071d2c0e3198126f1481006055ef9198f8741881` | 2342 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 049 | `maintenance/frontier-research/stage-c-2024-q3/C2_DOMAIN_CONDITIONED_EVALUATOR_AUTHORITY.md` | blob `dc362f61d2ca582e00ff5f09db1bb74ade5cb0aa` | 2096 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 050 | `maintenance/frontier-research/stage-c-2024-q3/C3_EVALUATOR_DATASET_CONFIG_IDENTITY.md` | blob `dd6ac24f211201e1b7e20c63d0f3ba6343a72e7e` | 2018 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 051 | `maintenance/frontier-research/stage-c-2024-q3/CONTRIBUTOR_STATEMENT.md` | blob `2f4a2134f1fddc0f54ff76653b432f6d65fd756a` | 568 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 052 | `maintenance/frontier-research/stage-c-2024-q3/EVIDENCE_CHART.md` | blob `7becaa4d01daa62c034ca6b61467f016b406bb58` | 2017 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 053 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_07_RECONSTRUCTION.md` | blob `178ead6ab8d65cf5038627de7887f805773eb37b` | 628 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 054 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_08_RECONSTRUCTION.md` | blob `d28079d2105dbeb7b1598d4c5250320b5bb9bab7` | 751 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 055 | `maintenance/frontier-research/stage-c-2024-q3/MONTH_2024_09_RECONSTRUCTION.md` | blob `faecb2aaad8eda84d620377c8a478ce50998c517` | 888 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 056 | `maintenance/frontier-research/stage-c-2024-q3/RESEARCH_REVIEW.md` | blob `2cc1327132f3707a769a24871b9be668a8acc21a` | 1289 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 057 | `maintenance/frontier-research/stage-c-2024-q3/SOURCE_OBJECT_REGISTER.md` | blob `ac4b8c36c7268f08b7270e4aa6514043db56bcb0` | 2972 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 058 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_BRIEF.md` | blob `4b704f5e6f0f57ccc58c13ec4f4cd922dae14e61` | 2957 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 059 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_HANDOFF.md` | blob `0211ddcb7c1bd0328108e0e04ea3eaa06caee2fa` | 1040 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 060 | `maintenance/frontier-research/stage-c-2024-q3/STAGE_SYNTHESIS.md` | blob `85b67086bc25049af75d57b574a1873fc92d09f2` | 4485 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 061 | `maintenance/frontier-research/stage-d-2024-q4/CONTRIBUTOR_STATEMENT.md` | blob `0685eb77eb78e2c4da9f0a21d94c49da3182485d` | 708 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 062 | `maintenance/frontier-research/stage-d-2024-q4/D1_SCOPE_AND_DATASET_ERROR.md` | blob `4295a1e545b211237a7cf7bf780d7ff0f5630dac` | 1422 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 063 | `maintenance/frontier-research/stage-d-2024-q4/D2_FRESHNESS_DIFFICULTY_AND_VERSION_IDENTITY.md` | blob `46935fc6f7ed1ae17fe9f7c6116a1ffcea623990` | 1582 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 064 | `maintenance/frontier-research/stage-d-2024-q4/D3_GROUNDED_LONG_FORM_AND_JUDGE_ENSEMBLE.md` | blob `3c3e7d2789fb8f6fa78287437ef67b7951848d49` | 1493 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 065 | `maintenance/frontier-research/stage-d-2024-q4/EVIDENCE_CHART.md` | blob `4b0890e8ec70aaa85df1f37156c689d7b4fe3372` | 1000 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 066 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_10_RECONSTRUCTION.md` | blob `b07d7c96a1d57eafc8b9cae1602517a5476bb0b8` | 510 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 067 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_11_RECONSTRUCTION.md` | blob `8450e73f89fe32b8a42e038bb973be0f143cdf8e` | 499 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 068 | `maintenance/frontier-research/stage-d-2024-q4/MONTH_2024_12_RECONSTRUCTION.md` | blob `13860f35bfbce9688b4555baf94ec84826664c03` | 478 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 069 | `maintenance/frontier-research/stage-d-2024-q4/RESEARCH_REVIEW.md` | blob `55ae2992b5d8220a6b19b918b08484d9e5032185` | 1277 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 070 | `maintenance/frontier-research/stage-d-2024-q4/SOURCE_OBJECT_REGISTER.md` | blob `6d09b0c481339e7a2e97c8ddae8ec4697efbda41` | 1291 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 071 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_BRIEF.md` | blob `c9d3bcf43994acee68a2c87698606840ce1f44fb` | 1582 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 072 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_HANDOFF.md` | blob `e84f0baef687be21ef7966db1f11ebe37682ce23` | 1819 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 073 | `maintenance/frontier-research/stage-d-2024-q4/STAGE_SYNTHESIS.md` | blob `b128c28e3c998bebca841d3a60f34ffda9b26622` | 2638 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 074 | `maintenance/frontier-research/stage-e-2025-q1/CONTRIBUTOR_STATEMENT.md` | blob `5c0c4710c1ddade043f37d37ae8cbb849d6cb7b5` | 534 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 075 | `maintenance/frontier-research/stage-e-2025-q1/E1_HLE_DIFFICULTY_SCOPE_AND_CALIBRATION.md` | blob `133a1cdbac92e5561921e65a40d7858b9530aca2` | 1107 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 076 | `maintenance/frontier-research/stage-e-2025-q1/E2_SWELANCER_ECONOMIC_TASK_AND_GRADING_IDENTITY.md` | blob `e5a49d019cc637cd68476a6326a3f7fb4e6a856c` | 1333 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 077 | `maintenance/frontier-research/stage-e-2025-q1/E3_QUESTBENCH_UNDERSPECIFICATION_AND_INFORMATION_ACQUISITION.md` | blob `284d323203dd402913afc214d871a807424cddf4` | 1245 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 078 | `maintenance/frontier-research/stage-e-2025-q1/EVIDENCE_CHART.md` | blob `b106165c738438234657e18ae6b7b2f0de95a019` | 984 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 079 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_01_RECONSTRUCTION.md` | blob `1c5373d3f1befec9d89c51eb2a6ad599365fa2ba` | 536 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 080 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_02_RECONSTRUCTION.md` | blob `f29d6657ec25f167f62ea7fd8a711ed28e238680` | 500 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 081 | `maintenance/frontier-research/stage-e-2025-q1/MONTH_2025_03_RECONSTRUCTION.md` | blob `d11d612f807427ee377d07a46663a11399e9c4b7` | 602 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 082 | `maintenance/frontier-research/stage-e-2025-q1/RESEARCH_REVIEW.md` | blob `273592afb82452868e02c94bc907332495906235` | 1442 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 083 | `maintenance/frontier-research/stage-e-2025-q1/SOURCE_OBJECT_REGISTER.md` | blob `424f4c8b95a43416f8e18802d28a6d889274cf3e` | 1011 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 084 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_BRIEF.md` | blob `50ee3a9a90c95c43b1655d27478050e851d61617` | 1682 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 085 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_HANDOFF.md` | blob `4eb5675bab2c2fc1eba8bbe8b93e60e1c57f8e0e` | 1076 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 086 | `maintenance/frontier-research/stage-e-2025-q1/STAGE_SYNTHESIS.md` | blob `b10be4e2748ab1b6c1dfeb92bad6e39cfd8f00d2` | 3037 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 087 | `maintenance/frontier-research/stage-f-2025-q2/CONTRIBUTOR_STATEMENT.md` | blob `dc571ee6f248f03f35dfb182c4634655dede5a4a` | 381 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 088 | `maintenance/frontier-research/stage-f-2025-q2/EVIDENCE_CHART.md` | blob `cb4f1a3c071c7e1e71cc9bfc8c7bec1d495179c5` | 903 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 089 | `maintenance/frontier-research/stage-f-2025-q2/F1_PAPERBENCH_REPLICATION_TASK_AND_JUDGE_PROVENANCE.md` | blob `1007c15211b965c6cbc9079c3678e8e57d9b0e52` | 1104 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 090 | `maintenance/frontier-research/stage-f-2025-q2/F2_TERMINAL_BENCH_ENVIRONMENT_TEST_AND_EXECUTION_IDENTITY.md` | blob `f1063001ec606549145b1986d9f2b961b4fe9071` | 911 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 091 | `maintenance/frontier-research/stage-f-2025-q2/F3_TAU2_DUAL_CONTROL_STATE_AND_COORDINATION_PROVENANCE.md` | blob `182c69e2fc14b350aeefa9338dbdecad384d2c89` | 1063 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 092 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_04_RECONSTRUCTION.md` | blob `c8efc6f5d780763e4d040f7f339e99a20cb0dbad` | 420 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 093 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_05_RECONSTRUCTION.md` | blob `da5e7f92828d4900af978eb4dc257ad66c58cb35` | 363 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 094 | `maintenance/frontier-research/stage-f-2025-q2/MONTH_2025_06_RECONSTRUCTION.md` | blob `7385cc1353ee4643468849174677cd59c8b5f7f0` | 414 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 095 | `maintenance/frontier-research/stage-f-2025-q2/RESEARCH_REVIEW.md` | blob `d6c716fa560cd34d4c76ff9c7b7597d003e57b70` | 900 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 096 | `maintenance/frontier-research/stage-f-2025-q2/SOURCE_OBJECT_REGISTER.md` | blob `2dd50f63d4ad28fdf488c0d513b73bb5d728c668` | 678 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 097 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_BRIEF.md` | blob `62f3671acd00ded07d3a0d5a6de6d5040b0384f3` | 1383 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 098 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_HANDOFF.md` | blob `f346cce603cfb61d3a1bc5ba9b7d044699784388` | 785 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 099 | `maintenance/frontier-research/stage-f-2025-q2/STAGE_SYNTHESIS.md` | blob `78ad2f9c674dad3dc745d3f487b595919ce5d003` | 2074 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 100 | `maintenance/frontier-research/stage-g-2025-q3/CONTRIBUTOR_STATEMENT.md` | blob `754c6bc380533f97a76c2c30341321ac9f29d70b` | 790 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 101 | `maintenance/frontier-research/stage-g-2025-q3/EVIDENCE_CHART.md` | blob `0842cdab894268dc7acd9abc2f8900ac4415cc4f` | 919 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 102 | `maintenance/frontier-research/stage-g-2025-q3/G1_ART_POLICY_VIOLATION_AND_ATTACK_TRAJECTORY.md` | blob `308cf0a6c53c188f4b87e34125407275d662a9d8` | 2160 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 103 | `maintenance/frontier-research/stage-g-2025-q3/G2_LIVEMCP101_EXECUTION_PLAN_AND_TOOL_ORCHESTRATION.md` | blob `e0194a1a06f53249be19d77d28c0466722649724` | 1921 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 104 | `maintenance/frontier-research/stage-g-2025-q3/G3_ULTRAHORIZON_PARTIAL_OBSERVABILITY_AND_LONG_TRACE.md` | blob `7a7cac9196f66882895697e7569842ca08add247` | 2156 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 105 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_07_RECONSTRUCTION.md` | blob `08a0c7d24a8bb35848658be7a5a407ba86ec939d` | 922 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 106 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_08_RECONSTRUCTION.md` | blob `2999dec5afe604df701518e6a2470e989559a357` | 746 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 107 | `maintenance/frontier-research/stage-g-2025-q3/MONTH_2025_09_RECONSTRUCTION.md` | blob `fa69b89e58f52601ada2062c32122c5a41058c76` | 881 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 108 | `maintenance/frontier-research/stage-g-2025-q3/RESEARCH_REVIEW.md` | blob `67476fc754b223802c1bacd77d83dc4b8a414c27` | 1407 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 109 | `maintenance/frontier-research/stage-g-2025-q3/SOURCE_OBJECT_REGISTER.md` | blob `025dc5d9e7d5b91b69585257531ac295d933dfbc` | 944 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 110 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_BRIEF.md` | blob `44d2df7fe715942ec90874d690fce5b6442ec8fc` | 1921 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 111 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_HANDOFF.md` | blob `b89a55083ba16602b732b954a32a1bcd682cf5ab` | 966 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 112 | `maintenance/frontier-research/stage-g-2025-q3/STAGE_SYNTHESIS.md` | blob `b0dc41cbd26dfc99dab38307419b60386fff221e` | 2585 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 113 | `maintenance/frontier-research/stage-h-2025-q4/CONTRIBUTOR_STATEMENT.md` | blob `da159d467073a5fbe8b09f366cdb269430678fc5` | 432 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 114 | `maintenance/frontier-research/stage-h-2025-q4/EVIDENCE_CHART.md` | blob `1034a61ecf6a9d51e8aa23123b81059c068da6ce` | 770 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 115 | `maintenance/frontier-research/stage-h-2025-q4/H1_TRAJECT_BENCH_TRAJECTORY_CORRECTNESS.md` | blob `343639b75ce9a56b29c8aadd33f3a02da7b117d6` | 1008 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 116 | `maintenance/frontier-research/stage-h-2025-q4/H2_COSTBENCH_DYNAMIC_COST_AND_REPLANNING_STATE.md` | blob `e4104bcce39fa0485cb641bea12c1841a65e15bb` | 1199 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 117 | `maintenance/frontier-research/stage-h-2025-q4/H3_MCPAGENTBENCH_TOOLSET_ENVIRONMENT_AND_EFFICIENCY.md` | blob `a333b9f89eb626d52a2edcb5a35fbe8d4fc81f56` | 1067 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 118 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_10_RECONSTRUCTION.md` | blob `11ba6ab242f53b34f00ae5b30db741a66c2c1cf5` | 463 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 119 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_11_RECONSTRUCTION.md` | blob `019dd901780c2b1508955107433547d06941cefc` | 504 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 120 | `maintenance/frontier-research/stage-h-2025-q4/MONTH_2025_12_RECONSTRUCTION.md` | blob `fed0f15a26356ccc8c67ca52bc034cff88609118` | 488 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 121 | `maintenance/frontier-research/stage-h-2025-q4/RESEARCH_REVIEW.md` | blob `5dd9036705caddae7bf94d05b93e3f0a05d08d64` | 751 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 122 | `maintenance/frontier-research/stage-h-2025-q4/SOURCE_OBJECT_REGISTER.md` | blob `24084d7efa1770c3b8b5435264caa3d2d660c35c` | 632 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 123 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_BRIEF.md` | blob `58f3562d45e4ce76ef352f341c3853982bf31079` | 1384 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 124 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_HANDOFF.md` | blob `d856c0089085b4cd7f3a4c1482ccf5911a7af3bb` | 726 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 125 | `maintenance/frontier-research/stage-h-2025-q4/STAGE_SYNTHESIS.md` | blob `b5a1ac69ca674218823fcf5d6fd7080ff62f6d1e` | 1788 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 126 | `maintenance/frontier-research/stage-i-2026-q1/CONTRIBUTOR_STATEMENT.md` | blob `c70a1c95e9fb54e3dd36e7341b1b820ed31d6494` | 946 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 127 | `maintenance/frontier-research/stage-i-2026-q1/EVIDENCE_CHART.md` | blob `d4f6cc0e408f8a9689b0c7036fb994481d9ee040` | 2673 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 128 | `maintenance/frontier-research/stage-i-2026-q1/I1_OPENAIAGENTSPYTHON_V070.md` | blob `45b88e04d1902e8949292ac079f30b9c042f1990` | 6156 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 129 | `maintenance/frontier-research/stage-i-2026-q1/I2_OPENAIAGENTSPYTHON_V080.md` | blob `18075b6f4e8cf36e415d73fc10fcb4f8dd659779` | 6231 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 130 | `maintenance/frontier-research/stage-i-2026-q1/I3_OPENAIAGENTSPYTHON_V0121.md` | blob `de801b4f15af8a337a3053ebfbc71a72fe621bd5` | 6005 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 131 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_01_RECONSTRUCTION.md` | blob `d999b69d8531f3fc58821cfd4f48869fdea43768` | 1892 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 132 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_02_RECONSTRUCTION.md` | blob `d412fe2bea930b4fbf137a0052f03217210624e2` | 1936 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 133 | `maintenance/frontier-research/stage-i-2026-q1/MONTH_2026_03_RECONSTRUCTION.md` | blob `180c017b40accbe398fd9a3cc21d290eb39a265d` | 1817 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 134 | `maintenance/frontier-research/stage-i-2026-q1/RESEARCH_REVIEW.md` | blob `1973aff035d565e4a3625ad2c3c8d6426e9187fe` | 2502 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 135 | `maintenance/frontier-research/stage-i-2026-q1/SOURCE_OBJECT_REGISTER.md` | blob `ec9ffb7be6d1fae6d6032579646bbfe67e30af11` | 2030 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 136 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_BRIEF.md` | blob `4cf296d0c98df7e815f73ba0c99f3f0ac98ede07` | 4133 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 137 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_HANDOFF.md` | blob `6c88e3f0bb78eaa21afc7130a4415bbce45d6fb1` | 1984 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 138 | `maintenance/frontier-research/stage-i-2026-q1/STAGE_SYNTHESIS.md` | blob `42041c3e5e58a11d4fba4b6e400003bda701eda7` | 7347 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 139 | `maintenance/frontier-research/stage-j-2026-q2/CONTRIBUTOR_STATEMENT.md` | blob `c556e6f0c74dde36a04752c8665a37a98de61d4b` | 946 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 140 | `maintenance/frontier-research/stage-j-2026-q2/EVIDENCE_CHART.md` | blob `5d937d0791f1dec4693e7cf35bbac454428988d9` | 2736 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 141 | `maintenance/frontier-research/stage-j-2026-q2/J1_OPENAIAGENTSPYTHON_V0140.md` | blob `133385ba6042d0da7892c4071fd527ed9221bbd8` | 6209 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 142 | `maintenance/frontier-research/stage-j-2026-q2/J2_OPENAIAGENTSPYTHON_V0161.md` | blob `8b20595bf9bb5da0f7b21ce078ffdd5852f58a89` | 6186 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 143 | `maintenance/frontier-research/stage-j-2026-q2/J3_OPENAIAGENTSPYTHON_V0176.md` | blob `a19831b56c7c10a9c3087f1955e0ea36d18df647` | 6149 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 144 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_04_RECONSTRUCTION.md` | blob `81c8911cea938feb23c3371b19dfca2e3eb543b7` | 1928 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 145 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_05_RECONSTRUCTION.md` | blob `fe7f91dc2ddea338a178704c12092660c87e1a90` | 1908 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 146 | `maintenance/frontier-research/stage-j-2026-q2/MONTH_2026_06_RECONSTRUCTION.md` | blob `57a1c04ee561226798bbde95678f2b98504dc4bc` | 1891 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 147 | `maintenance/frontier-research/stage-j-2026-q2/RESEARCH_REVIEW.md` | blob `302681e2c73d0f23cc113f2dbbd0f1b7cf1e622b` | 2502 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 148 | `maintenance/frontier-research/stage-j-2026-q2/SOURCE_OBJECT_REGISTER.md` | blob `b33d4694b28207c50a9973bc0e0742f36adc57d0` | 2034 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 149 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_BRIEF.md` | blob `5d971bb22d6f8e178eb0ae0c7246c8fa6236b3ea` | 4182 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 150 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_HANDOFF.md` | blob `3177b16422f2a9a0440576500a1c706d6e840337` | 2038 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 151 | `maintenance/frontier-research/stage-j-2026-q2/STAGE_SYNTHESIS.md` | blob `2b8b1440c48e4f98f4125d800d63a2bd0f353fbf` | 7506 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 152 | `maintenance/frontier-research/stage-k-2026-q3/CONTRIBUTOR_STATEMENT.md` | blob `1aab1697c3cc38e6a8db7ce18c5728ce107dc841` | 946 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 153 | `maintenance/frontier-research/stage-k-2026-q3/EVIDENCE_CHART.md` | blob `4552953fd42b85298b0758eeb4f3fb30c5b1bc1d` | 3089 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 154 | `maintenance/frontier-research/stage-k-2026-q3/K1_OPENAIAGENTSPYTHON_V0190.md` | blob `7b3d4478768bf00e65150a33fc99a3257bb26d3a` | 6238 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 155 | `maintenance/frontier-research/stage-k-2026-q3/K2_MODELCONTEXTPROTOCOL_20260728.md` | blob `42dfa55afe0d10df47e47bf6c1c91cad0ac18a4e` | 5985 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 156 | `maintenance/frontier-research/stage-k-2026-q3/K3_OPENAIAGENTSPYTHON_V0220.md` | blob `e278d3b6aa20ea8201c7344c00dfb3dff40ffc96` | 6266 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 157 | `maintenance/frontier-research/stage-k-2026-q3/K4_OPENAIAGENTSPYTHON_V0223.md` | blob `ddf689657fd9cf3ca4a41afaf4282dc5bcbd81f4` | 6142 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 158 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_07_RECONSTRUCTION.md` | blob `30e752c3fec283bd8c6d4fc1153db900f949fbba` | 2674 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 159 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_08_RECONSTRUCTION.md` | blob `31dea5bf1c1dfb9c58ecbe2a620ad58aca115867` | 1951 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 160 | `maintenance/frontier-research/stage-k-2026-q3/MONTH_2026_09_RECONSTRUCTION.md` | blob `b81bc5459aedb23d29f5501a39fe30ad5bc54020` | 1888 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 161 | `maintenance/frontier-research/stage-k-2026-q3/RESEARCH_REVIEW.md` | blob `13e7b37ec6d286372d2be5d811fefcae0ab2d27f` | 2502 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 162 | `maintenance/frontier-research/stage-k-2026-q3/SOURCE_OBJECT_REGISTER.md` | blob `cd3777cb3b7b20be579dcaa33a089a872d4a11fd` | 2346 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 163 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_BRIEF.md` | blob `43e4d3ed39918049ff9c99cb0b77e3c721f38038` | 4262 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 164 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_HANDOFF.md` | blob `5e8900c9dac666f4c54ff861a0eba5c59aadea0e` | 2341 B | HANDOFF_NOT_ACCEPTANCE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 165 | `maintenance/frontier-research/stage-k-2026-q3/STAGE_SYNTHESIS.md` | blob `45ff9dc5704a7803219ba35e8993f6cc8d1ae95b` | 8013 B | SYNTHESIS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 166 | `maintenance/frontier-research/stage-l-2026-q4/CONTRIBUTOR_STATEMENT.md` | blob `750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2` | 946 B | ATTRIBUTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 167 | `maintenance/frontier-research/stage-l-2026-q4/EVIDENCE_CHART.md` | blob `d6f39ef3861bff6567cb9abab03143fdb5fc9185` | 1731 B | SUPPORT_LIMITS | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 168 | `maintenance/frontier-research/stage-l-2026-q4/L1_OPENAIAGENTSPYTHON_V0240.md` | blob `74528de0b79ca0ccffc634d4a894bc5fc7b1c224` | 6185 B | STAGE_SPECIFIC_RESEARCH | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 169 | `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md` | blob `0e46fa619e2e99f4d5400a15df60129d23743256` | 1930 B | HISTORIC_RECONSTRUCTION | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 170 | `maintenance/frontier-research/stage-l-2026-q4/RESEARCH_REVIEW.md` | blob `45728146f375e48082fe840349bf44df902cc356` | 2449 B | CLAIM_REVIEW | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 171 | `maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md` | blob `f13e5723679162b6a3ed3cda89cd4a65d39771e8` | 1509 B | SOURCE_REGISTER | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+- 172 | `maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md` | blob `a61af40d2f52e5d83293a4e4e323e0c9f1c57d2b` | 4045 B | ORIGINAL_SCOPE | STABLE_STAGE_OBJECT | SOURCE_EXISTS_NOT_EXECUTED
+
+## Current month lineage changes from prior A2
+- `core/claim_transfer.py` | modified | +24/-3 | N_DAY_IMPLEMENTATION | preserve unchanged Stage source
+- `maintenance/frontier-research/annotations/2026-10-25_A1_STAGE_SOURCE_CUSTODY.md` | added | +222/-0 | TEN_A1_MERGE_PREREQUISITE | preserve unchanged Stage source
+- `tests/test_tool_cli.py` | modified | +40/-0 | CURRENT_TEST_OR_DOC_RELATION | preserve unchanged Stage source
+
+## A2 disposition
+- Stage A-L original source IDs, individual evidence charts and handoffs remain intact; this report updates only October live relationship and N-day merged code observations.
+- No native Stage M is due merely because Oct25 arrived. October still OPEN.
+- D7/D10/D14/D30 audits cannot be credited from this relation or from native adapter fixes.
+- Current code guard is not evidence of real device/software deployment, acceptance of all inputs, or independent external conformance.
+- A2_MONTH_VERSION_2026-10 / SOURCE_AND_EXECUTION_DISTINCTIONS_INTACT / OCTOBER_OPEN.
+- Final gate: verify this PR merged, owner file in ten fresh main trees, open PR=0.
+
