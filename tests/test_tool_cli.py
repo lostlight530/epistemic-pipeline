@@ -130,5 +130,45 @@ class TestRepoIntegration(unittest.TestCase):
             self.assertEqual(value["status"], "error")
 
 
+
+    def test_handoff_cli_preserves_source_when_output_collides(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "source.json"
+            original = json.dumps({"profile": "epistemic-pipeline/claim-verification"}).encode("utf-8")
+            source.write_bytes(original)
+            command = [sys.executable, str(ROOT / "core" / "claim_transfer.py"), str(source)]
+            rejected = subprocess.run(
+                command + ["--output", str(source)],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertNotEqual(rejected.returncode, 0)
+            self.assertIn("claim transfer output must not overwrite", rejected.stderr)
+            self.assertEqual(source.read_bytes(), original)
+
+            output = Path(temp) / "handoff.json"
+            accepted = subprocess.run(
+                command + ["--output", str(output)],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(accepted.returncode, 0, accepted.stderr)
+            self.assertTrue(output.is_file())
+            self.assertEqual(source.read_bytes(), original)
+
+    def test_handoff_cli_does_not_clobber_legacy_temp_name(self):
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "handoff.json"
+            source = Path(temp) / "handoff.json.tmp"
+            original = json.dumps({"profile": "epistemic-pipeline/claim-verification"}).encode("utf-8")
+            source.write_bytes(original)
+            command = [sys.executable, str(ROOT / "core" / "claim_transfer.py"), str(source)]
+            completed = subprocess.run(
+                command + ["--output", str(output)],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertTrue(output.is_file())
+            self.assertEqual(source.read_bytes(), original)
+
+
 if __name__ == "__main__":
     unittest.main()
