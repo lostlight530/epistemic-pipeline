@@ -170,5 +170,60 @@ class TestRepoIntegration(unittest.TestCase):
             self.assertEqual(source.read_bytes(), original)
 
 
+
+    def test_maintenance_report_output_cannot_overwrite_inspected_files(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "maintenance").mkdir()
+            config = root / "maintenance" / "cadence.yaml"
+            config.write_text(json.dumps({
+                "project_profile_prefix": "epistemic-pipeline/",
+                "canonical_paths": [],
+                "scan_paths": [],
+                "forbidden_governance_paths": [],
+                "history_patterns": [],
+                "cadences": {"daily": {"calibration_max_age_days": 0}},
+            }), encoding="utf-8")
+            manifest = root / "MANIFEST.yaml"
+            manifest.write_text('calibrated: "2026-10-01"\n', encoding="utf-8")
+            existing = root / "research-notes.json"
+            existing.write_text('{"private":"must survive"}', encoding="utf-8")
+
+            command = [
+                sys.executable, str(ROOT / "core" / "maintenance_cadence.py"),
+                "daily", "--root", str(root), "--config", "maintenance/cadence.yaml",
+                "--as-of", "2026-10-26",
+            ]
+            for protected in (config, manifest, existing):
+                with self.subTest(protected=protected.name):
+                    original = protected.read_bytes()
+                    attempt = subprocess.run(
+                        command + ["--output", str(protected)],
+                        cwd=ROOT, capture_output=True, text=True,
+                    )
+                    self.assertNotEqual(attempt.returncode, 0)
+                    self.assertIn("not an existing maintenance report", attempt.stderr)
+                    self.assertEqual(protected.read_bytes(), original)
+
+            report = root / "maintenance-report.json"
+            for _ in range(2):
+                allowed = subprocess.run(
+                    command + ["--output", str(report)],
+                    cwd=ROOT, capture_output=True, text=True,
+                )
+                self.assertEqual(allowed.returncode, 0, allowed.stderr)
+                self.assertEqual(json.loads(report.read_text(encoding="utf-8"))["profile"],
+                                 "epistemic-pipeline/maintenance-report")
+            self.assertEqual(config.read_text(encoding="utf-8"),
+                             json.dumps({
+                                "project_profile_prefix": "epistemic-pipeline/",
+                                "canonical_paths": [],
+                                "scan_paths": [],
+                                "forbidden_governance_paths": [],
+                                "history_patterns": [],
+                                "cadences": {"daily": {"calibration_max_age_days": 0}},
+                             }))
+
+
 if __name__ == "__main__":
     unittest.main()
