@@ -245,6 +245,18 @@ Metadata, checkpoints, provenance, provider disclosure, coverage, claim audit/tr
 
 An executed tool is distinct from a passing domain check and from scientifically valid claims. Register, test and document any future additions explicitly.
 
+## Public-release privacy preflight — 2026-10-26
+
+This is a publication-safety procedure for Independent GPT maintenance handoffs, not a new research producer, runtime gate, or permission to disclose private control text.
+
+1. **Allowlist:** publish only repository-visible task/cadence identity, Git refs, non-sensitive file scope, scoped findings, bounded validation results, risks, rollback, conflicts, and explicit unknowns. A public rule may state the boundary without reproducing the private instruction behind it.
+2. **Inspect outgoing surfaces before publication:** check the complete `main...branch` diff and proposed PR title/body/comments, linked issues, generated reports/attachments and quoted Action logs for sensitive content. Review incoming third-party snippets before propagating them. Searching for terms such as `private memory` is only a lead, not proof of disclosure; a passing pattern scan is not a clean-history certificate.
+3. **Withhold private material:** never copy credentials, tokens, session values, private prompts, private agent memory, hidden reasoning, personal or private operator details, nonpublic URLs, or off-repository confidential SOP/source text. Do not include suspect values, reversible redactions, or secret-derived fingerprints in public diagnosis, tests, screenshots or receipts.
+4. **Fail closed:** if identity or publication authorization is uncertain, stop the affected write/PR/log publication; report `PUBLICATION_BLOCKED_PRIVATE_MATERIAL` using category and affected public-surface type only, with no value or private-text excerpt. Coordinate privately with the authorized maintainer; a missing or unexecuted check remains `NOT_EXECUTED`.
+5. **If exposure is confirmed:** do not assume a later edit or PR close removes Git history, caches, forks or logs. Escalate privately, contain distribution, revoke/rotate affected credentials where applicable, and arrange platform-appropriate remediation with the maintainer. Preserve only non-sensitive incident/correction evidence, not the exposed payload.
+
+This preflight does not establish that all repository history was scanned, any secret was found, or a private scheduler was shut down. Historical producer provenance and sealed research/maintenance artifacts retain their original identity.
+
 ## Delivery boundary
 
 For a confirmed maintenance repair:
