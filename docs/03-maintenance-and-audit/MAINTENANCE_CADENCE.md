@@ -142,15 +142,15 @@ The August 2026 evidence-infrastructure phase remains closed after 2026-08-31.
 ## Deterministic local scanner
 
 ```bash
-python core/maintenance_cadence.py daily
-python core/maintenance_cadence.py weekly
-python core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
+python3 core/maintenance_cadence.py daily
+python3 core/maintenance_cadence.py weekly
+python3 core/maintenance_cadence.py monthly --as-of YYYY-MM-DD
 ```
 
 Optional report output:
 
 ```bash
-python core/maintenance_cadence.py daily --as-of YYYY-MM-DD --output output/evidence-maintenance-YYYY-MM-DD.json
+python3 core/maintenance_cadence.py daily --as-of YYYY-MM-DD --output output/evidence-maintenance-YYYY-MM-DD.json
 ```
 
 An existing `--output` destination can be replaced only when its JSON already has this repository's `maintenance-report` profile and expected report structure. Existing configuration, Manifest, research inputs and unrelated files are rejected without mutation. A missing destination may be created. This preserves explicit report regeneration without treating arbitrary caller-selected input files as expendable report outputs.
