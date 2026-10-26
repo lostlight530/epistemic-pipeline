@@ -344,7 +344,7 @@ provider metadata != AI-text detection
 ## Evidence-bearing CLI
 
 ```bash
-python core/run_bundle.py graphs/linear.yaml \
+python3 core/run_bundle.py graphs/linear.yaml \
   --human-review partial \
   --upstream-artifact-ref ../auto-doc-engine/output/report.artifact.json \
   --upstream-evidence-ref ./inputs/source-evidence.json
@@ -363,7 +363,7 @@ evidence/<run>.evidence.json
 A bounded claim transfer can be generated separately from an existing claim audit
 
 ```bash
-python core/claim_transfer.py claim-audits/<run>.claim-audit.json \
+python3 core/claim_transfer.py claim-audits/<run>.claim-audit.json \
   --claim-id claim-001 \
   --purpose downstream-figure \
   --output handoff/claim-transfer.json
@@ -378,9 +378,9 @@ Current document authority is defined in [DOCUMENT_STATUS.md](docs/03-maintenanc
 The closed August baseline is [STAGE_2026_08_MAINTENANCE.md](docs/03-maintenance-and-audit/history/STAGE_2026_08_MAINTENANCE.md)
 
 ```bash
-python core/maintenance_cadence.py daily
-python core/maintenance_cadence.py weekly
-python core/maintenance_cadence.py monthly --as-of 2026-08-31
+python3 core/maintenance_cadence.py daily
+python3 core/maintenance_cadence.py weekly
+python3 core/maintenance_cadence.py monthly --as-of 2026-08-31
 ```
 
 The scanner reports local structural maintenance evidence plus date-derived calendar/stage status
