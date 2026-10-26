@@ -79,8 +79,20 @@ footer{{font-size:12px;color:var(--muted);margin-top:22px}}@media(max-width:520p
 """
 
 
-def _write_output(path: str, content: str) -> None:
+_INPUT_FILE_ARGUMENTS = frozenset({"artifact_record", "claim_audit", "figure_evidence", "graph", "recipe"})
+
+
+def _source_file_arguments(arguments: Any) -> list[str]:
+    if not isinstance(arguments, dict):
+        return []
+    return [value for key, value in arguments.items()
+            if key in _INPUT_FILE_ARGUMENTS and isinstance(value, str) and value.strip()]
+
+
+def _write_output(path: str, content: str, *, protected_inputs: tuple[str, ...] | list[str] = ()) -> None:
     target = Path(path)
+    if any(target.resolve() == Path(source).resolve() for source in protected_inputs):
+        raise ValueError("--output must not overwrite an input file")
     target.parent.mkdir(parents=True, exist_ok=True)
     fd, temporary = tempfile.mkstemp(prefix="." + target.name + ".", dir=str(target.parent))
     try:
@@ -129,6 +141,7 @@ def main(argv: list[str] | None = None) -> int:
         cmd.add_argument("--output", help="write formatted result to a local file")
         cmd.add_argument("--no-color", action="store_true")
     a = parser.parse_args(argv)
+    protected_inputs: list[str] = []
     if a.command == "list":
         result = {"profile": PROFILE, "tool": None, "status": "ok",
                   "result": {"tools": tool_definitions()}, "error": None,
@@ -140,17 +153,26 @@ def main(argv: list[str] | None = None) -> int:
                   "error": None if info else {"code": "UNKNOWN_TOOL", "message": "tool is not allowlisted"},
                   "scientific_validity_claim": False, "remote_provider_called": False}
     elif a.command == "plan":
+        if a.plan_file != "-":
+            protected_inputs.append(a.plan_file)
         try:
             from agent_plan import run_plan
             plan = _read_arguments(argparse.Namespace(args_file=a.plan_file, args="{}"))
+            if isinstance(plan.get("steps"), list):
+                for step in plan["steps"]:
+                    if isinstance(step, dict):
+                        protected_inputs.extend(_source_file_arguments(step.get("arguments")))
             result = run_plan(plan, approved=a.approve)
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             result = {"profile": PROFILE, "tool": "agent_plan", "status": "error",
                       "result": None, "error": {"code": "INVALID_PLAN", "message": str(exc)},
                       "scientific_validity_claim": False, "remote_provider_called": False}
     else:
+        if a.args_file not in (None, "-"):
+            protected_inputs.append(a.args_file)
         try:
             parsed = _read_arguments(a)
+            protected_inputs.extend(_source_file_arguments(parsed))
             result = execute_tool_call(a.tool, parsed)
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             result = {"profile": PROFILE, "tool": a.tool, "status": "error",
@@ -166,8 +188,8 @@ def main(argv: list[str] | None = None) -> int:
         rendered = _html_report(result)
     if a.output:
         try:
-            _write_output(a.output, rendered)
-        except OSError as exc:
+            _write_output(a.output, rendered, protected_inputs=protected_inputs)
+        except (OSError, ValueError) as exc:
             print(f"OUTPUT_WRITE_FAILED: {exc}", file=sys.stderr)
             return 2
     else:
