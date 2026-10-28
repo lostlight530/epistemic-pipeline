@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Coverage:** `Stage A / 2024-Q1` + `Stage B / 2024-Q2` + `Stage C / 2024-Q3` + `Stage D / 2024-Q4` + `Stage E / 2025-Q1` + `Stage F / 2025-Q2` + `Stage G / 2025-Q3` + `Stage H / 2025-Q4`
 - **Stage registry / identity updated:** `2026-10-04`
-- **Current maintenance relation through:** `2026-10-20` (bounded no-new-source delta check)
+- **Current maintenance relation through:** `2026-10-28` (documentary Day 28 forward relation; not a Stage producer run)
 
 ## Boundary
 
@@ -7131,3 +7131,16 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - No earlier Stage or source-register mutation, no new research credit, original provenance and month-open boundary retained
 - Full runtime/agent/approval tests and publisher recertification NOT_EXECUTED by this A2 documentary successor
 - A2 state: A1_151_INHERITED / N_SOURCE_SHA_DRIFT_0 / OCT20_STAGE_SOURCE_NOT_OBSERVED / NO_RESEARCH_CREDIT
+
+
+## 2026-10-28 forward relational reconciliation — current October / Stage L
+
+- This is a **current-index routing addition** for the existing October relationship identity, not a new Stage, natural-month close, source-registry admission, independent experiment, or an original Web GPT Stage execution
+- Exact Day 28 evidence: A1 [#181](https://github.com/lostlight530/epistemic-pipeline/pull/181) covers October 1–27 and A2 [#182](https://github.com/lostlight530/epistemic-pipeline/pull/182) extends through October 28 after A1's merge; [post-merge acceptance #184](https://github.com/lostlight530/epistemic-pipeline/pull/184) preserves the audit boundary
+- Stage/source relation: Stage-L source observations about pending MCP approvals, SDK annotations and deferred compaction remain document/source evidence, not runtime authorization, claim truth, recovered effects or independent validator execution. The original October reconstruction cut remains October 19.
+- **A1:** Git source identities and delivery `PASS`; in-scope per-artifact content decisions and independent semantics `PARTIAL / NOT_FULLY_ATTESTED`
+- **A2:** merged A1 ancestry and current object custody `PASS`; full October Stage↔router↔synthesis↔handoff semantics `PARTIAL / NOT_FULLY_ATTESTED`
+- Original Stage-L dated source cutoff is not extended to October 28 by this index; no full local test suite, external runtime effect, conformance, publication acceptance or scientific reproduction is inferred
+- D7/D10 independent historical results are `UNVERIFIED`; D14 is one logical historical window despite multiple retained views; October D30 remains `NOT_DUE` until October 30
+- The previous index body retains its exact earlier point-in-time statements. Forward current-state routing does not rewrite a historical observation or upgrade negative evidence
+- No original Stage producer, research-batch count, source independence, implementation claim, checker PASS or long-term doctrine is changed; owner-specific semantic work remains open
