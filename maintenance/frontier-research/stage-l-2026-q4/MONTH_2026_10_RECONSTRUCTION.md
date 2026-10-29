@@ -117,9 +117,9 @@ No `epistemic-pipeline` runtime, experimental benchmark, scientific result or co
 - SOP decision: **NO_FOLLOW_UP**. Constraint: YTD narrative is not source-independent yearly scientific validation.
 - Follow-up: do not edit original owner or infer scientific/runtime success; carry the above bounded relation only into this current October Stage owner.
 ### E17 — `maintenance/frontier-research/corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md`
-- Exact owner/version reference: current SHA prefix `5c50f635814e?`; current canonical Stage-L research producer remains distinct from this review.
+- Exact owner/version reference: current SHA prefix `93e6b158c904`; current canonical Stage-L research producer remains distinct from this review.
 - Content-level observation: earlier absence interpretation handled by forward native I–L delivery.
-- SOP decision: **UNKNOWN**. Constraint: Path is previously seen in tree; full correction-file semantic content not re-read here; do not assert correction PASS.
+- SOP decision: **NO_FOLLOW_UP**. Constraint: Original earlier STAGE_I_NOT_EVIDENCED and NO_NEW_EXPERIMENT remain true within their as-of scope; later I–L delivery is a documentary successor.
 - Follow-up: do not edit original owner or infer scientific/runtime success; carry the above bounded relation only into this current October Stage owner.
 ### E18 — `MANIFEST.yaml`
 - Exact owner/version reference: current SHA prefix `fc9a32726054`; current canonical Stage-L research producer remains distinct from this review.
