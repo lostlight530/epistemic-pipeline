@@ -284,3 +284,127 @@ No `epistemic-pipeline` runtime, experimental benchmark, scientific result or co
 - Actual verification performed: GitHub current main and A1 blob read; current source owner content relation and scoped pull-request diff checked.
 - Actual verification not performed: full repo execution, live dependency conformance, independent upstream verification and scientific replication.
 - A2 acceptance: OCT_MONTH_RELATION_AND_SELECTED_SOURCE_GOVERNANCE_UPDATED / BROADER_SEMANTIC_AND_RUNTIME_EVIDENCE_PARTIAL.
+
+## A2_2026_10_30_EPISTEMIC_STAGE_MONTH_RELATION
+
+- Current main after all ten A1 merges: 354affb3fb9940d67ca16a2c04f9b9c0e2f4803a; inherited A1 blob ad56e9cad430d3d5640d39e183b745d008a7a569 at maintenance/frontier-research/annotations/2026-10-30_A1_STAGE_SOURCE_CONTENT.md
+- Calendar month 2026-10-01..30 remains OPEN; source cutoff Oct19 distinct from current successor review date Oct30
+- Stage L is Q4 2026 state-triggered, not a missing daily cron; final research/peer review/quarter synthesis NOT_DUE
+- Original research object O11/S11 is openai-agents-python v0.24.0, publisher same-source release identity, not independent tested epistemic pipeline runtime
+- Publisher MCP converted-tool annotations and pending-approval compaction deferral do not prove locally deployed approval policy or correct claim verification
+- Merged native code fix #190 validates path-safe run_id for trace/checkpoint/evidence/claim-audit/provenance artifacts, separate from SDK external Stage research
+- Current review has 18 named Stage support and month metadata owners and 6 primary Stage original source bodies; original provenance and corrections retained
+- Existing prior D7/D10/D14 audit checkpoints remain distinct from A1/A2 monthly relationship; D30 now due but actual independent run receipt NOT_OBSERVED in dated path census
+- Claim indexed != claim true, external evidence presence != sufficient claim support, heuristic score != probability, runtime-policy pass != truth
+
+### Source-owner by source-owner month-long evidence continuity
+#### E01 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/STAGE_BRIEF.md` at current Git blob `a61af40d2f52e5d83293a4e4e323e0c9f1c57d2b`
+- Evidence object/record role: Evidence content/role: Oct19 SOURCE_BOUNDED stage L open, one SDK object; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: original Stage method not preregistered; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: QUARTER_OPEN; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E02 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/SOURCE_OBJECT_REGISTER.md` at current Git blob `f13e5723679162b6a3ed3cda89cd4a65d39771e8`
+- Evidence object/record role: Evidence content/role: O11/S11 Agents SDK v0.24.0 dated Oct15; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: source tag and project not independent corroborators; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: ONE_SOURCE_FAMILY; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E03 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/EVIDENCE_CHART.md` at current Git blob `d6f39ef3861bff6567cb9abab03143fdb5fc9185`
+- Evidence object/record role: Evidence content/role: MCP converted-tool annotation and approval-compaction comparison; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: publisher description not local claim-policy run; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: NO_RUNTIME_PROMOTION; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E04 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/L1_OPENAIAGENTSPYTHON_V0240.md` at current Git blob `74528de0b79ca0ccffc634d4a894bc5fc7b1c224`
+- Evidence object/record role: Evidence content/role: original SDK0.24 release note source S11; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: no independent contradictory source family tested; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: COUNTEREVIDENCE_UNKNOWN; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E05 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/MONTH_2026_10_RECONSTRUCTION.md` at current Git blob `717983f913f4c86f1dcee6e36fa43a32345c07f8`
+- Evidence object/record role: Evidence content/role: Oct15 release enters October open month relation; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: month owner not quarter synthesis; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: MONTH_OPEN; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E06 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/RESEARCH_REVIEW.md` at current Git blob `45728146f375e48082fe840349bf44df902cc356`
+- Evidence object/record role: Evidence content/role: retrospective source selection and SAME_PRODUCER_REVIEW; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: review not external peer assessment; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: PARTIAL_REVIEW; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E07 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/stage-l-2026-q4/CONTRIBUTOR_STATEMENT.md` at current Git blob `750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2`
+- Evidence object/record role: Evidence content/role: upstream authorship and research instrument separately identified; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: no signed attestation or independent scientist; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: KEEP_PROVENANCE; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E08 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/2026-10-19_STAGE_I_L_PRIMARY_RELEASE_AND_STRUCTURE_AUDIT.md` at current Git blob `5c50f635814e25cf9997e73feca51b8783803b06`
+- Evidence object/record role: Evidence content/role: Stage I–L exact release-tag and structure check; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: documentation reconciliation is not experiment; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: DOCUMENTARY_ONLY; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E09 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/2026-10-28_A1_STAGE_SOURCE_CUSTODY.md` at current Git blob `f0eb9a74a29c8c31642550234792542438621e43`
+- Evidence object/record role: Evidence content/role: dated Oct1–27 path census and missingness; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: path identity does not establish original execution; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: INHERIT_CUSTODY; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E10 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/2026-10-28_A2_STAGE_MONTH_RELATION.md` at current Git blob `87d45dc72ed3f6d3b65b4ba297b8823037297529`
+- Evidence object/record role: Evidence content/role: Oct28 current relationship based on prior A1; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: prior base version stays its own cutoff; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: INHERIT_RELATION; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E11 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/2026-10-28_MINIMAL_SOP_ACCEPTANCE_AUDIT.md` at current Git blob `e05b1c7ae03dbd98c434e48fa76ebed5ed4e0360`
+- Evidence object/record role: Evidence content/role: native delivery and A1/A2 gate measured separately; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: partial semantic assurance stays partial; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: PARTIAL_VERIFICATION; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E12 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/2026-10-28_OCTOBER_NATIVE_STAGE_GAP_RECOVERY_REGISTER.md` at current Git blob `14abc0217590e2126721ec765097d25413185b7a`
+- Evidence object/record role: Evidence content/role: conditional Stage trigger rather than scheduled daily; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: absence of date-specific Stage is not missed daily; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: NOT_DUE_BY_CALENDAR; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E13 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/PARALLEL_SOURCE_SELECTION_RECONCILIATION_2026-10-19.md` at current Git blob `c20bfd16cc7ff23032b281cacbb1604728871f29`
+- Evidence object/record role: Evidence content/role: parallel release selection was recorded as candidate; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: candidate not inserted as native Stage object; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: NO_DUPLICATE_NATIVE; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E14 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/expansion/2026-10-19_AGENT_SDK_RETRYABILITY_SOURCE_CANDIDATE.md` at current Git blob `a431ca2923f3747f1466cbebd80499cf89f414f6`
+- Evidence object/record role: Evidence content/role: Agents SDK retryability supplementary candidate; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: source lead not accepted Stage finding; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: CANDIDATE_ONLY; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E15 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/annotations/expansion/2026-10-19_STAGE_J_MCP_APPROVAL_SCHEMA_SOURCE_DELTA.md` at current Git blob `3766e316c59ebfd5210f67d48d3ebd33fbd254e2`
+- Evidence object/record role: Evidence content/role: Stage-J approval-schema source delta; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: prior stage source not current Stage-L runtime validation; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: PRIOR_STAGE_DISTINCT; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E16 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md` at current Git blob `7e9eb8ecca4c4dcac849e021e7fee8e9227cbb11`
+- Evidence object/record role: Evidence content/role: YTD synthesis recognizes Stage L as unfinished; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: research history not executable policy truth; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: NO_STAGE_CLOSE; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E17 — original owner relation
+- Current source owner: Exact source: `maintenance/frontier-research/corrections/RECONCILIATION_2026-10-19_STAGE_I_TO_L.md` at current Git blob `93e6b158c9040e1a191052b8e9be2255e66f746d`
+- Evidence object/record role: Evidence content/role: I–L later visibility reconciled without rewriting origin; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: historical absence at older cutoff remains accurate; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: FORWARD_CORRECTION; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+#### E18 — original owner relation
+- Current source owner: Exact source: `MANIFEST.yaml` at current Git blob `fc9a327260544f73cb92a3c54e2750e571617fff`
+- Evidence object/record role: Evidence content/role: current claim/evidence transfer machine contract authority; source identity is tied to this owner
+- Negative state and independence boundary: Negative scope: heuristic score and provenance cannot certify truth; retain unknown original independent execution
+- Current A2 reconciliation: A1 outcome: MACHINE_AUTHORITY; source-time text and previous correction remain unchanged; original Stage author and date unchanged
+
+### Native Stage L original contents re-read at A2 current main
+- STAGE_BRIEF.md blob a61af40d2f52e5d83293a4e4e323e0c9f1c57d2b; # Frontier Research Stage L — 2026-Q4 | Study brief; - Intended/achieved evidence coverage: `SOURCE_BOUNDED`; source cutoff `2026-10-19`; status: `IN_PROGRESS`
+- SOURCE_OBJECT_REGISTER.md blob f13e5723679162b6a3ed3cda89cd4a65d39771e8; # Source/Object Register — Stage L / 2026-Q4; - Status: `PARTIAL / QUARTER_OPEN`.
+- EVIDENCE_CHART.md blob d6f39ef3861bff6567cb9abab03143fdb5fc9185; # Evidence and comparison chart — Stage L / 2026-Q4; | F-L1 | O11 | Agents SDK v0.24.0 exposes MCP annotations on converted tools and defers automatic compaction when approvals are pe
+- L1_OPENAIAGENTSPYTHON_V0240.md blob 74528de0b79ca0ccffc634d4a894bc5fc7b1c224; # L1 — MCP annotations and pending-approval compaction; - Design: `TARGETED_EVIDENCE_SYNTHESIS`; coverage: `SOURCE_BOUNDED`; status: `IN_PROGRESS (quarter open)` / | `O11` | `S11`, same-origin release note | Agents SDK v0.24.0 exposes MCP annotations on converted tools and defers automatic com
+- RESEARCH_REVIEW.md blob 45728146f375e48082fe840349bf44df902cc356; # Research Review — Stage L / 2026-Q4; - Review date: 2026-10-19; producer: ChatGPT project-session researcher; **independence:** `SAME_PRODUCER_REVIEW`. / - Claimed coverage is `SOURCE_BOUNDED`; no `SYSTEMATIC`, `METHODICALLY_SCOPED` or field-complete assertion.
+- CONTRIBUTOR_STATEMENT.md blob 750ab55a1d1d487dc073a8f3f2f2c51e3676b2f2; # Contributor and instrument record — Stage L / 2026-Q4; - Responsible human/governance context: maintenance request in the ongoing project conversation; authorship of upstream release ob
+
+### Code/Stage chronology, Special and maintenance limits
+- #190 merged from original code source before A1, with validate_run_id rejecting slash, backslash, null and non-single components
+- #190 is a code/test source diff, not an assertion that tests were rerun during this A2; exact head/main evidence only
+- Stage L source part v0.24.0 research cannot be reattributed to local code fix; they represent distinct release and repair identities
+- Oct19 retrospective source protocol and Oct28 recovery/A1/A2 state remain frozen at original cuts, not silently modernized
+- There is no new source-driven Stage Part after Oct19 in the A2 current main snapshot, but an extra Stage run cannot be declared NOT_DUE without event-trigger evidence
+- D30 separate audit checkpoint due on Oct30; no explicit current-day audit receipt found by dated path census, status NOT_OBSERVED / not a PASS
+- Verification performed: current post-all-A1 main, 18 A1 owner judgments, six exact Stage original source bodies and October month owner
+- NOT_EXECUTED: test_provenance pytest, actual malicious run_id I/O, SDK approval runner, GitHub Actions, independent source replication or D30 Audit
+- Protected: SOURCE_OBJECT_REGISTER, original Stage brief/Parts, claim/index code, artifacts/sidecars, historical audit and registries
+- A2 disposition: CURRENT_MONTH_DOCUMENTARY_RELATION / CODE_FIX_SOURCE_VISIBLE / OPEN_Q4 / NO_RUNTIME_PROMOTION
