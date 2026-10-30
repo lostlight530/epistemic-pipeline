@@ -137,6 +137,29 @@ class TestToolContract(unittest.TestCase):
 
 
 
+    def test_run_bundle_cli_rejects_unsafe_resume_id(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sentinel = root / "outside.jsonl"
+            sentinel.write_text("original", encoding="utf-8")
+            proc = subprocess.run(
+                [sys.executable, str(ROOT / "core" / "run_bundle.py"),
+                 "graphs/linear.yaml", "--resume-from", "../outside",
+                 "--trace-dir", str(root / "traces"),
+                 "--checkpoint-dir", str(root / "checkpoints"),
+                 "--provenance-dir", str(root / "provenance"),
+                 "--claim-audit-dir", str(root / "claim-audits"),
+                 "--evidence-dir", str(root / "evidence")],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(proc.returncode, 1, proc.stderr)
+            receipt = json.loads(proc.stdout)
+            self.assertEqual(receipt["status"], "failed")
+            self.assertTrue(any("path-safe" in error for error in receipt["errors"]))
+            self.assertEqual(sentinel.read_text(encoding="utf-8"), "original")
+            self.assertFalse((root / "traces").exists())
+
+
 class TestRepoIntegration(unittest.TestCase):
     def test_graph_inspection_and_domain_failure(self):
         valid = execute_tool_call("graph_inspect",

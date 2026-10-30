@@ -18,6 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Optional
 
+from core.run_tracer import validate_run_id
+
 PROFILE = "epistemic-pipeline/prov"
 PROV_NAMESPACE = "http://www.w3.org/ns/prov#"
 SOFTWARE_AGENT = "agent:epistemic-pipeline"
@@ -202,9 +204,10 @@ def build_run_provenance(
 
 def write_provenance(record: dict, output_dir: str = "provenance") -> str:
     """Atomically write ``<run_id>.prov.json`` and return its path."""
+    run_id = validate_run_id(str(record.get("run_id") or "unknown"))
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    path = out_dir / f"{record.get('run_id', 'unknown')}.prov.json"
+    path = out_dir / f"{run_id}.prov.json"
     temp = path.with_suffix(".prov.json.tmp")
     temp.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     os.replace(temp, path)

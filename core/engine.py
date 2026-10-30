@@ -30,7 +30,7 @@ from core.gatekeeper import RuntimePolicyEvaluator
 from core.knowledge_extractor import KnowledgeExtractor
 from core.llm_harness import LLMHarness
 from core.resilience import RetryPolicy, classify_error, run_with_retry, run_with_timeout
-from core.run_tracer import RunTracer
+from core.run_tracer import RunTracer, validate_run_id
 
 
 ENGINE_PROFILE = "epistemic-pipeline/engine"
@@ -107,7 +107,7 @@ class StateMachineEngine:
     def _checkpoint_path(self, run_id: str) -> Path:
         if not self.checkpoint_dir:
             raise ValueError("checkpoint_dir is disabled")
-        return Path(self.checkpoint_dir) / run_id / "checkpoint.json"
+        return Path(self.checkpoint_dir) / validate_run_id(run_id) / "checkpoint.json"
 
     def _write_checkpoint(self, run_id: str, results: dict) -> None:
         if not self.checkpoint_dir:
@@ -327,6 +327,8 @@ class StateMachineEngine:
         return {"confidence_network": report, "delta": net.last_delta}
 
     def run(self, resume_from: Optional[str] = None) -> dict:
+        if resume_from is not None:
+            validate_run_id(resume_from)
         valid, errors = self.validate()
         if not valid:
             return {
