@@ -28,6 +28,9 @@ from core.provenance import (
     write_provenance,
 )
 from core.run_bundle import run_bundle
+from core.engine import StateMachineEngine
+from core.run_tracer import RunTracer, validate_run_id
+from core.claim_audit import write_claim_verification
 
 
 class TestProvenanceProfile(unittest.TestCase):
@@ -198,6 +201,49 @@ class TestRunBundle(unittest.TestCase):
             self.assertFalse(evidence["scientific_validity_claim"])
             kinds = {artifact["kind"] for artifact in evidence["artifacts"]}
             self.assertTrue({"graph", "trace", "checkpoint", "provenance"}.issubset(kinds))
+
+
+class TestRunIdPathBoundary(unittest.TestCase):
+    def test_run_ids_are_single_path_components(self):
+        for run_id in ("run-2026_10.30", "abc123"):
+            self.assertEqual(validate_run_id(run_id), run_id)
+        for bad in ("", ".", "..", "../outside", "nested/id", r"..\outside",
+                    "/tmp/absolute", "nul\x00inside"):
+            with self.subTest(run_id=bad), self.assertRaisesRegex(ValueError, "path-safe"):
+                validate_run_id(bad)
+
+    def test_resume_rejects_path_traversal_before_trace_or_checkpoint_io(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sentinel = root / "outside.jsonl"
+            sentinel.write_text("original", encoding="utf-8")
+            engine = StateMachineEngine(
+                "graphs/linear.yaml",
+                trace_dir=str(root / "traces"),
+                checkpoint_dir=str(root / "checkpoints"),
+            )
+            for run_id in ("../outside", "/tmp/absolute", r"..\outside"):
+                with self.subTest(run_id=run_id), self.assertRaisesRegex(ValueError, "path-safe"):
+                    engine.run(resume_from=run_id)
+            self.assertEqual(sentinel.read_text(encoding="utf-8"), "original")
+            self.assertFalse((root / "traces").exists())
+            self.assertFalse((root / "checkpoints").exists())
+
+    def test_direct_artifact_writers_reject_unsafe_run_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for run_id in ("../outside", "nested/id", r"..\outside"):
+                with self.subTest(run_id=run_id):
+                    with self.assertRaisesRegex(ValueError, "path-safe"):
+                        RunTracer(run_id, str(root / "traces"))
+                    with self.assertRaisesRegex(ValueError, "path-safe"):
+                        write_provenance({"run_id": run_id}, str(root / "prov"))
+                    with self.assertRaisesRegex(ValueError, "path-safe"):
+                        write_claim_verification({"run_id": run_id}, str(root / "audit"))
+                    with self.assertRaisesRegex(ValueError, "path-safe"):
+                        write_evidence_envelope({"run_id": run_id}, str(root / "evidence"))
+            for subdir in ("traces", "prov", "audit", "evidence"):
+                self.assertFalse((root / subdir).exists())
 
 
 if __name__ == "__main__":

@@ -24,6 +24,7 @@ from typing import Any, Dict, Iterable, Optional
 from urllib.parse import urlsplit
 
 from core.provenance import file_sha256
+from core.run_tracer import validate_run_id
 
 PROFILE = "epistemic-pipeline/evidence-envelope"
 CLAIM_INDEX_PROFILE = "epistemic-pipeline/claim-index"
@@ -290,7 +291,7 @@ def build_evidence_envelope(
 
 def write_evidence_envelope(record: dict, output_dir: str = "evidence") -> str:
     """Atomically write ``<run_id>.evidence.json`` and return its path."""
-    run_id = str(record.get("run_id") or "unknown")
+    run_id = validate_run_id(str(record.get("run_id") or "unknown"))
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / f"{run_id}.evidence.json"

@@ -26,13 +26,20 @@ PROFILE = "epistemic-pipeline/trace"
 OP_INVOKE_AGENT = "invoke_agent"
 
 
+def validate_run_id(run_id: str) -> str:
+    """Require an opaque single path component before touching run artifacts."""
+    if (not isinstance(run_id, str) or not run_id
+            or run_id in {".", ".."}
+            or any(char in run_id for char in ("/", "\\", "\x00"))):
+        raise ValueError("run_id must be a non-empty path-safe single component")
+    return run_id
+
+
 class RunTracer:
     """Thread-safe project tracer for node start/end records."""
 
     def __init__(self, run_id: str, output_dir: str = "traces"):
-        if not run_id:
-            raise ValueError("run_id must be non-empty")
-        self.run_id = run_id
+        self.run_id = validate_run_id(run_id)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.path = self.output_dir / f"{run_id}.jsonl"

@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any, Dict, Mapping, Optional
 
 from core.provenance import canonical_sha256
+from core.run_tracer import validate_run_id
 
 PROFILE = "epistemic-pipeline/claim-verification"
 HUMAN_REVIEW_VALUES = {"reviewed", "partial", "not_reviewed", "not_declared"}
@@ -426,7 +427,7 @@ def build_claim_verification(
 
 def write_claim_verification(record: dict, output_dir: str = "claim-audits") -> str:
     """Atomically write ``<run_id>.claim-audit.json`` and return its path."""
-    run_id = str(record.get("run_id") or "unknown")
+    run_id = validate_run_id(str(record.get("run_id") or "unknown"))
     directory = Path(output_dir)
     directory.mkdir(parents=True, exist_ok=True)
     path = directory / f"{run_id}.claim-audit.json"
