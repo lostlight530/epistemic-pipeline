@@ -408,3 +408,17 @@ No `epistemic-pipeline` runtime, experimental benchmark, scientific result or co
 - NOT_EXECUTED: test_provenance pytest, actual malicious run_id I/O, SDK approval runner, GitHub Actions, independent source replication or D30 Audit
 - Protected: SOURCE_OBJECT_REGISTER, original Stage brief/Parts, claim/index code, artifacts/sidecars, historical audit and registries
 - A2 disposition: CURRENT_MONTH_DOCUMENTARY_RELATION / CODE_FIX_SOURCE_VISIBLE / OPEN_Q4 / NO_RUNTIME_PROMOTION
+
+
+## A1_2026_10_31_N_MINUS_1_STAGE_SOURCE_GATE
+- Producer: GPT_NATIVE_A1_REVIEW / NOT_WEB_GPT_STAGE_NATIVE / NOT_ORIGINAL_PUBLISHER_EXECUTION
+- Window: October 01–30 Asia/Shanghai, distinct from 2026-10-19 original Stage L source cutoff
+- Approved separate source review owner: `maintenance/frontier-research/annotations/2026-10-31_A1_STAGE_SOURCE_CONTENT.md` on same branch, only authority after PR merge
+- Evidence: 18 original Stage owners; 17 unchanged plus one byte-confirmed append-only A2 month owner
+- Reason the month file changed since predecessor A1: 2026-10-30 A2 later appended its month relation; prior blob is exact prefix, not rewritten history
+- Source claim limitation: run_id path fix #190 is source-code change, not current harness validation
+- State: OCTOBER_OPEN / STAGE_L_Q4_OPEN / W44_OPEN / NO_MONTH_FINAL
+- Acceptance: no fabricated daily Stage production, no additional independent publisher/experiment; older original body preserved
+- All-ten A1 collective gate: PENDING_AT_AUTHORING; N-day A2 not yet authorized
+- Evidence Delta: NEW_EVIDENCE scoped Git OIDs; CORRECTED_INTERPRETATION append-only evolution; UNCHANGED_BOUNDARY runtime separate; NEW_COUNTEREVIDENCE no live tests; UNKNOWN_RETAINED production effect; NEXT_RETEST_CONDITION fresh all-ten A1 SHA gate
+- Tests and independent runtime: NOT_EXECUTED; D7/D10/D14/D30 Audit remains separate
