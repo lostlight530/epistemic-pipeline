@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-02` (11.2 A1→A2 documentary current-state relation; later forward routing correction on 2026-11-03; source cutoff of Stage L remains 2026-10-19) (documentary Day 28 forward relation; not a Stage producer run)
+- **Current maintenance relation through:** `2026-11-02` (A1→A2 documentary relation; forward owner correction on 2026-11-03; Stage-L source cutoff remains 2026-10-19; original Day-28 routing preserved below)
 
 ## Boundary
 
