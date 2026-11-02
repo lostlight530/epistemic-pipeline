@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-10-28` (documentary Day 28 forward relation; not a Stage producer run)
+- **Current maintenance relation through:** `2026-11-02` (A1→A2 documentary relation; forward owner correction on 2026-11-03; Stage-L source cutoff remains 2026-10-19; original Day-28 routing preserved below)
 
 ## Boundary
 
@@ -7145,3 +7145,16 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - D7/D10 independent historical results are `UNVERIFIED`; D14 is one logical historical window despite multiple retained views; October D30 remains `NOT_DUE` until October 30
 - The previous index body retains its exact earlier point-in-time statements. Forward current-state routing does not rewrite a historical observation or upgrade negative evidence
 - No original Stage producer, research-batch count, source independence, implementation claim, checker PASS or long-term doctrine is changed; owner-specific semantic work remains open
+
+
+## 2026-11-03 forward routing correction — 2026-11-02 A1→A2 current-month identity
+
+- Scope: `2026-11` derived relational month version, source window `2026-11-01..02 Asia/Shanghai`. This is **not** the Stage L native producer completing Q4, not a fresh November upstream source check, and not a D7/D10/D14/D30 audit.
+- A1 merged first: [2026-11-02 A1 source review](annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md) via [PR #200](https://github.com/lostlight530/epistemic-pipeline/pull/200); A2 then followed its merged main via [2026-11-02 current-month relation](annotations/2026-11-02_A2_MONTH_RELATION.md) and [PR #201](https://github.com/lostlight530/epistemic-pipeline/pull/201).
+- Correction reason: that A2 originally cites `stage-l-2026-q4/LONGITUDINAL_INDEX.md`, an incorrect, nonexistent owner path. The **real owner** is this `maintenance/frontier-research/LONGITUDINAL_INDEX.md`, with pre-correction blob `6c52fc1049ffcebffa49d29646cc6aacac0dcc6e`.
+- This index's `current maintenance relation through` metadata is advanced from 2026-10-28 to **2026-11-02** only for the **documentary relation review**. The 2026-10-28 routing text is retained intact and its historic scope remains accurate.
+- Stage L remains [MONTH_OPEN / STAGE_NOT_COMPLETE](stage-l-2026-q4/STAGE_BRIEF.md); its October selected source cutoff stays 2026-10-19. No November native Stage triggering event, original object-version change, or new independent experiment was established in the bounded November 2 A2.
+- Existing [2026 YTD synthesis](longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md) is `YEAR_OPEN`, October 19 source-bounded. It is **inherited**, not rerun or revised.
+- Stage-L `STAGE_SYNTHESIS.md` and `STAGE_HANDOFF.md` were absent in the checked GitHub main tree. At this time they are **NOT_DUE / NOT_REVIEWED_AS_EXISTING_FILES**, not failed jobs or confirmed missing required outputs.
+- Source-of-record separation: Stage-L eight original research files unchanged; A1/A2 maintenance artifacts remain derived; source register, native runtime, external publisher verification, and independent review status are not promoted.
+- The correction was performed after the original November 2 source window, on November 3; it does not backdate a result or silently replace old A2 text.

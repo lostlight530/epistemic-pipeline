@@ -120,3 +120,15 @@
 - The October source selections are retained as history, not counted as November new work
 - When an actual November material Stage event appears, require exact source/version date and an owning primary research artifact
 - Repeated observation without material change is a valid no-change outcome; no independent scientific validation credited
+
+
+## 2026-11-03 Forward correction — November A2 router owner / 2026-11-02 source window
+
+- Correction class: `CORRECT_IN_PLACE_REFERENCE_BY_FORWARD_ANNOTATION` / `SUPERSEDED_PATH`, not a new 2026-11-03 native Stage research event.
+- The original 2026-11-02 A2 **D41–D45** path `maintenance/frontier-research/stage-l-2026-q4/LONGITUDINAL_INDEX.md` was incorrect. It did not exist in the GitHub main tree when inspected after merge; preserve those lines as the historical review defect.
+- The actual canonical index owning file is [LONGITUDINAL_INDEX.md](../LONGITUDINAL_INDEX.md) at `maintenance/frontier-research/LONGITUDINAL_INDEX.md`; its pre-correction blob was `6c52fc1049ffcebffa49d29646cc6aacac0dcc6e`.
+- Corrected decision for D41–D45: `BOUNDARY_UPDATE / APPEND_ROUTING_RELATION`. Real index relation-through field and its November 2 A1→A2 routing have been reconciled in the same correction PR; the original Stage-L sources remain unchanged.
+- The 2026 YTD longitudinal synthesis is `maintenance/frontier-research/longitudinal/LONGITUDINAL_SYNTHESIS_2026_YTD_2026-10-19.md`, a **year-open source-bounded synthesis**, not a fresh November synthesis or a Stage-L final.
+- Stage-L `STAGE_SYNTHESIS.md` and `STAGE_HANDOFF.md` are absent in the inspected Git tree and are `NOT_DUE / NOT_CLAIMED`; do not infer they executed or were reviewed.
+- Explicit source-time versus correction time: November 2 A2 GitHub merge was accepted; the wrong path was discovered **after merge** and corrected forward on 2026-11-03.
+- This corrects owner routing and the index's current-documentary relation metadata only. It does **not** certify the A2's 100+ lines as 100 independent semantic findings or an independent human review.
