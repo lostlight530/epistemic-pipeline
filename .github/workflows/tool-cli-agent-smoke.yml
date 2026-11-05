@@ -7,6 +7,13 @@ on:
       - tests/test_tool_cli.py
       - agent_plan.py
       - tests/test_agent_plan.py
+      - requirements-python313.txt
+      - scripts/check_python_environment.py
+      - tests/test_cross_repo_contract.py
+      - codemeta.json
+      - Makefile
+      - docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md
+      - tests/test_runtime_failure_injection.py
       - .github/workflows/tool-cli-agent-smoke.yml
   workflow_dispatch:
 
@@ -26,8 +33,10 @@ jobs:
         uses: actions/setup-python@v7
         with:
           python-version: '3.13'
-      - name: Install bounded smoke dependencies
-        run: python -m pip install --disable-pip-version-check "PyYAML==6.0.3"
+      - name: Install exact-version Python verification dependencies
+        run: python -m pip install --disable-pip-version-check -r requirements-python313.txt
+      - name: Verify Python 3.13 environment and emit receipt
+        run: python scripts/check_python_environment.py
       - name: Compile tool and test modules
         run: python -m compileall -q agent_tools.py agent_plan.py tool_cli.py tests/test_tool_cli.py tests/test_agent_plan.py
       - name: Test registry, CLI, UI and native tool calls
