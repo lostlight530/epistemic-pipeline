@@ -18,6 +18,8 @@ graphs/
 states/
 roles/
 tests/
+scripts/
+requirements-python313.txt
 Makefile
 README.md
 docs/01-source-and-explanation/ARCHITECTURE.md
@@ -37,6 +39,7 @@ OPEN_RESEARCH.md
 RESEARCH_TEMPLATE.md
 validators/
 docs/02-examples-and-contracts/RESEARCH_CONTRACT.md
+docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md
 docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md
 docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md
 docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md

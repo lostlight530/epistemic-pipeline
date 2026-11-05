@@ -470,3 +470,9 @@ GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, and 
 ## Archived checkpoint — 2026-10-14
 
 [v2026.10-fourteen-day-evidence-checkpoint](https://github.com/lostlight530/epistemic-pipeline/releases/tag/v2026.10-fourteen-day-evidence-checkpoint) is archived as [10.5281/zenodo.23365517](https://doi.org/10.5281/zenodo.23365517). For the software-family concept DOI, earlier versions and exact-checkpoint citation, see [Release and Archival Policy](RELEASE_POLICY.md).
+
+## Global interoperability verification
+
+The optional Python 3.13 distribution snapshot is recorded in `requirements-python313.txt`; run `python scripts/check_python_environment.py` for a revision-specific JSON version check, and `make test` for current local test contracts. Neither the version snapshot nor test source is a result from an unobserved execution
+
+See [Interoperability Verification](docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md) for current producer/consumer fixture semantics, CodeMeta 4 migration, external standards and explicit scientific/reproducibility boundaries

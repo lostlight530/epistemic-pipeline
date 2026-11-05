@@ -1,5 +1,5 @@
 {
-  "@context": "https://w3id.org/codemeta/3.1",
+  "@context": "https://w3id.org/codemeta/4.0",
   "@type": "SoftwareSourceCode",
   "name": "Epistemic Pipeline",
   "description": "An evidence-aware state-machine research execution toolkit with explicit runtime policies, bounded score propagation, digest-bound checkpoints, provenance, claim verification, and portable evidence handoff.",

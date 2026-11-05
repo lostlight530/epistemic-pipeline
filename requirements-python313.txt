@@ -1,0 +1,4 @@
+# Observed Python 3.13 verification environment (2026-11-05)
+# Explicit direct + transitive distribution pins; no wheel hashes or platform lock
+# This is not a PEP 751 pylock.toml, nor proof of reproducible scientific results
+PyYAML==6.0.3

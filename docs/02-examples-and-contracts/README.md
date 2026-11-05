@@ -70,6 +70,11 @@ An upstream artifact identity is not automatically a verified claim. A downstrea
 
 These surfaces must remain consistent with the implementation and active contracts but do not outrank them.
 
+
+### [INTEROPERABILITY_VERIFICATION.md](./INTEROPERABILITY_VERIFICATION.md)
+
+Current producer/consumer fixture scope, Python environment pins, CodeMeta 4 migration boundaries, and (where applicable) failure injection or offline renderer verification — evidence of a test is separate from its execution
+
 ## Scholarly metadata
 
 - root `CITATION.cff`
