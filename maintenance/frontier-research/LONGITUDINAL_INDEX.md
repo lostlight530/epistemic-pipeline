@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-03` (A1→A2 documentary relation verified merged; current navigation advanced in dated 2026-11-05 reconciliation; Stage-L October original source cutoff unchanged)
+- **Current maintenance relation through:** `2026-11-04` (original A1 [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207) merged in `d4638994a506256bd4e6c9833241c9152a803cd6`, Nov4 original A2 month relation follows; November OPEN and native Stage-L original source cutoff October19 retained)
 
 ## Boundary
 
@@ -7187,3 +7187,12 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - The 11/05 implementation [#205](https://github.com/lostlight530/epistemic-pipeline/pull/205) is independent code/interop verification and does not prove this preview was installed or run.
 - Preview discovery creates a provenance review candidate, not a native Stage L mandatory execution trigger, and this Draft remains an index correction below A1/A2 strict `>=100` acceptance.
 
+## 2026-11-06 original November 4 A2 — current month relationship routing
+
+- Original task logical Nov4, actual retrospective review Nov6, whole month `2026-11-01..04` Shanghai.
+- Dependency [Nov4 A1 #207](https://github.com/lostlight530/epistemic-pipeline/pull/207) is merged and main-visible at `d4638994a506256bd4e6c9833241c9152a803cd6`; exact A1 source blob `6e26321e1d4af999c6877b747a5a5f53b32d6226`.
+- Current November month relation: [annotations/2026-11-04_A2_MONTH_RELATION.md](annotations/2026-11-04_A2_MONTH_RELATION.md); previous A2 #204 and all original Stage owners remain unchanged.
+- New Nov4 publisher candidate [Agents Python alpha.6](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.6) was published Nov4 00:44:27 Shanghai and marked pre-release, so excluded from Nov4 A1 but eligible for this day-N A2.
+- Source issuer reports native-wheel installation and Session/Turn/tool-policy changes; **not** installed runtime, local approval evidence or independent conformance in epistemic-pipeline.
+- Stable original O11/S11 selected `v0.24.0` source cutoff October19 remains preserved; `NOVEMBER_OPEN / Q4_IN_PROGRESS`, no native Stage, D7/D10/D14/D30 or scientific-judgment PASS.
+- Nov5 original A1 may start only after this A2 is merged and post-merge main read; its A2 needs that own A1 merge.
