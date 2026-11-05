@@ -9,7 +9,7 @@ clean:
 	rm -rf __pycache__ .pytest_cache output/ traces/ checkpoints/ provenance/ evidence/
 	@echo "Cleaned caches and generated research artifacts"
 
-test: test-core test-provenance test-tools test-interoperability test-failure-injection
+test: test-core test-provenance test-tools test-interoperability test-failure-injection test-maintenance-scope
 
 test-core:
 	python3 tests/test_all.py
@@ -25,3 +25,7 @@ test-interoperability:
 
 test-failure-injection:
 	python3 -m unittest tests.test_runtime_failure_injection -v
+
+.PHONY: test-maintenance-scope
+test-maintenance-scope:
+	python3 -m unittest tests.test_maintenance_scan_scope -v
