@@ -7175,3 +7175,15 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Historical October 31 original A2 strict `0/10 NOT_MET`, subsequent successor deliveries, cleanup retention and November 1 reconciliation remain separate ledgers; this update does not retroactively alter any acceptance.
 - The current edit is index-only navigation and forward correction; no repo test, Stage research replay, external publisher re-verification or independent human review was performed by this correction. Any CI conclusion must be tied to its own check/run and SHA.
 
+
+## 2026-11-05 forward upstream-source candidate — preview vs stable and logical cutoff
+
+- This is a post-Nov3 **candidate release observation**, not an original 2026-11-03 runtime replay, Stage L re-execution, source-register admission, or original A1/A2 delivery.
+- The issuer [OpenAI Agents Python v0.24.0-alpha.6](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.6) was published `2026-11-03T16:44:27Z` = **2026-11-04 00:44:27 Asia/Shanghai**, and GitHub explicitly marks it `prerelease=true`.
+- Its preview release describes captured Turn controls, `Session.submit` queue/steer options, `LocalStorage`, and portable `SessionState` recovery; this is a separate preview runtime/version lineage, not automatic evidence that stable v0.24.0 or this repository has the same behavior.
+- Issuer supplies native-runtime wheels for specific CPython/platform targets, **not PyPI**; wheel availability/issuer-reported install checks do not establish a fresh local test, replay, approval policy, recovered external side effect, or cross-provider compatibility in this repository.
+- Original Nov 3 A2 [#204](https://github.com/lostlight530/epistemic-pipeline/pull/204) merged `2026-11-03T02:16:19Z`, earlier than this preview release. Preserve task-time `NO_MATERIAL_NEW_STAGE_INPUT` and Stage L October 19 source cutoff; do not overwrite history.
+- The 11/04 A1 cutoff is **Nov 1–3 Shanghai**, so this preview **must be excluded from 11/04 A1**. It is eligible only as a source candidate in a separately verified Nov 4 A2 / Nov 5 A1, subject to merged upstream A1 and original task acceptance.
+- The 11/05 implementation [#205](https://github.com/lostlight530/epistemic-pipeline/pull/205) is independent code/interop verification and does not prove this preview was installed or run.
+- Preview discovery creates a provenance review candidate, not a native Stage L mandatory execution trigger, and this Draft remains an index correction below A1/A2 strict `>=100` acceptance.
+
