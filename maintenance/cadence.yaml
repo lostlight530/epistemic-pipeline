@@ -41,6 +41,7 @@
     ".github/pull_request_template.md",
     ".github/ISSUE_TEMPLATE/governance.md",
     "docs/02-examples-and-contracts/RESEARCH_CONTRACT.md",
+    "docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md",
     "docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md",
     "docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md",
     "docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
@@ -54,7 +55,9 @@
     "examples/README.md",
     "core/claim_audit.py",
     "core/claim_transfer.py",
-    "core/evidence_envelope.py"
+    "core/evidence_envelope.py",
+    "requirements-python313.txt",
+    "scripts/check_python_environment.py"
   ],
   "scan_paths": [
     "README.md",
@@ -67,6 +70,7 @@
     ".github/pull_request_template.md",
     ".github/ISSUE_TEMPLATE/governance.md",
     "docs/02-examples-and-contracts/RESEARCH_CONTRACT.md",
+    "docs/02-examples-and-contracts/INTEROPERABILITY_VERIFICATION.md",
     "docs/02-examples-and-contracts/CLAIM_AUDIT_CONTRACT.md",
     "docs/02-examples-and-contracts/CLAIM_TRANSFER_CONTRACT.md",
     "docs/02-examples-and-contracts/ASSERTION_BASIS_AND_AUDIT_COVERAGE.md",
@@ -82,8 +86,12 @@
     "core",
     "validators"
   ],
-  "forbidden_governance_paths": [".github/workflows"],
-  "allowed_governance_paths": [".github/workflows/tool-cli-agent-smoke.yml"],
+  "forbidden_governance_paths": [
+    ".github/workflows"
+  ],
+  "allowed_governance_paths": [
+    ".github/workflows/tool-cli-agent-smoke.yml"
+  ],
   "history_patterns": [
     "docs/03-maintenance-and-audit/history/*_DAY_CONSOLIDATION.md",
     "docs/03-maintenance-and-audit/history/STAGE_*.md"
