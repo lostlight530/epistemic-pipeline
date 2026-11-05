@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-02` (A1→A2 documentary relation; forward owner correction on 2026-11-03; Stage-L source cutoff remains 2026-10-19; original Day-28 routing preserved below)
+- **Current maintenance relation through:** `2026-11-03` (A1→A2 documentary relation verified merged; current navigation advanced in dated 2026-11-05 reconciliation; Stage-L October original source cutoff unchanged)
 
 ## Boundary
 
@@ -7158,3 +7158,20 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Stage-L `STAGE_SYNTHESIS.md` and `STAGE_HANDOFF.md` were absent in the checked GitHub main tree. At this time they are **NOT_DUE / NOT_REVIEWED_AS_EXISTING_FILES**, not failed jobs or confirmed missing required outputs.
 - Source-of-record separation: Stage-L eight original research files unchanged; A1/A2 maintenance artifacts remain derived; source register, native runtime, external publisher verification, and independent review status are not promoted.
 - The correction was performed after the original November 2 source window, on November 3; it does not backdate a result or silently replace old A2 text.
+
+## 2026-11-05 forward index reconciliation — November 3 A1/A2 custody
+
+- This is an Independent GPT **current routing correction**, not November 4/5 A1 or A2, an original Stage L research run, or a D7/D10/D14/D30 Periodic Audit.
+- Cold-start observed repository: `lostlight530/epistemic-pipeline`, `main` at `983d8dc60049a2931c3d6ee8b28ce7c258f4f621`, GitHub checked 2026-11-05; prior current-index header still pointed to `2026-11-02` despite the November 3 A2 merge.
+- Original independent A1 on logical 2026-11-03: [PR #203](https://github.com/lostlight530/epistemic-pipeline/pull/203) **merged**, source review `2026-11-01..02`, retained `annotations/2026-11-03_A1_STAGE_SOURCE_CONTENT.md` blob `d656ae07ba33ffd0a7b845ed13b7d13ee296e853`.
+- Original independent A2 on logical 2026-11-03: [PR #204](https://github.com/lostlight530/epistemic-pipeline/pull/204) **merged after A1**, month-to-date relation `2026-11-01..03`, retained `annotations/2026-11-03_A2_MONTH_RELATION.md` blob `9a6f6c594a2e75e94c2a24fff353e61dfabecc92`.
+- The index header now advances only the **current maintenance relation-through pointer** to `2026-11-03`; no historical previous pointer, original PR additions, earlier observation, or source artifact has been rewritten.
+- The original Stage L `stage-l-2026-q4/STAGE_BRIEF.md` remains source-bounded to `2026-10-19`, `2026-Q4 IN_PROGRESS`; selected October versioned publisher records do not prove a new November native Stage run.
+- November 2026 remains `OPEN`; a material native Stage L November trigger was `NOT_ESTABLISHED` in these reviewed source and maintenance artifacts, not verified absent across all possible external sources.
+- Later merged implementation PR [#205](https://github.com/lostlight530/epistemic-pipeline/pull/205) concerns claim/evidence transfer, failure-injection and Python environment contracts; these are **later implementation changes**, not original November 3 Stage L research and not November 4/5 A1/A2 maintenance delivery.
+- As of this GitHub read, **no original November 4 or November 5 A1/A2 maintenance PR was identified** for this repository; their strict delivery status is `NOT_DELIVERED / NOT_VERIFIED`, not `PASS`.
+- Next legitimate sequence: November 4 A1 (`2026-11-01..03`) must be independently reviewed, independently meet the `>=100 GitHub additions AND >=100 substantive maintenance lines` contract, and be merged by authorized maintainer before starting November 4 A2 (`2026-11-01..04`).
+- The November 5 chain analogously requires its own A1 (`2026-11-01..04`) merged and fresh-read before November 5 A2 (`2026-11-01..05`); missing upstream merges may not be substituted by this index correction.
+- Historical October 31 original A2 strict `0/10 NOT_MET`, subsequent successor deliveries, cleanup retention and November 1 reconciliation remain separate ledgers; this update does not retroactively alter any acceptance.
+- The current edit is index-only navigation and forward correction; no repo test, Stage research replay, external publisher re-verification or independent human review was performed by this correction. Any CI conclusion must be tied to its own check/run and SHA.
+
