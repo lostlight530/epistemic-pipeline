@@ -1,0 +1,174 @@
+# 2026-11-05 original independent A2 — Epistemic November1–5 monthly relation
+
+- Logical November1–5 Asia/Shanghai; actual retrospective GitHub access/authoring Nov06.
+- **Fresh main** `aa5514cbf91218aff83087023707fddbb3756b3c` after original merged [Nov05 A1 #209](https://github.com/lostlight530/epistemic-pipeline/pull/209); exact A1 blob `633c3a2ca77e33d062c35239a1ae6538e0c7aac0`
+- Previous Nov04 A1 [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207), A2 [#208](https://github.com/lostlight530/epistemic-pipeline/pull/208), original Oct19 Stage L research O11 stable v0.24.0 retained.
+- [OpenAI Agents SDK alpha.6](https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.6) published 2026-11-03T16:44:27Z / Nov04 00:44 Shanghai; **prerelease**, independent issuer-candidate and not local installation/approval or native Stage admission.
+- November OPEN, Q4 Stage-L IN_PROGRESS; no SDK import/execution, graph, policy gate, test, scanner, native research or CI run credited.
+
+## New month relational adjudications
+- M001 | 11/05 A2 处理 November1–5 Shanghai 全月版本，不是 Nov5 当日的单一发布物清单
+- M002 | Nov5 A1 #209 在此 A2 前已合并，直接源文件 blob 633c3a2ca77e33d062c35239a1ae6538e0c7aac0
+- M003 | 当前 main aa5514cbf91218aff83087023707fddbb3756b3c 为 Nov5 merged-A1 后读取的起点
+- M004 | 11/04 A2 #208 是此前 Nov1–4 月关系，当前只按新增日扩展而非覆盖它
+- M005 | 11/04 A1 #207 只覆盖到 Nov3 的前日审查，不是当前 A2 的任务主体
+- M006 | 11/03 A1 #203 与 A2 #204 保留独立原始合并证据
+- M007 | 11/02 原始月度任务和此前十月纠错不与本 A2 GitHub additions 相加
+- M008 | Nov4 00:44:27 上海发布 SDK alpha.6，此发布已可进入 Nov5 A1/N−1 与 Nov5 A2 月关系
+- M009 | SDK preview prerelease=true，原 Stage L stable selected O11 v0.24.0 不能被悄悄换掉
+- M010 | alpha.6 GitHub wheel 分发不等于 PyPI 正式稳定版本采用
+- M011 | preview LocalStorage 不能导出 portable checkpoint，持久化操作与 transfer portability 不能混淆
+- M012 | preview SessionState 便携性取决于恢复时应用工具凭证政策，历史 checkpoint 不授予旧授权
+- M013 | preview Turn.submit queue/steer/cancel 行为描述是发行方声明，本仓没有 live Session fixture
+- M014 | preview MCP argument replacement 是潜在 MODIFY 面，尚无本仓 request before/after trace
+- M015 | preview result transform 改变 evidence envelope 内容，不等于验证原 tool result 的真实性
+- M016 | preview child approval 需要跨父子请求链的独立 authorization receipt，未实测
+- M017 | preview ScriptedResponses 是测试 fixture 能力，当前本仓没有因此建立 SDK native test PASS
+- M018 | preview NetworkPolicy 执行器和平台约束不等同通用 MCP 连接网络隔离
+- M019 | preview native telemetry 导出不是完整可观察性的形式证明
+- M020 | preview NativeError code/request-ID 可能改善失败归因，但不证明本仓恢复状态闭环
+- M021 | MANIFEST engine/checkpoint/prov/claim verification 的 authority 与外部 SDK preview 来源不同层
+- M022 | MANIFEST heuristic confidence [0,1] 范围不能解释为已校准概率
+- M023 | MANIFEST evidence-transfer 不继承 truth、entailment、review 或 provider consent
+- M024 | MANIFEST current_temporal_status.as_of=Oct01 表示最后一次静态日历协调，非实时 heartbeat
+- M025 | 本轮没有执行 MCP policy gate、Python SDK preview、Graph Engine、CLI 或 periodic scanner
+- M026 | 即使 GitHub PR merged，不能当作 SDK runtime conformance 或安全审计的成功证明
+- M027 | Stage L 2026-Q4 仍 IN_PROGRESS，11 月自然月仍 OPEN
+- M028 | Stage L 原选样 Oct19 cutoff 不改；candidate 不被插入 original research source-register
+- M029 | longitudinal index 当前 relation-through Nov04，A2 合并后应推进至 Nov05
+- M030 | index 日期推进只表示文档关系，不是 native Stage publication 或结案
+- M031 | 原始 Oct31 NOT_MET 等历史严格不达标记录不得被本次 successor 洗白
+- M032 | 本轮 new source relationship 可以追加后续 correction，但不改历史审查时间戳
+- M033 | 当前 release exact issuer publication 时钟优先于推测仓库下游 adoption 时间
+- M034 | 此 A2 需要自身 >100 GitHub additions，不能继承 A1 #209 的行数
+- M035 | 即使 >=100 additions，审查结论是否有 >=100 实质独立判断仍需独立语义审核
+- M036 | 当前 GitHub exact head check-runs 若为 0，记录 NO_CHECK 而不是 CI PASS
+
+## Fresh-main original Nov05 A1 source-to-month linkage
+- R001 | predecessor A1 J001: Nov5 A1 covers November1–4 Shanghai and is a content-level reinspection, not a November5 current-month settlement | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R002 | predecessor A1 J002: Actual GitHub reading is Nov6; a later write may document a previous logical period but may not claim a contemporaneous experiment | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R003 | predecessor A1 J003: The current main 9a1c49b7a4c648c859a3c91e82fac641676fec35 contains a merged Nov4 A2, which this A1 reads as prerequisite | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R004 | predecessor A1 J004: Nov4 A2 #208 source blob 3432ff11742ee223c464b0d998aee73ebd729941 is the immediate previous relationship owner | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R005 | predecessor A1 J005: Nov4 A1 #207 source blob 6e26321e1d4af999c6877b747a5a5f53b32d6226 remains the previous full source-content review | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R006 | predecessor A1 J006: Nov3 A1 #203 source content predates Nov3 A2 #204; those task-time artifacts stay separate | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R007 | predecessor A1 J007: Nov2 A1/A2 are earlier valid history without becoming new November5 additions | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R008 | predecessor A1 J008: The current index relation-through Nov4 was advanced by the Nov4 A2 and is correct before Nov5 A2 | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R009 | predecessor A1 J009: The selected 2026-Q4 Stage-L native author date remains October19, not today | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R010 | predecessor A1 J010: The Stage Brief method remains targeted source-bounded study, not automatic natural-month cumulative exhaustive review | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R011 | predecessor A1 J011: The November source month remains OPEN even though a Nov4 relationship file now exists | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R012 | predecessor A1 J012: The Stage-L 2026-Q4 quarter remains IN_PROGRESS even if its original October selected release set remains static | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R013 | predecessor A1 J013: The Nov5 implementation PR #205 at 13:03Z occurred later than the Nov4 A1 source input and must be classified separately | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R014 | predecessor A1 J014: Current repo implementation tree can be inspected for present custody without asserting every file was present on Nov4 | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R015 | predecessor A1 J015: No native Stage-L November Part was added by the merged Nov4 A2; its output is derived relationship documentation | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R016 | predecessor A1 J016: Each original PR's ≥100 additions and each substantive reviewer judgment must be measured within its own PR diff | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R017 | predecessor A1 J017: An unchanged blob ID is a custody fact and is not a scientific reproduction result | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R018 | predecessor A1 J018: Any user-approved merge is governance authorization, not third-party approval-policy runtime evidence | A2: MONTH_WINDOW: Nov1–5 的连续性要区分历史主分支和当前独立任务，历史状态不得静默更新
+- R019 | predecessor A1 J019: Stage Brief asks which claim and uncertainty states changed within selected release records; the repository runtime's actual uncertainty estimate is not measured here | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R020 | predecessor A1 J020: Stage Brief includes authority and guardrails as first-class dimensions, so tool metadata should not be misread as committed access control | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R021 | predecessor A1 J021: Stage Brief includes trace/state transitions; an external feature name without a trace is an open evidence question | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R022 | predecessor A1 J022: Stage Brief includes transfer; a portable ref without a verification decision is still only a transfer | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R023 | predecessor A1 J023: Stage Brief has an October19 source cutoff, so the November4 alpha candidate cannot appear as if selected in the original protocol | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R024 | predecessor A1 J024: Stage Brief explicitly calls its protocol post-selection reconstruction; November review must not retitle it preregistered | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R025 | predecessor A1 J025: Stage Brief versioned-object unit supports a new preview candidate but does not authorize automatic O12 admission | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R026 | predecessor A1 J026: Source Register selected one stable OpenAI Agents Python v0.24.0 release, not an entire SDK development series | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R027 | predecessor A1 J027: Source Register O11 is a selected version and S11 a release-source family; they are not independent trials | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R028 | predecessor A1 J028: Source Register status PARTIAL/QUARTER_OPEN requires retaining an explicit completeness limit | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R029 | predecessor A1 J029: L1 Part stable v0.24.0 was issued October15 and researched October19; issuer time and investigation time differ | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R030 | predecessor A1 J030: L1 Part described converted MCP tool annotations, which by themselves do not prove policy enforcement | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R031 | predecessor A1 J031: L1 Part described pending-approval compaction deferral, a possible evidence-preservation behavior without local replay | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R032 | predecessor A1 J032: L1 Part held local installed SDK/environment state UNKNOWN and this A1 did not resolve it | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R033 | predecessor A1 J033: L1 Part held approval safety UNKNOWN despite project release claims, preventing downstream conformance promotion | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R034 | predecessor A1 J034: L1 Part had no cross-version replay, so stable and preview Session APIs have no demonstrated compatibility here | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R035 | predecessor A1 J035: Evidence Chart F-L1 is qualitative issuer-only evidence, not an independent zero-shot safety score | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R036 | predecessor A1 J036: Evidence Chart marks original reproduction UNKNOWN/NO_LOCAL_RUN; source review is not a replacement test | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R037 | predecessor A1 J037: Evidence Chart one-object selection does not support a chronological causal trend | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R038 | predecessor A1 J038: Research Review R1/R2/R3 remain reproduction, selection and reviewer-independence gaps | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R039 | predecessor A1 J039: Research Review R4 labels reconstruction as-of date; retrospective Nov5 A1 must preserve the new actual date | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R040 | predecessor A1 J040: Contributor Statement Oct19 author/connected-GitHub instrument identity is unchanged | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R041 | predecessor A1 J041: October Stage Month reconstruction is an earlier source set and not a November native part | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R042 | predecessor A1 J042: No Stage synthesis or FINAL handoff is admissible before quarter close and independent source review | A2: NATIVE_STAGE_LINK: 保持 Oct19 stable selected-study 及方法/复现限制，仅把 11 月 preview 作为独立候选
+- R043 | predecessor A1 J043: Agents Python alpha.6 publisher event occurred Nov4 00:44:27 Shanghai, so it enters Nov5 A1 Nov1–4 source window | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R044 | predecessor A1 J044: GitHub prerelease flag distinguishes alpha.6 from the stable selected v0.24.0 object | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R045 | predecessor A1 J045: Preview native wheel distribution is on GitHub Releases rather than PyPI, changing how exact package origin could be captured | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R046 | predecessor A1 J046: The Linux wheel requires x86_64 and glibc≥2.39; no local platform receipt shows this repo used that target | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R047 | predecessor A1 J047: The macOS wheel is arm64 and macOS11+, so generic 'macOS supported' is too broad | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R048 | predecessor A1 J048: Windows x64 wheel is a separate platform build and not a test of Linux executor network behavior | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R049 | predecessor A1 J049: Publisher names unsupported musl and several ARM environments, which should be an explicit deny/unknown case in portability discussions | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R050 | predecessor A1 J050: cp310-abi3 naming provides source-claimed CPython3.10–3.14 ABI support; installed native extension still requires local verification | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R051 | predecessor A1 J051: SHA256SUMS is an issuer checksum manifest, not automatic signature verification by this repo | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R052 | predecessor A1 J052: Publisher test workflow links do not establish a check-run for the current epistemic-pipeline commit | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R053 | predecessor A1 J053: LocalStorage can reopen a local profile but cannot export portable checkpoints, so durable handoff differs by storage mode | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R054 | predecessor A1 J054: Portable SessionState capture is a separate path that would need checkpoint identity and replay criteria | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R055 | predecessor A1 J055: Capturing a Turn is result attribution state and not itself a grant of authority | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R056 | predecessor A1 J056: Queue versus steer for Session.submit changes scheduling semantics, which can affect trace order | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R057 | predecessor A1 J057: Turn.cancel and Session.cancel_all have different cancellation scopes, requiring different failure tests | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R058 | predecessor A1 J058: Caller-provided compaction summaries are untrusted externally injected state until validated | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R059 | predecessor A1 J059: NativeOutput strict-output enforcement is not equivalent to PromptedOutput Python JSON validation | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R060 | predecessor A1 J060: PromptedOutput bounded correction without tools avoids replaying external actions but does not prove output scientific truth | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R061 | predecessor A1 J061: LocalStorage requiring max_retries=0 is a specific compatibility caveat for generic retry design | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R062 | predecessor A1 J062: Restored Sessions adopt current application tools, credentials and policies, so historical checkpoint policy and current authority can diverge | A2: PREVIEW_ELIGIBILITY: Nov4 00:44 上海发布的 alpha.6 已到 Nov5 source window，但不自动构成 stable deployment
+- R063 | predecessor A1 J063: Manual live tool requests create pending interaction state requiring a separately recorded approval decision | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R064 | predecessor A1 J064: Resumed pending tool requests should carry stable request IDs to detect duplicate or mispaired responses | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R065 | predecessor A1 J065: Experimental deferred-job recovery does not establish crash-safe durable execution without a controlled retry/replay test | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R066 | predecessor A1 J066: MCP Tasks adapter is optional and cannot be counted as A2A or general MCP conformance | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R067 | predecessor A1 J067: Per-submission tool selection remains within Session-opening permissions and must not be interpreted as a privilege escalation API | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R068 | predecessor A1 J068: Native child approvals share a parent's tool/application context, requiring explicit provenance on delegated authority | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R069 | predecessor A1 J069: Application-managed form/URL interactions may cause external side effects that need user confirmation and receipt | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R070 | predecessor A1 J070: Python result annotation checks validate declared shape, not source truth of tool output | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R071 | predecessor A1 J071: Native MCP argument replacement is a MODIFY control surface whose original/modified arguments should be traceable | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R072 | predecessor A1 J072: Native MCP result transforms may change evidentiary meaning even when outer success status is unchanged | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R073 | predecessor A1 J073: NetworkPolicy is supported under specified executor/OS conditions, not all connectors or hosted tools | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R074 | predecessor A1 J074: Remote Environment lifetime controls are resource policy, not a universal approval ledger | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R075 | predecessor A1 J075: Native OTel export can carry telemetry while still leaving completeness of observation unknown | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R076 | predecessor A1 J076: NativeError status/code/request-ID support improves trace diagnosability, not claim acceptance | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R077 | predecessor A1 J077: ScriptedResponses can create deterministic fixtures without live provider/API key; a fixture's pass does not imply production rollout | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R078 | predecessor A1 J078: Removed Runner aliases mean existing adapters need signature-level compatibility checks, not just package update | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R079 | predecessor A1 J079: Turn.get_result replacing Turn.wait/Session.wait changes result-wait API and reentrancy assumptions | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R080 | predecessor A1 J080: FunctionTool unifying callbacks and manual tools changes declaration shape and cannot be applied to stable SDK without version gate | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R081 | predecessor A1 J081: Immutable Agent declaration is a configuration contract; mutating Session properties should not be used as a substitute for a new Agent identity | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R082 | predecessor A1 J082: Preview cancellation-policy fixes remain issuer claims until root/child policy expiry tests reproduce them | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R083 | predecessor A1 J083: MCP transformed errors and malformed tool result envelope rejection require specific negative fixtures before local approval | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R084 | predecessor A1 J084: Native telemetry certificates are transport-specific trust controls rather than proof that every trace is complete | A2: TOOL_RUNTIME_CONTRACT: 模型执行、批准、持久化、网络和 trace 需要本仓独立 evidence；发行说明不足
+- R085 | predecessor A1 J085: MANIFEST profile epistemic-pipeline/engine is separate from epistemic-pipeline/runtime-policy; engine progress is not policy approval | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R086 | predecessor A1 J086: MANIFEST trace and checkpoint profiles are separate, so resuming a checkpoint does not verify prior trace completeness | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R087 | predecessor A1 J087: MANIFEST provenance profile and claim-verification profile represent different verdict types | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R088 | predecessor A1 J088: MANIFEST confidence-heuristic profile explicitly avoids interpreting its output as statistical probability | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R089 | predecessor A1 J089: MANIFEST claim-index contains indexed propositions, not scientifically accepted conclusions | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R090 | predecessor A1 J090: MANIFEST claim-transfer requires explicit claim selection and non-inheritance, not automatic acceptance downstream | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R091 | predecessor A1 J091: MANIFEST evidence-envelope stores source references while leaving evidence sufficiency independently judged | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R092 | predecessor A1 J092: MANIFEST conflict visibility is a positive invariant and cannot be treated as dirty data to auto-delete | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R093 | predecessor A1 J093: MANIFEST runtime policy is machine-readable but the presence of policy schema does not prove a policy was executed | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R094 | predecessor A1 J094: MANIFEST explicit provider identity is adapter-reported, so the preview SDK name does not authenticate a model/provider | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R095 | predecessor A1 J095: MANIFEST mock provider is synthetic and its test results cannot validate live provider behavior | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R096 | predecessor A1 J096: MANIFEST DAG graph validator is implemented but not executed on a new research graph by this A1 | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R097 | predecessor A1 J097: MANIFEST uses repo-local report path identity and config SHA-256, not the current model conversation as a substitute run receipt | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R098 | predecessor A1 J098: MANIFEST as_of October1 is last explicit calendar reconciliation, not an expired heartbeat | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R099 | predecessor A1 J099: MANIFEST document authority says old consolidation is historical rather than current execution truth | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R100 | predecessor A1 J100: MANIFEST scientific verdict remains separate from structural conformance, so an approval request record is not claim validity | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R101 | predecessor A1 J101: MANIFEST stable profiles forbid decorative local @version identifiers; alpha.6 is a real external tag and remains scoped accordingly | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R102 | predecessor A1 J102: MANIFEST actual installed SDK/library versions were not checked in this review, so environment status remains UNKNOWN | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R103 | predecessor A1 J103: MANIFEST provider metadata default unknown is preferable to fabricated inferred provider model/version | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R104 | predecessor A1 J104: MANIFEST bounded maintenance scope permits annotation-only work without altering active runtime policy controls | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R105 | predecessor A1 J105: Nov2 A1 and A2 original annotation blobs remain separately readable from current main | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R106 | predecessor A1 J106: Nov3 A1 and A2 original annotation blobs remain separately readable and preserve their chronological dependency | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R107 | predecessor A1 J107: Nov4 A1 annotation covers Nov1–3 and correctly excludes Nov4 preview from N-1 input | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R108 | predecessor A1 J108: Nov4 A2 annotation covers Nov1–4 and includes exact prerelease issuer source clock | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R109 | predecessor A1 J109: Nov4 A2 contains no installed alpha.6 wheel trace or executed native SDK state, so its candidate remains unverified locally | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R110 | predecessor A1 J110: Nov4 A2 is merged at 9a1c49b7a4c648c859a3c91e82fac641676fec35, establishing this A1 current authority base | A2: CURRENT_MACHINE_AUTHORITY: 解释 MANIFEST/profile/runtime 与外部版本声明的差异，未执行不能产生 PASS
+- R111 | predecessor A1 J111: Current index header through Nov4 is a relation pointer, not proof of Nov5 completion | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R112 | predecessor A1 J112: Nov5 A1 should add new source review only and not prematurely route index through Nov5 | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R113 | predecessor A1 J113: Nov5 A2 must newly read this A1 after merge, preserving the main-visible dependency | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R114 | predecessor A1 J114: Nov5 code implementation PR #205 belongs to a separate first-party code-change event, not a native Stage-L experiment | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R115 | predecessor A1 J115: November5 monthly relation, when written, must include code PR #205 without assuming tests passed on its exact resulting SHA | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R116 | predecessor A1 J116: GitHub external publisher release event and this repo code merge event are separate clocks, not one 'SDK adoption' milestone | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R117 | predecessor A1 J117: Local test/check-run on this A1 head is NOT_EXECUTED unless an exact SHA result appears | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R118 | predecessor A1 J118: Historical October31 A2 strict NOT_MET cannot be retroactively repaired by the new A1 or future A2 | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R119 | predecessor A1 J119: Prior index correction #206 is merged; it remains a corrective navigation entry, not part of the original Nov5 content quota | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R120 | predecessor A1 J120: Stage L original source files and old annotations remain untouched, supporting reversible audit rather than history rewrite | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R121 | predecessor A1 J121: Future actual approval/security tests would require captured request, policy, action, decision, side-effect and recovery trace | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+- R122 | predecessor A1 J122: Unknown remains UNKNOWN even when the publisher describes a richer preview feature set | A2: EVIDENCE_TRANSFER: Nov1–5 月版本只能传播来源/冲突/未知，不继承可靠性、统计或安全验证
+
+## Handoff and evidence limit
+- Individual source decisions carried from merged A1 are relationship records, **not independent research experiments** or an automatic semantic PASS. Acceptance of ≥100 independently substantive lines requires separate reviewer judgment.
+- This A2 updates only a newly dated month relation and index navigation pointer; source-register, machine contracts and historical original records remain immutable.
+- No local execution and no preview install observed; downstream adoption stays UNKNOWN, not FAILED or PASS.
