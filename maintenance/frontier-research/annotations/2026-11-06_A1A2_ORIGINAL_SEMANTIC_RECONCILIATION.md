@@ -70,3 +70,22 @@
 - PROBE-10 force missing runtime/permission receipt; final adjudication must be UNKNOWN rather than success
 - Runtime, ABI imports, approval tests, claim verification tests and external conformance: NOT_EXECUTED in this documentary reconciliation
 - No past original/successor strict PASS is manufactured by this forward record
+
+## Strict original A1/A2 acceptance adjudication — 2026-11-06
+- Basis: each named original GitHub PR patch and its original merged delivery; this is a later independent *documentary* evaluation, not a replacement or recomputation of original additions.
+- Gate 1 (GitHub original PR >=100 additions and merged): PASS for every original below. Gate 2 (>=100 non-repeated, original, independently substantive maintenance lines per original): outcomes below. NOT_CERTIFIED is a non-PASS state.
+- Exclude from Gate 2: blank lines, headings, administrative metadata, file/blob indexes, source-body quotations, unchanged inherited upstream rows, repeated boilerplate suffixes, and historical evidence that was not newly assessed. A numbered row is not automatically a distinct substantive decision.
+- No native execution, external source recertification or GitHub Actions run is performed by this documentary review. No later correction is backdated into an original GitHub PR.
+
+| Original PR | Original additions | Strict substantive result | Specific acceptance reason / unresolved test |
+|---|---:|---|---|
+| [#200](https://github.com/lostlight530/epistemic-pipeline/pull/200) | 121 | NOT_CERTIFIED | Nov2 A1 combines shared Gxx contract language with Stage L source records; actual approval/trace policy behavior was not executed and generic caveats cannot count as new source decisions |
+| [#201](https://github.com/lostlight530/epistemic-pipeline/pull/201) | 122 | NOT_CERTIFIED | Nov2 A2 A1-source inheritance, source identity and month-state statements need an independent A2 relationship-only line audit |
+| [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207) | 167 | NOT_CERTIFIED | Nov4 A1 describes 124 source decisions but includes a blob inventory and repeated part/source checks; require distinct source-to-claim adjudication count |
+| [#208](https://github.com/lostlight530/epistemic-pipeline/pull/208) | 165 | NOT_CERTIFIED | Nov4 A2 reuses upstream Jxx and issuer alpha release; new candidate timing and native selected-source separation matter, repeated evidence doctrine does not increase independent count |
+| [#209](https://github.com/lostlight530/epistemic-pipeline/pull/209) | 167 | NOT_CERTIFIED | Nov5 A1 has native inventory and Jxx/source assertions; strict pass requires separate assessment of genuinely new Session/approval trace implications |
+| [#210](https://github.com/lostlight530/epistemic-pipeline/pull/210) | 175 | NOT_CERTIFIED | Nov5 A2 inherits month relationships; must isolate new Nov5 source/implementation changes and specific epistemic effects rather than count carried forward rows |
+
+- Certification rule: no original is marked semantic PASS without an independently checked exact-line inclusion/exclusion ledger achieving 100 eligible, different source-specific judgments for *that original*, with citation to its original diff. Higher GitHub additions alone cannot supply that ledger.
+- Next legal action: review and adjudicate each specific row; where the strict criterion is actually unmet, a separately scoped successor may be proposed, but must not be retroactively counted toward the original. Stop at Draft until maintainer decision.
+- Current status: ORIGINAL_NUMERIC_GATE_VERIFIED / ORIGINAL_STRICT_SUBSTANTIVE_NOT_CLOSED / FORWARD_CORRECTION_DELIVERED.
