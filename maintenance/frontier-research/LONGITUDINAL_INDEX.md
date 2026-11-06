@@ -6,7 +6,8 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-05` (original Nov05 A1 [#209](https://github.com/lostlight530/epistemic-pipeline/pull/209) merged; independent A2 Nov1–5 full relation; November OPEN, original Stage-L Oct19 source cutoff unchanged)
+- **Current maintenance relation through:** `2026-11-06` — [Independent Nov06 A2](annotations/2026-11-06_A2_MONTH_RELATION.md); November OPEN, original Stage L source cutoff October19 and Q4 IN_PROGRESS unchanged.
+- **Previous current-relation pointer retained:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md); its original source-time validity and PR receipts are not rewritten.
 
 ## Boundary
 
