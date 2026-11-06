@@ -1,0 +1,121 @@
+# Epistemic | 2026-11-06 original A1/A2 substantive evidence reconciliation
+
+- Class: FORWARD_SEMANTIC_RECONCILIATION, not native Stage L rerun, not independent test execution or historical rewrite
+- Source main: `56dc5a6fecc0054305a5ea9c31521a05ec181ea0`
+- Original A1/A2: [#200](https://github.com/lostlight530/epistemic-pipeline/pull/200), [#201](https://github.com/lostlight530/epistemic-pipeline/pull/201), [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207), [#208](https://github.com/lostlight530/epistemic-pipeline/pull/208), [#209](https://github.com/lostlight530/epistemic-pipeline/pull/209), [#210](https://github.com/lostlight530/epistemic-pipeline/pull/210)
+- All six originals merged with numerical additions >=100; substantive >=100 per original remains separate and does not accrue inherited source-row text
+- Stage L 2026-Q4 remains IN_PROGRESS with October 19 original selected source cutoff, while November candidate information has a later observation clock
+- November owner [#214](https://github.com/lostlight530/epistemic-pipeline/pull/214) and historical annotations remain the governing current/historical relation surfaces
+
+## November 2 A1 #200
+- 121 added lines include source custodian statements and reusable evidence-doctrine propositions, which must not all be treated as new claim-specific findings
+- The selected stable publisher object is the historical Stage L source, not evidence of a locally executing Agents SDK version
+- Stage source register, claim evidence chart and research review are separate artifacts with separate epistemic authority
+- A selected release notice or tagged source can establish what the publisher claims, not whether the pipeline's own approval policy is enforced
+- A metadata field describing a tool is not the decision receipt showing that tool invocation was actually authorized
+- The absence of a November Stage trigger is NOT_OBSERVED_WITHIN_SCOPED_SOURCE, not a negative result for all future releases
+- Forward correction: distinguish selected version identity, observed feature statement, runnable effect receipt and pipeline semantic validation
+
+## November 2 A2 #201
+- 122 added lines cannot be converted to a strict semantic PASS solely because the count is numerically sufficient
+- The first November monthly version relates October source evidence and November maintenance without closing 2026-Q4 Stage
+- Repeated guardrail definitions about claim truth, heuristic score and provenance are single contract boundaries, not independent measurements
+- A2 should identify the effect of source evidence on current approval/trace interpretations, not restate A1's source inventory
+- A historical trace asserted by publisher documentation is not a trace emitted by this repository's runnable environment
+- Forward correction: retain provisional relationship, no transfer/acceptance or installed-version inference
+
+## November 4 A1 #207
+- Original 167 additions include many line-addressed Stage-owner source assertions; line-addressed source text is evidence identification, not itself new analysis
+- Original selected stable source and later alpha preview are different release objects and cannot share one semantic compatibility conclusion
+- An alpha feature description about child approvals or interactive sessions does not establish a reproducible root/child authority boundary under real tool execution
+- The source-level question is which policy object and authorization context bind at Session creation versus restoration
+- Rehydrated Sessions receiving current application tools/credentials/policies is a source-level expectation, not proof of the behavior in a pinned local build
+- Forward correction: keep publisher source type and local runtime UNKNOWN separately, avoid averaging different version maturities
+
+## November 4 A2 #208
+- 165 additions span a monthly relation and routing; the owner advance is not an extra approval experiment
+- A2 gains material relation only when it maps the older stable source to a newer preview-specific authority question
+- Source syntax for `NativeAgents(interactions=True)` is evidence of a feature surface, not successful human approval or unbounded delegated authority
+- Mutable Session state is not equivalent to mutable Session permission; the latter needs policy re-evaluation against current authorization
+- Preview tool metadata and actual effect trace are different admissibility levels, so their repeated citations must not be double-counted
+- Forward correction: preserve prerelease status, distinguish create/restore/resume/effect times and require a runnable counterexample before implementation claims
+
+## November 5 A1 #209
+- Original 167 additions contain separate source judgments about permission, wheel/ABI and platform support
+- cp310-abi3 naming is a build-compatibility claim, not a proof that every installed interpreter/platform can import a native extension
+- A Windows x64 wheel is not evidence for a Linux runner's network or filesystem access
+- A supported Python range describes intended ABI support, not the exact interpreter an experimental pipeline used
+- The Session restore security question is whether the restored object binds to current application credentials and approvals, not whether a checkpoint file exists
+- If the historical authority projection omitted a credential or target incarnation, successful replay can still be unauthorized despite an exact checkpoint match
+- Forward correction: require target identity, authority generation and effect-time receipt to make a restoration/replay decision
+
+## November 5 A2 #210
+- Of 175 added lines, a large R-series reproduces predecessor A1 J-series material and appends nearly uniform A2 labels, so raw line count is not a reliable measure of distinct new month decisions
+- A source-line reproduction can document provenance, but it does not become independent semantic maintenance by acquiring another row ID
+- A2 can materially decide that preview features remain inadmissible to the original October stable source cohort
+- A2 can retain a current-month authority-risk candidate without asserting that approval bypass, persisted state or recovery was observed locally
+- A2 can distinguish an authority defect hypothesis from a known incident: the latter requires executable evidence or reproducible regression
+- Forward correction: preserve original R rows as authored historical output; count source quotations once at their source and count only genuinely new A2 conclusions toward substantive acceptance
+
+## Reproducible acceptance probes — designed, not executed
+- PROBE-01 checkpoint created under permission generation A, resumed under reduced generation B; observe exact permitted tool set
+- PROBE-02 same Session object, altered application credentials after checkpoint; compare intended and executed authority
+- PROBE-03 child agent requests approval and parent declines; capture effect count, not just tool-call status
+- PROBE-04 interactive form response arrives after policy revocation; test effect-time authorization
+- PROBE-05 tool metadata advertises an action but policy denies it; require fail-closed effect and trace
+- PROBE-06 mutable Session state contains a new tool name but original permission lacks it; test privilege expansion guard
+- PROBE-07 compare two source objects with same displayed task key but different target incarnation; avoid aliasing
+- PROBE-08 retry with identical token after retention expiry; distinguish historical effect from new effect
+- PROBE-09 repeat same input across stable and alpha releases with fixed harness; compare behavior without assuming compatibility
+- PROBE-10 force missing runtime/permission receipt; final adjudication must be UNKNOWN rather than success
+- Runtime, ABI imports, approval tests, claim verification tests and external conformance: NOT_EXECUTED in this documentary reconciliation
+- No past original/successor strict PASS is manufactured by this forward record
+
+## Strict original A1/A2 acceptance adjudication — 2026-11-06
+- Basis: each named original GitHub PR patch and its original merged delivery; this is a later independent *documentary* evaluation, not a replacement or recomputation of original additions.
+- Gate 1 (GitHub original PR >=100 additions and merged): PASS for every original below. Gate 2 (>=100 non-repeated, original, independently substantive maintenance lines per original): outcomes below. NOT_CERTIFIED is a non-PASS state.
+- Exclude from Gate 2: blank lines, headings, administrative metadata, file/blob indexes, source-body quotations, unchanged inherited upstream rows, repeated boilerplate suffixes, and historical evidence that was not newly assessed. A numbered row is not automatically a distinct substantive decision.
+- No native execution, external source recertification or GitHub Actions run is performed by this documentary review. No later correction is backdated into an original GitHub PR.
+
+| Original PR | Original additions | Strict substantive result | Specific acceptance reason / unresolved test |
+|---|---:|---|---|
+| [#200](https://github.com/lostlight530/epistemic-pipeline/pull/200) | 121 | NOT_CERTIFIED | Nov2 A1 combines shared Gxx contract language with Stage L source records; actual approval/trace policy behavior was not executed and generic caveats cannot count as new source decisions |
+| [#201](https://github.com/lostlight530/epistemic-pipeline/pull/201) | 122 | NOT_CERTIFIED | Nov2 A2 A1-source inheritance, source identity and month-state statements need an independent A2 relationship-only line audit |
+| [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207) | 167 | NOT_CERTIFIED | Nov4 A1 describes 124 source decisions but includes a blob inventory and repeated part/source checks; require distinct source-to-claim adjudication count |
+| [#208](https://github.com/lostlight530/epistemic-pipeline/pull/208) | 165 | NOT_CERTIFIED | Nov4 A2 reuses upstream Jxx and issuer alpha release; new candidate timing and native selected-source separation matter, repeated evidence doctrine does not increase independent count |
+| [#209](https://github.com/lostlight530/epistemic-pipeline/pull/209) | 167 | NOT_CERTIFIED | Nov5 A1 has native inventory and Jxx/source assertions; strict pass requires separate assessment of genuinely new Session/approval trace implications |
+| [#210](https://github.com/lostlight530/epistemic-pipeline/pull/210) | 175 | NOT_CERTIFIED | Nov5 A2 inherits month relationships; must isolate new Nov5 source/implementation changes and specific epistemic effects rather than count carried forward rows |
+
+- Certification rule: no original is marked semantic PASS without an independently checked exact-line inclusion/exclusion ledger achieving 100 eligible, different source-specific judgments for *that original*, with citation to its original diff. Higher GitHub additions alone cannot supply that ledger.
+- Next legal action: review and adjudicate each specific row; where the strict criterion is actually unmet, a separately scoped successor may be proposed, but must not be retroactively counted toward the original. Stop at Draft until maintainer decision.
+- Current status: ORIGINAL_NUMERIC_GATE_VERIFIED / ORIGINAL_STRICT_SUBSTANTIVE_NOT_CLOSED / FORWARD_CORRECTION_DELIVERED.
+
+## 2026-11-06 exact original-diff line-screening ledger
+
+> Scope: literal `+` lines of the 40 *merged original PR diffs*, not forward-repair additions. This is a traceable screening inventory, **not** a source-independent semantic PASS or a substitute for original task-time execution.
+
+- `Added` = original GitHub PR positive diff lines; `non-judgment structural` = empty lines, headings, separators, fenced markers, and pure Markdown-table separator lines; these are excluded from substantive lines.
+- `Numbered rows` and `source identity/line references` are *flags for independent interpretation*, not automatic inclusion or automatic rejection: a real source-specific judgment can cite a blob, while an inherited inventory alone is not a new judgment.
+- `Maximum after structural exclusions` is only a permissive mathematical ceiling; it does not count substantive lines. Repetitions, inherited quotations, source metadata and generic boilerplate may reduce the eligible set further.
+- A PASS requires a reviewer-maintained, original-diff inclusion/exclusion ledger with at least 100 individually defensible original source-to-decision judgments. None of these originals is certified PASS by this screening.
+
+| Original | Added | Structural excluded | Numbered rows (flag) | Source/identity refs (flag) | Upper ceiling after structural only | Strict status |
+|---|---:|---:|---:|---:|---:|---|
+| [#200](https://github.com/lostlight530/epistemic-pipeline/pull/200/files) | 121 | 10 | 31 | 10 | 111 | NOT_CERTIFIED |
+| [#201](https://github.com/lostlight530/epistemic-pipeline/pull/201/files) | 122 | 10 | 70 | 0 | 112 | NOT_CERTIFIED |
+| [#207](https://github.com/lostlight530/epistemic-pipeline/pull/207/files) | 167 | 19 | 124 | 82 | 148 | NOT_CERTIFIED |
+| [#208](https://github.com/lostlight530/epistemic-pipeline/pull/208/files) | 165 | 21 | 125 | 4 | 144 | NOT_CERTIFIED |
+| [#209](https://github.com/lostlight530/epistemic-pipeline/pull/209/files) | 167 | 19 | 122 | 7 | 148 | NOT_CERTIFIED |
+| [#210](https://github.com/lostlight530/epistemic-pipeline/pull/210/files) | 175 | 8 | 158 | 5 | 167 | NOT_CERTIFIED |
+
+### Diff anchors and review boundaries
+- Original #200: exact changed-file set: `maintenance/frontier-research/annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md#L13`, `maintenance/frontier-research/annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md#L14`, `maintenance/frontier-research/annotations/2026-11-02_A1_STAGE_SOURCE_CONTENT.md#L15`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+- Original #201: exact changed-file set: `maintenance/frontier-research/annotations/2026-11-02_A2_MONTH_RELATION.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-02_A2_MONTH_RELATION.md#L12`, `maintenance/frontier-research/annotations/2026-11-02_A2_MONTH_RELATION.md#L13`, `maintenance/frontier-research/annotations/2026-11-02_A2_MONTH_RELATION.md#L14`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+- Original #207: exact changed-file set: `maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md#L29`, `maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md#L30`, `maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md#L31`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+- Original #208: exact changed-file set: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L14`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L15`, `maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md#L16`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+- Original #209: exact changed-file set: `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L31`, `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L32`, `maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md#L33`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+- Original #210: exact changed-file set: `maintenance/frontier-research/LONGITUDINAL_INDEX.md`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md`; numbered example location(s): `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L10`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L11`, `maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md#L12`. Include no blank/headings as research judgments. Reviewer must distinguish line-level unique source analysis from shared G/J/R/M/D discipline and existing Stage L evidence.
+
+- Review consequence: original numerical delivery remains 100%-verified, but `>=100 independently substantive *original* additions` remains unproven. This forward correction cannot change original file bytes, additions, logical cutoff or approval history.
+- Full repository runtime / native workflow / external publisher recertification: NOT_EXECUTED by this line-screen; retain independent checks as separate evidence plane.
+
