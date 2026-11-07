@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** `2026-11-06` — [Independent Nov06 A2](annotations/2026-11-06_A2_MONTH_RELATION.md); November OPEN, original Stage L source cutoff October19 and Q4 IN_PROGRESS unchanged.
+- **Current maintenance relation through:** `2026-11-07` — [Independent Nov07 A2](annotations/2026-11-07_A2_MONTH_RELATION.md), exact main A2 blob `94a93c9d8b072e0865111bab5f3af4f47b834c08`; original Nov07 A2 `ORIGINAL_NOT_MET` (independent >=100 substantive-line gate not certified), November `OPEN`, Stage L `IN_PROGRESS`, original October 19 selected source unchanged. Previous Nov06 relation is a historical as-of source, not the current owner.
 - **Previous current-relation pointer retained:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md); its original source-time validity and PR receipts are not rewritten.
 
 ## Boundary
@@ -7197,3 +7197,11 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 - Source issuer reports native-wheel installation and Session/Turn/tool-policy changes; **not** installed runtime, local approval evidence or independent conformance in epistemic-pipeline.
 - Stable original O11/S11 selected `v0.24.0` source cutoff October19 remains preserved; `NOVEMBER_OPEN / Q4_IN_PROGRESS`, no native Stage, D7/D10/D14/D30 or scientific-judgment PASS.
 - Nov5 original A1 may start only after this A2 is merged and post-merge main read; its A2 needs that own A1 merge.
+
+## 2026-11-08 D7 forward correction — relation pointer Nov06 → Nov07
+
+- Historical predecessor retained: [November 6 independent A2](annotations/2026-11-06_A2_MONTH_RELATION.md); the old dated file and its original Git/PR evidence are not changed by the November 7 current-pointer update.
+- Found on main: the opening `Current maintenance relation through` pointer remained at 2026-11-06 despite merged November 7 independent A2. This is current navigation drift, not a defect in the historical November 6 A2 text or the immutable Stage L selection.
+- Reconciled to the actual November 7 A2 blob `94a93c9d8b072e0865111bab5f3af4f47b834c08`; Nov07 original A1/A2 strict acceptance remains `NOT_MET`, so routing the artifact does not certify its hard-gate contract.
+- Original Stage L source cutoff (2026-10-19), monthly `OPEN`, quarterly `IN_PROGRESS`, previous pointers, GitHub delivery and cleanup histories are not revised. `MANIFEST.yaml.current_temporal_status.as_of` is a separate machine snapshot clock and was deliberately untouched.
+- D7 evidence: [2026-11-08 D7 continuity audit](../2026-11-08-d7-operational-continuity.md). No publisher release, local runtime or scientific validation was executed by this pointer correction.
