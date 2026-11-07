@@ -7200,6 +7200,7 @@ This is a **later dated registry observation**; all earlier A2 `STAGE_I_NOT_EVID
 
 ## 2026-11-08 D7 forward correction — relation pointer Nov06 → Nov07
 
+- Historical predecessor retained: [November 6 independent A2](annotations/2026-11-06_A2_MONTH_RELATION.md); the old dated file and its original Git/PR evidence are not changed by the November 7 current-pointer update.
 - Found on main: the opening `Current maintenance relation through` pointer remained at 2026-11-06 despite merged November 7 independent A2. This is current navigation drift, not a defect in the historical November 6 A2 text or the immutable Stage L selection.
 - Reconciled to the actual November 7 A2 blob `94a93c9d8b072e0865111bab5f3af4f47b834c08`; Nov07 original A1/A2 strict acceptance remains `NOT_MET`, so routing the artifact does not certify its hard-gate contract.
 - Original Stage L source cutoff (2026-10-19), monthly `OPEN`, quarterly `IN_PROGRESS`, previous pointers, GitHub delivery and cleanup histories are not revised. `MANIFEST.yaml.current_temporal_status.as_of` is a separate machine snapshot clock and was deliberately untouched.
