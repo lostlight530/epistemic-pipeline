@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import os
+import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -62,7 +63,20 @@ def _string_list(value: Any) -> list[str]:
 
 
 def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict]:
-    requested = {str(item).strip() for item in (claim_ids or []) if str(item).strip()}
+    requested: Optional[set[str]]
+    if claim_ids is None:
+        requested = None
+    else:
+        if isinstance(claim_ids, (str, bytes)):
+            raise ValueError("claim_ids must be an iterable of nonempty strings, not a string")
+        try:
+            supplied = list(claim_ids)
+        except TypeError as exc:
+            raise ValueError("claim_ids must be an iterable of nonempty strings") from exc
+        if not supplied or any(not isinstance(item, str) or not item.strip() for item in supplied):
+            raise ValueError("claim_ids must be omitted or contain at least one nonempty string")
+        requested = {item.strip() for item in supplied}
+
     claims = audit.get("claims") or []
     if not isinstance(claims, list):
         claims = []
@@ -75,7 +89,7 @@ def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict
         claim_id = str(record.get("claim_id") or "").strip()
         if not claim_id:
             continue
-        if requested and claim_id not in requested:
+        if requested is not None and claim_id not in requested:
             continue
         found.add(claim_id)
         selected.append(
@@ -106,7 +120,7 @@ def _select_claims(audit: dict, claim_ids: Optional[Iterable[str]]) -> list[dict
             }
         )
 
-    missing = sorted(requested - found)
+    missing = sorted(requested - found) if requested is not None else []
     if missing:
         raise ValueError(f"requested claim IDs not present in claim audit: {missing}")
     return selected
@@ -226,8 +240,16 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--purpose", help="caller-declared downstream purpose")
     parser.add_argument("--output", required=True)
     args = parser.parse_args(argv)
-    record = build_claim_transfer(args.claim_audit, claim_ids=args.claim_id, purpose=args.purpose)
-    write_claim_transfer(record, args.output)
+    try:
+        record = build_claim_transfer(
+            args.claim_audit,
+            claim_ids=args.claim_id or None,
+            purpose=args.purpose,
+        )
+        write_claim_transfer(record, args.output)
+    except (OSError, UnicodeError, ValueError) as exc:
+        print(f"claim-transfer: {exc}", file=sys.stderr)
+        return 1
     return 0
 
 

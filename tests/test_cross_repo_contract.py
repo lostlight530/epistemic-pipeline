@@ -1,6 +1,8 @@
 """Downstream-facing claim and evidence handoff contracts, without truth transfer."""
 import hashlib
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -63,6 +65,57 @@ class CrossRepositoryContract(unittest.TestCase):
             self.assertFalse(handoff["acceptance_claim"])
             with self.assertRaises(ValueError):
                 build_claim_transfer(source, claim_ids=["nonexistent"])
+
+
+    def test_claim_transfer_distinguishes_omitted_and_empty_selection(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "claim-verification.json"
+            claims = [{"claim_id": "c1"}, {"claim_id": "c2"}]
+            source.write_text(json.dumps({
+                "profile": "epistemic-pipeline/claim-verification",
+                "run_id": "selection-fixture",
+                "claims": claims,
+            }), encoding="utf-8")
+
+            all_claims = build_claim_transfer(source)
+            self.assertEqual(
+                [item["claim_id"] for item in all_claims["claims"]],
+                ["c1", "c2"],
+            )
+
+            for invalid_selection in ([], [""], ["c1", ""], "c1"):
+                with self.subTest(invalid_selection=invalid_selection):
+                    with self.assertRaisesRegex(ValueError, "claim_ids"):
+                        build_claim_transfer(source, claim_ids=invalid_selection)
+
+            rejected_output = root / "rejected.json"
+            rejected = subprocess.run(
+                [
+                    sys.executable, str(ROOT / "core" / "claim_transfer.py"),
+                    str(source), "--claim-id", "", "--output", str(rejected_output),
+                ],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(rejected.returncode, 1)
+            self.assertIn("claim-transfer: claim_ids", rejected.stderr)
+            self.assertNotIn("Traceback", rejected.stderr)
+            self.assertFalse(rejected_output.exists())
+
+            all_output = root / "all.json"
+            omitted = subprocess.run(
+                [
+                    sys.executable, str(ROOT / "core" / "claim_transfer.py"),
+                    str(source), "--output", str(all_output),
+                ],
+                cwd=ROOT, capture_output=True, text=True,
+            )
+            self.assertEqual(omitted.returncode, 0, omitted.stderr)
+            transferred = json.loads(all_output.read_text(encoding="utf-8"))
+            self.assertEqual(
+                [item["claim_id"] for item in transferred["claims"]],
+                ["c1", "c2"],
+            )
 
     def test_codemeta_v4_citation_identity_stays_consistent(self):
         meta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
