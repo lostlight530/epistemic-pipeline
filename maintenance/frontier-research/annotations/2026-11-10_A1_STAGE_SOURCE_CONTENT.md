@@ -131,3 +131,76 @@
 - Original A1 strict ≥100 substantive lines plus GitHub additions to be evaluated only against this new original PR
 - After A1 merge, reread main, original PR and exact blob; then A2 may reconcile Nov01–10 without rewriting this record
 - A1 result: source-custody/authority boundary review with explicit unverified tests, not a Stage L completion claim
+
+## Historical source/effect relation snapshots, newly reread only for Nov10 maintenance
+- These existing 14 predecessor files are original dated custody/relations, not current Stage-L execution receipts or source authority grants
+### maintenance/frontier-research/annotations/2026-11-03_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `d656ae07ba33ffd0a7b845ed13b7d13ee296e853`, 141 source lines; heading # 2026-11-03 A1 | Epistemic Stage L November 1–2 source review
+- Source/period trace excerpt: # 2026-11-03 A1 | Epistemic Stage L November 1–2 source review; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-03 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-03_A2_MONTH_RELATION.md
+- Actual current-main blob `9a6f6c594a2e75e94c2a24fff353e61dfabecc92`, 136 source lines; heading # 2026-11-03 A2 | Epistemic November current Stage relation
+- Source/period trace excerpt: # 2026-11-03 A2 | Epistemic November current Stage relation; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-03 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-04_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `6e26321e1d4af999c6877b747a5a5f53b32d6226`, 168 source lines; heading # 2026-11-04 Independent GPT A1 — epistemic Stage-L source review Nov1–3
+- Source/period trace excerpt: # 2026-11-04 Independent GPT A1 — epistemic Stage-L source review Nov1–3; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-04 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-04_A2_MONTH_RELATION.md
+- Actual current-main blob `3432ff11742ee223c464b0d998aee73ebd729941`, 156 source lines; heading # 2026-11-04 Independent GPT A2 — complete November 1–4 epistemic relationship
+- Source/period trace excerpt: # 2026-11-04 Independent GPT A2 — complete November 1–4 epistemic relationship; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-04 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-05_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `633c3a2ca77e33d062c35239a1ae6538e0c7aac0`, 168 source lines; heading # 2026-11-05 original independent A1 — epistemic November 1–4 full source review
+- Source/period trace excerpt: # 2026-11-05 original independent A1 — epistemic November 1–4 full source review; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-05 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-05_A2_MONTH_RELATION.md
+- Actual current-main blob `985665991addc91df29d5abaae1deb60266c8671`, 175 source lines; heading # 2026-11-05 original independent A2 — Epistemic November1–5 monthly relation
+- Source/period trace excerpt: # 2026-11-05 original independent A2 — Epistemic November1–5 monthly relation; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-05 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-06_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `60ad01fdc907a83e1c00613430cc90b799efa213`, 222 source lines; heading # Epistemic independent A1 — Nov1–5 2026 source and evidence custody
+- Source/period trace excerpt: # Epistemic independent A1 — Nov1–5 2026 source and evidence custody; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-06 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-06_A2_MONTH_RELATION.md
+- Actual current-main blob `be4323a8a33a9b2db947ea9a0f0287728dfdc111`, 180 source lines; heading # Epistemic Independent A2 — Nov1–6 2026 Stage L evidence and effect-contract relation
+- Source/period trace excerpt: # Epistemic Independent A2 — Nov1–6 2026 Stage L evidence and effect-contract relation; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-06 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-07_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `ef8b1764dff5222b8f2898ccccf9c99392b8d5c2`, 74 source lines; heading # Independent Stage L A1 source review — epistemic-pipeline — 2026-11-07
+- Source/period trace excerpt: - The coverage matrix records source identity, not 100 new judgments; prior review reuse is not independent paper verification; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-07 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-07_A2_MONTH_RELATION.md
+- Actual current-main blob `94a93c9d8b072e0865111bab5f3af4f47b834c08`, 74 source lines; heading # Independent A2 — epistemic-pipeline — 2026-11-07 full current November relations
+- Source/period trace excerpt: # Independent A2 — epistemic-pipeline — 2026-11-07 full current November relations; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-07 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-08_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `2b0699e6987a23dc369c34f022ebbb522a0e8379`, 64 source lines; heading # Independent A1 — epistemic-pipeline Nov01–07 source-quality custody
+- Source/period trace excerpt: # Independent A1 — epistemic-pipeline Nov01–07 source-quality custody; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-08 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-08_A2_MONTH_RELATION.md
+- Actual current-main blob `c6f39aa35ea23d589c0a53d9af9132948fa97a5b`, 58 source lines; heading # Independent A2 — epistemic-pipeline — 2026-11-08 November current relation
+- Source/period trace excerpt: # Independent A2 — epistemic-pipeline — 2026-11-08 November current relation; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-08 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-09_A1_STAGE_SOURCE_CONTENT.md
+- Actual current-main blob `9810f118ffb415d32ca75df1848fb9c84ab0ceab`, 52 source lines; heading # Independent A1 — epistemic-pipeline — 2026-11-09 Stage L source custody
+- Source/period trace excerpt: - A1 scope: November 01–08 inclusive; Nov09 is reserved for A2.; preserved as author's time-bound assertion
+- Evidence-routing decision: A1 source review alone does not authorize connector effects nor verify claim selection was complete
+- Authority boundary: 2026-11-09 original result stays separate from subsequent source-claim corrections and strict PR acceptance
+### maintenance/frontier-research/annotations/2026-11-09_A2_MONTH_RELATION.md
+- Actual current-main blob `b4d8bfd31f0b7570a4b2f7b55bb5fdf3e8899b66`, 48 source lines; heading # Independent A2 — epistemic-pipeline — 2026-11-09 Stage L month relations
+- Source/period trace excerpt: - Prior A2 Nov08: 'maintenance/frontier-research/annotations/2026-11-08_A2_MONTH_RELATION.md' @ 'c6f39aa35ea23d589c0a53d9af9132948fa97a5b'.; preserved as author's time-bound assertion
+- Evidence-routing decision: A2 dated relation can depend on A1 only if original merged-main visibility existed, not merely same date
+- Authority boundary: 2026-11-09 original result stays separate from subsequent source-claim corrections and strict PR acceptance
