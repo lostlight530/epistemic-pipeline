@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** 2026-11-10 — [November 10 independent A2](annotations/2026-11-10_A2_MONTH_RELATION.md), exact candidate source blob `82eaf36dc11b605e4171ccbe73b31a507bea08ae`; November `OPEN`, Stage L `IN_PROGRESS`, original selected research cut remains `2026-10-19`. Nov09 A2 stays as previous dated relation and is not overwritten.
+- **Current maintenance relation through:** 2026-11-11 — [Nov11 original A2](annotations/2026-11-11_A2_MONTH_RELATION.md) blob `6de9bbd5f91faf7ac65b0e75e9d5f4cfc45a6e76`; November `OPEN`, Stage L `IN_PROGRESS`, selected v0.24.0 Oct19 source unchanged. [Nov10 A2](annotations/2026-11-10_A2_MONTH_RELATION.md) retained historically.
 - **Previous current-relation pointer retained:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md); its original source-time validity and PR receipts are not rewritten.
 
 ## Boundary
