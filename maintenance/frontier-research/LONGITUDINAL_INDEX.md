@@ -6,7 +6,7 @@
 - **Specification:** `2026-09-19-first-batch`
 - **Index period coverage (navigation as of 2026-10-28):** Stages A–L (`2024-Q1`–`2026-Q4`). The first registry table below lists **A–G**; Stage **H** is documented in a subsequent historical section, and Stages **I–L** in the later dated 2026-10-19 expansion. Source-bounded completion for earlier periods is not independent validation; Stage **L** remains `MONTH_OPEN / STAGE_NOT_COMPLETE` with selected October source cut at `2026-10-19`.
 - **Pre-2026 Stage A–H registry identity checkpoint:** `2026-10-04` (historical routing only; I–L extended on 2026-10-19)
-- **Current maintenance relation through:** 2026-11-11 — [Nov11 original A2](annotations/2026-11-11_A2_MONTH_RELATION.md) blob `6de9bbd5f91faf7ac65b0e75e9d5f4cfc45a6e76`; November `OPEN`, Stage L `IN_PROGRESS`, selected v0.24.0 Oct19 source unchanged. [Nov10 A2](annotations/2026-11-10_A2_MONTH_RELATION.md) retained historically.
+- **Current maintenance relation through:** 2026-11-12 — [November 12 original A2](annotations/2026-11-12_A2_MONTH_RELATION.md) exact current-main blob `1a253f3192e6456068d2e309f74512ba183a76f3` / merged PR #234; November `OPEN`, Stage L `IN_PROGRESS`, O11 OpenAI Agents Python v0.24.0 October 19 source retained. Previous [November 11 original A2](annotations/2026-11-11_A2_MONTH_RELATION.md) blob `6de9bbd5f91faf7ac65b0e75e9d5f4cfc45a6e76` remains historical. This is a forward navigation correction, not part of the original A2 PR #234 additions, SDK runtime, approval or tool effect.
 - **Previous current-relation pointer retained:** [Nov05 A2](annotations/2026-11-05_A2_MONTH_RELATION.md); its original source-time validity and PR receipts are not rewritten.
 
 ## Boundary
