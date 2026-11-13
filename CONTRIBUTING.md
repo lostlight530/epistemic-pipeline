@@ -26,6 +26,12 @@ Contributions should strengthen explicit research-execution semantics, evidence 
 6. Update machine contracts and public documentation only when their semantics actually change.
 7. Keep historical point-in-time records recoverable.
 
+### 长期阶段数据与归档引用 / Longitudinal stages and archived citations
+
+**中文**：提交涉及状态机、claim verification／transfer、checkpoint 和阶段性研究记录时，分别写清源 commit、输入与环境、执行命令、结果、未测范围、异常和可复现的 evidence envelope；每日／每周／每月的文档与 GitHub Release 不属于同一状态对象，软件 concept DOI 不能代替特定 release version DOI 或运行回执
+
+**English**: For state-machine, claim verification/transfer, checkpoint or periodic research changes, preserve source commit, input, environment, actual command/result, untested scope, failure and portable evidence envelope. Daily/weekly/monthly research records and GitHub releases are different objects; a software concept DOI cannot substitute for the cited version DOI or a run receipt
+
 ## Evidence boundaries
 
 ```text
@@ -54,6 +60,12 @@ When transfer behavior changes:
 - never upgrade a heuristic score to probability;
 - never imply acceptance, peer review, or evidence sufficiency through transfer;
 - synchronize the owning contract, Manifest, examples, and downstream profile references when semantics actually change.
+
+### 中英阶段数据验收要求 / Bilingual stage-data acceptance
+
+科研或发布说明变更须指出具体 source→claim→trace→checkpoint→result 路径、原始 Git 修订、是否真正运行、失败或不确定状态与比较口径；研究判断、验证器通过、代码合并、GitHub Release 和 DOI 归档不具有相互继承关系；未执行的检查只能记录为 NOT_EXECUTED
+
+Research or publication changes must identify an inspectable source→claim→trace→checkpoint→result chain, exact revision, actual execution, failures/unknowns and comparison denominator. Scientific interpretation, validator PASS, merge, GitHub Release and DOI archive do not imply one another. Unrun checks remain NOT_EXECUTED
 
 ## Verification
 

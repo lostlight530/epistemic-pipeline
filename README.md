@@ -434,6 +434,18 @@ sci-render-kit/communication-transfer
 
 Repositories remain loosely coupled through files/references and no scientific validity is inherited through transfer
 
+### 长期数据与出版身份 / Longitudinal data and publication identity
+
+**中文**：本仓核心是有证据边界的研究状态机，而不是事实判定器；研究执行应从 `MANIFEST.yaml` 和具体运行模块追溯输入、状态变化、claim／evidence 关系、checkpoint、异常与实际测试；Daily／Weekly／Monthly 是阶段研究层，首页只能引用其已存在的 canonical 记录；当前 `main` 是持续演进状态，冻结 GitHub Release 和 Zenodo 版本 DOI 对应各自发行快照；concept DOI `10.5281/zenodo.22791463` 代表软件家族，不代表当前所有源文件已归档，也不保证研究结论正确
+
+**English**: This repository implements evidence-aware research state machines, not a truth oracle. Trace actual inputs, transitions, claim/evidence relationships, checkpoints, failures and tests through `MANIFEST.yaml` and the owning runtime. Daily/Weekly/Monthly records form a separate research-stage layer; this README points to canonical evidence rather than creating it. Live `main` evolves, whereas GitHub releases and Zenodo version DOIs identify frozen releases. Concept DOI `10.5281/zenodo.22791463` identifies the software family, not current source bytes or validated research conclusions
+
+### Longitudinal evidence contract / 长期研究数据与阶段展示
+
+**中文**：本仓的 state-machine trace、checkpoint、claim/evidence 关系、verification report 和维护阶段数据是不同身份，不能只凭某个状态名或成功退出码断言科研结论有效；长期展示必须回溯到 source／claim ID、输入 revision、运行配置、trace/checkpoint 身份、实际验证状态、失败与未知项；历史 Stage 记录、Daily/Weekly/Monthly 的覆盖区间和本次 GitHub `main` 不能混作同一快照
+
+**English**: State-machine traces, checkpoints, claim/evidence relations, verification reports, and maintenance stages have separate identities. A success code or state label cannot certify scientific validity. Longitudinal views should link source/claim IDs, input revision, runtime policy, trace/checkpoint identity, actual verification result, failures and unknowns. Historical stage records, Daily/Weekly/Monthly coverage, and current `main` are not the same snapshot
+
 ## Reproducibility semantics
 
 - **R0 Traceable** — source/artifact identity locatable
