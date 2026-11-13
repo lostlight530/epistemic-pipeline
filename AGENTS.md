@@ -4,6 +4,12 @@ This guide defines how coding/research agents should modify the repository witho
 
 Implementation in `core/`, `states/`, `graphs/`, `validators/` plus active contracts define current semantics. If docs disagree with code or machine rules, correct the owning layer explicitly and never invent a capability to reconcile them.
 
+### 当前 Agent 工程边界 / Current agent engineering boundary
+
+**中文**：代理可提出更改并使用被允许的测试工具，但 `core/`、`states/`、`graphs/`、`validators/` 与 `MANIFEST.yaml` 的实际实现和契约拥有运行语义；人工审批、执行结果、研究结论与日志存在性是独立事实；历史 Jules 产物不因为后来 GPT Native 或其他维护者出现而自动成为已验证的当前行为
+
+**English**: Agents may propose bounded changes and run authorized checks. Actual runtime semantics belong to implementation in `core/`, `states/`, `graphs/`, `validators/` and `MANIFEST.yaml`; human approval, execution receipts, research conclusions and file existence are separate claims. Historical Jules evidence is not automatically validated or replayed by later producer changes
+
 ## Document authority
 
 For repository-level open-research positioning or independent research-production work, read `OPEN_RESEARCH.md`. Use `RESEARCH_TEMPLATE.md` only for prospective bounded records when no more specific native template owns the surface. Neither file supersedes implementation, `MANIFEST.yaml`, validators, subject-specific claim/evidence/runtime contracts, or the native `maintenance/frontier-research/` specification/history.

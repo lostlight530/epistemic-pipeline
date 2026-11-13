@@ -26,6 +26,12 @@ Contributions should strengthen explicit research-execution semantics, evidence 
 6. Update machine contracts and public documentation only when their semantics actually change.
 7. Keep historical point-in-time records recoverable.
 
+### 长期阶段数据与归档引用 / Longitudinal stages and archived citations
+
+**中文**：提交涉及状态机、claim verification／transfer、checkpoint 和阶段性研究记录时，分别写清源 commit、输入与环境、执行命令、结果、未测范围、异常和可复现的 evidence envelope；每日／每周／每月的文档与 GitHub Release 不属于同一状态对象，软件 concept DOI 不能代替特定 release version DOI 或运行回执
+
+**English**: For state-machine, claim verification/transfer, checkpoint or periodic research changes, preserve source commit, input, environment, actual command/result, untested scope, failure and portable evidence envelope. Daily/weekly/monthly research records and GitHub releases are different objects; a software concept DOI cannot substitute for the cited version DOI or a run receipt
+
 ## Evidence boundaries
 
 ```text

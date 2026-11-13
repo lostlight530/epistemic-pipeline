@@ -434,6 +434,12 @@ sci-render-kit/communication-transfer
 
 Repositories remain loosely coupled through files/references and no scientific validity is inherited through transfer
 
+### 长期数据与出版身份 / Longitudinal data and publication identity
+
+**中文**：本仓核心是有证据边界的研究状态机，而不是事实判定器；研究执行应从 `MANIFEST.yaml` 和具体运行模块追溯输入、状态变化、claim／evidence 关系、checkpoint、异常与实际测试；Daily／Weekly／Monthly 是阶段研究层，首页只能引用其已存在的 canonical 记录；当前 `main` 是持续演进状态，冻结 GitHub Release 和 Zenodo 版本 DOI 对应各自发行快照；concept DOI `10.5281/zenodo.22791463` 代表软件家族，不代表当前所有源文件已归档，也不保证研究结论正确
+
+**English**: This repository implements evidence-aware research state machines, not a truth oracle. Trace actual inputs, transitions, claim/evidence relationships, checkpoints, failures and tests through `MANIFEST.yaml` and the owning runtime. Daily/Weekly/Monthly records form a separate research-stage layer; this README points to canonical evidence rather than creating it. Live `main` evolves, whereas GitHub releases and Zenodo version DOIs identify frozen releases. Concept DOI `10.5281/zenodo.22791463` identifies the software family, not current source bytes or validated research conclusions
+
 ## Reproducibility semantics
 
 - **R0 Traceable** — source/artifact identity locatable
