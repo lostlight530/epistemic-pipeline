@@ -440,6 +440,12 @@ Repositories remain loosely coupled through files/references and no scientific v
 
 **English**: This repository implements evidence-aware research state machines, not a truth oracle. Trace actual inputs, transitions, claim/evidence relationships, checkpoints, failures and tests through `MANIFEST.yaml` and the owning runtime. Daily/Weekly/Monthly records form a separate research-stage layer; this README points to canonical evidence rather than creating it. Live `main` evolves, whereas GitHub releases and Zenodo version DOIs identify frozen releases. Concept DOI `10.5281/zenodo.22791463` identifies the software family, not current source bytes or validated research conclusions
 
+### Longitudinal evidence contract / 长期研究数据与阶段展示
+
+**中文**：本仓的 state-machine trace、checkpoint、claim/evidence 关系、verification report 和维护阶段数据是不同身份，不能只凭某个状态名或成功退出码断言科研结论有效；长期展示必须回溯到 source／claim ID、输入 revision、运行配置、trace/checkpoint 身份、实际验证状态、失败与未知项；历史 Stage 记录、Daily/Weekly/Monthly 的覆盖区间和本次 GitHub `main` 不能混作同一快照
+
+**English**: State-machine traces, checkpoints, claim/evidence relations, verification reports, and maintenance stages have separate identities. A success code or state label cannot certify scientific validity. Longitudinal views should link source/claim IDs, input revision, runtime policy, trace/checkpoint identity, actual verification result, failures and unknowns. Historical stage records, Daily/Weekly/Monthly coverage, and current `main` are not the same snapshot
+
 ## Reproducibility semantics
 
 - **R0 Traceable** — source/artifact identity locatable

@@ -61,6 +61,12 @@ When transfer behavior changes:
 - never imply acceptance, peer review, or evidence sufficiency through transfer;
 - synchronize the owning contract, Manifest, examples, and downstream profile references when semantics actually change.
 
+### 中英阶段数据验收要求 / Bilingual stage-data acceptance
+
+科研或发布说明变更须指出具体 source→claim→trace→checkpoint→result 路径、原始 Git 修订、是否真正运行、失败或不确定状态与比较口径；研究判断、验证器通过、代码合并、GitHub Release 和 DOI 归档不具有相互继承关系；未执行的检查只能记录为 NOT_EXECUTED
+
+Research or publication changes must identify an inspectable source→claim→trace→checkpoint→result chain, exact revision, actual execution, failures/unknowns and comparison denominator. Scientific interpretation, validator PASS, merge, GitHub Release and DOI archive do not imply one another. Unrun checks remain NOT_EXECUTED
+
 ## Verification
 
 Run tests, validators, schema checks, or targeted commands relevant to the changed surface and supported by the environment. Record exact commands and observed results in the pull request.

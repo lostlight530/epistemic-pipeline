@@ -86,6 +86,11 @@ State one question that can be contradicted by evidence
 - 中文：标明输入数据版本、Git revision、claim ID、provider／policy、执行时点、checkpoint、证据独立性、状态机失败、未执行步骤和阶段周期，原始观察不得替换成派生判断；归档引文区分软件 concept DOI 与具体 version DOI
 - English: Record input version, Git revision, claim ID, provider/policy, execution time, checkpoint, evidence independence, transition failure, unexecuted steps and reporting period. Do not replace raw observations with derived judgment; distinguish software concept DOI from the specific version DOI when citing an archive
 
+### Longitudinal observation identity / 长期观测身份
+
+- **中文**：填写 canonical 研究／维护周期、源 Git SHA、claim/evidence ID、trace/checkpoint、数据取得时点、执行条件、原始和派生统计分母、未执行／失败／冲突状态，区分软件 concept DOI、归档 version DOI 与本次验证的原始证据
+- **English**: Record canonical research/maintenance period, source Git SHA, claim/evidence ID, trace/checkpoint, retrieval time, execution conditions, raw/derived denominator, and NOT_EXECUTED/FAILED/CONFLICT state. Keep software concept DOI, archival version DOI and actual verification evidence separate
+
 ## Evidence or source basis / 证据基础
 
 For each material source or input record identity, authority, time, supported proposition, limitation, and independence where relevant

@@ -107,6 +107,12 @@ These support open research; they do not establish scientific validity.
 
 **English**: Longitudinal judgments and stage aggregates must trace to exact claim/source/run/checkpoint identities, observation cutoff, graph or state-machine revision, coverage period and unresolved conflict. Derived scores in reports and displays are not raw observations; a GitHub release or DOI does not prove independent claim-transfer verification. Corrections preserve the source record's historical evidentiary limits
 
+### Research-stage evidence versus publication / 科研阶段证据与软件出版
+
+**中文**：原始执行／验证收据、聚合研究观察、历史维护快照、当前代码和软件归档是相互独立的层；每次阶段性统计需要保留数据来源、计算口径、时间窗口、Git 修订、未知／未执行状态和证据独立性；公开门户、CodeMeta、CFF 或 DOI 只提供定位与引用信息，不能替代原始科研过程，也不表示外部第三方复现
+
+**English**: Raw execution/verification receipts, aggregated research observations, historical maintenance snapshots, current code and software archives are distinct layers. Stage metrics need source paths, denominators, observation windows, Git revision, unknown/unexecuted states and independence checks. Pages, CodeMeta, CFF and DOI describe publication or discovery identity; they do not replace experiments or independently reproduce results
+
 ## Scholarly metadata discipline
 
 Preserve Canonical Type, One-line Positioning, Primary Domains, Non-goals, accurate structured subjects where supported, and 5–7 defining keywords before future metadata publication. Avoid classifier-facing marketing copy and keyword stuffing.
