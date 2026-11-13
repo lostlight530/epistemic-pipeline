@@ -48,6 +48,12 @@ The fourth archived version is [v2026.10-fourteen-day-evidence-checkpoint](https
 
 Use the version DOI for this exact checkpoint and the concept DOI for the software family. `CITATION.cff` and CodeMeta retain the family identifier and recorded September 16 baseline date. Later changes to `main` belong to subsequent repository state; the checkpoint tag remains unchanged.
 
+### 版本号、研究阶段与归档的不同责任 / Version, research-stage and archive ownership
+
+**中文**：已发布的 tag、版本 DOI 和与该版本绑定的引用元数据属于特定历史发行对象，发布后不因 `main` 后续变化而追溯改号；此仓软件家族 concept DOI `10.5281/zenodo.22791463` 与任一版本 DOI 不可交换；需要精确重现时应固定所引用版本的 tag、源 commit、输入和运行收据；Daily／Weekly／Monthly 的科研阶段结果独立于软件归档，不因软件 Release 成功而自动完成
+
+**English**: Published tags, version DOIs and citation metadata tied to those versions describe historical release objects; later `main` evolution must not silently renumber them. Software-family concept DOI `10.5281/zenodo.22791463` is not interchangeable with any version DOI. Reproduction requires the cited version's tag, source commit, inputs and actual run receipts. Daily/Weekly/Monthly research-stage conclusions are separate from software publication and cannot be settled by a successful release alone
+
 ## Open-science reuse and research records
 
 - Cite the software family through [CITATION.cff](CITATION.cff) or [CodeMeta](codemeta.json); cite the version DOI above when a result depends on this checkpoint.

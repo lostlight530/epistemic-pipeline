@@ -7,7 +7,7 @@ Scope: new research records only; durable open-research method is owned by `OPEN
 
 English is the canonical/default language of this template. Chinese labels and guidance are provided for accessibility. If bilingual wording diverges, the English instruction governs; repository-native contracts remain authoritative over this template.
 
-英文为本模板的默认与规范语言；中文标签与说明用于辅助理解。若双语表述出现差异，以英文说明为准；仓库原生 contract 对本模板始终具有更高权威。
+英文为本模板的默认与规范语言；中文标签与说明用于辅助理解；若双语表述出现差异，以英文说明为准；仓库原生 contract 对本模板始终具有更高权威；
 
 Historical records are not rewritten by this template
 
@@ -80,6 +80,11 @@ State one question that can be contradicted by evidence
 - Proposed explanation:
 - Support condition:
 - Falsifier:
+
+### 来源与阶段可复核字段 / Source and stage provenance fields
+
+- 中文：标明输入数据版本、Git revision、claim ID、provider／policy、执行时点、checkpoint、证据独立性、状态机失败、未执行步骤和阶段周期，原始观察不得替换成派生判断；归档引文区分软件 concept DOI 与具体 version DOI
+- English: Record input version, Git revision, claim ID, provider/policy, execution time, checkpoint, evidence independence, transition failure, unexecuted steps and reporting period. Do not replace raw observations with derived judgment; distinguish software concept DOI from the specific version DOI when citing an archive
 
 ## Evidence or source basis / 证据基础
 
