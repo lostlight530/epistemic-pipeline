@@ -153,6 +153,21 @@ class TestEvidenceEnvelope(unittest.TestCase):
             parsed = json.loads(Path(path).read_text(encoding="utf-8"))
             self.assertEqual(parsed["profile"], EVIDENCE_PROFILE)
 
+    def test_preexisting_legacy_staging_file_is_not_overwritten(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp) / "evidence"
+            output_dir.mkdir()
+            # Older writer's fixed temporary path, including its doubled suffix.
+            legacy_staging = (output_dir / "r1.evidence.json").with_suffix(
+                ".evidence.json.tmp"
+            )
+            legacy_staging.write_bytes(b"unrelated preexisting bytes")
+
+            result = Path(write_evidence_envelope({"run_id": "r1"}, str(output_dir)))
+
+            self.assertEqual(legacy_staging.read_bytes(), b"unrelated preexisting bytes")
+            self.assertEqual(json.loads(result.read_text(encoding="utf-8")), {"run_id": "r1"})
+
 
 class TestRunBundle(unittest.TestCase):
     def test_linear_mock_run_emits_provenance_and_evidence_sidecars(self):
