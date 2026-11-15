@@ -413,3 +413,11 @@ Calendar-month close != reproduction
 ## Maintenance rule
 
 When code and docs disagree, correct implementation/documentation explicitly. New capability claims require a real code path or clear planned/experimental label. GitHub Actions, CI, CodeQL, dependency bots, branch-protection assumptions, and merge gates remain outside the research architecture
+
+## Source-specific research-object boundaries
+
+The implemented chain in `core/claim_audit.py`, `core/claim_transfer.py` and `core/evidence_envelope.py` is a **claim/evidence bookkeeping system**, not a scientific proof engine. A claim audit aggregates claim IDs, distinct structured-record hashes, origin states, source/evidence reference sets, conflict records, named structural observations and bounded heuristic scores. A transfer preserves selected records and their ambiguity; an envelope preserves typed references to run artifacts. These operations do not adjudicate truth or independently authenticate remote evidence.
+
+The audit state has an explicit source-defined precedence: `structurally_checked_with_conflict` if both observation and conflict exist; otherwise `conflict_recorded`, `structurally_checked`, `evidence_bound`, or `indexed_only`. None means "scientifically valid". A conflict remaining present is legitimate evidence of unresolved interpretation, not a parser failure to be hidden.
+
+An actionable claim-evidence object separates `(claim_id, exact structured record identity, origin state IDs, source identities, evidence references, check type, conflict set, score semantics, transfer destination)`. A cross-repository handoff must preserve ambiguity rather than promote one claimant's wording to verified fact. The present paragraph is supported by inspected source paths; no claim-evaluation run was newly performed.
