@@ -377,3 +377,11 @@ metadata -> reproduction
 ## Governance boundary
 
 GitHub Actions, CI, CodeQL, dependency bots, branch protection, and merge gates remain outside this research architecture. Local/manual checks are optional maintenance aids and are not the completion criterion for this stage-close reconciliation
+
+## Falsifiable source-to-claim handoff example
+
+A minimal research claim follows `claim record -> source/evidence refs -> named observations -> conflict state -> claim audit -> selected claim transfer -> external reviewer`. At each edge, ask whether the exact proposition and source object identity survived. `core/claim_transfer.py` explicitly does not embed claim prose, so the transfer is insufficient on its own to reconstruct the full meaning of a claim without its source sidecar.
+
+**Counterexample:** an agent sends an `evidence_bound` audit to a publication layer that labels it "verified" merely because `evidence_refs` is nonempty. This is an unsupported status promotion: `evidence_bound` means the record has references, not that those references entail the assertion. If origin or identity ambiguity exists, those flags and record hashes must survive.
+
+The evidence envelope can carry typed artifact paths and digests; it does not independently validate scientific content. For a stronger result, separately inspect exact source version/proposition, adjudicate conflict assumptions, and retain independently observable execution or review evidence. These are requirements for a *future stronger claim*, not operations executed by this documentation edit.

@@ -185,3 +185,11 @@ Claim transfer != acceptance
 Maintenance clean != scientific validity
 Calendar-month close != reproduction
 ```
+
+## Coverage is field occupancy, not epistemic strength
+
+`core/claim_audit.py::_coverage_summary` counts how many indexed claims carry source/evidence refs, internal or cross-source structural observations, conflicts, initial/final heuristic scores, and identity/origin ambiguity. It computes ratios over the **indexed claim count** and explicitly sets `aggregate_score=None`.
+
+A high `claims_with_evidence_refs` ratio can mean every claim has a linked reference while every reference still fails to support the exact proposition. A high `claims_with_cross_source_observation` ratio cannot establish independence if all sources derive from the same upstream announcement. A numerical heuristic score is a bounded algorithm output, not a calibrated posterior probability or confidence interval.
+
+Preserve the denominator and origin/identity disambiguation. An empty audit can yield a `null` ratio (zero denominator), which is an undefined proportion, not 0% knowledge quality. No statistical calibration, source validation or human adjudication follows from these counts.

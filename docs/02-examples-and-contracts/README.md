@@ -48,6 +48,12 @@ coverage ratio != probability
 
 Shows how to adapt supported profiles/rules while retaining the repository's semantic boundaries. Customization is not permission to relabel heuristic scores as probabilities or imported references as trusted evidence.
 
+### [CLAIM_IDENTITY_NEGATIVE_CASES.md](./CLAIM_IDENTITY_NEGATIVE_CASES.md)
+
+Source-grounded counterexamples for claim-ID ambiguity, audit-state precedence, source/evidence reference multiplicity, and ambiguity-preserving transfer
+
+**This is a durable research-method casebook, not an executed test log or historical maintenance account**
+
 ## Cross-repository role
 
 In the three-repository research-infrastructure chain:
