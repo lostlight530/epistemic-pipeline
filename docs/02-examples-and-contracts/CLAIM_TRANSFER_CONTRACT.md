@@ -173,3 +173,13 @@ Heuristic score != Probability
 Inheritance != Validation
 Maintenance clean != Scientific validity
 ```
+
+## Transfer-preservation contract: ambiguity survives selection
+
+`core/claim_transfer.py::_select_claims` retains each selected record's `claim_id`, origin state and source record hashes, identity/origin ambiguity flags, source and evidence references, structural observations, conflicts, heuristic-score observations and audit state. It raises `ValueError` when an explicitly requested claim ID was not present rather than constructing a placeholder claim.
+
+The resulting `claim-transfer` object carries the exact source audit path plus its local SHA-256 digest. `payload_text_embedded=False`: the original claim prose is not copied into the transfer. A downstream consumer must recover the source sidecar and original claim text before asserting what exact proposition was transferred.
+
+**Negative case:** two different claim records share one `claim_id`, a transfer retains both hashes/ambiguity, and a downstream UI displays only the string ID. The UI has dropped identity evidence; its displayed sentence cannot inherit scientific truth. Likewise `evidence_reference_ratio` counts selected claims with at least one evidence reference, not evidence sufficiency, credibility, probability or correctness.
+
+Never treat transfer `purpose` or a downstream destination declaration as independent review, acceptance or fact verification.
