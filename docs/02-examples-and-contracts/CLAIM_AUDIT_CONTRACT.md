@@ -204,3 +204,12 @@ provider declared -> provider authenticated
 claim_record_sha256 -> semantic truth
 maintenance clean -> claim true
 ```
+
+## Audit-state transition is not a truth transition
+
+The decision implemented in `core/claim_audit.py::_audit_state` is ordered:
+`conflicts+structural_observation -> structurally_checked_with_conflict`; `conflicts -> conflict_recorded`; `structural_observation -> structurally_checked`; `evidence_refs -> evidence_bound`; otherwise `indexed_only`. The audit emits descriptive observations and does not test whether a source proposition is true.
+
+**Counterexample:** a claim with a locally present evidence URL and a real contradiction can be `conflict_recorded`, not `verified`; attaching an additional structural result can change the label to `structurally_checked_with_conflict` while the contradiction remains. In neither case has a theorem, evaluation benchmark, source authority, independent reproduction or implementation correctness been established.
+
+Claim identity needs more than a shared string: when `claim_id` repeats with different structured records or different origin state IDs, `claim_record_sha256s`, `origin_state_ids`, `claim_identity_ambiguous` and `claim_origin_ambiguous` retain that multiplicity. Do not silently choose one record as canonical from the first occurrence.
