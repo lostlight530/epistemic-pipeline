@@ -1,5 +1,27 @@
 # Epistemic runtime Tool / CLI / Agent console
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 本地工具和 CLI 的 allowlist、参数校验与执行回执是不同状态，示范接口不是外部 Agent 服务
+
+**English owner:** Epistemic runtime Tool / CLI / Agent console
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Where this sits | 该合同的实际规则、证据和失败范围 |
+| Registered tools | 已登记工具 |
+| CLI: immediate practical use | 该合同的实际规则、证据和失败范围 |
+| Programmatic Agent binding (no vendor SDK needed) | 该合同的实际规则、证据和失败范围 |
+| Agent plan harness: human collaboration and bounded execution | 该合同的实际规则、证据和失败范围 |
+| Stable result contract | 该合同的实际规则、证据和失败范围 |
+| UI style and accessibility scope | 该合同的实际规则、证据和失败范围 |
+| Test and operational verification | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 > Current implementation surface · 2026-10-19 · `epistemic-pipeline/tool-adapter`
 
 ## Where this sits

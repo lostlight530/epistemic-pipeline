@@ -11,6 +11,34 @@
 
 # Architecture — Epistemic Pipeline
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 图、状态、provider、checkpoint 与 claim verification 是独立的实现与证据层，Trace 不能自动证明外部效果完成
+
+**English owner:** Architecture — Epistemic Pipeline
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Architectural thesis | 架构核心 |
+| Canonical runtime and evidence path | 运行与证据路径 |
+| Stable project identifiers | 稳定项目身份 |
+| Dependency graph | 依赖图 |
+| Provider boundary and assertion basis | Provider 与断言依据边界 |
+| Runtime policy | 该合同的实际规则、证据和失败范围 |
+| Score layer | 该合同的实际规则、证据和失败范围 |
+| Trace and checkpoint | 该合同的实际规则、证据和失败范围 |
+| PROV-aligned lineage | 该合同的实际规则、证据和失败范围 |
+| Claim-verification architecture | 该合同的实际规则、证据和失败范围 |
+| Claim assertion / observation basis | 该合同的实际规则、证据和失败范围 |
+| Dimensional claim audit coverage | 该合同的实际规则、证据和失败范围 |
+| Claim-transfer architecture | 该合同的实际规则、证据和失败范围 |
+| Evidence Envelope | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 > Calibrated 2026-08-31. This document describes implemented runtime semantics, evidence-transfer boundaries, maintenance/document governance, and research-integrity constraints. It does not define GitHub platform governance.
 
 ## Architectural thesis

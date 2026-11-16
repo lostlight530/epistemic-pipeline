@@ -11,6 +11,32 @@
 
 # Assertion Basis & Claim Audit Coverage — epistemic-pipeline
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 审计覆盖度是分维计量，不是可直接相加的概率、科研结论或证据充分度
+
+**English owner:** Assertion Basis & Claim Audit Coverage — epistemic-pipeline
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| 1. Purpose | 该合同的实际规则、证据和失败范围 |
+| 2. Assertion and observation bases | 该合同的实际规则、证据和失败范围 |
+| 3. Claim audit coverage | 该合同的实际规则、证据和失败范围 |
+| 4. Claim-transfer coverage | 该合同的实际规则、证据和失败范围 |
+| 5. No aggregate audit score | 该合同的实际规则、证据和失败范围 |
+| 6. Evidence Envelope coverage | 该合同的实际规则、证据和失败范围 |
+| 7. No automatic AI detection | 该合同的实际规则、证据和失败范围 |
+| 8. Maintenance coverage is separate | 该合同的实际规则、证据和失败范围 |
+| 9. Relation to research-agent work | 该合同的实际规则、证据和失败范围 |
+| 10. Document / stage status | 该合同的实际规则、证据和失败范围 |
+| 11. Hard boundaries | 该合同的实际规则、证据和失败范围 |
+| Coverage is field occupancy, not epistemic strength | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 **Calibration:** 2026-08-31  
 **Status:** implemented companion contract for `epistemic-pipeline/claim-verification`, `epistemic-pipeline/claim-transfer`, and `epistemic-pipeline/evidence-envelope`
 

@@ -1,5 +1,25 @@
 # 02 — Examples and Contracts
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 合同目录明确 Claim、审计、移交和不同级别的核验权威，不以 profile 存在代替本地测试
+
+**English owner:** 02 — Examples and Contracts
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Machine and capability surfaces | 该合同的实际规则、证据和失败范围 |
+| Active contracts | 该合同的实际规则、证据和失败范围 |
+| Cross-repository role | 该合同的实际规则、证据和失败范围 |
+| Operator and contributor surfaces | 该合同的实际规则、证据和失败范围 |
+| Scholarly metadata | 该合同的实际规则、证据和失败范围 |
+| Reading path | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 This class answers: **how are claims, evidence, audit state, transfer, and customization represented without silently strengthening scientific meaning?**
 
 ## Machine and capability surfaces

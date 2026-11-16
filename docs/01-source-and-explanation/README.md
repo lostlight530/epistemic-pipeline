@@ -1,5 +1,23 @@
 # 01 — Source and Explanation
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 本目录负责定位真实实现与研究说明，目录索引不是软件执行证明
+
+**English owner:** 01 — Source and Explanation
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Implementation map | 该合同的实际规则、证据和失败范围 |
+| Architecture and explanation | 该合同的实际规则、证据和失败范围 |
+| Core epistemic boundaries | 该合同的实际规则、证据和失败范围 |
+| Cross-layer reading | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 This class answers three durable questions:
 
 1. **What does epistemic-pipeline actually execute or validate?**
