@@ -10,6 +10,20 @@
 
 `tests/test_cross_repo_contract.py` creates ephemeral upstream artifact and claim-verification fixtures, exercises the **actual** evidence-envelope and claim-transfer producers, verifies reference identity and ambiguity preservation, and rejects unknown claim IDs. Fixtures are not complete cross-repo replay
 
+## 声明身份与跨仓传递门禁 / Claim identity and cross-repository transfer gates
+
+| 证据层 / Evidence object | 可保留的事实 / Preserved fact | 不允许的推论 / Forbidden inference |
+| --- | --- | --- |
+| Upstream artifact / 上游产物 | `core/evidence_envelope.py` 保留上游路径及可选本地 byte hash / Carries a path and optional local byte hash | 已打开源产物、完成源认证或产物科学正确 / Source retrieval, authentication or scientific correctness |
+| Claim identity / 声明身份 | `core/claim_transfer.py` 只读取精确 `epistemic-pipeline/claim-verification` profile，保留 claim origin、歧义、冲突与引用 / Exact-profile transfer preserves origin, ambiguity, conflicts and references | `claim_id` 单独表示唯一命题或审计状态等于真值 / A claim ID is universally unique or an audit state establishes truth |
+| Figure reference / 图形引用 | `sci-render-kit` 可从 recipe 的 `research_context` 携带 envelope 和 claim-ref / Figure recipes may carry these references | 三仓执行了共同持久运行时、验证了因果或允许声明晋级 / A shared durable runtime, causal validation or claim promotion |
+
+**反例设计 / Falsification conditions:** duplicate one `claim_id` across distinct originating claim bodies, corrupt an upstream byte digest while keeping the declaration, erase the source/evidence provenance, supply the wrong sidecar profile, or resume from a checkpoint with a stale graph digest / 要观察实际拒绝或歧义保留，而不是仅检查预期 JSON 标签
+
+**执行记录 / Execution record required:** retain producer and consumer revision, exact source/sidecar bytes, profile, graph/checkpoint identity, environment, command, real stdout/stderr and exit code, failure classification, and separately implemented verifier result / 同一测试 oracle 不得被重复称为独立验证
+
+**Status / 本轮状态:** This addition specifies a review protocol, not a newly executed end-to-end pipeline or external effect recovery test / 新增的联合跨仓回放、生产商调用和非幂等副作用试验均为 `NOT_EXECUTED`
+
 ## Failure-injection matrix
 
 | Case | Executed local mechanism | What it does **not** establish |

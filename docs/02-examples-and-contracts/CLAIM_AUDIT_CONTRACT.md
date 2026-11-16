@@ -11,6 +11,34 @@
 
 # Claim Audit Contract — Epistemic Pipeline
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** claim_id、来源、冲突、结构观察和审核状态是不同类型信息，审计不是事实知识图的真值断言
+
+**English owner:** Claim Audit Contract — Epistemic Pipeline
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Why a separate claim audit exists | 独立 Claim 审计的动机 |
+| It is not a truth graph | 并非真值图 |
+| Claim record fields | Claim 记录字段 |
+| Claim identity / origin ambiguity | 该合同的实际规则、证据和失败范围 |
+| Audit states | 审核状态 |
+| Assertion / observation basis | 该合同的实际规则、证据和失败范围 |
+| Structural observations and conflicts | 该合同的实际规则、证据和失败范围 |
+| Heuristic scores | 该合同的实际规则、证据和失败范围 |
+| Dimensional audit coverage | 该合同的实际规则、证据和失败范围 |
+| Process context | 该合同的实际规则、证据和失败范围 |
+| Relationship to Claim Transfer and Evidence Envelope | 该合同的实际规则、证据和失败范围 |
+| Privacy and payload minimization | 该合同的实际规则、证据和失败范围 |
+| Research calibration | 该合同的实际规则、证据和失败范围 |
+| Maintenance / document status | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 **Calibration:** 2026-09-01  
 **Implemented profile:** `epistemic-pipeline/claim-verification`  
 **Scope:** claim identity, evidence bindings, structural observations, conflicts, heuristic scores, assertion basis, identity/origin ambiguity, dimensional audit coverage, and process context

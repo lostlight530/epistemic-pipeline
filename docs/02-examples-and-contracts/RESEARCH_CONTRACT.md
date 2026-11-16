@@ -11,6 +11,34 @@
 
 # Research Contract — Epistemic Pipeline
 
+## 中文技术对应 / Chinese subject counterpart
+
+**具体责任 / Owning subject:** 研究过程中的 claim/evidence/source 身份与 runtime policy 必须分开，验证器通过不等于来源可信
+
+**English owner:** Research Contract — Epistemic Pipeline
+
+**可重复检查 / Reproducibility:** 应先固定 Graph/profile、state、checkpoint 及上下游 sidecar 的精确版本和 bytes，再按原文命令判断返回结果，不能把测试定义、Provider 说明或高分视为已经独立复现 / Freeze actual source and sidecar identity, execution inputs, real receipts and unknown outcomes, a declared audit cannot certify truth
+
+| English chapter / 原章节 | 中文对应定位 / Chinese meaning |
+| --- | --- |
+| Repository role | 仓库角色 |
+| Stable project identifiers | 稳定项目身份 |
+| Document-authority contract | 该合同的实际规则、证据和失败范围 |
+| Runtime-policy contract | 该合同的实际规则、证据和失败范围 |
+| Claim/evidence contract | Claim 与 Evidence 合同 |
+| Claim-verification contract | 该合同的实际规则、证据和失败范围 |
+| Claim-transfer contract | 该合同的实际规则、证据和失败范围 |
+| Assertion / observation basis contract | 该合同的实际规则、证据和失败范围 |
+| Audit-coverage contract | 该合同的实际规则、证据和失败范围 |
+| Score contract | 该合同的实际规则、证据和失败范围 |
+| Trace contract | 该合同的实际规则、证据和失败范围 |
+| Checkpoint contract | 该合同的实际规则、证据和失败范围 |
+| Provenance contract | 该合同的实际规则、证据和失败范围 |
+| Evidence Envelope contract | 该合同的实际规则、证据和失败范围 |
+
+**保存不确定性 / Preserve unknowns:** 原始冲突、缺失来源、非概率 score 与失败注入观察保持各自身份，本节不新增科学或外部效果验证 / Historical and local evidence states are not silently promoted
+
+
 **Calibration:** 2026-08-31  
 **Status:** active research-engineering contract  
 **Closed stage:** 2026-08-24 through 2026-08-31  
