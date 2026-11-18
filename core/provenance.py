@@ -14,6 +14,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Optional
@@ -208,7 +209,19 @@ def write_provenance(record: dict, output_dir: str = "provenance") -> str:
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / f"{run_id}.prov.json"
-    temp = path.with_suffix(".prov.json.tmp")
-    temp.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    os.replace(temp, path)
+    staged = None
+    try:
+        # Fixed-name staging can follow a pre-existing symlink into an
+        # unrelated file; use an exclusive same-directory temporary file.
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=out_dir,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False,
+        ) as handle:
+            staged = Path(handle.name)
+            json.dump(record, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+        os.replace(staged, path)
+    finally:
+        if staged is not None:
+            staged.unlink(missing_ok=True)
     return str(path)

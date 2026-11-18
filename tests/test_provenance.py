@@ -261,6 +261,47 @@ class TestRunIdPathBoundary(unittest.TestCase):
                 self.assertFalse((root / subdir).exists())
 
 
+
+class TestExclusiveArtifactStaging(unittest.TestCase):
+    def _symlink(self, path: Path, target: Path) -> None:
+        try:
+            path.symlink_to(target)
+        except (OSError, NotImplementedError) as exc:
+            self.skipTest(f"symbolic links unavailable: {exc}")
+
+    def test_provenance_writer_preserves_legacy_staging_symlink_target(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            folder = root / "provenance"
+            folder.mkdir()
+            protected = root / "protected.txt"
+            protected.write_text("PRESERVE", encoding="utf-8")
+            old_stage = (folder / "r1.prov.json").with_suffix(".prov.json.tmp")
+            self._symlink(old_stage, protected)
+
+            output = Path(write_provenance({"run_id": "r1"}, str(folder)))
+            self.assertEqual(protected.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(old_stage.is_symlink())
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["run_id"], "r1")
+
+    def test_claim_audit_writer_preserves_legacy_staging_symlink_target(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            folder = root / "audits"
+            folder.mkdir()
+            protected = root / "protected.txt"
+            protected.write_text("PRESERVE", encoding="utf-8")
+            old_stage = (folder / "r1.claim-audit.json").with_suffix(
+                ".claim-audit.json.tmp"
+            )
+            self._symlink(old_stage, protected)
+
+            output = Path(write_claim_verification({"run_id": "r1"}, str(folder)))
+            self.assertEqual(protected.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(old_stage.is_symlink())
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["run_id"], "r1")
+
+
 if __name__ == "__main__":
     unittest.main()
 
