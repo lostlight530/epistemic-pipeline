@@ -105,5 +105,35 @@ class RuntimeFailureInjection(unittest.TestCase):
                 engine._load_checkpoint("legacy")
 
 
+
+    def test_checkpoint_writer_preserves_legacy_staging_symlink_target(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            protected = root / "protected.txt"
+            protected.write_text("PRESERVE", encoding="utf-8")
+            engine = StateMachineEngine(
+                str(ROOT / "graphs" / "linear.yaml"),
+                mock_llm=True, checkpoint_dir=str(root / "checkpoints"),
+                trace_dir=None,
+            )
+            checkpoint = engine._checkpoint_path("safe-run")
+            checkpoint.parent.mkdir(parents=True, exist_ok=True)
+            old_stage = checkpoint.with_suffix(".json.tmp")
+            try:
+                old_stage.symlink_to(protected)
+            except (OSError, NotImplementedError) as exc:
+                self.skipTest(f"symbolic links unavailable: {exc}")
+
+            engine._write_checkpoint(
+                "safe-run", {"discover": {"status": "success", "outputs": {}}}
+            )
+            self.assertEqual(protected.read_text(encoding="utf-8"), "PRESERVE")
+            self.assertTrue(old_stage.is_symlink())
+            self.assertEqual(
+                json.loads(checkpoint.read_text(encoding="utf-8"))["run_id"],
+                "safe-run",
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
