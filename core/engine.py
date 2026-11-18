@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 import sys
+import tempfile
 import time
 import uuid
 from pathlib import Path
@@ -127,10 +128,20 @@ class StateMachineEngine:
             ],
             "results": results,
         }
-        tmp_path = path.with_suffix(".json.tmp")
-        with tmp_path.open("w", encoding="utf-8") as handle:
-            json.dump(payload, handle, ensure_ascii=False, indent=2)
-        os.replace(tmp_path, path)
+        staged = None
+        try:
+            # Checkpoints share the same exclusive staging boundary as
+            # evidence sidecars; a fixed .tmp path could be a symlink.
+            with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", dir=path.parent,
+                prefix=f".{path.name}.", suffix=".tmp", delete=False,
+            ) as handle:
+                staged = Path(handle.name)
+                json.dump(payload, handle, ensure_ascii=False, indent=2)
+            os.replace(staged, path)
+        finally:
+            if staged is not None:
+                staged.unlink(missing_ok=True)
 
     def _load_checkpoint(self, run_id: str) -> dict:
         path = self._checkpoint_path(run_id)
