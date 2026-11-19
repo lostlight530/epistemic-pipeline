@@ -17,3 +17,7 @@ This is a **classification/navigation index**, not a newly performed audit or an
 Only the existing correction archive class is populated in this repository. No artificial `02/`–`05/` class directories or extra audit records are created. These existing records already sit in their proper correction class; **zero renames are justified** by the inspected file identities. An independent maintenance register and an original monthly A2 source/relationship task are separate identities, even when an archived correction mentions them. Any future actual rename requires a specific misclassification finding and inbound-link review.
 
 Current repository contracts and original owning evidence remain higher authority than this historical navigation index.
+
+## Historical predecessor path
+
+The [October 1 source-scope correction](01-corrections-and-errata/2026-10-01--external-review-source-scope--correction.md) records a historical predecessor locator under `historical-audits/2026-10/`. The [predecessor review](../maintenance/2026-10-01-external-independent-gpt-review.md) was added at its `maintenance/` path in [PR #78](https://github.com/lostlight530/epistemic-pipeline/pull/78) and is still retained there. This is a navigation clarification; the correction body and predecessor are unchanged.
