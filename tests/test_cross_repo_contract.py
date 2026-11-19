@@ -121,6 +121,9 @@ class CrossRepositoryContract(unittest.TestCase):
         malformed = [
             ("claims-object", {"claims": {"c1": {"claim_id": "c1"}}}, "claims"),
             ("claim-item", {"claims": ["not-an-object"]}, "claims\\[0\\]"),
+            ("claim-id", {"claims": [{"claim_id": ""}]}, "claim_id"),
+            ("conflict-item", {"claims": [{"claim_id": "c1", "conflicts": [7]}]},
+             "conflicts"),
             ("observations", {"claims": [{"claim_id": "c1", "observations": [1]}]},
              "observations"),
             ("heuristic-scores", {"claims": [{"claim_id": "c1", "heuristic_scores": 7}]},
@@ -150,7 +153,7 @@ class CrossRepositoryContract(unittest.TestCase):
                     self.assertFalse(output.exists())
 
             # An explicitly empty or absent collection remains valid
-            for payload in ({"claims": []}, {}):
+            for payload in ({"claims": []}, {"claims": None}, {}):
                 source.write_text(json.dumps({
                     "profile": "epistemic-pipeline/claim-verification", **payload,
                 }), encoding="utf-8")
