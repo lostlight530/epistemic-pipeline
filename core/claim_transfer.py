@@ -46,6 +46,32 @@ def _load_json(path: str | Path) -> dict:
         raise ValueError(
             f"claim transfer requires source profile {SOURCE_PROFILE!r}, got {source_profile!r}"
         )
+    # A sidecar that declares claims must preserve them or fail explicitly:
+    # malformed collections/context may not become an empty successful handoff.
+    claims = data.get("claims")
+    if claims is not None:
+        if not isinstance(claims, list):
+            raise ValueError("claim audit field 'claims' must be an array when supplied")
+        for index, claim in enumerate(claims):
+            if not isinstance(claim, dict):
+                raise ValueError(f"claim audit field 'claims[{index}]' must be an object")
+            claim_id = claim.get("claim_id")
+            if not isinstance(claim_id, str) or not claim_id.strip():
+                raise ValueError(f"claim audit field 'claims[{index}].claim_id' must be a nonempty string")
+            for field in ("observations", "heuristic_scores"):
+                value = claim.get(field)
+                if value is not None and not isinstance(value, dict):
+                    raise ValueError(
+                        f"claim audit field 'claims[{index}].{field}' must be an object when supplied"
+                    )
+            conflicts = claim.get("conflicts")
+            if conflicts is not None and (
+                not isinstance(conflicts, list)
+                or any(not isinstance(item, dict) for item in conflicts)
+            ):
+                raise ValueError(
+                    f"claim audit field 'claims[{index}].conflicts' must be an array of objects when supplied"
+                )
     return data
 
 
