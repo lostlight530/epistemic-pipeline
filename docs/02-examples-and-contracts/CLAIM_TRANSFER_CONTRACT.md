@@ -211,3 +211,15 @@ The resulting `claim-transfer` object carries the exact source audit path plus i
 **Negative case:** two different claim records share one `claim_id`, a transfer retains both hashes/ambiguity, and a downstream UI displays only the string ID. The UI has dropped identity evidence; its displayed sentence cannot inherit scientific truth. Likewise `evidence_reference_ratio` counts selected claims with at least one evidence reference, not evidence sufficiency, credibility, probability or correctness.
 
 Never treat transfer `purpose` or a downstream destination declaration as independent review, acceptance or fact verification.
+
+## Fail-closed source-shape validation — 2026-11-20
+
+The implementation validates the *source claim-verification sidecar* before copying records or measuring transfer coverage. A correct source profile alone does not make malformed claim structures safe to transfer
+
+- `claims` may be omitted, null or an array, where omitted/null/empty represents zero declared indexed claims
+- Every supplied claim-array element must be an object with a nonempty string `claim_id`, not silently skipped
+- If supplied and non-null, `observations` and `heuristic_scores` must be objects
+- If supplied and non-null, `conflicts` must be an array of objects, so declared conflict data cannot silently disappear
+- Malformed shapes raise `ValueError` before output generation; the direct CLI returns a nonzero exit code with a concise error, without generating a misleading zero-claim or conflict-free transfer
+
+This is shape preservation, **not** a claim-truth, score-calibration, evidence-sufficiency, provenance-soundness or peer-review validator
