@@ -120,6 +120,7 @@ class CrossRepositoryContract(unittest.TestCase):
     def test_envelope_claim_index_preserves_duplicate_record_identity(self):
         from core.provenance import canonical_sha256
         from core.run_bundle import _build_claim_index
+        from core.claim_audit import build_claim_verification
 
         first = {"claim_id": "reused", "statement": "version A",
                  "source_refs": ["source:a"]}
@@ -134,10 +135,13 @@ class CrossRepositoryContract(unittest.TestCase):
                                      "evidence_refs": ["evidence:1"]}],
             }},
         }}
+        audited = {entry["claim_id"]: entry
+                   for entry in build_claim_verification(run_result)["claims"]}
         indexed = {entry["claim_id"]: entry for entry in _build_claim_index(run_result)}
         self.assertEqual(set(indexed), {"reused", "unique"})
         ambiguous = indexed["reused"]
         self.assertEqual(ambiguous["origin_state_ids"], ["analyze", "verify"])
+        self.assertEqual(ambiguous["origin_state_ids"], audited["reused"]["origin_state_ids"])
         self.assertTrue(ambiguous["claim_origin_ambiguous"])
         self.assertIsNone(ambiguous["state_id"])
         self.assertEqual(
@@ -145,6 +149,7 @@ class CrossRepositoryContract(unittest.TestCase):
             sorted([canonical_sha256(first), canonical_sha256(second)]),
         )
         self.assertTrue(ambiguous["claim_identity_ambiguous"])
+        self.assertEqual(ambiguous["claim_record_sha256s"], audited["reused"]["claim_record_sha256s"])
         self.assertIsNone(ambiguous["claim_record_sha256"])
         self.assertEqual(ambiguous["source_refs"], ["source:a", "source:b"])
         self.assertEqual(ambiguous["evidence_refs"], ["evidence:1"])
@@ -159,7 +164,7 @@ class CrossRepositoryContract(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as td:
             graph = Path(td) / "graph.yaml"
-            graph.write_text("id: fixture\\nnodes: []\\n", encoding="utf-8")
+            graph.write_text("id: fixture\nnodes: []\n", encoding="utf-8")
             envelope = build_evidence_envelope(
                 run_id="identity-fixture", graph_id="fixture", status="success",
                 graph_path=str(graph), graph_canonical_sha256=None,
