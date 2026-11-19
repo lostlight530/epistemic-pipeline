@@ -134,7 +134,11 @@ def _normalize_claim_index(records: Optional[Iterable[dict]]) -> list[dict]:
             {
                 "claim_id": claim_id,
                 "state_id": record.get("state_id"),
+                "origin_state_ids": _string_list(record.get("origin_state_ids")),
+                "claim_origin_ambiguous": bool(record.get("claim_origin_ambiguous", False)),
                 "claim_record_sha256": record.get("claim_record_sha256"),
+                "claim_record_sha256s": _string_list(record.get("claim_record_sha256s")),
+                "claim_identity_ambiguous": bool(record.get("claim_identity_ambiguous", False)),
                 "source_refs": _string_list(record.get("source_refs")),
                 "evidence_refs": _string_list(record.get("evidence_refs")),
                 "relations": _string_list(record.get("relations")),
