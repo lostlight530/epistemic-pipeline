@@ -117,6 +117,75 @@ class CrossRepositoryContract(unittest.TestCase):
                 ["c1", "c2"],
             )
 
+    def test_envelope_claim_index_preserves_duplicate_record_identity(self):
+        from core.provenance import canonical_sha256
+        from core.run_bundle import _build_claim_index
+        from core.claim_audit import build_claim_verification
+
+        first = {"claim_id": "reused", "statement": "version A",
+                 "source_refs": ["source:a"]}
+        second = {"claim_id": "reused", "statement": "version B",
+                  "source_refs": ["source:b"]}
+        unique = {"claim_id": "unique", "statement": "stable"}
+        run_result = {"results": {
+            "analyze": {"outputs": {"claims_registry": [first, unique]}},
+            "verify": {"outputs": {
+                "claims_registry": [second],
+                "evidence_chains": [{"claim_id": "reused",
+                                     "evidence_refs": ["evidence:1"]}],
+            }},
+        }}
+        audited = {entry["claim_id"]: entry
+                   for entry in build_claim_verification(run_result)["claims"]}
+        indexed = {entry["claim_id"]: entry for entry in _build_claim_index(run_result)}
+        self.assertEqual(set(indexed), {"reused", "unique"})
+        ambiguous = indexed["reused"]
+        self.assertEqual(ambiguous["origin_state_ids"], ["analyze", "verify"])
+        self.assertEqual(ambiguous["origin_state_ids"], audited["reused"]["origin_state_ids"])
+        self.assertTrue(ambiguous["claim_origin_ambiguous"])
+        self.assertIsNone(ambiguous["state_id"])
+        self.assertEqual(
+            ambiguous["claim_record_sha256s"],
+            sorted([canonical_sha256(first), canonical_sha256(second)]),
+        )
+        self.assertTrue(ambiguous["claim_identity_ambiguous"])
+        self.assertEqual(ambiguous["claim_record_sha256s"], audited["reused"]["claim_record_sha256s"])
+        self.assertIsNone(ambiguous["claim_record_sha256"])
+        self.assertEqual(ambiguous["source_refs"], ["source:a", "source:b"])
+        self.assertEqual(ambiguous["evidence_refs"], ["evidence:1"])
+
+        stable = indexed["unique"]
+        self.assertEqual(stable["origin_state_ids"], ["analyze"])
+        self.assertEqual(stable["state_id"], "analyze")
+        self.assertEqual(stable["claim_record_sha256s"], [canonical_sha256(unique)])
+        self.assertEqual(stable["claim_record_sha256"], canonical_sha256(unique))
+        self.assertFalse(stable["claim_origin_ambiguous"])
+        self.assertFalse(stable["claim_identity_ambiguous"])
+
+        with tempfile.TemporaryDirectory() as td:
+            graph = Path(td) / "graph.yaml"
+            graph.write_text("id: fixture\nnodes: []\n", encoding="utf-8")
+            envelope = build_evidence_envelope(
+                run_id="identity-fixture", graph_id="fixture", status="success",
+                graph_path=str(graph), graph_canonical_sha256=None,
+                graph_file_sha256=None, trace_path=None, checkpoint_path=None,
+                provenance_path=None, trace_chain_internal_valid=None,
+                claim_index=indexed.values(),
+            )
+        envelope_claims = {
+            entry["claim_id"]: entry
+            for entry in envelope["claim_observability"]["claims"]
+        }
+        self.assertEqual(envelope_claims["reused"]["origin_state_ids"],
+                         ["analyze", "verify"])
+        self.assertEqual(envelope_claims["reused"]["claim_record_sha256s"],
+                         ambiguous["claim_record_sha256s"])
+        self.assertTrue(envelope_claims["reused"]["claim_origin_ambiguous"])
+        self.assertTrue(envelope_claims["reused"]["claim_identity_ambiguous"])
+        self.assertIsNone(envelope_claims["reused"]["state_id"])
+        self.assertIsNone(envelope_claims["reused"]["claim_record_sha256"])
+        self.assertFalse(envelope["scientific_validity_claim"])
+
     def test_codemeta_v4_citation_identity_stays_consistent(self):
         meta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
         cff = yaml.safe_load((ROOT / "CITATION.cff").read_text(encoding="utf-8"))

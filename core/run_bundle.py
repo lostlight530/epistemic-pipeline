@@ -69,7 +69,11 @@ def _string_list(value: Any) -> list[str]:
 
 
 def _build_claim_index(run_result: dict) -> list[dict]:
-    """Extract claim identity/evidence refs without embedding claim prose."""
+    """Extract portable claim identities and refs without losing ambiguity.
+
+    A claim ID can occur in multiple states and identify distinct structured
+    records. Singular identity is retained only if that identity is unique.
+    """
     claims: Dict[str, dict] = {}
     evidence_refs: Dict[str, set[str]] = {}
     relations: Dict[str, set[str]] = {}
@@ -95,11 +99,13 @@ def _build_claim_index(run_result: dict) -> list[dict]:
                 claim_id,
                 {
                     "claim_id": claim_id,
-                    "state_id": str(state_id),
-                    "claim_record_sha256": canonical_sha256(claim),
+                    "origin_state_ids": set(),
+                    "claim_record_sha256s": set(),
                     "source_refs": [],
                 },
             )
+            entry["origin_state_ids"].add(str(state_id))
+            entry["claim_record_sha256s"].add(canonical_sha256(claim))
             merged_sources = set(entry.get("source_refs") or [])
             merged_sources.update(_string_list(claim.get("source_refs")))
             entry["source_refs"] = sorted(merged_sources)
@@ -123,14 +129,23 @@ def _build_claim_index(run_result: dict) -> list[dict]:
             claim_id,
             {
                 "claim_id": claim_id,
-                "state_id": None,
-                "claim_record_sha256": None,
+                "origin_state_ids": set(),
+                "claim_record_sha256s": set(),
                 "source_refs": [],
             },
         )
+        origin_state_ids = sorted(base.get("origin_state_ids") or [])
+        record_hashes = sorted(base.get("claim_record_sha256s") or [])
         index.append(
             {
-                **base,
+                "claim_id": claim_id,
+                "state_id": origin_state_ids[0] if len(origin_state_ids) == 1 else None,
+                "origin_state_ids": origin_state_ids,
+                "claim_origin_ambiguous": len(origin_state_ids) > 1,
+                "claim_record_sha256": record_hashes[0] if len(record_hashes) == 1 else None,
+                "claim_record_sha256s": record_hashes,
+                "claim_identity_ambiguous": len(record_hashes) > 1,
+                "source_refs": sorted(base.get("source_refs") or []),
                 "evidence_refs": sorted(evidence_refs.get(claim_id, set())),
                 "relations": sorted(relations.get(claim_id, set())),
             }
