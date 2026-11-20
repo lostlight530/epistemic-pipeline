@@ -21,3 +21,7 @@ Current repository contracts and original owning evidence remain higher authorit
 ## Historical predecessor path
 
 The [October 1 source-scope correction](01-corrections-and-errata/2026-10-01--external-review-source-scope--correction.md) records a historical predecessor locator under `historical-audits/2026-10/`. The [predecessor review](../maintenance/2026-10-01-external-independent-gpt-review.md) was added at its `maintenance/` path in [PR #78](https://github.com/lostlight530/epistemic-pipeline/pull/78) and is still retained there. This is a navigation clarification; the correction body and predecessor are unchanged.
+
+## 2026-11-20 independent Epistemic source document audit
+
+- [Stage L source and 11-15 date-relation reconciliation](02-document-audits/2026-11-20--stage-l-claim-and-date-relation--document-audit.md) — forward additions to current A1/A2, original history retained
