@@ -117,6 +117,51 @@ class CrossRepositoryContract(unittest.TestCase):
                 ["c1", "c2"],
             )
 
+    def test_claim_transfer_rejects_malformed_source_shapes_without_data_loss(self):
+        malformed = [
+            ("claims-object", {"claims": {"c1": {"claim_id": "c1"}}}, "claims"),
+            ("claim-item", {"claims": ["not-an-object"]}, "claims\\[0\\]"),
+            ("claim-id", {"claims": [{"claim_id": ""}]}, "claim_id"),
+            ("conflict-item", {"claims": [{"claim_id": "c1", "conflicts": [7]}]},
+             "conflicts"),
+            ("observations", {"claims": [{"claim_id": "c1", "observations": [1]}]},
+             "observations"),
+            ("heuristic-scores", {"claims": [{"claim_id": "c1", "heuristic_scores": 7}]},
+             "heuristic_scores"),
+            ("conflicts", {"claims": [{"claim_id": "c1", "conflicts": {"other": "c2"}}]},
+             "conflicts"),
+        ]
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "claim-verification.json"
+            output = root / "claim-transfer.json"
+            for name, malformed_fields, message in malformed:
+                with self.subTest(name=name):
+                    source.write_text(json.dumps({
+                        "profile": "epistemic-pipeline/claim-verification",
+                        **malformed_fields,
+                    }), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, message):
+                        build_claim_transfer(source)
+                    result = subprocess.run(
+                        [sys.executable, str(ROOT / "core" / "claim_transfer.py"),
+                         str(source), "--output", str(output)],
+                        cwd=ROOT, capture_output=True, text=True,
+                    )
+                    self.assertEqual(result.returncode, 1, result.stderr)
+                    self.assertNotIn("Traceback", result.stderr)
+                    self.assertFalse(output.exists())
+
+            # An explicitly empty or absent collection remains valid
+            for payload in ({"claims": []}, {"claims": None}, {}):
+                source.write_text(json.dumps({
+                    "profile": "epistemic-pipeline/claim-verification", **payload,
+                }), encoding="utf-8")
+                result = build_claim_transfer(source)
+                self.assertEqual(result["claims"], [])
+                self.assertEqual(result["transfer_coverage"]["selected_claim_count"], 0)
+                self.assertIsNone(result["transfer_coverage"]["evidence_reference_ratio"])
+
     def test_envelope_claim_index_preserves_duplicate_record_identity(self):
         from core.provenance import canonical_sha256
         from core.run_bundle import _build_claim_index

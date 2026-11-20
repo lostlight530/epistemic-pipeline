@@ -196,6 +196,15 @@ canonical_runtime:
     source_profile: epistemic-pipeline/claim-verification
     explicit_claim_selection: true
     missing_claim_behavior: fail_explicitly
+    input_validation:
+      claims_states: [omitted, null, array]
+      supplied_claim_item_type: object
+      claim_id: nonempty_string
+      observations: omitted_null_or_object
+      heuristic_scores: omitted_null_or_object
+      conflicts: omitted_null_or_array_of_objects
+      malformed_source_behavior: fail_explicitly_before_transfer
+      silent_claim_or_conflict_drop_allowed: false
     payload_text_embedded: false
     preserves_origin_state_ids: true
     preserves_claim_record_sha256s: true
