@@ -145,3 +145,12 @@
 - NEW_COUNTEREVIDENCE: a stale as_of field and fixed Stage input version do not independently prove new native research is missing.
 - UNKNOWN_RETAINED: native Stage runtime, source/version validation and external effect, no artificially inferred PASS.
 - NEXT_RETEST_CONDITION: merged A1 original readback then full month A2 cross-source relation with Nov20 owners.
+
+
+## 2026-11-20 independent forward content calibration — A1 Stage/source relationships
+- Original independent A1 PR #262 retains its historical final diff/additions and merge, this is a separate correction to its *current owner file* (previous blob `5ff700e09f5c365a5eeeeda26460cff9f9e07945`)
+- Read Stage L source `maintenance/frontier-research/stage-l-2026-q4/L1_OPENAIAGENTSPYTHON_V0240.md` blob `74528de0b79ca0ccffc634d4a894bc5fc7b1c224`: original `O11 / S11` identity is `openai/openai-agents-python@v0.24.0`, publisher-reported release 2026-10-15, Stage research access 2026-10-19, `SOURCE_BOUNDED / IN_PROGRESS`. The source alleges MCP tool annotations and pending-approval-sensitive compaction; no independent SDK run or local claim transfer was executed by this audit
+- Read separately merged forward reconciliation `historical-audits/01-corrections-and-errata/2026-11-15--epistemic-a2-date-relation-regression--forward-reconciliation.md` blob `50302a437eb57e4a4fe76b94a48ebfc05b288e17`: original 2026-11-15 A2 #245 kept original GitHub additions=160 but its inherited Nov01–14 relation bodies collapsed from 14 distinct to 2 distinct normalized bodies; this is a confirmed **historical relation-detail regression**, not a new SDK or Native execution
+- Explicit current monthly relation gate: the 11-15 correction is a **RECONCILIATION**, not an original independent A2 or a replacement original. Its documented per-day corrected interpretation must be consulted, not flattened into a new uniform 20-day `INHERITED` row without differentiation
+- Open engineering PR [#261](https://github.com/lostlight530/epistemic-pipeline/pull/261) concerns `MANIFEST.yaml`, `core/claim_transfer.py` and engineering contract/tests; its live Draft does not overlap this independent owning annotation file and is not claim transfer or code execution for A1
+- [Dated independent document audit](../../../historical-audits/02-document-audits/2026-11-20--stage-l-claim-and-date-relation--document-audit.md) records the exact correction identities and verification boundary
