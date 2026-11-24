@@ -14,7 +14,7 @@ This is a **classification/navigation index**, not a newly performed audit or an
 
 ## Classification and renaming boundary
 
-The initial correction-only inventory is historical. As of 2026-11-24, `01-corrections-and-errata/` and `02-document-audits/` both contain retained records; the 2026-11-20 document audit is linked below. No artificial class directories or extra audit records are needed. These existing records already sit in their proper correction class; **zero renames are justified** by the inspected file identities. An independent maintenance register and an original monthly A2 source/relationship task are separate identities, even when an archived correction mentions them. Any future actual rename requires a specific misclassification finding and inbound-link review.
+The initial correction-only inventory is historical. As of 2026-11-24, `01-corrections-and-errata/` and `02-document-audits/` both contain retained records; the 2026-11-20 document audit is linked below. No artificial class directories or extra audit records are needed. The listed correction records and the linked document audit retain their respective archive classes; **zero renames are justified** by the inspected file identities. An independent maintenance register and an original monthly A2 source/relationship task are separate identities, even when an archived correction mentions them. Any future actual rename requires a specific misclassification finding and inbound-link review.
 
 Current repository contracts and original owning evidence remain higher authority than this historical navigation index.
 
