@@ -58,6 +58,21 @@ def _load_json(path: str | Path) -> dict:
             claim_id = claim.get("claim_id")
             if not isinstance(claim_id, str) or not claim_id.strip():
                 raise ValueError(f"claim audit field 'claims[{index}].claim_id' must be a nonempty string")
+            for field in ("origin_state_ids", "claim_record_sha256s", "source_refs",
+                          "evidence_refs", "evidence_relations"):
+                value = claim.get(field)
+                if value is not None and (
+                    not isinstance(value, list)
+                    or any(not isinstance(item, str) or not item.strip() for item in value)
+                ):
+                    raise ValueError(
+                        f"claim audit field 'claims[{index}].{field}' must be an array of nonempty strings when supplied"
+                    )
+            for field in ("claim_origin_ambiguous", "claim_identity_ambiguous"):
+                if field in claim and not isinstance(claim[field], bool):
+                    raise ValueError(
+                        f"claim audit field 'claims[{index}].{field}' must be a boolean when supplied"
+                    )
             for field in ("observations", "heuristic_scores"):
                 value = claim.get(field)
                 if value is not None and not isinstance(value, dict):
