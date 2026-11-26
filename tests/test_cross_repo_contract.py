@@ -130,6 +130,20 @@ class CrossRepositoryContract(unittest.TestCase):
              "heuristic_scores"),
             ("conflicts", {"claims": [{"claim_id": "c1", "conflicts": {"other": "c2"}}]},
              "conflicts"),
+            ("origins-string", {"claims": [{"claim_id": "c1", "origin_state_ids": "verify"}]},
+             "origin_state_ids"),
+            ("hash-null-item", {"claims": [{"claim_id": "c1", "claim_record_sha256s": [None]}]},
+             "claim_record_sha256s"),
+            ("source-refs-string", {"claims": [{"claim_id": "c1", "source_refs": "source:1"}]},
+             "source_refs"),
+            ("evidence-refs-object", {"claims": [{"claim_id": "c1", "evidence_refs": {"id": "e:1"}}]},
+             "evidence_refs"),
+            ("evidence-relations-number", {"claims": [{"claim_id": "c1", "evidence_relations": [7]}]},
+             "evidence_relations"),
+            ("origin-ambiguity-string", {"claims": [{"claim_id": "c1", "claim_origin_ambiguous": "false"}]},
+             "claim_origin_ambiguous"),
+            ("identity-ambiguity-null", {"claims": [{"claim_id": "c1", "claim_identity_ambiguous": None}]},
+             "claim_identity_ambiguous"),
         ]
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
@@ -161,6 +175,32 @@ class CrossRepositoryContract(unittest.TestCase):
                 self.assertEqual(result["claims"], [])
                 self.assertEqual(result["transfer_coverage"]["selected_claim_count"], 0)
                 self.assertIsNone(result["transfer_coverage"]["evidence_reference_ratio"])
+
+    def test_claim_transfer_preserves_valid_reference_and_ambiguity_shapes(self):
+        with tempfile.TemporaryDirectory() as td:
+            source = Path(td) / "claim-verification.json"
+            references = {
+                "origin_state_ids": ["verify", "synthesize"],
+                "claim_record_sha256s": ["sha256:a", "sha256:b"],
+                "source_refs": ["source:1"],
+                "evidence_refs": ["evidence:1"],
+                "evidence_relations": ["supports"],
+                "claim_origin_ambiguous": True,
+                "claim_identity_ambiguous": False,
+            }
+            source.write_text(json.dumps({
+                "profile": "epistemic-pipeline/claim-verification",
+                "claims": [{"claim_id": "c1", **references}, {
+                    "claim_id": "c2", "origin_state_ids": None, "evidence_refs": None,
+                }],
+            }), encoding="utf-8")
+            first, second = build_claim_transfer(source)["claims"]
+            for field, value in references.items():
+                self.assertEqual(first[field], value, field)
+            self.assertEqual(second["origin_state_ids"], [])
+            self.assertEqual(second["evidence_refs"], [])
+            self.assertFalse(second["claim_origin_ambiguous"])
+            self.assertFalse(second["claim_identity_ambiguous"])
 
     def test_envelope_claim_index_preserves_duplicate_record_identity(self):
         from core.provenance import canonical_sha256

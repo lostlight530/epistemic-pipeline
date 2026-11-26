@@ -203,6 +203,13 @@ canonical_runtime:
       observations: omitted_null_or_object
       heuristic_scores: omitted_null_or_object
       conflicts: omitted_null_or_array_of_objects
+      origin_state_ids: omitted_null_or_array_of_nonempty_strings
+      claim_record_sha256s: omitted_null_or_array_of_nonempty_strings
+      source_refs: omitted_null_or_array_of_nonempty_strings
+      evidence_refs: omitted_null_or_array_of_nonempty_strings
+      evidence_relations: omitted_null_or_array_of_nonempty_strings
+      claim_origin_ambiguous: omitted_or_boolean
+      claim_identity_ambiguous: omitted_or_boolean
       malformed_source_behavior: fail_explicitly_before_transfer
       silent_claim_or_conflict_drop_allowed: false
     payload_text_embedded: false

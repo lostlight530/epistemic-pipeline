@@ -223,3 +223,9 @@ The implementation validates the *source claim-verification sidecar* before copy
 - Malformed shapes raise `ValueError` before output generation; the direct CLI returns a nonzero exit code with a concise error, without generating a misleading zero-claim or conflict-free transfer
 
 This is shape preservation, **not** a claim-truth, score-calibration, evidence-sufficiency, provenance-soundness or peer-review validator
+
+## Reference and ambiguity shape preservation — 2026-11-26
+
+Before selection and coverage calculation, the source validator additionally checks the reference and identity collections `origin_state_ids`, `claim_record_sha256s`, `source_refs`, `evidence_refs` and `evidence_relations`. Omitted/null collections remain allowed; supplied non-null collections must be arrays of nonempty strings. The existing string trimming and deduplication of valid lists remains unchanged.
+
+When supplied, `claim_origin_ambiguous` and `claim_identity_ambiguous` must be JSON booleans. Omitted flags retain the previous default; explicit null or non-boolean values fail instead of being coerced. This prevents malformed declarations from disappearing or changing meaning during transfer. The check does not infer missing evidence, adjudicate ambiguity, validate a hash's truth, or establish scientific acceptance.
